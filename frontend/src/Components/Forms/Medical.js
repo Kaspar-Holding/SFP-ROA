@@ -627,7 +627,7 @@ const Medical = ({user, LogOut}) => {
           •	needs that have been identified, 
           •	and relevant information 
       that formed the basis for the financial solution recommended`}  aria-describedby=""  ></textarea> */}
-      <Editor
+      <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
           value={FormData['BackInfo']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['BackInfo']: newText }) }}
           onFocus={(e)=>{backgroundInfo_onFocus()}}
@@ -1240,7 +1240,7 @@ const Medical = ({user, LogOut}) => {
               </div>
               <div className="col-12">
                 {/* <textarea maxLength={1000} spellCheck="true"  id="SectionD_SnF" name='SectionD_SnF' value={FormData['SectionD_SnF']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Motivation for recommendations – State why the product purchased will suit the client"  aria-describedby="" style={{height:"150px"}}/> */}
-                <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' onBlur={(e)=>{onFieldBlur(e)}}
+                <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['SectionD_SnF']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['SectionD_SnF']: newText }) }}
                 // onFocus={(e)=>{backgroundInfo_onFocus10()}}
@@ -1282,7 +1282,7 @@ const Medical = ({user, LogOut}) => {
       } style={{fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>IMPORTANT INFORMATION HIGHLIGHTED TO YOU</b></div>
     <hr/>
     {/* <textarea maxLength={1000} spellCheck="true"  id="SectionE_PMB" name='SectionE_PMB' value={FormData['SectionE_PMB']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc."  aria-describedby="" style={{height:"80px"}}/> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['SectionE_PMB']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['SectionE_PMB']: newText }) }}
         name="SectionE_PMB"

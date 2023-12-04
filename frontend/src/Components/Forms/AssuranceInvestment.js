@@ -760,7 +760,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onFocus={backgroundInfo_onFocus14}
         onBlur={backgroundInfo_onBlur14}
         placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['AI_TermDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_TermDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus14()}}
@@ -860,7 +860,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onBlur={backgroundInfo_onBlur15}
         placeholder={
 `Notes`}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['AI_PremiumTypeDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_PremiumTypeDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus15()}}
@@ -922,7 +922,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onBlur={backgroundInfo_onBlur16}
         placeholder={
 `Notes on discussion with client concerning the investment strategy.`}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['AI_StrategyDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_StrategyDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus16()}}
@@ -984,7 +984,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onBlur={backgroundInfo_onBlur17}
         placeholder={
 `Notes on discussion with client concerning return expectations.`}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['AI_ReturnRequiredDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_ReturnRequiredDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus17()}}
@@ -1047,7 +1047,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onBlur={backgroundInfo_onBlur18}
         placeholder={
 `Notes on the client risk profile..`}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['AI_RiskProfileDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_RiskProfileDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus18()}}
@@ -1334,7 +1334,7 @@ const AssuranceInvestment = ({user, LogOut}) =>
 Quantification of need explaining the reasons why this type of investment vehicle was recommended 
 How it will meet the business need
 `}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['AI_FinancialSolutions']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_FinancialSolutions']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus19()}}
@@ -1394,7 +1394,7 @@ How it will meet the business need
         placeholder={
 `1. Identify the type of product or product provider which was considered but not selected and motivate.
 `}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['AI_AltS_1']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_1']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus20()}}
@@ -1437,7 +1437,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['AI_AltS_2']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_2']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus21()}}
@@ -1480,7 +1480,7 @@ How it will meet the business need
         </>: 
          null
     }
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={FormData['AI_AltS_3']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_3']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus22()}}
@@ -1792,7 +1792,7 @@ o	portfolio return;
 o	meeting the investment objectives of the clients
 
 `}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={key.Portfolio}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("Portfolio", i, newText)}}
         onFocus={(e)=>{backgroundInfo_onFocus23()}}
@@ -2095,7 +2095,7 @@ o	meeting the investment objectives of the clients
                 placeholder={`Define Other Source of Funds.
                 
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={key.SourceOfFundsDetail}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("SourceOfFundsDetail", i, newText)}}
                 onFocus={(e)=>{backgroundInfo_onFocus10_1()}}
@@ -2146,7 +2146,7 @@ o	meeting the investment objectives of the clients
 `Motivate why the chosen product was recommended to best suit your client's needs
 
 `}  aria-describedby=""  ></textarea> */}
-    <Editor
+    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
         value={key.PF_Reasons}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_Reasons", i, newText)}}
         onFocus={(e)=>{backgroundInfo_onFocus24()}}
@@ -2426,7 +2426,7 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }              
-            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
                 value={key.PF_MaterialAspects}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_MaterialAspects", i, newText)}}
                 onFocus={(e)=>{backgroundInfo_onFocus8()}}
@@ -2466,7 +2466,7 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }                          
-            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
             value={key.PF_Pr_Details}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_Pr_Details", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus9()}}
@@ -2513,7 +2513,7 @@ o	meeting the investment objectives of the clients
                 null
             }
                         
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
             value={key.PF_ExecutorFee}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_ExecutorFee", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus10()}}
@@ -2555,7 +2555,7 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }
-            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
             value={key.PF_NominationOfBeneficiaries}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_NominationOfBeneficiaries", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus11()}}
@@ -2601,7 +2601,7 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }
-        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
             value={key.PF_InformationExplained}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_InformationExplained", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus12()}}
@@ -2635,7 +2635,7 @@ o	meeting the investment objectives of the clients
                 parseInt(key.Pr_Taken)!=7 ?
                 <>
                     <strong>Additional Comments</strong>
-                    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'                        
+                    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'                         
                         value={key.PF_AdditionComments}
                         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_AdditionComments", i, newText)}}
                         name="PF_AdditionComments"      

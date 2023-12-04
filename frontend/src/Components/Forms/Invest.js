@@ -580,7 +580,7 @@ const Invest = ({user, LogOut}) =>
                 placeholder={`Define Other Source of Funds.
                 
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_OtherSourceOfIncome']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_OtherSourceOfIncome']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus10()}}
@@ -660,7 +660,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur11}
                 placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_InvestmentTermDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_InvestmentTermDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus11()}}
@@ -740,7 +740,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur12}
                 placeholder={`Does the client require access to the investment during the term?                
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_LiquidityDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_LiquidityDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus12()}}
@@ -819,7 +819,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur13}
                 placeholder={`Explain?                
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_TypeDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_TypeDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus13()}}
@@ -899,7 +899,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur14}
                 placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_PremiumTypeDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_PremiumTypeDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus14()}}
@@ -977,7 +977,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur15}
                 placeholder={`Details of Income Required.                
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_IncomeRequiredDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_IncomeRequiredDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus15()}}
@@ -1043,7 +1043,7 @@ const Invest = ({user, LogOut}) =>
                 onFocus={backgroundInfo_onFocus1}
                 onBlur={backgroundInfo_onBlur1}
                 placeholder={`Notes on discussion with client concerning the investment strategy.`}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_InvestmentStrategyDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_InvestmentStrategyDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus1()}}
@@ -1109,7 +1109,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur2}
                 placeholder={
             `Notes on discussion with client concerning return expectations.`}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_ReturnRequiredDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_ReturnRequiredDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus2()}}
@@ -1177,7 +1177,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur3}
                 placeholder={
             `Notes on the client risk profile.`}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_RiskProfileDetails']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_RiskProfileDetails']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus3()}}
@@ -1247,7 +1247,7 @@ const Invest = ({user, LogOut}) =>
                 Qualification of need explaining the reasons why this type of investment vehicle was recommended
                 How it will meet the client's needs
                                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_RecommendationSummary']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_RecommendationSummary']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus()}}
@@ -1304,7 +1304,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur4}
                 placeholder={
                 `1. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_AltS_1']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_1']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus4()}}
@@ -1353,7 +1353,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur5}
                 placeholder={
             `2. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_AltS_2']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_2']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus5()}}
@@ -1402,7 +1402,7 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur6}
                 placeholder={
             `3. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={FormData['IP_AltS_3']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_3']: newText }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus6()}}
@@ -1710,7 +1710,7 @@ const Invest = ({user, LogOut}) =>
                         null
                     }
                     {/* <textarea maxLength={500}   id="provided_identity2" name="SFPSolutionFundsDetails" value={key.SFPSolutionFundsDetails} onChange={(e) => {on_ProductTaken_Change(e, i)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea> */}
-                    <Editor
+                    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                         value={key.SFPSolutionFundsDetails}
                         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("SFPSolutionFundsDetails", i, newText)}}
                         onFocus={(e)=>{sica_onFocus()}}
@@ -1783,7 +1783,7 @@ const Invest = ({user, LogOut}) =>
                 portfolio return;
 
                 meeting the investment objectives of the clients `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={key.ItP}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP", i, newText)}}
                 onFocus={(e)=>{backgroundInfo_onFocus7()}}
@@ -2105,7 +2105,7 @@ const Invest = ({user, LogOut}) =>
             onBlur={backgroundInfo_onBlur8}
             placeholder={
         `Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea> */}
-        <Editor
+        <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
             value={key.ItP_FundsReasons}
             onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsReasons", i, newText)}}
             onFocus={(e)=>{backgroundInfo_onFocus8()}}
@@ -2385,7 +2385,7 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }              
-              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
                   value={key.ItP_FundsMaterialAspects}
                   onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsMaterialAspects", i, newText)}}
                   onFocus={(e)=>{backgroundInfo_onFocus8()}}
@@ -2425,7 +2425,7 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }                          
-              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
                 value={key.ItP_ProductDetails}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_ProductDetails", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus9()}}
@@ -2472,7 +2472,7 @@ const Invest = ({user, LogOut}) =>
                   null
               }
                           
-              <Editor
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                 value={key.ItP_ExecutorFee}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_ExecutorFee", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus10()}}
@@ -2514,7 +2514,7 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }
-              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+              <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
                 value={key.ItP_NominationOfBeneficiaries}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_NominationOfBeneficiaries", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus11()}}
@@ -2560,7 +2560,7 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }
-             <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
+             <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'  
                 value={key.ItP_InformationExplained}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_InformationExplained", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus12()}}
@@ -2594,7 +2594,7 @@ const Invest = ({user, LogOut}) =>
                 parseInt(key.ProductTaken)!=7 ?
                 <>
                     <strong>Additional Comments</strong>
-                    <Editor
+                    <Editor apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq' 
                         value={key.ItP_FundsAdditionComments}
                         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsAdditionComments", i, newText)}}
                         name="ItP_FundsAdditionComments"     
