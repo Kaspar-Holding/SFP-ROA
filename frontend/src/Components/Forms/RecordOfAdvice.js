@@ -34,9 +34,20 @@ const RecordOfAdvice = ({user, LogOut}) => {
 
             ['clean']  
         ],
+        clipboard: {
+            matchVisual: true, // Enable pasting styles from external sources
+        },
+      
     };
     
     const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
     ];
 
 
@@ -446,7 +457,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                             modules={modules}
                                             formats={formats}
                                             style={{
-                                                height: '200px', // Set the desired height here
+                                                height: '300px', // Set the desired height here
                                                 
                                             }}
                                             placeholder="If no, motivate"
@@ -500,6 +511,8 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         </>
                                     } */}
                                 </div>
+                                <br/>
+                                <br/>
                                 <hr className="col-11" />
                                 <div className="row g-3 align-items-center">
                                     <div className="col-6">
@@ -549,7 +562,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                             modules={modules}
                                             formats={formats}
                                             style={{
-                                                height: '200px', // Set the desired height here
+                                                height: '300px', // Set the desired height here
                                                 
                                             }}
                                             placeholder="If no, motivate"
@@ -616,6 +629,8 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         </>
                                     } */}
                                 </div>
+                                <br/>
+                                <br/>
                                 <hr className="col-11" />
                                 <li className={
                                         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
@@ -671,7 +686,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                             modules={modules}
                                             formats={formats}
                                             style={{
-                                                height: '200px', // Set the desired height here
+                                                height: '300px', // Set the desired height here
                                                 
                                             }}
                                             placeholder="If no, motivate"
@@ -723,6 +738,8 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         </>
                                     } */}
                                 </div>
+                                <br/>
+                                <br/>
                                 <hr className="col-11" />
                                 <li className={
                                         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
@@ -778,7 +795,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                             modules={modules}
                                             formats={formats}
                                             style={{
-                                                height: '200px', // Set the desired height here
+                                                height: '300px', // Set the desired height here
                                                 
                                             }}
                                             placeholder="If no, motivate"
@@ -830,6 +847,8 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                         </>
                                     } */}
                                 </div>
+                                <br/>
+                                <br/>
                                 <hr className="col-11" />
                             </ol>
                             <h5 className="section_class"><b>SECTION B:</b></h5>
@@ -888,7 +907,7 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                 modules={modules}
                                 formats={formats}
                                 style={{
-                                    height: '200px', // Set the desired height here
+                                    height: '300px', // Set the desired height here
                                 }}
                                 placeholder={
                                     `                       Provide a detailed description of the client’s:

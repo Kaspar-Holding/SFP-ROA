@@ -38,7 +38,15 @@ const Risk = ({user, LogOut}) => {
       ],
     };
 
+    
     const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
     ];
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
     const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
@@ -836,7 +844,7 @@ const Risk = ({user, LogOut}) => {
             modules={modules}
             formats={formats}
             style={{
-                height: '200px', // Set the desired height here
+                height: '300px', // Set the desired height here
             }}
         />
         {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -863,7 +871,9 @@ const Risk = ({user, LogOut}) => {
       /> */}
       </div>
 
-    </div>  
+    </div> 
+    <br/> 
+    <br/> 
     <hr/>
     
     <table className="table">
@@ -1184,7 +1194,7 @@ const Risk = ({user, LogOut}) => {
             modules={modules}
             formats={formats}
             style={{
-                height: '200px', // Set the desired height here
+                height: '300px', // Set the desired height here
             }}
         />
         {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -1211,7 +1221,9 @@ const Risk = ({user, LogOut}) => {
       /> */}
       </div>
 
-    </div>  
+    </div> 
+    <br/> 
+    <br/>  
     <hr/>
     
     <table className="table">
@@ -1468,7 +1480,7 @@ const Risk = ({user, LogOut}) => {
             modules={modules}
             formats={formats}
             style={{
-                height: '200px', // Set the desired height here
+                height: '300px', // Set the desired height here
             }}
         />
         {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -1496,6 +1508,8 @@ const Risk = ({user, LogOut}) => {
       </div>
 
     </div>  
+    <br/> 
+    <br/> 
     <hr/>
     
         
@@ -1545,10 +1559,12 @@ const Risk = ({user, LogOut}) => {
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
           onInit={(evt, editor) => RP_LC_FinancialSolutionsRef.current = editor}
           value={FormData['RP_LC_FinancialSolutions']}
@@ -1606,10 +1622,12 @@ const Risk = ({user, LogOut}) => {
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
           onInit={(evt, editor) => RP_DiC_FinancialSolutionsRef.current = editor}
           value={FormData['RP_DiC_FinancialSolutions']}
@@ -1668,10 +1686,12 @@ const Risk = ({user, LogOut}) => {
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
       onInit={(evt, editor) => RP_DrC_FinancialSolutionsRef.current = editor}
       value={FormData['RP_DrC_FinancialSolutions']}
@@ -1736,10 +1756,12 @@ const Risk = ({user, LogOut}) => {
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor 
       onInit={(evt, editor) => RP_AltS_1Ref.current = editor}
       value={FormData['RP_AltS_1']}
@@ -1795,10 +1817,12 @@ const Risk = ({user, LogOut}) => {
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         placeholder={'2. Identify the type of product or product provider which was considered but not selected and motivate.'}
     />
+    <br/> 
+    <br/> 
     
     {/* <Editor 
       onInit={(evt, editor) => RP_AltS_2Ref.current = editor}
@@ -1853,10 +1877,12 @@ const Risk = ({user, LogOut}) => {
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         placeholder='3. Identify the type of product or product provider which was considered but not selected and motivate.'
     />
+    <br/> 
+    <br/> 
     {/* <Editor 
       onInit={(evt, editor) => RP_AltS_3Ref.current = editor}
       value={FormData['RP_AltS_3']}
@@ -2358,10 +2384,12 @@ const Risk = ({user, LogOut}) => {
                   modules={modules}
                   formats={formats}
                   style={{
-                      height: '200px', // Set the desired height here
+                      height: '300px', // Set the desired height here
                   }}
                   placeholder= 'Motivate why the chosen product was recommended to best suit your client’s needs.'
               />
+              <br/> 
+              <br/> 
               {/* <Editor
                   onInit={(evt, editor) => ProductReasonsRef.current = editor}
                   value={key.ProductReasons}
@@ -2417,10 +2445,12 @@ const Risk = ({user, LogOut}) => {
                   modules={modules}
                   formats={formats}
                   style={{
-                      height: '200px', // Set the desired height here
+                      height: '300px', // Set the desired height here
                   }}
                   placeholder= 'Explain any deviations from your recommendation and the implications thereof.'
               />
+              <br/> 
+              <br/> 
               {/* <Editor 
                   onInit={(evt, editor) => productProductMaterialAspectsRef.current = editor}
                   value={key.ProductMaterialAspects}
@@ -2472,10 +2502,12 @@ const Risk = ({user, LogOut}) => {
                   modules={modules}
                   formats={formats}
                   style={{
-                      height: '200px', // Set the desired height here
+                      height: '300px', // Set the desired height here
                   }}
                   placeholder= 'The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?'
-              />                     
+              />       
+              <br/> 
+              <br/>               
               {/* <Editor 
                 onInit={(evt, editor) => productProductDetailsRef.current = editor}
                 value={key.ProductDetails}
@@ -2532,10 +2564,12 @@ const Risk = ({user, LogOut}) => {
                 modules={modules}
                 formats={formats}
                 style={{
-                    height: '200px', // Set the desired height here
+                    height: '300px', // Set the desired height here
                   }}
                 placeholder={`Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n`}               
-              />     
+              />
+              <br/> 
+              <br/>      
               {/* <Editor
                 onInit={(evt, editor) => productExecutorFeeRef.current = editor}
                 value={key.ExecutorFee}
@@ -2589,10 +2623,12 @@ const Risk = ({user, LogOut}) => {
                   modules={modules}
                   formats={formats}
                   style={{
-                      height: '200px', // Set the desired height here
+                      height: '300px', // Set the desired height here
                   }}
                   placeholder= 'Record discussion with regard to nomination of beneficiaries or cessionaries'
               />  
+              <br/> 
+              <br/> 
               {/* <Editor 
                 onInit={(evt, editor) => productNominationOfBeneficiariesRef.current = editor}
                 value={key.NominationOfBeneficiaries}
@@ -2649,7 +2685,7 @@ const Risk = ({user, LogOut}) => {
                 modules={modules}
                 formats={formats}
                 style={{
-                    height: '200px', // Set the desired height here
+                    height: '300px', // Set the desired height here
                 }}
                 placeholder={
                   `Discuss the following information which has been explained to client. \n
@@ -2659,7 +2695,9 @@ const Risk = ({user, LogOut}) => {
                   Cooling off period`
                 }
             />  
-             {/* <Editor 
+            <br/> 
+            <br/> 
+            {/* <Editor 
                 onInit={(evt, editor) => productInformationExplainedRef.current = editor}
                 value={key.InformationExplained}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("InformationExplained", i, e)}}

@@ -5,11 +5,44 @@ import { useLocation } from 'react-router-dom'
 import './Styles/CustomButton.css'
 import './Styles/CustomNotification.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Editor, tinyMCE } from '@tinymce/tinymce-react'
+import ReactQuill from 'react-quill';
+import "react-quill/dist/quill.snow.css"
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import {LogOut} from '../../Actions/Auth'
 const AssuranceRisk = ({user, LogOut}) =>
 {
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+
+            ['clean']  
+        ],
+    };
+
+
+    const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
+    ];
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
     const [letterOfIntroductionReason, setletterOfIntroductionReason] = useState("")
@@ -1118,9 +1151,25 @@ const AssuranceRisk = ({user, LogOut}) =>
                         null
                     }
                     {/* <textarea maxLength={500}  id="AR_ComDisc_AuthorizedPersonDetail" name="AR_ComDisc_AuthorizedPersonDetail" value={FormData['AR_ComDisc_AuthorizedPersonDetail']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                    <Editor
+                    
+                    <ReactQuill
+                          theme="snow" // Specify the theme ('snow' or 'bubble')
+                          value={FormData?.AR_ComDisc_AuthorizedPersonDetail}
+                          onChange={(value)=>{ setFormData({...FormData, ['AR_ComDisc_AuthorizedPersonDetail']: value })}}
+                          onFocus={(e)=>{letter_of_introduction_onFocus()}}
+                          onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}    
+                          modules={modules}
+                          formats={formats}
+                          style={{
+                              height: '300px', // Set the desired height here
+                          }}
+                          placeholder={`If no, motivate.`}
+                    />
+                    
+    <br/> 
+    <br/> {/* <Editor
                       value={FormData['AR_ComDisc_AuthorizedPersonDetail']}
-                      onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_ComDisc_AuthorizedPersonDetail']: newText }) }}
+                      onEditorChange={(value)=>{ setFormData({...FormData, ['AR_ComDisc_AuthorizedPersonDetail']: value }) }}
                       onFocus={(e)=>{letter_of_introduction_onFocus()}}
                       onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}                      
                       name="AR_ComDisc_AuthorizedPersonDetail"
@@ -1141,7 +1190,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                           'removeformat | wordcount ',
                           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                       }}
-                  />
+                  /> */}
                 </div>
             </div>
 
@@ -1189,9 +1238,25 @@ const AssuranceRisk = ({user, LogOut}) =>
                     value={FormData['AR_ComDisc_AuthorityDetail']} onChange={(e) => {onChange(e)}} 
                     onFocus={letter_of_introduction_access_onFocus} onBlur={letter_of_introduction_access_onBlur} 
                     className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                    <Editor
+                    
+                    <ReactQuill
+                          theme="snow" // Specify the theme ('snow' or 'bubble')
+                          value={FormData?.AR_ComDisc_AuthorityDetail}
+                          onChange={(value)=>{ setFormData({...FormData, ['AR_ComDisc_AuthorityDetail']: value })}}
+                          onFocus={(e)=>{letter_of_introduction_access_onFocus()}}
+                      onBlur={(e)=>{letter_of_introduction_access_onBlur();onFieldBlur(e)}} 
+                          modules={modules}
+                          formats={formats}
+                          style={{
+                              height: '300px', // Set the desired height here
+                          }}
+                          placeholder={`If no, motivate.`}
+                    />
+                    
+    <br/> 
+    <br/> {/* <Editor
                       value={FormData['AR_ComDisc_AuthorityDetail']}
-                      onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_ComDisc_AuthorityDetail']: newText }) }}
+                      onEditorChange={(value)=>{ setFormData({...FormData, ['AR_ComDisc_AuthorityDetail']: value }) }}
                       onFocus={(e)=>{letter_of_introduction_access_onFocus()}}
                       onBlur={(e)=>{letter_of_introduction_access_onBlur();onFieldBlur(e)}}                      
                       name="AR_ComDisc_AuthorityDetail"
@@ -1212,7 +1277,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                           'removeformat | wordcount ',
                           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                       }}
-                    />
+                    /> */}
                 </div>
             </div>
             <hr/>
@@ -1264,9 +1329,25 @@ const AssuranceRisk = ({user, LogOut}) =>
                 {/* <textarea maxLength={500}  id="AR_FICADetail" name="AR_FICADetail" value={FormData['AR_FICADetail']} 
                   onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} 
                   className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                <Editor
+                
+                <ReactQuill
+                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                      value={FormData?.AR_FICADetail}
+                      onChange={(value)=>{ setFormData({...FormData, ['AR_FICADetail']: value })}}
+                      onFocus={(e)=>{fica_onFocus()}}
+                      onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}          
+                      modules={modules}
+                      formats={formats}
+                      style={{
+                          height: '300px', // Set the desired height here
+                      }}
+                      placeholder={`If no, motivate.`}
+                />
+                
+    <br/> 
+    <br/> {/* <Editor
                     value={FormData['AR_FICADetail']}
-                    onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_FICADetail']: newText }) }}
+                    onEditorChange={(value)=>{ setFormData({...FormData, ['AR_FICADetail']: value }) }}
                     onFocus={(e)=>{fica_onFocus()}}
                     onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}                      
                     name="AR_FICADetail"
@@ -1287,7 +1368,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                         'removeformat | wordcount ',
                         content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                     }}
-                  />
+                  /> */}
                 </div>
             </div>
             <hr/>
@@ -1340,9 +1421,25 @@ const AssuranceRisk = ({user, LogOut}) =>
                 {/* <textarea maxLength={500}  id="AR_RepPrs_TakenDetail" name="AR_RepPrs_TakenDetail" 
                   value={FormData['AR_RepPrs_TakenDetail']} onChange={(e) => {onChange(e)}} 
                   onFocus={rica_onFocus} onBlur={rica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                <Editor
+                
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.AR_RepPrs_TakenDetail}
+                    onChange={(value)=>{ setFormData({...FormData, ['AR_RepPrs_TakenDetail']: value })}}
+                    onFocus={(e)=>{rica_onFocus()}}
+                    onBlur={(e)=>{rica_onBlur();onFieldBlur(e)}}  
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`If no, motivate.`}
+              />
+              
+    <br/> 
+    <br/> {/* <Editor
                     value={FormData['AR_RepPrs_TakenDetail']}
-                    onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_RepPrs_TakenDetail']: newText }) }}
+                    onEditorChange={(value)=>{ setFormData({...FormData, ['AR_RepPrs_TakenDetail']: value }) }}
                     onFocus={(e)=>{rica_onFocus()}}
                     onBlur={(e)=>{rica_onBlur();onFieldBlur(e)}}                      
                     name="AR_RepPrs_TakenDetail"
@@ -1363,7 +1460,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                         'removeformat | wordcount ',
                         content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                     }}
-                  />
+                  /> */}
                 </div>
             </div>
 
@@ -1409,9 +1506,25 @@ const AssuranceRisk = ({user, LogOut}) =>
                 {/* <textarea maxLength={500}  id="AR_RepPrs_ExplainedDetail" name="AR_RepPrs_ExplainedDetail" 
                 value={FormData["AR_RepPrs_ExplainedDetail"]} onChange={(e) => {onChange(e)}} 
                 onFocus={rica1_onFocus} onBlur={rica1_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                <Editor
+                
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.AR_RepPrs_ExplainedDetail}
+                    onChange={(value)=>{ setFormData({...FormData, ['AR_RepPrs_ExplainedDetail']: value })}}
+                    onFocus={(e)=>{rica1_onFocus()}}
+                    onBlur={(e)=>{rica1_onBlur();onFieldBlur(e)}}         
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`If no, motivate`}
+              />
+              
+    <br/> 
+    <br/> {/* <Editor
                     value={FormData['AR_RepPrs_ExplainedDetail']}
-                    onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_RepPrs_ExplainedDetail']: newText }) }}
+                    onEditorChange={(value)=>{ setFormData({...FormData, ['AR_RepPrs_ExplainedDetail']: value }) }}
                     onFocus={(e)=>{rica1_onFocus()}}
                     onBlur={(e)=>{rica1_onBlur();onFieldBlur(e)}}                      
                     name="AR_RepPrs_ExplainedDetail"
@@ -1432,7 +1545,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                         'removeformat | wordcount ',
                         content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                     }}
-                  />
+                  /> */}
                 </div>
             </div>
 
@@ -1478,9 +1591,25 @@ const AssuranceRisk = ({user, LogOut}) =>
                 {/* <textarea maxLength={500}  id="AR_RepPrs_CancelledDetail" name="AR_RepPrs_CancelledDetail" value={FormData["AR_RepPrs_CancelledDetail"]} 
                   onChange={(e) => {onChange(e)}} onFocus={rica2_onFocus} onBlur={rica2_onBlur} className="form-control" 
                   placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                <Editor
+                
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.AR_RepPrs_CancelledDetail}
+                    onChange={(value)=>{ setFormData({...FormData, ['AR_RepPrs_CancelledDetail']: value })}}
+                    onFocus={(e)=>{rica2_onFocus()}}
+                    onBlur={(e)=>{rica2_onBlur();onFieldBlur(e)}}      
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`If no, motivate.`}
+              />
+              
+    <br/> 
+    <br/> {/* <Editor
                     value={FormData['AR_RepPrs_CancelledDetail']}
-                    onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_RepPrs_CancelledDetail']: newText }) }}
+                    onEditorChange={(value)=>{ setFormData({...FormData, ['AR_RepPrs_CancelledDetail']: value }) }}
                     onFocus={(e)=>{rica2_onFocus()}}
                     onBlur={(e)=>{rica2_onBlur();onFieldBlur(e)}}                      
                     name="AR_RepPrs_CancelledDetail"
@@ -1501,7 +1630,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                         'removeformat | wordcount ',
                         content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                     }}
-                  />
+                  /> */}
                 </div>
             </div>
 
@@ -1587,9 +1716,25 @@ const AssuranceRisk = ({user, LogOut}) =>
         onFocus={backgroundInfo_onFocus1}
         onBlur={backgroundInfo_onBlur1}
         placeholder={`.`}  aria-describedby=""  ></textarea> */}
-        <Editor
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.AR_ReplacementBackInfo}
+              onChange={(value)=>{ setFormData({...FormData, ['AR_ReplacementBackInfo']: value })}}
+              onFocus={(e)=>{backgroundInfo_onFocus1()}}
+              onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}    
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Brief description of the business.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor
             value={FormData['AR_ReplacementBackInfo']}
-            onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_ReplacementBackInfo']: newText }) }}
+            onEditorChange={(value)=>{ setFormData({...FormData, ['AR_ReplacementBackInfo']: value }) }}
             onFocus={(e)=>{backgroundInfo_onFocus1()}}
             onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}                      
             name="AR_ReplacementBackInfo"
@@ -1610,7 +1755,7 @@ const AssuranceRisk = ({user, LogOut}) =>
                 'removeformat | wordcount ',
                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
             }}
-          />
+          /> */}
         <hr/>
         <p><b>Business Needs Identified</b></p>
 
@@ -1729,9 +1874,25 @@ const AssuranceRisk = ({user, LogOut}) =>
         onFocus={backgroundInfo_onFocus2}
         onBlur={backgroundInfo_onBlur2}
         placeholder={`Provide description and motivation of the description of the needs identified.`}  aria-describedby=""  ></textarea> */}
-    <Editor
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.AR_BusA_Details}
+          onChange={(value)=>{ setFormData({...FormData, ['AR_BusA_Details']: value })}}
+          onFocus={(e)=>{backgroundInfo_onFocus2()}}
+          onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}   
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Provide description and motivation of the description of the needs identified.`}
+    />
+    
+    <br/> 
+    <br/> {/* <Editor
       value={FormData['AR_BusA_Details']}
-      onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_BusA_Details']: newText }) }}
+      onEditorChange={(value)=>{ setFormData({...FormData, ['AR_BusA_Details']: value }) }}
       onFocus={(e)=>{backgroundInfo_onFocus2()}}
       onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}                      
       name="AR_BusA_Details"
@@ -1752,7 +1913,7 @@ const AssuranceRisk = ({user, LogOut}) =>
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
 <hr/>
 
         
@@ -2000,10 +2161,25 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.AR_BnS_Comments}
+              onChange={(value)=>{ setFormData({...FormData, ['AR_BnS_Comments']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor
           onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_BnS_Comments']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_BnS_Comments']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['AR_BnS_Comments']: value }) }}
           name="AR_BnS_Comments"
           init={{
               selector: "textarea",
@@ -2021,7 +2197,7 @@ const AssuranceRisk = ({user, LogOut}) =>
               'removeformat',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-      />
+      /> */}
       </div>
 
     </div>  
@@ -2302,9 +2478,24 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.AR_KeyP_Comments}
+              onChange={(value)=>{ setFormData({...FormData, ['AR_KeyP_Comments']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_KeyP_Comments']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_KeyP_Comments']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['AR_KeyP_Comments']: value }) }}
           name="AR_KeyP_Comments"
           init={{
               selector: "textarea",
@@ -2322,7 +2513,7 @@ const AssuranceRisk = ({user, LogOut}) =>
               'removeformat',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-      />
+      /> */}
       </div>
 
     </div>  
@@ -2540,9 +2731,24 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.AR_SureNLia_Comments}
+              onChange={(value)=>{ setFormData({...FormData, ['AR_SureNLia_Comments']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_SureNLia_Comments']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_SureNLia_Comments']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['AR_SureNLia_Comments']: value }) }}
           name="AR_SureNLia_Comments"
           init={{
               selector: "textarea",
@@ -2560,7 +2766,7 @@ const AssuranceRisk = ({user, LogOut}) =>
               'removeformat',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-      />
+      /> */}
       </div>
 
     </div>  
@@ -2780,9 +2986,24 @@ const AssuranceRisk = ({user, LogOut}) =>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
       <div className='col-12'>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.AR_BusOvProt_Comments}
+              onChange={(value)=>{ setFormData({...FormData, ['AR_BusOvProt_Comments']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['AR_BusOvProt_Comments']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_BusOvProt_Comments']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['AR_BusOvProt_Comments']: value }) }}
           name="AR_BusOvProt_Comments"
           init={{
               selector: "textarea",
@@ -2800,7 +3021,7 @@ const AssuranceRisk = ({user, LogOut}) =>
               'removeformat',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-      />
+      /> */}
       </div>
 
     </div>  
@@ -3258,9 +3479,24 @@ const AssuranceRisk = ({user, LogOut}) =>
         placeholder={
 `Explain the reasons why Life cover benefits were recommended to satisfy this need.
 Record the client's instructions, deviations and implications thereof..`}  aria-describedby=""  ></textarea> */}
-    <Editor
+    
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AR_LifeCoverFinancialSolutions}
+            onChange={(value)=>{ setFormData({...FormData, ['AR_LifeCoverFinancialSolutions']: value })}}
+            onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+      
+    <br/> 
+    <br/> {/* <Editor
         value={FormData['AR_LifeCoverFinancialSolutions']}
-        onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_LifeCoverFinancialSolutions']: newText }) }}
+        onEditorChange={(value)=>{ setFormData({...FormData, ['AR_LifeCoverFinancialSolutions']: value }) }}
         onFocus={(e)=>{backgroundInfo_onFocus3()}}
         onBlur={(e)=>{backgroundInfo_onBlur3();onFieldBlur(e)}}                      
         name="AR_LifeCoverFinancialSolutions"
@@ -3281,7 +3517,7 @@ Record the client's instructions, deviations and implications thereof..`}  aria-
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />
+    /> */}
 <hr/>
     <br/>
     <p>Disability Cover</p>
@@ -3313,9 +3549,25 @@ Record the client's instructions, deviations and implications thereof..`}  aria-
 `Explain the reasons why Disability cover benefits were recommended to satisfy this need.
 Record the client's instructions, deviations and implications thereof.
 `}  aria-describedby=""  ></textarea> */}
-    <Editor
+    
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AR_DiC_FinancialSolutions}
+            onChange={(value)=>{ setFormData({...FormData, ['AR_DiC_FinancialSolutions']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus4()}}
+            onBlur={(e)=>{backgroundInfo_onBlur4();onFieldBlur(e)}}     
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Explain the reasons why Disability cover benefits were recommended to satisfy this need. Record the client's instructions, deviations and implications thereof.`}
+      />
+      
+    <br/> 
+    <br/> {/* <Editor
         value={FormData['AR_DiC_FinancialSolutions']}
-        onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_DiC_FinancialSolutions']: newText }) }}
+        onEditorChange={(value)=>{ setFormData({...FormData, ['AR_DiC_FinancialSolutions']: value }) }}
         onFocus={(e)=>{backgroundInfo_onFocus4()}}
         onBlur={(e)=>{backgroundInfo_onBlur4();onFieldBlur(e)}}                      
         name="AR_DiC_FinancialSolutions"
@@ -3336,7 +3588,7 @@ Record the client's instructions, deviations and implications thereof.
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />
+    /> */}
 <hr/>
 
 <br/>
@@ -3372,9 +3624,24 @@ Record the client's instructions, deviations and implications thereof.
         onBlur={backgroundInfo_onBlur5}
         placeholder={
 `1. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-    <Editor
+    
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AR_AltS_1}
+            onChange={(value)=>{ setFormData({...FormData, ['AR_AltS_1']: value })}}
+            onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.`}
+      />
+      
+    <br/> 
+    <br/> {/* <Editor
         value={FormData['AR_AltS_1']}
-        onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_AltS_1']: newText }) }}
+        onEditorChange={(value)=>{ setFormData({...FormData, ['AR_AltS_1']: value }) }}
         onFocus={(e)=>{backgroundInfo_onFocus5()}}
         onBlur={(e)=>{backgroundInfo_onBlur5();onFieldBlur(e)}}                      
         name="AR_AltS_1"
@@ -3395,7 +3662,7 @@ Record the client's instructions, deviations and implications thereof.
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />
+    /> */}
 <hr/>
 
 {
@@ -3420,9 +3687,25 @@ Record the client's instructions, deviations and implications thereof.
         onBlur={backgroundInfo_onBlur6}
         placeholder={
 `2. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-    <Editor
+    
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AR_AltS_2}
+            onChange={(value)=>{ setFormData({...FormData, ['AR_AltS_2']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus6()}}
+            onBlur={(e)=>{backgroundInfo_onBlur6();onFieldBlur(e)}}  
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`2. Identify the type of product or product provider which was considered but not selected and motivate.`}
+      />
+      
+    <br/> 
+    <br/> {/* <Editor
         value={FormData['AR_AltS_2']}
-        onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_AltS_2']: newText }) }}
+        onEditorChange={(value)=>{ setFormData({...FormData, ['AR_AltS_2']: value }) }}
         onFocus={(e)=>{backgroundInfo_onFocus6()}}
         onBlur={(e)=>{backgroundInfo_onBlur6();onFieldBlur(e)}}                      
         name="AR_AltS_2"
@@ -3443,7 +3726,7 @@ Record the client's instructions, deviations and implications thereof.
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />
+    /> */}
 <hr/>
 
 {
@@ -3468,9 +3751,25 @@ Record the client's instructions, deviations and implications thereof.
         onBlur={backgroundInfo_onBlur7}
         placeholder={
 `3. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-    <Editor
+    
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AR_AltS_3}
+            onChange={(value)=>{ setFormData({...FormData, ['AR_AltS_3']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus7()}}
+            onBlur={(e)=>{backgroundInfo_onBlur7();onFieldBlur(e)}}  
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`3. Identify the type of product or product provider which was considered but not selected and motivate.`}
+      />
+      
+    <br/> 
+    <br/> {/* <Editor
         value={FormData['AR_AltS_3']}
-        onEditorChange={(newText)=>{ setFormData({...FormData, ['AR_AltS_3']: newText }) }}
+        onEditorChange={(value)=>{ setFormData({...FormData, ['AR_AltS_3']: value }) }}
         onFocus={(e)=>{backgroundInfo_onFocus7()}}
         onBlur={(e)=>{backgroundInfo_onBlur7();onFieldBlur(e)}}                      
         name="AR_AltS_3"
@@ -3491,7 +3790,7 @@ Record the client's instructions, deviations and implications thereof.
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-    />
+    /> */}
 <h5 className="section_class"><b>SECTION D:</b></h5>
     <div className={
                                     state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "h6 fw-bold sfp-text" 
@@ -3830,9 +4129,25 @@ Record the client's instructions, deviations and implications thereof.
                             onBlur={backgroundInfo_onBlur8}
                             placeholder={
                     `Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea> */}
-                        <Editor
+                        
+                      <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={key?.ProductReasons}
+                            onChange={(value)=>{ on_ProductTaken_Value_Change("ProductReasons", i, value)}}
+                            onFocus={(e)=>{backgroundInfo_onFocus8()}}
+                            onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}} 
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            placeholder={`Motivate why the chosen product was recommended to best suit your client's needs.`}
+                      />
+                      
+    <br/> 
+    <br/> {/* <Editor
                           value={key.ProductReasons}
-                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductReasons", i, newText)}}
+                          onEditorChange={(value)=>{ on_ProductTaken_Value_Change("ProductReasons", i, value)}}
                           onFocus={(e)=>{backgroundInfo_onFocus8()}}
                           onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}} 
                           name="ProductReasons"                     
@@ -3853,7 +4168,7 @@ Record the client's instructions, deviations and implications thereof.
                               'removeformat | wordcount ',
                               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                           }}
-                        />
+                        /> */}
                     <hr/>
                     <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
   
@@ -3880,9 +4195,25 @@ Record the client's instructions, deviations and implications thereof.
                             onBlur={backgroundInfo_onBlur9}
                             placeholder={
                     `Explain any deviations from your recommendation and the implications thereof.`}  aria-describedby=""  ></textarea> */}
-                        <Editor
+                              
+                      <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={key?.ProductMaterialAspects}
+                            onChange={(value)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, value)}}
+                            onFocus={(e)=>{backgroundInfo_onFocus9()}}
+                            onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}}
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            placeholder={`Explain any deviations from your recommendation and the implications thereof.`}
+                      />
+                      
+    <br/> 
+    <br/> {/* <Editor
                           value={key.ProductMaterialAspects}
-                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, newText)}}
+                          onEditorChange={(value)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, value)}}
                           onFocus={(e)=>{backgroundInfo_onFocus9()}}
                           onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}} 
                           name="ProductMaterialAspects"                     
@@ -3903,7 +4234,7 @@ Record the client's instructions, deviations and implications thereof.
                               'removeformat | wordcount ',
                               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                           }}
-                        />
+                        /> */}
                     <hr/>
                     {
                             backgroundInfoVisibility10 ? 
@@ -3935,9 +4266,25 @@ Record the client's instructions, deviations and implications thereof.
                     The tax implications for the company, e.g., income tax
                     The tax implications for the lives covered, e.g., estate duty, income tax, CGT
                     Executor’s fees?`}  aria-describedby=""  ></textarea> */}
-                        <Editor
+                        
+                        <ReactQuill
+                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                              value={key?.ProductDetails}
+                              onChange={(value)=>{  on_ProductTaken_Value_Change("ProductDetails", i, value)}}
+                              onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                              onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}} 
+                              modules={modules}
+                              formats={formats}
+                              style={{
+                                  height: '300px', // Set the desired height here
+                              }}
+                              placeholder={`Disclose and explain the following: The tax implications for the company, e.g., income tax The tax implications for the lives covered, e.g., estate duty, income tax, CGT Executor’s fees?`}
+                        />
+                        
+    <br/> 
+    <br/> {/* <Editor
                           value={key.ProductDetails}
-                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductDetails", i, newText)}}
+                          onEditorChange={(value)=>{ on_ProductTaken_Value_Change("ProductDetails", i, value)}}
                           onFocus={(e)=>{backgroundInfo_onFocus10()}}
                           onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}} 
                           name="ProductDetails"                     
@@ -3958,7 +4305,7 @@ Record the client's instructions, deviations and implications thereof.
                               'removeformat | wordcount ',
                               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                           }}
-                        />
+                        /> */}
                     <hr/>
   
                     {
@@ -3989,9 +4336,25 @@ Record the client's instructions, deviations and implications thereof.
                     `Provide a brief summary of the contents of the quote with regard to the following:
                     Benefit terms (cease ages, cover periods etc.)
                     Details of premium and cover pattern structure, frequency etc.`}  aria-describedby=""  ></textarea> */}
-                        <Editor
+                        
+                    <ReactQuill
+                          theme="snow" // Specify the theme ('snow' or 'bubble')
+                          value={key?.STIC_Fire_AddComments}
+                          onChange={(value)=>{ on_ProductTaken_Value_Change("ProductBriefSummary", i, value)}}
+                          onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                          onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}} 
+                          modules={modules}
+                          formats={formats}
+                          style={{
+                              height: '300px', // Set the desired height here
+                          }}
+                          placeholder={`Provide a brief summary of the contents of the quote with regard to the following: Benefit terms (cease ages, cover periods etc.) Details of premium and cover pattern structure, frequency etc.`}
+                    />
+                    
+    <br/> 
+    <br/> {/* <Editor
                           value={key.ProductBriefSummary}
-                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ProductBriefSummary", i, newText)}}
+                          onEditorChange={(value)=>{ on_ProductTaken_Value_Change("ProductBriefSummary", i, value)}}
                           onFocus={(e)=>{backgroundInfo_onFocus11()}}
                           onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}} 
                           name="ProductBriefSummary"                     
@@ -4012,7 +4375,7 @@ Record the client's instructions, deviations and implications thereof.
                               'removeformat | wordcount ',
                               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                           }}
-                        />
+                        /> */}
                     <hr/>
   
                     {
@@ -4038,9 +4401,25 @@ Record the client's instructions, deviations and implications thereof.
                             onBlur={backgroundInfo_onBlur12}
                             placeholder={
                     `Record discussion with regard to cessionaries, if applicable.`}  aria-describedby=""  ></textarea> */}
-                        <Editor
+                        
+                        <ReactQuill
+                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                              value={key?.Cessionaries}
+                              onChange={(value)=>{ on_ProductTaken_Value_Change("Cessionaries", i, value)}}
+                              onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                              onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}} 
+                              modules={modules}
+                              formats={formats}
+                              style={{
+                                  height: '300px', // Set the desired height here
+                              }}
+                              placeholder={`Record discussion with regard to cessionaries, if applicable.`}
+                        />
+                        
+    <br/> 
+    <br/> {/* <Editor
                           value={key.Cessionaries}
-                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("Cessionaries", i, newText)}}
+                          onEditorChange={(value)=>{ on_ProductTaken_Value_Change("Cessionaries", i, value)}}
                           onFocus={(e)=>{backgroundInfo_onFocus12()}}
                           onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}} 
                           name="Cessionaries"                     
@@ -4061,7 +4440,7 @@ Record the client's instructions, deviations and implications thereof.
                               'removeformat | wordcount ',
                               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                           }}
-                        />
+                        /> */}
                     <hr/>
   
                     {
@@ -4086,9 +4465,24 @@ Record the client's instructions, deviations and implications thereof.
                             </>: 
                             null
                         }
-                        <Editor
+                        
+                        <ReactQuill
+                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                              value={FormData?.InformationExplained}
+                              onChange={(value)=>{ on_ProductTaken_Value_Change("InformationExplained", i, value)}}
+                              onBlur={(e)=>{onFieldBlur(e)}}
+                              modules={modules}
+                              formats={formats}
+                              style={{
+                                  height: '300px', // Set the desired height here
+                              }}
+                              placeholder={`Discuss the following information which has been explained to client: General exclusions of liability (i.e. benefit exclusions e.g., suicide clause on death, psychological conditions on disability, etc.) Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings) Waiting periods Cooling off period Other relevant information.`}
+                        />
+                        
+    <br/> 
+    <br/> {/* <Editor
                           value={key.InformationExplained}
-                          onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("InformationExplained", i, newText)}}
+                          onEditorChange={(value)=>{ on_ProductTaken_Value_Change("InformationExplained", i, value)}}
                           onFocus={(e)=>{backgroundInfo_onFocus12()}}
                           onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}} 
                           name="InformationExplained"                     
@@ -4109,7 +4503,7 @@ Record the client's instructions, deviations and implications thereof.
                               'removeformat | wordcount ',
                               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                           }}
-                        />
+                        /> */}
                 </>
             )
           }

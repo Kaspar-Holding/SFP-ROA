@@ -32,7 +32,16 @@ const Medical = ({user, LogOut}) => {
         ],
     };
 
-    const formats = [];
+    
+    const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
+    ];
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionReason, setletterOfIntroductionReason] = useState("")
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -663,7 +672,7 @@ const Medical = ({user, LogOut}) => {
           modules={modules}
           formats={formats}
           style={{
-              height: '200px', // Set the desired height here
+              height: '300px', // Set the desired height here
           }}
           placeholder={`Provide a detailed description of the client’s:
               •	current personal circumstances,
@@ -671,6 +680,8 @@ const Medical = ({user, LogOut}) => {
               •	and relevant information 
           that formed the basis for the financial solution recommended`}
       />
+      <br/> 
+      <br/> 
       {/* <Editor
           value={FormData['BackInfo']}
           onEditorChange={(newText)=>{ setFormData({...FormData, ['BackInfo']: newText }) }}
@@ -1293,10 +1304,12 @@ const Medical = ({user, LogOut}) => {
                     modules={modules}
                     formats={formats}
                     style={{
-                        height: '200px', // Set the desired height here
+                        height: '300px', // Set the desired height here
                     }}
                     placeholder={`Motivation for recommendations – State why the product purchased will suit the client`}
                 />
+                <br/> 
+                <br/> 
                 {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['SectionD_SnF']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['SectionD_SnF']: newText }) }}
@@ -1348,10 +1361,12 @@ const Medical = ({user, LogOut}) => {
           modules={modules}
           formats={formats}
           style={{
-              height: '200px', // Set the desired height here
+              height: '300px', // Set the desired height here
           }}
           placeholder={`PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['SectionE_PMB']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['SectionE_PMB']: newText }) }}

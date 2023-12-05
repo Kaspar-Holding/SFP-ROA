@@ -7,11 +7,46 @@ import './Styles/CustomButton.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
-import { Editor } from '@tinymce/tinymce-react'
+// import { Editor } from '@tinymce/tinymce-react'
+import ReactQuill from 'react-quill';
+import "react-quill/dist/quill.snow.css"
 import {LogOut} from '../../Actions/Auth'
 
 const Short_term_Commercial= ({user, LogOut}) => {
  {
+        
+      const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+
+            ['clean']  
+        ],
+    };
+
+
+    const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
+    ];
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
     const [letterOfIntroductionReason, setletterOfIntroductionReason] = useState("")
@@ -3293,6 +3328,21 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                 </div>
                                 <div className="col-4">
                                   {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Applicable_Option" onChange={(e) => {onChange(e)}} value={FormData['STIC_Applicable_Option']}  name="STIC_Applicable_Option"  className="form-control" placeholder=""  aria-describedby="" style={{width:"600px",height:"100px"}} /> */}
+                                  <ReactQuill
+                                        theme="snow" // Specify the theme ('snow' or 'bubble')
+                                        value={FormData?.STIC_Applicable_Option}
+                                        onChange={(value)=>{ setFormData({...FormData, ['STIC_Applicable_Option']: value })}}
+                                        onBlur={(e)=>{onFieldBlur(e)}}   
+                                        modules={modules}
+                                        formats={formats}
+                                        style={{
+                                            height: '300px', // Set the desired height here
+                                        }}
+                                        placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}
+                                  />
+                                  <br/> 
+                                  <br/> 
+                                  {/* 
                                   <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                     value={FormData['STIC_Applicable_Option']}
                                     onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Applicable_Option']: newText }) }}
@@ -3314,7 +3364,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                         'removeformat | wordcount ',
                                         content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                     }}
-                                  />
+                                  /> */}
                                 </div>
                               </div>
                           </div>
@@ -3370,7 +3420,23 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                           null
                                       }
                                       {/* <textarea id="STIC_General_Cancelled_Detail" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_Cancelled_Detail']}  name="STIC_General_Cancelled_Detail"  onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If 'Yes', provide details:" aria-describedby="" ></textarea> */}
-                                      <Editor
+                                      <ReactQuill
+                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                            value={FormData?.STIC_General_Cancelled_Detail}
+                                            onChange={(value)=>{ setFormData({...FormData, ['STIC_General_Cancelled_Detail']: value })}}
+                                            onFocus={(e)=>{letter_of_introduction_onFocus()}}
+                                        onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}
+                                            modules={modules}
+                                            formats={formats}
+                                            style={{
+                                                height: '300px', // Set the desired height here
+                                            }}
+                                            placeholder={`If 'Yes', provide details.`}
+                                      />
+                                      <br/> 
+                                      <br/> 
+                                      {/* 
+                                        <Editor
                                         value={FormData['STIC_General_Cancelled_Detail']}
                                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_General_Cancelled_Detail']: newText }) }}
                                         onFocus={(e)=>{letter_of_introduction_onFocus()}}
@@ -3393,7 +3459,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                             'removeformat | wordcount ',
                                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                         }}
-                                      />
+                                      /> */}
                                   </div>
                                   <hr/>
                               </div>
@@ -3557,6 +3623,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                           null
                                       }
                                       {/* <textarea  id="STIC_Replacement_Purpose" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Purpose']}  name="STIC_Replacement_Purpose"  onFocus={STIC_Replacement_Purpose_onFocus} onBlur={STIC_Replacement_Purpose_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
+                                      <ReactQuill
+                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                            value={FormData?.STIC_Replacement_Purpose}
+                                            onChange={(value)=>{ setFormData({...FormData, ['STIC_Replacement_Purpose']: value })}}
+                                            onFocus={(e)=>{STIC_Replacement_Purpose_onFocus()}}
+                                            onBlur={(e)=>{STIC_Replacement_Purpose_onBlur();onFieldBlur(e)}}
+                                            modules={modules}
+                                            formats={formats}
+                                            style={{
+                                                height: '300px', // Set the desired height here
+                                            }}
+                                            placeholder={`What is the purpose of this replacement`}
+                                      />
+                                      <br/> 
+                                      <br/> 
+                                      {/* 
                                       <Editor
                                         value={FormData['STIC_Replacement_Purpose']}
                                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Replacement_Purpose']: newText }) }}
@@ -3566,7 +3648,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                         init={{
                                             selector: "textarea",
                                             browser_spellcheck : true,
-                                            placeholder: "What is the purpose of this replacement",
+                                            placeholder: "",
                                             height: 300,
                                             menu: true,
                                             plugins: [
@@ -3580,7 +3662,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                             'removeformat | wordcount ',
                                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                         }}
-                                      />
+                                      /> */}
                                       <hr/>
                                       <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
                                       {
@@ -3595,6 +3677,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                           null
                                       }
                                       {/* <textarea  id="STIC_Replacement_Reason" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Reason']}  name="STIC_Replacement_Reason"  onFocus={STIC_Replacement_Reason_onFocus} onBlur={STIC_Replacement_Reason_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
+                                      <ReactQuill
+                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                            value={FormData?.STIC_Replacement_Reason}
+                                            onChange={(value)=>{ setFormData({...FormData, ['STIC_Replacement_Reason']: value })}}
+                                            onFocus={(e)=>{STIC_Replacement_Reason_onFocus()}}
+                                            onBlur={(e)=>{STIC_Replacement_Reason_onBlur();onFieldBlur(e)}}
+                                            modules={modules}
+                                            formats={formats}
+                                            style={{
+                                                height: '300px', // Set the desired height here
+                                            }}
+                                            placeholder={`Reasons why replacement is considered more suitable than retaining or modifying the terminated product?`}
+                                      />
+                                      <br/> 
+                                      <br/> 
+                                      {/* 
                                       <Editor
                                         value={FormData['STIC_Replacement_Reason']}
                                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Replacement_Reason']: newText }) }}
@@ -3604,7 +3702,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                         init={{
                                             selector: "textarea",
                                             browser_spellcheck : true,
-                                            placeholder: "Reasons why replacement is considered more suitable than retaining or modifying the terminated product?",
+                                            placeholder: "",
                                             height: 300,
                                             menu: true,
                                             plugins: [
@@ -3618,7 +3716,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                             'removeformat | wordcount ',
                                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                         }}
-                                      />
+                                      /> */}
                                       <hr/>
                                       <p>Suppliers of the product(s) to be replaced:</p>
                                       {
@@ -3633,6 +3731,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                           null
                                       }
                                       {/* <textarea  id="STIC_Replacement_Suppliers" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Suppliers']}  name="STIC_Replacement_Suppliers"  onFocus={STIC_Replacement_Suppliers_onFocus} onBlur={STIC_Replacement_Suppliers_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
+                                      <ReactQuill
+                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                            value={FormData?.STIC_Replacement_Suppliers}
+                                            onChange={(value)=>{ setFormData({...FormData, ['STIC_Replacement_Suppliers']: value })}}
+                                            onFocus={(e)=>{STIC_Replacement_Suppliers_onFocus()}}
+                                            onBlur={(e)=>{STIC_Replacement_Suppliers_onBlur();onFieldBlur(e)}}
+                                            modules={modules}
+                                            formats={formats}
+                                            style={{
+                                                height: '300px', // Set the desired height here
+                                            }}
+                                            placeholder={`Suppliers of the product(s) to be replaced?`}
+                                      />
+                                      <br/> 
+                                      <br/> 
+                                      {/* 
                                       <Editor
                                         value={FormData['STIC_Replacement_Suppliers']}
                                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Replacement_Suppliers']: newText }) }}
@@ -3656,7 +3770,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                             'removeformat | wordcount ',
                                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                         }}
-                                      />
+                                      /> */}
 
                                   </div>
                               </div>
@@ -6954,6 +7068,21 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <hr/>
               <b className="col-form-label">Additional Comments</b>
               <br/>
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.STIC_Fire_AddComments}
+                    onChange={(value)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: value })}}
+                    onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+              <br/> 
+              <br/> 
+              {/* 
               <Editor onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['STIC_Fire_AddComments']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: newText }) }}                  
@@ -6975,7 +7104,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
               <hr/>
 
             </div>
@@ -7443,7 +7572,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           <hr/>
                           <b className="col-form-label">Additional Comments</b>
                           <br/>
-                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                          
+                          <ReactQuill
+                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                value={key?.Fire_AddComments}
+                                onChange={(value)=>{ on_Section_1_Value_Change("Fire_AddComments", i, value)}}
+                                onBlur={(e)=>{onFieldBlur(e)}}
+                                modules={modules}
+                                formats={formats}
+                                style={{
+                                    height: '300px', // Set the desired height here
+                                }}
+                                placeholder={`Click here to enter text.`}
+                          />
+                          <br/> 
+                          <br/> 
+                          {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                             value={key.Fire_AddComments}
                             onEditorChange={(newText)=>{ on_Section_1_Value_Change("Fire_AddComments", i, newText) }}                  
                             name="Fire_AddComments"
@@ -7464,7 +7608,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                 'removeformat | wordcount ',
                                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                             }}
-                          />
+                          /> */}
                           <br/>
                           <hr/>
 
@@ -7811,7 +7955,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           </div>
           <b className="col-form-label">Additional Comments</b>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIC_BuildCombined_AddComments}
+                onChange={(value)=>{ setFormData({...FormData, ['STIC_BuildCombined_AddComments']: value })}}
+                onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+          <br/> 
+          <br/> 
+          {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIC_BuildCombined_AddComments']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_BuildCombined_AddComments']: newText }) }}                  
             name="STIC_BuildCombined_AddComments"
@@ -7832,7 +7991,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                 'removeformat | wordcount ',
                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
             }}
-          />
+          /> */}
           <hr/>
           <br/>
           {
@@ -8185,7 +8344,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     </div>
                     <b className="col-form-label">Additional Comments</b>
                     <br/>
-                    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                    
+                    <ReactQuill
+                          theme="snow" // Specify the theme ('snow' or 'bubble')
+                          value={key?.STIC_Fire_AddComments}
+                          onChange={(value)=>{ on_Section_2_Value_Change("BuildCombined_AddComments", i, value )}}
+                          onBlur={(e)=>{onFieldBlur(e)}}
+                          modules={modules}
+                          formats={formats}
+                          style={{
+                              height: '300px', // Set the desired height here
+                          }}
+                          placeholder={`Click here to enter text.`}
+                    />
+                    <br/> 
+                    <br/> 
+                    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                       value={key.BuildCombined_AddComments}
                       onEditorChange={(newText)=>{ on_Section_2_Value_Change("BuildCombined_AddComments", i, newText)  }}                  
                       init={{
@@ -8205,7 +8379,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           'removeformat | wordcount ',
                           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                       }}
-                    />
+                    /> */}
                     <hr/>
                     <br/>
                     
@@ -8485,7 +8659,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
             </div>
             <b className="col-form-label">Additional Comments</b>
             <br/>
-            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            
+            <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={FormData?.STIC_OC_AddComments}
+                  onChange={(value)=>{ setFormData({...FormData, ['STIC_OC_AddComments']: value })}}
+                  onBlur={(e)=>{onFieldBlur(e)}}
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={`Click here to enter text.`}
+            />
+            <br/> 
+            <br/> 
+            {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
               value={FormData['STIC_OC_AddComments']}
               onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_OC_AddComments']: newText }) }}                  
               name="STIC_OC_AddComments"
@@ -8506,7 +8695,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                   'removeformat | wordcount ',
                   content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
               }}
-            />
+            /> */}
             <hr/>
             {
               Section_3.length > 0 ?
@@ -8787,7 +8976,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
             </div>
             <b className="col-form-label">Additional Comments</b>
             <br/>
-            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            
+            <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={key?.STIC_Fire_AddComments}
+                  onChange={(value)=>{ on_Section_3_Value_Change("OC_AddComments", i, value )}}
+                  onBlur={(e)=>{onFieldBlur(e)}}
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={`Click here to enter text.`}
+            />
+            <br/> 
+            <br/> 
+            {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
               value={key.OC_AddComments}
               onEditorChange={(newText)=>{ on_Section_3_Value_Change("OC_AddComments", i, newText) }}                  
               name="OC_AddComments"
@@ -8808,7 +9012,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                   'removeformat | wordcount ',
                   content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
               }}
-            />
+            /> */}
             <hr/>
                   </>
                 )})
@@ -10227,7 +10431,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_BusInt_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_BusInt_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_BusInt_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_BusInt_AddComments']: newText }) }}                  
       name="STIC_BusInt_AddComments"
@@ -10248,7 +10467,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
 
           {
@@ -11675,7 +11894,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.BusInt_AddComments}
+          onChange={(value)=>{ on_Section_4_Value_Change('BusInt_AddComments', i, value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key.BusInt_AddComments}
       onEditorChange={(newText)=>{ on_Section_4_Value_Change('BusInt_AddComments', i, newText) }}                  
       name="BusInt_AddComments"
@@ -11696,7 +11930,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
 
           
@@ -11993,7 +12227,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec5_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec5_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec5_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec5_AddComments']: newText }) }}                  
       name="STIC_Sec5_AddComments"
@@ -12014,7 +12263,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
             {
               Section_5.length > 0 ?
@@ -12317,7 +12566,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec5_AddComments}
+          onChange={(value)=>{ on_Section_5_Value_Change('Sec5_AddComments', i, value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec5_AddComments}
       onEditorChange={(newText)=>{ on_Section_5_Value_Change('Sec5_AddComments', i, newText) }}                  
       name="Sec5_AddComments"
@@ -12338,7 +12602,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
           
                   </>)
@@ -12506,7 +12770,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec6_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec6_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec6_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec6_AddComments']: newText }) }}                  
       name="STIC_Sec6_AddComments"
@@ -12527,7 +12806,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
 
     {
@@ -12702,7 +12981,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec6_AddComments}
+          onChange={(value)=>{ on_Section_6_Value_Change('Sec6_AddComments', i, value) }}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec6_AddComments}
       onEditorChange={(newText)=>{ on_Section_6_Value_Change('Sec6_AddComments', i, newText) }}                  
       name="Sec6_AddComments"
@@ -12723,7 +13017,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
 
                 
@@ -13097,7 +13391,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                       <b className="col-form-label">Additional Comments</b>
                       <br/>
                       
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      
+                    <ReactQuill
+                          theme="snow" // Specify the theme ('snow' or 'bubble')
+                          value={FormData?.STIC_Sec7_AddComments}
+                          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec7_AddComments']: value })}}
+                          onBlur={(e)=>{onFieldBlur(e)}}
+                          modules={modules}
+                          formats={formats}
+                          style={{
+                              height: '300px', // Set the desired height here
+                          }}
+                          placeholder={`Click here to enter text.`}
+                    />
+                    <br/> 
+                    <br/> 
+                    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                         value={FormData['STIC_Sec7_AddComments']}
                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec7_AddComments']: newText }) }}                  
                         name="STIC_Sec7_AddComments"
@@ -13118,7 +13427,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                             'removeformat | wordcount ',
                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                         }}
-                      />
+                      /> */}
                       <hr/>
                       {
                         Section_7.length > 0 ?
@@ -13495,7 +13804,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           <b className="col-form-label">Additional Comments</b>
                           <br/>
                           
-                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                      
+                          <ReactQuill
+                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                value={key?.Sec7_AddComments}
+                                onChange={(value)=>{ on_Section_7_Value_Change("Sec7_AddComments", i ,  value )}}
+                                onBlur={(e)=>{onFieldBlur(e)}}
+                                modules={modules}
+                                formats={formats}
+                                style={{
+                                    height: '300px', // Set the desired height here
+                                }}
+                                placeholder={`Click here to enter text.`}
+                          />
+                          <br/> 
+                          <br/> 
+                          {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                             value={key.Sec7_AddComments}
                             onEditorChange={(newText)=>{ on_Section_7_Value_Change("Sec7_AddComments", i , newText) }}                  
                             name="Sec7_AddComments"
@@ -13516,7 +13840,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                 'removeformat | wordcount ',
                                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                             }}
-                          />
+                          /> */}
                           <hr/>
                             </>)
                         })
@@ -13732,7 +14056,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec8_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec8_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec8_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec8_AddComments']: newText }) }}                  
       name="STIC_Sec8_AddComments"
@@ -13753,7 +14092,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     {
       Section_8.length > 0 ?
@@ -13975,7 +14314,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
 
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.STIC_Fire_AddComments}
+          onChange={(value)=>{on_Section_8_Value_Change("Sec8_AddComments", i , value)}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec8_AddComments}
       onEditorChange={(newText)=>{ on_Section_8_Value_Change("Sec8_AddComments", i , newText)  }}                  
       name="Sec8_AddComments"
@@ -13996,7 +14350,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
                 
           </>)
@@ -14377,7 +14731,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec9_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec9_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec9_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec9_AddComments']: newText }) }}                  
       name="STIC_Sec9_AddComments"
@@ -14398,7 +14767,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
               {
                 Section_9.length > 0 ?
@@ -14784,7 +15153,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec9_AddComments}
+          onChange={(value)=>{ on_Section_9_Value_Change('Sec9_AddComments', i, value)}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec9_AddComments}
       onEditorChange={(newText)=>{ on_Section_9_Value_Change('Sec9_AddComments', i, newText) }}                  
       name="Sec9_AddComments"
@@ -14805,7 +15189,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
             
                     </>
@@ -15138,7 +15522,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <b className="col-form-label">Additional Comments</b>
               <br/>
               
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.STIC_Sec10_AddComments}
+                    onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec10_AddComments']: value })}}
+                    onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+              <br/> 
+              <br/> 
+              {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['STIC_Sec10_AddComments']}
                 onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec10_AddComments']: newText }) }}                  
                 name="STIC_Sec10_AddComments"
@@ -15159,7 +15558,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
               <hr/>
               {
                       Section_10.length > 0 ? 
@@ -15494,7 +15893,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <b className="col-form-label">Additional Comments</b>
               <br/>
               
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.Sec10_AddComments}
+                    onChange={(value)=>{ on_Section_10_Value_Change('Sec10_AddComments', i, value)}}
+                    onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+              <br/> 
+              <br/> 
+              {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                 value={key['Sec10_AddComments']}
                 onEditorChange={(newText)=>{ on_Section_10_Value_Change('Sec10_AddComments', i, newText) }}                  
                 name="Sec10_AddComments"
@@ -15515,7 +15929,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
               <hr/>
               
                             </>
@@ -15746,7 +16160,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec11_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec11_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec11_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec11_AddComments']: newText }) }}                  
       name="STIC_Sec11_AddComments"
@@ -15767,7 +16196,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
               {
                 Section_11.length > 0 ?
@@ -16001,7 +16430,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec11_AddComments}
+          onChange={(value)=>{ on_Section_11_Value_Change('Sec11_AddComments', i, value)}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec11_AddComments']}
       onEditorChange={(newText)=>{ on_Section_11_Value_Change('Sec11_AddComments', i, newText) }}                  
       name="Sec11_AddComments"
@@ -16022,7 +16466,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
               
                     </>
@@ -16346,7 +16790,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
 <b className="col-form-label">Additional Comments</b>
 <br/>
 
-<Editor onBlur={(e)=>{onFieldBlur(e)}}
+
+<ReactQuill
+      theme="snow" // Specify the theme ('snow' or 'bubble')
+      value={FormData?.STIC_Sec12_AddComments}
+      onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec12_AddComments']: value })}}
+      onBlur={(e)=>{onFieldBlur(e)}}
+      modules={modules}
+      formats={formats}
+      style={{
+          height: '300px', // Set the desired height here
+      }}
+      placeholder={`Click here to enter text.`}
+/>
+    <br/> 
+    <br/> 
+{/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
   value={FormData['STIC_Sec12_AddComments']}
   onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec12_AddComments']: newText }) }}                  
   name="STIC_Sec12_AddComments"
@@ -16367,7 +16826,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
       'removeformat | wordcount ',
       content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
   }}
-/>
+/> */}
 <hr/>
             {
                 Section_12.length > 0 ?
@@ -16695,7 +17154,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec12_AddComments}
+          onChange={(value)=>{ on_Section_12_Value_Change('Sec12_AddComments', i, value)}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec12_AddComments']}
       onEditorChange={(newText)=>{ on_Section_12_Value_Change('Sec12_AddComments', i, newText) }}                  
       name="Sec12_AddComments"
@@ -16716,7 +17190,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
               
                     </>
@@ -17327,7 +17801,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec13_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec13_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec13_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec13_AddComments']: newText }) }}                  
       name="STIC_Sec13_AddComments"
@@ -17348,7 +17837,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     {
       Section_13.length > 0 ?
@@ -17964,9 +18453,24 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec13_AddComments}
+          onChange={(value)=>{ on_Section_13_Value_Change('Sec13_AddComments', i, value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec13_AddComments']}
-      onEditorChange={(newText)=>{ on_Section_13_Value_Change('Sec13_AddComments', i, newText) }}                  
+      onEditorChange={(newText)=>{  newText) }}                  
       name="Sec13_AddComments"
       init={{
           selector: "textarea",
@@ -17985,7 +18489,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     
           </>
@@ -18287,7 +18791,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec14_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec14_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec14_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec14_AddComments']: newText }) }}                  
       name="STIC_Sec14_AddComments"
@@ -18308,7 +18827,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     
               {
@@ -18603,7 +19122,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec14_AddComments}
+          onChange={(value)=>{ on_Section_14_Value_Change('Sec14_AddComments', i, value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key.Sec14_AddComments}
       onEditorChange={(newText)=>{ on_Section_14_Value_Change('Sec14_AddComments', i, newText) }}                  
       name="Sec14_AddComments"
@@ -18624,7 +19158,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     
               
@@ -18810,7 +19344,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec15_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec15_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec15_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec15_AddComments']: newText }) }}                  
       name="STIC_Sec15_AddComments"
@@ -18831,7 +19380,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
           
               {
@@ -19024,7 +19573,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec15_AddComments}
+          onChange={(value)=>{ on_Section_15_Value_Change('Sec15_AddComments', i,  value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec15_AddComments']}
       onEditorChange={(newText)=>{ on_Section_15_Value_Change('Sec15_AddComments', i, newText) }}                  
       name="Sec15_AddComments"
@@ -19045,7 +19609,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     
                     </>
@@ -19549,7 +20113,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec16_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec16_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec16_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec16_AddComments']: newText }) }}                  
       name="STIC_Sec16_AddComments"
@@ -19570,7 +20149,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     {
       Section_16.length > 0 ?
@@ -20080,7 +20659,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec16_AddComments}
+          onChange={(value)=>{ on_Section_16_Value_Change('Sec16_AddComments', i,  value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec16_AddComments']}
       onEditorChange={(newText)=>{ on_Section_16_Value_Change('Sec16_AddComments', i, newText) }}                  
       name="Sec16_AddComments"
@@ -20101,7 +20695,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     
           </>
@@ -20644,7 +21238,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec17_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec17_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec17_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec17_AddComments']: newText }) }}                  
       name="STIC_Sec17_AddComments"
@@ -20665,7 +21274,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     {
       Section_17.length > 0 ?
@@ -21214,7 +21823,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec17_AddComments}
+          onChange={(value)=>{ on_Section_17_Value_Change('Sec17_AddComments', i, value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec17_AddComments']}
       onEditorChange={(newText)=>{ on_Section_17_Value_Change('Sec17_AddComments', i, newText) }}                  
       name="Sec17_AddComments"
@@ -21235,7 +21859,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     
           </>
@@ -21822,7 +22446,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec18_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec18_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec18_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec18_AddComments']: newText }) }}                  
       name="STIC_Sec18_AddComments"
@@ -21843,7 +22482,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     {
       Section_18.length > 0 ?
@@ -22436,7 +23075,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec18_AddComments}
+          onChange={(value)=>{ on_Section_18_Value_Change('Sec18_AddComments', i, value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec18_AddComments']}
       onEditorChange={(newText)=>{ on_Section_18_Value_Change('Sec18_AddComments', i, newText) }}                  
       name="Sec18_AddComments"
@@ -22457,7 +23111,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     
           </>
@@ -22966,7 +23620,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
      */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec19_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec19_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec19_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec19_AddComments']: newText }) }}                  
       name="STIC_Sec19_AddComments"
@@ -22987,7 +23656,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     {
       Section_19.length > 0 ?
@@ -23501,7 +24170,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
      */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec19_AddComments}
+          onChange={(value)=>{ on_Section_19_Value_Change('Sec19_AddComments', i, value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec19_AddComments']}
       onEditorChange={(newText)=>{ on_Section_19_Value_Change('Sec19_AddComments', i, newText) }}                  
       name="Sec19_AddComments"
@@ -23522,7 +24206,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     
           </>
@@ -23810,7 +24494,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec20_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec20_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec20_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec20_AddComments']: newText }) }}                  
       init={{
@@ -23830,7 +24529,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     {
       Section_20.length > 0 ?
@@ -24123,7 +24822,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec20_AddComments}
+          onChange={(value)=>{ on_Section_20_Value_Change('Sec20_AddComments', i, value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec20_AddComments']}
       onEditorChange={(newText)=>{ on_Section_20_Value_Change('Sec20_AddComments', i, newText) }}                  
       init={{
@@ -24143,7 +24857,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     
           </>
@@ -24433,7 +25147,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_Sec21_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec21_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_Sec21_AddComments']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Sec21_AddComments']: newText }) }}                  
       name="STIC_Sec21_AddComments"
@@ -24454,7 +25183,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     {
       Section_21.length > 0 ?
@@ -24751,7 +25480,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/> */}
     <b className="col-form-label">Additional Comments</b>
     <br/>
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={key?.Sec21_AddComments}
+          onChange={(value)=>{ on_Section_21_Value_Change('Sec21_AddComments', i,  value )}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={key['Sec21_AddComments']}
       onEditorChange={(newText)=>{ on_Section_21_Value_Change('Sec21_AddComments', i, newText) }}                  
       name="Sec21_AddComments"
@@ -24772,7 +25516,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
    
           </>
@@ -24969,7 +25713,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
           </div>
           <b className="col-form-label">Additional Comments</b>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIC_SecD_AddComments}
+                onChange={(value)=>{ setFormData({...FormData, ['STIC_SecD_AddComments']: value })}}
+                onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+          <br/> 
+          <br/> 
+          {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIC_SecD_AddComments']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecD_AddComments']: newText }) }}                  
             name="STIC_SecD_AddComments"
@@ -24990,7 +25749,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                 'removeformat | wordcount ',
                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
             }}
-          />
+          /> */}
           <hr/>
 
 
@@ -25008,7 +25767,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
 
     <p>Products considered appropriate to address the needs of the client</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_1" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_SecE_1}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_1']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_SecE_1']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_1']: newText }) }}                  
       name="STIC_SecE_1"
@@ -25029,12 +25803,27 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
 
     <p>Recommended product</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_2" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_2']}  name="STIC_SecE_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_SecE_2}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_2']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_SecE_2']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_2']: newText }) }}                   
       name="STIC_SecE_2"
@@ -25055,12 +25844,27 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
 
     <p>Reasons why the recommended product is considered the most suitable for the needs of the client:</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_3" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_3']}  name="STIC_SecE_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
-    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+    
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_SecE_3}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_3']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
       value={FormData['STIC_SecE_3']}
       onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_3']: newText }) }}                 
       name="STIC_SecE_3"
@@ -25081,11 +25885,26 @@ const Short_term_Commercial= ({user, LogOut}) => {
           'removeformat | wordcount ',
           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
       }}
-    />
+    /> */}
     <hr/>
     <b className="col-form-label">Additional Comments</b>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          
+    <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.STIC_SecE_AddComments}
+          onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_AddComments']: value })}}
+          onBlur={(e)=>{onFieldBlur(e)}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Click here to enter text.`}
+    />
+    <br/> 
+    <br/> 
+    {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIC_SecE_AddComments']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecE_AddComments']: newText }) }}                  
             name="STIC_SecE_AddComments"
@@ -25106,7 +25925,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                 'removeformat | wordcount ',
                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
             }}
-          />
+          /> */}
           <hr/>
     <br/>
 
@@ -25143,7 +25962,22 @@ const Short_term_Commercial= ({user, LogOut}) => {
       </div>
       <b className="col-form-label">Additional Comments</b>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_SecG_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_SecG_AddComments']: value })}}
+            onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+      <br/> 
+      <br/> 
+      {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIC_SecG_AddComments']}
             onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_SecG_AddComments']: newText }) }}                  
             name="STIC_SecG_AddComments"
@@ -25164,7 +25998,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                 'removeformat | wordcount ',
                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
             }}
-          />
+          /> */}
           <hr/>
     </div>
 

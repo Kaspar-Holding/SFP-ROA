@@ -12,7 +12,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
-### 10 Ocotober 2023:
+### 05 December 2023:
+- Swapped TinyMCE with Quill JS
+- Deployment
+
+### 10 October 2023:
 - DRA Linked Party not updating bug resolved
 - Deployment
 

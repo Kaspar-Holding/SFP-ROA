@@ -34,7 +34,16 @@ const AssuranceInvestment = ({user, LogOut}) =>
         ],
     };
 
-    const formats = [];
+    
+    const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
+    ];
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
     const [letterOfIntroductionReason, setletterOfIntroductionReason] = useState("")
@@ -794,10 +803,12 @@ const AssuranceInvestment = ({user, LogOut}) =>
           modules={modules}
           formats={formats}
           style={{
-              height: '200px', // Set the desired height here
+              height: '300px', // Set the desired height here
           }}
           placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['AI_TermDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_TermDetails']: newText }) }}
@@ -907,10 +918,12 @@ const AssuranceInvestment = ({user, LogOut}) =>
           modules={modules}
           formats={formats}
           style={{
-              height: '200px', // Set the desired height here
+              height: '300px', // Set the desired height here
           }}
           placeholder={`Notes`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['AI_PremiumTypeDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_PremiumTypeDetails']: newText }) }}
@@ -974,18 +987,20 @@ const AssuranceInvestment = ({user, LogOut}) =>
         placeholder={
 `Notes on discussion with client concerning the investment strategy.`}  aria-describedby=""  ></textarea> */}
     <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.AI_StrategyDetails}
-          onChange={(value)=>{ setFormData({...FormData, ['AI_StrategyDetails']: value })}}
-          onFocus={(e)=>{backgroundInfo_onFocus16()}}
-          onBlur={(e)=>{backgroundInfo_onBlur16();onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '200px', // Set the desired height here
-          }}
-          placeholder={`Notes on discussion with client concerning the investment strategy`}
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.AI_StrategyDetails}
+        onChange={(value)=>{ setFormData({...FormData, ['AI_StrategyDetails']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus16()}}
+        onBlur={(e)=>{backgroundInfo_onBlur16();onFieldBlur(e)}}
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '300px', // Set the desired height here
+        }}
+        placeholder={`Notes on discussion with client concerning the investment strategy`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['AI_StrategyDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_StrategyDetails']: newText }) }}
@@ -1049,18 +1064,20 @@ const AssuranceInvestment = ({user, LogOut}) =>
         placeholder={
 `Notes on discussion with client concerning return expectations.`}  aria-describedby=""  ></textarea> */}
     <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.AI_ReturnRequiredDetails}
-          onChange={(value)=>{ setFormData({...FormData, ['AI_ReturnRequiredDetails']: value })}}
-          onFocus={(e)=>{backgroundInfo_onFocus17()}}
-          onBlur={(e)=>{backgroundInfo_onBlur17();onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '200px', // Set the desired height here
-          }}
-          placeholder={`Notes on discussion with client concerning return expectations`}
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.AI_ReturnRequiredDetails}
+        onChange={(value)=>{ setFormData({...FormData, ['AI_ReturnRequiredDetails']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus17()}}
+        onBlur={(e)=>{backgroundInfo_onBlur17();onFieldBlur(e)}}
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '300px', // Set the desired height here
+        }}
+        placeholder={`Notes on discussion with client concerning return expectations`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['AI_ReturnRequiredDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_ReturnRequiredDetails']: newText }) }}
@@ -1125,18 +1142,20 @@ const AssuranceInvestment = ({user, LogOut}) =>
         placeholder={
 `Notes on the client risk profile..`}  aria-describedby=""  ></textarea> */}
     <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.AI_RiskProfileDetails}
-          onChange={(value)=>{ setFormData({...FormData, ['AI_RiskProfileDetails']: value })}}
-          onFocus={(e)=>{backgroundInfo_onFocus18()}}
-          onBlur={(e)=>{backgroundInfo_onBlur18();onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '200px', // Set the desired height here
-          }}
-          placeholder={`Notes on the client risk profile`}
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.AI_RiskProfileDetails}
+        onChange={(value)=>{ setFormData({...FormData, ['AI_RiskProfileDetails']: value })}}
+        onFocus={(e)=>{backgroundInfo_onFocus18()}}
+        onBlur={(e)=>{backgroundInfo_onBlur18();onFieldBlur(e)}}
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '300px', // Set the desired height here
+        }}
+        placeholder={`Notes on the client risk profile`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['AI_RiskProfileDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_RiskProfileDetails']: newText }) }}
@@ -1433,11 +1452,13 @@ How it will meet the business need
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         
         placeholder={`Discuss the outcome of the FNA: Quantification of need explaining the reasons why this type of investment vehicle was recommended  How it will meet the business need`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['AI_FinancialSolutions']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_FinancialSolutions']: newText }) }}
@@ -1507,11 +1528,13 @@ How it will meet the business need
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         
         placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['AI_AltS_1']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_1']: newText }) }}
@@ -1564,11 +1587,13 @@ How it will meet the business need
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         
         placeholder={`2. Identify the type of product or product provider which was considered but not selected and motivate.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['AI_AltS_2']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_2']: newText }) }}
@@ -1621,11 +1646,13 @@ How it will meet the business need
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         
         placeholder={`3. Identify the type of product or product provider which was considered but not selected and motivate.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['AI_AltS_3']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_3']: newText }) }}
@@ -1948,11 +1975,13 @@ o	meeting the investment objectives of the clients
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         
         placeholder={`When a wrap fund or a selection of wrap funds is used, motivate and explain. \n Where you have constructed your own portfolio from a selection of funds contained in the SFP Approved Fund List, an analysis (ICE analysis or similar) must be provided: \n illustrating the alignment of the risk profile of the constructed portfolio and that of the investor,\n motivating the constructed portfolio with reference to the following aspects:\n o	correlation;\n o	drawdown;\n o	portfolio return;\n o	meeting the investment objectives of the clients`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={key.Portfolio}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("Portfolio", i, newText)}}
@@ -2265,11 +2294,13 @@ o	meeting the investment objectives of the clients
                 modules={modules}
                 formats={formats}
                 style={{
-                    height: '200px', // Set the desired height here
+                    height: '300px', // Set the desired height here
                 }}
                 
                 placeholder={`Define Other Source of Funds.`}
             />
+            <br/> 
+            <br/> 
             {/* <Editor
                 value={key.SourceOfFundsDetail}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("SourceOfFundsDetail", i, newText)}}
@@ -2330,11 +2361,13 @@ o	meeting the investment objectives of the clients
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         
         placeholder={`Motivate why the chosen product was recommended to best suit your client's needs.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={key.PF_Reasons}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_Reasons", i, newText)}}
@@ -2624,11 +2657,13 @@ o	meeting the investment objectives of the clients
                 modules={modules}
                 formats={formats}
                 style={{
-                    height: '200px', // Set the desired height here
+                    height: '300px', // Set the desired height here
                 }}
                 
                 placeholder={`Explain any deviations from your recommendation and the implications thereof.`}
-            />   
+            />  
+            <br/> 
+            <br/>  
             {/* <Editor 
                 value={key.PF_MaterialAspects}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_MaterialAspects", i, newText)}}
@@ -2678,11 +2713,13 @@ o	meeting the investment objectives of the clients
                 modules={modules}
                 formats={formats}
                 style={{
-                    height: '200px', // Set the desired height here
+                    height: '300px', // Set the desired height here
                 }}
                 
                 placeholder={`The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?`}
-            />              
+            />  
+            <br/> 
+            <br/>             
             {/* <Editor 
             value={key.PF_Pr_Details}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_Pr_Details", i, e)}}
@@ -2739,11 +2776,13 @@ o	meeting the investment objectives of the clients
                 modules={modules}
                 formats={formats}
                 style={{
-                    height: '200px', // Set the desired height here
+                    height: '300px', // Set the desired height here
                 }}
                 
                 placeholder={`Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n`}
-            />   
+            />  
+            <br/> 
+            <br/>  
             {/* <Editor
             value={key.PF_ExecutorFee}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_ExecutorFee", i, e)}}
@@ -2795,11 +2834,13 @@ o	meeting the investment objectives of the clients
                 modules={modules}
                 formats={formats}
                 style={{
-                    height: '200px', // Set the desired height here
+                    height: '300px', // Set the desired height here
                 }}
                 
                 placeholder={`Record discussion with regard to nomination of beneficiaries or cessionaries\n`}
             />  
+            <br/> 
+            <br/> 
             {/* <Editor 
             value={key.PF_NominationOfBeneficiaries}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_NominationOfBeneficiaries", i, e)}}
@@ -2856,7 +2897,7 @@ o	meeting the investment objectives of the clients
             modules={modules}
             formats={formats}
             style={{
-                height: '200px', // Set the desired height here
+                height: '300px', // Set the desired height here
             }}
             
             placeholder={`Discuss the following information which has been explained to client.
@@ -2865,6 +2906,8 @@ o	meeting the investment objectives of the clients
             Waiting periods
             Cooling off period`}
         />  
+        <br/> 
+        <br/> 
         {/* <Editor 
             value={key.PF_InformationExplained}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_InformationExplained", i, e)}}
@@ -2908,11 +2951,13 @@ o	meeting the investment objectives of the clients
                         modules={modules}
                         formats={formats}
                         style={{
-                            height: '200px', // Set the desired height here
+                            height: '300px', // Set the desired height here
                         }}
                         
                         placeholder={`Additional Comments`}
                     />  
+                    <br/> 
+                    <br/> 
                     {/* <Editor                        
                         value={key.PF_AdditionComments}
                         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_AdditionComments", i, newText)}}

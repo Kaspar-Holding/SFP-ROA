@@ -6,12 +6,45 @@ import './Styles/CustomNotification.css';
 import './Styles/CustomButton.css';
 import './Invest.css';
 import { connect } from 'react-redux';
-import { Editor, tinyMCE } from '@tinymce/tinymce-react'
+import ReactQuill from 'react-quill';
+import "react-quill/dist/quill.snow.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import {LogOut} from '../../Actions/Auth'
 const Invest = ({user, LogOut}) => 
 {
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            [{ 'font': [] }],
+            [{ 'align': [] }],
+
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction
+
+
+            ['clean']  
+        ],
+    };
+
+
+    const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
+    ];
     const location = useLocation();
     const { state } = location;
     const [FormData, setFormData] = useState({
@@ -580,9 +613,25 @@ const Invest = ({user, LogOut}) =>
                 placeholder={`Define Other Source of Funds.
                 
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.IP_OtherSourceOfIncome}
+                    onChange={(value)=>{ setFormData({...FormData, ['IP_OtherSourceOfIncome']: value })}}
+                    onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}                      
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Define Other Source of Funds.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_OtherSourceOfIncome']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_OtherSourceOfIncome']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_OtherSourceOfIncome']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus10()}}
                 onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}                      
                 name="IP_OtherSourceOfIncome"
@@ -603,7 +652,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <br/>
             <h6 className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -660,9 +709,25 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur11}
                 placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_InvestmentTermDetails}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_InvestmentTermDetails']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}}                      
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_InvestmentTermDetails']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_InvestmentTermDetails']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_InvestmentTermDetails']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus11()}}
                 onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}}                      
                 name="IP_InvestmentTermDetails"
@@ -683,7 +748,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
 
             <hr />
             <div className="row g-3 align-items-center">
@@ -740,9 +805,25 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur12}
                 placeholder={`Does the client require access to the investment during the term?                
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_LiquidityDetails}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_LiquidityDetails']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}}                      
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Does the client require access to the investment during the term?`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_LiquidityDetails']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_LiquidityDetails']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_LiquidityDetails']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus12()}}
                 onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}}                      
                 name="IP_LiquidityDetails"
@@ -763,7 +844,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <hr/>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
@@ -819,9 +900,25 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur13}
                 placeholder={`Explain?                
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_TypeDetails}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_TypeDetails']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus13()}}
+                onBlur={(e)=>{backgroundInfo_onBlur13();onFieldBlur(e)}}                      
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_TypeDetails']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_TypeDetails']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_TypeDetails']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus13()}}
                 onBlur={(e)=>{backgroundInfo_onBlur13();onFieldBlur(e)}}                      
                 name="IP_TypeDetails"
@@ -842,7 +939,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <hr/>
 
             <div className="row g-3 align-items-center">
@@ -899,9 +996,25 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur14}
                 placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_PremiumTypeDetails}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_PremiumTypeDetails']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus14()}}
+                onBlur={(e)=>{backgroundInfo_onBlur14();onFieldBlur(e)}} 
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_PremiumTypeDetails']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_PremiumTypeDetails']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_PremiumTypeDetails']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus14()}}
                 onBlur={(e)=>{backgroundInfo_onBlur14();onFieldBlur(e)}}                      
                 name="IP_PremiumTypeDetails"
@@ -922,7 +1035,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <hr/>
             <div className="row g-3 align-items-center">
                 <div className="col-6">
@@ -977,9 +1090,25 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur15}
                 placeholder={`Details of Income Required.                
                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_IncomeRequiredDetails}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_IncomeRequiredDetails']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus15()}}
+                onBlur={(e)=>{backgroundInfo_onBlur15();onFieldBlur(e)}}     
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Details of Income Required.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_IncomeRequiredDetails']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_IncomeRequiredDetails']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_IncomeRequiredDetails']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus15()}}
                 onBlur={(e)=>{backgroundInfo_onBlur15();onFieldBlur(e)}}                      
                 name="IP_IncomeRequiredDetails"
@@ -1000,7 +1129,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <hr/>
             <div className='row'>
                 <div className="col-6">
@@ -1043,9 +1172,25 @@ const Invest = ({user, LogOut}) =>
                 onFocus={backgroundInfo_onFocus1}
                 onBlur={backgroundInfo_onBlur1}
                 placeholder={`Notes on discussion with client concerning the investment strategy.`}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_InvestmentStrategyDetails}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_InvestmentStrategyDetails']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus1()}}
+                onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}   
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Notes on discussion with client concerning the investment strategy.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_InvestmentStrategyDetails']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_InvestmentStrategyDetails']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_InvestmentStrategyDetails']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus1()}}
                 onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}                      
                 name="IP_InvestmentStrategyDetails"
@@ -1066,7 +1211,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
 
             <hr/>
             <div className='row'>
@@ -1109,9 +1254,25 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur2}
                 placeholder={
             `Notes on discussion with client concerning return expectations.`}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.IP_ReturnRequiredDetails}
+                    onChange={(value)=>{ setFormData({...FormData, ['IP_ReturnRequiredDetails']: value })}}
+                    onFocus={(e)=>{backgroundInfo_onFocus2()}}
+                onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}        
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Notes on discussion with client concerning return expectations.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_ReturnRequiredDetails']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_ReturnRequiredDetails']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_ReturnRequiredDetails']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus2()}}
                 onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}                      
                 name="IP_ReturnRequiredDetails"
@@ -1132,7 +1293,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <hr/>
             <div className="col-6">
             </div>
@@ -1177,9 +1338,25 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur3}
                 placeholder={
             `Notes on the client risk profile.`}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_RiskProfileDetails}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_RiskProfileDetails']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus3()}}
+                onBlur={(e)=>{backgroundInfo_onBlur3();onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Notes on the client risk profile.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_RiskProfileDetails']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_RiskProfileDetails']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_RiskProfileDetails']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus3()}}
                 onBlur={(e)=>{backgroundInfo_onBlur3();onFieldBlur(e)}}                      
                 name="IP_RiskProfileDetails"
@@ -1200,7 +1377,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
 
             <hr />
 
@@ -1247,9 +1424,25 @@ const Invest = ({user, LogOut}) =>
                 Qualification of need explaining the reasons why this type of investment vehicle was recommended
                 How it will meet the client's needs
                                 `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_RecommendationSummary}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_RecommendationSummary']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus()}}
+                onBlur={(e)=>{backgroundInfo_onBlur();onFieldBlur(e)}}                      
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Discuss the outcome of the FNA Qualification of need explaining the reasons why this type of investment vehicle was recommended How it will meet the client's needs.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_RecommendationSummary']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_RecommendationSummary']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_RecommendationSummary']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus()}}
                 onBlur={(e)=>{backgroundInfo_onBlur();onFieldBlur(e)}}                      
                 name="IP_RecommendationSummary"
@@ -1270,7 +1463,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <h5 className="text-start " ><b>SECTION D:</b></h5> 
             <h6 className={
         state['advisor']['email'].includes('sfp') || state['advisor']['email'].includes('succession') ? "text-start sfp-text" 
@@ -1304,9 +1497,25 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur4}
                 placeholder={
                 `1. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_AltS_1}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_AltS_1']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus4()}}
+                onBlur={(e)=>{backgroundInfo_onBlur4();onFieldBlur(e)}} 
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_AltS_1']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_1']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_AltS_1']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus4()}}
                 onBlur={(e)=>{backgroundInfo_onBlur4();onFieldBlur(e)}}                      
                 name="IP_AltS_1"
@@ -1327,7 +1536,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <hr/>
 
             {
@@ -1353,9 +1562,24 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur5}
                 placeholder={
             `2. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_AltS_2}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_AltS_2']: value })}}
+                onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_AltS_2']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_2']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_AltS_2']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus5()}}
                 onBlur={(e)=>{backgroundInfo_onBlur5();onFieldBlur(e)}}                      
                 name="IP_AltS_2"
@@ -1376,7 +1600,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <hr/>
 
             {
@@ -1402,9 +1626,24 @@ const Invest = ({user, LogOut}) =>
                 onBlur={backgroundInfo_onBlur6}
                 placeholder={
             `3. Identify the type of product or product provider which was considered but not selected and motivate.. `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.IP_AltS_3}
+                onChange={(value)=>{ setFormData({...FormData, ['IP_AltS_3']: value })}}
+                onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={FormData['IP_AltS_3']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['IP_AltS_3']: newText }) }}
+                onEditorChange={(value)=>{ setFormData({...FormData, ['IP_AltS_3']: value }) }}
                 onFocus={(e)=>{backgroundInfo_onFocus6()}}
                 onBlur={(e)=>{backgroundInfo_onBlur6();onFieldBlur(e)}}                      
                 name="IP_AltS_3"
@@ -1425,7 +1664,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
 
 
 
@@ -1710,9 +1949,24 @@ const Invest = ({user, LogOut}) =>
                         null
                     }
                     {/* <textarea maxLength={500}   id="provided_identity2" name="SFPSolutionFundsDetails" value={key.SFPSolutionFundsDetails} onChange={(e) => {on_ProductTaken_Change(e, i)}} onFocus={sica_onFocus} onBlur={sica_onBlur} className="form-control" placeholder="State the motivation" aria-describedby="" ></textarea> */}
-                    <Editor
+                    
+                    <ReactQuill
+                        theme="snow" // Specify the theme ('snow' or 'bubble')
+                        value={key?.SFPSolutionFundsDetails}
+                        onChange={(value)=>{ on_ProductTaken_Value_Change("SFPSolutionFundsDetails", i, value)}}
+                        onBlur={(e)=>{onFieldBlur(e)}}
+                        modules={modules}
+                        formats={formats}
+                        style={{
+                            height: '300px', // Set the desired height here
+                        }}
+                        placeholder={`Click here to enter text.`}
+                    />
+                    
+    <br/> 
+    <br/> {/* <Editor
                         value={key.SFPSolutionFundsDetails}
-                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("SFPSolutionFundsDetails", i, newText)}}
+                        onEditorChange={(value)=>{ on_ProductTaken_Value_Change("SFPSolutionFundsDetails", i, value)}}
                         onFocus={(e)=>{sica_onFocus()}}
                         onBlur={(e)=>{sica_onBlur();onFieldBlur(e)}} 
                         name="SFPSolutionFundsDetails"                     
@@ -1733,7 +1987,7 @@ const Invest = ({user, LogOut}) =>
                             'removeformat | wordcount ',
                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                         }}
-                    />
+                    /> */}
                     </div>
             </div>
             <hr/>
@@ -1783,9 +2037,40 @@ const Invest = ({user, LogOut}) =>
                 portfolio return;
 
                 meeting the investment objectives of the clients `}  aria-describedby=""  ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.STIC_Fire_AddComments}
+                onChange={(value)=>{ on_ProductTaken_Value_Change("ItP", i, value)}}
+                onFocus={(e)=>{backgroundInfo_onFocus7()}}
+                onBlur={(e)=>{backgroundInfo_onBlur7();onFieldBlur(e)}} 
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`
+                When a wrap fund or a selection of wrap funds is used, motivate, and explain.
+
+                Where you have constructed your own portfolio from a selection of funds contained in the SFP Approved Fund List, an analysis (ICE analysis or similar) must be provided:
+
+                illustrating the alignment of the risk profile of the constructed portfolio and that of the investor,
+
+                motivating the constructed portfolio with reference to the following aspects:
+
+                correlation;
+
+                drawdown;
+
+                portfolio return;
+
+                meeting the investment objectives of the clients `}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={key.ItP}
-                onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP", i, newText)}}
+                onEditorChange={(value)=>{ on_ProductTaken_Value_Change("ItP", i, value)}}
                 onFocus={(e)=>{backgroundInfo_onFocus7()}}
                 onBlur={(e)=>{backgroundInfo_onBlur7();onFieldBlur(e)}} 
                 name="ItP"                     
@@ -1821,7 +2106,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-            />
+            /> */}
             <br/>
             <table className="table">
                 <thead>
@@ -2105,9 +2390,25 @@ const Invest = ({user, LogOut}) =>
             onBlur={backgroundInfo_onBlur8}
             placeholder={
         `Motivate why the chosen product was recommended to best suit your client's needs. `}  aria-describedby=""  ></textarea> */}
-        <Editor
+        
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.ItP_FundsReasons}
+            onChange={(value)=>{ on_ProductTaken_Value_Change("ItP_FundsReasons", i, value)}}
+            onFocus={(e)=>{backgroundInfo_onFocus8()}}
+            onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}} 
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Motivate why the chosen product was recommended to best suit your client's needs.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor
             value={key.ItP_FundsReasons}
-            onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsReasons", i, newText)}}
+            onEditorChange={(value)=>{ on_ProductTaken_Value_Change("ItP_FundsReasons", i, value)}}
             onFocus={(e)=>{backgroundInfo_onFocus8()}}
             onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}} 
             name="ItP_FundsReasons"                     
@@ -2128,7 +2429,7 @@ const Invest = ({user, LogOut}) =>
                 'removeformat | wordcount ',
                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
             }}
-        />
+        /> */}
         <hr/>
         <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
         {
@@ -2385,9 +2686,25 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }              
-              <Editor 
+              
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.ItP_FundsMaterialAspects}
+                onChange={(value)=>{ on_ProductTaken_Value_Change("ItP_FundsMaterialAspects", i, value)}}
+                onFocus={(e)=>{backgroundInfo_onFocus8()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}}        
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Explain any deviations from your recommendation and the implications thereof.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor 
                   value={key.ItP_FundsMaterialAspects}
-                  onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsMaterialAspects", i, newText)}}
+                  onEditorChange={(value)=>{ on_ProductTaken_Value_Change("ItP_FundsMaterialAspects", i, value)}}
                   onFocus={(e)=>{backgroundInfo_onFocus8()}}
                   onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}}                      
                   init={{
@@ -2407,7 +2724,7 @@ const Invest = ({user, LogOut}) =>
                       'removeformat | wordcount ',
                       content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                   }}
-                />
+                /> */}
             <br/>
               {
                   backgroundInfoVisibility9 ? 
@@ -2425,7 +2742,23 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }                          
-              <Editor 
+              
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.STIC_Fire_AddComments}
+                onChange={(value)=>{ on_ProductTaken_Value_Change("ItP_ProductDetails", i, value)}}
+                onFocus={(e)=>{backgroundInfo_onFocus9()}}
+                onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}}         
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor 
                 value={key.ItP_ProductDetails}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_ProductDetails", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus9()}}
@@ -2447,7 +2780,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                   }}
-                />
+                /> */}
 
               <br/>
               {
@@ -2472,7 +2805,23 @@ const Invest = ({user, LogOut}) =>
                   null
               }
                           
-              <Editor
+              
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.ItP_ExecutorFee}
+                onChange={(value)=>{ on_ProductTaken_Value_Change("ItP_ExecutorFee", i, value)}}
+                onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}} 
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
                 value={key.ItP_ExecutorFee}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_ExecutorFee", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus10()}}
@@ -2494,7 +2843,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
 
             <br/>
               {
@@ -2514,7 +2863,23 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }
-              <Editor 
+              
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIC_Fire_AddComments}
+                onChange={(value)=>{  on_ProductTaken_Value_Change("ItP_NominationOfBeneficiaries", i, value)}}
+                onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}}   
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Record discussion with regard to nomination of beneficiaries or cessionaries.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor 
                 value={key.ItP_NominationOfBeneficiaries}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_NominationOfBeneficiaries", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus11()}}
@@ -2536,7 +2901,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
 
             <br/>
               {
@@ -2560,7 +2925,27 @@ const Invest = ({user, LogOut}) =>
                   </>: 
                   null
               }
-             <Editor 
+             
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.ItP_InformationExplained}
+                onChange={(value)=>{ on_ProductTaken_Value_Change("ItP_InformationExplained", i, value)}}
+                onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}}       
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Discuss the following information which has been explained to client.
+                General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
+                Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
+                Waiting periods
+                Cooling off period`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor 
                 value={key.ItP_InformationExplained}
                 onEditorChange={(e)=>{ on_ProductTaken_Value_Change("ItP_InformationExplained", i, e)}}
                 onFocus={(e)=>{backgroundInfo_onFocus12()}}
@@ -2586,7 +2971,7 @@ const Invest = ({user, LogOut}) =>
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
                   <hr/>
            </>
     }
@@ -2594,9 +2979,24 @@ const Invest = ({user, LogOut}) =>
                 parseInt(key.ProductTaken)!=7 ?
                 <>
                     <strong>Additional Comments</strong>
-                    <Editor
+                    
+                    <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={key?.ItP_FundsAdditionComments}
+                            onChange={(value)=>{ on_ProductTaken_Value_Change("ItP_FundsAdditionComments", i, value)}}
+                            onBlur={(e)=>{onFieldBlur(e)}}
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            placeholder={`Additional Comments.`}
+                    />
+                    
+    <br/> 
+    <br/> {/* <Editor
                         value={key.ItP_FundsAdditionComments}
-                        onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("ItP_FundsAdditionComments", i, newText)}}
+                        onEditorChange={(value)=>{ on_ProductTaken_Value_Change("ItP_FundsAdditionComments", i, value)}}
                         name="ItP_FundsAdditionComments"     
                         onBlur={(e)=>{onFieldBlur(e)}}                 
                         init={{
@@ -2616,7 +3016,7 @@ const Invest = ({user, LogOut}) =>
                             'removeformat | wordcount ',
                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                         }}
-                    />
+                    /> */}
                     <hr/>
                 </>
                 :<></>

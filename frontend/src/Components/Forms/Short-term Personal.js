@@ -7,10 +7,44 @@ import './Styles/CustomButton.css'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-import { Editor } from '@tinymce/tinymce-react'
+import ReactQuill from 'react-quill';
+import "react-quill/dist/quill.snow.css"
+// import { Editor } from '@tinymce/tinymce-react'
 import { LogOut } from '../../Actions/Auth'
 const Short_term_Personal = ({user, LogOut}) => {
+    
+  const modules = {
+    toolbar: [
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
+
+        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+        [{ 'direction': 'rtl' }],                         // text direction
+
+
+        ['clean']  
+    ],
+    };
+
+
+    const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
+    ];
     const [letterOfIntroduction, setletterOfIntroduction] = useState(true)
     const [letterOfIntroductionReason, setletterOfIntroductionReason] = useState("")
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -1919,9 +1953,25 @@ const Short_term_Personal = ({user, LogOut}) => {
                 null
             }
             {/* <textarea  id="STIP_General_RefusedDetails" name='STIP_General_RefusedDetails' value={FormData['STIP_General_RefusedDetails']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If yes, provide details" aria-describedby="" ></textarea> */}
-            <Editor
+            
+            <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={FormData?.STIP_General_RefusedDetails}
+                  onChange={(value)=>{ setFormData({...FormData, ['STIP_General_RefusedDetails']: value })}}
+                  onFocus={(e)=>{letter_of_introduction_onFocus()}}
+                  onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}   
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={`If yes, provide details.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor
               value={FormData['STIP_General_RefusedDetails']}
-              onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_General_RefusedDetails']: newText }) }}
+              onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_General_RefusedDetails']: value }) }}
               onFocus={(e)=>{letter_of_introduction_onFocus()}}
               onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}                      
               name="STIP_General_RefusedDetails"
@@ -1942,7 +1992,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                   'removeformat | wordcount ',
                   content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
               }}
-            />
+            /> */}
             </div>
     </div>
     <hr/>
@@ -1982,9 +2032,25 @@ const Short_term_Personal = ({user, LogOut}) => {
                     null
                 }
                 {/* <textarea  id="STIP_General_RisksDetails" name='STIP_General_RisksDetails' value={FormData['STIP_General_RisksDetails']} onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If yes,provide name of the issuer" aria-describedby="" ></textarea> */}
-                <Editor
+                
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.STIP_General_RisksDetails}
+                    onChange={(value)=>{ setFormData({...FormData, ['STIP_General_RisksDetails']: value })}}
+                    onFocus={(e)=>{fica_onFocus()}}
+                    onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}    
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`If yes,provide name of the issuer.`}
+              />
+              
+    <br/> 
+    <br/> {/* <Editor
                   value={FormData['STIP_General_RisksDetails']}
-                  onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_General_RisksDetails']: newText }) }}
+                  onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_General_RisksDetails']: value }) }}
                   onFocus={(e)=>{fica_onFocus()}}
                   onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}                      
                   name="STIP_General_RisksDetails"
@@ -2005,7 +2071,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                       'removeformat | wordcount ',
                       content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                   }}
-                />
+                /> */}
                 </div>
             </div>
             <hr/>
@@ -4439,9 +4505,24 @@ const Short_term_Personal = ({user, LogOut}) => {
         <p>If yes,answer the following:</p>
         <p>What is the purpose of this replacement?</p>
         {/* <textarea name='STIP_CnRI_ReplacePurpose' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplacePurpose']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIP_CnRI_ReplacePurpose}
+              onChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplacePurpose']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_CnRI_ReplacePurpose']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplacePurpose']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplacePurpose']: value }) }}
           name="STIP_CnRI_ReplacePurpose"
           init={{
               selector: "textarea",
@@ -4459,13 +4540,28 @@ const Short_term_Personal = ({user, LogOut}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
         <hr/>
         <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
         {/* <textarea name='STIP_CnRI_ReplaceReason' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceReason']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIP_CnRI_ReplaceReason}
+              onChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceReason']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_CnRI_ReplaceReason']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceReason']: newText }) }}                     
+          onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceReason']: value }) }}                     
           name="STIP_CnRI_ReplaceReason"
           init={{
               selector: "textarea",
@@ -4483,13 +4579,28 @@ const Short_term_Personal = ({user, LogOut}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
         <hr/>
         <p>Suppliers of the product(s) to be replaced:</p>
         {/* <textarea name='STIP_CnRI_ReplaceSupplier' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceSupplier']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIP_CnRI_ReplaceSupplier}
+              onChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceSupplier']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />    
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_CnRI_ReplaceSupplier']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceSupplier']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceSupplier']: value }) }}
           name="STIP_CnRI_ReplaceSupplier"
           init={{
               selector: "textarea",
@@ -4507,7 +4618,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
 
     </div>
   </div>
@@ -4560,9 +4671,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                             </div>
                             <div className="col-8">
                                 {/* <textarea maxLength={500} spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                
+                            <ReactQuill
+                                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                                  value={FormData?.STIP_HC_StreetNumber}
+                                  onChange={(value)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: value })}}
+                                  onBlur={(e)=>{onFieldBlur(e)}}
+                                  modules={modules}
+                                  formats={formats}
+                                  style={{
+                                      height: '300px', // Set the desired height here
+                                  }}
+                                  placeholder={`Click here to enter text.`}
+                            />
+                            
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                   value={FormData['STIP_HC_StreetNumber']}
-                                  onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: newText }) }}
+                                  onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: value }) }}
                                   name="STIP_HC_StreetNumber"
                                   init={{
                                       selector: "textarea",
@@ -4580,7 +4706,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                       'removeformat | wordcount ',
                                       content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                   }}
-                                />
+                                /> */}
                             </div>
                         </div>
                     </div>
@@ -5162,9 +5288,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                       
                       <b className="col-form-label">Additional Comments</b>
                       <br/>
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                            
+                    <ReactQuill
+                          theme="snow" // Specify the theme ('snow' or 'bubble')
+                          value={FormData?.STIP_HC_AddComments}
+                          onChange={(value)=>{ setFormData({...FormData, ['STIP_HC_AddComments']: value })}}
+                          onBlur={(e)=>{onFieldBlur(e)}}
+                          modules={modules}
+                          formats={formats}
+                          style={{
+                              height: '300px', // Set the desired height here
+                          }}
+                          placeholder={`Click here to enter text.`}
+                    />
+                    
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                         value={FormData['STIP_HC_AddComments']}
-                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_HC_AddComments']: newText }) }}                  
+                        onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_HC_AddComments']: value }) }}                  
                         name="STIP_HC_AddComments"
                         init={{
                             selector: "textarea",
@@ -5183,7 +5324,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                             'removeformat | wordcount ',
                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                         }}
-                      />
+                      /> */}
                       <hr/>
                       
                       {
@@ -5245,9 +5386,24 @@ const Short_term_Personal = ({user, LogOut}) => {
             </div>
             <div className="col-8">
                 {/* <textarea maxLength={500} spellCheck="true"  id="HC_StreetNumber" name='HC_StreetNumber' value={key['HC_StreetNumber']} onChange={(e) => {on_Section_HC_Change(e, i)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.HC_StreetNumber}
+                    onChange={(value)=>{ on_Section_HC_Value_Change('HC_StreetNumber', i , value )}}
+                    onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+              
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                   value={key['HC_StreetNumber']}
-                  onEditorChange={(newText)=>{ on_Section_HC_Value_Change("HC_StreetNumber", i, newText) }}
+                  onEditorChange={(value)=>{ on_Section_HC_Value_Change("HC_StreetNumber", i, value) }}
                   name="HC_StreetNumber"
                   init={{
                       selector: "textarea",
@@ -5265,7 +5421,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                       'removekeyat | wordcount ',
                       content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                   }}
-                />
+                /> */}
             </div>
         </div>
     </div>
@@ -5847,9 +6003,24 @@ const Short_term_Personal = ({user, LogOut}) => {
       
       <b className="col-key-label">Additional Comments</b>
       <br/>
-      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.HC_AddComments}
+            onChange={(value)=>{ on_Section_HC_Value_Change('HC_AddComments', i, value )}}
+            onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+      
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
         value={key['HC_AddComments']}
-        onEditorChange={(newText)=>{ on_Section_HC_Value_Change("HC_AddComments", i, newText) }}                  
+        onEditorChange={(value)=>{ on_Section_HC_Value_Change("HC_AddComments", i, value) }}                  
         name="HC_AddComments"
         init={{
             selector: "textarea",
@@ -5868,7 +6039,7 @@ const Short_term_Personal = ({user, LogOut}) => {
             'removekeyat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-      />
+      /> */}
       <hr/>
       
      
@@ -5926,9 +6097,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                                 </div>
                                 <div className="col-8">
                                     {/* <textarea maxLength={500} spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                    <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                    
+                                <ReactQuill
+                                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                                      value={FormData?.STIP_Build_StreetNumber}
+                                      onChange={(value)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: value })}}
+                                      onBlur={(e)=>{onFieldBlur(e)}}
+                                      modules={modules}
+                                      formats={formats}
+                                      style={{
+                                          height: '300px', // Set the desired height here
+                                      }}
+                                      placeholder={`Click here to enter text.`}
+                                />
+                                
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                       value={FormData['STIP_Build_StreetNumber']}
-                                      onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: newText }) }}
+                                      onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: value }) }}
                                       name="STIP_Build_StreetNumber"
                                       init={{
                                           selector: "textarea",
@@ -5946,7 +6132,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                           'removeformat | wordcount ',
                                           content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                       }}
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                         </div>
@@ -6200,9 +6386,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <b className="col-form-label">Additional Comments</b>
                       <div>Additional notes on buildings that may affect cover/advice to the client: </div>
                       <br/>
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      
+                      <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={FormData?.STIP_Build_AddComments}
+                            onChange={(value)=>{ setFormData({...FormData, ['STIP_Build_AddComments']: value })}}
+                            onBlur={(e)=>{onFieldBlur(e)}}
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            placeholder={`Click here to enter text.`}
+                      />
+                      
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                         value={FormData['STIP_Build_AddComments']}
-                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Build_AddComments']: newText }) }}                  
+                        onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_Build_AddComments']: value }) }}                  
                         name="STIP_Build_AddComments"
                         init={{
                             selector: "textarea",
@@ -6221,7 +6422,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                             'removeformat | wordcount ',
                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                         }}
-                      />
+                      /> */}
                       {
   Section_Build.length > 0 ?
   Section_Build.map((key, i) => {
@@ -6282,9 +6483,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                                                       </div>
                                                       <div className="col-8">
                                                           {/* <textarea maxLength={500} spellCheck="true"  id="Build_StreetNumber" name='Build_StreetNumber' value={key['Build_StreetNumber']} onChange={(e) => {on_Section_Build_Change(e, i)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                                          
+                                                      <ReactQuill
+                                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                            value={key?.Build_StreetNumber}
+                                                            onChange={(value)=>{ on_Section_Build_Value_Change('Build_StreetNumber' , i,  value )}}
+                                                            onBlur={(e)=>{onFieldBlur(e)}}
+                                                            modules={modules}
+                                                            formats={formats}
+                                                            style={{
+                                                                height: '300px', // Set the desired height here
+                                                            }}
+                                                            placeholder={`Click here to enter text.`}
+                                                      />
+                                                      
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                                             value={key['Build_StreetNumber']}
-                                                            onEditorChange={(newText)=>{ on_Section_Build_Value_Change("Build_StreetNumber", i, newText) }}
+                                                            onEditorChange={(value)=>{ on_Section_Build_Value_Change("Build_StreetNumber", i, value) }}
                                                             name="Build_StreetNumber"
                                                             init={{
                                                                 selector: "textarea",
@@ -6302,7 +6518,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                                                 'removeformat | wordcount ',
                                                                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                                             }}
-                                                          />
+                                                          /> */}
                                                       </div>
                                                   </div>
                                               </div>
@@ -6556,9 +6772,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                                             <b className="col-form-label">Additional Comments</b>
                                             <div>Additional notes on buildings that may affect cover/advice to the client: </div>
                                             <br/>
-                                            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                            
+                                            <ReactQuill
+                                                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                  value={key?.Build_AddComments}
+                                                  onChange={(value)=>{ on_Section_Build_Value_Change('Build_AddComments', i, value )}}
+                                                  onBlur={(e)=>{onFieldBlur(e)}}
+                                                  modules={modules}
+                                                  formats={formats}
+                                                  style={{
+                                                      height: '300px', // Set the desired height here
+                                                  }}
+                                                  placeholder={`Click here to enter text.`}
+                                            />
+                                            
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                               value={key['Build_AddComments']}
-                                              onEditorChange={(newText)=>{ on_Section_Build_Value_Change("Build_AddComments", i, newText) }}                  
+                                              onEditorChange={(value)=>{ on_Section_Build_Value_Change("Build_AddComments", i, value) }}                  
                                               name="Build_AddComments"
                                               init={{
                                                   selector: "textarea",
@@ -6577,7 +6808,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                                   'removeformat | wordcount ',
                                                   content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                               }}
-                                            />
+                                            /> */}
                                             <hr/>
                       
                                               <hr/>
@@ -6631,9 +6862,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                                       </div>
                                       <div className="col-8">
                                           {/* <textarea maxLength={500} spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                          
+                                      <ReactQuill
+                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                            value={FormData?.STIP_AddProp_StreetNumber}
+                                            onChange={(value)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: value })}}
+                                            onBlur={(e)=>{onFieldBlur(e)}}
+                                            modules={modules}
+                                            formats={formats}
+                                            style={{
+                                                height: '300px', // Set the desired height here
+                                            }}
+                                            placeholder={`Click here to enter text.`}
+                                      />
+                                      
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                             value={FormData['STIP_AddProp_StreetNumber']}
-                                            onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: newText }) }}
+                                            onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: value }) }}
                                             name="STIP_AddProp_StreetNumber"
                                             init={{
                                                 selector: "textarea",
@@ -6651,7 +6897,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                                 'removeformat | wordcount ',
                                                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                             }}
-                                          />
+                                          /> */}
                                       </div>
                                   </div>
                               </div>
@@ -6912,9 +7158,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <b className="col-form-label">Additional Comments</b>
                       <div>Additional notes on additional properties that may affect cover/advice to the client: </div>
                       <br/>
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      
+                      <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={FormData?.STIP_AddProp_AddComments}
+                            onChange={(value)=>{ setFormData({...FormData, ['STIP_AddProp_AddComments']: value })}}
+                            onBlur={(e)=>{onFieldBlur(e)}}
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            placeholder={`Click here to enter text.`}
+                      />
+                      
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                         value={FormData['STIP_AddProp_AddComments']}
-                        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_AddProp_AddComments']: newText }) }}                  
+                        onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_AddProp_AddComments']: value }) }}                  
                         name="STIP_AddProp_AddComments"
                         init={{
                             selector: "textarea",
@@ -6933,7 +7194,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                             'removeformat | wordcount ',
                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                         }}
-                      />
+                      /> */}
                       <hr/>
                       {
   Section_AddProp.length > 0 ?
@@ -6993,9 +7254,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                                       </div>
                                       <div className="col-8">
                                           {/* <textarea maxLength={500} spellCheck="true"  id="AddProp_StreetNumber" name='AddProp_StreetNumber' value={key['AddProp_StreetNumber']} onChange={(e) => {on_Section_AddProp_Change(e, i)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
-                                          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                                                                    
+                                        <ReactQuill
+                                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                                              value={key?.AddProp_StreetNumber}
+                                              onChange={(value)=>{ on_Section_AddProp_Value_Change('AddProp_StreetNumber', i, value )}}
+                                              onBlur={(e)=>{onFieldBlur(e)}}
+                                              modules={modules}
+                                              formats={formats}
+                                              style={{
+                                                  height: '300px', // Set the desired height here
+                                              }}
+                                              placeholder={`Click here to enter text.`}
+                                        />
+                                        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                             value={key['AddProp_StreetNumber']}
-                                            onEditorChange={(newText)=>{ on_Section_AddProp_Value_Change("AddProp_StreetNumber", i, newText) }}
+                                            onEditorChange={(value)=>{ on_Section_AddProp_Value_Change("AddProp_StreetNumber", i, value) }}
                                             name="AddProp_StreetNumber"
                                             init={{
                                                 selector: "textarea",
@@ -7013,7 +7289,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                                                 'removeformat | wordcount ',
                                                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                                             }}
-                                          />
+                                          /> */}
                                       </div>
                                   </div>
                               </div>
@@ -7274,9 +7550,24 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <b className="col-form-label">Additional Comments</b>
                       <div>Additional notes on additional properties that may affect cover/advice to the client: </div>
                       <br/>
-                      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+                      
+                      <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={key?.AddProp_AddComments}
+                            onChange={(value)=>{ on_Section_Build_Value_Change("AddProp_AddComments", i, value )}}
+                            onBlur={(e)=>{onFieldBlur(e)}}
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            placeholder={`Click here to enter text.`}
+                      />
+                      
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                         value={key['AddProp_AddComments']}
-                        onEditorChange={(newText)=>{ on_Section_Build_Value_Change("AddProp_AddComments", i, newText) }}                  
+                        onEditorChange={(value)=>{ on_Section_Build_Value_Change("AddProp_AddComments", i, value) }}                  
                         name="AddProp_AddComments"
                         init={{
                             selector: "textarea",
@@ -7295,7 +7586,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                             'removeformat | wordcount ',
                             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                         }}
-                      />
+                      /> */}
       </>
     )})
     : <></>
@@ -8055,9 +8346,24 @@ const Short_term_Personal = ({user, LogOut}) => {
               <b className="col-form-label">Additional Comments</b>
               <div>Additional notes on vehicles that may affect cover/advice to the client:</div>
               <br/>
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.STIP_Vehicle_AddComments}
+                    onChange={(value)=>{ setFormData({...FormData, ['STIP_Vehicle_AddComments']: value })}}
+                    onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['STIP_Vehicle_AddComments']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Vehicle_AddComments']: newText }) }}                  
+                onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_Vehicle_AddComments']: value }) }}                  
                 init={{
                     selector: "textarea",
                     browser_spellcheck : true,
@@ -8075,7 +8381,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
               <hr/>
               
             </div>
@@ -8845,9 +9151,24 @@ const Short_term_Personal = ({user, LogOut}) => {
               <b className="col-form-label">Additional Comments</b>
               <div>Additional notes on vehicles that may affect cover/advice to the client:</div>
               <br/>
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+              
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.Vehicle_AddComments}
+                    onChange={(value)=>{ on_Section_Vehicle_Value_Change("Vehicle_AddComments", i,value )}}
+                    onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+              
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                 value={key['Vehicle_AddComments']}
-                onEditorChange={(newText)=>{ on_Section_Vehicle_Value_Change("Vehicle_AddComments", i, newText) }}                  
+                onEditorChange={(value)=>{ on_Section_Vehicle_Value_Change("Vehicle_AddComments", i, value) }}                  
                 init={{
                     selector: "textarea",
                     browser_spellcheck : true,
@@ -8865,7 +9186,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
               <hr/>
               
             </div>
@@ -9199,9 +9520,24 @@ const Short_term_Personal = ({user, LogOut}) => {
       <b className="col-form-label">Additional Comments</b>
       <div>Additional notes on motorcycles that may affect cover/advice to the client:</div>
       <br/>
-      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIP_MotorC_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIP_MotorC_AddComments']: value })}}
+            onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+      
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
         value={FormData['STIP_MotorC_AddComments']}
-        onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_MotorC_AddComments']: newText }) }}                  
+        onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_MotorC_AddComments']: value }) }}                  
         init={{
             selector: "textarea",
             browser_spellcheck : true,
@@ -9219,7 +9555,7 @@ const Short_term_Personal = ({user, LogOut}) => {
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-      />
+      /> */}
       <hr/>
       {
   Section_MotorC.length > 0 ?
@@ -9555,9 +9891,24 @@ const Short_term_Personal = ({user, LogOut}) => {
       <b className="col-form-label">Additional Comments</b>
       <div>Additional notes on motorcycles that may affect cover/advice to the client:</div>
       <br/>
-      <Editor onBlur={(e)=>{onFieldBlur(e)}}
+      
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.MotorC_AddComments}
+            onChange={(value)=>{ on_Section_MotorC_Value_Change("MotorC_AddComments", i, value)}}
+            onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+      
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
         value={key['MotorC_AddComments']}
-        onEditorChange={(newText)=>{ on_Section_MotorC_Value_Change("MotorC_AddComments", i, newText) }}                  
+        onEditorChange={(value)=>{ on_Section_MotorC_Value_Change("MotorC_AddComments", i, value) }}                  
         init={{
             selector: "textarea",
             browser_spellcheck : true,
@@ -9575,7 +9926,7 @@ const Short_term_Personal = ({user, LogOut}) => {
             'removeformat | wordcount ',
             content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
         }}
-      />
+      /> */}
       <hr/>
       </>
     )})
@@ -9769,9 +10120,24 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
           <div>Additional notes on trailer that may affect cover/advice to the client:</div>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIP_Trailer_AddComments}
+                onChange={(value)=>{ setFormData({...FormData, ['STIP_Trailer_AddComments']: value })}}
+                onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+          
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
             value={FormData['STIP_Trailer_AddComments']}
-            onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_Trailer_AddComments']: newText }) }}                  
+            onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_Trailer_AddComments']: value }) }}                  
             name="STIP_Trailer_AddComments"
             init={{
                 selector: "textarea",
@@ -9790,7 +10156,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                 'removeformat | wordcount ',
                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
             }}
-          />
+          /> */}
           <hr/>
           {
   Section_Trailer.length > 0 ?
@@ -9995,9 +10361,24 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
           <div>Additional notes on trailer that may affect cover/advice to the client:</div>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.Trailer_AddComments}
+                onChange={(value)=>{ on_Section_Trailer_Value_Change("Trailer_AddComments", i, value)}}
+                onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+          
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
             value={key['Trailer_AddComments']}
-            onEditorChange={(newText)=>{ on_Section_Trailer_Value_Change("Trailer_AddComments", i, newText) }}                  
+            onEditorChange={(value)=>{ on_Section_Trailer_Value_Change("Trailer_AddComments", i, value) }}                  
             name="Trailer_AddComments"
             init={{
                 selector: "textarea",
@@ -10016,7 +10397,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                 'removeformat | wordcount ',
                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
             }}
-          />
+          /> */}
           <hr/>
       </>
     )})
@@ -10248,9 +10629,24 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
       <div>Additional notes on watercraft that may affect cover/advice to the client:</div>
         <br/>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIP_WaterC_AddComments}
+              onChange={(value)=>{ setFormData({...FormData, ['STIP_WaterC_AddComments']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_WaterC_AddComments']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_WaterC_AddComments']: newText }) }}                  
+          onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_WaterC_AddComments']: value }) }}                  
           init={{
               selector: "textarea",
               browser_spellcheck : true,
@@ -10268,7 +10664,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
         <hr/>
         {
   Section_WaterC.length > 0 ?
@@ -10508,9 +10904,24 @@ const Short_term_Personal = ({user, LogOut}) => {
         <b className="col-form-label">Additional Comments</b>
       <div>Additional notes on watercraft that may affect cover/advice to the client:</div>
         <br/>
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={key?.WaterC_AddComments}
+              onChange={(value)=>{ on_Section_WaterC_Value_Change("WaterC_AddComments", i, value)}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={key['WaterC_AddComments']}
-          onEditorChange={(newText)=>{ on_Section_WaterC_Value_Change("WaterC_AddComments", i, newText) }}                  
+          onEditorChange={(value)=>{ on_Section_WaterC_Value_Change("WaterC_AddComments", i, value) }}                  
           init={{
               selector: "textarea",
               browser_spellcheck : true,
@@ -10528,7 +10939,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
         <hr/>
       </>
     )})
@@ -10671,9 +11082,22 @@ const Short_term_Personal = ({user, LogOut}) => {
       <br/>
         
         {/* <textare maxLength={500} spellCheck="true"  id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        {/* 
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.STIC_Fire_AddComments}
+                    onChange={(value)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: value })}}
+                    onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+<Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_PersonalLL_Comments']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_PersonalLL_Comments']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_PersonalLL_Comments']: value }) }}
           name="STIP_PersonalLL_Comments"
           init={{
               selector: "textarea",
@@ -10696,10 +11120,25 @@ const Short_term_Personal = ({user, LogOut}) => {
         <br/>
         <b className="col-form-label">Additional Comments</b>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
-              <br/>
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <br/>
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIP_PersonalLL_AddComments}
+              onChange={(value)=>{ setFormData({...FormData, ['STIP_PersonalLL_AddComments']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                 value={FormData['STIP_PersonalLL_AddComments']}
-                onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_PersonalLL_AddComments']: newText }) }}                  
+                onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_PersonalLL_AddComments']: value }) }}                  
                 init={{
                     selector: "textarea",
                     browser_spellcheck : true,
@@ -10717,7 +11156,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
               <hr/>
               {
   Section_PersonalLL.length > 0 ?
@@ -10864,9 +11303,22 @@ const Short_term_Personal = ({user, LogOut}) => {
       <br/>
         
         {/* <textare maxLength={500} spellCheck="true"  id="PersonalLL_Comments" name='PersonalLL_Comments' value={key['PersonalLL_Comments']} onChange={(e) => {on_Section_PersonalLL_Change(e, i)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        {/* 
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.STIC_Fire_AddComments}
+                    onChange={(value)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: value })}}
+                    onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+<Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={key['PersonalLL_Comments']}
-          onEditorChange={(newText)=>{ setkey({...key, ['PersonalLL_Comments']: newText }) }}
+          onEditorChange={(value)=>{ setkey({...key, ['PersonalLL_Comments']: value }) }}
           name="PersonalLL_Comments"
           init={{
               selector: "textarea",
@@ -10889,10 +11341,25 @@ const Short_term_Personal = ({user, LogOut}) => {
         <br/>
         <b className="col-form-label">Additional Comments</b>
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
-              <br/>
-              <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        <br/>
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={key?.PersonalLL_AddComments}
+              onChange={(value)=>{ on_Section_HC_Value_Change("PersonalLL_AddComments", i, value) }}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                 value={key['PersonalLL_AddComments']}
-                onEditorChange={(newText)=>{ on_Section_HC_Value_Change("PersonalLL_AddComments", i, newText)  }}                  
+                onEditorChange={(value)=>{ on_Section_HC_Value_Change("PersonalLL_AddComments", i, value)  }}                  
                 init={{
                     selector: "textarea",
                     browser_spellcheck : true,
@@ -10910,7 +11377,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                     'removeformat | wordcount ',
                     content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
                 }}
-              />
+              /> */}
               <hr/>
           
       </>
@@ -11054,9 +11521,24 @@ const Short_term_Personal = ({user, LogOut}) => {
             <b className="col-form-label">Additional Comments</b>
             <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
             <br/>
-            <Editor onBlur={(e)=>{onFieldBlur(e)}}
+            
+            <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={FormData?.STIP_LegalA_AddComments}
+                  onChange={(value)=>{ setFormData({...FormData, ['STIP_LegalA_AddComments']: value })}}
+                  onBlur={(e)=>{onFieldBlur(e)}}
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={`Click here to enter text.`}
+            />
+            
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
               value={FormData['STIP_LegalA_AddComments']}
-              onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_LegalA_AddComments']: newText }) }}                  
+              onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_LegalA_AddComments']: value }) }}                  
               init={{
                   selector: "textarea",
                   browser_spellcheck : true,
@@ -11074,7 +11556,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                   'removeformat | wordcount ',
                   content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
               }}
-            />
+            /> */}
             <hr/>
             {
   Section_LegalA.length > 0 ?
@@ -11222,9 +11704,24 @@ const Short_term_Personal = ({user, LogOut}) => {
           <b className="col-form-label">Additional Comments</b>
           <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
           <br/>
-          <Editor onBlur={(e)=>{onFieldBlur(e)}}
+          
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.LegalA_AddComments}
+                onChange={(value)=>{ on_Section_LegalA_Value_Change("LegalA_AddComments", i, value)}}
+                onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+          
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
             value={key['LegalA_AddComments']}
-            onEditorChange={(newText)=>{ on_Section_LegalA_Value_Change("LegalA_AddComments", i, newText) }}                  
+            onEditorChange={(value)=>{ on_Section_LegalA_Value_Change("LegalA_AddComments", i, value) }}                  
             init={{
                 selector: "textarea",
                 browser_spellcheck : true,
@@ -11242,7 +11739,7 @@ const Short_term_Personal = ({user, LogOut}) => {
                 'removeformat | wordcount ',
                 content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
             }}
-          />
+          /> */}
           <hr/>
         </>
     )})
@@ -11277,9 +11774,24 @@ const Short_term_Personal = ({user, LogOut}) => {
         <h6 align="left" style={{ color: "#14848A"}}><b>RECORD OF ADVICE</b></h6>
         <div>Products considered appropriate to address the needs of the client:</div>
         {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIP_ProductConsidered}
+              onChange={(value)=>{ setFormData({...FormData, ['STIP_ProductConsidered']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_ProductConsidered']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductConsidered']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_ProductConsidered']: value }) }}
           name="STIP_ProductConsidered"
           init={{
               selector: "textarea",
@@ -11297,13 +11809,28 @@ const Short_term_Personal = ({user, LogOut}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
         <hr/>
         <div>Recommended product:</div>
         {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductRecommended" name='STIP_ProductRecommended' value={FormData['STIP_ProductRecommended']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIP_ProductRecommended}
+              onChange={(value)=>{ setFormData({...FormData, ['STIP_ProductRecommended']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_ProductRecommended']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductRecommended']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_ProductRecommended']: value }) }}
           name="STIP_ProductRecommended"
           init={{
               selector: "textarea",
@@ -11321,13 +11848,28 @@ const Short_term_Personal = ({user, LogOut}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
         <hr/>
         <div>Reasons why the recommended product is considered the most suitable for the needs of the client:</div>
         {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductReasons" name='STIP_ProductReasons' value={FormData['STIP_ProductReasons']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
-        <Editor onBlur={(e)=>{onFieldBlur(e)}}
+        
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIP_ProductReasons}
+              onChange={(value)=>{ setFormData({...FormData, ['STIP_ProductReasons']: value })}}
+              onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+        
+    <br/> 
+    <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
           value={FormData['STIP_ProductReasons']}
-          onEditorChange={(newText)=>{ setFormData({...FormData, ['STIP_ProductReasons']: newText }) }}
+          onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_ProductReasons']: value }) }}
           name="STIP_ProductReasons"
           init={{
               selector: "textarea",
@@ -11345,7 +11887,7 @@ const Short_term_Personal = ({user, LogOut}) => {
               'removeformat | wordcount ',
               content_style: 'body { font-family:"Arial Narrow",Arial,sans-serif; font-size:14px }',
           }}
-        />
+        /> */}
         <hr/>
         <div><b>Note: The intermediary whose name appears in section below, will be regarded as the person responsible for advice to the client. </b></div>
         <br/>

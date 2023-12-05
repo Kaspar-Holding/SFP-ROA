@@ -35,7 +35,16 @@ const GapCover = ({user, LogOut}) => {
         ],
     };
 
-    const formats = [];
+    
+    const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
+    ];
     const location = useLocation();
     const { state } = location;
 
@@ -373,10 +382,12 @@ const GapCover = ({user, LogOut}) => {
                                 modules={modules}
                                 formats={formats}
                                 style={{
-                                    height: '200px', // Set the desired height here
+                                    height: '300px', // Set the desired height here
                                 }}
                                 placeholder='Details'
                             />
+                            <br/> 
+                            <br/> 
                             {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                 value={FormData['GP_Benefits']}
                                 // setFormData({...FormData, [e.target.name]: e.target.value})
@@ -817,10 +828,12 @@ const GapCover = ({user, LogOut}) => {
                                 modules={modules}
                                 formats={formats}
                                 style={{
-                                    height: '200px', // Set the desired height here
+                                    height: '300px', // Set the desired height here
                                 }}
                                 placeholder='Discuss other exclusions'
                             />
+                            <br/> 
+                            <br/> 
                             {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                 value={FormData['GP_Other_Exclusions']}
                                 // setFormData({...FormData, [e.target.name]: e.target.value})
@@ -865,10 +878,12 @@ const GapCover = ({user, LogOut}) => {
                                 modules={modules}
                                 formats={formats}
                                 style={{
-                                    height: '200px', // Set the desired height here
+                                    height: '300px', // Set the desired height here
                                 }}
                                 placeholder="Discuss other exclusions"
                             />
+                            <br/> 
+                            <br/> 
                             {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
                                 value={FormData['GP_GeneralComments']}
                                 // setFormData({...FormData, [e.target.name]: e.target.value})

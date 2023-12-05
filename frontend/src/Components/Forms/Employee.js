@@ -33,7 +33,16 @@ const Employee = ({user, LogOut}) =>{
         ],
     };
 
-    const formats = [];
+    
+    const formats = [
+        'header', 'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'list', 'bullet', 'indent',
+        'blockquote', 'code-block',
+        'align',
+        'link', 'image', 'video',
+        'font', // Add the 'font' format
+    ];
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
     const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
     const [backgroundInfoVisibility3, setbackgroundInfoVisibility3] = useState(false)
@@ -971,10 +980,12 @@ const Employee = ({user, LogOut}) =>{
                                     modules={modules}
                                     formats={formats}
                                     style={{
-                                        height: '200px', // Set the desired height here
+                                        height: '300px', // Set the desired height here
                                     }}
                                     placeholder="Please enter the details here"
                                 />
+                                <br/> 
+                                <br/> 
                                 {/* <Editor
                                     value={FormData['EB_BusB_CoverDetails']}
                                     // setFormData({...FormData, [e.target.name]: e.target.value})
@@ -2021,10 +2032,12 @@ Record the client's instructions, deviations and implications thereof.
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['EB_BusRB_AccidentBenefitReason']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_AccidentBenefitReason']: newText }) }}
@@ -2091,10 +2104,12 @@ Record the client's instructions, deviations and implications thereof.
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         placeholder={`Explain the reasons why disability benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['EB_BusRB_DiC_Reason']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DiC_Reason']: newText }) }}
@@ -2162,11 +2177,13 @@ Record the client's instructions, deviations and implications thereof.
         modules={modules}
         formats={formats}
         style={{
-            height: '200px', // Set the desired height here
+            height: '300px', // Set the desired height here
         }}
         placeholder={`Explain the reasons why dread disease cover was recommended to satisfy this need. 
         Record the client's instructions, deviations and implications thereof.`}
     />
+    <br/> 
+    <br/> 
     {/* <Editor
         value={FormData['EB_BusRB_DrC_Reason']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Reason']: newText }) }}
@@ -2228,10 +2245,12 @@ Record the client's instructions, deviations and implications thereof.
             modules={modules}
             formats={formats}
             style={{
-                height: '200px', // Set the desired height here
+                height: '300px', // Set the desired height here
             }}
             placeholder={`Summary of recommendations to address your identified needs.`}
         />
+        <br/> 
+        <br/> 
         {/* <Editor
         value={FormData['EB_BusRB_DrC_Summary']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Summary']: newText }) }}
