@@ -1616,7 +1616,7 @@ const Risk = ({user, LogOut}) => {
     <ReactQuill
         theme="snow" // Specify the theme ('snow' or 'bubble')
         value={FormData?.RP_DiC_FinancialSolutions}
-        onChange={(value)=>{ setFormData({...FormData, ['RPDiCC_FinancialSolutions']: value })}}
+        onChange={(value)=>{ setFormData({...FormData, ['RP_DiC_FinancialSolutions']: value })}}
         onFocus={(e)=>{backgroundInfo_onFocus2()}}
         onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}                      
         modules={modules}
