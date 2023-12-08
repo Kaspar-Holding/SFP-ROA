@@ -1954,26 +1954,28 @@ const Short_term_Personal = ({user, LogOut}) => {
             }
             {/* <textarea  id="STIP_General_RefusedDetails" name='STIP_General_RefusedDetails' value={FormData['STIP_General_RefusedDetails']} onChange={(e) => {onChange(e)}} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If yes, provide details" aria-describedby="" ></textarea> */}
             
-            <ReactQuill
-                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                  value={FormData?.STIP_General_RefusedDetails}
-                  onChange={(value)=>{ setFormData({...FormData, ['STIP_General_RefusedDetails']: value })}}
-                  onFocus={(e)=>{letter_of_introduction_onFocus()}}
-                  onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}   
-                  modules={modules}
-                  formats={formats}
-                  style={{
-                      height: '300px', // Set the desired height here
-                  }}
-                  placeholder={`If yes, provide details.`}
-            />
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.STIP_General_RefusedDetails}
+                    onChange={(value)=>{ setFormData({...FormData, ['STIP_General_RefusedDetails']: value })}}
+                    onFocus={(e)=>{letter_of_introduction_onFocus()}}
+                    onBlur={(e)=>{letter_of_introduction_onBlur()}}   
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`If yes, provide details.`}
+              />
+            </div>
             
     <br/> 
     <br/> {/* <Editor
               value={FormData['STIP_General_RefusedDetails']}
               onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_General_RefusedDetails']: value }) }}
               onFocus={(e)=>{letter_of_introduction_onFocus()}}
-              onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}                      
+              onBlur={(e)=>{letter_of_introduction_onBlur()}}                      
               name="STIP_General_RefusedDetails"
               init={{
                   selector: "textarea",
@@ -2033,26 +2035,28 @@ const Short_term_Personal = ({user, LogOut}) => {
                 }
                 {/* <textarea  id="STIP_General_RisksDetails" name='STIP_General_RisksDetails' value={FormData['STIP_General_RisksDetails']} onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If yes,provide name of the issuer" aria-describedby="" ></textarea> */}
                 
-              <ReactQuill
-                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                    value={FormData?.STIP_General_RisksDetails}
-                    onChange={(value)=>{ setFormData({...FormData, ['STIP_General_RisksDetails']: value })}}
-                    onFocus={(e)=>{fica_onFocus()}}
-                    onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}    
-                    modules={modules}
-                    formats={formats}
-                    style={{
-                        height: '300px', // Set the desired height here
-                    }}
-                    placeholder={`If yes,provide name of the issuer.`}
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                      value={FormData?.STIP_General_RisksDetails}
+                      onChange={(value)=>{ setFormData({...FormData, ['STIP_General_RisksDetails']: value })}}
+                      onFocus={(e)=>{fica_onFocus()}}
+                      onBlur={(e)=>{fica_onBlur()}}    
+                      modules={modules}
+                      formats={formats}
+                      style={{
+                          height: '300px', // Set the desired height here
+                      }}
+                      placeholder={`If yes,provide name of the issuer.`}
+                />
+              </div>
               
     <br/> 
     <br/> {/* <Editor
                   value={FormData['STIP_General_RisksDetails']}
                   onEditorChange={(value)=>{ setFormData({...FormData, ['STIP_General_RisksDetails']: value }) }}
                   onFocus={(e)=>{fica_onFocus()}}
-                  onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}                      
+                  onBlur={(e)=>{fica_onBlur()}}                      
                   name="STIP_General_RisksDetails"
                   init={{
                       selector: "textarea",
@@ -4506,18 +4510,20 @@ const Short_term_Personal = ({user, LogOut}) => {
         <p>What is the purpose of this replacement?</p>
         {/* <textarea name='STIP_CnRI_ReplacePurpose' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplacePurpose']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={FormData?.STIP_CnRI_ReplacePurpose}
-              onChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplacePurpose']: value })}}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIP_CnRI_ReplacePurpose}
+                onChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplacePurpose']: value })}}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -4545,18 +4551,20 @@ const Short_term_Personal = ({user, LogOut}) => {
         <p>Reasons why replacement is considered more suitable than retaining or modifying the terminated product:</p>
         {/* <textarea name='STIP_CnRI_ReplaceReason' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceReason']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={FormData?.STIP_CnRI_ReplaceReason}
-              onChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceReason']: value })}}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIP_CnRI_ReplaceReason}
+                onChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceReason']: value })}}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -4584,18 +4592,20 @@ const Short_term_Personal = ({user, LogOut}) => {
         <p>Suppliers of the product(s) to be replaced:</p>
         {/* <textarea name='STIP_CnRI_ReplaceSupplier' onChange={(e) => {onChange(e)}} value={FormData['STIP_CnRI_ReplaceSupplier']} onFocus={fica1_onFocus} onBlur={fica1_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={FormData?.STIP_CnRI_ReplaceSupplier}
-              onChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceSupplier']: value })}}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />    
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIP_CnRI_ReplaceSupplier}
+                onChange={(value)=>{ setFormData({...FormData, ['STIP_CnRI_ReplaceSupplier']: value })}}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />    
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -4672,18 +4682,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                             <div className="col-8">
                                 {/* <textarea maxLength={500} spellCheck="true"  id="STIP_HC_StreetNumber" name='STIP_HC_StreetNumber' value={FormData['STIP_HC_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
                                 
-                            <ReactQuill
-                                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                                  value={FormData?.STIP_HC_StreetNumber}
-                                  onChange={(value)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: value })}}
-                                  onBlur={(e)=>{onFieldBlur(e)}}
-                                  modules={modules}
-                                  formats={formats}
-                                  style={{
-                                      height: '300px', // Set the desired height here
-                                  }}
-                                  placeholder={`Click here to enter text.`}
-                            />
+                            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                              <ReactQuill
+                                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                                    value={FormData?.STIP_HC_StreetNumber}
+                                    onChange={(value)=>{ setFormData({...FormData, ['STIP_HC_StreetNumber']: value })}}
+                                    // onBlur={(e)=>{onFieldBlur(e)}}
+                                    modules={modules}
+                                    formats={formats}
+                                    style={{
+                                        height: '300px', // Set the desired height here
+                                    }}
+                                    placeholder={`Click here to enter text.`}
+                              />
+                            </div>
                             
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -5289,18 +5301,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <b className="col-form-label">Additional Comments</b>
                       <br/>
                             
-                    <ReactQuill
-                          theme="snow" // Specify the theme ('snow' or 'bubble')
-                          value={FormData?.STIP_HC_AddComments}
-                          onChange={(value)=>{ setFormData({...FormData, ['STIP_HC_AddComments']: value })}}
-                          onBlur={(e)=>{onFieldBlur(e)}}
-                          modules={modules}
-                          formats={formats}
-                          style={{
-                              height: '300px', // Set the desired height here
-                          }}
-                          placeholder={`Click here to enter text.`}
-                    />
+                    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                      <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={FormData?.STIP_HC_AddComments}
+                            onChange={(value)=>{ setFormData({...FormData, ['STIP_HC_AddComments']: value })}}
+                            // onBlur={(e)=>{onFieldBlur(e)}}
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            placeholder={`Click here to enter text.`}
+                      />
+                    </div>
                     
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -5387,18 +5401,20 @@ const Short_term_Personal = ({user, LogOut}) => {
             <div className="col-8">
                 {/* <textarea maxLength={500} spellCheck="true"  id="HC_StreetNumber" name='HC_StreetNumber' value={key['HC_StreetNumber']} onChange={(e) => {on_Section_HC_Change(e, i)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
                 
-              <ReactQuill
-                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                    value={key?.HC_StreetNumber}
-                    onChange={(value)=>{ on_Section_HC_Value_Change('HC_StreetNumber', i , value )}}
-                    onBlur={(e)=>{onFieldBlur(e)}}
-                    modules={modules}
-                    formats={formats}
-                    style={{
-                        height: '300px', // Set the desired height here
-                    }}
-                    placeholder={`Click here to enter text.`}
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                      value={key?.HC_StreetNumber}
+                      onChange={(value)=>{ on_Section_HC_Value_Change('HC_StreetNumber', i , value )}}
+                      // onBlur={(e)=>{onFieldBlur(e)}}
+                      modules={modules}
+                      formats={formats}
+                      style={{
+                          height: '300px', // Set the desired height here
+                      }}
+                      placeholder={`Click here to enter text.`}
+                />
+              </div>
               
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -6004,18 +6020,20 @@ const Short_term_Personal = ({user, LogOut}) => {
       <b className="col-key-label">Additional Comments</b>
       <br/>
       
-      <ReactQuill
-            theme="snow" // Specify the theme ('snow' or 'bubble')
-            value={key?.HC_AddComments}
-            onChange={(value)=>{ on_Section_HC_Value_Change('HC_AddComments', i, value )}}
-            onBlur={(e)=>{onFieldBlur(e)}}
-            modules={modules}
-            formats={formats}
-            style={{
-                height: '300px', // Set the desired height here
-            }}
-            placeholder={`Click here to enter text.`}
-      />
+      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={key?.HC_AddComments}
+              onChange={(value)=>{ on_Section_HC_Value_Change('HC_AddComments', i, value )}}
+              // onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+      </div>
       
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -6098,18 +6116,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                                 <div className="col-8">
                                     {/* <textarea maxLength={500} spellCheck="true"  id="STIP_Build_StreetNumber" name='STIP_Build_StreetNumber' value={FormData['STIP_Build_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
                                     
-                                <ReactQuill
-                                      theme="snow" // Specify the theme ('snow' or 'bubble')
-                                      value={FormData?.STIP_Build_StreetNumber}
-                                      onChange={(value)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: value })}}
-                                      onBlur={(e)=>{onFieldBlur(e)}}
-                                      modules={modules}
-                                      formats={formats}
-                                      style={{
-                                          height: '300px', // Set the desired height here
-                                      }}
-                                      placeholder={`Click here to enter text.`}
-                                />
+                                <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                  <ReactQuill
+                                        theme="snow" // Specify the theme ('snow' or 'bubble')
+                                        value={FormData?.STIP_Build_StreetNumber}
+                                        onChange={(value)=>{ setFormData({...FormData, ['STIP_Build_StreetNumber']: value })}}
+                                        // onBlur={(e)=>{onFieldBlur(e)}}
+                                        modules={modules}
+                                        formats={formats}
+                                        style={{
+                                            height: '300px', // Set the desired height here
+                                        }}
+                                        placeholder={`Click here to enter text.`}
+                                  />
+                                </div>
                                 
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -6387,18 +6407,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <div>Additional notes on buildings that may affect cover/advice to the client: </div>
                       <br/>
                       
-                      <ReactQuill
-                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                            value={FormData?.STIP_Build_AddComments}
-                            onChange={(value)=>{ setFormData({...FormData, ['STIP_Build_AddComments']: value })}}
-                            onBlur={(e)=>{onFieldBlur(e)}}
-                            modules={modules}
-                            formats={formats}
-                            style={{
-                                height: '300px', // Set the desired height here
-                            }}
-                            placeholder={`Click here to enter text.`}
-                      />
+                      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                        <ReactQuill
+                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                              value={FormData?.STIP_Build_AddComments}
+                              onChange={(value)=>{ setFormData({...FormData, ['STIP_Build_AddComments']: value })}}
+                              // onBlur={(e)=>{onFieldBlur(e)}}
+                              modules={modules}
+                              formats={formats}
+                              style={{
+                                  height: '300px', // Set the desired height here
+                              }}
+                              placeholder={`Click here to enter text.`}
+                        />
+                      </div>
                       
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -6484,18 +6506,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                                                       <div className="col-8">
                                                           {/* <textarea maxLength={500} spellCheck="true"  id="Build_StreetNumber" name='Build_StreetNumber' value={key['Build_StreetNumber']} onChange={(e) => {on_Section_Build_Change(e, i)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
                                                           
-                                                      <ReactQuill
-                                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                            value={key?.Build_StreetNumber}
-                                                            onChange={(value)=>{ on_Section_Build_Value_Change('Build_StreetNumber' , i,  value )}}
-                                                            onBlur={(e)=>{onFieldBlur(e)}}
-                                                            modules={modules}
-                                                            formats={formats}
-                                                            style={{
-                                                                height: '300px', // Set the desired height here
-                                                            }}
-                                                            placeholder={`Click here to enter text.`}
-                                                      />
+                                                      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                                        <ReactQuill
+                                                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                              value={key?.Build_StreetNumber}
+                                                              onChange={(value)=>{ on_Section_Build_Value_Change('Build_StreetNumber' , i,  value )}}
+                                                              // onBlur={(e)=>{onFieldBlur(e)}}
+                                                              modules={modules}
+                                                              formats={formats}
+                                                              style={{
+                                                                  height: '300px', // Set the desired height here
+                                                              }}
+                                                              placeholder={`Click here to enter text.`}
+                                                        />
+                                                      </div>
                                                       
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -6773,18 +6797,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                                             <div>Additional notes on buildings that may affect cover/advice to the client: </div>
                                             <br/>
                                             
-                                            <ReactQuill
-                                                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                  value={key?.Build_AddComments}
-                                                  onChange={(value)=>{ on_Section_Build_Value_Change('Build_AddComments', i, value )}}
-                                                  onBlur={(e)=>{onFieldBlur(e)}}
-                                                  modules={modules}
-                                                  formats={formats}
-                                                  style={{
-                                                      height: '300px', // Set the desired height here
-                                                  }}
-                                                  placeholder={`Click here to enter text.`}
-                                            />
+                                            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                              <ReactQuill
+                                                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                    value={key?.Build_AddComments}
+                                                    onChange={(value)=>{ on_Section_Build_Value_Change('Build_AddComments', i, value )}}
+                                                    // onBlur={(e)=>{onFieldBlur(e)}}
+                                                    modules={modules}
+                                                    formats={formats}
+                                                    style={{
+                                                        height: '300px', // Set the desired height here
+                                                    }}
+                                                    placeholder={`Click here to enter text.`}
+                                              />
+                                            </div>
                                             
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -6863,18 +6889,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                                       <div className="col-8">
                                           {/* <textarea maxLength={500} spellCheck="true"  id="STIP_AddProp_StreetNumber" name='STIP_AddProp_StreetNumber' value={FormData['STIP_AddProp_StreetNumber']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
                                           
-                                      <ReactQuill
-                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                            value={FormData?.STIP_AddProp_StreetNumber}
-                                            onChange={(value)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: value })}}
-                                            onBlur={(e)=>{onFieldBlur(e)}}
-                                            modules={modules}
-                                            formats={formats}
-                                            style={{
-                                                height: '300px', // Set the desired height here
-                                            }}
-                                            placeholder={`Click here to enter text.`}
-                                      />
+                                      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                        <ReactQuill
+                                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                                              value={FormData?.STIP_AddProp_StreetNumber}
+                                              onChange={(value)=>{ setFormData({...FormData, ['STIP_AddProp_StreetNumber']: value })}}
+                                              // onBlur={(e)=>{onFieldBlur(e)}}
+                                              modules={modules}
+                                              formats={formats}
+                                              style={{
+                                                  height: '300px', // Set the desired height here
+                                              }}
+                                              placeholder={`Click here to enter text.`}
+                                        />
+                                      </div>
                                       
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -7159,18 +7187,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <div>Additional notes on additional properties that may affect cover/advice to the client: </div>
                       <br/>
                       
-                      <ReactQuill
-                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                            value={FormData?.STIP_AddProp_AddComments}
-                            onChange={(value)=>{ setFormData({...FormData, ['STIP_AddProp_AddComments']: value })}}
-                            onBlur={(e)=>{onFieldBlur(e)}}
-                            modules={modules}
-                            formats={formats}
-                            style={{
-                                height: '300px', // Set the desired height here
-                            }}
-                            placeholder={`Click here to enter text.`}
-                      />
+                      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                        <ReactQuill
+                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                              value={FormData?.STIP_AddProp_AddComments}
+                              onChange={(value)=>{ setFormData({...FormData, ['STIP_AddProp_AddComments']: value })}}
+                              // onBlur={(e)=>{onFieldBlur(e)}}
+                              modules={modules}
+                              formats={formats}
+                              style={{
+                                  height: '300px', // Set the desired height here
+                              }}
+                              placeholder={`Click here to enter text.`}
+                        />
+                      </div>
                       
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -7255,18 +7285,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                                       <div className="col-8">
                                           {/* <textarea maxLength={500} spellCheck="true"  id="AddProp_StreetNumber" name='AddProp_StreetNumber' value={key['AddProp_StreetNumber']} onChange={(e) => {on_Section_AddProp_Change(e, i)}} className="form-control" placeholder="house number and street name, Suburb, Town"  aria-describedby="" style={{height:"100px"}}/> */}
                                                                     
-                                        <ReactQuill
-                                              theme="snow" // Specify the theme ('snow' or 'bubble')
-                                              value={key?.AddProp_StreetNumber}
-                                              onChange={(value)=>{ on_Section_AddProp_Value_Change('AddProp_StreetNumber', i, value )}}
-                                              onBlur={(e)=>{onFieldBlur(e)}}
-                                              modules={modules}
-                                              formats={formats}
-                                              style={{
-                                                  height: '300px', // Set the desired height here
-                                              }}
-                                              placeholder={`Click here to enter text.`}
-                                        />
+                                        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                          <ReactQuill
+                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                value={key?.AddProp_StreetNumber}
+                                                onChange={(value)=>{ on_Section_AddProp_Value_Change('AddProp_StreetNumber', i, value )}}
+                                                // onBlur={(e)=>{onFieldBlur(e)}}
+                                                modules={modules}
+                                                formats={formats}
+                                                style={{
+                                                    height: '300px', // Set the desired height here
+                                                }}
+                                                placeholder={`Click here to enter text.`}
+                                          />
+                                        </div>
                                         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -7551,18 +7583,20 @@ const Short_term_Personal = ({user, LogOut}) => {
                       <div>Additional notes on additional properties that may affect cover/advice to the client: </div>
                       <br/>
                       
-                      <ReactQuill
-                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                            value={key?.AddProp_AddComments}
-                            onChange={(value)=>{ on_Section_Build_Value_Change("AddProp_AddComments", i, value )}}
-                            onBlur={(e)=>{onFieldBlur(e)}}
-                            modules={modules}
-                            formats={formats}
-                            style={{
-                                height: '300px', // Set the desired height here
-                            }}
-                            placeholder={`Click here to enter text.`}
-                      />
+                      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                        <ReactQuill
+                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                              value={key?.AddProp_AddComments}
+                              onChange={(value)=>{ on_Section_Build_Value_Change("AddProp_AddComments", i, value )}}
+                              // onBlur={(e)=>{onFieldBlur(e)}}
+                              modules={modules}
+                              formats={formats}
+                              style={{
+                                  height: '300px', // Set the desired height here
+                              }}
+                              placeholder={`Click here to enter text.`}
+                        />
+                      </div>
                       
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -8347,18 +8381,20 @@ const Short_term_Personal = ({user, LogOut}) => {
               <div>Additional notes on vehicles that may affect cover/advice to the client:</div>
               <br/>
               
-              <ReactQuill
-                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                    value={FormData?.STIP_Vehicle_AddComments}
-                    onChange={(value)=>{ setFormData({...FormData, ['STIP_Vehicle_AddComments']: value })}}
-                    onBlur={(e)=>{onFieldBlur(e)}}
-                    modules={modules}
-                    formats={formats}
-                    style={{
-                        height: '300px', // Set the desired height here
-                    }}
-                    placeholder={`Click here to enter text.`}
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                      value={FormData?.STIP_Vehicle_AddComments}
+                      onChange={(value)=>{ setFormData({...FormData, ['STIP_Vehicle_AddComments']: value })}}
+                      // onBlur={(e)=>{onFieldBlur(e)}}
+                      modules={modules}
+                      formats={formats}
+                      style={{
+                          height: '300px', // Set the desired height here
+                      }}
+                      placeholder={`Click here to enter text.`}
+                />
+              </div>
 
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -9152,18 +9188,20 @@ const Short_term_Personal = ({user, LogOut}) => {
               <div>Additional notes on vehicles that may affect cover/advice to the client:</div>
               <br/>
               
-              <ReactQuill
-                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                    value={key?.Vehicle_AddComments}
-                    onChange={(value)=>{ on_Section_Vehicle_Value_Change("Vehicle_AddComments", i,value )}}
-                    onBlur={(e)=>{onFieldBlur(e)}}
-                    modules={modules}
-                    formats={formats}
-                    style={{
-                        height: '300px', // Set the desired height here
-                    }}
-                    placeholder={`Click here to enter text.`}
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                      value={key?.Vehicle_AddComments}
+                      onChange={(value)=>{ on_Section_Vehicle_Value_Change("Vehicle_AddComments", i,value )}}
+                      // onBlur={(e)=>{onFieldBlur(e)}}
+                      modules={modules}
+                      formats={formats}
+                      style={{
+                          height: '300px', // Set the desired height here
+                      }}
+                      placeholder={`Click here to enter text.`}
+                />
+              </div>
               
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -9521,18 +9559,20 @@ const Short_term_Personal = ({user, LogOut}) => {
       <div>Additional notes on motorcycles that may affect cover/advice to the client:</div>
       <br/>
       
-      <ReactQuill
-            theme="snow" // Specify the theme ('snow' or 'bubble')
-            value={FormData?.STIP_MotorC_AddComments}
-            onChange={(value)=>{ setFormData({...FormData, ['STIP_MotorC_AddComments']: value })}}
-            onBlur={(e)=>{onFieldBlur(e)}}
-            modules={modules}
-            formats={formats}
-            style={{
-                height: '300px', // Set the desired height here
-            }}
-            placeholder={`Click here to enter text.`}
-      />
+      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIP_MotorC_AddComments}
+              onChange={(value)=>{ setFormData({...FormData, ['STIP_MotorC_AddComments']: value })}}
+              // onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+      </div>
       
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -9892,18 +9932,20 @@ const Short_term_Personal = ({user, LogOut}) => {
       <div>Additional notes on motorcycles that may affect cover/advice to the client:</div>
       <br/>
       
-      <ReactQuill
-            theme="snow" // Specify the theme ('snow' or 'bubble')
-            value={key?.MotorC_AddComments}
-            onChange={(value)=>{ on_Section_MotorC_Value_Change("MotorC_AddComments", i, value)}}
-            onBlur={(e)=>{onFieldBlur(e)}}
-            modules={modules}
-            formats={formats}
-            style={{
-                height: '300px', // Set the desired height here
-            }}
-            placeholder={`Click here to enter text.`}
-      />
+      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={key?.MotorC_AddComments}
+              onChange={(value)=>{ on_Section_MotorC_Value_Change("MotorC_AddComments", i, value)}}
+              // onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+      </div>
       
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -10121,18 +10163,20 @@ const Short_term_Personal = ({user, LogOut}) => {
           <div>Additional notes on trailer that may affect cover/advice to the client:</div>
           <br/>
           
-          <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={FormData?.STIP_Trailer_AddComments}
-                onChange={(value)=>{ setFormData({...FormData, ['STIP_Trailer_AddComments']: value })}}
-                onBlur={(e)=>{onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                placeholder={`Click here to enter text.`}
-          />
+          <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+            <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={FormData?.STIP_Trailer_AddComments}
+                  onChange={(value)=>{ setFormData({...FormData, ['STIP_Trailer_AddComments']: value })}}
+                  // onBlur={(e)=>{onFieldBlur(e)}}
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={`Click here to enter text.`}
+            />
+          </div>
           
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -10362,18 +10406,20 @@ const Short_term_Personal = ({user, LogOut}) => {
           <div>Additional notes on trailer that may affect cover/advice to the client:</div>
           <br/>
           
-          <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={key?.Trailer_AddComments}
-                onChange={(value)=>{ on_Section_Trailer_Value_Change("Trailer_AddComments", i, value)}}
-                onBlur={(e)=>{onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                placeholder={`Click here to enter text.`}
-          />
+          <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+            <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={key?.Trailer_AddComments}
+                  onChange={(value)=>{ on_Section_Trailer_Value_Change("Trailer_AddComments", i, value)}}
+                  // onBlur={(e)=>{onFieldBlur(e)}}
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={`Click here to enter text.`}
+            />
+          </div>
           
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -10630,18 +10676,20 @@ const Short_term_Personal = ({user, LogOut}) => {
       <div>Additional notes on watercraft that may affect cover/advice to the client:</div>
         <br/>
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={FormData?.STIP_WaterC_AddComments}
-              onChange={(value)=>{ setFormData({...FormData, ['STIP_WaterC_AddComments']: value })}}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIP_WaterC_AddComments}
+                onChange={(value)=>{ setFormData({...FormData, ['STIP_WaterC_AddComments']: value })}}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -10905,18 +10953,20 @@ const Short_term_Personal = ({user, LogOut}) => {
       <div>Additional notes on watercraft that may affect cover/advice to the client:</div>
         <br/>
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={key?.WaterC_AddComments}
-              onChange={(value)=>{ on_Section_WaterC_Value_Change("WaterC_AddComments", i, value)}}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.WaterC_AddComments}
+                onChange={(value)=>{ on_Section_WaterC_Value_Change("WaterC_AddComments", i, value)}}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -11083,7 +11133,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         
         {/* <textare maxLength={500} spellCheck="true"  id="STIP_PersonalLL_Comments" name='STIP_PersonalLL_Comments' value={FormData['STIP_PersonalLL_Comments']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
         {/* 
-              <ReactQuill
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}></div><ReactQuill
                     theme="snow" // Specify the theme ('snow' or 'bubble')
                     value={FormData?.STIC_Fire_AddComments}
                     onChange={(value)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: value })}}
@@ -11122,18 +11172,20 @@ const Short_term_Personal = ({user, LogOut}) => {
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
         <br/>
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={FormData?.STIP_PersonalLL_AddComments}
-              onChange={(value)=>{ setFormData({...FormData, ['STIP_PersonalLL_AddComments']: value })}}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIP_PersonalLL_AddComments}
+                onChange={(value)=>{ setFormData({...FormData, ['STIP_PersonalLL_AddComments']: value })}}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -11304,7 +11356,7 @@ const Short_term_Personal = ({user, LogOut}) => {
         
         {/* <textare maxLength={500} spellCheck="true"  id="PersonalLL_Comments" name='PersonalLL_Comments' value={key['PersonalLL_Comments']} onChange={(e) => {on_Section_PersonalLL_Change(e, i)}} className="form-control" placeholder="      Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
         {/* 
-              <ReactQuill
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}></div><ReactQuill
                     theme="snow" // Specify the theme ('snow' or 'bubble')
                     value={FormData?.STIC_Fire_AddComments}
                     onChange={(value)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: value })}}
@@ -11343,18 +11395,20 @@ const Short_term_Personal = ({user, LogOut}) => {
         <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
         <br/>
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={key?.PersonalLL_AddComments}
-              onChange={(value)=>{ on_Section_HC_Value_Change("PersonalLL_AddComments", i, value) }}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.PersonalLL_AddComments}
+                onChange={(value)=>{ on_Section_HC_Value_Change("PersonalLL_AddComments", i, value) }}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -11522,18 +11576,20 @@ const Short_term_Personal = ({user, LogOut}) => {
             <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
             <br/>
             
-            <ReactQuill
-                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                  value={FormData?.STIP_LegalA_AddComments}
-                  onChange={(value)=>{ setFormData({...FormData, ['STIP_LegalA_AddComments']: value })}}
-                  onBlur={(e)=>{onFieldBlur(e)}}
-                  modules={modules}
-                  formats={formats}
-                  style={{
-                      height: '300px', // Set the desired height here
-                  }}
-                  placeholder={`Click here to enter text.`}
-            />
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.STIP_LegalA_AddComments}
+                    onChange={(value)=>{ setFormData({...FormData, ['STIP_LegalA_AddComments']: value })}}
+                    // onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+            </div>
             
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -11705,18 +11761,20 @@ const Short_term_Personal = ({user, LogOut}) => {
           <div>Additional notes on personal legal liability that may affect cover/advice to the client:</div>
           <br/>
           
-          <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={key?.LegalA_AddComments}
-                onChange={(value)=>{ on_Section_LegalA_Value_Change("LegalA_AddComments", i, value)}}
-                onBlur={(e)=>{onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                placeholder={`Click here to enter text.`}
-          />
+          <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+            <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={key?.LegalA_AddComments}
+                  onChange={(value)=>{ on_Section_LegalA_Value_Change("LegalA_AddComments", i, value)}}
+                  // onBlur={(e)=>{onFieldBlur(e)}}
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={`Click here to enter text.`}
+            />
+          </div>
           
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -11775,18 +11833,20 @@ const Short_term_Personal = ({user, LogOut}) => {
         <div>Products considered appropriate to address the needs of the client:</div>
         {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={FormData?.STIP_ProductConsidered}
-              onChange={(value)=>{ setFormData({...FormData, ['STIP_ProductConsidered']: value })}}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIP_ProductConsidered}
+                onChange={(value)=>{ setFormData({...FormData, ['STIP_ProductConsidered']: value })}}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -11814,18 +11874,20 @@ const Short_term_Personal = ({user, LogOut}) => {
         <div>Recommended product:</div>
         {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductRecommended" name='STIP_ProductRecommended' value={FormData['STIP_ProductRecommended']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={FormData?.STIP_ProductRecommended}
-              onChange={(value)=>{ setFormData({...FormData, ['STIP_ProductRecommended']: value })}}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIP_ProductRecommended}
+                onChange={(value)=>{ setFormData({...FormData, ['STIP_ProductRecommended']: value })}}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -11853,18 +11915,20 @@ const Short_term_Personal = ({user, LogOut}) => {
         <div>Reasons why the recommended product is considered the most suitable for the needs of the client:</div>
         {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductReasons" name='STIP_ProductReasons' value={FormData['STIP_ProductReasons']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */}
         
-        <ReactQuill
-              theme="snow" // Specify the theme ('snow' or 'bubble')
-              value={FormData?.STIP_ProductReasons}
-              onChange={(value)=>{ setFormData({...FormData, ['STIP_ProductReasons']: value })}}
-              onBlur={(e)=>{onFieldBlur(e)}}
-              modules={modules}
-              formats={formats}
-              style={{
-                  height: '300px', // Set the desired height here
-              }}
-              placeholder={`Click here to enter text.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+          <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.STIP_ProductReasons}
+                onChange={(value)=>{ setFormData({...FormData, ['STIP_ProductReasons']: value })}}
+                // onBlur={(e)=>{onFieldBlur(e)}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Click here to enter text.`}
+          />
+        </div>
         
     <br/> 
     <br/> {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}

@@ -3328,18 +3328,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                 </div>
                                 <div className="col-4">
                                   {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true" id="STIC_Applicable_Option" onChange={(e) => {onChange(e)}} value={FormData['STIC_Applicable_Option']}  name="STIC_Applicable_Option"  className="form-control" placeholder=""  aria-describedby="" style={{width:"600px",height:"100px"}} /> */}
-                                  <ReactQuill
-                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                        value={FormData?.STIC_Applicable_Option}
-                                        onChange={(value)=>{ setFormData({...FormData, ['STIC_Applicable_Option']: value })}}
-                                        onBlur={(e)=>{onFieldBlur(e)}}   
-                                        modules={modules}
-                                        formats={formats}
-                                        style={{
-                                            height: '300px', // Set the desired height here
-                                        }}
-                                        placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}
-                                  />
+                                  <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                    <ReactQuill
+                                          theme="snow" // Specify the theme ('snow' or 'bubble')
+                                          value={FormData?.STIC_Applicable_Option}
+                                          onChange={(value)=>{ setFormData({...FormData, ['STIC_Applicable_Option']: value })}}
+                                          // onBlur={(e)=>{onFieldBlur(e)}}   
+                                          modules={modules}
+                                          formats={formats}
+                                          style={{
+                                              height: '300px', // Set the desired height here
+                                          }}
+                                          placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}
+                                    />
+                                  </div>
                                   <br/> 
                                   <br/> 
                                   {/* 
@@ -3420,19 +3422,21 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                           null
                                       }
                                       {/* <textarea id="STIC_General_Cancelled_Detail" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_Cancelled_Detail']}  name="STIC_General_Cancelled_Detail"  onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If 'Yes', provide details:" aria-describedby="" ></textarea> */}
-                                      <ReactQuill
-                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                            value={FormData?.STIC_General_Cancelled_Detail}
-                                            onChange={(value)=>{ setFormData({...FormData, ['STIC_General_Cancelled_Detail']: value })}}
-                                            onFocus={(e)=>{letter_of_introduction_onFocus()}}
-                                        onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}
-                                            modules={modules}
-                                            formats={formats}
-                                            style={{
-                                                height: '300px', // Set the desired height here
-                                            }}
-                                            placeholder={`If 'Yes', provide details.`}
-                                      />
+                                      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                        <ReactQuill
+                                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                                              value={FormData?.STIC_General_Cancelled_Detail}
+                                              onChange={(value)=>{ setFormData({...FormData, ['STIC_General_Cancelled_Detail']: value })}}
+                                              onFocus={(e)=>{letter_of_introduction_onFocus()}}
+                                              onBlur={(e)=>{letter_of_introduction_onBlur()}}
+                                              modules={modules}
+                                              formats={formats}
+                                              style={{
+                                                  height: '300px', // Set the desired height here
+                                              }}
+                                              placeholder={`If 'Yes', provide details.`}
+                                        />
+                                      </div>
                                       <br/> 
                                       <br/> 
                                       {/* 
@@ -3440,7 +3444,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                         value={FormData['STIC_General_Cancelled_Detail']}
                                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_General_Cancelled_Detail']: newText }) }}
                                         onFocus={(e)=>{letter_of_introduction_onFocus()}}
-                                        onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}                      
+                                        onBlur={(e)=>{letter_of_introduction_onBlur()}}                      
                                         name="STIC_General_Cancelled_Detail"
                                         init={{
                                             selector: "textarea",
@@ -3623,19 +3627,21 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                           null
                                       }
                                       {/* <textarea  id="STIC_Replacement_Purpose" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Purpose']}  name="STIC_Replacement_Purpose"  onFocus={STIC_Replacement_Purpose_onFocus} onBlur={STIC_Replacement_Purpose_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-                                      <ReactQuill
-                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                            value={FormData?.STIC_Replacement_Purpose}
-                                            onChange={(value)=>{ setFormData({...FormData, ['STIC_Replacement_Purpose']: value })}}
-                                            onFocus={(e)=>{STIC_Replacement_Purpose_onFocus()}}
-                                            onBlur={(e)=>{STIC_Replacement_Purpose_onBlur();onFieldBlur(e)}}
-                                            modules={modules}
-                                            formats={formats}
-                                            style={{
-                                                height: '300px', // Set the desired height here
-                                            }}
-                                            placeholder={`What is the purpose of this replacement`}
-                                      />
+                                      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                        <ReactQuill
+                                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                                              value={FormData?.STIC_Replacement_Purpose}
+                                              onChange={(value)=>{ setFormData({...FormData, ['STIC_Replacement_Purpose']: value })}}
+                                              onFocus={(e)=>{STIC_Replacement_Purpose_onFocus()}}
+                                              onBlur={(e)=>{STIC_Replacement_Purpose_onBlur()}}
+                                              modules={modules}
+                                              formats={formats}
+                                              style={{
+                                                  height: '300px', // Set the desired height here
+                                              }}
+                                              placeholder={`What is the purpose of this replacement`}
+                                        />
+                                      </div>
                                       <br/> 
                                       <br/> 
                                       {/* 
@@ -3643,7 +3649,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                         value={FormData['STIC_Replacement_Purpose']}
                                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Replacement_Purpose']: newText }) }}
                                         onFocus={(e)=>{STIC_Replacement_Purpose_onFocus()}}
-                                        onBlur={(e)=>{STIC_Replacement_Purpose_onBlur();onFieldBlur(e)}}                      
+                                        onBlur={(e)=>{STIC_Replacement_Purpose_onBlur()}}                      
                                         name="STIC_Replacement_Purpose"
                                         init={{
                                             selector: "textarea",
@@ -3677,19 +3683,21 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                           null
                                       }
                                       {/* <textarea  id="STIC_Replacement_Reason" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Reason']}  name="STIC_Replacement_Reason"  onFocus={STIC_Replacement_Reason_onFocus} onBlur={STIC_Replacement_Reason_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-                                      <ReactQuill
-                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                            value={FormData?.STIC_Replacement_Reason}
-                                            onChange={(value)=>{ setFormData({...FormData, ['STIC_Replacement_Reason']: value })}}
-                                            onFocus={(e)=>{STIC_Replacement_Reason_onFocus()}}
-                                            onBlur={(e)=>{STIC_Replacement_Reason_onBlur();onFieldBlur(e)}}
-                                            modules={modules}
-                                            formats={formats}
-                                            style={{
-                                                height: '300px', // Set the desired height here
-                                            }}
-                                            placeholder={`Reasons why replacement is considered more suitable than retaining or modifying the terminated product?`}
-                                      />
+                                      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                        <ReactQuill
+                                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                                              value={FormData?.STIC_Replacement_Reason}
+                                              onChange={(value)=>{ setFormData({...FormData, ['STIC_Replacement_Reason']: value })}}
+                                              onFocus={(e)=>{STIC_Replacement_Reason_onFocus()}}
+                                              onBlur={(e)=>{STIC_Replacement_Reason_onBlur()}}
+                                              modules={modules}
+                                              formats={formats}
+                                              style={{
+                                                  height: '300px', // Set the desired height here
+                                              }}
+                                              placeholder={`Reasons why replacement is considered more suitable than retaining or modifying the terminated product?`}
+                                        />
+                                      </div>
                                       <br/> 
                                       <br/> 
                                       {/* 
@@ -3697,7 +3705,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                         value={FormData['STIC_Replacement_Reason']}
                                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Replacement_Reason']: newText }) }}
                                         onFocus={(e)=>{STIC_Replacement_Reason_onFocus()}}
-                                        onBlur={(e)=>{STIC_Replacement_Reason_onBlur();onFieldBlur(e)}}                      
+                                        onBlur={(e)=>{STIC_Replacement_Reason_onBlur()}}                      
                                         name="STIC_Replacement_Reason"
                                         init={{
                                             selector: "textarea",
@@ -3731,19 +3739,21 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                           null
                                       }
                                       {/* <textarea  id="STIC_Replacement_Suppliers" onChange={(e) => {onChange(e)}} value={FormData['STIC_Replacement_Suppliers']}  name="STIC_Replacement_Suppliers"  onFocus={STIC_Replacement_Suppliers_onFocus} onBlur={STIC_Replacement_Suppliers_onBlur} className="form-control" placeholder="Click or tap here to enter text" aria-describedby="" ></textarea> */}
-                                      <ReactQuill
-                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                            value={FormData?.STIC_Replacement_Suppliers}
-                                            onChange={(value)=>{ setFormData({...FormData, ['STIC_Replacement_Suppliers']: value })}}
-                                            onFocus={(e)=>{STIC_Replacement_Suppliers_onFocus()}}
-                                            onBlur={(e)=>{STIC_Replacement_Suppliers_onBlur();onFieldBlur(e)}}
-                                            modules={modules}
-                                            formats={formats}
-                                            style={{
-                                                height: '300px', // Set the desired height here
-                                            }}
-                                            placeholder={`Suppliers of the product(s) to be replaced?`}
-                                      />
+                                      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                        <ReactQuill
+                                              theme="snow" // Specify the theme ('snow' or 'bubble')
+                                              value={FormData?.STIC_Replacement_Suppliers}
+                                              onChange={(value)=>{ setFormData({...FormData, ['STIC_Replacement_Suppliers']: value })}}
+                                              onFocus={(e)=>{STIC_Replacement_Suppliers_onFocus()}}
+                                              onBlur={(e)=>{STIC_Replacement_Suppliers_onBlur()}}
+                                              modules={modules}
+                                              formats={formats}
+                                              style={{
+                                                  height: '300px', // Set the desired height here
+                                              }}
+                                              placeholder={`Suppliers of the product(s) to be replaced?`}
+                                        />
+                                      </div>
                                       <br/> 
                                       <br/> 
                                       {/* 
@@ -3751,7 +3761,7 @@ const Short_term_Commercial= ({user, LogOut}) => {
                                         value={FormData['STIC_Replacement_Suppliers']}
                                         onEditorChange={(newText)=>{ setFormData({...FormData, ['STIC_Replacement_Suppliers']: newText }) }}
                                         onFocus={(e)=>{STIC_Replacement_Suppliers_onFocus()}}
-                                        onBlur={(e)=>{STIC_Replacement_Suppliers_onBlur();onFieldBlur(e)}}                      
+                                        onBlur={(e)=>{STIC_Replacement_Suppliers_onBlur()}}                      
                                         name="STIC_Replacement_Suppliers"
                                         init={{
                                             selector: "textarea",
@@ -7068,18 +7078,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <hr/>
               <b className="col-form-label">Additional Comments</b>
               <br/>
-              <ReactQuill
-                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                    value={FormData?.STIC_Fire_AddComments}
-                    onChange={(value)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: value })}}
-                    onBlur={(e)=>{onFieldBlur(e)}}
-                    modules={modules}
-                    formats={formats}
-                    style={{
-                        height: '300px', // Set the desired height here
-                    }}
-                    placeholder={`Click here to enter text.`}
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                      value={FormData?.STIC_Fire_AddComments}
+                      onChange={(value)=>{ setFormData({...FormData, ['STIC_Fire_AddComments']: value })}}
+                      // onBlur={(e)=>{onFieldBlur(e)}}
+                      modules={modules}
+                      formats={formats}
+                      style={{
+                          height: '300px', // Set the desired height here
+                      }}
+                      placeholder={`Click here to enter text.`}
+                />
+              </div>
               <br/> 
               <br/> 
               {/* 
@@ -7573,18 +7585,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           <b className="col-form-label">Additional Comments</b>
                           <br/>
                           
-                          <ReactQuill
-                                theme="snow" // Specify the theme ('snow' or 'bubble')
-                                value={key?.Fire_AddComments}
-                                onChange={(value)=>{ on_Section_1_Value_Change("Fire_AddComments", i, value)}}
-                                onBlur={(e)=>{onFieldBlur(e)}}
-                                modules={modules}
-                                formats={formats}
-                                style={{
-                                    height: '300px', // Set the desired height here
-                                }}
-                                placeholder={`Click here to enter text.`}
-                          />
+                          <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                            <ReactQuill
+                                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                                  value={key?.Fire_AddComments}
+                                  onChange={(value)=>{ on_Section_1_Value_Change("Fire_AddComments", i, value)}}
+                                  // onBlur={(e)=>{onFieldBlur(e)}}
+                                  modules={modules}
+                                  formats={formats}
+                                  style={{
+                                      height: '300px', // Set the desired height here
+                                  }}
+                                  placeholder={`Click here to enter text.`}
+                            />
+                          </div>
                           <br/> 
                           <br/> 
                           {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -7956,18 +7970,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
           <b className="col-form-label">Additional Comments</b>
           <br/>
           
-          <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={FormData?.STIC_BuildCombined_AddComments}
-                onChange={(value)=>{ setFormData({...FormData, ['STIC_BuildCombined_AddComments']: value })}}
-                onBlur={(e)=>{onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                placeholder={`Click here to enter text.`}
-          />
+          <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+            <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={FormData?.STIC_BuildCombined_AddComments}
+                  onChange={(value)=>{ setFormData({...FormData, ['STIC_BuildCombined_AddComments']: value })}}
+                  // onBlur={(e)=>{onFieldBlur(e)}}
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={`Click here to enter text.`}
+            />
+          </div>
           <br/> 
           <br/> 
           {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -8345,18 +8361,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
                     <b className="col-form-label">Additional Comments</b>
                     <br/>
                     
-                    <ReactQuill
-                          theme="snow" // Specify the theme ('snow' or 'bubble')
-                          value={key?.STIC_Fire_AddComments}
-                          onChange={(value)=>{ on_Section_2_Value_Change("BuildCombined_AddComments", i, value )}}
-                          onBlur={(e)=>{onFieldBlur(e)}}
-                          modules={modules}
-                          formats={formats}
-                          style={{
-                              height: '300px', // Set the desired height here
-                          }}
-                          placeholder={`Click here to enter text.`}
-                    />
+                    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                      <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={key?.STIC_Fire_AddComments}
+                            onChange={(value)=>{ on_Section_2_Value_Change("BuildCombined_AddComments", i, value )}}
+                            // onBlur={(e)=>{onFieldBlur(e)}}
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            placeholder={`Click here to enter text.`}
+                      />
+                    </div>
                     <br/> 
                     <br/> 
                     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -8660,18 +8678,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
             <b className="col-form-label">Additional Comments</b>
             <br/>
             
-            <ReactQuill
-                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                  value={FormData?.STIC_OC_AddComments}
-                  onChange={(value)=>{ setFormData({...FormData, ['STIC_OC_AddComments']: value })}}
-                  onBlur={(e)=>{onFieldBlur(e)}}
-                  modules={modules}
-                  formats={formats}
-                  style={{
-                      height: '300px', // Set the desired height here
-                  }}
-                  placeholder={`Click here to enter text.`}
-            />
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={FormData?.STIC_OC_AddComments}
+                    onChange={(value)=>{ setFormData({...FormData, ['STIC_OC_AddComments']: value })}}
+                    // onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+            </div>
             <br/> 
             <br/> 
             {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -8977,18 +8997,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
             <b className="col-form-label">Additional Comments</b>
             <br/>
             
-            <ReactQuill
-                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                  value={key?.STIC_Fire_AddComments}
-                  onChange={(value)=>{ on_Section_3_Value_Change("OC_AddComments", i, value )}}
-                  onBlur={(e)=>{onFieldBlur(e)}}
-                  modules={modules}
-                  formats={formats}
-                  style={{
-                      height: '300px', // Set the desired height here
-                  }}
-                  placeholder={`Click here to enter text.`}
-            />
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+              <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.STIC_Fire_AddComments}
+                    onChange={(value)=>{ on_Section_3_Value_Change("OC_AddComments", i, value )}}
+                    // onBlur={(e)=>{onFieldBlur(e)}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder={`Click here to enter text.`}
+              />
+            </div>
             <br/> 
             <br/> 
             {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -10432,18 +10454,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_BusInt_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_BusInt_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_BusInt_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_BusInt_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -11895,18 +11919,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.BusInt_AddComments}
-          onChange={(value)=>{ on_Section_4_Value_Change('BusInt_AddComments', i, value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.BusInt_AddComments}
+            onChange={(value)=>{ on_Section_4_Value_Change('BusInt_AddComments', i, value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -12228,18 +12254,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec5_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec5_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec5_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec5_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -12567,18 +12595,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec5_AddComments}
-          onChange={(value)=>{ on_Section_5_Value_Change('Sec5_AddComments', i, value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec5_AddComments}
+            onChange={(value)=>{ on_Section_5_Value_Change('Sec5_AddComments', i, value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -12771,18 +12801,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec6_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec6_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec6_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec6_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -12982,18 +13014,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec6_AddComments}
-          onChange={(value)=>{ on_Section_6_Value_Change('Sec6_AddComments', i, value) }}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec6_AddComments}
+            onChange={(value)=>{ on_Section_6_Value_Change('Sec6_AddComments', i, value) }}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -13392,18 +13426,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
                       <br/>
                       
                       
-                    <ReactQuill
-                          theme="snow" // Specify the theme ('snow' or 'bubble')
-                          value={FormData?.STIC_Sec7_AddComments}
-                          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec7_AddComments']: value })}}
-                          onBlur={(e)=>{onFieldBlur(e)}}
-                          modules={modules}
-                          formats={formats}
-                          style={{
-                              height: '300px', // Set the desired height here
-                          }}
-                          placeholder={`Click here to enter text.`}
-                    />
+                    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                      <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={FormData?.STIC_Sec7_AddComments}
+                            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec7_AddComments']: value })}}
+                            // onBlur={(e)=>{onFieldBlur(e)}}
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            placeholder={`Click here to enter text.`}
+                      />
+                    </div>
                     <br/> 
                     <br/> 
                     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -13805,18 +13841,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
                           <br/>
                           
                                       
-                          <ReactQuill
-                                theme="snow" // Specify the theme ('snow' or 'bubble')
-                                value={key?.Sec7_AddComments}
-                                onChange={(value)=>{ on_Section_7_Value_Change("Sec7_AddComments", i ,  value )}}
-                                onBlur={(e)=>{onFieldBlur(e)}}
-                                modules={modules}
-                                formats={formats}
-                                style={{
-                                    height: '300px', // Set the desired height here
-                                }}
-                                placeholder={`Click here to enter text.`}
-                          />
+                          <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                            <ReactQuill
+                                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                                  value={key?.Sec7_AddComments}
+                                  onChange={(value)=>{ on_Section_7_Value_Change("Sec7_AddComments", i ,  value )}}
+                                  // onBlur={(e)=>{onFieldBlur(e)}}
+                                  modules={modules}
+                                  formats={formats}
+                                  style={{
+                                      height: '300px', // Set the desired height here
+                                  }}
+                                  placeholder={`Click here to enter text.`}
+                            />
+                          </div>
                           <br/> 
                           <br/> 
                           {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -14057,18 +14095,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec8_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec8_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec8_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec8_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -14315,18 +14355,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
 
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.STIC_Fire_AddComments}
-          onChange={(value)=>{on_Section_8_Value_Change("Sec8_AddComments", i , value)}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.STIC_Fire_AddComments}
+            onChange={(value)=>{on_Section_8_Value_Change("Sec8_AddComments", i , value)}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -14732,18 +14774,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec9_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec9_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec9_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec9_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -15154,18 +15198,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec9_AddComments}
-          onChange={(value)=>{ on_Section_9_Value_Change('Sec9_AddComments', i, value)}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec9_AddComments}
+            onChange={(value)=>{ on_Section_9_Value_Change('Sec9_AddComments', i, value)}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -15523,18 +15569,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <br/>
               
               
-              <ReactQuill
-                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                    value={FormData?.STIC_Sec10_AddComments}
-                    onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec10_AddComments']: value })}}
-                    onBlur={(e)=>{onFieldBlur(e)}}
-                    modules={modules}
-                    formats={formats}
-                    style={{
-                        height: '300px', // Set the desired height here
-                    }}
-                    placeholder={`Click here to enter text.`}
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                      value={FormData?.STIC_Sec10_AddComments}
+                      onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec10_AddComments']: value })}}
+                      // onBlur={(e)=>{onFieldBlur(e)}}
+                      modules={modules}
+                      formats={formats}
+                      style={{
+                          height: '300px', // Set the desired height here
+                      }}
+                      placeholder={`Click here to enter text.`}
+                />
+              </div>
               <br/> 
               <br/> 
               {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -15894,18 +15942,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
               <br/>
               
               
-              <ReactQuill
-                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                    value={key?.Sec10_AddComments}
-                    onChange={(value)=>{ on_Section_10_Value_Change('Sec10_AddComments', i, value)}}
-                    onBlur={(e)=>{onFieldBlur(e)}}
-                    modules={modules}
-                    formats={formats}
-                    style={{
-                        height: '300px', // Set the desired height here
-                    }}
-                    placeholder={`Click here to enter text.`}
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                      value={key?.Sec10_AddComments}
+                      onChange={(value)=>{ on_Section_10_Value_Change('Sec10_AddComments', i, value)}}
+                      // onBlur={(e)=>{onFieldBlur(e)}}
+                      modules={modules}
+                      formats={formats}
+                      style={{
+                          height: '300px', // Set the desired height here
+                      }}
+                      placeholder={`Click here to enter text.`}
+                />
+              </div>
               <br/> 
               <br/> 
               {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -16161,18 +16211,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec11_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec11_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec11_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec11_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -16431,18 +16483,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
 
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec11_AddComments}
-          onChange={(value)=>{ on_Section_11_Value_Change('Sec11_AddComments', i, value)}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec11_AddComments}
+            onChange={(value)=>{ on_Section_11_Value_Change('Sec11_AddComments', i, value)}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -16791,18 +16845,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
 <br/>
 
 
-<ReactQuill
-      theme="snow" // Specify the theme ('snow' or 'bubble')
-      value={FormData?.STIC_Sec12_AddComments}
-      onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec12_AddComments']: value })}}
-      onBlur={(e)=>{onFieldBlur(e)}}
-      modules={modules}
-      formats={formats}
-      style={{
-          height: '300px', // Set the desired height here
-      }}
-      placeholder={`Click here to enter text.`}
-/>
+<div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+  <ReactQuill
+        theme="snow" // Specify the theme ('snow' or 'bubble')
+        value={FormData?.STIC_Sec12_AddComments}
+        onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec12_AddComments']: value })}}
+        // onBlur={(e)=>{onFieldBlur(e)}}
+        modules={modules}
+        formats={formats}
+        style={{
+            height: '300px', // Set the desired height here
+        }}
+        placeholder={`Click here to enter text.`}
+  />
+</div>
     <br/> 
     <br/> 
 {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -17155,18 +17211,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec12_AddComments}
-          onChange={(value)=>{ on_Section_12_Value_Change('Sec12_AddComments', i, value)}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec12_AddComments}
+            onChange={(value)=>{ on_Section_12_Value_Change('Sec12_AddComments', i, value)}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -17802,18 +17860,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec13_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec13_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec13_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec13_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -18454,18 +18514,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec13_AddComments}
-          onChange={(value)=>{ on_Section_13_Value_Change('Sec13_AddComments', i, value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec13_AddComments}
+            onChange={(value)=>{ on_Section_13_Value_Change('Sec13_AddComments', i, value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -18792,18 +18854,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec14_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec14_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec14_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec14_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -19123,18 +19187,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec14_AddComments}
-          onChange={(value)=>{ on_Section_14_Value_Change('Sec14_AddComments', i, value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec14_AddComments}
+            onChange={(value)=>{ on_Section_14_Value_Change('Sec14_AddComments', i, value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -19345,18 +19411,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec15_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec15_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec15_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec15_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -19574,18 +19642,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec15_AddComments}
-          onChange={(value)=>{ on_Section_15_Value_Change('Sec15_AddComments', i,  value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec15_AddComments}
+            onChange={(value)=>{ on_Section_15_Value_Change('Sec15_AddComments', i,  value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -20114,18 +20184,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec16_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec16_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec16_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec16_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -20660,18 +20732,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec16_AddComments}
-          onChange={(value)=>{ on_Section_16_Value_Change('Sec16_AddComments', i,  value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec16_AddComments}
+            onChange={(value)=>{ on_Section_16_Value_Change('Sec16_AddComments', i,  value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -21239,18 +21313,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
 
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec17_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec17_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec17_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec17_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -21824,18 +21900,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec17_AddComments}
-          onChange={(value)=>{ on_Section_17_Value_Change('Sec17_AddComments', i, value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec17_AddComments}
+            onChange={(value)=>{ on_Section_17_Value_Change('Sec17_AddComments', i, value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -22447,18 +22525,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
 
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec18_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec18_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec18_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec18_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -23076,18 +23156,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <br/>
     
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec18_AddComments}
-          onChange={(value)=>{ on_Section_18_Value_Change('Sec18_AddComments', i, value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec18_AddComments}
+            onChange={(value)=>{ on_Section_18_Value_Change('Sec18_AddComments', i, value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -23621,18 +23703,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec19_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec19_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec19_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec19_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -24171,18 +24255,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec19_AddComments}
-          onChange={(value)=>{ on_Section_19_Value_Change('Sec19_AddComments', i, value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec19_AddComments}
+            onChange={(value)=>{ on_Section_19_Value_Change('Sec19_AddComments', i, value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -24495,18 +24581,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec20_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec20_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec20_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec20_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -24823,18 +24911,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec20_AddComments}
-          onChange={(value)=>{ on_Section_20_Value_Change('Sec20_AddComments', i, value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec20_AddComments}
+            onChange={(value)=>{ on_Section_20_Value_Change('Sec20_AddComments', i, value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -25148,18 +25238,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_Sec21_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec21_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_Sec21_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_Sec21_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -25481,18 +25573,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
     <br/>
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={key?.Sec21_AddComments}
-          onChange={(value)=>{ on_Section_21_Value_Change('Sec21_AddComments', i,  value )}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Sec21_AddComments}
+            onChange={(value)=>{ on_Section_21_Value_Change('Sec21_AddComments', i,  value )}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -25714,18 +25808,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
           <b className="col-form-label">Additional Comments</b>
           <br/>
           
-          <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={FormData?.STIC_SecD_AddComments}
-                onChange={(value)=>{ setFormData({...FormData, ['STIC_SecD_AddComments']: value })}}
-                onBlur={(e)=>{onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                placeholder={`Click here to enter text.`}
-          />
+          <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+            <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={FormData?.STIC_SecD_AddComments}
+                  onChange={(value)=>{ setFormData({...FormData, ['STIC_SecD_AddComments']: value })}}
+                  // onBlur={(e)=>{onFieldBlur(e)}}
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={`Click here to enter text.`}
+            />
+          </div>
           <br/> 
           <br/> 
           {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -25768,18 +25864,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <p>Products considered appropriate to address the needs of the client</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_1" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_1']}  name="STIC_SecE_1"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_SecE_1}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_1']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_SecE_1}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_1']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -25809,18 +25907,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <p>Recommended product</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_2" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_2']}  name="STIC_SecE_2"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_SecE_2}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_2']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_SecE_2}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_2']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -25850,18 +25950,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <p>Reasons why the recommended product is considered the most suitable for the needs of the client:</p>
     {/* <textarea maxLength={500} spellCheck="true" id="STIC_SecE_3" onChange={(e) => {onChange(e)}} value={FormData['STIC_SecE_3']}  name="STIC_SecE_3"  className="form-control" placeholder="Click here to enter text"  aria-describedby="" style={{width:"1000px",height:"100px"}} /> */}
     
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_SecE_3}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_3']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_SecE_3}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_3']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -25890,18 +25992,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
     <b className="col-form-label">Additional Comments</b>
           <br/>
           
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.STIC_SecE_AddComments}
-          onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_AddComments']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Click here to enter text.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.STIC_SecE_AddComments}
+            onChange={(value)=>{ setFormData({...FormData, ['STIC_SecE_AddComments']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Click here to enter text.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -25963,18 +26067,20 @@ const Short_term_Commercial= ({user, LogOut}) => {
       <b className="col-form-label">Additional Comments</b>
           <br/>
           
-      <ReactQuill
-            theme="snow" // Specify the theme ('snow' or 'bubble')
-            value={FormData?.STIC_SecG_AddComments}
-            onChange={(value)=>{ setFormData({...FormData, ['STIC_SecG_AddComments']: value })}}
-            onBlur={(e)=>{onFieldBlur(e)}}
-            modules={modules}
-            formats={formats}
-            style={{
-                height: '300px', // Set the desired height here
-            }}
-            placeholder={`Click here to enter text.`}
-      />
+      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+              theme="snow" // Specify the theme ('snow' or 'bubble')
+              value={FormData?.STIC_SecG_AddComments}
+              onChange={(value)=>{ setFormData({...FormData, ['STIC_SecG_AddComments']: value })}}
+              // onBlur={(e)=>{onFieldBlur(e)}}
+              modules={modules}
+              formats={formats}
+              style={{
+                  height: '300px', // Set the desired height here
+              }}
+              placeholder={`Click here to enter text.`}
+        />
+      </div>
       <br/> 
       <br/> 
       {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}

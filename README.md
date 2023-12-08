@@ -12,6 +12,10 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 08 December 2023:
+- Quill JS onBlur was replaced with onMouseLeave in a div around it.
+- Deployment
+
 ### 05 December 2023:
 - Swapped TinyMCE with Quill JS
 - Deployment

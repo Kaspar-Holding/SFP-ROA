@@ -834,13 +834,12 @@ const Risk = ({user, LogOut}) => {
       <div className='col-12'>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
-      <div className='col-12'>
+      <div className='col-12' onMouseLeave={(e)=>{onFieldBlur(e)}}>
         
         <ReactQuill
             theme="snow" // Specify the theme ('snow' or 'bubble')
             value={FormData?.RP_DC_Comments}
             onChange={(value)=>{ setFormData({...FormData, ['RP_DC_Comments']: value })}}
-            onBlur={(e)=>{onFieldBlur(e)}}
             modules={modules}
             formats={formats}
             style={{
@@ -1184,13 +1183,12 @@ const Risk = ({user, LogOut}) => {
       <div className='col-12'>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
-      <div className='col-12'>
+      <div className='col-12' onMouseLeave={(e)=>{onFieldBlur(e)}}>
         
         <ReactQuill
             theme="snow" // Specify the theme ('snow' or 'bubble')
             value={FormData?.RP_DiC_Comments}
             onChange={(value)=>{ setFormData({...FormData, ['RP_DiC_Comments']: value })}}
-            onBlur={(e)=>{onFieldBlur(e)}}
             modules={modules}
             formats={formats}
             style={{
@@ -1470,13 +1468,12 @@ const Risk = ({user, LogOut}) => {
       <div className='col-12'>
         <p style={{fontSize:'14px',fontFamily:'Arial Narrow Bold',fontWeight:'bold',color:'grey'}} align="left">Comments</p>
       </div>
-      <div className='col-12'>
+      <div className='col-12' onMouseLeave={(e)=>{onFieldBlur(e)}}>
         
         <ReactQuill
             theme="snow" // Specify the theme ('snow' or 'bubble')
             value={FormData?.RP_DrC_Comments}
             onChange={(value)=>{ setFormData({...FormData, ['RP_DrC_Comments']: value })}}
-            onBlur={(e)=>{onFieldBlur(e)}}
             modules={modules}
             formats={formats}
             style={{
@@ -1549,20 +1546,21 @@ const Risk = ({user, LogOut}) => {
         </>: 
          null
     }
-    
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.RP_LC_FinancialSolutions}
-        onChange={(value)=>{ setFormData({...FormData, ['RP_LC_FinancialSolutions']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus1()}}
-        onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}                      
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.RP_LC_FinancialSolutions}
+          onChange={(value)=>{ setFormData({...FormData, ['RP_LC_FinancialSolutions']: value })}}
+          onFocus={(e)=>{backgroundInfo_onFocus1()}}
+          onBlur={(e)=>{backgroundInfo_onBlur1()}}                      
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
@@ -1612,20 +1610,21 @@ const Risk = ({user, LogOut}) => {
         </>: 
          null
     }
-    
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.RP_DiC_FinancialSolutions}
-        onChange={(value)=>{ setFormData({...FormData, ['RP_DiC_FinancialSolutions']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus2()}}
-        onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}                      
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.RP_DiC_FinancialSolutions}
+          onChange={(value)=>{ setFormData({...FormData, ['RP_DiC_FinancialSolutions']: value })}}
+          onFocus={(e)=>{backgroundInfo_onFocus2()}}
+          onBlur={(e)=>{backgroundInfo_onBlur2()}}                      
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
@@ -1676,20 +1675,21 @@ const Risk = ({user, LogOut}) => {
         </>: 
          null
     }
-    
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.RP_DrC_FinancialSolutions}
-        onChange={(value)=>{ setFormData({...FormData, ['RP_DrC_FinancialSolutions']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus3()}}
-        onBlur={(e)=>{backgroundInfo_onBlur3();onFieldBlur(e)}}                      
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.RP_DrC_FinancialSolutions}
+          onChange={(value)=>{ setFormData({...FormData, ['RP_DrC_FinancialSolutions']: value })}}
+          onFocus={(e)=>{backgroundInfo_onFocus3()}}
+          onBlur={(e)=>{backgroundInfo_onBlur3()}}                      
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
@@ -1746,20 +1746,21 @@ const Risk = ({user, LogOut}) => {
         </>: 
          null
     }
-    
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.RP_AltS_1}
-        onChange={(value)=>{ setFormData({...FormData, ['RP_AltS_1']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus4()}}
-        onBlur={(e)=>{backgroundInfo_onBlur4();onFieldBlur(e)}}                      
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.RP_AltS_1}
+          onChange={(value)=>{ setFormData({...FormData, ['RP_AltS_1']: value })}}
+          onFocus={(e)=>{backgroundInfo_onFocus4()}}
+          onBlur={(e)=>{backgroundInfo_onBlur4()}}                      
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor 
@@ -1807,20 +1808,21 @@ const Risk = ({user, LogOut}) => {
         </>: 
          null
     }
-    
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.RP_AltS_2}
-        onChange={(value)=>{ setFormData({...FormData, ['RP_AltS_2']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus5();onFieldBlur(e)}}
-        onBlur={(e)=>{backgroundInfo_onBlur5();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={'2. Identify the type of product or product provider which was considered but not selected and motivate.'}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.RP_AltS_2}
+          onChange={(value)=>{ setFormData({...FormData, ['RP_AltS_2']: value })}}
+          onFocus={(e)=>{backgroundInfo_onFocus5()}}
+          onBlur={(e)=>{backgroundInfo_onBlur5()}}
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder={'2. Identify the type of product or product provider which was considered but not selected and motivate.'}
+      />
+    </div>
     <br/> 
     <br/> 
     
@@ -1868,19 +1870,21 @@ const Risk = ({user, LogOut}) => {
         </>: 
          null
     }
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.RP_AltS_3}
-        onChange={(value)=>{ setFormData({...FormData, ['RP_AltS_3']: value })}}                
-        onFocus={(e)=>{backgroundInfo_onFocus6()}}
-        onBlur={(e)=>{backgroundInfo_onBlur6();onFieldBlur(e)}}                      
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder='3. Identify the type of product or product provider which was considered but not selected and motivate.'
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+          theme="snow" // Specify the theme ('snow' or 'bubble')
+          value={FormData?.RP_AltS_3}
+          onChange={(value)=>{ setFormData({...FormData, ['RP_AltS_3']: value })}}                
+          onFocus={(e)=>{backgroundInfo_onFocus6()}}
+          onBlur={(e)=>{backgroundInfo_onBlur6()}}                      
+          modules={modules}
+          formats={formats}
+          style={{
+              height: '300px', // Set the desired height here
+          }}
+          placeholder='3. Identify the type of product or product provider which was considered but not selected and motivate.'
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor 
@@ -2375,19 +2379,22 @@ const Risk = ({user, LogOut}) => {
                   </>: 
                   null
               }
-              <ReactQuill
-                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                  value={key?.ProductReasons}
-                  onChange={(value)=>{ on_ProductTaken_Value_Change("ProductReasons", i, value)}}             
-                  onFocus={(e)=>{backgroundInfo_onFocus7()}}
-                  onBlur={(e)=>{backgroundInfo_onBlur7();onFieldBlur(e)}} 
-                  modules={modules}
-                  formats={formats}
-                  style={{
-                      height: '300px', // Set the desired height here
-                  }}
-                  placeholder= 'Motivate why the chosen product was recommended to best suit your client’s needs.'
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.ProductReasons}
+                    onChange={(value)=>{ on_ProductTaken_Value_Change("ProductReasons", i, value)}}             
+                    onFocus={(e)=>{backgroundInfo_onFocus7()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur7()}} 
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder= 'Motivate why the chosen product was recommended to best suit your client’s needs.'
+                />
+              </div>
+
               <br/> 
               <br/> 
               {/* <Editor
@@ -2435,20 +2442,21 @@ const Risk = ({user, LogOut}) => {
                   </>: 
                   null
               }              
-              
-              <ReactQuill
-                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                  value={key?.ProductMaterialAspects}
-                  onChange={(value)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, value)}}    
-                  onFocus={(e)=>{backgroundInfo_onFocus8()}}
-                  onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}}                      
-                  modules={modules}
-                  formats={formats}
-                  style={{
-                      height: '300px', // Set the desired height here
-                  }}
-                  placeholder= 'Explain any deviations from your recommendation and the implications thereof.'
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.ProductMaterialAspects}
+                    onChange={(value)=>{ on_ProductTaken_Value_Change("ProductMaterialAspects", i, value)}}    
+                    onFocus={(e)=>{backgroundInfo_onFocus8()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur8()}}                      
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder= 'Explain any deviations from your recommendation and the implications thereof.'
+                />
+              </div>
               <br/> 
               <br/> 
               {/* <Editor 
@@ -2492,20 +2500,21 @@ const Risk = ({user, LogOut}) => {
                   </>: 
                   null
               }     
-              
-              <ReactQuill
-                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                  value={key?.ProductDetails}
-                  onChange={(value)=>{ on_ProductTaken_Value_Change("ProductDetails", i, value)}}             
-                  onFocus={(e)=>{backgroundInfo_onFocus9()}}
-                  onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}} 
-                  modules={modules}
-                  formats={formats}
-                  style={{
-                      height: '300px', // Set the desired height here
-                  }}
-                  placeholder= 'The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?'
-              />       
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.ProductDetails}
+                    onChange={(value)=>{ on_ProductTaken_Value_Change("ProductDetails", i, value)}}             
+                    onFocus={(e)=>{backgroundInfo_onFocus9()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur9()}} 
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder= 'The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?'
+                />       
+              </div>
               <br/> 
               <br/>               
               {/* <Editor 
@@ -2555,19 +2564,21 @@ const Risk = ({user, LogOut}) => {
                   </>: 
                   null
               }
-              <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={key?.ExecutorFee}
-                onChange={(value)=>{ on_ProductTaken_Value_Change("ExecutorFee", i, value )}}
-                onFocus={(e)=>{backgroundInfo_onFocus10()}}
-                onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}        
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                  }}
-                placeholder={`Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n`}               
-              />
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={key?.ExecutorFee}
+                  onChange={(value)=>{ on_ProductTaken_Value_Change("ExecutorFee", i, value )}}
+                  onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur10()}}        
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                    }}
+                  placeholder={`Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n`}               
+                />
+              </div>
               <br/> 
               <br/>      
               {/* <Editor
@@ -2613,20 +2624,21 @@ const Risk = ({user, LogOut}) => {
                   </>: 
                   null
               }
-              
-              <ReactQuill
-                  theme="snow" // Specify the theme ('snow' or 'bubble')
-                  value={key?.NominationOfBeneficiaries}
-                  onChange={(value)=>{ on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, value)}}             
-                  onFocus={(e)=>{backgroundInfo_onFocus11()}}
-                  onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}} 
-                  modules={modules}
-                  formats={formats}
-                  style={{
-                      height: '300px', // Set the desired height here
-                  }}
-                  placeholder= 'Record discussion with regard to nomination of beneficiaries or cessionaries'
-              />  
+              <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.NominationOfBeneficiaries}
+                    onChange={(value)=>{ on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, value)}}             
+                    onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur11()}} 
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    placeholder= 'Record discussion with regard to nomination of beneficiaries or cessionaries'
+                />  
+              </div>
               <br/> 
               <br/> 
               {/* <Editor 
@@ -2676,25 +2688,27 @@ const Risk = ({user, LogOut}) => {
                   </>: 
                   null
               }
-            <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={key?.InformationExplained}
-                onChange={(value)=>{ on_ProductTaken_Value_Change("InformationExplained", i, value)}}             
-                onFocus={(e)=>{backgroundInfo_onFocus12()}}
-                onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}} 
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                placeholder={
-                  `Discuss the following information which has been explained to client. \n
-                  General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.) \n
-                  Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings) \n
-                  Waiting periods \n
-                  Cooling off period`
-                }
-            />  
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+              <ReactQuill
+                  theme="snow" // Specify the theme ('snow' or 'bubble')
+                  value={key?.InformationExplained}
+                  onChange={(value)=>{ on_ProductTaken_Value_Change("InformationExplained", i, value)}}             
+                  onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                  onBlur={(e)=>{backgroundInfo_onBlur12()}} 
+                  modules={modules}
+                  formats={formats}
+                  style={{
+                      height: '300px', // Set the desired height here
+                  }}
+                  placeholder={
+                    `Discuss the following information which has been explained to client. \n
+                    General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.) \n
+                    Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings) \n
+                    Waiting periods \n
+                    Cooling off period`
+                  }
+              />  
+            </div>
             <br/> 
             <br/> 
             {/* <Editor 

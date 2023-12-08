@@ -448,20 +448,22 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                             null
                                         }
                                         {/* <textarea id="letter_of_introduction" required={FormData['clientLetterOfIntroduction'] === 0 ? true : false} value={FormData['clientLetterOfIntroductionReason']} maxLength={256} name="clientLetterOfIntroductionReason"  onChange={e => onChange(e)} onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                                        <ReactQuill
-                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                            value={FormData?.clientLetterOfIntroductionReason}
-                                            onChange={(value)=>{ setFormData({...FormData, ['clientLetterOfIntroductionReason']: value })}}
-                                            onFocus={(e)=>{letter_of_introduction_onFocus();onFieldBlur(e)}}
-                                            onBlur={(e)=>{letter_of_introduction_onBlur();onFieldBlur(e)}}
-                                            modules={modules}
-                                            formats={formats}
-                                            style={{
-                                                height: '300px', // Set the desired height here
-                                                
-                                            }}
-                                            placeholder="If no, motivate"
-                                        />
+                                        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                            <ReactQuill
+                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                value={FormData?.clientLetterOfIntroductionReason}
+                                                onChange={(value)=>{ setFormData({...FormData, ['clientLetterOfIntroductionReason']: value })}}
+                                                onFocus={(e)=>{letter_of_introduction_onFocus()}}
+                                                onBlur={(e)=>{letter_of_introduction_onBlur()}}
+                                                modules={modules}
+                                                formats={formats}
+                                                style={{
+                                                    height: '300px', // Set the desired height here
+                                                    
+                                                }}
+                                                placeholder="If no, motivate"
+                                            />
+                                        </div>
                                         {/* <Editor
                                             onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
                                             value={FormData['clientLetterOfIntroductionReason']}
@@ -553,20 +555,22 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                             null
                                         }
                                         {/* <textarea id="authority_access" required={FormData['clientLetterOfIntroductionAccess'] === 0 ? true : false}  maxLength={256} name="clientLetterOfIntroductionAccessReasonReason" value={FormData['clientLetterOfIntroductionAccessReason']}  onChange={e => onChange(e)} onFocus={letter_of_introduction_access_onFocusReason} onBlur={letter_of_introduction_access_onBlurReason} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                                        <ReactQuill
-                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                            value={FormData?.clientLetterOfIntroductionAccessReason}
-                                            onChange={(value)=>{ setFormData({...FormData, ['clientLetterOfIntroductionAccessReason']: value })}}
-                                            onFocus={(e)=>{setletterOfIntroductionAccessVisibility(true);onFieldBlur(e)}}
-                                            onBlur={(e)=>{setletterOfIntroductionAccessVisibility(false);onFieldBlur(e)}}
-                                            modules={modules}
-                                            formats={formats}
-                                            style={{
-                                                height: '300px', // Set the desired height here
-                                                
-                                            }}
-                                            placeholder="If no, motivate"
-                                        />
+                                        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                            <ReactQuill
+                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                value={FormData?.clientLetterOfIntroductionAccessReason}
+                                                onChange={(value)=>{ setFormData({...FormData, ['clientLetterOfIntroductionAccessReason']: value })}}
+                                                onFocus={(e)=>{setletterOfIntroductionAccessVisibility(true)}}
+                                                onBlur={(e)=>{setletterOfIntroductionAccessVisibility(false)}}
+                                                modules={modules}
+                                                formats={formats}
+                                                style={{
+                                                    height: '300px', // Set the desired height here
+                                                    
+                                                }}
+                                                placeholder="If no, motivate"
+                                            />
+                                        </div>
                                         {/* <Editor
                                             onInit={(evt, editor) => compulsoryBEditorRef.current = editor}
                                             value={FormData['clientLetterOfIntroductionAccessReason']}
@@ -677,20 +681,22 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                             null
                                         }
                                         {/* <textarea  id="provided_identity" required={FormData['clientFica'] === 0 ? true : false} value={FormData['clientFicaReason']}  maxLength={256} name="clientFicaReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                                        <ReactQuill
-                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                            value={FormData?.clientFicaReason}
-                                            onChange={(value)=>{ setFormData({...FormData, ['clientFicaReason']: value })}}
-                                            onFocus={(e)=>{fica_onFocus();onFieldBlur(e)}}
-                                            onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}
-                                            modules={modules}
-                                            formats={formats}
-                                            style={{
-                                                height: '300px', // Set the desired height here
-                                                
-                                            }}
-                                            placeholder="If no, motivate"
-                                        />
+                                        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                            <ReactQuill
+                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                value={FormData?.clientFicaReason}
+                                                onChange={(value)=>{ setFormData({...FormData, ['clientFicaReason']: value })}}
+                                                onFocus={(e)=>{fica_onFocus()}}
+                                                onBlur={(e)=>{fica_onBlur()}}
+                                                modules={modules}
+                                                formats={formats}
+                                                style={{
+                                                    height: '300px', // Set the desired height here
+                                                    
+                                                }}
+                                                placeholder="If no, motivate"
+                                            />
+                                        </div>
                                         {/* <Editor
                                             onInit={(evt, editor) => FICAEditorRef.current = editor}
                                             value={FormData['clientFicaReason']}
@@ -786,20 +792,22 @@ const RecordOfAdvice = ({user, LogOut}) => {
                                             null
                                         }
                                         {/* <textarea  id="provided_identity" required={FormData['clientReplacement'] === 0 ? true : false} value={FormData['clientReplacementReason']}  maxLength={256} name="clientReplacementReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */}
-                                        <ReactQuill
-                                            theme="snow" // Specify the theme ('snow' or 'bubble')
-                                            value={FormData?.clientReplacementReason}
-                                            onChange={(value)=>{ setFormData({...FormData, ['clientReplacementReason']: value })}}
-                                            onFocus={(e)=>{fica_onFocus();onFieldBlur(e)}}
-                                            onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}
-                                            modules={modules}
-                                            formats={formats}
-                                            style={{
-                                                height: '300px', // Set the desired height here
-                                                
-                                            }}
-                                            placeholder="If no, motivate"
-                                        />
+                                        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                            <ReactQuill
+                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                value={FormData?.clientReplacementReason}
+                                                onChange={(value)=>{ setFormData({...FormData, ['clientReplacementReason']: value })}}
+                                                onFocus={(e)=>{fica_onFocus();onFieldBlur(e)}}
+                                                onBlur={(e)=>{fica_onBlur();onFieldBlur(e)}}
+                                                modules={modules}
+                                                formats={formats}
+                                                style={{
+                                                    height: '300px', // Set the desired height here
+                                                    
+                                                }}
+                                                placeholder="If no, motivate"
+                                            />
+                                        </div>
                                         {/* <Editor
                                             onInit={(evt, editor) => FICAEditorRef.current = editor}
                                             value={FormData['clientReplacementReason']}
@@ -898,24 +906,26 @@ const RecordOfAdvice = ({user, LogOut}) => {
                             {/* <NavLink to="/remaining_form" className='btn btn-primary' value="Next" /> */}
                             {/* <NavLink to="/remaining_form" className='btn btn-primary'>Next</NavLink> */}
                             <br />
-                            <ReactQuill
-                                theme="snow" // Specify the theme ('snow' or 'bubble')
-                                value={FormData?.clientBackgroundInfo}
-                                onChange={(value)=>{ setFormData({...FormData, ['clientBackgroundInfo']: value })}}
-                                onFocus={(e)=>{backgroundInfo_onFocus();onFieldBlur(e)}}
-                                onBlur={(e)=>{backgroundInfo_onBlur();onFieldBlur(e)}}
-                                modules={modules}
-                                formats={formats}
-                                style={{
-                                    height: '300px', // Set the desired height here
-                                }}
-                                placeholder={
-                                    `                       Provide a detailed description of the client’s:
-                                    •	current personal circumstances,
-                                    •	needs that have been identified, 
-                                    •	and relevant information 
-                                that formed the basis for the financial solution recommended`}
-                            />
+                            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                <ReactQuill
+                                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                                    value={FormData?.clientBackgroundInfo}
+                                    onChange={(value)=>{ setFormData({...FormData, ['clientBackgroundInfo']: value })}}
+                                    onFocus={(e)=>{backgroundInfo_onFocus()}}
+                                    onBlur={(e)=>{backgroundInfo_onBlur()}}
+                                    modules={modules}
+                                    formats={formats}
+                                    style={{
+                                        height: '300px', // Set the desired height here
+                                    }}
+                                    placeholder={
+                                        `                       Provide a detailed description of the client’s:
+                                        •	current personal circumstances,
+                                        •	needs that have been identified, 
+                                        •	and relevant information 
+                                    that formed the basis for the financial solution recommended`}
+                                />
+                            </div>
                             {/* <Editor
                                 onInit={(evt, editor) => backgroundEditorRef.current = editor}
                                 value={FormData['clientBackgroundInfo']}

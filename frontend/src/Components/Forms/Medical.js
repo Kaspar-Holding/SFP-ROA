@@ -662,24 +662,25 @@ const Medical = ({user, LogOut}) => {
           •	and relevant information 
       that formed the basis for the financial solution recommended`}  aria-describedby=""  ></textarea> */}
       
-      
-      <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.BackInfo}
-          onChange={(value)=>{ setFormData({...FormData, ['BackInfo']: value })}}
-          onFocus={(e)=>{backgroundInfo_onFocus()}}
-          onBlur={(e)=>{backgroundInfo_onBlur();onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Provide a detailed description of the client’s:
-              •	current personal circumstances,
-              •	needs that have been identified, 
-              •	and relevant information 
-          that formed the basis for the financial solution recommended`}
-      />
+      <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.BackInfo}
+            onChange={(value)=>{ setFormData({...FormData, ['BackInfo']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus()}}
+            onBlur={(e)=>{backgroundInfo_onBlur()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Provide a detailed description of the client’s:
+                •	current personal circumstances,
+                •	needs that have been identified, 
+                •	and relevant information 
+            that formed the basis for the financial solution recommended`}
+        />
+      </div>
       <br/> 
       <br/> 
       {/* <Editor
@@ -1295,19 +1296,20 @@ const Medical = ({user, LogOut}) => {
               </div>
               <div className="col-12">
                 {/* <textarea maxLength={1000} spellCheck="true"  id="SectionD_SnF" name='SectionD_SnF' value={FormData['SectionD_SnF']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="Motivation for recommendations – State why the product purchased will suit the client"  aria-describedby="" style={{height:"150px"}}/> */}
-                
-                <ReactQuill
-                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                    value={FormData?.SectionD_SnF}
-                    onChange={(value)=>{ setFormData({...FormData, ['SectionD_SnF']: value })}}
-                    onBlur={(e)=>{onFieldBlur(e)}}
-                    modules={modules}
-                    formats={formats}
-                    style={{
-                        height: '300px', // Set the desired height here
-                    }}
-                    placeholder={`Motivation for recommendations – State why the product purchased will suit the client`}
-                />
+                <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                  <ReactQuill
+                      theme="snow" // Specify the theme ('snow' or 'bubble')
+                      value={FormData?.SectionD_SnF}
+                      onChange={(value)=>{ setFormData({...FormData, ['SectionD_SnF']: value })}}
+                      // onBlur={(e)=>{onFieldBlur(e)}}
+                      modules={modules}
+                      formats={formats}
+                      style={{
+                          height: '300px', // Set the desired height here
+                      }}
+                      placeholder={`Motivation for recommendations – State why the product purchased will suit the client`}
+                  />
+                </div>
                 <br/> 
                 <br/> 
                 {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -1352,19 +1354,20 @@ const Medical = ({user, LogOut}) => {
       } style={{fontSize:'16px',fontFamily:'Arial Bold',fontWeight:'bold'}} > <b>IMPORTANT INFORMATION HIGHLIGHTED TO YOU</b></div>
     <hr/>
     {/* <textarea maxLength={1000} spellCheck="true"  id="SectionE_PMB" name='SectionE_PMB' value={FormData['SectionE_PMB']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc."  aria-describedby="" style={{height:"80px"}}/> */}
-    
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.SectionE_PMB}
-          onChange={(value)=>{ setFormData({...FormData, ['SectionE_PMB']: value })}}
-          onBlur={(e)=>{onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+      <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.SectionE_PMB}
+            onChange={(value)=>{ setFormData({...FormData, ['SectionE_PMB']: value })}}
+            // onBlur={(e)=>{onFieldBlur(e)}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`PMB, waiting periods, exclusions, late joiner penalties, tax deductibility, consequences of replacement, etc.`}
+      />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor

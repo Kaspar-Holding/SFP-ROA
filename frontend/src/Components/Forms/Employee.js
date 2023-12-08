@@ -971,19 +971,21 @@ const Employee = ({user, LogOut}) =>{
                                     </>: 
                                     null
                                 }
-                                <ReactQuill
-                                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                                    value={FormData?.EB_BusB_CoverDetails}
-                                    onChange={(value)=>{ setFormData({...FormData, ['EB_BusB_CoverDetails']: value })}}
-                                    onFocus={(e)=>{backgroundInfo_onFocus1()}}
-                                    onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}
-                                    modules={modules}
-                                    formats={formats}
-                                    style={{
-                                        height: '300px', // Set the desired height here
-                                    }}
-                                    placeholder="Please enter the details here"
-                                />
+                                <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                    <ReactQuill
+                                        theme="snow" // Specify the theme ('snow' or 'bubble')
+                                        value={FormData?.EB_BusB_CoverDetails}
+                                        onChange={(value)=>{ setFormData({...FormData, ['EB_BusB_CoverDetails']: value })}}
+                                        onFocus={(e)=>{backgroundInfo_onFocus1()}}
+                                        onBlur={(e)=>{backgroundInfo_onBlur1()}}
+                                        modules={modules}
+                                        formats={formats}
+                                        style={{
+                                            height: '300px', // Set the desired height here
+                                        }}
+                                        placeholder="Please enter the details here"
+                                    />
+                                </div>
                                 <br/> 
                                 <br/> 
                                 {/* <Editor
@@ -991,7 +993,7 @@ const Employee = ({user, LogOut}) =>{
                                     // setFormData({...FormData, [e.target.name]: e.target.value})
                                     onEditorChange={(e)=>{ setFormData({...FormData, ["EB_BusB_CoverDetails"]: e}) }}
                                     onFocus={(e)=>{backgroundInfo_onFocus1()}}
-                                    onBlur={(e)=>{backgroundInfo_onBlur1();onFieldBlur(e)}}
+                                    onBlur={(e)=>{backgroundInfo_onBlur1()}}
                                     init={{
                                         selector: "textarea",
                                         browser_spellcheck : true,
@@ -2022,27 +2024,28 @@ Record the client's instructions, deviations and implications thereof.
         
         
         `}  aria-describedby=""  ></textarea> */}
-        
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.EB_BusRB_AccidentBenefitReason}
-        onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_AccidentBenefitReason']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus2()}}
-        onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.EB_BusRB_AccidentBenefitReason}
+            onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_AccidentBenefitReason']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus2()}}
+            onBlur={(e)=>{backgroundInfo_onBlur2()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Explain the reasons why life cover benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['EB_BusRB_AccidentBenefitReason']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_AccidentBenefitReason']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus2()}}
-        onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur2()}}                      
         name="EB_BusRB_AccidentBenefitReason"
         init={{
             selector: "textarea",
@@ -2094,27 +2097,28 @@ Record the client's instructions, deviations and implications thereof.
         
         
         `}  aria-describedby=""  ></textarea> */}
-      
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.EB_BusRB_DiC_Reason}
-        onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_DiC_Reason']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus4()}}
-        onBlur={(e)=>{backgroundInfo_onBlur4();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`Explain the reasons why disability benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.EB_BusRB_DiC_Reason}
+            onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_DiC_Reason']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus4()}}
+            onBlur={(e)=>{backgroundInfo_onBlur4()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Explain the reasons why disability benefits were recommended to satisfy this need. \nRecord the client's instructions, deviations and implications thereof.`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['EB_BusRB_DiC_Reason']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DiC_Reason']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus2()}}
-        onBlur={(e)=>{backgroundInfo_onBlur2();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur2()}}                      
         name="EB_BusRB_DiC_Reason"
         init={{
             selector: "textarea",
@@ -2168,27 +2172,29 @@ Record the client's instructions, deviations and implications thereof.
             
         
         `}  aria-describedby=""  ></textarea> */}
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.EB_BusRB_DrC_Reason}
-        onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Reason']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus3()}}
-        onBlur={(e)=>{backgroundInfo_onBlur3();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`Explain the reasons why dread disease cover was recommended to satisfy this need. 
-        Record the client's instructions, deviations and implications thereof.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.EB_BusRB_DrC_Reason}
+            onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Reason']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus3()}}
+            onBlur={(e)=>{backgroundInfo_onBlur3()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Explain the reasons why dread disease cover was recommended to satisfy this need. 
+            Record the client's instructions, deviations and implications thereof.`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['EB_BusRB_DrC_Reason']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Reason']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus3()}}
-        onBlur={(e)=>{backgroundInfo_onBlur3();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur3()}}                      
         name="EB_BusRB_DrC_Reason"
         init={{
             selector: "textarea",
@@ -2236,26 +2242,28 @@ Record the client's instructions, deviations and implications thereof.
 
 
         `}  aria-describedby=""  ></textarea> */}
-        <ReactQuill
-            theme="snow" // Specify the theme ('snow' or 'bubble')
-            value={FormData?.EB_BusRB_DrC_Summary}
-            onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Summary']: value })}}
-            onFocus={(e)=>{backgroundInfo_onFocus5()}}
-            onBlur={(e)=>{backgroundInfo_onBlur5();onFieldBlur(e)}}
-            modules={modules}
-            formats={formats}
-            style={{
-                height: '300px', // Set the desired height here
-            }}
-            placeholder={`Summary of recommendations to address your identified needs.`}
-        />
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={FormData?.EB_BusRB_DrC_Summary}
+                onChange={(value)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Summary']: value })}}
+                onFocus={(e)=>{backgroundInfo_onFocus5()}}
+                onBlur={(e)=>{backgroundInfo_onBlur5()}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                placeholder={`Summary of recommendations to address your identified needs.`}
+            />
+        </div>
         <br/> 
         <br/> 
         {/* <Editor
         value={FormData['EB_BusRB_DrC_Summary']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['EB_BusRB_DrC_Summary']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus5()}}
-        onBlur={(e)=>{backgroundInfo_onBlur5();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur5()}}                      
         name="EB_BusRB_DrC_Summary"
         init={{
             selector: "textarea",

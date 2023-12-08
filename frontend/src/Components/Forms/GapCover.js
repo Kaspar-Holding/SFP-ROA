@@ -374,18 +374,20 @@ const GapCover = ({user, LogOut}) => {
                         </div>
                         <div className="col-12">
                             {/* <textarea maxLength={1000} spellCheck="true" id="GP_Benefits" onChange={(e) => {onChange(e)}} value={FormData['GP_Benefits']}  name="GP_Benefits"  className="form-control" placeholder="Details"  aria-describedby="" style={{width:"900px",height:"80px"}} /> */}
-                            <ReactQuill
-                                theme="snow" // Specify the theme ('snow' or 'bubble')
-                                value={FormData?.GP_Benefits}
-                                onChange={(value)=>{ setFormData({...FormData, ['GP_Benefits']: value })}}
-                                onBlur={(e)=>{onFieldBlur(e)}}
-                                modules={modules}
-                                formats={formats}
-                                style={{
-                                    height: '300px', // Set the desired height here
-                                }}
-                                placeholder='Details'
-                            />
+                            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                <ReactQuill
+                                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                                    value={FormData?.GP_Benefits}
+                                    onChange={(value)=>{ setFormData({...FormData, ['GP_Benefits']: value })}}
+                                    // onBlur={(e)=>{onFieldBlur(e)}}
+                                    modules={modules}
+                                    formats={formats}
+                                    style={{
+                                        height: '300px', // Set the desired height here
+                                    }}
+                                    placeholder='Details'
+                                />
+                            </div>
                             <br/> 
                             <br/> 
                             {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -820,18 +822,20 @@ const GapCover = ({user, LogOut}) => {
                         </div>
                         <div className="col-12">
                             {/* <textarea maxLength={1000} spellCheck="true"  id="GP_Other_Exclusions" onChange={(e) => {onChange(e)}} value={FormData['GP_Other_Exclusions']}  name="GP_Other_Exclusions" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  /> */}
-                            <ReactQuill
-                                theme="snow" // Specify the theme ('snow' or 'bubble')
-                                value={FormData?.GP_Other_Exclusions}
-                                onChange={(value)=>{ setFormData({...FormData, ['GP_Other_Exclusions']: value })}}
-                                onBlur={(e)=>{onFieldBlur(e)}}
-                                modules={modules}
-                                formats={formats}
-                                style={{
-                                    height: '300px', // Set the desired height here
-                                }}
-                                placeholder='Discuss other exclusions'
-                            />
+                            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                <ReactQuill
+                                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                                    value={FormData?.GP_Other_Exclusions}
+                                    onChange={(value)=>{ setFormData({...FormData, ['GP_Other_Exclusions']: value })}}
+                                    // onBlur={(e)=>{onFieldBlur(e)}}
+                                    modules={modules}
+                                    formats={formats}
+                                    style={{
+                                        height: '300px', // Set the desired height here
+                                    }}
+                                    placeholder='Discuss other exclusions'
+                                />
+                            </div>
                             <br/> 
                             <br/> 
                             {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}
@@ -870,18 +874,20 @@ const GapCover = ({user, LogOut}) => {
                         </div>
                         <div className="col-12">
                             {/* <textarea maxLength={1000} spellCheck="true"  id="GP_GeneralComments" onChange={(e) => {onChange(e)}} value={FormData['GP_GeneralComments']}  name="GP_GeneralComments" className="form-control" placeholder="Discuss other exclusions"  aria-describedby=""  /> */}
-                            <ReactQuill
-                                theme="snow" // Specify the theme ('snow' or 'bubble')
-                                value={FormData?.GP_GeneralComments}
-                                onChange={(value)=>{ setFormData({...FormData, ['GP_GeneralComments']: value })}}
-                                onBlur={(e)=>{onFieldBlur(e)}}
-                                modules={modules}
-                                formats={formats}
-                                style={{
-                                    height: '300px', // Set the desired height here
-                                }}
-                                placeholder="Discuss other exclusions"
-                            />
+                            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                                <ReactQuill
+                                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                                    value={FormData?.GP_GeneralComments}
+                                    onChange={(value)=>{ setFormData({...FormData, ['GP_GeneralComments']: value })}}
+                                    onBlur={(e)=>{onFieldBlur(e)}}
+                                    modules={modules}
+                                    formats={formats}
+                                    style={{
+                                        height: '300px', // Set the desired height here
+                                    }}
+                                    placeholder="Discuss other exclusions"
+                                />
+                            </div>
                             <br/> 
                             <br/> 
                             {/* <Editor onBlur={(e)=>{onFieldBlur(e)}}

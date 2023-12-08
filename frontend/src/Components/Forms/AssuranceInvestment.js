@@ -794,26 +794,28 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onFocus={backgroundInfo_onFocus14}
         onBlur={backgroundInfo_onBlur14}
         placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}  aria-describedby=""  ></textarea> */}
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.AI_TermDetails}
-          onChange={(value)=>{ setFormData({...FormData, ['AI_TermDetails']: value })}}
-          onFocus={(e)=>{backgroundInfo_onFocus14()}}
-          onBlur={(e)=>{backgroundInfo_onBlur14();onFieldBlur(e)}}     
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AI_TermDetails}
+            onChange={(value)=>{ setFormData({...FormData, ['AI_TermDetails']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus14()}}
+            onBlur={(e)=>{backgroundInfo_onBlur14()}}     
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['AI_TermDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_TermDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus14()}}
-        onBlur={(e)=>{backgroundInfo_onBlur14();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur14()}}                      
         name="AI_TermDetails"
         init={{
             selector: "textarea",
@@ -909,26 +911,28 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onBlur={backgroundInfo_onBlur15}
         placeholder={
 `Notes`}  aria-describedby=""  ></textarea> */}
-    <ReactQuill
-          theme="snow" // Specify the theme ('snow' or 'bubble')
-          value={FormData?.AI_PremiumTypeDetails}
-          onChange={(value)=>{ setFormData({...FormData, ['AI_PremiumTypeDetails']: value })}}
-          onFocus={(e)=>{backgroundInfo_onFocus15()}}
-          onBlur={(e)=>{backgroundInfo_onBlur15();onFieldBlur(e)}}
-          modules={modules}
-          formats={formats}
-          style={{
-              height: '300px', // Set the desired height here
-          }}
-          placeholder={`Notes`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AI_PremiumTypeDetails}
+            onChange={(value)=>{ setFormData({...FormData, ['AI_PremiumTypeDetails']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus15()}}
+            onBlur={(e)=>{backgroundInfo_onBlur15()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Notes`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['AI_PremiumTypeDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_PremiumTypeDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus15()}}
-        onBlur={(e)=>{backgroundInfo_onBlur15();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur15()}}                      
         name="AI_PremiumTypeDetails"
         init={{
             selector: "textarea",
@@ -986,26 +990,28 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onBlur={backgroundInfo_onBlur16}
         placeholder={
 `Notes on discussion with client concerning the investment strategy.`}  aria-describedby=""  ></textarea> */}
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.AI_StrategyDetails}
-        onChange={(value)=>{ setFormData({...FormData, ['AI_StrategyDetails']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus16()}}
-        onBlur={(e)=>{backgroundInfo_onBlur16();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`Notes on discussion with client concerning the investment strategy`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AI_StrategyDetails}
+            onChange={(value)=>{ setFormData({...FormData, ['AI_StrategyDetails']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus16()}}
+            onBlur={(e)=>{backgroundInfo_onBlur16()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Notes on discussion with client concerning the investment strategy`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['AI_StrategyDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_StrategyDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus16()}}
-        onBlur={(e)=>{backgroundInfo_onBlur16();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur16()}}                      
         name="AI_StrategyDetails"
         init={{
             selector: "textarea",
@@ -1063,26 +1069,28 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onBlur={backgroundInfo_onBlur17}
         placeholder={
 `Notes on discussion with client concerning return expectations.`}  aria-describedby=""  ></textarea> */}
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.AI_ReturnRequiredDetails}
-        onChange={(value)=>{ setFormData({...FormData, ['AI_ReturnRequiredDetails']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus17()}}
-        onBlur={(e)=>{backgroundInfo_onBlur17();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`Notes on discussion with client concerning return expectations`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AI_ReturnRequiredDetails}
+            onChange={(value)=>{ setFormData({...FormData, ['AI_ReturnRequiredDetails']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus17()}}
+            onBlur={(e)=>{backgroundInfo_onBlur17()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Notes on discussion with client concerning return expectations`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['AI_ReturnRequiredDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_ReturnRequiredDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus17()}}
-        onBlur={(e)=>{backgroundInfo_onBlur17();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur17()}}                      
         name="AI_ReturnRequiredDetails"
         init={{
             selector: "textarea",
@@ -1141,26 +1149,28 @@ const AssuranceInvestment = ({user, LogOut}) =>
         onBlur={backgroundInfo_onBlur18}
         placeholder={
 `Notes on the client risk profile..`}  aria-describedby=""  ></textarea> */}
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.AI_RiskProfileDetails}
-        onChange={(value)=>{ setFormData({...FormData, ['AI_RiskProfileDetails']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus18()}}
-        onBlur={(e)=>{backgroundInfo_onBlur18();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        placeholder={`Notes on the client risk profile`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AI_RiskProfileDetails}
+            onChange={(value)=>{ setFormData({...FormData, ['AI_RiskProfileDetails']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus18()}}
+            onBlur={(e)=>{backgroundInfo_onBlur18()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            placeholder={`Notes on the client risk profile`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['AI_RiskProfileDetails']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_RiskProfileDetails']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus18()}}
-        onBlur={(e)=>{backgroundInfo_onBlur18();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur18()}}                      
         name="AI_RiskProfileDetails"
         init={{
             selector: "textarea",
@@ -1443,27 +1453,29 @@ const AssuranceInvestment = ({user, LogOut}) =>
 Quantification of need explaining the reasons why this type of investment vehicle was recommended 
 How it will meet the business need
 `}  aria-describedby=""  ></textarea> */}
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.AI_FinancialSolutions}
-        onChange={(value)=>{ setFormData({...FormData, ['AI_FinancialSolutions']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus19()}}
-        onBlur={(e)=>{backgroundInfo_onBlur19();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        
-        placeholder={`Discuss the outcome of the FNA: Quantification of need explaining the reasons why this type of investment vehicle was recommended  How it will meet the business need`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AI_FinancialSolutions}
+            onChange={(value)=>{ setFormData({...FormData, ['AI_FinancialSolutions']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus19()}}
+            onBlur={(e)=>{backgroundInfo_onBlur19()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            
+            placeholder={`Discuss the outcome of the FNA: Quantification of need explaining the reasons why this type of investment vehicle was recommended  How it will meet the business need`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['AI_FinancialSolutions']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_FinancialSolutions']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus19()}}
-        onBlur={(e)=>{backgroundInfo_onBlur19();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur19()}}                      
         name="AI_FinancialSolutions"
         init={{
             selector: "textarea",
@@ -1519,27 +1531,29 @@ How it will meet the business need
         placeholder={
 `1. Identify the type of product or product provider which was considered but not selected and motivate.
 `}  aria-describedby=""  ></textarea> */}
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.AI_AltS_1}
-        onChange={(value)=>{ setFormData({...FormData, ['AI_AltS_1']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus20()}}
-        onBlur={(e)=>{backgroundInfo_onBlur20();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        
-        placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AI_AltS_1}
+            onChange={(value)=>{ setFormData({...FormData, ['AI_AltS_1']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus20()}}
+            onBlur={(e)=>{backgroundInfo_onBlur20()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            
+            placeholder={`1. Identify the type of product or product provider which was considered but not selected and motivate.`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['AI_AltS_1']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_1']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus20()}}
-        onBlur={(e)=>{backgroundInfo_onBlur20();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur20()}}                      
         name="AI_AltS_1"
         init={{
             selector: "textarea",
@@ -1578,27 +1592,29 @@ How it will meet the business need
         </>: 
          null
     }
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.AI_AltS_2}
-        onChange={(value)=>{ setFormData({...FormData, ['AI_AltS_2']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus21()}}
-        onBlur={(e)=>{backgroundInfo_onBlur21();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        
-        placeholder={`2. Identify the type of product or product provider which was considered but not selected and motivate.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AI_AltS_2}
+            onChange={(value)=>{ setFormData({...FormData, ['AI_AltS_2']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus21()}}
+            onBlur={(e)=>{backgroundInfo_onBlur21()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            
+            placeholder={`2. Identify the type of product or product provider which was considered but not selected and motivate.`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['AI_AltS_2']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_2']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus21()}}
-        onBlur={(e)=>{backgroundInfo_onBlur21();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur21()}}                      
         name="AI_AltS_2"
         init={{
             selector: "textarea",
@@ -1637,27 +1653,29 @@ How it will meet the business need
         </>: 
          null
     }
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={FormData?.AI_AltS_3}
-        onChange={(value)=>{ setFormData({...FormData, ['AI_AltS_3']: value })}}
-        onFocus={(e)=>{backgroundInfo_onFocus21()}}
-        onBlur={(e)=>{backgroundInfo_onBlur21();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        
-        placeholder={`3. Identify the type of product or product provider which was considered but not selected and motivate.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={FormData?.AI_AltS_3}
+            onChange={(value)=>{ setFormData({...FormData, ['AI_AltS_3']: value })}}
+            onFocus={(e)=>{backgroundInfo_onFocus21()}}
+            onBlur={(e)=>{backgroundInfo_onBlur21()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            
+            placeholder={`3. Identify the type of product or product provider which was considered but not selected and motivate.`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={FormData['AI_AltS_3']}
         onEditorChange={(newText)=>{ setFormData({...FormData, ['AI_AltS_3']: newText }) }}
         onFocus={(e)=>{backgroundInfo_onFocus22()}}
-        onBlur={(e)=>{backgroundInfo_onBlur22();onFieldBlur(e)}}                      
+        onBlur={(e)=>{backgroundInfo_onBlur22()}}                      
         name="AI_AltS_3"
         init={{
             selector: "textarea",
@@ -1966,27 +1984,29 @@ o	meeting the investment objectives of the clients
 
 `}  aria-describedby=""  ></textarea> */}
 
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={key?.Portfolio}
-        onChange={(value)=>{ on_ProductTaken_Value_Change("Portfolio", i, value)}}
-        onFocus={(e)=>{backgroundInfo_onFocus23()}}
-        onBlur={(e)=>{backgroundInfo_onBlur23();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        
-        placeholder={`When a wrap fund or a selection of wrap funds is used, motivate and explain. \n Where you have constructed your own portfolio from a selection of funds contained in the SFP Approved Fund List, an analysis (ICE analysis or similar) must be provided: \n illustrating the alignment of the risk profile of the constructed portfolio and that of the investor,\n motivating the constructed portfolio with reference to the following aspects:\n o	correlation;\n o	drawdown;\n o	portfolio return;\n o	meeting the investment objectives of the clients`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.Portfolio}
+            onChange={(value)=>{ on_ProductTaken_Value_Change("Portfolio", i, value)}}
+            onFocus={(e)=>{backgroundInfo_onFocus23()}}
+            onBlur={(e)=>{backgroundInfo_onBlur23()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            
+            placeholder={`When a wrap fund or a selection of wrap funds is used, motivate and explain. \n Where you have constructed your own portfolio from a selection of funds contained in the SFP Approved Fund List, an analysis (ICE analysis or similar) must be provided: \n illustrating the alignment of the risk profile of the constructed portfolio and that of the investor,\n motivating the constructed portfolio with reference to the following aspects:\n o	correlation;\n o	drawdown;\n o	portfolio return;\n o	meeting the investment objectives of the clients`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={key.Portfolio}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("Portfolio", i, newText)}}
         onFocus={(e)=>{backgroundInfo_onFocus23()}}
-        onBlur={(e)=>{backgroundInfo_onBlur23();onFieldBlur(e)}} 
+        onBlur={(e)=>{backgroundInfo_onBlur23()}} 
         name="Portfolio"                     
         init={{
             selector: "textarea",
@@ -2285,27 +2305,29 @@ o	meeting the investment objectives of the clients
                 placeholder={`Define Other Source of Funds.
                 
                 `}  aria-describedby=""  ></textarea> */}
-            <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={key?.SourceOfFundsDetail}
-                onChange={(value)=>{ on_ProductTaken_Value_Change("SourceOfFundsDetail", i, value)}}
-                onFocus={(e)=>{backgroundInfo_onFocus10_1()}}
-                onBlur={(e)=>{backgroundInfo_onBlur10_1();onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                
-                placeholder={`Define Other Source of Funds.`}
-            />
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.SourceOfFundsDetail}
+                    onChange={(value)=>{ on_ProductTaken_Value_Change("SourceOfFundsDetail", i, value)}}
+                    onFocus={(e)=>{backgroundInfo_onFocus10_1()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur10_1()}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    
+                    placeholder={`Define Other Source of Funds.`}
+                />
+            </div>
             <br/> 
             <br/> 
             {/* <Editor
                 value={key.SourceOfFundsDetail}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("SourceOfFundsDetail", i, newText)}}
                 onFocus={(e)=>{backgroundInfo_onFocus10_1()}}
-                onBlur={(e)=>{backgroundInfo_onBlur10_1();onFieldBlur(e)}} 
+                onBlur={(e)=>{backgroundInfo_onBlur10_1()}} 
                 name="SourceOfFundsDetail"                     
                 init={{
                     selector: "textarea",
@@ -2352,27 +2374,29 @@ o	meeting the investment objectives of the clients
 `Motivate why the chosen product was recommended to best suit your client's needs
 
 `}  aria-describedby=""  ></textarea> */}
-    <ReactQuill
-        theme="snow" // Specify the theme ('snow' or 'bubble')
-        value={key?.PF_Reasons}
-        onChange={(value)=>{ on_ProductTaken_Value_Change("PF_Reasons", i, value)}}
-        onFocus={(e)=>{backgroundInfo_onFocus24()}}
-        onBlur={(e)=>{backgroundInfo_onBlur24();onFieldBlur(e)}}
-        modules={modules}
-        formats={formats}
-        style={{
-            height: '300px', // Set the desired height here
-        }}
-        
-        placeholder={`Motivate why the chosen product was recommended to best suit your client's needs.`}
-    />
+    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+        <ReactQuill
+            theme="snow" // Specify the theme ('snow' or 'bubble')
+            value={key?.PF_Reasons}
+            onChange={(value)=>{ on_ProductTaken_Value_Change("PF_Reasons", i, value)}}
+            onFocus={(e)=>{backgroundInfo_onFocus24()}}
+            onBlur={(e)=>{backgroundInfo_onBlur24()}}
+            modules={modules}
+            formats={formats}
+            style={{
+                height: '300px', // Set the desired height here
+            }}
+            
+            placeholder={`Motivate why the chosen product was recommended to best suit your client's needs.`}
+        />
+    </div>
     <br/> 
     <br/> 
     {/* <Editor
         value={key.PF_Reasons}
         onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_Reasons", i, newText)}}
         onFocus={(e)=>{backgroundInfo_onFocus24()}}
-        onBlur={(e)=>{backgroundInfo_onBlur24();onFieldBlur(e)}} 
+        onBlur={(e)=>{backgroundInfo_onBlur24()}} 
         name="PF_Reasons"                     
         init={{
             selector: "textarea",
@@ -2648,27 +2672,29 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }           
-            <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={key?.PF_MaterialAspects}
-                onChange={(value)=>{ on_ProductTaken_Value_Change("PF_MaterialAspects", i, value)}}
-                onFocus={(e)=>{backgroundInfo_onFocus8()}}
-                onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                
-                placeholder={`Explain any deviations from your recommendation and the implications thereof.`}
-            />  
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.PF_MaterialAspects}
+                    onChange={(value)=>{ on_ProductTaken_Value_Change("PF_MaterialAspects", i, value)}}
+                    onFocus={(e)=>{backgroundInfo_onFocus8()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur8()}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    
+                    placeholder={`Explain any deviations from your recommendation and the implications thereof.`}
+                />  
+            </div>
             <br/> 
             <br/>  
             {/* <Editor 
                 value={key.PF_MaterialAspects}
                 onEditorChange={(newText)=>{ on_ProductTaken_Value_Change("PF_MaterialAspects", i, newText)}}
                 onFocus={(e)=>{backgroundInfo_onFocus8()}}
-                onBlur={(e)=>{backgroundInfo_onBlur8();onFieldBlur(e)}}                      
+                onBlur={(e)=>{backgroundInfo_onBlur8()}}                      
                 init={{
                     selector: "textarea",
                     browser_spellcheck : true,
@@ -2704,27 +2730,29 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }              
-            <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={key?.PF_Pr_Details}
-                onChange={(value)=>{ on_ProductTaken_Value_Change("PF_Pr_Details", i, value)}}
-                onFocus={(e)=>{backgroundInfo_onFocus9()}}
-                onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                
-                placeholder={`The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?`}
-            />  
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.PF_Pr_Details}
+                    onChange={(value)=>{ on_ProductTaken_Value_Change("PF_Pr_Details", i, value)}}
+                    onFocus={(e)=>{backgroundInfo_onFocus9()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur9()}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    
+                    placeholder={`The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?`}
+                />  
+            </div>
             <br/> 
             <br/>             
             {/* <Editor 
             value={key.PF_Pr_Details}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_Pr_Details", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus9()}}
-            onBlur={(e)=>{backgroundInfo_onBlur9();onFieldBlur(e)}}                      
+            onBlur={(e)=>{backgroundInfo_onBlur9()}}                      
             init={{
                 selector: "textarea",
                 browser_spellcheck : true,
@@ -2767,27 +2795,29 @@ o	meeting the investment objectives of the clients
                 null
             }
                                 
-            <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={key?.PF_ExecutorFee}
-                onChange={(value)=>{ on_ProductTaken_Value_Change("PF_ExecutorFee", i, value)}}
-                onFocus={(e)=>{backgroundInfo_onFocus10()}}
-                onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                
-                placeholder={`Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n`}
-            />  
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.PF_ExecutorFee}
+                    onChange={(value)=>{ on_ProductTaken_Value_Change("PF_ExecutorFee", i, value)}}
+                    onFocus={(e)=>{backgroundInfo_onFocus10()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur10()}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    
+                    placeholder={`Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n`}
+                />  
+            </div>
             <br/> 
             <br/>  
             {/* <Editor
             value={key.PF_ExecutorFee}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_ExecutorFee", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus10()}}
-            onBlur={(e)=>{backgroundInfo_onBlur10();onFieldBlur(e)}}        
+            onBlur={(e)=>{backgroundInfo_onBlur10()}}        
             init={{
                 selector: "textarea",
                 browser_spellcheck : true,
@@ -2825,27 +2855,29 @@ o	meeting the investment objectives of the clients
                 </>: 
                 null
             }               
-            <ReactQuill
-                theme="snow" // Specify the theme ('snow' or 'bubble')
-                value={key?.PF_NominationOfBeneficiaries}
-                onChange={(value)=>{ on_ProductTaken_Value_Change("PF_NominationOfBeneficiaries", i, value)}}
-                onFocus={(e)=>{backgroundInfo_onFocus11()}}
-                onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}}
-                modules={modules}
-                formats={formats}
-                style={{
-                    height: '300px', // Set the desired height here
-                }}
-                
-                placeholder={`Record discussion with regard to nomination of beneficiaries or cessionaries\n`}
-            />  
+            <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                <ReactQuill
+                    theme="snow" // Specify the theme ('snow' or 'bubble')
+                    value={key?.PF_NominationOfBeneficiaries}
+                    onChange={(value)=>{ on_ProductTaken_Value_Change("PF_NominationOfBeneficiaries", i, value)}}
+                    onFocus={(e)=>{backgroundInfo_onFocus11()}}
+                    onBlur={(e)=>{backgroundInfo_onBlur11()}}
+                    modules={modules}
+                    formats={formats}
+                    style={{
+                        height: '300px', // Set the desired height here
+                    }}
+                    
+                    placeholder={`Record discussion with regard to nomination of beneficiaries or cessionaries\n`}
+                />  
+            </div>
             <br/> 
             <br/> 
             {/* <Editor 
             value={key.PF_NominationOfBeneficiaries}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_NominationOfBeneficiaries", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus11()}}
-            onBlur={(e)=>{backgroundInfo_onBlur11();onFieldBlur(e)}}        
+            onBlur={(e)=>{backgroundInfo_onBlur11()}}        
             init={{
                 selector: "textarea",
                 browser_spellcheck : true,
@@ -2888,31 +2920,33 @@ o	meeting the investment objectives of the clients
                 null
             }
                        
-        <ReactQuill
-            theme="snow" // Specify the theme ('snow' or 'bubble')
-            value={key?.PF_InformationExplained}
-            onChange={(value)=>{ on_ProductTaken_Value_Change("PF_InformationExplained", i, value)}}
-            onFocus={(e)=>{backgroundInfo_onFocus12()}}
-            onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}}
-            modules={modules}
-            formats={formats}
-            style={{
-                height: '300px', // Set the desired height here
-            }}
-            
-            placeholder={`Discuss the following information which has been explained to client.
-            General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
-            Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
-            Waiting periods
-            Cooling off period`}
-        />  
+        <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+            <ReactQuill
+                theme="snow" // Specify the theme ('snow' or 'bubble')
+                value={key?.PF_InformationExplained}
+                onChange={(value)=>{ on_ProductTaken_Value_Change("PF_InformationExplained", i, value)}}
+                onFocus={(e)=>{backgroundInfo_onFocus12()}}
+                onBlur={(e)=>{backgroundInfo_onBlur12()}}
+                modules={modules}
+                formats={formats}
+                style={{
+                    height: '300px', // Set the desired height here
+                }}
+                
+                placeholder={`Discuss the following information which has been explained to client.
+                General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)
+                Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)
+                Waiting periods
+                Cooling off period`}
+            />  
+        </div>
         <br/> 
         <br/> 
         {/* <Editor 
             value={key.PF_InformationExplained}
             onEditorChange={(e)=>{ on_ProductTaken_Value_Change("PF_InformationExplained", i, e)}}
             onFocus={(e)=>{backgroundInfo_onFocus12()}}
-            onBlur={(e)=>{backgroundInfo_onBlur12();onFieldBlur(e)}}        
+            onBlur={(e)=>{backgroundInfo_onBlur12()}}        
             init={{
                 selector: "textarea",
                 browser_spellcheck : true,
@@ -2943,19 +2977,21 @@ o	meeting the investment objectives of the clients
                 <>
                     <strong>Additional Comments</strong>
                           
-                    <ReactQuill
-                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                        value={key?.PF_AdditionComments}
-                        onChange={(value)=>{ on_ProductTaken_Value_Change("PF_AdditionComments", i, value)}}
-                        onBlur={(e)=>{onFieldBlur(e)}}
-                        modules={modules}
-                        formats={formats}
-                        style={{
-                            height: '300px', // Set the desired height here
-                        }}
-                        
-                        placeholder={`Additional Comments`}
-                    />  
+                    <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
+                        <ReactQuill
+                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                            value={key?.PF_AdditionComments}
+                            onChange={(value)=>{ on_ProductTaken_Value_Change("PF_AdditionComments", i, value)}}
+                            // onBlur={(e)=>{onFieldBlur(e)}}
+                            modules={modules}
+                            formats={formats}
+                            style={{
+                                height: '300px', // Set the desired height here
+                            }}
+                            
+                            placeholder={`Additional Comments`}
+                        />  
+                    </div>
                     <br/> 
                     <br/> 
                     {/* <Editor                        
