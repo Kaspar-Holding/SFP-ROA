@@ -2067,7 +2067,7 @@ const Invest = ({user, LogOut}) =>
             <div onMouseLeave={(e)=>{onFieldBlur(e)}}>
                 <ReactQuill
                     theme="snow" // Specify the theme ('snow' or 'bubble')
-                    value={key?.STIC_Fire_AddComments}
+                    value={key?.ItP}
                     onChange={(value)=>{ on_ProductTaken_Value_Change("ItP", i, value)}}
                     onFocus={(e)=>{backgroundInfo_onFocus7()}}
                     onBlur={(e)=>{backgroundInfo_onBlur7()}} 
