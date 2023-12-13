@@ -1036,6 +1036,15 @@ class ComplianceDocumentDetails(APIView):
         # document['supervisor'] = ""
         # document['supervisor_name'] = ""
         # document['region'] = ""
+        flaggedData = flagged_users.objects.filter(user=advisor['id'])
+        flag_color = ""
+        if flaggedData.exists():
+            flaggedData = flaggedData.values().first()
+            flag_color_data = flag_colors.objects.filter(id=flaggedData['color_id'])
+            if flag_color_data.exists():
+                flag_color_data = flag_color_data.values().first()
+                flag_color = flag_color_data['color']
+        document['flag'] = flag_color
         if profile.exists():
             profile = user_profile.objects.filter(user=advisor['id']).values().first()
             document['IdNumber'] = profile['id_number']

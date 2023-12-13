@@ -1,6 +1,6 @@
-import DashboardLayout from '@/hocs/DashboardLayout'
-import CompleteDocumentLayout from '@/hocs/Compliance/CompleteDocumentLayout'
-import Layout from '@/hocs/Layout'
+import DashboardLayout from '../../../../../hocs/DashboardLayout'
+import CompleteDocumentLayout from '../../../../../hocs/Compliance/CompleteDocumentLayout'
+import Layout from '../../../../../hocs/Layout'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import axios from 'axios'
@@ -8,8 +8,8 @@ import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import Moment from 'moment'
 import Image from 'next/image'
-import graphImage from '@/assets/images/Graph.svg'
-import Loader from '@/hocs/Loader'
+import graphImage from '../../../../../assets/images/Graph.svg'
+import Loader from '../../../../../hocs/Loader'
 const SummaryDocument = () => {
     const router = useRouter()
     

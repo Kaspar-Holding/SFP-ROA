@@ -14,6 +14,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 12 November 2023:
+- Please also note that when the case is approved/not approved by a GK and the GK goes to view the case, the color coding disappears. – Done
+- After approving a case, most of the options selected on the checklist disappear - Unable to replicate it
+- Deployment on Staging 
+
 ### 24 November 2023:
 - ARC and GK Count in Trend is fixed
 - SAML SSO testing completed

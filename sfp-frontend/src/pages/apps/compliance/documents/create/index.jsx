@@ -1,14 +1,14 @@
-import DashboardLayout from '@/hocs/DashboardLayout'
-import DocumentLayout from '@/hocs/Compliance/CreateDocumentLayout'
-import Layout from '@/hocs/Layout'
+// import DashboardLayout from '@/hocs/DashboardLayout'
+// import DocumentLayout from '@/hocs/Compliance/CreateDocumentLayout'
+import Layout from '../../../../../hocs/Layout'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import Select from 'react-select'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
-import CreateDocumentLayout from '@/hocs/Compliance/CreateDocumentLayout'
-import Loader from '@/hocs/Loader'
+import CreateDocumentLayout from '../../../../../hocs/Compliance/CreateDocumentLayout'
+import Loader from '../../../../../hocs/Loader'
 
 
 const CreateDocument = () => {
@@ -203,7 +203,6 @@ const CreateDocument = () => {
 
         try {
             const response = await axios.post('/api/account/agents/info', Body, config)
-
             setDocumentInitalData(response?.data?.data?.data)
         } catch (error) {
             Swal.fire({

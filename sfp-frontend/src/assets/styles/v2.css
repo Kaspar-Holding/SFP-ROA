@@ -977,6 +977,21 @@ header {
     font-family: Open Sans;
     font-size: 14px;
     font-weight: 400;
+    text-align: justify;
+}
+
+.roa-table-head {
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: justify;
+}
+
+.roa-table-head {
+    font-family: Open Sans;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: justify;
 }
 
 .roa-disclaimer {
