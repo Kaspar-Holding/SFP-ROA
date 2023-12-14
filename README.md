@@ -14,6 +14,12 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 14 November 2023:
+- Admin Search bug resolved.
+- Replacement N/A in GK will be taken in consideration in ARC too.
+- Color Coding bug resolved.
+- Deployment on Staging 
+
 ### 12 November 2023:
 - Please also note that when the case is approved/not approved by a GK and the GK goes to view the case, the color coding disappears. – Done
 - After approving a case, most of the options selected on the checklist disappear - Unable to replicate it

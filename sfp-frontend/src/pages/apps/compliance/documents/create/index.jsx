@@ -493,7 +493,7 @@ const CreateDocument = () => {
                                                         <input 
                                                             required 
                                                             onChange={(e)=>{onChange(e)}} 
-                                                            type="text" 
+                                                            type="number" 
                                                             value={DocumentInitalData?.lump_sum} 
                                                             name="lump_sum" 
                                                             className="form-control" 
@@ -511,7 +511,7 @@ const CreateDocument = () => {
                                                         <input 
                                                             required 
                                                             onChange={(e)=>{onChange(e)}} 
-                                                            type="text" 
+                                                            type="number" 
                                                             value={DocumentInitalData?.monthly_premium} 
                                                             name="monthly_premium" 
                                                             className="form-control" 
@@ -529,7 +529,7 @@ const CreateDocument = () => {
                                                         <input 
                                                             required 
                                                             onChange={(e)=>{onChange(e)}} 
-                                                            type="text" 
+                                                            type="number" 
                                                             value={DocumentInitalData?.commission} 
                                                             name="commission" 
                                                             className="form-control" 
