@@ -57,63 +57,123 @@ class updateDocumentStatus(APIView):
 # class Compl        
 @api_view(['POST'])
 def searchComplianceDocument(request):
-    data = ComplianceDocument.objects.filter(Q(user=request.user.pk)|Q(picked_up=request.user.pk))
-    if data.exists():
-        search_query = SearchQuery(request.data['search_query'], search_type='websearch')
-        search_vector = SearchVector('policy_number')
-        if request.data['search_query'] != "":
-            # data = data.annotate(search=search_vector).filter(search=search_query).values().order_by('-created_at')
-            data = data.filter(Q(policy_number__icontains=request.data['search_query'])|Q(clientName__icontains=request.data['search_query'])).values().order_by('-created_at')
-        else:
-            data = data.values().order_by('-created_at')
-        p = Paginator(data, request.data['page_size'])
-        data = p.page(request.data['page_number']).object_list
-        for row in data:
-            advisor = UserAccount.objects.filter(pk=row['advisor'])
-            if advisor.exists():
-                advisor = advisor.values().first()
-                row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+    if request.user.is_superuser:
+        data = ComplianceDocument.objects.all()
+        if data.exists():
+            search_query = SearchQuery(request.data['search_query'], search_type='websearch')
+            search_vector = SearchVector('policy_number')
+            if request.data['search_query'] != "":
+                # data = data.annotate(search=search_vector).filter(search=search_query).values().order_by('-created_at')
+                data = data.filter(Q(policy_number__icontains=request.data['search_query'])|Q(clientName__icontains=request.data['search_query'])).values().order_by('-created_at')
             else:
-                raise Http404
-            userData = UserAccount.objects.filter(pk=row['user_id'])
-            if userData.exists():
-                userData = userData.values().first()
-                row['review_user'] = f"{userData['first_name']} {userData['last_name']} ({userData['email']})"
-            else:
-                raise Http404
-            dId = row['id']
-            if row['status'] == 0:
-                gatekeeping = GateKeeping.objects.filter(document=dId)
-                if gatekeeping.exists():
-                    gatekeeping = gatekeeping.values().latest('id')
-                    row['last_review_date'] = gatekeeping['created_at']
+                data = data.values().order_by('-created_at')
+            p = Paginator(data, request.data['page_size'])
+            data = p.page(request.data['page_number']).object_list
+            for row in data:
+                advisor = UserAccount.objects.filter(pk=row['advisor'])
+                if advisor.exists():
+                    advisor = advisor.values().first()
+                    row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                else:
+                    raise Http404
+                userData = UserAccount.objects.filter(pk=row['user_id'])
+                if userData.exists():
+                    userData = userData.values().first()
+                    row['review_user'] = f"{userData['first_name']} {userData['last_name']} ({userData['email']})"
+                else:
+                    raise Http404
+                dId = row['id']
+                if row['status'] == 0:
+                    gatekeeping = GateKeeping.objects.filter(document=dId)
+                    if gatekeeping.exists():
+                        gatekeeping = gatekeeping.values().latest('id')
+                        row['last_review_date'] = gatekeeping['created_at']
+                    else:
+                        row['last_review_date'] = row['created_at']
                 else:
                     row['last_review_date'] = row['created_at']
-            else:
-                row['last_review_date'] = row['created_at']
 
-        # print(p.num_pages)
-        if request.data['page_number'] <= p.num_pages:
-                
-            return Response(
-                {
-                    "total_pages" : p.num_pages,
-                    "has_pages" : p.num_pages,
-                    "total_records" : len(data),
-                    "next" : p.page(request.data['page_number']).has_next(),
-                    "results" : data
-                }
-            )
-        else:
-            return Response(
-                {
-                    "total_pages" : p.num_pages,
-                    "has_pages" : p.num_pages,
-                    "total_records" : len(data),
-                    "next" : p.page(request.data['page_number']).has_next(),
-                    "results" : data
-                }
-            )
+            # print(p.num_pages)
+            if request.data['page_number'] <= p.num_pages:
+                    
+                return Response(
+                    {
+                        "total_pages" : p.num_pages,
+                        "has_pages" : p.num_pages,
+                        "total_records" : len(data),
+                        "next" : p.page(request.data['page_number']).has_next(),
+                        "results" : data
+                    }
+                )
+            else:
+                return Response(
+                    {
+                        "total_pages" : p.num_pages,
+                        "has_pages" : p.num_pages,
+                        "total_records" : len(data),
+                        "next" : p.page(request.data['page_number']).has_next(),
+                        "results" : data
+                    }
+                )
+
+    else:
+        data = ComplianceDocument.objects.filter(Q(user=request.user.pk)|Q(picked_up=request.user.pk))
+        if data.exists():
+            search_query = SearchQuery(request.data['search_query'], search_type='websearch')
+            search_vector = SearchVector('policy_number')
+            if request.data['search_query'] != "":
+                # data = data.annotate(search=search_vector).filter(search=search_query).values().order_by('-created_at')
+                data = data.filter(Q(policy_number__icontains=request.data['search_query'])|Q(clientName__icontains=request.data['search_query'])).values().order_by('-created_at')
+            else:
+                data = data.values().order_by('-created_at')
+            p = Paginator(data, request.data['page_size'])
+            data = p.page(request.data['page_number']).object_list
+            for row in data:
+                advisor = UserAccount.objects.filter(pk=row['advisor'])
+                if advisor.exists():
+                    advisor = advisor.values().first()
+                    row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                else:
+                    raise Http404
+                userData = UserAccount.objects.filter(pk=row['user_id'])
+                if userData.exists():
+                    userData = userData.values().first()
+                    row['review_user'] = f"{userData['first_name']} {userData['last_name']} ({userData['email']})"
+                else:
+                    raise Http404
+                dId = row['id']
+                if row['status'] == 0:
+                    gatekeeping = GateKeeping.objects.filter(document=dId)
+                    if gatekeeping.exists():
+                        gatekeeping = gatekeeping.values().latest('id')
+                        row['last_review_date'] = gatekeeping['created_at']
+                    else:
+                        row['last_review_date'] = row['created_at']
+                else:
+                    row['last_review_date'] = row['created_at']
+
+            # print(p.num_pages)
+            if request.data['page_number'] <= p.num_pages:
+                    
+                return Response(
+                    {
+                        "total_pages" : p.num_pages,
+                        "has_pages" : p.num_pages,
+                        "total_records" : len(data),
+                        "next" : p.page(request.data['page_number']).has_next(),
+                        "results" : data
+                    }
+                )
+            else:
+                return Response(
+                    {
+                        "total_pages" : p.num_pages,
+                        "has_pages" : p.num_pages,
+                        "total_records" : len(data),
+                        "next" : p.page(request.data['page_number']).has_next(),
+                        "results" : data
+                    }
+                )
         
 class complainceDocumentsInfo(APIView):
 
@@ -1023,7 +1083,7 @@ class ComplianceDocumentDetails(APIView):
     def get(self, request, pk, format=None):
         document = self.get_object(pk)
         document = document.values().latest('created_at')
-        advisor = UserAccount.objects.filter(pk=document['user']).values().first()
+        advisor = UserAccount.objects.filter(pk=document['advisor']).values().first()
         # advisor_profile = user_profile.objects.filter(user=document['advisor']).values().first()
         document['advisor_name'] = f"{advisor['first_name']} {advisor['last_name']}"
         document['advisor_email'] = advisor['email']
