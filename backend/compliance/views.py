@@ -1023,7 +1023,7 @@ class ComplianceDocumentDetails(APIView):
     def get(self, request, pk, format=None):
         document = self.get_object(pk)
         document = document.values().latest('created_at')
-        advisor = UserAccount.objects.filter(pk=document['advisor']).values().first()
+        advisor = UserAccount.objects.filter(pk=document['user']).values().first()
         # advisor_profile = user_profile.objects.filter(user=document['advisor']).values().first()
         document['advisor_name'] = f"{advisor['first_name']} {advisor['last_name']}"
         document['advisor_email'] = advisor['email']

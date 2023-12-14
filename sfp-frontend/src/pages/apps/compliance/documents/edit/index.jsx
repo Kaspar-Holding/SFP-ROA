@@ -153,7 +153,7 @@ const EditDocument = () => {
                 Body,
                 config
             )
-            console.log(response?.data?.data)
+            
             setDocumentInitalData(response?.data?.data)
 
 
