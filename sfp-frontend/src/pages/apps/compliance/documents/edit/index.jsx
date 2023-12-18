@@ -74,7 +74,7 @@ const EditDocument = () => {
     const updateInitialDocument = async() => {
         if (DocumentInitalData?.referred && user?.id !== DocumentInitalData?.user_id) {
             router.push({
-                pathname: "/apps/compliance/documents/view/gatekeeping",
+                pathname: "/apps/compliance/documents/gatekeeping",
                 query: {dId : dId}
             })
         } 
@@ -153,7 +153,6 @@ const EditDocument = () => {
                 Body,
                 config
             )
-            
             setDocumentInitalData(response?.data?.data)
 
 
@@ -373,7 +372,7 @@ const EditDocument = () => {
                                                     <input 
                                                         required 
                                                         onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onFormUpdate(e)}} 
-                                                        type="number" 
+                                                        type="text" 
                                                         value={DocumentInitalData?.lump_sum} 
                                                         name="lump_sum" 
                                                         className="form-control" 
@@ -391,7 +390,7 @@ const EditDocument = () => {
                                                     <input 
                                                         required 
                                                         onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onFormUpdate(e)}} 
-                                                        type="number" 
+                                                        type="text" 
                                                         value={DocumentInitalData?.monthly_premium} 
                                                         name="monthly_premium" 
                                                         className="form-control" 
@@ -409,7 +408,7 @@ const EditDocument = () => {
                                                     <input 
                                                         required 
                                                         onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onFormUpdate(e)}} 
-                                                        type="number" 
+                                                        type="text" 
                                                         value={DocumentInitalData?.commission} 
                                                         name="commission" 
                                                         className="form-control" 

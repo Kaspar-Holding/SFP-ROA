@@ -251,6 +251,8 @@ const CompleteDocument = () => {
         }
 
     }, [])
+
+    
     
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
@@ -1286,7 +1288,7 @@ const CompleteDocument = () => {
                             <div className="mx-auto">
                                 <div className='row'>
                                     {
-                                        DocumentInitalData?.status === 0 || DocumentInitalData?.status === 2 || DocumentInitalData?.status === 7   ?
+                                        DocumentInitalData?.status === 0 || DocumentInitalData?.status === 2 || DocumentInitalData?.status === 3 || DocumentInitalData?.status === 5 || DocumentInitalData?.status === 7   ?
                                         <div className={
                                             Versions.length >= 1 ? 
                                                 'col-lg-6' 

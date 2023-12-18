@@ -1,5 +1,5 @@
-import DashboardLayout from '../../../hocs/DashboardLayout'
-import Layout from '../../../hocs/Layout'
+import DashboardLayout from '../../../../hocs/DashboardLayout'
+import Layout from '../../../../hocs/Layout'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
@@ -7,16 +7,12 @@ import Moment from 'moment'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
-import Loader from '../../../hocs/Loader'
-import CompliancePagination from '../../../modules/CompliancePagination'
-import FilterComponent from './Filters'
-import Filters from './Filters'
+import Loader from '../../../../hocs/Loader'
+import CompliancePagination from '../../../../modules/CompliancePagination'
+import FilterComponent from '../Filters'
+import Filters from '../Filters'
 
-// import Chart from "react-apexcharts"
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
-
-const Compliance = () => {
-    // const Chart = dynamic(() => import('react-apexcharts'), {})
+const ComplianceList = () => {
     const router = useRouter()
     
     const [Loaded, setLoaded] = useState(false)
@@ -46,7 +42,7 @@ const Compliance = () => {
     const LoadCustomStats = async(toDate, fromDate) => {
     }
 
-    const [PageSize, setPageSize] = useState(5)
+    const [PageSize, setPageSize] = useState(20)
     const [TotalRecords, setTotalRecords] = useState(0)
     const [TotalPages, setTotalPages] = useState(2)
     const [TrendData, setTrendData] = useState([])
@@ -294,7 +290,6 @@ const Compliance = () => {
     }
     
     useEffect(() => {
-        loadKPIsandTrends(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate)
         loadReviews(1, PageSize, Sortby, SortDirection)
     }, [])
 
@@ -306,8 +301,8 @@ const Compliance = () => {
     if (user?.userType === 6) {
         router.push('/')
     }
-
     return (
+        
         <Layout
             title={"Compliance"}
             content={"Compliance"}
@@ -322,115 +317,10 @@ const Compliance = () => {
                     :
                     <div className='col-lg-9'>
                         <div className='row'>
-                            <div className='col-lg-5 app-dashboard-kpi'>
-                                <div className='row'>
-                                    <div className='col-8'>
-                                        <h1 className='app-dashboard-header'>Total Summary</h1>
-                                    </div>
-                                </div>
-                                {/* <p className='app-dashboard-subheader'>Compliance KPIs</p> */}
-                                <Filters
-                                    filterType={FilterType} 
-                                    updateFilter={setFilterType} 
-                                    Month={Month} 
-                                    updateMonth={setMonth} 
-                                    Year={Year} 
-                                    updateYear={setYear} 
-                                    MonthYear={MonthYear} 
-                                    updateMonthYear={setMonthYear} 
-                                    CurrentDate={CurrentDate} 
-                                    updateCurrentDate={setCurrentDate} 
-                                    FromDate={FromDate} 
-                                    updateFromDate={setFromDate} 
-                                    ToDate={ToDate} 
-                                    updateToDate={setToDate} 
-                                    years={years}
-                                    loadData={loadKPIsandTrends}
-                                    CustomFilterType={CustomFilterType}
-                                    setCustomFilterType={setCustomFilterType}
-                                />
-                                <div className='row'>
-                                    <div className='col-lg-3 p-0 m-0'>
-                                        <div className="card kpi-card-1">
-                                            <div className="card-body">
-                                                <h1 className='kpi-number'>
-                                                    {
-                                                        KPIs?.created ? KPIs?.created : 0 
-                                                    }
-                                                </h1>
-                                                <p className='kpi-title'>
-                                                    Total
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='col-lg-3 p-0 m-0'>
-                                        <div className="card kpi-card-2">
-                                            <div className="card-body">
-                                                <h1 className='kpi-number'>
-                                                    {
-                                                        KPIs?.approved ? KPIs?.approved : 0 
-                                                    }
-                                                </h1>
-                                                <p className='kpi-title'>
-                                                    Approved
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='col-lg-3 p-0 m-0'>
-                                        <div className="card kpi-card-3">
-                                            <div className="card-body">
-                                                <h1 className='kpi-number'>
-                                                    {
-                                                        KPIs?.rejected ? KPIs?.rejected : 0 
-                                                    }
-                                                </h1>
-                                                <p className='kpi-title'>
-                                                    Rejected
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='col-lg-3 p-0 m-0'>
-                                        <div className="card kpi-card-4">
-                                            <div className="card-body">
-                                                <h1 className='kpi-number'>
-                                                    {
-                                                        KPIs?.referred ? KPIs?.referred : 0 
-                                                    }
-                                                </h1>
-                                                <p className='kpi-title'>
-                                                    Referred
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-lg-3 app-dashboard-progress'>
-                                <h1 className='app-dashboard-header'>Progress</h1>
-                                {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */}
-                                {
-                                    KPITrend ?
-                                        (typeof window !== 'undefined') && <Chart options={pieChartOptions} series={KPITrend ? Object.values(KPITrend) : [0, 0, 0, 0]} type="pie" width={'100%'} />
-                                    : <></>
-                                }
-                            </div>
-                            <div className='col-lg-4 app-dashboard-trend'>
-                                <h1 className='app-dashboard-header'>Trending Data</h1>
-                                {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */}
-                                {/* <Chart options={lineOptions} series={lineSeries} type="line" height={210} /> */}
-                                {
-                                    TrendData.length > 0 ?
-                                        (typeof window !== 'undefined') && <Chart options={lineOptions([TrendData].map(x => x.map(a => (a[0]))).flat(2), 2)} series={lineSeries([TrendData].map(x => x.map(a => (a[1]))).flat(2))} type="bar" height={210} />
-                                    : <></>
-                                }
-                            </div>
-                            <div className='col-lg-12 app-dashboard-records'>
+                            <div className='col-lg-12 app-full-records'>
                                 <div className='row'>
                                     <div className='col-lg-3'>
-                                        <h1 className='app-dashboard-header'>Recent Cases</h1>
+                                        <h1 className='app-dashboard-header'>Cases</h1>
 
                                     </div>
                                     <div className='col-lg-4'>
@@ -497,7 +387,7 @@ const Compliance = () => {
                                     </div>
                                     
                                 </div>
-                                <div className='app-dashboard-records-table'>
+                                <div className='app-full-records-table'>
                                     <table className="table" >
                                         <thead className='tableHead'>
                                             <tr>
@@ -712,4 +602,4 @@ const Compliance = () => {
     )
 }
 
-export default Compliance
+export default ComplianceList

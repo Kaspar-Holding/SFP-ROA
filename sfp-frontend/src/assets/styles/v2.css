@@ -918,6 +918,17 @@ header {
     height: 24vh;
     overflow-y: auto;
 }
+.app-full-records {
+    background-color: #ffffff;
+    margin-top: 1%;
+    height: 90vh;
+    margin-right: 0.5%;
+    padding: 2%;
+}
+.app-full-records-table {
+    height: 85vh;
+    overflow-y: auto;
+}
 
 @media screen and (min-width: 1000px) {
     

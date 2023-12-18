@@ -14,6 +14,12 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 18 November 2023:
+- GK and ARC can edit other's documents
+- A new version will be created if a new user updates it.
+- Full list developed.
+- Deployment on Staging 
+
 ### 14 November 2023:
 - Admin Search bug resolved.
 - Replacement N/A in GK will be taken in consideration in ARC too.

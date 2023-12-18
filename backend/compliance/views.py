@@ -307,7 +307,8 @@ class complainceDocumentsInfo(APIView):
                         }
                     )
             if user.userType == 2:            
-                data = ComplianceDocument.objects.filter(user=user.pk).order_by('-created_at')
+                data = ComplianceDocument.objects.all().order_by('-created_at')
+                data = data.filter(Q(user=user.pk)|~Q(status=1))
                 if data.exists():
                     
                     total = data.count()
@@ -914,9 +915,11 @@ class ComplianceDocumentList(APIView):
                     dId = row['id']
                     arc_status = False
                     userData = UserAccount.objects.filter(pk=row['user_id']).values().first()
-                    print(f"{userData['first_name']} {userData['last_name']} ({userData['email']})")
+                    # print(f"{userData['first_name']} {userData['last_name']} ({userData['email']})")
                     row['review_user'] = f"{userData['first_name']} {userData['last_name']} ({userData['email']})"
                     if arc.objects.filter(document=row['id']).exists():
+                        arcData = arc.objects.filter(document=row['id']).order_by('updated_at').values("user","updated_at")
+
                         arc_status = True
                     row['arc_status'] = arc_status
                     row['last_review_date'] = row['updated_at']
@@ -983,7 +986,7 @@ class ComplianceDocumentList(APIView):
                     }
                     return Response({"data":[], "kpis": kpis})
             if user.userType == 2:            
-                data = ComplianceDocument.objects.filter(user=user.pk).order_by('-created_at')
+                data = ComplianceDocument.objects.all(user=user.pk).order_by('-created_at')
                 if data.exists():
                     kpis = {
                         "created" : data.count(),
@@ -1177,12 +1180,38 @@ class GateKeepingList(APIView):
         document = ComplianceDocument.objects.filter(id=newData['document']).values().first()
         if gatekeepingdata.exists():
             old_version = gatekeepingdata.values().latest('created_at')['version']
-            if document['status'] == 2:
-                ComplianceDocument.objects.filter(id=newData['document']).update(status=7)
+            if gatekeepingdata.values().latest('created_at')['user_id'] != user.pk:
                 version = old_version + 1
                 newData['version'] = version
+                if gatekeepingdata.values().earliest('created_at') != user.pk:
+                    comment = {
+                            "user" : 0,
+                            "type" : 3,
+                            "title" : "",
+                            "comment" : f"Gatekeeping Document was updated by an external user {user.first_name} {user.last_name} ({user.email}) who did not create it. Thus a new version was created.",  
+                            "document" : newData['document']
+                        }
+                    documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                    if documentCommentSerializer.is_valid():
+                        documentCommentSerializer.save()
+                else:
+                    comment = {
+                            "user" : 0,
+                            "type" : 3,
+                            "title" : "",
+                            "comment" : f"Gatekeeping Document was updated by user {user.first_name} {user.last_name} ({user.email}) who created it. Thus a new version was created.",  
+                            "document" : newData['document']
+                        }
+                    documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                    if documentCommentSerializer.is_valid():
+                        documentCommentSerializer.save()
             else:
-                newData['version'] = old_version
+                if document['status'] == 2:
+                    ComplianceDocument.objects.filter(id=newData['document']).update(status=7)
+                    version = old_version + 1
+                    newData['version'] = version
+                else:
+                    newData['version'] = old_version
         else:
             newData['version'] = 1
             version = 1
@@ -1201,10 +1230,10 @@ class GateKeepingList(APIView):
                 score = 0
                 missing = f"This case has some outstanding requirements before it can be approved for the release of commission:\n<ul>"
                 total = 0
-                replacement = False
-                gkDocument = gk.values("replacement").first()
-                if gkDocument['replacement'] == 1:
-                    replacement = True
+                # replacement = False
+                # gkDocument = gk.values("replacement").first()
+                # if gkDocument['replacement'] == 1:
+                #     replacement = True
                 if businessType == 1 or (businessType > 4 and businessType < 9) :
                     # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['risk_portfolio'] + gatekeepingDocument['mandate'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                     gkDocument = gk.values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","risk_portfolio","mandate","replacement").latest('created_at')
@@ -1238,7 +1267,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
                             #     missing += "<li>Type of Replacement</li>"
@@ -1276,7 +1305,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
                             #     missing += "<li>Type of Replacement</li>"
@@ -1314,7 +1343,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
                             #     missing += "<li>Type of Replacement</li>"
@@ -1352,7 +1381,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
                             #     missing += "<li>Type of Replacement</li>"
@@ -1390,7 +1419,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
                             #     missing += "<li>Type of Replacement</li>"
@@ -1428,7 +1457,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             # if key == "replacement_type":
                             #     missing += "<li>Type of Replacement</li>"
@@ -1466,7 +1495,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             if key == "policy_schedule":
                                 missing += "<li>Policy Schedule</li>"
@@ -1506,7 +1535,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             if key == "policy_schedule":
                                 missing += "<li>Policy Schedule</li>"
@@ -1569,10 +1598,10 @@ class GateKeepingList(APIView):
                 gatekeepingDocument = GateKeeping.objects.filter(pk=dId.pk).values().first()
                 gk = GateKeeping.objects.filter(pk=dId.pk)
                 
-                replacement = False
-                gkDocument = gk.values("replacement").first()
-                if gkDocument['replacement'] == 1:
-                    replacement = True
+                # replacement = False
+                # gkDocument = gk.values("replacement").first()
+                # if gkDocument['replacement'] == 1:
+                #     replacement = True
                 document = ComplianceDocument.objects.filter(pk=gatekeepingDocument['document_id'])
                 document = document.values().first()
                 businessType = document['businessType']
@@ -1612,7 +1641,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             if key == "date_of_screening":
                                 missing += "<li>Date of screening?</li>"
@@ -1654,7 +1683,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             if key == "date_of_screening":
                                 missing += "<li>Date of screening?</li>"
@@ -1697,7 +1726,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             if key == "date_of_screening":
                                 missing += "<li>Date of screening?</li>"
@@ -1739,7 +1768,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             if key == "date_of_screening":
                                 missing += "<li>Date of screening?</li>"
@@ -1823,7 +1852,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             if key == "date_of_screening":
                                 missing += "<li>Date of screening?</li>"
@@ -1865,7 +1894,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             if key == "policy_schedule":
                                 missing += "<li>Policy Schedule</li>"
@@ -1909,7 +1938,7 @@ class GateKeepingList(APIView):
                                 missing += "<li>Risk Portfolio</li>"
                             if key == "mandate":
                                 missing += "<li>Mandate</li>"
-                            if key == "replacement" and replacement == False:
+                            if key == "replacement" : #and replacement == False:
                                 missing += "<li>Replacement?</li>"
                             if key == "policy_schedule":
                                 missing += "<li>Policy Schedule</li>"
@@ -2101,14 +2130,14 @@ class ComplianceDocumentSummary(APIView):
             if document['starting_point'] == 2:
                 gatekeepingDocument = GateKeeping.objects.filter(document=pk)
                 if gatekeepingDocument.exists():
-                    gatekeepingDocument = gatekeepingDocument.values().latest('id')
+                    gatekeepingDocument = gatekeepingDocument
                     gk = gatekeepingDocument
-                    replacement = False
-                    gkDocument = gk.values("replacement").first()
-                    if gkDocument['replacement'] == 1:
-                        replacement = True
+                    # replacement = False
+                    # gkDocument = gk.values("replacement").first()
+                    # if gkDocument['replacement'] == 1:
+                    #     replacement = True
                     
-                    version = gatekeepingDocument['version']
+                    # version = gatekeepingDocument['version']
                     businessType = document['businessType']
                     total = 0
                     if businessType == 1 or (businessType > 4 and businessType < 9) :
@@ -2144,7 +2173,7 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
                                     missing += "<li>Mandate</li>"
-                                if key == "replacement" and replacement == False:
+                                if key == "replacement" : #and replacement == False:
                                     missing += "<li>Replacement?</li>"
                             if key == "date_of_screening":
                                 missing += "<li>Date of screening?</li>"
@@ -2186,7 +2215,7 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
                                     missing += "<li>Mandate</li>"
-                                if key == "replacement" and replacement == False:
+                                if key == "replacement" : #and replacement == False:
                                     missing += "<li>Replacement?</li>"
                             if key == "date_of_screening":
                                 missing += "<li>Date of screening?</li>"
@@ -2228,7 +2257,7 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
                                     missing += "<li>Mandate</li>"
-                                if key == "replacement" and replacement == False:
+                                if key == "replacement" : #and replacement == False:
                                     missing += "<li>Replacement?</li>"
                             if key == "date_of_screening":
                                 missing += "<li>Date of screening?</li>"
@@ -2270,7 +2299,7 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
                                     missing += "<li>Mandate</li>"
-                                if key == "replacement" and replacement == False:
+                                if key == "replacement" : #and replacement == False:
                                     missing += "<li>Replacement?</li>"
                             if key == "date_of_screening":
                                 missing += "<li>Date of screening?</li>"
@@ -2312,7 +2341,7 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
                                     missing += "<li>Mandate</li>"
-                                if key == "replacement" and replacement == False:
+                                if key == "replacement" : #and replacement == False:
                                     missing += "<li>Replacement?</li>"
                                 if key == "date_of_screening":
                                     missing += "<li>Date of screening?</li>"
@@ -2354,7 +2383,7 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
                                     missing += "<li>Mandate</li>"
-                                if key == "replacement" and replacement == False:
+                                if key == "replacement" : #and replacement == False:
                                     missing += "<li>Replacement?</li>"
                                 if key == "date_of_screening":
                                     missing += "<li>Date of screening?</li>"
@@ -2396,7 +2425,7 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
                                     missing += "<li>Mandate</li>"
-                                if key == "replacement" and replacement == False:
+                                if key == "replacement" : #and replacement == False:
                                     missing += "<li>Replacement?</li>"
                                 if key == "policy_schedule":
                                     missing += "<li>Policy Schedule?</li>"
@@ -2444,7 +2473,7 @@ class ComplianceDocumentSummary(APIView):
                                     missing += "<li>Risk Portfolio</li>"
                                 if key == "mandate":
                                     missing += "<li>Mandate</li>"
-                                if key == "replacement" and replacement == False:
+                                if key == "replacement" : #and replacement == False:
                                     missing += "<li>Replacement?</li>"
                                 if key == "policy_schedule":
                                     missing += "<li>Policy Schedule?</li>"
@@ -2476,8 +2505,12 @@ class ComplianceDocumentSummary(APIView):
             arc_score = 0
             if arcDocument.exists():
                 arcStatus = True
+                arcDocument = arcDocument
                 aDoc = arcDocument
-                arcDocument = arcDocument.values().latest('id')
+                replacement = False
+                arcDocument = aDoc.values("replacement_terms").first()
+                if arcDocument['replacement_terms'] == 1:
+                    replacement = True
                 businessType = document['businessType']
                 arc_score = 0
                 if businessType < 14 :
@@ -2794,11 +2827,37 @@ class arcList(APIView):
             old_version = arcdata.values().latest('created_at')['version'] if arcdata.exists() else 0
             version = 0
             if arcdata.exists():
-                if reviewDoc['status'] == 2:
-                    ComplianceDocument.objects.filter(id=newData['document']).update(status=7)
+                if old_version['user_id'] != user.pk:
                     version = old_version + 1
+                    newData['version'] = version
+                    if arcdata.values().earliest('created_at') != user.pk:
+                        comment = {
+                                "user" : 0,
+                                "type" : 3,
+                                "title" : "",
+                                "comment" : f"ARC Document was updated by an external user {user.first_name} {user.last_name} ({user.email}) who did not create it. Thus a new version was created.",  
+                                "document" : newData['document']
+                            }
+                        documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                        if documentCommentSerializer.is_valid():
+                            documentCommentSerializer.save()
+                    else:
+                        comment = {
+                                "user" : 0,
+                                "type" : 3,
+                                "title" : "",
+                                "comment" : f"ARC Document was updated by user {user.first_name} {user.last_name} ({user.email}) who created it. Thus a new version was created.",  
+                                "document" : newData['document']
+                            }
+                        documentCommentSerializer = DocumentComments_Serializer(data=comment)
+                        if documentCommentSerializer.is_valid():
+                            documentCommentSerializer.save()
                 else:
-                    version = old_version
+                    if reviewDoc['status'] == 2:
+                        ComplianceDocument.objects.filter(id=newData['document']).update(status=7)
+                        version = old_version + 1
+                    else:
+                        version = old_version
             else:
                 if reviewDoc['user_id'] != user.pk:
                     ComplianceDocument.objects.filter(id=newData['document']).update(status = 5)
@@ -2908,6 +2967,7 @@ class arcList(APIView):
                 if serializer.is_valid():
                     newARC_id = serializer.create(serializer.validated_data)
                     arcdata = arc.objects.filter(id=newARC_id.pk)
+
                     missing = f"This case has some outstanding requirements in ARC review version {version} before it can be approved for the release of commission:\n"
                     aDocument = arcdata.values("client_needs","appropriate_fna","fna_outcome","product_suitability","alternative_solutions","material_aspects","special_terms","replacement_terms").latest('id')
                     for key in aDocument:

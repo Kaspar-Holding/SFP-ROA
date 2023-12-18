@@ -529,12 +529,12 @@ const ARCDocument = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className='col py-3 border-bottom'>
+                                                    <div className='col-12 py-3 border-bottom'>
                                                         <h6 className='gatekeeping-question'>                        
                                                             Replacement comparison
                                                         </h6>
                                                         <div className='row'>
-                                                            <div className='col-lg-4'>
+                                                            <div className='col-lg-3'>
                                                                 <div className="form-check">
                                                                     <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={20} checked={ARCAnswers?.replacement_terms == Number("20") ? true : false} name="replacement_terms" id="replacement_terms"/>
                                                                     <label className="form-check-label" for="replacement_terms">
@@ -542,7 +542,7 @@ const ARCDocument = () => {
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div className='col-lg-4'>
+                                                            <div className='col-lg-3'>
                                                                 <div className="form-check">
                                                                     <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={10} checked={ARCAnswers?.replacement_terms == Number("10") ? true : false} name="replacement_terms" id="replacement_terms"/>
                                                                     <label className="form-check-label" for="replacement_terms">
@@ -550,11 +550,19 @@ const ARCDocument = () => {
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div className='col-lg-4'>
+                                                            <div className='col-lg-3'>
                                                                 <div className="form-check">
                                                                     <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={0} checked={ARCAnswers?.replacement_terms == Number("0") ? true : false} name="replacement_terms" id="replacement_terms"/>
                                                                     <label className="form-check-label" for="replacement_terms">
                                                                         <strong>Not</strong> <strong>Approved</strong>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div className='col-lg-3'>
+                                                                <div className="form-check">
+                                                                    <input onChange={(e)=>{Versions.length > 0 ? CurrentVersion === Versions[Versions.length-1]['version'] ? onChange(e) : "" : onChange(e)}}className="form-check-input" type="radio" value={1} checked={ARCAnswers?.replacement_terms == Number("1") ? true : false} name="replacement_terms" id="replacement_terms"/>
+                                                                    <label className="form-check-label" for="replacement_terms">
+                                                                        <strong>N/A</strong>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -1337,33 +1345,44 @@ const ARCDocument = () => {
                         <div className=''>
                             <div className="mx-auto">
                                 <div className='row'>
+                                    
+                                    <div className={ DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
+                                        <button 
+                                            className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
+                                            type='button'
+                                            onClick={()=>{router.push({pathname: "/apps/compliance/documents/gatekeeping", query: {'dId': dId}})}}
+                                        >
+                                            <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
+                                            Back to Gatekeeping
+                                        </button>
+                                    </div>
                                     {
-                                        DocumentInitalData?.starting_point == 2 ?
-                                            user?.is_superuser || (DocumentInitalData?.user_id !== user?.id && user?.userType === 1) ?
-                                            <div className={ DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
-                                                <button 
-                                                    className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
-                                                    type='button'
-                                                    onClick={()=>{router.push({pathname: "/apps/compliance/documents/view/gatekeeping", query: {'dId': dId}})}}
-                                                >
-                                                    <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
-                                                    Back to Gatekeeping
-                                                </button>
-                                            </div>
-                                            :
-                                            user?.is_superuser || (DocumentInitalData?.user_id === user?.id && user?.userType === 1) ?
-                                            <div className={ DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
-                                                <button 
-                                                    className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
-                                                    type='button'
-                                                    onClick={()=>{router.push({pathname: "/apps/compliance/documents/gatekeeping", query: {'dId': dId}})}}
-                                                >
-                                                    <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
-                                                    Back to Gatekeeping
-                                                </button>
-                                            </div>
-                                            :<></>
-                                        :<></>
+                                        // DocumentInitalData?.starting_point == 2 ?
+                                        //     user?.is_superuser || (DocumentInitalData?.user_id !== user?.id && user?.userType === 1) ?
+                                        //     <div className={ DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
+                                        //         <button 
+                                        //             className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
+                                        //             type='button'
+                                        //             onClick={()=>{router.push({pathname: "/apps/compliance/documents/view/gatekeeping", query: {'dId': dId}})}}
+                                        //         >
+                                        //             <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
+                                        //             Back to Gatekeeping
+                                        //         </button>
+                                        //     </div>
+                                        //     :
+                                        //     user?.is_superuser || (DocumentInitalData?.user_id === user?.id && user?.userType === 1) ?
+                                        //     <div className={ DocumentInitalData?.status == 2 || DocumentInitalData?.status == 7 ? 'col-lg-4' : "col-lg-6"}>
+                                        //         <button 
+                                        //             className="btn btn-primary compliance-inital-card-button-text btn-sfp w-100"
+                                        //             type='button'
+                                        //             onClick={()=>{router.push({pathname: "/apps/compliance/documents/gatekeeping", query: {'dId': dId}})}}
+                                        //         >
+                                        //             <i className='bi pe-none mx-2 me-2 fa-solid fa-arrow-left'/>
+                                        //             Back to Gatekeeping
+                                        //         </button>
+                                        //     </div>
+                                        //     :<></>
+                                        // :<></>
                                     }
                                     {
                                         (user?.is_superuser || user?.userType === 1 ) && DocumentInitalData?.status != 1 ?

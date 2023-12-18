@@ -479,32 +479,40 @@ const CompleteDocument = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className='col py-3 border-bottom'>
+                                                <div className='col-12 py-3 border-bottom'>
                                                     <h6 className='gatekeeping-question'>                        
                                                         Replacement comparison
                                                     </h6>
                                                     <div className='row'>
-                                                        <div className='col-lg-4'>
+                                                    <div className='col-lg-3'>
+                                                        <div className="form-check">
+                                                            <input className="form-check-input" type="radio" value={20} checked={ARCAnswers?.replacement_terms == Number("20") ? true : false} name="replacement_terms" id="replacement_terms"/>
+                                                            <label className="form-check-label" for="replacement_terms">
+                                                                <strong>Approved</strong>
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                        <div className='col-lg-3'>
                                                             <div className="form-check">
-                                                                <input className="form-check-input" type="radio" value={15} checked={ARCAnswers?.replacement_terms == Number("15") ? true : false} name="replacement_terms" id="replacement_terms"/>
+                                                                <input className="form-check-input" type="radio" value={10} checked={ARCAnswers?.replacement_terms == Number("10") ? true : false} name="replacement_terms" id="replacement_terms"/>
                                                                 <label className="form-check-label" for="replacement_terms">
-                                                                    <strong>Approved</strong>
+                                                                    <strong>Partially</strong> <strong>Approved</strong>
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div className='col-lg-4'>
+                                                        <div className='col-lg-3'>
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="radio" value={0} checked={ARCAnswers?.replacement_terms == Number("0") ? true : false} name="replacement_terms" id="replacement_terms"/>
                                                                 <label className="form-check-label" for="replacement_terms">
-                                                                    <strong>Partially Approved</strong>
+                                                                    <strong>Not</strong> <strong>Approved</strong>
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div className='col-lg-4'>
+                                                        <div className='col-lg-3'>
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="radio" value={1} checked={ARCAnswers?.replacement_terms == Number("1") ? true : false} name="replacement_terms" id="replacement_terms"/>
                                                                 <label className="form-check-label" for="replacement_terms">
-                                                                    <strong>Not</strong> <strong>Approved</strong>
+                                                                    <strong>N/A</strong>
                                                                 </label>
                                                             </div>
                                                         </div>

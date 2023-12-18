@@ -74,12 +74,12 @@ const SideBar = ({appTitle, app}) => {
                             Dashboard
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link href={`/apps/${app}/trends`} className={ router.pathname === `/apps/${app}/trends` ? "nav-link active" :"nav-link link-body-emphasis" }>
                             <i className='bi pe-none me-2 fa-solid fa-line-chart' />
                             Trends
                         </Link>
-                    </li>
+                    </li> */}
                     
                     {/* {
                         app === "compliance" && user?.is_superuser ?
@@ -92,7 +92,7 @@ const SideBar = ({appTitle, app}) => {
                         : <></>
                     } */}
                     <li>
-                        <Link href="#" className={ router.pathname === `/apps/${app}/data` ? "nav-link active" :"nav-link link-body-emphasis" }>
+                        <Link href={`/apps/${app}/list`} className={ router.pathname === `/apps/${app}/list` ? "nav-link active" :"nav-link link-body-emphasis" }>
                             <i className='bi pe-none me-2 fa-solid fa-list' />
                             Full List
                         </Link>
