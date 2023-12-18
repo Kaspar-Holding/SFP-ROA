@@ -2515,8 +2515,10 @@ class ComplianceDocumentSummary(APIView):
                 arc_score = 0
                 if businessType < 14 :
                     aDocument = aDoc.values("client_needs","appropriate_fna","fna_outcome","product_suitability","alternative_solutions","material_aspects","special_terms","replacement_terms").latest('id')
-                    arc_total = 120
+                    arc_total = 120 if replacement == False else 100
                     for key in aDocument:
+                        if key == "replacement_terms" and replacement:
+                            continue    
                         arc_score += aDocument[key]
                         if aDocument[key] == 0:
                             if key == "client_needs":
@@ -2827,7 +2829,7 @@ class arcList(APIView):
             old_version = arcdata.values().latest('created_at')['version'] if arcdata.exists() else 0
             version = 0
             if arcdata.exists():
-                if old_version['user_id'] != user.pk:
+                if arcdata.values().latest('created_at')['user_id'] != user.pk:
                     version = old_version + 1
                     newData['version'] = version
                     if arcdata.values().earliest('created_at') != user.pk:

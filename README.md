@@ -20,6 +20,7 @@ Deployed using Nginx and Gunicorn
 - Full list component is now developed.
 - Advisor Search was removed from placeholder.
 - Search API is updated too.
+- ARC Calculation Bug resolved.
 - Deployment on Staging 
 
 ### 14 November 2023:
