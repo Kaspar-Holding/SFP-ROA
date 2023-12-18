@@ -117,7 +117,7 @@ def searchComplianceDocument(request):
                 )
 
     else:
-        data = ComplianceDocument.objects.filter(Q(user=request.user.pk)|Q(picked_up=request.user.pk))
+        data = ComplianceDocument.objects.all()
         if data.exists():
             search_query = SearchQuery(request.data['search_query'], search_type='websearch')
             search_vector = SearchVector('policy_number')

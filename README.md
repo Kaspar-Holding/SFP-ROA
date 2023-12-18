@@ -17,7 +17,9 @@ Deployed using Nginx and Gunicorn
 ### 18 November 2023:
 - GK and ARC can edit other's documents
 - A new version will be created if a new user updates it.
-- Full list developed.
+- Full list component is now developed.
+- Advisor Search was removed from placeholder.
+- Search API is updated too.
 - Deployment on Staging 
 
 ### 14 November 2023:
