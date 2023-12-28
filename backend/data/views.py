@@ -1,7 +1,8 @@
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, APIView
 from django.core.files.base import ContentFile
-from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RF_Scores_Serializer, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Loss_Serializer, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
+from .serializers import AI_ProductTakenSerializer, AR_ProductTakenSerializer, AssuranceInvestmentSerializers, AssuranceRiskSerializers, Disclosures_Serializer, DisclosuresProducts_Serializer, EB_CoverSerializer, EmployeeBenefitsSerializers, FiduciarySerializers, GapCoverSerializers, IP_ProductTakenSerializer, InvestmentPlanningSerializers, RF_LinkedPartySerializers, RF_Scores_Serializer, RP_ProductTakenSerializer, RiskFactorsSerializers, RiskPlanningSerializers, STIC_Loss_Serializer, STIC_Sec_Fire_Serializer, STIP_Loss_Serializer, ShortTermInsuranceCommericalSerializers, ShortTermInsurancePersonalSerializers, UserAccountsSerializers, FormSerializers, MedicalSerializers
 from .models import AI_ProductTaken, AR_ProductTaken, AssuranceInvestment, AssuranceRisk, EB_Cover, EmployeeBenefits, Fiduciary, GapCover, IP_ProductTaken, InvestmentPlanning, RF_LinkedParty, RF_Scores, RP_ProductTaken, RiskFactors, RiskPlanning, STIC_Loss, STIC_Sec_Fire, STIP_Loss, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, UserAccount, Form, Medical
 from .models import STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21
 from .models import Risk_DC_Others, Risk_DiC_Others, Risk_DrC_Others, AR_BnS_Others, AR_KeyP_Others, AR_SureNLia_Others, AR_BusOvProt_Others, AR_CLARedm_Others, AR_DLARedm_Others, AI_Others
@@ -9,7 +10,8 @@ from .serializers import Risk_DC_Others_Serializer, Risk_DiC_Others_Serializer, 
 from .serializers import STIC_Sec_2_Serializer, STIC_Sec_3_Serializer, STIC_Sec_4_Serializer, STIC_Sec_5_Serializer, STIC_Sec_6_Serializer, STIC_Sec_7_Serializer, STIC_Sec_8_Serializer, STIC_Sec_9_Serializer, STIC_Sec_10_Serializer, STIC_Sec_11_Serializer, STIC_Sec_12_Serializer, STIC_Sec_13_Serializer, STIC_Sec_14_Serializer, STIC_Sec_15_Serializer, STIC_Sec_16_Serializer, STIC_Sec_17_Serializer, STIC_Sec_18_Serializer, STIC_Sec_19_Serializer, STIC_Sec_20_Serializer, STIC_Sec_21_Serializer
 from .models import STIP_Sec_AddProp, STIP_Sec_Build, STIP_Sec_HC, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_PersonalLL, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
 from .serializers import STIP_Sec_AddProp_Serializer, STIP_Sec_Build_Serializer, STIP_Sec_HC_Serializer, STIP_Sec_LegalA_Serializer, STIP_Sec_MotorC_Serializer, STIP_Sec_PersonalLL_Serializer, STIP_Sec_Trailer_Serializer, STIP_Sec_Vehicle_Serializer, STIP_Sec_WaterC_Serializer
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
+from .models import Disclosures, DisclosuresProducts
 import pytz
 import calendar
 from django.db.models import Count, Sum, Q
@@ -2675,3 +2677,108 @@ def update_AI_Others_Data(request):
     else:
         print(AI_serializer.errors)
     return Response({"message": "Updated","code":200,"formData": AI_Others_data},200)
+
+
+
+class DisclosureAPI(APIView):
+    def get_object(self, pk):
+        try:
+            return Disclosures.objects.get(pk=pk)
+        except Disclosures.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = Disclosures_Serializer(snippet)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = Disclosures_Serializer(snippet, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        snippet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class DisclosureAPI(APIView):
+    def get_object(self, pk):
+        try:
+            return Disclosures.objects.get(pk=pk)
+        except Disclosures.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = Disclosures_Serializer(snippet)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = Disclosures_Serializer(snippet, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        snippet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class DisclosuresList(APIView):
+    """
+    List all snippets, or create a new snippet.
+    """
+    def get(self, request, format=None):
+        snippets = Disclosures.objects.all()
+        serializer = Disclosures_Serializer(snippets, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = Disclosures_Serializer(data=request.data['data'])
+        if serializer.is_valid():
+            data = serializer.create(serializer.validated_data)
+            formId = data.pk
+            productsData = request.data['product_data']
+            if productsData != []:
+                for product in productsData:
+                    product['formId'] = formId
+                product_serializer = DisclosuresProducts_Serializer(data=productsData, many=True)
+                if product_serializer.is_valid():
+                    product_serializer.create(product_serializer.validated_data)
+                else:
+                    print(product_serializer.errors)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            print(product_serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DisclosuresProductsAPI(APIView):
+    def get_object(self, pk):
+        try:
+            return DisclosuresProducts.objects.get(pk=pk)
+        except DisclosuresProducts.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = DisclosuresProducts_Serializer(snippet)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = DisclosuresProducts_Serializer(snippet, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        snippet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

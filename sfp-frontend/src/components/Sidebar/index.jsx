@@ -48,7 +48,7 @@ const SideBar = ({appTitle, app}) => {
                         Welcome to {appTitle}
                     </p>
                     <p className='sidebar-user'>
-                        {user ? `${user?.first_name} ${user?.last_name}` : ""}
+                        {user ? `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` : ""}
                     </p>
                     <p className='sidebar-date'>
                         {CurrentDate}

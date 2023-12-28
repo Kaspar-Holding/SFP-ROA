@@ -14,7 +14,15 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
-### 18 November 2023:
+### 27 December 2023:
+- User Profile Model updated
+- User Profile bulk update API created
+- User Profile populated to SFP ROA Disclosures
+- SFP ROA Disclosures frontend updated
+- SFP ROA Disclosures PDF developed
+- Deployment on Staging 
+
+### 18 December 2023:
 - GK and ARC can edit other's documents
 - A new version will be created if a new user updates it.
 - Full list component is now developed.
@@ -23,13 +31,13 @@ Deployed using Nginx and Gunicorn
 - ARC Calculation Bug resolved.
 - Deployment on Staging 
 
-### 14 November 2023:
+### 14 December 2023:
 - Admin Search bug resolved.
 - Replacement N/A in GK will be taken in consideration in ARC too.
 - Color Coding bug resolved.
 - Deployment on Staging 
 
-### 12 November 2023:
+### 12 December 2023:
 - Please also note that when the case is approved/not approved by a GK and the GK goes to view the case, the color coding disappears. – Done
 - After approving a case, most of the options selected on the checklist disappear - Unable to replicate it
 - Deployment on Staging 

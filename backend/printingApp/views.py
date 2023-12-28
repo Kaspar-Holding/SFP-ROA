@@ -1,5 +1,7 @@
+import os
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, APIView
+import tempfile
 from django_pdfkit import PDFView
 from django.core.files.base import ContentFile
 import uuid
@@ -2555,6 +2557,64 @@ def wkhtmltopdfapi(request):
         return Response({"file":"static/pdf/%s.pdf"%(fileName)})
     else:
         return Response({'message': "Does not exist"}, 404)
+
+class disclosuresPDF(APIView):
+    authentication_classes = []
+    permission_classes = []
+    def get(self, request):
+        data = {}
+        data['user'] = UserAccount.objects.filter(email="armughan.ahmad@kasparholdings.com").values('first_name', 'last_name', 'email').first()
+        data['company'] = ""
+        if 'sfp' in data['user']['email'] or 'succession' in data['user']['email']:
+            data['company'] = "SFP"
+        if 'fs4p' in data['user']['email']:
+            data['company'] = "FS4P"
+        if 'sanlam' in data['user']['email']:
+            data['company'] = "AFP"
+        data['disclosures_status'] = True
+        data['logo'] = 'static/images/logo.png'
+        template = get_template('pdfForm.html')
+        # Render the footer template to a string
+        footer_html = render_to_string('footer.html', context=data)
+
+        # Create a temporary file
+        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.html')
+
+        # Write the footer HTML to the file
+        temp_file.write(footer_html.encode('utf-8'))
+        temp_file.close()
+
+        # Load the template
+        header_template = get_template('header.html')
+
+        # Render the template with context data
+        header_html = header_template.render(context=data)
+
+        # Create a temporary file
+        header_temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.html')
+
+        # Write the header HTML to the file
+        header_temp_file.write(header_html.encode('utf-8'))
+        header_temp_file.close()
+
+        cmd_options = {
+            'page-size': 'A4',
+            'zoom': '0.9',
+            'viewport-size' : '1920x1080',
+            'footer-html' : temp_file.name,
+            # 'header-html' : header_temp_file.name,
+            'dpi' : '600',
+            'margin-top': '20mm',
+            'margin-bottom': '20mm'
+        }
+        response =  PDFTemplateResponse(request=request, template=template,context=data, cmd_options=cmd_options)
+        # fileName = "DISCLOSURE AND CONSENT DOCUMENT  %s" %(uuid.uuid4())
+        fileName = "DISCLOSURE AND CONSENT DOCUMENT" 
+        with open("static/pdf/%s.pdf"%(fileName), "wb") as f:
+            f.write(response.rendered_content)
+        os.unlink(temp_file.name)
+        # os.unlink(header_temp_file.name)
+        return Response({"file":"static/pdf/%s.pdf"%(fileName)})
     
 def test(request):
       

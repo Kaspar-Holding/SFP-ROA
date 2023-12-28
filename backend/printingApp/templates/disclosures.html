@@ -1,0 +1,1015 @@
+{% load static %}
+<div class="header-bg">
+    <b class="disclosure-header" style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 16px;'>SFP DISCLOSURE AND CONSENT DOCUMENT  </b>
+</div>
+<br/>
+<br/>
+<div class="subheading">
+    <b class="disclosure-sub-header" style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 16px;'>LETTER OF INTRODUCTION </b>
+</div>
+<br/>
+<div class='row div'>
+    <div class="column6">
+        <span style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 14px;'><b>Dear Client,</b></span>
+    </div>
+    <div class="column5">                        
+        <div class='row div disclosure-part-1'>
+            <div class="column4">
+                {% if RoA.clientLetterOfIntroduction == 1 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column5">
+                <strong>
+                    Existing Client 
+                </strong>
+            </div>
+            <div class="column4">
+                {% if RoA.clientLetterOfIntroduction == 0 %}
+                    <input checked type="radio" />
+                {% else %}
+                    <input type="radio" />
+                {% endif %}
+            </div>
+            <div class="column5">
+                <strong>
+                    New Client 
+                </strong>
+            </div>
+        </div>
+    </div>                                        
+</div>
+<br/>
+<div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 15px;;  '>
+    <div class='row div'>
+        <div class="column12">
+            <span>
+                Thank you for choosing Succession Financial Planning Advisory Services (Pty) Ltd. (herein referred to as “SFP”) as your service provider of choice. 
+                Please be advised that as a contracted intermediary of SFP, a licensed Financial Service Provider (FSP No.: 41158); 
+                including any authorised user(s) of SFP, consent is required to access your current/existing financial planning portfolio, 
+                which includes your risk and investment policies; as well as any employee benefits; medical and/or short term information, 
+                that you may have with any Financial Service Provider 
+                <i>(that is: any Long-term insurer, short term insurer, retirement fund, medical aid; and/or other financial institution directly)</i>. 
+                Access to your financial planning portfolio is to assist you in making an informed decision around your financial planning needs. 
+                Further, consent is required to authorise the intermediary of SFP to act as your new intermediary on record to fulfil your financial planning objectives; 
+                as well as provide suitable communication related to your financial planning needs.
+            </span>            
+        </div>                            
+    </div>
+</div>
+<br/>
+<table style='font-family: "Arial Narrow", Arial, sans-serif; font-size: 15px; width: 100%; border: 1px solid black; border-collapse: collapse;'>
+    <thead style='color: #14848A;'>
+        <tr>
+            <th style='width: 25%; border: 1px solid black;'>About SFP</th>
+            <th style='width: 25%; border: 1px solid black;'>Professional Indemnity Insurance</th>
+            <th style='width: 25%; border: 1px solid black;'>Confidentiality</th>
+            <th style='width: 25%; border: 1px solid black;'>Compliance with FAIS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style='border: 1px solid black; padding: 1%;'>
+                SFP is a wholly owned subsidiary of Sanlam Life Insurance Limited and has received more than 30% of its income in the last 12 months from Sanlam. Heinrich Punt is the Responsible Key Individual
+            </td>
+            <td style='border: 1px solid black; padding: 1%;'>
+                SFP accepts responsibility for the actions of {{user.first_name}} {{user.last_name}} in the rendering of financial services on behalf of SFP and carries the necessary Professional Indemnity Insurance. 
+            </td>
+            <td style='border: 1px solid black; padding: 1%;'>
+                All Information obtained from you will be treated as confidential and will only be disclosed upon your prior written consent or if required in terms of applicable law, 
+                <br/>
+                Additionally, refer to compliance with the Protection of Personal Information Act below.
+            </td>
+            <td style='border: 1px solid black; padding: 1%;'>
+                SFP is monitored by the Compliance Office of Sanlam Life Insurance Limited
+                <br/>
+                <img  src="{% get_media_prefix %}user.png" style='width:20px;height:20px'/>
+                Andrie Bester
+                <br/>
+                <img  src="{% get_media_prefix %}pin.png" style='width:20px;height:20px'/>
+                2 Strand Road, Bellville
+                <br/>
+                <img  src="{% get_media_prefix %}phone.png" style='width:20px;height:20px'/>
+                <a href="tel:(021) 847 1483">(021) 847 1483 (office)</a>
+                <br/>
+                <img  src="{% get_media_prefix %}mail.png" style='width:30px;height:20px'/>
+                <a href="mailto:andrie.bester@sanlam.co.za">andrie.bester@sanlam.co.za</a>
+                <br/>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<div class="subheading">
+    <b class="disclosure-sub-header" style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 16px;'>Intermediary Detail – <span style="color:black">a registered representative contracted by SFP</span></b>
+</div>
+<br/>
+<table style='font-family: "Arial Narrow", Arial, sans-serif; font-size: 15px; width: 100%; border: 1px solid black; border-collapse: collapse;'>
+    <tbody>
+        <tr>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                <img style='width:40px;height:40px' src="{% get_media_prefix %}user.png" alt="User Icon" />
+            </td>
+            <td colspan="9" style='border: 1px solid black; padding-left: 2%;'>
+                {{user.first_name}} {{user.last_name}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                <img style='width:40px;height:40px' src="{% get_media_prefix %}phone.png" alt="Phone Icon" />
+            </td>
+            <td colspan="4" style='border: 1px solid black; padding-left: 2%;'>
+                {{user.first_name}} {{user.last_name}}
+            </td>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                <img style='width:40px;height:40px' src="{% get_media_prefix %}building.jpg" alt="Build Icon" />
+            </td>
+            <td colspan="4" style='border: 1px solid black; padding-left: 2%;'>
+                {{user.first_name}} {{user.last_name}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                <img style='width:60px;height:40px' src="{% get_media_prefix %}mail.png" alt="User Icon" />
+            </td>
+            <td colspan="9" style='border: 1px solid black; padding-left: 2%;'>
+                {{user.first_name}} {{user.last_name}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                Industry Experience:
+            </td>
+            <td colspan="4" style='border: 1px solid black; padding-left: 2%;'>
+                5 years
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                In service with SFP as from:
+            </td>
+            <td colspan="4" style='border: 1px solid black; padding-left: 2%;'>
+                {{user.first_name}} {{user.last_name}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                Qualifications:
+            </td>
+            <td colspan="9" style='border: 1px solid black; padding-left: 2%;'>
+                {{user.first_name}} {{user.last_name}}
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="12" style='width: 10%; border: 1px solid black; text-align:center;'>
+                Category of Business Intermediary is licenced to sell 
+                (reference: SUB-CATEGORY = SC)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                <b class="disclosure-color">Category</b>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <b class="disclosure-color">Advice</b>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <b class="disclosure-color">Intermediary</b>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <b class="disclosure-color">Supervision</b>
+            </td>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                <b class="disclosure-color">Category</b>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <b class="disclosure-color">Advice</b>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <b class="disclosure-color">Intermediary</b>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <b class="disclosure-color">Supervision</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Long-Term insurance SC A
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Pension Fund (excl. Retail)
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Long-Term insurance SC B1
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Shares
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Long-Term insurance SC B2
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Money Market Instruments 
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Long-Term insurance SC B2-A
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Debentures & Securitised Debt
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Long-Term insurance SC B1-A
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Warrants, Certificates & other instruments
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Long-Term insurance SC C
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Bonds
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Short Term Insurance Personal Lines 
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Collective Investment Schemes 
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Short Term Insurance Commercial Lines 
+                </span> 
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Health Service Benefits 
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Short Term Insurance Personal Lines A1  
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Long-Term deposits  
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Retail Pension Benefits  
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                <span class="disclosure-color">
+                    Short- Term deposits
+                </span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Advice
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Intermediary
+            </td>
+            <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                Supervision
+            </td>
+        </tr>        
+        <tr>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                Remuneration:
+            </td>
+            <td colspan="9" style='border: 1px solid black; padding-left: 2%;'>
+                <span class="disclosure-color">
+                    The representative of SFP, as mentioned above, is remunerated through the payment commission on business implemented, and, where applicable, service fees that may have expressly been contracted with a client in writing. 
+                    <br/>
+                    It is noted that the above-mentioned representative does not hold more than 10% of shares issued by any insurer.  
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                Supervision:
+            </td>
+            <td colspan="9" style='border: 1px solid black; padding-left: 2%;'>
+                <span class="disclosure-color">
+                    If a Category or Sub-Category (SC) of business is marked as under supervision –the intermediary is marked for legislated monitoring until the relevant experience is obtained. 
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<div class="subheading">
+    <b class="disclosure-sub-header" style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 16px;'>Compliance with the Protection of Personal Information Act (The POPI Act)</b>
+</div>
+<br/>
+<div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 15px;;  '>
+    <div class='row div'>
+        <div class="column12">
+            <span>
+                SFP ensures that all personal information (“PI”) is safely processed and protected from unsolicited access as required by applicable legislation. In order to provide you with financial advice and/or intermediary services within the requirements of the Financial Advisory and Intermediary Service (FAIS) Act and any subordinate legislation, SFP may collect, process, collate, store, analyse and disclose PI for the following purpose: 
+            </span>            
+        </div>                            
+    </div>
+</div>
+<br/>
+<table style='font-family: "Arial Narrow", Arial, sans-serif; font-size: 15px; width: 100%; border-collapse: collapse;'>
+    <tr>
+        <td style='width: 33.33%; padding: 1%;'>
+            <ul>
+                <li>Conducting a Financial Needs Analysis</li>
+                <li>Recommendations for potential solutions to financial planning needs</li>
+                <li>Ongoing monitoring and reviews;</li>
+            </ul>
+        </td>
+        <td style='width: 33.33%; border-left: 1px solid black; padding: 1%;'>
+            <ul>
+                <li>Obtaining quotations and supporting applications to product providers, which may include information for underwriting purposes;</li>
+                <li>Submission of claims;</li>
+                <li>Statistical analysis; and/or</li>
+            </ul>
+        </td>
+        <td style='width: 33.33%; border-left: 1px solid black; padding: 1%;'>
+            <ul>
+                <li>Allocating another intermediary in the event of resignation/retirement and/or other valid reason.</li>
+                <li>Any other purposes related herein (the list may not be regarded as exhaustive)</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<br/>
+<div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 15px;;  '>
+    <div class='row div'>
+        <div class="column12">
+            <span>
+                As a result, the information required to fulfil the relevant advice and/or intermediary services is your PI, which includes but is not limited to your personal, 
+                family (including information pertaining to a minor, where necessary), financial, credit and health information. The data collected is also processed and stored 
+                to meet other legislative obligations such as FICA (Financial Intelligence Centre Act) and the NCA (National Credit Act) requirements, among other regulatory 
+                requirements, as and when applicable. It may become necessary to share your personal information within the group and with other service providers where required 
+                for any of the purposes listed above. This may further include, but is not limited to, administrative support staff, other intermediaries, legal consultants, 
+                financial planning or product specialists, and product providers.  SFP may send your personal information to service providers outside the borders of 
+                the Republic of South Africa (where such a country has similar protection laws or has entered into a binding agreement with SFP that ensures effective 
+                adherence to the principles for processing of information under the Protection of Personal Information Act No 4 of 2013) for storage or further processing 
+                on SFP’s behalf. You have the right to request access to your personal information so collected and to request for your information to be updated and/or 
+                corrected (for which you must inform SFP immediately of any changes, failing which the appropriateness of the financial advice may be compromised). 
+                Personal information will be retained for as long as necessary to meet the FAIS and FIC Act requirements and other legislation. We may provide you with 
+                information about financial products and other services, including text messages, emails, newsletters and the like. If you do not want to receive such 
+                information, please let us know in writing to opt out (see below point 4).  For more information, please go to the SFP website: 
+                <a href="www.sfpadvice.co.za">www.sfpadvice.co.za</a>  
+            </span>            
+        </div>                            
+    </div>
+</div>
+<hr/>
+<br/>
+<div class="subheading">
+    <b class="disclosure-sub-header" style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 16px;'>Client Information<i style="color:black"> (the undersigned)</i></b>
+</div>
+<br/>
+<table style='font-family: "Arial Narrow", Arial, sans-serif; font-size: 15px; width: 100%; border: 1px solid black; border-collapse: collapse;'>
+    <tbody>
+        <tr>
+            <td colspan="1" style='width: 20%; border: 1px solid black; text-align:center;'>
+                Name of client:
+            </td>
+            <td colspan="9" style='border: 1px solid black; padding-left: 2%;'>
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='width: 20%; border: 1px solid black; text-align:center;'>
+                Identity Number:
+            </td>
+            <td colspan="9" style='border: 1px solid black; padding-left: 2%;'>
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style='width: 20%; border: 1px solid black; text-align:center;'>
+                Contact details:
+            </td>
+            <td colspan="9" style='border: 1px solid black; padding-left: 2%;'>
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style='width: 70%; border: 1px solid black; padding-left: 2%;'>
+                <b>Declaration: </b>
+                <br/>
+                <span>I, the undersigned, hereby acknowledge and accept:</span>
+            </td>
+            <td colspan="3" style='border: 1px solid black; padding-left: 2%;text-align:center;'>
+                <b class="disclosure-color">Please tick appropriately and sign:</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style='width: 70%; border: 1px solid black; padding-left: 2%;'>
+                <ol>
+                    <li>The receipt of a copy of {{user.first_name}} {{user.last_name}} here’s Letter of Introduction; and </li>
+                </ol>
+            </td>
+            <td colspan="3" style='border: 1px solid black; padding-left: 2%;text-align:center;'>
+                <div class='row div disclosure-part-1'>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            Yes 
+                        </strong>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            No 
+                        </strong>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style='width: 70%; border: 1px solid black; padding-left: 2%;'>
+                <ol start="2">
+                    <li>The explanation of SFP Compliance with The POPI Act, and </li>
+                </ol>
+            </td>
+            <td colspan="3" style='border: 1px solid black; padding-left: 2%;text-align:center;'>
+                <div class='row div disclosure-part-1'>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            Yes 
+                        </strong>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            No 
+                        </strong>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style='width: 70%; border: 1px solid black; padding-left: 2%;'>
+                <ol start="3">
+                    <li>The purpose for processing my PI and sharing my PI with relevant parties, and</li>
+                </ol>
+            </td>
+            <td colspan="3" style='border: 1px solid black; padding-left: 2%;text-align:center;'>
+                <div class='row div disclosure-part-1'>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            Yes 
+                        </strong>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            No 
+                        </strong>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style='width: 70%; border: 1px solid black; padding-left: 2%;'>
+                <ol start="4">
+                    <li>That my information may be used for marketing purposes.</li>
+                </ol>
+            </td>
+            <td colspan="3" style='border: 1px solid black; padding-left: 2%;text-align:center;'>
+                <div class='row div disclosure-part-1'>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            Yes 
+                        </strong>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            No 
+                        </strong>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style='width: 70%; border: 1px solid black; padding-left: 2%;'>
+                <ol start="5">
+                    <li>That my PI may be retained for as long as The FAIS and FIC Act requires.</li>
+                </ol>
+            </td>
+            <td colspan="3" style='border: 1px solid black; padding-left: 2%;text-align:center;'>
+                <div class='row div disclosure-part-1'>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            Yes 
+                        </strong>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column5">
+                        <strong>
+                            No 
+                        </strong>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" style='width: 50%; border: 1px solid black; border-right:0px; padding: 2%;'>
+                Signature
+            </td>
+            <td colspan="4" style='border: 1px solid black; border-left:0px; padding: 2%;text-align:center;'>
+                <div class='row div'>             
+                    <div class="column">
+                        <b>Date:</b>
+                    </div>
+                    <div class="column">
+                        <span class="text-start form-select" >
+                            
+                        </span>
+                    </div>                   
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<div class="subheading">
+    <b class="disclosure-sub-header" style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 16px;'><u>Client Consent and Authorisation:</u></b>
+</div>
+<br/>
+<div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 16px;'>
+    <b class="disclaimer-color">Part 1: Authorisation to access information</b><br/>
+    I, the undersigned, 
+    <br/>
+    <ul>
+        <li>
+            hereby confirm that the {{user.first_name}} {{user.last_name}} is acting in my best interest for the purpose of providing me with financial advice and intermediary services, and I give consent and authorisation to them, and accordingly any authorised user of SFP, to obtain my financial planning information held by any Financial Service Provider, as explained above, or by using the services of The Financial Services Exchange (Pty) Ltd (also known as “Astute”), where applicable. This consent and authorisation include access to information pertaining to any Short-Term Insurer that is in possession of my Short-Term Insurance products or any medical, and gap cover applicable to my financial planning portfolio. 
+            <ul>
+                <li>
+                    <b>Policy # and Provider for</b>
+                    <div class='row div disclosure-part-1'>
+                        <div class="column4">
+                            {% if RoA.clientLetterOfIntroduction == 1 %}
+                                <input checked type="checkbox" />
+                            {% else %}
+                                <input type="checkbox" />
+                            {% endif %}
+                        </div>
+                        <div class="column5">
+                            <strong>
+                                STI
+                            </strong>
+                        </div>
+                        <div class="column4">
+                            {% if RoA.clientLetterOfIntroduction == 0 %}
+                                <input checked type="checkbox" />
+                            {% else %}
+                                <input type="checkbox" />
+                            {% endif %}
+                        </div>
+                        <div class="column5">
+                            <strong>
+                                Health Insurance 
+                            </strong>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            hereby authorise any financial institution or employer in possession of information regarding my financial planning portfolio to release that information upon request directly to the intermediary authorised herein, or to the intermediary’s authorised personnel. I further, understand that I may have to sign a specific product provider document for consent thereto.
+        </li>
+        <li>
+            understand that this authorisation is valid indefinitely and I have the right to withdraw this authorisation at any time, in writing:
+        </li>
+    </ul>
+    <div class="row div" style="padding-top:2%;paddintg-bottom:2%">
+        <div class="column2">
+            <span>Client Signature:</span>
+        </div>
+        <div class="column2">
+            <span class="white">0</span>
+        </div>
+        <div class="column2">
+            <span>Date:</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_DbyI_Date}}</span>
+        </div>
+    </div>
+    <hr/>
+    <b class="disclaimer-color">Part 2: Appointment as New Official Care Intermediary</b><br/>
+    I, the undersigned, 
+    <br/>
+    <ul>
+        <li>
+            further request the financial institutions with which the above-mentioned intermediary has a sales agreement, to record them as my official care intermediary, unless indicated otherwise below appointed for a specific financial planning need only. I have been fully informed as to the implications and consequences of this letter of appointment.
+        </li>
+        <li>
+            agree to the transfer of any new commission and appropriate service fees which may be due during the period of this appointment to the appointed Financial Service Provider (namely: SFP) nominated above in respect of my policy(ies).
+        </li>
+        <li>
+            I understand that I have the right to withdraw this authorisation at any time, in writing
+        </li>
+    </ul>
+    <table style='font-family: "Arial Narrow", Arial, sans-serif; font-size: 15px; width: 100%; border: 1px solid black; border-collapse: collapse;'>
+        <thead style='color: #14848A;'>
+            <tr>
+                <th style='width: 25%; border: 1px solid black;'>Product Provider <br/>Authorised to sell</th>
+                <th style='width: 25%; border: 1px solid black;'>Intermediary Sub -Code</th>
+                <th style='width: 25%; border: 1px solid black;'>Product Provider <br/>Authorised to sell</th>
+                <th style='width: 25%; border: 1px solid black;'>Intermediary Sub -Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style='border: 1px solid black; padding: 1%;'>
+                </td>
+                <td style='border: 1px solid black; padding: 1%;'>
+                </td>
+                <td style='border: 1px solid black; padding: 1%;'>
+                </td>
+                <td style='border: 1px solid black; padding: 1%;'>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <div class='row div'>
+        <div class="column6">
+            <span>Specific need for which Intermediary is authorised (i.e., not for entire portfolio):</span>
+        </div>
+        <div class="column5">         
+        </div>                     
+    </div>
+    
+    <div class="row div" style="padding-top:2%;paddintg-bottom:2%">
+        <div class="column2">
+            <span>Client Signature:</span>
+        </div>
+        <div class="column2">
+            <span class="white">0</span>
+        </div>
+        <div class="column2">
+            <span>Date:</span>
+        </div>
+        <div class="column2">
+            <span>{{STIP.STIP_DbyI_Date}}</span>
+        </div>
+    </div>
+    <hr/>
+</div>
+
+<div class="subheading">
+    <b class="disclosure-sub-header" style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 16px;'>Complaints Information: </b>
+</div>
+
+<div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 15px;;  '>
+    <div class='row div'>
+        <div class="column12">
+            <span>
+                Should you feel aggrieved by any advice and/or service provided by SFP and/or the representative on record, you may lodge a complaint at <a href="mailto:complaints@succession.co.za">complaints@succession.co.za</a> or contact the relevant party below:
+            </span>            
+        </div>                            
+    </div>
+</div>
+<table style='font-family: "Arial Narrow", Arial, sans-serif; font-size: 15px; width: 100%; border: 1px solid black; border-collapse: collapse;'>
+    <thead style='color: #14848A;'>
+        <tr>
+            <th colspan="1" style='width: 25%; border: 1px solid black;'>Advice complaints</th>
+            <th colspan="2" style='width: 50%; border: 1px solid black;'>Service/product complaints</th>
+            <th colspan="1" style='width: 25%; border: 1px solid black;'>Retirement Fund complaints</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="1" style='border: 1px solid black; padding: 1%; text-align:center;'>
+                <b>The FAIS Ombud</b>
+                <br/>
+                <span>Tel: 012 470 9080</span>
+                <br/>
+                <span>Fax: 012 348 3447</span>
+                <br/>
+                <span>E-mail: <a href="mailto:info@faisombud.co.za">info@faisombud.co.za</a></span>
+                <br/>
+                <span>Website: <a href="www.faisombud.co.za">www.faisombud.co.za</a></span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; padding: 1%; text-align:center;'>
+                <b>The Ombudsman for<br/>Short-Term Insurance</b>
+                <br/>
+                <span>Tel: 011 726 8900</span>
+                <br/>
+                <span>Fax: 011 726 5501</span>
+                <br/>
+                <span>E-mail: <a href="mailto:info@osti.co.za">info@osti.co.za</a></span>
+                <br/>
+                <span>Website: <a href="osti.co.za">www.osti.co.za</a></span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; padding: 1%; text-align:center;'>
+                <b>The Ombudsman for<br/>Long-Term Insurance</b>
+                <br/>
+                <span>Tel: 021 657 5000</span>
+                <br/>
+                <span>Fax: 021 657 5000</span>
+                <br/>
+                <span>E-mail: <a href="mailto:info@ombud.co.za">info@ombud.co.za</a></span>
+                <br/>
+                <span>Website: <a href="ombud.co.za">www.ombud.co.za</a></span>
+            </td>
+            <td colspan="1" style='border: 1px solid black; padding: 1%; text-align:center;'>
+                <b>The Pension Funds Adjudicator</b>
+                <br/>
+                <span>Tel: 012 346 1738</span>
+                <br/>
+                <span>Fax: 086 693 7472</span>
+                <br/>
+                <span>E-mail: <a href="mailto:enquiries@pfa.org.za">enquiries@pfa.org.za</a></span>
+                <br/>
+                <span>Website: <a href="www.pfa.org.za ">www.pfa.org.za </a></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

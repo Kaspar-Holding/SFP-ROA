@@ -225,12 +225,69 @@
                 width: 40%;
                 padding-left: 3%;
             }
+            .header-bg{
+                background-color: #00788A;
+                border: 1px solid #00788A;
+                text-align: center;
+                color: "white";
+            }
+            .header {
+                color: white;
+                font-size: 30px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-weight:'bold';
+            }
+            .disclosure-header {
+                color: white;
+                font-size: 30px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-weight:'bold';
+            }
+            .subheading {
+                text-align: center;
+            }
+            .disclosure-sub-header {
+                color: #14848A;
+                font-size: 30px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-weight:'bold';
+            }
+            .disclosure-part-1 {
+                color: #14848A;
+                font-size: 15px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-weight:'bold';
+            }
+            .disclosure-color {
+                color: #14848A;
+            }
             {% if company == "SFP" %}
                 .header {
                     color: #14848A;
                     font-size: 30px;
                     font-family: "Arial Narrow", Arial, sans-serif;
-                    fontWeight:'bold';
+                    font-weight:'bold';
+                }
+                .header-bg{
+                    background-color: #00788A;
+                    border: 1px solid #00788A;
+                    text-align: center;
+                    color: "white";
+                }
+                .disclosure-header {
+                    color: white;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .disclosure-sub-header {
+                    color: #14848A;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .disclosure-color {
+                    color: #14848A;
                 }
                 ol li {
                     color: #00788A;
@@ -244,7 +301,22 @@
                     color: #6AC7D2;
                     font-size: 30px;
                     font-family: "Arial Narrow", Arial, sans-serif;
-                    fontWeight:'bold';
+                    font-weight:'bold';
+                }
+                .header-bg{
+                    background-color: #6AC7D2;
+                    border: 1px solid #6AC7D2;
+                    text-align: center;
+                    color: "white";
+                }
+                .disclosure-sub-header {
+                    color: #6AC7D2;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .disclosure-color {
+                    color: #6AC7D2;
                 }
                 ol li {
                     color: #6AC7D2;
@@ -258,7 +330,22 @@
                     color: #0074C9;
                     font-size: 30px;
                     font-family: "Arial Narrow", Arial, sans-serif;
-                    fontWeight:'bold';
+                    font-weight:'bold';
+                }
+                .disclosure-color {
+                    color: #0074C9;
+                }
+                .disclosure-sub-header {
+                    color: #0074C9;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .header-bg{
+                    background-color: #0074C9;
+                    border: 1px solid #0074C9;
+                    text-align: center;
+                    color: "white";
                 }
                 ol li {
                     color: #0074C9;
@@ -298,6 +385,7 @@
         </style>
     </head>
     <body>
+        <img  src="{% get_media_prefix %}logo.png" class='iconDetails'/>
         {% if company == 'SFP' %}
             <img  src="{% get_media_prefix %}logo.png" class='iconDetails'/>
         {% endif %}
@@ -2190,6 +2278,10 @@
             <br/>
             <div>
         {% else %}        
+            {% if disclosures_status %}
+                {% include 'disclosures.html' with company=company user=user %}
+                <hr/>
+            {% endif %}
             {% if roa_status %}
                 {% include 'roa.html' with company=company RoA=RoA %}
                 <hr/>

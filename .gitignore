@@ -6,5 +6,7 @@ prodEnv
 /venv
 *.ipynb
 *.xlsx
+*.xls
 *.csv
 *.json
+my-firebase-app

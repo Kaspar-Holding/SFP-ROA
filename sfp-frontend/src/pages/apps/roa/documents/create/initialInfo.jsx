@@ -44,7 +44,7 @@ const InitialInfo = ({ user, FormData, onChange, nextStep }) => {
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Financial Advisor:</label>
-                            <input spellCheck="true" disabled value={`${user?.first_name} ${user?.last_name}`} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Name"  aria-describedby="" />
+                            <input spellCheck="true" disabled value={`${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}`} className="form-control" onChange={(e) => {onChange(e)}} placeholder="Name"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Date:</label>

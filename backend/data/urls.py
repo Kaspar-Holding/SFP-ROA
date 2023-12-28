@@ -14,6 +14,9 @@ urlpatterns = [
     path('add/' , views.insertData, name="Insert into Database"),
     path('deleteUser/' , views.deleteUser, name="Delete User from Database"),
     # Form Data
+    path('disclosures/' , views.DisclosuresList.as_view(), name="Insert data into Form Collection"),
+    path('disclosures/<int:pk>/' , views.DisclosureAPI.as_view(), name="Insert data into Form Collection"),
+    path('disclosures/product/' , views.DisclosuresProductsAPI.as_view(), name="Insert data into Form Collection"),
     path('addformdata/' , views.insertFormData, name="Insert data into Form Collection"),
     path('viewformdata/' , views.viewFormData, name="Form data details"),
     path('updateformdata/' , views.updateFormData, name="Update form data details"),

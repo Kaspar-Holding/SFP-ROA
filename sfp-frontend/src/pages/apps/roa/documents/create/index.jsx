@@ -17,7 +17,7 @@ import SectionAAInfo from './sectionAAInfo'
 import SectionAFICA from './sectionAFICA'
 import SectionAReplacements from './sectionAReplacements'
 import SectionB from './sectionB'
-
+import Moment from 'moment'
 const CreateROA = () => {
     
     const router = useRouter()
@@ -27,21 +27,21 @@ const CreateROA = () => {
     const Date_Var = new Date()
     const CurrentData = Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + (Date_Var.getDate())).slice(-2)
     const [FormData, setFormData] = useState({
-        clientName :  "",
-        clientIdNumber : "",
-        clientEmail : "",
-        clientAddress : "",
-        clientPhoneNumber : "",
-        clientDateOfBirth : Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + (Date_Var.getDate())).slice(-2),
-        clientLetterOfIntroduction : 2,
-        clientLetterOfIntroductionReason : "",
-        clientLetterOfIntroductionAccess : 2,
-        clientLetterOfIntroductionAccessReason : "",
-        clientFica : 2,
-        clientFicaReason : "",
-        clientReplacement : 2,
-        clientReplacementReason : "",
-        clientBackgroundInfo : ""
+        existingClient : 1,
+        client_name : "",
+        client_id_number : "",
+        client_contact : "",
+        client_email : "",
+        letter_of_introduction : 0,
+        popi : 0,
+        pi_processing : 0,
+        marketing_purposes : 0,
+        pi_retained : 0,
+        provider_for : 0,
+        policy_number : "",
+        client_date : Moment(new Date(Date.now())).format('YYYY-MM-DD'),
+        client_authorization_date : Moment(new Date(Date.now())).format('YYYY-MM-DD'),
+        appointment_date : Moment(new Date(Date.now())).format('YYYY-MM-DD'),
     })
     // console.log(FormData)
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -57,16 +57,18 @@ const CreateROA = () => {
     // console.log(localStorage.getItem('access'))
     const emailValidation = () =>{
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if (regex.test(FormData?.clientEmail) === false){
-          setErrorData({
-            status: "Email Validity",
-            message: "Email is not valid, Please enter a valid email",
-            errors: ""
-          })
-          setSubmissionErrorVisibilty("block")
-          setTimeout(() => {
-            setSubmissionErrorVisibilty("none")
-          }, 5000)
+        if (regex.test(FormData?.client_email) === false){
+            
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `Email is not valid, Please enter a valid email`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
           return false
         }
         return true
@@ -77,14 +79,14 @@ const CreateROA = () => {
    
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState("none")
-    const createROAForm= async(data) => {
+    const createROAForm= async(data, product_data) => {
         const config = {
             headers: {
                 'Content-Type' : 'application/json',
                 'Accept' : 'application/json',
             }
         }
-        const Body = JSON.stringify(data)
+        const Body = JSON.stringify({data, product_data})
         try {
             const response = await axios.post(`/api/roa/create/`, Body ,config)
             
@@ -98,7 +100,6 @@ const CreateROA = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            console.log(response?.data?.data?.id)
             router.push({
                 pathname: "/apps/roa/documents/complete",
                 query: {dId : response?.data?.data?.id}
@@ -121,8 +122,8 @@ const CreateROA = () => {
     
     const onSubmit = e => {
         e.preventDefault()
-        if (FormData?.clientName === "" || FormData?.clientIdNumber === "" || FormData?.clientEmail === "" || FormData?.clientPhoneNumber === "") {
-            if (FormData?.clientName === "" && FormData?.clientIdNumber === "" && FormData?.clientEmail === "" && FormData?.clientPhoneNumber === "") {
+        if (FormData?.client_name === "" || FormData?.client_id_number === "" || FormData?.client_email === "" || FormData?.client_contact === "") {
+            if (FormData?.client_name === "" && FormData?.client_id_number === "" && FormData?.client_email === "" && FormData?.client_contact === "") {
                 Swal.fire({
                     position: "bottom-end",
                     type: "success",
@@ -133,11 +134,8 @@ const CreateROA = () => {
                     confirmButtonClass: "btn btn-primary",
                     buttonsStyling: !1,
                 })
-                if (step != 0 ){ 
-                    setStep(0)
-                }
             }else {
-                if (FormData?.clientName === ""){
+                if (FormData?.client_name === ""){
                     Swal.fire({
                         position: "bottom-end",
                         type: "success",
@@ -148,10 +146,7 @@ const CreateROA = () => {
                         confirmButtonClass: "btn btn-primary",
                         buttonsStyling: !1,
                     })
-                    if (step != 0 ){ 
-                        setStep(0)
-                    }
-                } if (FormData?.clientIdNumber === ""){
+                } if (FormData?.client_id_number === ""){
                     Swal.fire({
                         position: "bottom-end",
                         type: "success",
@@ -162,10 +157,7 @@ const CreateROA = () => {
                         confirmButtonClass: "btn btn-primary",
                         buttonsStyling: !1,
                     })
-                    if (step != 0 ){ 
-                        setStep(0)
-                    }
-                } if (FormData?.clientEmail === ""){
+                } if (FormData?.client_email === ""){
                     Swal.fire({
                         position: "bottom-end",
                         type: "success",
@@ -176,10 +168,7 @@ const CreateROA = () => {
                         confirmButtonClass: "btn btn-primary",
                         buttonsStyling: !1,
                     })
-                    if (step != 0 ){ 
-                        setStep(0)
-                    }
-                } if (FormData?.clientPhoneNumber === ""){
+                } if (FormData?.client_contact === ""){
                     Swal.fire({
                         position: "bottom-end",
                         type: "success",
@@ -190,20 +179,14 @@ const CreateROA = () => {
                         confirmButtonClass: "btn btn-primary",
                         buttonsStyling: !1,
                     })
-                    if (step != 0 ){ 
-                        setStep(0)
-                    }
                 }
             }
 
         } else {
 
             if (emailValidation()){
-                createROAForm(FormData)
+                createROAForm(FormData, ProductData)
             }else{
-                if (step != 0 ){ 
-                    setStep(0)
-                }
                 Swal.fire({
                     position: "bottom-end",
                     type: "success",
@@ -220,42 +203,70 @@ const CreateROA = () => {
     }
     
     
-    const [tableData, setTableData] = useState([
-        {
-            id: 1,
-            productToSell1 : "",
-            productToSell2 : "",
-            intermediaryCode1 : "",
-            intermediaryCode2 : "",
-        }
+    const [ProductData, setProductData] = useState([
+        // {
+        //     id: 1,
+        //     product_provider : "",
+        //     subcode : "",
+        // }
     ]);
 
     const addRow = () => {
-        const newId = tableData.length + 1;
+        const newId = ProductData.length + 1;
         const newRow = {
             id: newId,
-            productToSell1 : "",
-            productToSell2 : "",
-            intermediaryCode1 : "",
-            intermediaryCode2 : "",
+            product_provider : "",
+            subcode : "",
         }
         ;
-        setTableData([...tableData, newRow]);
+        setProductData([...ProductData, newRow]);
     };
 
     const removeRow = (id) => {
-        const updatedData = tableData.filter((row) => row.id !== id);
-        setTableData(updatedData);
+        const updatedData = ProductData.filter((row) => row.id !== id);
+        setProductData(updatedData);
     };
 
     const handleContentChange = (id, fieldName, content) => {
-        const updatedData = tableData.map((row) =>
+        const updatedData = ProductData.map((row) =>
           row.id === id ? { ...row, [fieldName]:content } : row
         );
-        setTableData(updatedData);
+        setProductData(updatedData);
     };
     
 
+    const [userProfile, setUserProfile] = useState({})
+
+    const config = {
+        headers : {
+            'Content-Type' : 'application/json',
+            'Accept' : 'application/json',
+        }
+    }
+
+    const getUserProfile = async () => {
+        try {
+            const response = await axios.get('/api/account/profile', config)
+            setUserProfile(response?.data?.userProfile)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            
+        }
+    }
+
+    useEffect(() => {
+        getUserProfile()
+    }, [])
 
     const [step, setStep] = useState(0);
 
@@ -287,9 +298,7 @@ const CreateROA = () => {
                             <form onSubmit={e => onSubmit(e)}>
                                 <div className={'inital-card-header mx-5'}>     
                                     <div className='row'>
-                                        <div className='col-lg-1'>   
-                                        </div> 
-                                        <div className='col-lg-10'> 
+                                        <div className='col-lg-12'> 
                                             <hr/>
                                             <p className='text-center'>Letter of Introduction</p>
                                             <div className='row'>
@@ -299,23 +308,23 @@ const CreateROA = () => {
                                                 <div className='col-lg-6'>
                                                     <div className='row'>
                                                         <div className="row col-6 align-items-center">
-                                                            <div className="col-6">
+                                                            <div className="col-2">
+                                                                <input className="form-check-input" checked={FormData?.existingClient == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="existingClient_radio_btn" name="existingClient"/>
+                                                            </div>
+                                                            <div className="col-8">
                                                                 <label className="form-check-label roa-font roa-font" htmlFor="provided_identity_radio_btn" >
                                                                     Existing Client
                                                                 </label>
                                                             </div>
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" checked={FormData?.existingClient == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="existingClient_radio_btn" name="existingClient"/>
-                                                            </div>
                                                         </div>
                                                         <div className="row col-6 align-items-center">
-                                                            <div className="col-6">
+                                                            <div className="col-2">
+                                                                <input className="form-check-input" checked={FormData?.existingClient == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="existingClient_radio_btn" name="existingClient"/>
+                                                            </div>
+                                                            <div className="col-8">
                                                                 <label className="form-check-label roa-font roa-font" htmlFor="provided_identity_radio_btn" >
                                                                     New Client
                                                                 </label>
-                                                            </div>
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" checked={FormData?.existingClient == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="existingClient_radio_btn" name="existingClient"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -342,7 +351,7 @@ const CreateROA = () => {
                                                         </td>
                                                         <td className='col-3'>
                                                             <p className='roa-label'>
-                                                            SFP accepts responsibility for the actions of {user?.first_name} {user?.last_name} in the rendering of financial services on behalf of SFP and carries the necessary Professional Indemnity Insurance. 
+                                                            SFP accepts responsibility for the actions of {userProfile?.first_name} in the rendering of financial services on behalf of SFP and carries the necessary Professional Indemnity Insurance. 
                                                             </p>                                                            
                                                         </td>
                                                         <td className='col-3'>
@@ -421,7 +430,7 @@ const CreateROA = () => {
                                                             <p className='roa-label'>
                                                                 <i className='fa fa-user' style={{color: "white"}}></i>
                                                                 <br/>
-                                                                {user?.first_name} {user?.last_name}
+                                                                {userProfile?.full_name}
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -437,7 +446,7 @@ const CreateROA = () => {
                                                             <p className='roa-label'>
                                                                 <i className='fa fa-user' style={{color: "white"}}></i>
                                                                 <br/>
-                                                                {user?.first_name} {user?.last_name}
+                                                                {userProfile?.contact_cell}
                                                             </p>
                                                         </td>
                                                         <td colSpan={3}>
@@ -451,7 +460,7 @@ const CreateROA = () => {
                                                             <p className='roa-label'>
                                                                 <i className='fa fa-user' style={{color: "white"}}></i>
                                                                 <br/>
-                                                                {user?.first_name} {user?.last_name}
+                                                                {user?.first_name} {user?.last_name === "nan" ? "" : user?.last_name}
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -479,12 +488,12 @@ const CreateROA = () => {
                                                         </td>
                                                         <td colSpan={3}>
                                                             <p className='roa-label'>
-                                                                5 years
+                                                                {userProfile?.industry_experience} {userProfile?.industry_experience <=1 ? "Year" : "Years"}
                                                             </p>
                                                         </td>
                                                         <td colSpan={6}>
                                                             <p className='roa-label'>
-                                                                In service with SFP as from:
+                                                                In service with SFP as from: {Moment(userProfile?.inservice).format('DD MMMM YYYY')}
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -496,7 +505,7 @@ const CreateROA = () => {
                                                         </td>
                                                         <td colSpan={9}>
                                                             <p className='roa-label'>
-                                                                5 years
+                                                                {userProfile?.experience} {userProfile?.experience <=1 ? "Year" : "Years"}
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -530,449 +539,688 @@ const CreateROA = () => {
                                                                                 Supervision
                                                                             </span>
                                                                         </th>
-                                                                        <th scope="col">
-                                                                            <span className='roa-font'>
-                                                                                Category
-                                                                            </span>
-                                                                        </th>
-                                                                        <th scope="col">
-                                                                            <span className='roa-font'>
-                                                                                Advice
-                                                                            </span>
-                                                                        </th>
-                                                                        <th scope="col">
-                                                                            <span className='roa-font'>
-                                                                                Intermediary
-                                                                            </span>
-                                                                        </th>
-                                                                        <th scope="col">
-                                                                            <span className='roa-font'>
-                                                                                Supervision
-                                                                            </span>
-                                                                        </th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Long-Term<br/>insurance SC<br/>A
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Pension Fund<br/>(excl. Retail)
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>                                                                        
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Long-Term<br/>insurance SC<br/>B1
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Shares
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>                                                                        
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Long-Term<br/>insurance SC<br/>B2
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Money Market<br/>Instruments 
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>                                                                        
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Long-Term<br/>insurance SC<br/>B2-A
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Debentures &<br/>Securitised Debt
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>                                                                        
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Long-Term<br/>insurance SC<br/>B1-A
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Warrants,<br/>Certificates &<br/>other instruments
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>                                                                        
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Long-Term<br/>insurance SC<br/>C
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
+                                                                    {
+                                                                        userProfile?.LTI_SC_A ?
+                                                                        <>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <span className='roa-table-head'>
+                                                                                        Long-Term insurance SC A
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <span className='roa-label'>
+                                                                                        <div className='form-check'>
+                                                                                            <input type='checkbox' className='form-check-input' checked />
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <span className='roa-label'>
+                                                                                        <div className='form-check'>
+                                                                                            <input type='checkbox' className='form-check-input' checked />
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <span className='roa-label'>
+                                                                                        <div className='form-check'>
+                                                                                            <input type='checkbox' className='form-check-input' checked={userProfile?.LTI_SC_A_Supervisor ? true : false} />
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.Pension_funds ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Pension Fund (excl. Retail)
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.Pension_funds_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        : 
+                                                                        <></>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.LTI_SC_B1 ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Long-Term insurance SC B1
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.LTI_SC_B1_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.Shares ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Shares
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.Shares_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.LTI_SC_B2 ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                Long-Term insurance SC B2
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.LTI_SC_B2_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.Money_market ?
+                                                                        <tr>     
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Money Market Instruments 
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.Money_market_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        : <></>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.LTI_SC_B2A ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                Long-Term insurance SC B2-A
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.LTI_SC_B2A_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.Debentures ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                Debentures & Securitised Debt
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.Debentures_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.LTI_SC_B1A ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                Long-Term insurance SC B1-A
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.LTI_SC_B1A_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.Warrants ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                Warrants, Certificates & other instruments
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.Warrants_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.LTI_SC_C ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                Long-Term insurance SC C
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.LTI_SC_C_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.Bonds ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
                                                                                 Bonds
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>                                                                        
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Short-Term<br/>Insurance<br/>Personal<br/>Lines
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Collective<br/>Investment<br/>Schemes 
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>                                                                        
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Short-Term<br/>Insurance<br/>Commercial<br/>Lines
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Health<br/>Service<br/>Benefits 
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>                                                                        
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Short-Term<br/>Insurance<br/>Personal<br/>Lines A
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Long-Term<br/>deposits 
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>                                                                        
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Retail<br/>Pension<br/>Benefits 
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-table-head'>
-                                                                                Short-Term<br/>deposits 
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                        <td>
-                                                                            <span className='roa-label'>
-                                                                                ABC
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.Bonds_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.STI_PL ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Short-Term Insurance Personal Lines
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.STI_PL_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.CIC ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Collective Investment Schemes
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.CIC_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.STI_CL ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Short-Term Insurance Commerical Lines
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.STI_CL_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.HSB ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Health Service Benefits
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.HSB_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.STI_PL_A ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Short-Term Insurance Personal Lines A
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.STI_PL_A_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.LTI_Deposits ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Short-Term Insurance Personal Lines A
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.LTI_Deposits_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.STI_Deposits ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Short-Term Deposits
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.STI_Deposits_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.SPension_funds ?
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span className='roa-table-head'>
+                                                                                    Retail Pension Benefits 
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className='roa-label'>
+                                                                                    <div className='form-check'>
+                                                                                        <input type='checkbox' className='form-check-input' checked={userProfile?.SPension_funds_Supervisor ? true : false} />
+                                                                                    </div>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        :
+                                                                        <>
+                                                                        </>
+                                                                    }
                                                                 </tbody>
                                                             </table>
                                                         </td>
@@ -1049,7 +1297,7 @@ const CreateROA = () => {
                                                             </span>
                                                         </td>
                                                         <td colSpan={9}>
-                                                            <input type="text" className="form-control roa-label" id="clientName" name="clientName" value={FormData?.clientName} onChange={(e)=>{onChange(e)}} placeholder="Client Name"/>
+                                                            <input required type="text" className="form-control roa-label" id="client_name" name="client_name" value={FormData?.client_name} onChange={(e)=>{onChange(e)}} placeholder="Client Name"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1059,7 +1307,7 @@ const CreateROA = () => {
                                                             </span>
                                                         </td>
                                                         <td colSpan={9}>
-                                                            <input type="text" className="form-control roa-label" id="clientIdNumber" name="clientIdNumber" value={FormData?.clientIdNumber} onChange={(e)=>{onChange(e)}} placeholder="Client ID Number"/>
+                                                            <input required type="text" className="form-control roa-label" id="client_id_number" name="client_id_number" value={FormData?.client_id_number} onChange={(e)=>{onChange(e)}} placeholder="Client ID Number"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1069,7 +1317,7 @@ const CreateROA = () => {
                                                             </span>
                                                         </td>
                                                         <td colSpan={9}>
-                                                            <input type="text" className="form-control roa-label" id="clientPhone" name="clientPhone" value={FormData?.clientPhone} onChange={(e)=>{onChange(e)}} placeholder="Client Phone"/>
+                                                            <input required type="text" className="form-control roa-label" id="client_contact" name="client_contact" value={FormData?.client_contact} onChange={(e)=>{onChange(e)}} placeholder="Client Phone"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1079,7 +1327,7 @@ const CreateROA = () => {
                                                             </span>
                                                         </td>
                                                         <td colSpan={9}>
-                                                            <input type="text" className="form-control roa-label" id="clientEmail" name="clientEmail" value={FormData?.clientEmail} onChange={(e)=>{onChange(e)}} placeholder="Client Email"/>
+                                                            <input required type="email" className="form-control roa-label" id="client_email" name="client_email" value={FormData?.client_email} onChange={(e)=>{onChange(e)}} placeholder="Client Email"/>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -1104,17 +1352,21 @@ const CreateROA = () => {
                                                     <tr>
                                                         <td colSpan={7}>
                                                             <p className='roa-label'>
-                                                                1.	The receipt of a copy of {user?.first_name} {user?.last_name} here’s Letter of Introduction; and 
+                                                                <ol>
+                                                                    <li>
+                                                                        The receipt of a copy of {user?.first_name} {user?.last_name} here’s Letter of Introduction; and 
+                                                                    </li>
+                                                                </ol>
                                                             </p>
                                                         </td>
                                                         <td colSpan={5}>
                                                             <div className='row'>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptYes">
+                                                                        <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptYes" />
+                                                                        <input required className="form-check-input" checked={FormData?.letter_of_introduction === 1 ? true : false} onChange={(e)=>{onChange(e)}} type="radio" value={1} name="letter_of_introduction" />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1122,7 +1374,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptNo" />
+                                                                        <input required className="form-check-input" checked={FormData?.letter_of_introduction === 0 ? true : false} onChange={(e)=>{onChange(e)}} type="radio" value={0} name="letter_of_introduction" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1131,17 +1383,21 @@ const CreateROA = () => {
                                                     <tr>
                                                         <td colSpan={7}>
                                                             <p className='roa-label'>
-                                                                2.	The explanation of SFP Compliance with The POPI Act, and
+                                                                <ol start="2">
+                                                                    <li>
+                                                                        The explanation of SFP Compliance with The POPI Act, and
+                                                                    </li>
+                                                                </ol>
                                                             </p>
                                                         </td>
                                                         <td colSpan={5}>
                                                             <div className='row'>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptYes">
+                                                                        <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptYes" />
+                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}}  checked={FormData?.popi === 1 ? true : false} name="popi"  />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1149,7 +1405,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptNo" />
+                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}}  checked={FormData?.popi === 0 ? true : false} name="popi"  />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1158,17 +1414,21 @@ const CreateROA = () => {
                                                     <tr>
                                                         <td colSpan={7}>
                                                             <p className='roa-label'>
-                                                                3.	The purpose for processing my PI and sharing my PI with relevant parties, and
+                                                                <ol start="3">
+                                                                    <li>
+                                                                        The purpose for processing my PI and sharing my PI with relevant parties, and
+                                                                    </li>
+                                                                </ol>
                                                             </p>
                                                         </td>
                                                         <td colSpan={5}>
                                                             <div className='row'>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptYes">
+                                                                        <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptYes" />
+                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_processing === 1 ? true : false} name="pi_processing" />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1176,7 +1436,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptNo" />
+                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_processing === 0 ? true : false} name="pi_processing" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1185,17 +1445,21 @@ const CreateROA = () => {
                                                     <tr>
                                                         <td colSpan={7}>
                                                             <p className='roa-label'>
-                                                                4.	That my information may be used for marketing purposes.
+                                                                <ol start="4">
+                                                                    <li>
+                                                                        That my information may be used for marketing purposes.
+                                                                    </li>
+                                                                </ol>
                                                             </p>
                                                         </td>
                                                         <td colSpan={5}>
                                                             <div className='row'>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptYes">
+                                                                        <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptYes" />
+                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}} checked={FormData?.marketing_purposes === 1 ? true : false} name="marketing_purposes" />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1203,7 +1467,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptNo" />
+                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}} checked={FormData?.marketing_purposes === 0 ? true : false} name="marketing_purposes" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1212,17 +1476,21 @@ const CreateROA = () => {
                                                     <tr>
                                                         <td colSpan={7}>
                                                             <p className='roa-label'>
-                                                                5.	That my PI may be retained for as long as The FAIS and FIC Act requires
+                                                                <ol start="5">
+                                                                    <li>
+                                                                        That my PI may be retained for as long as The FAIS and FIC Act requires
+                                                                    </li>
+                                                                </ol>
                                                             </p>
                                                         </td>
                                                         <td colSpan={5}>
                                                             <div className='row'>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptYes">
+                                                                        <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptYes" />
+                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_retained === 1 ? true : false} name="pi_retained" />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1230,7 +1498,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input className="form-check-input" type="checkbox" value="" id="receiptNo" />
+                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_retained === 0 ? true : false} name="pi_retained" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1245,10 +1513,10 @@ const CreateROA = () => {
                                                         <td colSpan={5}>
                                                             <div className="row g-3 align-items-center">
                                                                 <div className="col-3 roa-font">
-                                                                    <label for="clientSignatureDate" className="col-form-label">Date</label>
+                                                                    <label for="client_date" className="col-form-label">Date</label>
                                                                 </div>
                                                                 <div className="col-9">
-                                                                    <input type="date" id="clientSignatureDate" className="form-control" aria-describedby="passwordHelpInline"/>
+                                                                    <input type="date" id="client_date" name="client_date" value={FormData?.client_date} onChange={(e)=>{onChange(e)}} className="form-control" aria-describedby="passwordHelpInline"/>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -1279,7 +1547,7 @@ const CreateROA = () => {
                                                                 </div>
                                                                 <div className='col-1'>
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                                                        <input class="form-check-input" type="radio" value="1"  checked={FormData?.provider_for === 1 ? true : false} name="provider_for" />
                                                                         <label class="form-check-label" for="flexCheckDefault">
                                                                             STI
                                                                         </label>
@@ -1288,16 +1556,16 @@ const CreateROA = () => {
                                                                 <div className='col-1'>
                                                                     or 
                                                                 </div>
-                                                                <div className='col-2'> 
+                                                                <div className='col-3'> 
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                                                        <input class="form-check-input" type="radio" value="0"  checked={FormData?.provider_for === 0 ? true : false} name="provider_for" />
                                                                         <label class="form-check-label" for="flexCheckDefault">
                                                                             Health Insurance
                                                                         </label>
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-3'> 
-                                                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Policy #" />
+                                                                    <input required type="text" class="form-control" id="policy_number" name="policy_number" value={FormData?.policy_number} onChange={(e)=>{onChange(e)}}  placeholder="Policy #" />
                                                                 </div>
                                                                 
                                                             </div>
@@ -1332,7 +1600,7 @@ const CreateROA = () => {
                                                             </p>
                                                         </div>
                                                         <div className='col-6'>
-                                                            <input className='form-select' type='date' value={FormData?.authorizationDate} name='authorizationDate' onChange={(e)=>{onChange(e)}}/>
+                                                            <input className='form-select' type='date' value={FormData?.client_authorization_date} name='client_authorization_date' onChange={(e)=>{onChange(e)}}/>
                                                         </div>
                                                     </div>                                                    
                                                 </div>
@@ -1362,84 +1630,64 @@ const CreateROA = () => {
                                                     </p>
                                                 </li>
                                             </ul>
-                                            <table className="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">
-                                                            <p className='text-center roa-table-head'>
-                                                                Product Provider<br/>Authorised to sell
-                                                            </p>
-                                                        </th>
-                                                        <th scope="col">
-                                                            <p className='text-center roa-table-head'>
-                                                                Intermediary Sub-Code
-                                                            </p>
-                                                        </th>
-                                                        <th scope="col">
-                                                            <p className='text-center roa-table-head'>
-                                                                Product Provider<br/>Authorised to sell
-                                                            </p>
-                                                        </th>
-                                                        <th scope="col">
-                                                            <p className='text-center roa-table-head'>
-                                                                Intermediary Sub-Code
-                                                            </p>
-                                                        </th>
-                                                        <th scope="col">
-                                                            <p className='text-center roa-table-head'>
-                                                                Actions
-                                                            </p>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                {tableData.map((row, id) => (
-                                                    <tr key={row?.id}>
-                                                        <td>
-                                                            <input
-                                                                type="text"
-                                                                className="form-control roa-label"
-                                                                value={row?.productToSell1}
-                                                                onChange={(e) => handleContentChange(row.id, "productToSell1", e.target.value)}
-                                                            />
-                                                        </td>
-                                                        <td>
-                                                            <input
-                                                                type="text"
-                                                                className="form-control roa-label"
-                                                                value={row?.intermediaryCode1}
-                                                                onChange={(e) => handleContentChange(row.id, "intermediaryCode1", e.target.value)}
-                                                            />
-                                                        </td>
-                                                        <td>
-                                                            <input
-                                                                type="text"
-                                                                className="form-control roa-label"
-                                                                value={row?.productToSell2}
-                                                                onChange={(e) => handleContentChange(row.id, "productToSell2", e.target.value)}
-                                                            />
-                                                        </td>
-                                                        <td>
-                                                            <input
-                                                                type="text"
-                                                                className="form-control roa-label"
-                                                                value={row?.intermediaryCode2}
-                                                                onChange={(e) => handleContentChange(row.id, "intermediaryCode2", e.target.value)}
-                                                            />
-                                                        </td>
-                                                        <td>
-                                                            <button
-                                                                className="btn btn-sm btn-danger"
-                                                                type='button'
-                                                                onClick={() => removeRow(row.id)}
-                                                            >
-                                                            Remove
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                                </tbody>
-                                            </table>
+                                            <hr/>
+                                            {
+                                                ProductData.length > 0 ?
+                                                <table className="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">
+                                                                <p className='text-center roa-table-head'>
+                                                                    Product Provider<br/>Authorised to sell
+                                                                </p>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <p className='text-center roa-table-head'>
+                                                                    Intermediary Sub-Code
+                                                                </p>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <p className='text-center roa-table-head'>
+                                                                    Actions
+                                                                </p>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {ProductData.map((row, id) => (
+                                                        <tr key={row?.id}>
+                                                            <td>
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control roa-label"
+                                                                    value={row?.product_provider}
+                                                                    onChange={(e) => handleContentChange(row.id, "product_provider", e.target.value)}
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control roa-label"
+                                                                    value={row?.subcode}
+                                                                    onChange={(e) => handleContentChange(row.id, "subcode", e.target.value)}
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <button
+                                                                    className="btn btn-sm btn-danger"
+                                                                    type='button'
+                                                                    onClick={() => removeRow(row.id)}
+                                                                >
+                                                                Remove
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                    </tbody>
+                                                </table>
+                                                : 
+                                                <></>
+                                            }
                                             <button className="btn btn-primary btn-sfp" type='button' onClick={addRow}>
                                                 Add Product
                                             </button>
@@ -1467,7 +1715,7 @@ const CreateROA = () => {
                                                             </p>
                                                         </div>
                                                         <div className='col-6'>
-                                                            <input className='form-select' type='date' value={FormData?.appointmentDate} name='appointmentDate' onChange={(e)=>{onChange(e)}}/>
+                                                            <input className='form-select' type='date' value={FormData?.appointment_date} name='appointment_date' onChange={(e)=>{onChange(e)}}/>
                                                         </div>
                                                     </div>                                                    
                                                 </div>
@@ -1565,8 +1813,6 @@ const CreateROA = () => {
                                             <hr/>
                                             <button className='btn btn-primary btn-sfp w-100' type="submit">Create Form <span><FontAwesomeIcon width={"20px"} icon={faCheck} /></span></button>
 
-                                        </div> 
-                                        <div className='col-lg-1'>   
                                         </div> 
                                     </div> 
                                 </div>

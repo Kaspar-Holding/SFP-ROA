@@ -67,6 +67,16 @@ class FormListAPIs(APIView):
                         "results" : data
                     }
                 )
+        else:
+            return Response(
+                {
+                    "total_pages" : 0,
+                    "has_pages" : 0,
+                    "total_records" : 0,
+                    "next" : False,
+                    "results" : []
+                }
+            )
 
 class FormAPIs(APIView):
 
