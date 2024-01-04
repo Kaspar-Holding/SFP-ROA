@@ -3174,11 +3174,11 @@ class loadagentsDetail(APIView):
                     if user_region.exists():
                         user_region = user_region.values().first()
                         data['region'] = user_region['region']
-                    user_categorisation = categorisation.objects.filter(pk=profile['categorisation_id'])
-                    data['categorisation'] = ""
-                    if user_categorisation.exists():
-                        user_categorisation = user_categorisation.values().first()
-                        data['categorisation'] = user_categorisation['categorisation']
+                    # user_categorisation = categorisation.objects.filter(pk=profile['categorisation_id'])
+                    data['categorisation'] = profile['Investment_Category_option'] if profile['Investment_Category_option'] else ""
+                    # if user_categorisation.exists():
+                    #     user_categorisation = user_categorisation.values().first()
+                    #     data['categorisation'] = user_categorisation['categorisation']
                     user_bac = UserAccount.objects.filter(pk=profile['bac_id'])
                     data['bac'] = ""
                     data['bac_name'] = ""
