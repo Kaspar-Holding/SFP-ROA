@@ -2735,12 +2735,18 @@ class DisclosuresList(APIView):
     List all snippets, or create a new snippet.
     """
     def get(self, request, format=None):
-        snippets = Disclosures.objects.all()
+        snippets = Disclosures.objects.get(advisorId=request.user.pk)
         serializer = Disclosures_Serializer(snippets, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        serializer = Disclosures_Serializer(data=request.data['data'])
+        disclosuresData = request.data['data']
+        disclosuresData['advisorId'] = request.user.pk
+        if Disclosures.objects.filter(client_id_number=disclosuresData['client_id_number']).exists():
+            return Response({"message": f"Form with Client ID {disclosuresData['client_id_number']} Already Exists","code":400},400)
+        if Disclosures.objects.filter(client_email=disclosuresData['client_email']).exists():
+            return Response({"message": f"Form with Client Email {disclosuresData['client_email']} Already Exists","code":400},400)
+        serializer = Disclosures_Serializer(data=disclosuresData)
         if serializer.is_valid():
             data = serializer.create(serializer.validated_data)
             formId = data.pk
@@ -2753,7 +2759,9 @@ class DisclosuresList(APIView):
                     product_serializer.create(product_serializer.validated_data)
                 else:
                     print(product_serializer.errors)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            responseData = serializer.data
+            responseData['id'] = data.pk
+            return Response(responseData, status=status.HTTP_201_CREATED)
         else:
             print(product_serializer.errors)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

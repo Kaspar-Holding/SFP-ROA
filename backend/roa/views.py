@@ -1,7 +1,8 @@
 from datetime import datetime, timedelta
 from django.shortcuts import render
-from data.models import Form, UserAccount
-from data.serializers import FormSerializers
+import pytz
+from data.models import Form, UserAccount, Disclosures
+from data.serializers import FormSerializers, Disclosures_Serializer, DisclosuresProducts_Serializer
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -15,16 +16,16 @@ from django.contrib.postgres.search import SearchQuery, SearchVector
 class FormListAPIs(APIView):
     
     def get(self, request, format=None):
-        snippets = Form.objects.filter(advisorId=request.user.pk)
-        serializer = FormSerializers(snippets, many=True)
+        snippets = Disclosures.objects.filter(advisorId=request.user.pk)
+        serializer = Disclosures_Serializer(snippets, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
         user = request.user
         if user.is_superuser:
-            data = Form.objects.all()
+            data = Disclosures.objects.all()
         else:
-            data = Form.objects.filter(advisorId=request.user.pk)
+            data = Disclosures.objects.filter(advisorId=request.user.pk)
         if data.exists():
             search_query = SearchQuery(request.data['search_query'], search_type='websearch')
             search_vector = SearchVector('clientName','clientIdNumber', 'clientPhoneNumber')
@@ -82,31 +83,59 @@ class FormAPIs(APIView):
 
     def get_object(self, pk):
         try:
-            return Form.objects.get(pk=pk)
+            return Disclosures.objects.get(pk=pk)
         except Form.DoesNotExist:
             raise Http404
 
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        serializer = FormSerializers(snippet)
+        serializer = Disclosures_Serializer(snippet)
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        requestData = request.data
-        if Form.objects.filter(advisorId=request.user.pk, clientIdNumber=requestData['clientIdNumber']).exists():
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-        data = requestData
-        data['advisorId'] = request.user.pk   
-        serializer = FormSerializers(data=data)
+        disclosuresData = request.data['data']
+        disclosuresData['advisorId'] = request.user.pk
+        if Disclosures.objects.filter(client_id_number=disclosuresData['client_id_number']).exists():
+            return Response({"message": f"Form with Client ID {disclosuresData['client_id_number']} Already Exists","code":400},400)
+        if Disclosures.objects.filter(client_email=disclosuresData['client_email']).exists():
+            return Response({"message": f"Form with Client Email {disclosuresData['client_email']} Already Exists","code":400},400)
+        serializer = Disclosures_Serializer(data=disclosuresData)
         if serializer.is_valid():
-            s = serializer.create(serializer.validated_data)
-            data['id'] = s.pk
-            return Response(data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            data = serializer.create(serializer.validated_data)
+            formId = data.pk
+            recordOfAdviceData = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+                "clientName" : disclosuresData['client_name'],
+                "clientIdNumber" : disclosuresData['client_id_number'],
+                "clientPhoneNumber" : disclosuresData['client_contact'],
+                "clientEmail" : disclosuresData['client_email'],
+                "clientDateOfBirth" : datetime.now(pytz.timezone('Africa/Johannesburg')).strftime("%Y-%m-%d"),
+            }
+            roa_serializer = FormSerializers(data=recordOfAdviceData)
+            if roa_serializer.is_valid():
+                roa_serializer.create(roa_serializer.validated_data)
+            else:
+                print(roa_serializer.errors)
+            productsData = request.data['product_data']
+            if productsData != []:
+                for product in productsData:
+                    product['formId'] = formId
+                product_serializer = DisclosuresProducts_Serializer(data=productsData, many=True)
+                if product_serializer.is_valid():
+                    product_serializer.create(product_serializer.validated_data)
+                else:
+                    print(product_serializer.errors)
+            responseData = serializer.data
+            responseData['id'] = data.pk
+            return Response(responseData, status=status.HTTP_201_CREATED)
+        else:
+            print(product_serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        serializer = FormSerializers(snippet, data=request.data)
+        serializer = Disclosures_Serializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -148,7 +177,7 @@ class roaKPISnTrends(APIView):
         todate = request.data['todate']
         customFilterType = int(request.data['customFilterType'])
         if user.is_superuser:
-            data = Form.objects.all().order_by('-created_at')
+            data = Disclosures.objects.all().order_by('-created_at')
             if data.exists():                
                 trend_data = []
                 if filterType == 1:
@@ -296,7 +325,7 @@ class roaKPISnTrends(APIView):
                     }
                 )
         else:
-            data = Form.objects.filter(advisorId=request.user.pk).order_by('-created_at')
+            data = Disclosures.objects.filter(advisorId=request.user.pk).order_by('-created_at')
             if data.exists():                
                 trend_data = []
                 if filterType == 1:

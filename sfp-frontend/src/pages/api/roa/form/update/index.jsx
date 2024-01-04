@@ -1,4 +1,4 @@
-import { API_URL } from '../../../../config'
+import { API_URL } from '../../../../../config'
 import axios from 'axios'
 import cookie from 'cookie'
 
@@ -26,8 +26,8 @@ export default async (req, res ) => {
 
         const Body = JSON.stringify(req.body)
         try {
-            const apiResponse = await axios.post(
-                `${API_URL}/api/roa/form/`,
+            const apiResponse = await axios.put(
+                `${API_URL}/api/roa/form/${req.body['id']}/`,
                 Body,
                 config
             )

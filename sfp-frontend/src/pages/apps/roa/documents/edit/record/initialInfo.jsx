@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const InitialInfo = ({ user, FormData, onChange, nextStep }) => {
+const InitialInfo = ({ user, FormData, onChange, nextStep, onUpdate }) => {
     
     const handleNext = () => {
         // Validate data if needed
@@ -21,7 +21,7 @@ const InitialInfo = ({ user, FormData, onChange, nextStep }) => {
                     <div className='row'>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Client Name</label>
-                            <input spellCheck="true" required minLength="3" and maxLength="45" id="clientName" name="clientName" value={FormData?.clientName} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
+                            <input spellCheck="true" disabled required minLength="3" and maxLength="45" id="clientName" name="clientName" value={FormData?.clientName} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Name"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Client ID number</label>
@@ -29,15 +29,15 @@ const InitialInfo = ({ user, FormData, onChange, nextStep }) => {
                         </div>
                         <div className="col-lg-12 mb-3">
                             <label className="form-label compliance-inital-card-text">Client Address</label>
-                            <input spellCheck="true" required id="clientAddress" name="clientAddress" value={FormData?.clientAddress} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Address"  aria-describedby="" />
+                            <input spellCheck="true" required onBlur={onUpdate} id="clientAddress" name="clientAddress" value={FormData?.clientAddress} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Address"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Client Email</label>
-                            <input spellCheck="true" type='email' required id="clientEmail" name="clientEmail" value={FormData?.clientEmail} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Email"  aria-describedby="" />
+                            <input spellCheck="true" disabled type='email' required id="clientEmail" name="clientEmail" value={FormData?.clientEmail} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Email"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Client Phone</label>
-                            <input spellCheck="true" required id="clientPhoneNumber" name="clientPhoneNumber" value={FormData?.clientPhoneNumber} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Phone Number"  aria-describedby="" />
+                            <input spellCheck="true" disabled required id="clientPhoneNumber" name="clientPhoneNumber" value={FormData?.clientPhoneNumber} className="form-control" onChange={(e) => {onChange(e)}}  placeholder="Client Phone Number"  aria-describedby="" />
                         </div>
                         <div className="col-lg-6 mb-3">
                             <label className="form-label compliance-inital-card-text">Financial Advisor:</label>
@@ -55,7 +55,7 @@ const InitialInfo = ({ user, FormData, onChange, nextStep }) => {
                             </p>
                         </div>
                     </div>
-                    <button className='btn btn-primary btn-sfp w-100' onClick={handleNext}>Section A: Compulsory Disclosures <span><FontAwesomeIcon width={"20px"} icon={faArrowRight} /></span></button>
+                    {/* <button className='btn btn-primary btn-sfp w-100' onClick={handleNext}>Section A: Compulsory Disclosures <span><FontAwesomeIcon width={"20px"} icon={faArrowRight} /></span></button> */}
                 </div>   
             </div> 
             

@@ -14,12 +14,18 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 03 January 2024:
+- ROA half done
+- Deployment on Staging and Production 
+
 ### 27 December 2023:
 - User Profile Model updated
 - User Profile bulk update API created
 - User Profile populated to SFP ROA Disclosures
 - SFP ROA Disclosures frontend updated
 - SFP ROA Disclosures PDF developed
+- SFP Online frontend nan bug resolved
+- Firebase testing
 - Deployment on Staging 
 
 ### 18 December 2023:

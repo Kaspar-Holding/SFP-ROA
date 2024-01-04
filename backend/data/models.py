@@ -116,6 +116,7 @@ class user_profile(models.Model):
     Full_Name = models.TextField( default="", null=True, blank=True)
     Nick_Name = models.TextField( default="", null=True, blank=True)
     ID_Number = models.TextField( default="", null=True, blank=True)
+    Qualification_Name = models.TextField( default="", null=True, blank=True)
     Contact_Cell = models.TextField( default="", null=True, blank=True)
     FSP_option = models.TextField( default="", null=True, blank=True)
     Representative_Status_option = models.TextField( default="", null=True, blank=True)
@@ -4746,8 +4747,23 @@ class Disclosures(models.Model):
     
     appointment_date = models.DateField(blank=True)  
     
+    status = models.IntegerField(default=0)
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+
+class DisclosuresProductProviders(models.Model):
+    product = models.TextField(default=0)
+    product_type = models.IntegerField(default=1, null=True, blank=True)
+    status = models.IntegerField(default=1)
+
+class DisclosuresAdvisorSubCodes(models.Model):
+    product = models.ForeignKey(DisclosuresProductProviders, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    subcode = models.TextField(default=0)
+
+    status = models.IntegerField(default=1)
+
 
 class DisclosuresProducts(models.Model):
     advisorId = models.IntegerField(default=0)

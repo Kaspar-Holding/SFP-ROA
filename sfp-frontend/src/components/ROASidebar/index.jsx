@@ -15,6 +15,16 @@ const ROASidebar = ({appTitle}) => {
 
     const dispatch = useDispatch()  
 
+    const downloadDisclosureForm = (e) => {
+        e.preventDefault()
+        
+    }
+
+    const downloadClient = (e) => {
+        e.preventDefault()
+        
+    }
+
     const logOutBtn = (e) => {
         e.preventDefault()
         if (dispatch && dispatch != null && dispatch != undefined) {
@@ -105,7 +115,7 @@ const ROASidebar = ({appTitle}) => {
                             </div>
                             <div className='col-lg-6'>
                                 <span className=''>
-                                    {FormData?.clientName}
+                                    {FormData?.client_name}
                                 </span>
                             </div>
                         </div>
@@ -117,7 +127,7 @@ const ROASidebar = ({appTitle}) => {
                             </div>
                             <div className='col-lg-6'>
                                 <span className=''>
-                                    {FormData?.clientIdNumber}
+                                    {FormData?.client_id_number}
                                 </span>
                             </div>
                         </div>
@@ -129,12 +139,43 @@ const ROASidebar = ({appTitle}) => {
                             </div>
                             <div className='col-lg-6'>
                                 <span className=''>
-                                    {FormData?.clientPhoneNumber}
+                                    {FormData?.client_contact}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div className='row'>
+                            <div className='col-lg-5'>
+                                <h6 className='text'>
+                                    Client Email
+                                </h6>
+                            </div>
+                            <div className='col-lg-6'>
+                                <span className=''>
+                                    {FormData?.client_email}
                                 </span>
                             </div>
                         </div>
                         
                         <br/>
+                        <div className="container sidebar-footer">
+                            <div className="d-grid gap-2">
+                                <button onClick={(e)=>{downloadDisclosureForm(e)}} className="btn btn-primary btn-sfp" type="button">
+                                    <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
+                                    Disclosure Document PDF
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <br/>
+                        <div className="container sidebar-footer">
+                            <div className="d-grid gap-2">
+                                <button onClick={(e)=>{downloadClient(e)}} className="btn btn-primary btn-sfp" type="button">
+                                    <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
+                                    Print for Client
+                                </button>
+                            </div>
+                        </div>
                         
                         
                     </div>

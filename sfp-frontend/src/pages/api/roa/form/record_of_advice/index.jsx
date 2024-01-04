@@ -1,9 +1,10 @@
-import { API_URL } from '../../../../config'
+import { API_URL } from '../../../../../config'
 import axios from 'axios'
 import cookie from 'cookie'
 
 export default async (req, res ) => {
     if (req.method === "POST") {
+
         const cookies = cookie.parse(req.headers.cookie ?? '')
 
         const access = cookies.access ?? false
@@ -22,21 +23,16 @@ export default async (req, res ) => {
                 'Authorization' : `JWT ${access}`,
             }
         }
-
-
-        const Body = JSON.stringify(req.body)
         try {
-            const apiResponse = await axios.post(
-                `${API_URL}/api/roa/form/`,
-                Body,
-                config
+            const apiResponse = await axios.get(
+                `${API_URL}/api/roa/form/record_of_advice/${req?.body?.fId}/`,
+                config,
             )
             
-            if (apiResponse?.status === 201) {
-                
+            if (apiResponse?.status === 200) {
                 return res.status(apiResponse.status).json(
                     {
-                        success: "Successfully created, you can proceed to next level.",
+                        success: "Found.",
                         data: apiResponse?.data,
                     }
                 )
@@ -48,6 +44,7 @@ export default async (req, res ) => {
             }
 
         } catch (error) {
+            console.log(error)
             return res.status(error?.response?.status).json({
                 error: error?.response?.data
             })

@@ -426,6 +426,7 @@ const ROA = () => {
                                             <th scope="col">Client Name</th>
                                             <th scope="col">Client ID Number</th>
                                             <th scope="col">Client Phone</th>
+                                            <th scope="col">Client Email</th>
                                             <th scope="col">Updated At</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
@@ -441,17 +442,22 @@ const ROA = () => {
                                                                 <th scope="row">{i+1}</th>
                                                                 <td>
                                                                     {
-                                                                        form?.clientName
+                                                                        form?.client_name
                                                                     }
                                                                 </td>
                                                                 <td>
                                                                     {
-                                                                        form?.clientIdNumber
+                                                                        form?.client_id_number
                                                                     }
                                                                 </td>
                                                                 <td>
                                                                     {
-                                                                        form?.clientPhoneNumber
+                                                                        form?.client_contact
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    {
+                                                                        form?.client_email
                                                                     }
                                                                 </td>
                                                                 <td>

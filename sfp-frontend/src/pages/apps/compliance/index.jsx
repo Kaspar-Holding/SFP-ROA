@@ -254,8 +254,7 @@ const Compliance = () => {
                 timer: 5000,
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
-            })
-            
+            })            
         }
     }
 

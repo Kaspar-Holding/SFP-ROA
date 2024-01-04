@@ -423,7 +423,7 @@ header {
 
 .roa-edit-card {
     padding-top: 2%;
-    height: 85vh;
+    height: 75vh;
     overflow:auto;
     background-color: #ffffff;
     overflow-y: auto;
@@ -1231,5 +1231,5 @@ header {
 
 .sfp-online-slider {
     background-color: #ffffff;
-    height: 5vh;
+    height: 7.5vh;
 }

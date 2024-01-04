@@ -101,17 +101,18 @@ const CreateROA = () => {
                 buttonsStyling: !1,
             })
             router.push({
-                pathname: "/apps/roa/documents/complete",
+                pathname: "/apps/roa/documents/edit",
                 query: {dId : response?.data?.data?.id}
             })
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             let errors = error?.response?.data?.error?.errors
+            console.log(error?.response?.data?.error?.message)
             Swal.fire({
                 position: "bottom-end",
                 type: "success",
                 title: "Error",
-                html: Object.entries(errors).map( ([key, value]) => `${(key[0].toUpperCase() + key.slice(1)).replace('_',' ')}: ${value}` ),
+                html: error?.response?.data?.error?.message? error?.response?.data?.error?.message :Object.entries(errors).map( ([key, value]) => `${(key[0].toUpperCase() + key.slice(1)).replace('_',' ')}: ${value}` ),
                 showConfirmButton: !1,
                 timer: 5000,
                 confirmButtonClass: "btn btn-primary",
@@ -460,7 +461,7 @@ const CreateROA = () => {
                                                             <p className='roa-label'>
                                                                 <i className='fa fa-user' style={{color: "white"}}></i>
                                                                 <br/>
-                                                                {user?.first_name} {user?.last_name === "nan" ? "" : user?.last_name}
+                                                                {userProfile?.contact_cell}
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -477,6 +478,22 @@ const CreateROA = () => {
                                                                 <i className='fa fa-envelope' style={{color: "white"}}></i>
                                                                 <br/>
                                                                 {user?.email}
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colSpan={3}>
+                                                            <p className='roa-label text-center'>
+                                                                <i className='fa fa-map-pin'></i>
+                                                                <br/>
+                                                                Address
+                                                            </p>
+                                                        </td>
+                                                        <td colSpan={9}>
+                                                            <p className='roa-label'>
+                                                                <i className='fa fa-envelope' style={{color: "white"}}></i>
+                                                                <br/>
+                                                                {userProfile?.address}
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -505,7 +522,7 @@ const CreateROA = () => {
                                                         </td>
                                                         <td colSpan={9}>
                                                             <p className='roa-label'>
-                                                                {userProfile?.experience} {userProfile?.experience <=1 ? "Year" : "Years"}
+                                                                N/A
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -1366,7 +1383,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input required className="form-check-input" checked={FormData?.letter_of_introduction === 1 ? true : false} onChange={(e)=>{onChange(e)}} type="radio" value={1} name="letter_of_introduction" />
+                                                                        <input required className="form-check-input" checked={FormData?.letter_of_introduction == 1 ? true : false} onChange={(e)=>{onChange(e)}} type="radio" value={1} name="letter_of_introduction" />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1374,7 +1391,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input required className="form-check-input" checked={FormData?.letter_of_introduction === 0 ? true : false} onChange={(e)=>{onChange(e)}} type="radio" value={0} name="letter_of_introduction" />
+                                                                        <input required className="form-check-input" checked={FormData?.letter_of_introduction == 0 ? true : false} onChange={(e)=>{onChange(e)}} type="radio" value={0} name="letter_of_introduction" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1397,7 +1414,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}}  checked={FormData?.popi === 1 ? true : false} name="popi"  />
+                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}}  checked={FormData?.popi == 1 ? true : false} name="popi"  />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1405,7 +1422,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}}  checked={FormData?.popi === 0 ? true : false} name="popi"  />
+                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}}  checked={FormData?.popi == 0 ? true : false} name="popi"  />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1428,7 +1445,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_processing === 1 ? true : false} name="pi_processing" />
+                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_processing == 1 ? true : false} name="pi_processing" />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1436,7 +1453,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_processing === 0 ? true : false} name="pi_processing" />
+                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_processing == 0 ? true : false} name="pi_processing" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1459,7 +1476,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}} checked={FormData?.marketing_purposes === 1 ? true : false} name="marketing_purposes" />
+                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}} checked={FormData?.marketing_purposes == 1 ? true : false} name="marketing_purposes" />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1467,7 +1484,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}} checked={FormData?.marketing_purposes === 0 ? true : false} name="marketing_purposes" />
+                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}} checked={FormData?.marketing_purposes == 0 ? true : false} name="marketing_purposes" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1490,7 +1507,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font">
                                                                             Yes
                                                                         </label>
-                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_retained === 1 ? true : false} name="pi_retained" />
+                                                                        <input className="form-check-input" type="radio" value="1" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_retained == 1 ? true : false} name="pi_retained" />
                                                                     </div>
                                                                 </div>
                                                                 <div className='col-6'>
@@ -1498,7 +1515,7 @@ const CreateROA = () => {
                                                                         <label className="form-check-label roa-font" for="receiptNo">
                                                                             No
                                                                         </label>
-                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_retained === 0 ? true : false} name="pi_retained" />
+                                                                        <input className="form-check-input" type="radio" value="0" onChange={(e)=>{onChange(e)}}  checked={FormData?.pi_retained == 0 ? true : false} name="pi_retained" />
                                                                     </div>
                                                                 </div>
                                                             </div>

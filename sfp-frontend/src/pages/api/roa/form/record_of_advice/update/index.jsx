@@ -1,4 +1,4 @@
-import { API_URL } from '../../../../config'
+import { API_URL } from '../../../../../../config'
 import axios from 'axios'
 import cookie from 'cookie'
 
@@ -26,28 +26,29 @@ export default async (req, res ) => {
 
         const Body = JSON.stringify(req.body)
         try {
-            const apiResponse = await axios.post(
-                `${API_URL}/api/roa/form/`,
+            const apiResponse = await axios.put(
+                `${API_URL}/api/roa/form/record_of_advice/${req.body['id']}/`,
                 Body,
                 config
             )
             
-            if (apiResponse?.status === 201) {
+            if (apiResponse?.status === 200) {
                 
                 return res.status(apiResponse.status).json(
                     {
-                        success: "Successfully created, you can proceed to next level.",
+                        success: "Successfully updated.",
                         data: apiResponse?.data,
                     }
                 )
 
             } else{
                 return res.status(apiResponse?.status).json({
-                    error: data
+                    error: error?.response?.data
                 })
             }
 
         } catch (error) {
+            console.log(error)
             return res.status(error?.response?.status).json({
                 error: error?.response?.data
             })

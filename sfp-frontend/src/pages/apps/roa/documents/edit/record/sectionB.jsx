@@ -56,11 +56,11 @@ const SectionB = ({ user, FormData, setFormData, onChange, prevStep, FICAEditorR
                 <br/>
             </div>
             <br/>
-            <div className='row'>
+            {/* <div className='row'>
                 <div className='col-12'>
                     <button className='btn btn-primary btn-sfp w-100' onClick={handlePrevious}><FontAwesomeIcon width={"20px"}  icon={faArrowLeft} /> <strong>Section A: FICA</strong></button>
                 </div>
-            </div> 
+            </div>  */}
         </div>
     );
 };

@@ -5,7 +5,7 @@ import Tippy from '@tippyjs/react';
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react'
 
-const SectionAFICA = ({ user, FormData, setFormData, onChange, nextStep, prevStep, FICAEditorRef }) => {
+const SectionACD = ({ user, FormData, setFormData, onChange, nextStep, prevStep, compulsoryAEditorRef }) => {
     
     const handleNext = () => {
         // Validate data if needed
@@ -26,17 +26,17 @@ const SectionAFICA = ({ user, FormData, setFormData, onChange, nextStep, prevSte
             <br/>
             <div className='row'>                       
                 <div className='roa-font'>
-                    <b>2. Financial Intelligence Centre Act (FICA)</b>
+                    <b>1. Compulsory Disclosures</b>
                 </div>  
                 <div className="col-6 roa-label">
-                    <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client has provided a clear copy of his/her identity document.</label>
+                    <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client was provided with a copy of the Letter of Introduction.</label>
                 </div>
                 
                 <div className="col-6">
                     <div className="row">
                         <div className="row col-6 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData?.clientFica == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientFica"/>
+                                <input className="form-check-input" checked={FormData?.clientLetterOfIntroduction == 1 ? true : false}  onChange={e => onChange(e)} type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
                             </div>
                             <div className="col-6">
                                 <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
@@ -46,7 +46,7 @@ const SectionAFICA = ({ user, FormData, setFormData, onChange, nextStep, prevSte
                         </div>
                         <div className="row col-6 align-items-center">
                             <div className="col-2">
-                                <input className="form-check-input" checked={FormData?.clientFica == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientFica"/>
+                                <input className="form-check-input" checked={FormData?.clientLetterOfIntroduction == 0 ? true : false}  onChange={e => onChange(e)} type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction"/>
                             </div>
                             <div className="col-6">
                                 <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
@@ -57,9 +57,9 @@ const SectionAFICA = ({ user, FormData, setFormData, onChange, nextStep, prevSte
                     </div>
                 </div>
                 <Editor
-                    onInit={(evt, editor) => FICAEditorRef.current = editor}
-                    value={FormData?.clientFicaReason}
-                    onEditorChange={(e)=>{ setFormData({...FormData, ['clientFicaReason']: FICAEditorRef.current.getContent() }) }}
+                    onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
+                    value={FormData?.clientLetterOfIntroductionReason}
+                    onEditorChange={(e)=>{ setFormData({...FormData, ['clientLetterOfIntroductionReason']: compulsoryAEditorRef.current.getContent() }) }}
                     name="clientBackgroundInfo"
                     init={{
                         browser_spellcheck : true,
@@ -86,16 +86,16 @@ const SectionAFICA = ({ user, FormData, setFormData, onChange, nextStep, prevSte
                 <br/>
             </div>
             <br/>
-            <div className='row'>
+            {/* <div className='row'>
                 <div className='col-6'>
-                    <button className='btn btn-primary btn-sfp w-100' onClick={handlePrevious}><FontAwesomeIcon width={"20px"}  icon={faArrowLeft} /> Section A: Access Information</button>
+                    <button className='btn btn-primary btn-sfp w-100' onClick={handlePrevious}><FontAwesomeIcon width={"20px"}  icon={faArrowLeft} /> Initial Information</button>
                 </div>
                 <div className='col-6'>
-                    <button className='btn btn-primary btn-sfp w-100' onClick={handleNext}>Section A: Replacements <FontAwesomeIcon width={"20px"}  icon={faArrowRight} /></button>
+                    <button className='btn btn-primary btn-sfp w-100' onClick={handleNext}>Section A: Access Information <FontAwesomeIcon width={"20px"}  icon={faArrowRight} /></button>
                 </div>
-            </div> 
+            </div>  */}
         </div>
     );
 };
 
-export default SectionAFICA;
+export default SectionACD;
