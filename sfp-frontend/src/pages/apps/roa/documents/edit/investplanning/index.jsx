@@ -474,7 +474,7 @@ const InvestPlanning = () => {
                                         : user?.email.includes('fs4p') ? "roa-label fs4p-text"
                                             : user?.email.includes('sanlam') ? "roa-label sanlam-text"
                                                 : "fw-bold"
-                                }  > <b>Analysis of Client's Circumstances</b></h6>
+                                }  > <b>Analysis of Client{ `'` }s Circumstances</b></h6>
                                 <p className="roa-label">The analysis of your personal circumstances as described above.</p>
 
 
@@ -995,7 +995,7 @@ const InvestPlanning = () => {
                                                         Qualification of need explaining the reasons why this type of investment vehicle was recommended<br />
                                                     </li>
                                                     <li>
-                                                        How it will meet the client's needs<br />
+                                                        How it will meet the client{ `'` }s needs<br />
                                                     </li>
 
                                                 </ul>
@@ -1756,7 +1756,7 @@ const InvestPlanning = () => {
                                                                     {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                     <ul>
                                                                         <li>
-                                                                            Motivate why the chosen product was recommended to best suit your client's needs.<br />
+                                                                            Motivate why the chosen product was recommended to best suit your client{ `'` }s needs.<br />
                                                                         </li>
 
                                                                     </ul>
