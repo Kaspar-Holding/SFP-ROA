@@ -19,11 +19,11 @@ from pathlib import Path
 import environ
 
 # settings.py
-import firebase_admin
-from firebase_admin import credentials
+# import firebase_admin
+# from firebase_admin import credentials
 
-cred = credentials.Certificate("sfp-firebase.json")
-firebase_admin.initialize_app(cred)
+# cred = credentials.Certificate("sfp-firebase.json")
+# firebase_admin.initialize_app(cred)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
