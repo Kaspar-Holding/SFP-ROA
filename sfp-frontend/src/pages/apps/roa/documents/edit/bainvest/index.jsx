@@ -1965,7 +1965,7 @@ const BAInvestment = () => {
                                                                     {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                     <ul className='roa-label'>
                                                                         <li>
-                                                                            Motivate why the chosen product was recommended to best suit your client's needs
+                                                                            Motivate why the chosen product was recommended to best suit your client{ `'` }s needs
 
 
                                                                         </li>

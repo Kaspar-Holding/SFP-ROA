@@ -17,6 +17,7 @@ Deployed using Nginx and Gunicorn
 ### 09 January 2024:
 - ROA done
 - PDF is working
+- Comma bug resolved
 - Deployment on Staging 
 
 ### 03 January 2024:

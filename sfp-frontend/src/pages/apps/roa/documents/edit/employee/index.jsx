@@ -1972,7 +1972,7 @@ const EmployeeBenefits = () => {
                                             <ul>
                                                 <li>
                                                     Explain the reasons why life cover benefits were recommended to satisfy this need. <br />
-                                                    Record the client's instructions, deviations and implications thereof.
+                                                    Record the client{ `'` }s instructions, deviations and implications thereof.
 
 
                                                 </li>
@@ -2045,7 +2045,7 @@ Record the client's instructions, deviations and implications thereof.
                                             <ul>
                                                 <li>
                                                     Explain the reasons why disability benefits were recommended to satisfy this need. <br />
-                                                    Record the client's instructions, deviations and implications thereof.
+                                                    Record the client{ `'` }s instructions, deviations and implications thereof.
 
 
                                                 </li>
@@ -2118,7 +2118,7 @@ Record the client's instructions, deviations and implications thereof.
                                             <ul>
                                                 <li>
                                                     Explain the reasons why dread disease cover was recommended to satisfy this need.<br />
-                                                    Record the client's instructions, deviations and implications thereof.
+                                                    Record the client{ `'` }s instructions, deviations and implications thereof.
 
 
 

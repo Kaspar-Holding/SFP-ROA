@@ -2630,7 +2630,7 @@ const BARisk = () => {
                                             : user?.email.includes('sanlam') ? "h6 fw-bold sanlam-text"
                                                 : "h6 fw-bold"
                                 }>Financial Solutions</div>
-                                <p>Summary of recommendations to address the business's needs identified.</p>
+                                <p>Summary of recommendations to address the business{ `'` }s needs identified.</p>
                                 <p>Life Cover</p>
                                 <hr />
 
@@ -2642,7 +2642,7 @@ const BARisk = () => {
                                                 <ul>
                                                     <li>
                                                         Explain the reasons why Life cover benefits were recommended to satisfy this need.<br />
-                                                        Record the client's instructions, deviations and implications thereof.
+                                                        Record the client{ `'` }s instructions, deviations and implications thereof.
 
                                                     </li>
 
@@ -2683,7 +2683,7 @@ const BARisk = () => {
                                                 <ul>
                                                     <li>
                                                         Explain the reasons why Disability cover benefits were recommended to satisfy this need.<br />
-                                                        Record the client's instructions, deviations and implications thereof.
+                                                        Record the client{ `'` }s instructions, deviations and implications thereof.
 
                                                     </li>
 
@@ -3139,7 +3139,7 @@ const BARisk = () => {
                                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                             <ul>
                                                                                 <li>
-                                                                                    Motivate why the chosen product was recommended to best suit your client's needs.<br />
+                                                                                    Motivate why the chosen product was recommended to best suit your client{ `'` }s needs.<br />
                                                                                 </li>
 
                                                                             </ul>

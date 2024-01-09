@@ -3113,12 +3113,12 @@ const STCommercial = () => {
                                             letterOfIntroductionVisibility ?
                                                 <>
                                                     <div id="letter_of_introduction_instructions" className="hidden_class">
-                                                        <p>If 'Yes', provide details:</p>
+                                                        <p>If { `'` }Yes{ `'` }, provide details:</p>
                                                     </div>
                                                 </> :
                                                 null
                                         }
-                                        {/* <textarea id="STIC_General_Cancelled_Detail" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_Cancelled_Detail']}  name="STIC_General_Cancelled_Detail"  onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If 'Yes', provide details:" aria-describedby="" ></textarea> */ }
+                                        {/* <textarea id="STIC_General_Cancelled_Detail" onChange={(e) => {onChange(e)}} value={FormData['STIC_General_Cancelled_Detail']}  name="STIC_General_Cancelled_Detail"  onFocus={letter_of_introduction_onFocus} onBlur={letter_of_introduction_onBlur} className="form-control" placeholder="If {`'`}Yes{`'`}, provide details:" aria-describedby="" ></textarea> */ }
                                         <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
                                             <ReactQuill
                                                 theme="snow" // Specify the theme ('snow' or 'bubble')
@@ -3131,7 +3131,7 @@ const STCommercial = () => {
                                                 style={ {
                                                     height: '300px', // Set the desired height here
                                                 } }
-                                                placeholder={ `If 'Yes', provide details.` }
+                                                placeholder={ `If Yes, provide details.` }
                                             />
                                         </div>
                                         <br />
@@ -3383,7 +3383,7 @@ const STCommercial = () => {
                                 </div>
                                 <hr />
                                 <p>Comparison between the product to be replaced (old product) and the recommended product (new product):</p>
-                                <p><b>Read the detail required carefully and complete the comparison below. Use 'Not applicable' where an aspect does not apply and explain why not applicable.</b></p>
+                                <p><b>Read the detail required carefully and complete the comparison below. Use { `'` }Not applicable{ `'` } where an aspect does not apply and explain why not applicable.</b></p>
 
                                 {/* <br/> */ }
                                 <hr />
@@ -4670,7 +4670,7 @@ const STCommercial = () => {
 
                                                 <tr >
 
-                                                    <td colSpan={ 1 }> <b>.</b>Director and officer's Liability</td>
+                                                    <td colSpan={ 1 }> <b>.</b>Director and officer{ `'` }s Liability</td>
                                                     <td class="col-2" style={ { width: "100px" } }>
                                                         <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_ProdComp_Recommended21"] === 1 ? true : false } name="STIC_ProdComp_Recommended21" onChange={ (e) => { FormData["STIC_ProdComp_Recommended21"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } align="center" />
                                                     </td>
@@ -4893,7 +4893,7 @@ const STCommercial = () => {
 
                                                 <tr >
 
-                                                    <td colSpan={ 1 }> <b>.</b>Warehousemen's liability</td>
+                                                    <td colSpan={ 1 }> <b>.</b>Warehousemen{ `'` }s liability</td>
                                                     <td class="col-2" style={ { width: "100px" } }>
                                                         <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_ProdComp_Recommended25"] === 1 ? true : false } name="STIC_ProdComp_Recommended25" onChange={ (e) => { FormData["STIC_ProdComp_Recommended25"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } align="center" />
                                                     </td>
@@ -6030,7 +6030,7 @@ const STCommercial = () => {
                                         <b>
                                             Insurable interest
                                         </b>
-                                        <p>The Insured must have an insurable interest in any item insured under this policy at the date of the event giving rise to a claim. If the Insured's insurable interest in an insured item is an interest other than as an owner or a good-faith possessor of the goods (in terms of a credit agreement or else) who bears the risk of loss, the Insured must advise the Company of the nature and extent of the insurable interest before the cover commences. The cover for any such item will start only when the Company has given written confirmation and agreed to insure the property. Should the nature or extent of the insurable interest in any item insured under this policy change, the Insured must notify the Company immediately in writing of such change. Failure to do so may entitle the Company to reject the claim if the Insured's insurable interest was not agreed to by the Company.</p>
+                                        <p>The Insured must have an insurable interest in any item insured under this policy at the date of the event giving rise to a claim. If the Insured{ `'` }s insurable interest in an insured item is an interest other than as an owner or a good-faith possessor of the goods (in terms of a credit agreement or else) who bears the risk of loss, the Insured must advise the Company of the nature and extent of the insurable interest before the cover commences. The cover for any such item will start only when the Company has given written confirmation and agreed to insure the property. Should the nature or extent of the insurable interest in any item insured under this policy change, the Insured must notify the Company immediately in writing of such change. Failure to do so may entitle the Company to reject the claim if the Insured{ `'` }s insurable interest was not agreed to by the Company.</p>
                                         <b>Average:</b>
                                         <p>Policies of insurance covering material property are subject to average. This means that you could recover the full amount of an insured loss only if your sum insured represents the full value of the property covered. If the amounts insured are less than the full value at the time of the loss, you can recover only a proportionate amount of the loss. If there are several items of property insured, the average will be applied separately to each item. Consequently, sums insured should always be maintained at adequate level.</p>
                                         <b>Reinstatement value conditions:</b>
@@ -6048,28 +6048,28 @@ const STCommercial = () => {
                                         <b>
                                             Value-added tax:
                                         </b>
-                                        <p>All sums insured/limits of indemnity must be inclusive of VAT and in some instances, e.g. personal accident/stated benefits cover, where indemnity payments received by 'vendor insured's' are vatable, the sums insured/limits of indemnity would need to be increased by a further 15% so as not to reduce the net payment when a claim occurs.</p>
+                                        <p>All sums insured/limits of indemnity must be inclusive of VAT and in some instances, e.g. personal accident/stated benefits cover, where indemnity payments received by { `'` }vendor insured{ `'` }s{ `'` } are vatable, the sums insured/limits of indemnity would need to be increased by a further 15% so as not to reduce the net payment when a claim occurs.</p>
                                         <b>Premium payment:</b>
                                         <p>The premium is due and payable on or before the inception date or renewal date but must be paid immediately upon receipt of the invoice, but no later than within 30 (thirty) days of inception/renewal of the policy. The Company shall not be obliged to accept premium tendered to it more than 30 (thirty) days after the inception or renewal date but may do so upon application at such terms as it, at its sole discretion, may determine.</p>
                                         <ul>
                                             <li>Where the premium is paid monthly</li>
                                         </ul>
-                                        <p>The premium is due and payable on or before the inception date or the first day of each month thereafter as the case may be. If the premium has not been paid for any reason other than the Insured having stopped payment, the Company will re-debit in the following month for two months' premium. </p>
+                                        <p>The premium is due and payable on or before the inception date or the first day of each month thereafter as the case may be. If the premium has not been paid for any reason other than the Insured having stopped payment, the Company will re-debit in the following month for two months{ `'` } premium. </p>
                                         <p>The policy will cancel immediately:</p>
 
                                         <ul>
                                             <li>If the Insured has placed a stop payment on the premium</li>
                                             <li>If the full double premium has not been paid (effective from the date of the first unpaid premium)</li>
-                                            <li>There may be instances where the policy may be cancelled if one month's premium has not been successfully received. Take note of specific correspondence received in instances where this is the case.</li>
+                                            <li>There may be instances where the policy may be cancelled if one month{ `'` }s premium has not been successfully received. Take note of specific correspondence received in instances where this is the case.</li>
                                         </ul>
 
                                         <p>If all premiums have not been paid, any claims made will not be settled under this policy.</p>
                                         <b>Adjustment Premium:</b>
                                         <p>If the premium for any section of this policy has been calculated on any estimated figures, the Insured shall, after the expiry of each period of insurance, furnish the Company with such particulars and information as the Company may require for the purpose of recalculation of the premium for such period. Any differences shall be paid by or to the Insured as the case may be.</p>
                                         <b>Duty of disclosure of material facts:</b>
-                                        <p>Because you have a far better knowledge of your risk than your insurers, please advise us prior to inception of cover or renewal or when changes are made to your risk during the year, of information which may affect the insurer's appreciation of the risk. Examples could be particularly hazardous aspects of your business (such as processes undertaken, new products, signing of leases or contracts which may impose additional liabilities on you, situation of premises, threats from other parties, warehousing of customers' properties, hiring of plant and equipment).</p>
+                                        <p>Because you have a far better knowledge of your risk than your insurers, please advise us prior to inception of cover or renewal or when changes are made to your risk during the year, of information which may affect the insurer{ `'` }s appreciation of the risk. Examples could be particularly hazardous aspects of your business (such as processes undertaken, new products, signing of leases or contracts which may impose additional liabilities on you, situation of premises, threats from other parties, warehousing of customers{ `'` } properties, hiring of plant and equipment).</p>
                                         <p>You do not have to disclose things which diminish the risk of insurers or are common knowledge or knowledge of which is waived by the insurer. Where, however, you are in any doubt, it is better to inform insurers as many claims have been repudiated on grounds of non-disclosure.</p>
-                                        <p>When a policy is placed with an Insurer you need to disclose all material facts, which could affect your Insurer's appreciation of the risk of loss, damage or liability, for which they will be providing you with insurance cover. </p>
+                                        <p>When a policy is placed with an Insurer you need to disclose all material facts, which could affect your Insurer{ `'` }s appreciation of the risk of loss, damage or liability, for which they will be providing you with insurance cover. </p>
                                         <p>Once cover has been placed, the need to continue disclosing material facts not previously disclosed to your current insurers continues. This applies to all your insurance covers not just those insuring your assets, and disclosure should be made via your broker as soon as the facts come to your attention. </p>
                                         <p>In addition, you need to immediately advise your broker of any changes or planned changes in your assets or business activities.</p>
                                         <b>Standard construction:</b>
@@ -6077,7 +6077,7 @@ const STCommercial = () => {
                                         <b>Unoccupied buildings/premises:</b>
                                         <p>If any building and/or premise shall become unoccupied for 30 (thirty) consecutive days, the insurance cover is suspended as regards the property affected unless the Insured, before the occurrence of any damage, obtains the written agreement of the insurer to continue with the cover.</p>
                                         <p>During the period of the initial unoccupancy of 30 (thirty) consecutive days, the Insured shall become a co-insurer with the insurer and shall bear a proportion of any damage equal to 20% (twenty per cent) of the claim before deduction of any first amount payable.</p>
-                                        <p>Theft (or any attempt thereat) of contents, electronic and all other equipment, plant, machinery, landlord's fixtures, and fittings, etc. not accompanied by forcible and violent entry into or exit from such building, is excluded unless specifically insured. An alarm warranty is also applicable for all sections which provide theft cover to the premises and requires that a linked alarm be activated and in working order whenever the premises is unoccupied. The alarm must be linked to a 24-hour manned control room and armed reaction and be activated whenever the premises is unoccupied. If either of these conditions are not met, there will be no cover. We further recommend that you test the alarm at the intervals recommended by the service provider to ensure that the alarm is operational and in working order.</p>
+                                        <p>Theft (or any attempt thereat) of contents, electronic and all other equipment, plant, machinery, landlord{ `'` }s fixtures, and fittings, etc. not accompanied by forcible and violent entry into or exit from such building, is excluded unless specifically insured. An alarm warranty is also applicable for all sections which provide theft cover to the premises and requires that a linked alarm be activated and in working order whenever the premises is unoccupied. The alarm must be linked to a 24-hour manned control room and armed reaction and be activated whenever the premises is unoccupied. If either of these conditions are not met, there will be no cover. We further recommend that you test the alarm at the intervals recommended by the service provider to ensure that the alarm is operational and in working order.</p>
 
                                         <div > <b>Power surge:</b></div>
                                         <p>Power surge cover is generally limited in terms of the policy, and we encourage you to check each section of the policy to determine the adequacy of the limit of cover selected. Insurers further require that there is SABS-approved power surge arrestors installed at the premises for the cover to be valid, or else ensuring that the cover is not limited, or additional excesses being applied. We recommend that such surge arrestors be installed on the mains of the premises by a professional service provider, to ensure that all equipment is adequate protected.</p>
@@ -8523,7 +8523,7 @@ const STCommercial = () => {
                                             <div><b>Important Notes</b></div>
                                             <ul>
                                                 <li>Calculation of gross profit sum insured: Difference basis</li>
-                                                <li>Calculation of gross profit sum insured: Addition's basis (Net profit and standing charges)</li>
+                                                <li>Calculation of gross profit sum insured: Addition{ `'` }s basis (Net profit and standing charges)</li>
                                                 <li>Indemnity period: Suggested minimum period is 12 months and more. It is not only the time involved in repairing the material damage, but it may consider actual time to return to normal production.</li>
                                             </ul>
 
@@ -9194,7 +9194,7 @@ const STCommercial = () => {
                                             <div><b>Important Notes</b></div>
                                             <ul>
                                                 <li>Calculation of gross profit sum insured: Difference basis</li>
-                                                <li>Calculation of gross profit sum insured: Addition's basis (Net profit and standing charges)</li>
+                                                <li>Calculation of gross profit sum insured: Addition{ `'` }s basis (Net profit and standing charges)</li>
                                                 <li>Indemnity period: Suggested minimum period is 12 months and more. It is not only the time involved in repairing the material damage, but it may consider actual time to return to normal production.</li>
                                             </ul>
 
@@ -9964,7 +9964,7 @@ const STCommercial = () => {
                                                                 <div><b>Important Notes</b></div>
                                                                 <ul>
                                                                     <li>Calculation of gross profit sum insured: Difference basis</li>
-                                                                    <li>Calculation of gross profit sum insured: Addition's basis (Net profit and standing charges)</li>
+                                                                    <li>Calculation of gross profit sum insured: Addition{ `'` }s basis (Net profit and standing charges)</li>
                                                                     <li>Indemnity period: Suggested minimum period is 12 months and more. It is not only the time involved in repairing the material damage, but it may consider actual time to return to normal production.</li>
                                                                 </ul>
 
@@ -10635,7 +10635,7 @@ const STCommercial = () => {
                                                                 <div><b>Important Notes</b></div>
                                                                 <ul>
                                                                     <li>Calculation of gross profit sum insured: Difference basis</li>
-                                                                    <li>Calculation of gross profit sum insured: Addition's basis (Net profit and standing charges)</li>
+                                                                    <li>Calculation of gross profit sum insured: Addition{ `'` }s basis (Net profit and standing charges)</li>
                                                                     <li>Indemnity period: Suggested minimum period is 12 months and more. It is not only the time involved in repairing the material damage, but it may consider actual time to return to normal production.</li>
                                                                 </ul>
 
@@ -17669,7 +17669,7 @@ const STCommercial = () => {
                                                     </tr>
 
                                                     <tr>
-                                                        <td style={ { fontSize: '14px', } } align="left">Warehousemen's liability</td>
+                                                        <td style={ { fontSize: '14px', } } align="left">Warehousemen{ `'` }s liability</td>
                                                         <td>
                                                             <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_Sec14_Recommended9"] === 1 ? true : false } name="STIC_Sec14_Recommended9" onChange={ (e) => { FormData["STIC_Sec14_Recommended9"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
                                                         </td>
@@ -17699,7 +17699,7 @@ const STCommercial = () => {
                                                     </tr>
 
                                                     <tr>
-                                                        <td style={ { fontSize: '14px', } } align="left">Contractor's All Risk</td>
+                                                        <td style={ { fontSize: '14px', } } align="left">Contractor{ `'` }s All Risk</td>
                                                         <td>
                                                             <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_Sec14_Recommended11"] === 1 ? true : false } name="STIC_Sec14_Recommended11" onChange={ (e) => { FormData["STIC_Sec14_Recommended11"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
                                                         </td>
@@ -17980,7 +17980,7 @@ const STCommercial = () => {
                                                                         </tr>
 
                                                                         <tr>
-                                                                            <td style={ { fontSize: '14px', } } align="left">Warehousemen's liability</td>
+                                                                            <td style={ { fontSize: '14px', } } align="left">Warehousemen{ `'` }s liability</td>
                                                                             <td>
                                                                                 <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ key.Sec14_Recommended9 == 1 ? true : false } name="Sec14_Recommended9" onChange={ (e) => { key.Sec14_Recommended9 == 1 ? on_Section_14_Value_Change("Sec14_Recommended9", i, 0) : on_Section_14_Value_Change("Sec14_Recommended9", i, 1) } } />
                                                                             </td>
@@ -18010,7 +18010,7 @@ const STCommercial = () => {
                                                                         </tr>
 
                                                                         <tr>
-                                                                            <td style={ { fontSize: '14px', } } align="left">Contractor's All Risk</td>
+                                                                            <td style={ { fontSize: '14px', } } align="left">Contractor{ `'` }s All Risk</td>
                                                                             <td>
                                                                                 <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ key.Sec14_Recommended11 == 1 ? true : false } name="Sec14_Recommended11" onChange={ (e) => { key.Sec14_Recommended11 == 1 ? on_Section_14_Value_Change("Sec14_Recommended11", i, 0) : on_Section_14_Value_Change("Sec14_Recommended11", i, 1) } } />
                                                                             </td>
@@ -18086,7 +18086,7 @@ const STCommercial = () => {
                                                             : user?.email.includes('fs4p') ? "text-start fs4p-text"
                                                                 : user?.email.includes('sanlam') ? "text-start sanlam-text"
                                                                     : ""
-                                                    } style={ { fontSize: '18px', fontWeight: 'bold' } } > <b>SECTION 15:EMPLOYER'S LIABILITY</b>
+                                                    } style={ { fontSize: '18px', fontWeight: 'bold' } } > <b>SECTION 15:EMPLOYER{ `'` }S LIABILITY</b>
                                                     </div>
                                                 </div>
                                                 <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -18279,7 +18279,7 @@ const STCommercial = () => {
                                                                                 : user?.email.includes('fs4p') ? "text-start fs4p-text"
                                                                                     : user?.email.includes('sanlam') ? "text-start sanlam-text"
                                                                                         : ""
-                                                                        } style={ { fontSize: '18px', fontWeight: 'bold' } } > <b>SECTION 15:EMPLOYER'S LIABILITY (# { i + 2 })</b>
+                                                                        } style={ { fontSize: '18px', fontWeight: 'bold' } } > <b>SECTION 15:EMPLOYER{ `'` }S LIABILITY (# { i + 2 })</b>
                                                                         </div>
                                                                     </div>
 
@@ -20854,7 +20854,7 @@ const STCommercial = () => {
                                                     </tr>
 
                                                     <tr>
-                                                        <td style={ { fontSize: '14px', } } align="left">Auto dealer's code:</td>
+                                                        <td style={ { fontSize: '14px', } } align="left">Auto dealer{ `'` }s code:</td>
                                                         <td>
                                                             <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="STIC_Sec18_11" onChange={ (e) => { onChange(e) } } value={ FormData['STIC_Sec18_11'] } name="STIC_Sec18_11" className="form-control" placeholder="Click here to enter text" aria-describedby="" style={ { width: "200px" } } />
                                                         </td>
@@ -21114,7 +21114,7 @@ const STCommercial = () => {
                                                         <td>
                                                             <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } id="vehicle1" checked={ FormData["STIC_Sec18_Extension1"] === 1 ? true : false } name="STIC_Sec18_Extension1" onChange={ (e) => { FormData["STIC_Sec18_Extension1"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
                                                         </td>
-                                                        <td style={ { fontSize: '14px', } } align="left">Credit shortfall:(only applicable if 'Hire Purchase' Yes): </td>
+                                                        <td style={ { fontSize: '14px', } } align="left">Credit shortfall:(only applicable if { `'` }Hire Purchase{ `'` } Yes): </td>
                                                         <td style={ { fontSize: '14px', } }>Limit:</td>
                                                         <td>
                                                             <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="STIC_Sec18_Extension1_1" onChange={ (e) => { onChange(e) } } value={ FormData['STIC_Sec18_Extension1_1'] } name="STIC_Sec18_Extension1_1" className="form-control" placeholder="0.00" aria-describedby="" />
@@ -21451,7 +21451,7 @@ const STCommercial = () => {
                                                                         </tr>
 
                                                                         <tr>
-                                                                            <td style={ { fontSize: '14px', } } align="left">Auto dealer's code:</td>
+                                                                            <td style={ { fontSize: '14px', } } align="left">Auto dealer{ `'` }s code:</td>
                                                                             <td>
                                                                                 <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="Sec18_11" onChange={ (e) => { on_Section_18_Change(e, i) } } value={ key['Sec18_11'] } name="Sec18_11" className="form-control" placeholder="Click here to enter text" aria-describedby="" style={ { width: "200px" } } />
                                                                             </td>
@@ -21720,7 +21720,7 @@ const STCommercial = () => {
                                                                             <td>
                                                                                 <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } id="vehicle1" checked={ key["Sec18_Extension1"] === 1 ? true : false } name="Sec18_Extension1" onChange={ (e) => { key["Sec18_Extension1"] === 1 ? on_Section_18_Value_Change("Sec18_Extension1", i, 0) : on_Section_18_Value_Change("Sec18_Extension1", i, 1) } } />
                                                                             </td>
-                                                                            <td style={ { fontSize: '14px', } } align="left">Credit shortfall:(only applicable if 'Hire Purchase' Yes): </td>
+                                                                            <td style={ { fontSize: '14px', } } align="left">Credit shortfall:(only applicable if { `'` }Hire Purchase{ `'` } Yes): </td>
                                                                             <td style={ { fontSize: '14px', } }>Limit:</td>
                                                                             <td>
                                                                                 <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="Sec18_Extension1_1" onChange={ (e) => { on_Section_18_Change(e, i) } } value={ key['Sec18_Extension1_1'] } name="Sec18_Extension1_1" className="form-control" placeholder="0.00" aria-describedby="" />

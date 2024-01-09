@@ -879,7 +879,7 @@ const GapCover = () => {
                             <div className="row roa-label" id="sectionG">
                                 <p>
                                     <b>
-                                        Financial Adviser's Declaration
+                                        Financial Adviser{ `'` }s Declaration
                                     </b>
                                 </p>
 

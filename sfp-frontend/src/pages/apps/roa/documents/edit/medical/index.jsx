@@ -1224,7 +1224,7 @@ const Medical = () => {
                                 {/* Section F */ }
                                 <b>Section F</b>
                                 <div id="sectionF" className='roa-label'>
-                                    <p><b>Financial Adviser's Declaration</b></p>
+                                    <p><b>Financial Adviser{ `'` }s Declaration</b></p>
                                     <div className="row">
 
                                         <div className="col-12" style={ { paddingBottom: "0.5%" } }>

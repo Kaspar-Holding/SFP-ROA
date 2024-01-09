@@ -4524,7 +4524,7 @@ const STPersonal = () => {
                                                     </div>
                                                 </div>
 
-                                                <div><i>(Mark the applicable option with an 'X')</i></div>
+                                                <div><i>(Mark the applicable option with an { `'` }X{ `'` })</i></div>
                                                 <div><b>Note that the cover amount must be at replacement value and NOT at municipal valuation.</b></div>
                                                 <div className="row g-4 align-items-center">
                                                     <div className="col-4">
@@ -5202,7 +5202,7 @@ const STPersonal = () => {
                                                                         </div>
                                                                     </div>
 
-                                                                    <div><i>(Mark the applicable option with an 'X')</i></div>
+                                                                    <div><i>(Mark the applicable option with an { `'` }X{ `'` })</i></div>
                                                                     <div><b>Note that the cover amount must be at replacement value and NOT at municipal valuation.</b></div>
                                                                     <div className="row g-4 align-items-center">
                                                                         <div className="col-4">
@@ -7437,7 +7437,7 @@ const STPersonal = () => {
                                                         <div className="col-6" style={ { paddingBottom: "0.5%" } }>
                                                             <div className="row g-3 align-items-center">
                                                                 <div className="col-4">
-                                                                    <label className="col-form-label"><b>Driver's license issue date:</b></label>
+                                                                    <label className="col-form-label"><b>Driver{ `'` }s license issue date:</b></label>
                                                                 </div>
                                                                 <div className="col-6">
                                                                     <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" type="date" id="STIP_Vehicle_DriverLicIssDate" name='STIP_Vehicle_DriverLicIssDate' value={ FormData['STIP_Vehicle_DriverLicIssDate'] } onChange={ (e) => { onChange(e) } } className="form-control" placeholder="Click here to enter date." aria-describedby="" />
@@ -8224,7 +8224,7 @@ const STPersonal = () => {
                                                                             <div className="col-6" style={ { paddingBottom: "0.5%" } }>
                                                                                 <div className="row g-3 align-items-center">
                                                                                     <div className="col-4">
-                                                                                        <label className="col-form-label"><b>Driver's license issue date:</b></label>
+                                                                                        <label className="col-form-label"><b>Driver{ `'` }s license issue date:</b></label>
                                                                                     </div>
                                                                                     <div className="col-6">
                                                                                         <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" type="date" id="Vehicle_DriverLicIssDate" name='Vehicle_DriverLicIssDate' value={ key['Vehicle_DriverLicIssDate'] } onChange={ (e) => { on_Section_Vehicle_Change(e, i) } } className="form-control" placeholder="Click here to enter date." aria-describedby="" />
@@ -10451,7 +10451,7 @@ const STPersonal = () => {
 
                                                 <div className="row g-2 align-items-center">
                                                     <div className="col-3">
-                                                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">If 'Yes', state required indemnity limit: </label>
+                                                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">If { `'` }Yes{ `'` }, state required indemnity limit: </label>
                                                     </div>
                                                     <div className="col-6">
                                                         <div className="row">
@@ -10619,7 +10619,7 @@ const STPersonal = () => {
 
                                                                     <div className="row g-2 align-items-center">
                                                                         <div className="col-3">
-                                                                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">If 'Yes', state required indemnity limit: </label>
+                                                                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">If { `'` }Yes{ `'` }, state required indemnity limit: </label>
                                                                         </div>
                                                                         <div className="col-6">
                                                                             <div className="row">
@@ -10782,7 +10782,7 @@ const STPersonal = () => {
 
                                                 <div className="row g-2 align-items-center">
                                                     <div className="col-3">
-                                                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">If 'Yes', state required indemnity limit: </label>
+                                                        <label htmlFor="client_name" className="col-form-label" title="If no, motivate">If { `'` }Yes{ `'` }, state required indemnity limit: </label>
                                                     </div>
                                                     <div className="col-6">
                                                         <div className="row">
@@ -10947,7 +10947,7 @@ const STPersonal = () => {
 
                                                                     <div className="row g-2 align-items-center">
                                                                         <div className="col-3">
-                                                                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">If 'Yes', state required indemnity limit: </label>
+                                                                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">If { `'` }Yes{ `'` }, state required indemnity limit: </label>
                                                                         </div>
                                                                         <div className="col-6">
                                                                             <div className="row">
@@ -11062,13 +11062,13 @@ const STPersonal = () => {
 
                                     </ul>
 
-                                    <div>The premium is due and payable on or before the inception date or the first day of each month thereafter as the case may be. If the premium has not been paid for any reason other than the Insured having stopped payment, the Company will re-debit in the following month for two months' premium. </div>
+                                    <div>The premium is due and payable on or before the inception date or the first day of each month thereafter as the case may be. If the premium has not been paid for any reason other than the Insured having stopped payment, the Company will re-debit in the following month for two months{ `'` } premium. </div>
 
                                     <div>The policy will cancel immediately:</div>
                                     <ul>
                                         <li>If the Insured has placed a stop payment on the premium</li>
                                         <li>If the full double premium has not been paid (effective from the date of the first unpaid premium)</li>
-                                        <li>There may be instances where the policy may be cancelled if one month's premium has not been successfully received. Take note of specific correspondence received in instances where this is the case.</li>
+                                        <li>There may be instances where the policy may be cancelled if one month{ `'` }s premium has not been successfully received. Take note of specific correspondence received in instances where this is the case.</li>
                                     </ul>
 
                                     <div>If all premiums have not been paid, any claims made will not be settled under this policy.</div>
@@ -11076,7 +11076,8 @@ const STPersonal = () => {
                                     <br />
                                     <h6 align="left" style={ { color: "#14848A" } }><b>RECORD OF ADVICE</b></h6>
                                     <div>Products considered appropriate to address the needs of the client:</div>
-                                    {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductConsidered" name='STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */ }
+                                    {/* <input onBlur={(e)=>{onFieldBlur(e)}} spellCheck="true"  id="STIP_ProductConsidered" name=
+                                    STIP_ProductConsidered' value={FormData['STIP_ProductConsidered']} onChange={(e) => {onChange(e)}} className="form-control" placeholder="    Click here to enter text"  aria-describedby="" style={{height:"80px"}} /> */ }
 
                                     <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
                                         <ReactQuill
