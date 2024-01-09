@@ -2,7 +2,9 @@ from datetime import datetime, timedelta
 from django.shortcuts import render
 import pytz
 from data.models import Form, UserAccount, Disclosures
-from data.serializers import FormSerializers, Disclosures_Serializer, DisclosuresProducts_Serializer
+from data.serializers import FormSerializers, Disclosures_Serializer, DisclosuresProducts_Serializer, RiskPlanningSerializers, InvestmentPlanningSerializers
+from data.serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, ShortTermInsuranceCommericalSerializers
+from data.serializers import ShortTermInsurancePersonalSerializers, MedicalSerializers, GapCoverSerializers
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -117,6 +119,111 @@ class FormAPIs(APIView):
                 roa_serializer.create(roa_serializer.validated_data)
             else:
                 print(roa_serializer.errors)
+            rp_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+            }
+            rp_serializer = RiskPlanningSerializers(data=rp_data)
+            if rp_serializer.is_valid():
+                rp_serializer.create(rp_serializer.validated_data)
+            else:
+                print(rp_serializer.errors)
+            ip_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+            }
+            ip_serializer = InvestmentPlanningSerializers(data=ip_data)
+            if ip_serializer.is_valid():
+                ip_serializer.create(ip_serializer.validated_data)
+            else:
+                print(ip_serializer.errors)
+            ai_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+            }
+            ai_serializer = AssuranceInvestmentSerializers(data=ai_data)
+            if ai_serializer.is_valid():
+                ai_serializer.create(ai_serializer.validated_data)
+            else:
+                print(ai_serializer.errors)
+            ar_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+            }
+            ar_serializer = AssuranceRiskSerializers(data=ar_data)
+            if ar_serializer.is_valid():
+                ar_serializer.create(ar_serializer.validated_data)
+            else:
+                print(ar_serializer.errors)
+            eb_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+                "EB_ClientName" : disclosuresData['client_name'],
+                "EB_ClientIdNumber" : disclosuresData['client_id_number'],
+                "EB_ClientPhoneNumber" : disclosuresData['client_contact'],
+                "EB_ClientEmail" : disclosuresData['client_email'],
+            }
+            eb_serializer = EmployeeBenefitsSerializers(data=eb_data)
+            if eb_serializer.is_valid():
+                eb_serializer.create(eb_serializer.validated_data)
+            else:
+                print(eb_serializer.errors)
+            fid_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+            }
+            fid_serializer = FiduciarySerializers(data=fid_data)
+            if fid_serializer.is_valid():
+                fid_serializer.create(fid_serializer.validated_data)
+            else:
+                print(fid_serializer.errors)
+            sti_c_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+            }
+            sti_c_serializer = ShortTermInsuranceCommericalSerializers(data=sti_c_data)
+            if sti_c_serializer.is_valid():
+                sti_c_serializer.create(sti_c_serializer.validated_data)
+            else:
+                print(sti_c_serializer.errors)
+            sti_p_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+                "STIC_Client_Id_Number" : disclosuresData['client_id_number'],
+            }
+            sti_p_serializer = ShortTermInsurancePersonalSerializers(data=sti_p_data)
+            if sti_p_serializer.is_valid():
+                sti_p_serializer.create(sti_p_serializer.validated_data)
+            else:
+                print(sti_p_serializer.errors)
+            med_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+                "MSA_ClientName" : disclosuresData['client_name'],
+                "MSA_ClientIdNumber" : disclosuresData['client_id_number'],
+                "MSA_ClientEmail" : disclosuresData['client_email'],
+                "MSA_ClientPhone" : disclosuresData['client_contact'],
+                "SectionF_ClientName" : disclosuresData['client_name'],
+            }
+            med_serializer = MedicalSerializers(data=med_data)
+            if med_serializer.is_valid():
+                med_serializer.create(med_serializer.validated_data)
+            else:
+                print(med_serializer.errors)
+            gap_data = {
+                "advisorId" : request.user.pk,
+                "formId" : formId,
+                "GP_ClientName" : disclosuresData['client_name'],
+                "GP_ClientIdNumber" : disclosuresData['client_id_number'],
+                "GP_ClientEmail" : disclosuresData['client_email'],
+                "GP_ClientPhoneNumber" : disclosuresData['client_contact']
+            }
+            gap_serializer = GapCoverSerializers(data=gap_data)
+            if gap_serializer.is_valid():
+                gap_serializer.create(gap_serializer.validated_data)
+            else:
+                print(gap_serializer.errors)
+            
             productsData = request.data['product_data']
             if productsData != []:
                 for product in productsData:
@@ -128,7 +235,7 @@ class FormAPIs(APIView):
                     print(product_serializer.errors)
             responseData = serializer.data
             responseData['id'] = data.pk
-            return Response(responseData, status=status.HTTP_201_CREATED)
+            return Response({"formId": data.pk}, status=status.HTTP_201_CREATED)
         else:
             print(product_serializer.errors)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

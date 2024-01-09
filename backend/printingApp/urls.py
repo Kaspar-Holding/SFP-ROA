@@ -8,7 +8,8 @@ urlpatterns = [
     # path('pdf/' , views.pdf,name='excel'),
     # path('pdf1/' , views.pdfkitapi,name='excel'),
     # path('pdf2/' , views.wkhtmltopdfapi,name='excel'),
-    path('downloadPDF/' , views.wkhtmltopdfapi,name='download pdf'),
+    # path('downloadPDF/' , views.wkhtmltopdfapi,name='download pdf'),
+    path('client/pdf/<int:pk>/' , views.printROA.as_view(),name='download pdf'),
     path('disclosure/pdf/<int:pk>/' , views.disclosuresPDF.as_view(),name='download pdf'),
     # path('test/' , views.test,name='excel'),
 ]

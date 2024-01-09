@@ -24,9 +24,9 @@ const EditROALayout = ({ appTitle, app, formId, children }) => {
                     <div className='col-lg-9'>
                         <div className='row d-flex align-items-center justify-content-center sfp-online-slider'>
                             <div className='row'>
-                                <div className='col'>
+                                {/* <div className='col'>
                                     <button type="button" onClick={ (e) => { router.push({ pathname: "/apps/roa/documents/edit", query: { fId: fId } }) } } className={ router.pathname === `/apps/roa/documents/edit` ? "btn btn-sm btn-primary w-100 btn-sfp" : "btn btn-sm btn-outline-primary btn-outline-sfp w-100" }>Disclosures <br /> Document</button>
-                                </div>
+                                </div> */}
                                 <div className='col'>
                                     <button type="button" onClick={ (e) => { router.push({ pathname: "/apps/roa/documents/edit/record", query: { fId: fId } }) } } className={ router.pathname === `/apps/roa/documents/edit/record` ? "btn btn-sm btn-primary w-100 btn-sfp" : "btn btn-sm btn-outline-primary btn-outline-sfp w-100" }>Record of<br />Advice</button>
                                 </div>
@@ -53,6 +53,9 @@ const EditROALayout = ({ appTitle, app, formId, children }) => {
                                 </div>
                                 <div className='col'>
                                     <button type="button" onClick={ (e) => { router.push({ pathname: "/apps/roa/documents/edit/stpersonal", query: { fId: fId } }) } } className={ router.pathname === `/apps/roa/documents/edit/stpersonal` ? "btn btn-sm btn-primary w-100 btn-sfp" : "btn btn-sm btn-outline-primary btn-outline-sfp w-100" }>Short Term<br />Personal</button>
+                                </div>
+                                <div className='col'>
+                                    <button type="button" onClick={ (e) => { router.push({ pathname: "/apps/roa/documents/edit/medical", query: { fId: fId } }) } } className={ router.pathname === `/apps/roa/documents/edit/medical` ? "btn btn-sm btn-primary w-100 btn-sfp" : "btn btn-sm btn-outline-primary btn-outline-sfp w-100" }>Medical<br />Cover</button>
                                 </div>
                                 <div className='col'>
                                     <button type="button" onClick={ (e) => { router.push({ pathname: "/apps/roa/documents/edit/gapcover", query: { fId: fId } }) } } className={ router.pathname === `/apps/roa/documents/edit/gapcover` ? "btn btn-sm btn-primary w-100 btn-sfp" : "btn btn-sm btn-outline-primary btn-outline-sfp w-100" }>Gap<br />Cover</button>

@@ -25,10 +25,11 @@ header {
     left: 1%;
 }
 
-.updated-body .form{
+.updated-body .form {
     padding: 0%;
 }
-.updated-body .row{
+
+.updated-body .row {
     margin-right: 0%;
     margin-top: 0%;
     margin-bottom: 0%;
@@ -67,7 +68,7 @@ header {
     margin-top: 1%;
 }
 
-.updated-header { 
+.updated-header {
     color: #007A8D;
     font-family: Open Sans;
     font-size: 36px;
@@ -76,7 +77,7 @@ header {
     line-height: normal;
 }
 
-.updated-app-dashboard .card-title { 
+.updated-app-dashboard .card-title {
     font-family: "Open Sans";
     font-size: 24px;
     font-weight: 700;
@@ -85,11 +86,11 @@ header {
     text-align: left;
 }
 
-.updated-app-dashboard .card-text { 
+.updated-app-dashboard .card-text {
     font-family: "Open Sans";
 }
 
-.updated-subtitle { 
+.updated-subtitle {
     font-family: "Open Sans";
     font-size: 16px;
     font-weight: 400;
@@ -98,7 +99,7 @@ header {
     text-align: center;
 }
 
-.updated-text { 
+.updated-text {
     font-family: "Open Sans";
     font-size: 16px;
     font-weight: 600;
@@ -111,13 +112,13 @@ header {
     text-decoration: none;
 }
 
-.updated-email { 
+.updated-email {
     font-family: "Open Sans";
     font-size: 16px;
     font-weight: 700;
     line-height: 16px;
     letter-spacing: 0em;
-    text-align: left;    
+    text-align: left;
 }
 
 .updated-form .btn-primary {
@@ -148,7 +149,7 @@ header {
     color: #000000;
 }
 
-.updated-dashboard .app{
+.updated-dashboard .app {
     margin-right: 2%;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -156,7 +157,7 @@ header {
     width: 20%;
 }
 
-.updated-dashboard a{
+.updated-dashboard a {
     text-decoration: none;
     color: black;
     text-align: center;
@@ -217,7 +218,7 @@ header {
     line-height: normal;
 }
 
-.updated-app-dashboard .kpi{
+.updated-app-dashboard .kpi {
     height: 130px;
     margin-top: 5%;
 }
@@ -295,7 +296,7 @@ header {
     height: 90vh;
     max-height: 90vh;
     overflow-y: auto;
-    background-color: #ffffff;    
+    background-color: #ffffff;
 }
 
 .insight-commission-card {
@@ -349,17 +350,18 @@ header {
     height: 40vh;
     max-height: 40vh;
     overflow-y: auto;
-    background-color: #ffffff;    
+    background-color: #ffffff;
 }
 
 .filterButton {
     position: fixed;
     top: 50%;
-    right: 0px; /* Adjust this value to control horizontal position */
+    right: 0px;
+    /* Adjust this value to control horizontal position */
     transform: translateY(-50%);
 }
 
-.filter-label{
+.filter-label {
     font-family: Open Sans;
     font-size: 12px;
     font-weight: 700;
@@ -375,12 +377,14 @@ header {
     overflow: hidden;
     flex-wrap: nowrap;
 }
+
 .tabbable .nav-pills .nav-link {
     white-space: nowrap;
     color: #007A8D;
 }
 
-.updated-body .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+.updated-body .nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
     background-color: #007A8D !important;
     color: #FFF;
 }
@@ -389,7 +393,7 @@ header {
     font-family: Open Sans;
 }
 
-.updated-body .nav-pills .nav-link:active{
+.updated-body .nav-pills .nav-link:active {
     background-color: #007A8D !important;
     color: #FFF;
 }
@@ -417,34 +421,34 @@ header {
 .compliance-inital-card {
     padding-top: 4%;
     height: 85vh;
-    overflow:auto;
+    overflow: auto;
     background-color: #ffffff;
 }
 
 .roa-edit-card {
     padding-top: 2%;
     height: 75vh;
-    overflow:auto;
+    overflow: auto;
     background-color: #ffffff;
     overflow-y: auto;
 }
 
-.compliance-inital-card input{
+.compliance-inital-card input {
     font-family: Open Sans;
 }
 
 .gatekeeping-inital-card {
     padding: 4%;
     height: 85vh;
-    overflow:auto;
+    overflow: auto;
     background-color: #ffffff;
 }
 
-.gatekeeping-inital-card input{
+.gatekeeping-inital-card input {
     font-family: Open Sans;
 }
 
-.gatekeeping-inital-card .form-check{
+.gatekeeping-inital-card .form-check {
     color: #000;
     font-family: Open Sans;
     font-size: 14px;
@@ -453,7 +457,7 @@ header {
     line-height: normal;
 }
 
-.calculated_score{
+.calculated_score {
     color: #000;
     font-family: Open Sans;
     font-size: 14px;
@@ -579,6 +583,7 @@ header {
     background: red;
     width: 50%;
 }
+
 .compliance-score-div-warning {
     border-radius: 30px;
     background: rgb(255, 166, 0);
@@ -737,153 +742,168 @@ header {
     background-color: #6AC7D2;
     border-color: #6AC7D2;
 }
-  
+
 .sanlam {
     background-color: #0074C9;
     border-color: #0074C9;
 }
-  
+
 .btn-sfp {
     background-color: #00788b;
     border-color: #00788b;
     color: white;
 }
-  
+
 .btn-outline-sfp {
     border-color: #00788b;
     color: #00788b;
 }
-  
+
 .btn-outline-sfp:hover {
     background-color: #00788b;
     border-color: #00788b;
     color: white;
 }
-  
+
 .btn-fs4p {
     background-color: #6AC7D2;
     border-color: #6AC7D2;
     color: white;
 }
-  
+
 .btn-sanlam {
     background-color: #0074C9;
     border-color: #0074C9;
     color: white;
 }
-  
+
 .sfp-outline-primary {
     color: #00788b;
     border-color: #00788b;
 }
+
 .sfp-outline-primary:hover {
     color: #ffffff;
     border-color: #00788b;
     background-color: #00788b;
 }
-  
+
 .fs4p-outline-primary {
     color: #6AC7D2;
     border-color: #6AC7D2;
     border-color: #6AC7D2;
 }
+
 .fs4p-outline-primary:hover {
     color: #ffffff;
     border-color: #6AC7D2;
     background-color: #6AC7D2;
 }
-  
+
 .sanlam-outline-primary {
     color: #0074C9;
     border-color: #0074C9;
 }
+
 .sanlam-outline-primary:hover {
     color: #ffffff;
     border-color: #0074C9;
     background-color: #0074C9;
 }
-  
+
 .sfp-text {
     color: #00788b;
 }
-  
+
 .fs4p-text {
     color: #6AC7D2;
 }
-  
+
 .sanlam-text {
     color: #0074C9;
 }
-  
+
 .sfp-nav-link.active {
     color: #00788b;
 }
-  
+
 .fs4p-nav-link.active {
     color: #6AC7D2;
 }
-  
+
 .sanlam-nav-link.active {
     color: #0074C9;
 }
-  
+
 .sfp-nav-link.active {
     color: #00788b !important;
 }
+
 .fs4p-nav-link.active {
     color: #6AC7D2 !important;
 }
+
 .sanlam-nav-link.active {
     color: #0074C9 !important;
 }
-  
+
 .sfp-nav-pill-btn {
     color: #00788b;
 }
+
 .fs4p-nav-pill-btn {
     color: #6AC7D2;
 }
+
 .sanlam-nav-pill-btn {
     color: #0074C9;
 }
-  
+
 .sfp-nav-pill-btn:hover {
     color: black;
 }
+
 .fs4p-nav-pill-btn:hover {
     color: black;
 }
+
 .sanlam-nav-pill-btn:hover {
     color: black;
 }
+
 .sfp-nav-pill-btn.active {
     background-color: #00788b !important;
     color: #ffffff;
 }
+
 .fs4p-nav-pill-btn.active {
     background-color: #6AC7D2 !important;
     color: #ffffff;
 }
+
 .sanlam-nav-pill-btn.active {
     background-color: #0074C9 !important;
     color: #ffffff;
 }
-.sfp-logo {  
+
+.sfp-logo {
     display: "block";
     margin-left: "auto";
     margin-right: "auto";
 }
-.fs4p-logo {  
+
+.fs4p-logo {
     display: "block";
     margin-left: "auto";
     margin-right: "auto";
-    width:  20%;
+    width: 20%;
 }
-.sanlam-logo {  
+
+.sanlam-logo {
     display: "block";
     margin-left: "auto";
     margin-right: "auto";
-    width:  20%;
+    width: 20%;
 }
 
 .gatekeeping-header {
@@ -895,7 +915,7 @@ header {
     line-height: normal;
 }
 
-.gatekeeping-question{
+.gatekeeping-question {
     color: #000;
     font-family: Open Sans;
     font-size: 14px;
@@ -907,6 +927,7 @@ header {
 .card {
     font-family: 'Open Sans';
 }
+
 .app-dashboard-records {
     background-color: #ffffff;
     margin-top: 1%;
@@ -914,10 +935,12 @@ header {
     margin-right: 0.5%;
     padding: 2%;
 }
+
 .app-dashboard-records-table {
     height: 24vh;
     overflow-y: auto;
 }
+
 .app-full-records {
     background-color: #ffffff;
     margin-top: 1%;
@@ -925,13 +948,14 @@ header {
     margin-right: 0.5%;
     padding: 2%;
 }
+
 .app-full-records-table {
     height: 85vh;
     overflow-y: auto;
 }
 
 @media screen and (min-width: 1000px) {
-    
+
     .kpi-card-1 {
         border-radius: 30px;
         margin-right: 5%;
@@ -969,12 +993,15 @@ header {
     }
 
 }
+
 .roa-font {
     color: #000;
     font-family: Open Sans;
     font-size: 14px;
     font-weight: 600;
+    /* font-family: 'Arial Narrow', sans-serif; */
 }
+
 .roa-tippy {
     color: #fff;
     background-color: #000;
@@ -989,6 +1016,7 @@ header {
     font-size: 14px;
     font-weight: 400;
     text-align: justify;
+    /* font-family: 'Arial Narrow', sans-serif; */
 }
 
 .roa-table-head {
@@ -1012,9 +1040,10 @@ header {
     padding-bottom: 0.5%;
     text-align: justify;
 }
+
 @media screen and (min-width: 998px) {
-    
-    
+
+
     .kpi-card-1 {
         border-radius: 30px;
         margin-right: 5%;
@@ -1050,19 +1079,23 @@ header {
         height: 160px;
         flex-shrink: 0;
     }
-    .graph-sets > ul {
-      display: none;
+
+    .graph-sets>ul {
+        display: none;
     }
-  }
-  .graph-sets > ul li {
+}
+
+.graph-sets>ul li {
     margin-right: 35px;
-  }
-  .graph-sets > ul li span {
+}
+
+.graph-sets>ul li span {
     color: #637381;
     font-weight: 400;
     position: relative;
-  }
-  .graph-sets > ul li span:after {
+}
+
+.graph-sets>ul li span:after {
     content: "";
     width: 12px;
     height: 12px;
@@ -1071,10 +1104,11 @@ header {
     position: absolute;
     top: 3px;
     left: -20px;
-  }
-  .graph-sets > ul li:last-child span:after {
+}
+
+.graph-sets>ul li:last-child span:after {
     background-color: #EA5455;
-  }
+}
 
 .app-dashboard-filters {
     background-color: #ffffff;
@@ -1157,8 +1191,8 @@ header {
 }
 
 @media screen and (max-width: 420px) {
-    
-    
+
+
     .kpi-card-1 {
         border-radius: 30px;
         margin-right: 5%;
@@ -1194,22 +1228,26 @@ header {
         height: 90px;
         flex-shrink: 0;
     }
+
     .updated-form {
         width: 90%;
         top: 50%;
     }
+
     .updated-form .appCard {
         padding: 0%;
     }
+
     .updated-dashboard {
         width: 90%;
         top: 50%;
     }
+
     .updated-dashboard .appCard {
         padding: 0%;
     }
-    
-    .updated-dashboard .app{
+
+    .updated-dashboard .app {
         margin-right: 2%;
         margin-top: 2%;
         margin-bottom: 2%;
@@ -1221,7 +1259,7 @@ header {
         left: 5%;
     }
 
-    
+
     .updated-body .card1 {
         width: 100%;
         height: 40vh;

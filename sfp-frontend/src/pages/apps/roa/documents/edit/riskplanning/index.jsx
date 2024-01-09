@@ -340,8 +340,52 @@ const RiskPlanning = () => {
                 Body,
                 config
             )
-            setFormData(response?.data?.data)
+            setFormData(response?.data?.data?.riskPlanning)
+            setProductTaken(response?.data?.data?.productTaken)
+            setRisk_DC_Data(response?.data?.data?.dc_other)
+            setRisk_DiC_Data(response?.data?.data?.diC_other)
+            setRisk_DrC_Data(response?.data?.data?.drC_other)
 
+        } catch (error) {
+
+            setProductTaken([])
+            setRisk_DC_Data([])
+            setRisk_DiC_Data([])
+            setRisk_DrC_Data([])
+        }
+        setLoaded(false)
+    }
+
+    const updateRPForm = async () => {
+
+        setLoaded(true)
+        const Body = JSON.stringify({
+            fId: formId,
+            riskPlanning: FormData,
+            productTaken: ProductTaken,
+            dc_other: Risk_DC_Data,
+            diC_other: Risk_DiC_Data,
+            drC_other: Risk_DrC_Data,
+        })
+        try {
+            await axios.post(
+                `/api/roa/form/riskplanning/update`,
+                Body,
+                config
+            ).then((response) => {
+
+                Swal.fire({
+                    type: 'success',
+                    title: 'Success',
+                    text: 'Risk Planning Form Updated Successfully.',
+                    position: 'bottom-end',
+                    showConfirmButton: false,
+                    backdrop: "None",
+                    color: "#fff",
+                    background: "#00788B",
+                    timer: 5000
+                })
+            })
 
         } catch (error) {
 
@@ -351,15 +395,10 @@ const RiskPlanning = () => {
 
 
     const onFieldBlur = (e) => {
-        // updateRPForm()
+        updateRPForm()
     }
 
-    const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
-    const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
-    const [backgroundInfoVisibility3, setbackgroundInfoVisibility3] = useState(false)
-    const [backgroundInfoVisibility4, setbackgroundInfoVisibility4] = useState(false)
-    const [backgroundInfoVisibility5, setbackgroundInfoVisibility5] = useState(false)
-    const [backgroundInfoVisibility6, setbackgroundInfoVisibility6] = useState(false)
+
     const [backgroundInfoVisibility7, setbackgroundInfoVisibility7] = useState(false)
     const [backgroundInfoVisibility8, setbackgroundInfoVisibility8] = useState(false)
     const [backgroundInfoVisibility9, setbackgroundInfoVisibility9] = useState(false)
@@ -367,42 +406,6 @@ const RiskPlanning = () => {
     const [backgroundInfoVisibility11, setbackgroundInfoVisibility11] = useState(false)
     const [backgroundInfoVisibility12, setbackgroundInfoVisibility12] = useState(false)
 
-    function backgroundInfo_onFocus1() {
-        setbackgroundInfoVisibility1(true)
-    }
-    function backgroundInfo_onBlur1() {
-        setbackgroundInfoVisibility1(false)
-    }
-    function backgroundInfo_onFocus2() {
-        setbackgroundInfoVisibility2(true)
-    }
-    function backgroundInfo_onBlur2() {
-        setbackgroundInfoVisibility2(false)
-    }
-    function backgroundInfo_onFocus3() {
-        setbackgroundInfoVisibility3(true)
-    }
-    function backgroundInfo_onBlur3() {
-        setbackgroundInfoVisibility3(false)
-    }
-    function backgroundInfo_onFocus4() {
-        setbackgroundInfoVisibility4(true)
-    }
-    function backgroundInfo_onBlur4() {
-        setbackgroundInfoVisibility4(false)
-    }
-    function backgroundInfo_onFocus5() {
-        setbackgroundInfoVisibility5(true)
-    }
-    function backgroundInfo_onBlur5() {
-        setbackgroundInfoVisibility5(false)
-    }
-    function backgroundInfo_onFocus6() {
-        setbackgroundInfoVisibility6(true)
-    }
-    function backgroundInfo_onBlur6() {
-        setbackgroundInfoVisibility6(false)
-    }
     function backgroundInfo_onFocus7() {
         setbackgroundInfoVisibility7(true)
     }
@@ -441,18 +444,9 @@ const RiskPlanning = () => {
     }
 
     useEffect(() => {
-        // LoadData(formId)
+        LoadData(formId)
     }, [])
 
-    const [step, setStep] = useState(0);
-
-    const nextStep = () => {
-        setStep(step + 1);
-    };
-
-    const prevStep = () => {
-        setStep(step - 1);
-    };
     return (
         <div>
             <Layout
@@ -505,25 +499,25 @@ const RiskPlanning = () => {
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumTotalNeed' value={ FormData?.RP_DC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumTotalNeed' value={ FormData?.RP_DC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumExistingProvisions' value={ FormData?.RP_DC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumExistingProvisions' value={ FormData?.RP_DC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DC_LumpSumTotalNeed - FormData?.RP_DC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DC_LumpSumTotalNeed - FormData?.RP_DC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumInvestments' value={ FormData?.RP_DC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumInvestments' value={ FormData?.RP_DC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -534,25 +528,25 @@ const RiskPlanning = () => {
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeTotalNeed' value={ FormData?.RP_DC_IncomeTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeTotalNeed' value={ FormData?.RP_DC_IncomeTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeExistingProvisions' value={ FormData?.RP_DC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeExistingProvisions' value={ FormData?.RP_DC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeExistingShortfallSurplus' value={ FormData?.RP_DC_IncomeTotalNeed - FormData?.RP_DC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeExistingShortfallSurplus' value={ FormData?.RP_DC_IncomeTotalNeed - FormData?.RP_DC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeInvestments' value={ FormData?.RP_DC_IncomeInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeInvestments' value={ FormData?.RP_DC_IncomeInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -563,25 +557,25 @@ const RiskPlanning = () => {
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_TotalNeed' value={ FormData?.RP_DC_FB_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_TotalNeed' value={ FormData?.RP_DC_FB_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_ExistingProvisions' value={ FormData?.RP_DC_FB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_ExistingProvisions' value={ FormData?.RP_DC_FB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_ExistingShortfallSurplus' value={ FormData?.RP_DC_FB_TotalNeed - FormData?.RP_DC_FB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_ExistingShortfallSurplus' value={ FormData?.RP_DC_FB_TotalNeed - FormData?.RP_DC_FB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_Investments' value={ FormData?.RP_DC_FB_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_Investments' value={ FormData?.RP_DC_FB_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -633,31 +627,31 @@ const RiskPlanning = () => {
                                                                     </div> */}
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
-                                                                            <textarea type="text" className="form-control roa-font" name='DC_Other' value={ row?.DC_Other } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='Enter the title' aria-label="" />
+                                                                            <textarea type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_Other' value={ row?.DC_Other } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='Enter the Name' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
                                                                             <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DC_OtherTotalNeed' value={ row?.DC_OtherTotalNeed } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherTotalNeed' value={ row?.DC_OtherTotalNeed } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
                                                                             <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DC_OtherExistingProvisions' value={ row?.DC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherExistingProvisions' value={ row?.DC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
                                                                             <span className="input-group-text">R</span>
-                                                                            <input disabled type="text" className="form-control roa-font" name='DC_OtherExistingShortfallSurplus' value={ row?.DC_OtherTotalNeed - row?.DC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                            <input disabled type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherExistingShortfallSurplus' value={ row?.DC_OtherTotalNeed - row?.DC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
                                                                             <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DC_OtherInvestments' value={ row?.DC_OtherInvestments } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherInvestments' value={ row?.DC_OtherInvestments } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -704,25 +698,25 @@ const RiskPlanning = () => {
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumTotalNeed' value={ FormData?.RP_DiC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumTotalNeed' value={ FormData?.RP_DiC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumExistingProvisions' value={ FormData?.RP_DiC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumExistingProvisions' value={ FormData?.RP_DiC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DiC_LumpSumTotalNeed - FormData?.RP_DiC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DiC_LumpSumTotalNeed - FormData?.RP_DiC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumInvestments' value={ FormData?.RP_DiC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumInvestments' value={ FormData?.RP_DiC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -733,25 +727,25 @@ const RiskPlanning = () => {
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_TotalNeed' value={ FormData?.RP_DiC_PI_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_TotalNeed' value={ FormData?.RP_DiC_PI_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_ExistingProvisions' value={ FormData?.RP_DiC_PI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_ExistingProvisions' value={ FormData?.RP_DiC_PI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_ExistingShortfallSurplus' value={ FormData?.RP_DiC_PI_TotalNeed - FormData?.RP_DiC_PI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_ExistingShortfallSurplus' value={ FormData?.RP_DiC_PI_TotalNeed - FormData?.RP_DiC_PI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_Investments' value={ FormData?.RP_DiC_PI_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_Investments' value={ FormData?.RP_DiC_PI_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -762,25 +756,25 @@ const RiskPlanning = () => {
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_TotalNeed' value={ FormData?.RP_DiC_TI_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_TotalNeed' value={ FormData?.RP_DiC_TI_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_ExistingProvisions' value={ FormData?.RP_DiC_TI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_ExistingProvisions' value={ FormData?.RP_DiC_TI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_ExistingShortfallSurplus' value={ FormData?.RP_DiC_TI_TotalNeed - FormData?.RP_DiC_TI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_ExistingShortfallSurplus' value={ FormData?.RP_DiC_TI_TotalNeed - FormData?.RP_DiC_TI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_Investments' value={ FormData?.RP_DiC_TI_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_Investments' value={ FormData?.RP_DiC_TI_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -791,25 +785,25 @@ const RiskPlanning = () => {
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_TotalNeed' value={ FormData?.RP_DiC_SiB_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_TotalNeed' value={ FormData?.RP_DiC_SiB_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_ExistingProvisions' value={ FormData?.RP_DiC_SiB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_ExistingProvisions' value={ FormData?.RP_DiC_SiB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_ExistingShortfallSurplus' value={ FormData?.RP_DiC_SiB_TotalNeed - FormData?.RP_DiC_SiB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_ExistingShortfallSurplus' value={ FormData?.RP_DiC_SiB_TotalNeed - FormData?.RP_DiC_SiB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_Investments' value={ FormData?.RP_DiC_SiB_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_Investments' value={ FormData?.RP_DiC_SiB_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -861,7 +855,7 @@ const RiskPlanning = () => {
                                                                     </div> */}
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
-                                                                            <textarea type="text" className="form-control roa-font" name='DC_Other' value={ row?.DC_Other } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='Enter the title' aria-label="" />
+                                                                            <textarea type="text" className="form-control roa-font" name='DC_Other' value={ row?.DC_Other } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='Enter the Name' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className='col'>
@@ -934,25 +928,25 @@ const RiskPlanning = () => {
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumTotalNeed' value={ FormData?.RP_DrC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumTotalNeed' value={ FormData?.RP_DrC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumExistingProvisions' value={ FormData?.RP_DrC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumExistingProvisions' value={ FormData?.RP_DrC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DrC_LumpSumTotalNeed - FormData?.RP_DrC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DrC_LumpSumTotalNeed - FormData?.RP_DrC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumInvestments' value={ FormData?.RP_DrC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumInvestments' value={ FormData?.RP_DrC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -963,25 +957,25 @@ const RiskPlanning = () => {
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeTotalNeed' value={ FormData?.RP_DrC_IncomeTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeTotalNeed' value={ FormData?.RP_DrC_IncomeTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeExistingProvisions' value={ FormData?.RP_DrC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeExistingProvisions' value={ FormData?.RP_DrC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeExistingShortfallSurplus' value={ FormData?.RP_DrC_IncomeTotalNeed - FormData?.RP_DrC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeExistingShortfallSurplus' value={ FormData?.RP_DrC_IncomeTotalNeed - FormData?.RP_DrC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                                 <div className='col'>
                                                     <div className="input-group roa-font">
                                                         <span className="input-group-text">R</span>
-                                                        <input type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeInvestments' value={ FormData?.RP_DrC_IncomeInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeInvestments' value={ FormData?.RP_DrC_IncomeInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -1033,25 +1027,25 @@ const RiskPlanning = () => {
                                                                     </div> */}
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
-                                                                            <textarea type="text" className="form-control roa-font" name='DC_Other' value={ row?.DC_Other } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='Enter the title' aria-label="" />
+                                                                            <textarea type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_Other' value={ row?.DrC_Other } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='Enter the Name' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
                                                                             <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DrC_OtherTotalNeed' value={ row?.DrC_OtherTotalNeed } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_OtherTotalNeed' value={ row?.DrC_OtherTotalNeed } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
                                                                             <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DrC_OtherExistingProvisions' value={ row?.DrC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_OtherExistingProvisions' value={ row?.DrC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className='col'>
                                                                         <div className="input-group roa-font">
                                                                             <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DrC_OtherExistingShortfallSurplus' value={ row?.DrC_OtherTotalNeed - row?.DiC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_OtherExistingShortfallSurplus' value={ row?.DrC_OtherTotalNeed - row?.DrC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
                                                                         </div>
                                                                     </div>
                                                                     <div className='col'>
@@ -1431,14 +1425,14 @@ const RiskPlanning = () => {
                                                                                 <td className="roa-font" align="start">1st year<br />commission</td>
                                                                                 <td>
                                                                                     <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_1stYearCommission" name='Product_1stYearCommission' value={ row?.Product_1stYearCommission } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_1stYearCommission" name='Product_1stYearCommission' value={ row?.Product_1stYearCommission } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                                     </div>
                                                                                 </td>
                                                                                 <td></td>
                                                                                 <td className="roa-font" align="start">2nd year<br />commission</td>
                                                                                 <td>
                                                                                     <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_2ndYearCommission" name='Product_2ndYearCommission' value={ row?.Product_2ndYearCommission } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_2ndYearCommission" name='Product_2ndYearCommission' value={ row?.Product_2ndYearCommission } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                                     </div>
                                                                                 </td>
                                                                                 <td></td>
@@ -1449,7 +1443,7 @@ const RiskPlanning = () => {
                                                                                 <td className="roa-font" align="start">Ongoing fees</td>
                                                                                 <td>
                                                                                     <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_OngoingFees" name='Product_OngoingFees' value={ row?.Product_OngoingFees } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_OngoingFees" name='Product_OngoingFees' value={ row?.Product_OngoingFees } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                                     </div>
                                                                                 </td>
                                                                                 <td></td>
@@ -1485,7 +1479,7 @@ const RiskPlanning = () => {
                                                                                 {/* <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Frequency</td> */ }
                                                                                 <td>
                                                                                     <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="TotalFees_n_Commissions" name='TotalFees_n_Commissions' value={ row?.TotalFees_n_Commissions } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="TotalFees_n_Commissions" name='TotalFees_n_Commissions' value={ row?.TotalFees_n_Commissions } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
 
                                                                                     </div>
                                                                                 </td>
@@ -1537,7 +1531,7 @@ const RiskPlanning = () => {
                                                                                 <div className="col-6">
                                                                                     <div className="input-group">
                                                                                         <span className="input-group-text">R</span>
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } disabled={ row?.BenDesc_1 === "" } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_1" name='BenDesc_CoverAmount_1' value={ row?.BenDesc_CoverAmount_1 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                        <input disabled={ row?.BenDesc_1 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_1" name='BenDesc_CoverAmount_1' value={ row?.BenDesc_CoverAmount_1 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1558,7 +1552,7 @@ const RiskPlanning = () => {
                                                                                 <div className="col-6">
                                                                                     <div className="input-group">
                                                                                         <span className="input-group-text">R</span>
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } disabled={ row?.BenDesc_2 === "" } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_2" name='BenDesc_CoverAmount_2' value={ row?.BenDesc_CoverAmount_2 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                        <input disabled={ row?.BenDesc_2 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_2" name='BenDesc_CoverAmount_2' value={ row?.BenDesc_CoverAmount_2 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1579,7 +1573,7 @@ const RiskPlanning = () => {
                                                                                 <div className="col-6">
                                                                                     <div className="input-group">
                                                                                         <span className="input-group-text">R</span>
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } disabled={ row?.BenDesc_3 === "" } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_3" name='BenDesc_CoverAmount_3' value={ row?.BenDesc_CoverAmount_3 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                        <input disabled={ row?.BenDesc_3 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_3" name='BenDesc_CoverAmount_3' value={ row?.BenDesc_CoverAmount_3 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1600,7 +1594,7 @@ const RiskPlanning = () => {
                                                                                 <div className="col-6">
                                                                                     <div className="input-group">
                                                                                         <span className="input-group-text">R</span>
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } disabled={ row?.BenDesc_4 === "" } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_4" name='BenDesc_CoverAmount_4' value={ row?.BenDesc_CoverAmount_4 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                        <input disabled={ row?.BenDesc_4 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_4" name='BenDesc_CoverAmount_4' value={ row?.BenDesc_CoverAmount_4 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1621,7 +1615,7 @@ const RiskPlanning = () => {
                                                                                 <div className="col-6">
                                                                                     <div className="input-group">
                                                                                         <span className="input-group-text">R</span>
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } disabled={ row?.BenDesc_5 === "" } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_5" name='BenDesc_CoverAmount_5' value={ row?.BenDesc_CoverAmount_5 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                        <input disabled={ row?.BenDesc_5 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_5" name='BenDesc_CoverAmount_5' value={ row?.BenDesc_CoverAmount_5 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1642,7 +1636,7 @@ const RiskPlanning = () => {
                                                                                 <div className="col-6">
                                                                                     <div className="input-group">
                                                                                         <span className="input-group-text">R</span>
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } disabled={ row?.BenDesc_6 === "" } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_6" name='BenDesc_CoverAmount_6' value={ row?.BenDesc_CoverAmount_6 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                        <input disabled={ row?.BenDesc_6 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_6" name='BenDesc_CoverAmount_6' value={ row?.BenDesc_CoverAmount_6 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1661,7 +1655,7 @@ const RiskPlanning = () => {
                                                                                 <div className="col-6">
                                                                                     <div className="input-group">
                                                                                         <span className="input-group-text">R</span>
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } disabled={ row?.BenDesc_7 === "" } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_7" name='BenDesc_CoverAmount_7' value={ row?.BenDesc_CoverAmount_7 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                        <input disabled={ row?.BenDesc_7 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_7" name='BenDesc_CoverAmount_7' value={ row?.BenDesc_CoverAmount_7 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

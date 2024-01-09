@@ -211,7 +211,6 @@ const InvestPlanning = () => {
     const compulsoryAEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
 
-
     const LoadData = async (formId) => {
 
         setLoaded(true)
@@ -220,12 +219,50 @@ const InvestPlanning = () => {
         })
         try {
             const response = await axios.post(
-                `/api/roa/form/riskplanning`,
+                `/api/roa/form/investmentplanning`,
                 Body,
                 config
             )
-            setFormData(response?.data?.data)
+            console.log(response?.data)
 
+
+            setFormData(response?.data?.data?.investmentPlanning)
+            setProductTaken(response?.data?.data?.productTaken)
+
+        } catch (error) {
+            setProductTaken([])
+        }
+        setLoaded(false)
+    }
+
+
+    const updateIPForm = async () => {
+
+        setLoaded(true)
+        const Body = JSON.stringify({
+            fId: formId,
+            investmentPlanning: FormData,
+            productTaken: ProductTaken
+        })
+        try {
+            await axios.post(
+                `/api/roa/form/investmentplanning/update`,
+                Body,
+                config
+            ).then((response) => {
+
+                Swal.fire({
+                    type: 'success',
+                    title: 'Success',
+                    text: 'Investment Planning Form Updated Successfully.',
+                    position: 'bottom-end',
+                    showConfirmButton: false,
+                    backdrop: "None",
+                    color: "#fff",
+                    background: "#00788B",
+                    timer: 5000
+                })
+            })
 
         } catch (error) {
 
@@ -235,7 +272,7 @@ const InvestPlanning = () => {
 
 
     const onFieldBlur = (e) => {
-        // updateRPForm()
+        updateIPForm()
     }
 
     const [SicaVisibility, setSicaVisibility] = useState(false)
@@ -256,37 +293,6 @@ const InvestPlanning = () => {
     const [backgroundInfoVisibility14, setbackgroundInfoVisibility14] = useState(false)
     const [backgroundInfoVisibility15, setbackgroundInfoVisibility15] = useState(false)
 
-    function letter_of_introduction_onFocus() {
-        setletterOfIntroductionVisibility(true)
-    }
-    function letter_of_introduction_onBlur() {
-        setletterOfIntroductionVisibility(false)
-    }
-    function letter_of_introduction_access_onFocus() {
-        setletterOfIntroductionAccessVisibility(true)
-    }
-    function letter_of_introduction_access_onBlur() {
-        setletterOfIntroductionAccessVisibility(false)
-    }
-
-    function fica_onFocus() {
-        setFicaVisibility(true)
-    }
-    function fica_onBlur() {
-        setFicaVisibility(false)
-    }
-    function rica_onFocus() {
-        setRicaVisibility(true)
-    }
-    function rica_onBlur() {
-        setRicaVisibility(false)
-    }
-    function sica_onFocus() {
-        setSicaVisibility(true)
-    }
-    function sica_onBlur() {
-        setSicaVisibility(false)
-    }
 
     function backgroundInfo_onFocus() {
         setbackgroundInfoVisibility(true)
@@ -317,18 +323,6 @@ const InvestPlanning = () => {
     }
     function backgroundInfo_onBlur4() {
         setbackgroundInfoVisibility4(false)
-    }
-    function backgroundInfo_onFocus5() {
-        setbackgroundInfoVisibility5(true)
-    }
-    function backgroundInfo_onBlur5() {
-        setbackgroundInfoVisibility5(false)
-    }
-    function backgroundInfo_onFocus6() {
-        setbackgroundInfoVisibility6(true)
-    }
-    function backgroundInfo_onBlur6() {
-        setbackgroundInfoVisibility6(false)
     }
     function backgroundInfo_onFocus7() {
         setbackgroundInfoVisibility7(true)
@@ -385,18 +379,9 @@ const InvestPlanning = () => {
         setbackgroundInfoVisibility15(false)
     }
     useEffect(() => {
-        // LoadData(formId)
+        LoadData(formId)
     }, [])
 
-    const [step, setStep] = useState(0);
-
-    const nextStep = () => {
-        setStep(step + 1);
-    };
-
-    const prevStep = () => {
-        setStep(step - 1);
-    };
     return (
         <div>
             <Layout
@@ -422,7 +407,7 @@ const InvestPlanning = () => {
                                     </div>
                                     <div className='col-6'>
                                         <div className='col-6'>
-                                            <select onBlur={ (e) => { onFieldBlur(e) } } className="roa-label form-select" name='IP_SourceOfIncome' value={ FormData['IP_SourceOfIncome'] } onChange={ (e) => { onChange(e) } } aria-label="Default select example">
+                                            <select onBlur={ (e) => { onFieldBlur(e) } } className="roa-label form-select" name='IP_SourceOfIncome' value={ FormData?.IP_SourceOfIncome } onChange={ (e) => { onChange(e) } } aria-label="Default select example">
                                                 <option value="0" selected>Choose Source of funds</option>
                                                 <option value="1">Salary</option>
                                                 <option value="2">Savings</option>
@@ -452,19 +437,22 @@ const InvestPlanning = () => {
                                         </> :
                                         null
                                 }
-                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }></div><ReactQuill
-                                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                                    value={ FormData?.IP_OtherSourceOfIncome }
-                                    onChange={ (value) => { setFormData({ ...FormData, ['IP_OtherSourceOfIncome']: value }) } }
-                                    onFocus={ (e) => { backgroundInfo_onFocus10() } }
-                                    onBlur={ (e) => { backgroundInfo_onBlur10() } }
-                                    modules={ modules }
-                                    formats={ formats }
-                                    style={ {
-                                        height: '300px', // Set the desired height here
-                                    } }
-                                    placeholder={ `Define Other Source of Funds.` }
-                                />
+                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+
+                                    <ReactQuill
+                                        theme="snow" // Specify the theme ('snow' or 'bubble')
+                                        value={ FormData?.IP_OtherSourceOfIncome }
+                                        onChange={ (value) => { setFormData({ ...FormData, ['IP_OtherSourceOfIncome']: value }) } }
+                                        onFocus={ (e) => { backgroundInfo_onFocus10() } }
+                                        onBlur={ (e) => { backgroundInfo_onBlur10() } }
+                                        modules={ modules }
+                                        formats={ formats }
+                                        style={ {
+                                            height: '300px', // Set the desired height here
+                                        } }
+                                        placeholder={ `Define Other Source of Funds.` }
+                                    />
+                                </div>
 
                                 <br />
                                 <br />

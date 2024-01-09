@@ -14,6 +14,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 09 January 2024:
+- ROA done
+- PDF is working
+- Deployment on Staging 
+
 ### 03 January 2024:
 - ROA half done
 - Deployment on Staging and Production 

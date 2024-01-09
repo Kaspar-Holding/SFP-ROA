@@ -5,24 +5,75 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { logout } from '../../actions/auth'
-const ROASidebar = ({appTitle}) => {
-    
+const ROASidebar = ({ appTitle }) => {
+
     const router = useRouter()
 
     const fId = router?.query?.slug || router?.query?.fId
 
-    const user = useSelector(state=>state.auth.user)
+    const user = useSelector(state => state.auth.user)
 
-    const dispatch = useDispatch()  
+    const dispatch = useDispatch()
 
-    const downloadDisclosureForm = (e) => {
+    const downloadDisclosureForm = async (e) => {
         e.preventDefault()
-        
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+
+        const Body = JSON.stringify({
+            fId: fId
+        })
+
+        try {
+            const response = await axios.post(
+                `/api/roa/print`,
+                Body,
+                config
+            )
+
+            const url = `${process.env.REACT_APP_BACKEND_URL}/${response?.data?.data?.file}`
+            window.open(url, '_blank').focus()
+
+
+        } catch (error) {
+
+        }
     }
 
-    const downloadClient = (e) => {
+    const downloadClient = async (e) => {
         e.preventDefault()
-        
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+
+        const Body = JSON.stringify({
+            "fId": fId,
+            "dra_status": false,
+            "advisorId": FormData?.advisor_id,
+        })
+
+        try {
+            const response = await axios.post(
+                `/api/roa/print/client`,
+                Body,
+                config
+            )
+
+            const url = `${process.env.REACT_APP_BACKEND_URL}/${response?.data?.data?.file}`
+            window.open(url, '_blank').focus()
+
+
+        } catch (error) {
+
+        }
+
     }
 
     const logOutBtn = (e) => {
@@ -34,16 +85,16 @@ const ROASidebar = ({appTitle}) => {
         }
     }
 
-    const [CurrentDate, setCurrentDate] = useState(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
+    const [CurrentDate, setCurrentDate] = useState(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A'))
 
     const [FormData, setFormData] = useState({})
 
     const LoadData = async (documentId) => {
-        
+
         const config = {
             headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
 
@@ -62,7 +113,7 @@ const ROASidebar = ({appTitle}) => {
 
 
         } catch (error) {
-            
+
         }
     }
 
@@ -73,125 +124,151 @@ const ROASidebar = ({appTitle}) => {
         }
 
         const interval = setInterval(() => {
-                setCurrentDate(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
-            }, 6000
+            setCurrentDate(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A'))
+        }, 6000
         )
-		return () => {
-			clearInterval(interval);
-		}
+        return () => {
+            clearInterval(interval);
+        }
     }, [])
-    
+
     return (
         <>
-            <div className="d-flex flex-column flex-shrink-0 p-3 py-5" style={{height: '85vh', backgroundColor: 'white'}}>
-                <div className='text-center'>    
+            <div className="d-flex flex-column flex-shrink-0 p-3 py-5" style={ { height: '85vh', backgroundColor: 'white' } }>
+                <div className='text-center'>
                     <nav className='text-center' aria-label="breadcrumb">
                         <ol className="breadcrumb justify-content-center">
                             <li className="breadcrumb-item"><Link href="/">Apps</Link></li>
                             <li className="breadcrumb-item"><Link href="/apps/roa">ROA</Link></li>
                             <li className="breadcrumb-item active" aria-current="page">Edit Form</li>
                         </ol>
-                    </nav> 
-                
+                    </nav>
+
                     <p className='sidebar-welcome'>
-                       {appTitle}
+                        { appTitle }
                     </p>
                     <p className='sidebar-user'>
-                        {user ? `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` : ""}
+                        { user ? `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` : "" }
                     </p>
                     <p className='sidebar-date'>
-                        {CurrentDate}
+                        { CurrentDate }
                     </p>
                 </div>
-                <hr/>
+                <hr />
                 {
                     fId ?
-                    <div >
-                        <div className="row">
-                            <div className='col-lg-5'>
-                                <h6 className='text'>
-                                    Client Name
-                                </h6>
+                        <div >
+                            <div className="row">
+                                <div className='col-lg-5'>
+                                    <h6 className='text'>
+                                        Client Name
+                                    </h6>
+                                </div>
+                                <div className='col-lg-6'>
+                                    <span className=''>
+                                        { FormData?.client_name }
+                                    </span>
+                                </div>
                             </div>
-                            <div className='col-lg-6'>
-                                <span className=''>
-                                    {FormData?.client_name}
-                                </span>
+                            <div className='row'>
+                                <div className='col-lg-5'>
+                                    <h6 className='text'>
+                                        Client ID
+                                    </h6>
+                                </div>
+                                <div className='col-lg-6'>
+                                    <span className=''>
+                                        { FormData?.client_id_number }
+                                    </span>
+                                </div>
                             </div>
+                            <div className='row'>
+                                <div className='col-lg-5'>
+                                    <h6 className='text'>
+                                        Client Phone #
+                                    </h6>
+                                </div>
+                                <div className='col-lg-6'>
+                                    <span className=''>
+                                        { FormData?.client_contact }
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div className='row'>
+                                <div className='col-lg-5'>
+                                    <h6 className='text'>
+                                        Client Email
+                                    </h6>
+                                </div>
+                                <div className='col-lg-6'>
+                                    <span className=''>
+                                        { FormData?.client_email }
+                                    </span>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div className="container sidebar-footer">
+                                <div className="d-grid gap-2">
+                                    <button
+                                        type="button"
+                                        onClick={
+                                            (e) => {
+                                                router.pathname === `/apps/roa/documents/edit` ?
+                                                    router.push({ pathname: "/apps/roa/documents/edit/record", query: { fId: fId } })
+                                                    :
+                                                    router.push({ pathname: "/apps/roa/documents/edit", query: { fId: fId } })
+                                            }
+                                        }
+                                        className={
+                                            router.pathname === `/apps/roa/documents/edit` ?
+                                                "btn btn-sm btn-primary w-100 btn-sfp" :
+                                                "btn btn-sm btn-outline-primary btn-outline-sfp w-100"
+                                        }>
+                                        {
+                                            router.pathname === `/apps/roa/documents/edit` ?
+                                                "Record of Advice Form"
+                                                :
+                                                "Disclosures Document"
+                                        }
+                                    </button>
+                                </div>
+                            </div><br />
+                            <div className="container sidebar-footer">
+                                <div className="d-grid gap-2">
+                                    <button onClick={ (e) => { downloadDisclosureForm(e) } } className="btn btn-primary btn-sfp" type="button">
+                                        <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
+                                        Disclosure Document PDF
+                                    </button>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div className="container sidebar-footer">
+                                <div className="d-grid gap-2">
+                                    <button onClick={ (e) => { downloadClient(e) } } className="btn btn-primary btn-sfp" type="button">
+                                        <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
+                                        Print for Client
+                                    </button>
+                                </div>
+                            </div>
+
+
                         </div>
-                        <div className='row'>
-                            <div className='col-lg-5'>
-                                <h6 className='text'>
-                                    Client ID
-                                </h6>
-                            </div>
-                            <div className='col-lg-6'>
-                                <span className=''>
-                                    {FormData?.client_id_number}
-                                </span>
-                            </div>
-                        </div>
-                        <div className='row'>
-                            <div className='col-lg-5'>
-                                <h6 className='text'>
-                                    Client Phone #
-                                </h6>
-                            </div>
-                            <div className='col-lg-6'>
-                                <span className=''>
-                                    {FormData?.client_contact}
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <div className='row'>
-                            <div className='col-lg-5'>
-                                <h6 className='text'>
-                                    Client Email
-                                </h6>
-                            </div>
-                            <div className='col-lg-6'>
-                                <span className=''>
-                                    {FormData?.client_email}
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <br/>
-                        <div className="container sidebar-footer">
-                            <div className="d-grid gap-2">
-                                <button onClick={(e)=>{downloadDisclosureForm(e)}} className="btn btn-primary btn-sfp" type="button">
-                                    <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
-                                    Disclosure Document PDF
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <br/>
-                        <div className="container sidebar-footer">
-                            <div className="d-grid gap-2">
-                                <button onClick={(e)=>{downloadClient(e)}} className="btn btn-primary btn-sfp" type="button">
-                                    <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
-                                    Print for Client
-                                </button>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                    :
-                    <>
-                        
-                    </>
+                        :
+                        <>
+
+                        </>
                 }
-                <hr/>
+                <hr />
             </div>
             <div className='position-relative'>
                 <div className='position-absolute bottom-0 start-0 w-100'>
                     <div className='d-flex align-items-end flex-column px-auto'>
                         <div className="container sidebar-footer">
                             <div className="d-grid gap-2">
-                                <button onClick={(e)=>{logOutBtn(e)}} className="btn btn-primary btn-sfp" type="button">
+                                <button onClick={ (e) => { logOutBtn(e) } } className="btn btn-primary btn-sfp" type="button">
                                     <i className='bi pe-none me-2 fa-solid fa-arrow-right-from-bracket'></i>
                                     Logout
                                 </button>
@@ -201,11 +278,11 @@ const ROASidebar = ({appTitle}) => {
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </>
-        
+
     )
 }
 
