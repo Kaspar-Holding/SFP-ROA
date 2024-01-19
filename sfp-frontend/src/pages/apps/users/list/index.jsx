@@ -278,7 +278,7 @@ const UsersList = () => {
                                                                 </td>
                                                                 <td>
                                                                     <button
-                                                                        onClick={ (e) => { router.push({ pathname: "/apps/users/view", query: { uId: user?.id } }) } }
+                                                                        onClick={ (e) => { router.push({ pathname: "/apps/users/view", query: { uId: user?.user_id } }) } }
                                                                         className='btn btn-sm btn-sfp btn-primary mx-1'
                                                                     >
                                                                         <i className='fa-solid fa-eye'></i>

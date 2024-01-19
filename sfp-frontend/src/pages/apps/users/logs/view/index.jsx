@@ -38,7 +38,6 @@ const LogList = () => {
                 Body,
                 config
             )
-            console.log((response?.data?.data))
 
             setLogDetails(response?.data?.data?.logInfo)
             setLogContent(response?.data?.data?.logData)
