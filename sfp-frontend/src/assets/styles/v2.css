@@ -433,6 +433,14 @@ header {
     overflow-y: auto;
 }
 
+.users-edit-card {
+    padding-top: 2%;
+    height: 85vh;
+    overflow: auto;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
 .compliance-inital-card input {
     font-family: Open Sans;
 }
@@ -941,6 +949,92 @@ header {
     overflow-y: auto;
 }
 
+.bulkupdate {
+    height: 85vh;
+    background-color: #ffffff;
+}
+
+.log {
+
+    height: 40vh;
+    background-color: black;
+    color: white;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    margin: 2%;
+    border: #000000;
+    border-radius: 15px;
+    padding: 2%;
+}
+
+.log::-webkit-scrollbar {
+    width: 10px;
+}
+
+.log::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.log::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.log::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.app-users-dashboard-records {
+    background-color: #ffffff;
+    margin-top: 1%;
+    height: 55vh;
+    margin-right: 0.5%;
+    padding: 2%;
+}
+
+.app-users-dashboard-records-table {
+    height: 40vh;
+    overflow-y: auto;
+}
+
+.app-logs-dashboard-records {
+    background-color: #ffffff;
+    margin-top: 1%;
+    height: 55vh;
+    margin-right: 0.5%;
+    padding: 2%;
+}
+
+.app-logs-dashboard-records-table {
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.app-users-details {
+    background-color: #ffffff;
+    font-family: 'Open Sans';
+    overflow-y: auto;
+    margin-top: 1%;
+    height: 85vh;
+    margin-right: 0.5%;
+    padding: 2%;
+}
+
+.app-users-list-records {
+    background-color: #ffffff;
+    margin-top: 1%;
+    height: 85vh;
+    margin-right: 0.5%;
+    padding: 2%;
+}
+
+.app-users-list-records-table {
+    height: 70vh;
+    overflow-y: auto;
+}
+
 .app-full-records {
     background-color: #ffffff;
     margin-top: 1%;
@@ -988,6 +1082,51 @@ header {
         margin-right: 5%;
         background: #F6E4FF;
         border-color: #F6E4FF;
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-1 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FEEAE5;
+        border-color: #FEEAE5;
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-2 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFE5E9;
+        border-color: #FFE5E9;
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-3 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFFAE4;
+        border-color: #FFFAE4;
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-4 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #F6E4FF;
+        border-color: #F6E4FF;
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-5 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #e4ffed;
+        border-color: #e4ffed;
         height: 180px;
         flex-shrink: 0;
     }
@@ -1080,6 +1219,52 @@ header {
         flex-shrink: 0;
     }
 
+
+    .kpi-users-card-1 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FEEAE5;
+        border-color: #FEEAE5;
+        height: 160px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-2 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFE5E9;
+        border-color: #FFE5E9;
+        height: 160px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-3 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFFAE4;
+        border-color: #FFFAE4;
+        height: 160px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-4 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #F6E4FF;
+        border-color: #F6E4FF;
+        height: 160px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-5 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #e4ffed;
+        border-color: #e4ffed;
+        height: 160px;
+        flex-shrink: 0;
+    }
+
     .graph-sets>ul {
         display: none;
     }
@@ -1120,6 +1305,15 @@ header {
     background-color: #ffffff;
     height: 40vh;
     width: 40%;
+    margin-top: 0.5%;
+    margin-right: 0.5%;
+    padding: 2%;
+}
+
+.app-users-dashboard-kpi {
+    background-color: #ffffff;
+    height: 30vh;
+    width: 100%;
     margin-top: 0.5%;
     margin-right: 0.5%;
     padding: 2%;
@@ -1181,6 +1375,25 @@ header {
     line-height: normal;
 }
 
+.kpi-users-number {
+    padding-top: 20%;
+    color: #333;
+    font-family: Open Sans;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.kpi-users-title {
+    color: #333;
+    font-family: Open Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 .kpi-subtitle {
     color: #FE9479;
     font-family: Open Sans;
@@ -1225,6 +1438,52 @@ header {
         margin-right: 5%;
         background: #F6E4FF;
         border-color: #F6E4FF;
+        height: 90px;
+        flex-shrink: 0;
+    }
+
+
+    .kpi-users-card-1 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FEEAE5;
+        border-color: #FEEAE5;
+        height: 90px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-2 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFE5E9;
+        border-color: #FFE5E9;
+        height: 90px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-3 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #FFFAE4;
+        border-color: #FFFAE4;
+        height: 90px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-4 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #F6E4FF;
+        border-color: #F6E4FF;
+        height: 90px;
+        flex-shrink: 0;
+    }
+
+    .kpi-users-card-5 {
+        border-radius: 30px;
+        margin-right: 5%;
+        background: #e4ffed;
+        border-color: #e4ffed;
         height: 90px;
         flex-shrink: 0;
     }

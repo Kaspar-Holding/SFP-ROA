@@ -102,7 +102,7 @@ const CreateROA = () => {
             })
             router.push({
                 pathname: "/apps/roa/documents/edit",
-                query: { dId: response?.data?.data?.formId }
+                query: { fId: response?.data?.data?.formId }
             })
             // setSubmissionMessageVisibility("block")
         } catch (error) {
@@ -522,7 +522,7 @@ const CreateROA = () => {
                                                         </td>
                                                         <td colSpan={ 9 }>
                                                             <p className='roa-label'>
-                                                                N/A
+                                                                { userProfile?.qualification }
                                                             </p>
                                                         </td>
                                                     </tr>

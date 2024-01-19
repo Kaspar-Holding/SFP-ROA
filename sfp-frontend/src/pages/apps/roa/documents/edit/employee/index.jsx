@@ -492,7 +492,7 @@ const EmployeeBenefits = () => {
                                     <div className="col-6" style={ { paddingBottom: "0.5%" } }>
                                         <div className="row g-3">
                                             <div className="col-4">
-                                                <label htmlFor="email" className="col-form-label roa-label"><b>Phone:</b></label>
+                                                <label htmlFor="email" className="col-form-label roa-label"><b>Cell Phone:</b></label>
                                             </div>
                                             <div className="col-6">
                                                 <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="EB_ClientCellNumber" name='EB_ClientCellNumber' value={ FormData['EB_ClientCellNumber'] } onChange={ (e) => { onChange(e) } } className="form-control roa-label" placeholder="Cell Number" aria-describedby="" />

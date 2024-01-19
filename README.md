@@ -14,6 +14,15 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 19 January 2024:
+- Users App done
+1. Added User List
+2. Bulk Update
+3. Regions
+4. Update User Role
+6. Added Logs
+- Deployment on Staging 
+
 ### 09 January 2024:
 - ROA done
 - PDF is working

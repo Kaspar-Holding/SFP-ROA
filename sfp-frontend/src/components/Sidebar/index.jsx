@@ -4,14 +4,14 @@ import Moment from 'moment'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { logout } from '../../actions/auth'
-const SideBar = ({appTitle, app}) => {
-    
+const SideBar = ({ appTitle, app }) => {
+
 
     const router = useRouter()
 
-    const dispatch = useDispatch()  
-    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
-    const user = useSelector(state=>state.auth.user)
+    const dispatch = useDispatch()
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const user = useSelector(state => state.auth.user)
 
     const logOutBtn = (e) => {
         e.preventDefault()
@@ -22,65 +22,185 @@ const SideBar = ({appTitle, app}) => {
         }
     }
 
-    const [CurrentDate, setCurrentDate] = useState(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
+    const [CurrentDate, setCurrentDate] = useState(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A'))
     useEffect(() => {
         const interval = setInterval(() => {
-                setCurrentDate(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A') )
-            }, 6000
+            setCurrentDate(Moment(new Date()).format('DD MMMM, YYYY | hh:mm A'))
+        }, 6000
         )
-		return () => {
-			clearInterval(interval);
-		}
+        return () => {
+            clearInterval(interval);
+        }
     }, [])
-    
+
+    if (typeof window != 'undefined' && !isAuthenticated) {
+        router.push('/auth/login')
+    }
+
+
 
     return (
         <>
-            <div class="d-flex flex-column flex-shrink-0 p-3 py-5" style={{height: '85vh', backgroundColor: 'white'}}>
-                <div className='text-center'>    
+            <div class="d-flex flex-column flex-shrink-0 p-3 py-5" style={ { height: '85vh', backgroundColor: 'white' } }>
+                <div className='text-center'>
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb justify-content-center">
                             <li className="breadcrumb-item"><Link href="/">Apps</Link></li>
-                            <li className="breadcrumb-item active">{appTitle}</li>
+                            {
+                                appTitle.includes("\n Details") ?
+                                    <>
+                                        <li className="breadcrumb-item"><Link href="/apps/users">Users</Link></li>
+                                        <li className="breadcrumb-item active">{ appTitle }</li>
+                                    </>
+                                    :
+                                    <li className="breadcrumb-item active">{ appTitle }</li>
+                            }
                         </ol>
-                    </nav> 
+                    </nav>
                     <p className='sidebar-welcome'>
-                        Welcome to {appTitle}
+                        {
+                            appTitle.includes("\n Details") ?
+                                <p>
+                                    <span className='fw-bold'>{ appTitle }</span>
+                                </p>
+                                :
+                                appTitle === "Users" ?
+                                    <p>
+                                        Welcome to <br />
+                                        <span className='fw-bold'>User Management</span>
+                                    </p>
+                                    :
+                                    <p>
+                                        Welcome to <br />
+                                        <span className='fw-bold'>{ appTitle }</span>
+                                    </p>
+                        }
                     </p>
                     <p className='sidebar-user'>
-                        {user ? `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` : ""}
+                        { user?.full_name }
                     </p>
                     <p className='sidebar-date'>
-                        {CurrentDate}
+                        { CurrentDate }
                     </p>
                 </div>
-                <div className="d-grid gap-2">
-                    <Link href={`/apps/${app}/documents/create`} className="btn btn-primary btn-sfp" >
-                        <i className='bi pe-none me-2 fa-solid fa-file'></i>
-                        Create new Document
-                    </Link>
-                </div>
+                {
+                    app !== "users" && !appTitle.includes("\n Details") ?
+                        <div className="d-grid gap-2">
+                            <Link href={ `/apps/${app}/documents/create` } className="btn btn-primary btn-sfp" >
+                                <i className='bi pe-none me-2 fa-solid fa-file'></i>
+                                Create new Document
+                            </Link>
+                        </div>
+                        : <></>
+
+                }
                 {
                     app === 'compliance' && user?.userType === 2 ?
-                    <>
-                    </>
-                    : <></>
+                        <>
+                        </>
+                        : <></>
                 }
-                <hr/>
+                <hr />
                 <ul className="nav nav-pills flex-column mb-auto">
                     <li className="nav-item">
-                        <Link href={`/apps/${app}`} className={ router.pathname === `/apps/${app}` ? "nav-link active" :"nav-link link-body-emphasis" } aria-current="page">
+                        <Link href={ `/apps/${app}` } className={ router.pathname === `/apps/${app}` ? "nav-link active" : "nav-link link-body-emphasis" } aria-current="page">
                             <i className='bi pe-none me-2 fa-solid fa-chart-simple' />
                             Dashboard
                         </Link>
                     </li>
+                    {
+                        appTitle.includes("\n Details") ?
+                            <>
+                                <li>
+                                    <Link href={ `/apps/users/list` } className={ router.pathname === `/apps/users/list` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                        <i className='bi pe-none me-2 fa-solid fa-users' />
+                                        All Users
+                                    </Link>
+                                </li>
+                                {/* <li>
+                                    <Link href={ `/apps/${app}/create` } className={ router.pathname === `/apps/${app}/create` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                        <i className='bi pe-none me-2 fa-solid fa-user-plus' />
+                                        Create User
+                                    </Link>
+                                </li> */}
+                                <li>
+                                    <Link href={ `/apps/users/regions` } className={ router.pathname === `/apps/users/regions` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                        <i className='bi pe-none me-2 fa-solid fa-earth' />
+                                        Regions
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={ `/apps/users/roles` } className={ router.pathname === `/apps/users/roles` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                        <i className='bi pe-none me-2 fa-solid fa-user-tag' />
+                                        Update User Roles
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={ `/apps/users/update` } className={ router.pathname === `/apps/users/update` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                        <i className='bi pe-none me-2 fa-solid fa-edit' />
+                                        Bulk Update
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={ `/apps/users/logs` } className={ router.pathname === `/apps/users/logs` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                        <i className='bi pe-none me-2 fa-solid fa-history' />
+                                        Bulk Update Logs
+                                    </Link>
+                                </li>
+
+
+                            </>
+                            :
+                            app.includes("users") ?
+                                <>
+                                    <li>
+                                        <Link href={ `/apps/${app}/list` } className={ router.pathname === `/apps/${app}/list` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                            <i className='bi pe-none me-2 fa-solid fa-users' />
+                                            All Users
+                                        </Link>
+                                    </li>
+                                    {/* <li>
+                                    <Link href={ `/apps/${app}/create` } className={ router.pathname === `/apps/${app}/create` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                        <i className='bi pe-none me-2 fa-solid fa-user-plus' />
+                                        Create User
+                                    </Link>
+                                </li> */}
+                                    <li>
+                                        <Link href={ `/apps/${app}/regions` } className={ router.pathname === `/apps/${app}/regions` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                            <i className='bi pe-none me-2 fa-solid fa-user-tag' />
+                                            Regions
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={ `/apps/${app}/roles` } className={ router.pathname === `/apps/${app}/roles` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                            <i className='bi pe-none me-2 fa-solid fa-user-tag' />
+                                            Update User Roles
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={ `/apps/${app}/update` } className={ router.pathname === `/apps/${app}/update` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                            <i className='bi pe-none me-2 fa-solid fa-edit' />
+                                            Bulk Update
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={ `/apps/${app}/logs` } className={ router.pathname === `/apps/${app}/logs` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                            <i className='bi pe-none me-2 fa-solid fa-history' />
+                                            Bulk Update Logs
+                                        </Link>
+                                    </li>
+
+
+                                </>
+                                : <></>
+                    }
                     {/* <li>
                         <Link href={`/apps/${app}/trends`} className={ router.pathname === `/apps/${app}/trends` ? "nav-link active" :"nav-link link-body-emphasis" }>
                             <i className='bi pe-none me-2 fa-solid fa-line-chart' />
                             Trends
                         </Link>
                     </li> */}
-                    
+
                     {/* {
                         app === "compliance" && user?.is_superuser ?
                         <li>
@@ -91,25 +211,30 @@ const SideBar = ({appTitle, app}) => {
                         </li>
                         : <></>
                     } */}
+                    {
+                        app !== "users" ?
+
+                            <li>
+                                <Link href={ `/apps/${app}/list` } className={ router.pathname === `/apps/${app}/list` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                    <i className='bi pe-none me-2 fa-solid fa-list' />
+                                    Full List
+                                </Link>
+                            </li>
+                            : <></>
+                    }
                     <li>
-                        <Link href={`/apps/${app}/list`} className={ router.pathname === `/apps/${app}/list` ? "nav-link active" :"nav-link link-body-emphasis" }>
-                            <i className='bi pe-none me-2 fa-solid fa-list' />
-                            Full List
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/" className={ router.pathname === `/apps/` ? "nav-link active" :"nav-link link-body-emphasis" }>
+                        <Link href="/" className={ router.pathname === `/apps/` ? "nav-link active" : "nav-link link-body-emphasis" }>
                             <i className='bi pe-none me-2 fa-solid fa-boxes-stacked' />
                             Other Applications
                         </Link>
                     </li>
                 </ul>
-                <hr/>
-                
+                <hr />
+
                 <div className='d-flex align-items-end flex-column px-auto'>
                     <div className="container sidebar-footer">
                         <div className="d-grid gap-2">
-                            <button onClick={(e)=>{logOutBtn(e)}} className="btn btn-primary btn-sfp" type="button">
+                            <button onClick={ (e) => { logOutBtn(e) } } className="btn btn-primary btn-sfp" type="button">
                                 <i className='bi pe-none me-2 fa-solid fa-arrow-right-from-bracket'></i>
                                 Logout
                             </button>
@@ -121,7 +246,7 @@ const SideBar = ({appTitle, app}) => {
                 </div>
             </div>
         </>
-        
+
     )
 }
 

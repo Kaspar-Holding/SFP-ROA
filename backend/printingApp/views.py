@@ -2578,7 +2578,9 @@ class disclosuresPDF(APIView):
             user_profile_data = user_profile_data.values().first()
             data['user']['full_name'] = user_profile_data['Full_Name']
             data['user']['contact_cell'] = user_profile_data['Contact_Cell']
-
+            data['user']['qualification'] = "N/A"
+            if user_profile_data['Qualification_Name'] != "nan" or user_profile_data['Qualification_Name'] != "" :
+                data['user']['qualification'] = user_profile_data['Qualification_Name']
             data['user']['address'] = ""
             if user_profile_data['Address_Postal_1'] != "nan" :
                 data['user']['address'] += user_profile_data['Address_Postal_1'] + ", "
@@ -2730,6 +2732,7 @@ class printROA(APIView):
         data = Disclosures.objects.filter(id=pk)
         if data.exists():
             data = data.values().first()
+            data['dra_status'] = False
             # data['RF_Date'] = data['RF_Date'].strftime("%d %B %Y")
             # data['dra_status'] = request.data['dra_status']
             # data['roa_status'] = False
@@ -3205,14 +3208,14 @@ class printROA(APIView):
                 if Form.objects.filter(formId = pk).exists():            
                     data['RoA'] = Form.objects.filter(formId = pk).values().first()
                     if (
-                        data['RoA']['clientEmail'] == "" and 
+                        # data['RoA']['clientEmail'] == "" and 
                         data['RoA']['clientAddress'] == "" and 
-                        data['RoA']['clientPhoneNumber'] == "" and 
-                        data['RoA']['clientLetterOfIntroduction'] == 2 and 
+                        # data['RoA']['clientPhoneNumber'] == "" and 
+                        data['RoA']['clientLetterOfIntroduction'] == 0 and 
                         data['RoA']['clientLetterOfIntroductionReason'] == "" and 
-                        data['RoA']['clientLetterOfIntroductionAccess'] == 2 and 
+                        data['RoA']['clientLetterOfIntroductionAccess'] == 0 and 
                         data['RoA']['clientLetterOfIntroductionAccessReason'] == "" and 
-                        data['RoA']['clientFica'] == 2 and 
+                        data['RoA']['clientFica'] == 0 and 
                         data['RoA']['clientFicaReason'] == "" and 
                         data['RoA']['clientBackgroundInfo'] == ""
                     ):
@@ -3583,10 +3586,10 @@ class printROA(APIView):
                 if EmployeeBenefits.objects.filter(formId=pk).exists():
                     data['EB'] = EmployeeBenefits.objects.filter(formId=pk).values().first()
                     if (
-                        data['EB']['EB_ClientAddress'] == "" and
-                        data['EB']['EB_ClientPhoneNumber'] == "" and
+                        # data['EB']['EB_ClientAddress'] == "" and
+                        # data['EB']['EB_ClientPhoneNumber'] == "" and
                         data['EB']['EB_ClientCellNumber'] == "" and
-                        data['EB']['EB_ClientEmail'] == "" and
+                        # data['EB']['EB_ClientEmail'] == "" and
                         data['EB']['EB_ClientDate'] == "" and
                         # data['EB']['EB_ClientFinancialAdvisor'] == "" and
                         data['EB']['EB_ClientFeeDetails'] == "" and
@@ -3673,10 +3676,10 @@ class printROA(APIView):
                         data['EB']['EB_BusRB_CapDisBen_UnApprovedCategory2'] == "" and
                         data['EB']['EB_BusRB_CapDisBen_UnApprovedCategory3'] == "" and
                         data['EB']['EB_BusRB_CapDisBen_UnApprovedCategory4'] == "" and
-                        data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] == "0" and
-                        data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] == "0" and
-                        data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] == "0" and
-                        data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] == "0" and
+                        (data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] == "0" or data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] == "") and
+                        (data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] == "0" or data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] == "") and
+                        (data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] == "0" or data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] == "") and
+                        (data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] == "0" or data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] == "") and
                         data['EB']['EB_BusRB_ConvOp'] == "" and
                         data['EB']['EB_BusRB_GrowthRates'] == "" and
                         data['EB']['EB_BusRB_DisabilityBenefitsNotes'] == "" and
@@ -3758,10 +3761,10 @@ class printROA(APIView):
                                 row['BusB_CoverType'] = eb_cnr[int(row['BusB_CoverType'])]
                         waitingPeriod = ['', '1', '3', '6', '12', '24']
                         benefit = ['', '% of group life cover', 'x annual salary']
-                        data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category1'])]
-                        data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category2'])]
-                        data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category3'])]
-                        data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category4'])]
+                        data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category1'])] if data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] != "" else waitingPeriod[0] 
+                        data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category2'])] if data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] != "" else waitingPeriod[0] 
+                        data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category3'])] if data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] != "" else waitingPeriod[0] 
+                        data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] = waitingPeriod[int(data['EB']['EB_BusRB_DiIBenWaitPer_Category4'])] if data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] != "" else waitingPeriod[0] 
                         data['EB']['EB_BusRB_AccidentBenefit'] = benefit[int(data['EB']['EB_BusRB_AccidentBenefit'])]
                 else:
                     data['EB_status'] = False
@@ -5186,7 +5189,7 @@ class printROA(APIView):
                             data['STIP']['STIP_Sec_LegalA_Data'] = STIP_Sec_LegalA.objects.filter(formId=pk).values()
                 else:
                     data['STIP_status'] = False
-            data['advisor'] = UserAccount.objects.filter(id=request.data['advisorId']).values('first_name', 'last_name', 'email', 'is_superuser').first()
+            data['advisor'] = UserAccount.objects.filter(id=data['advisorId']).values('first_name', 'last_name', 'email', 'is_superuser').first()
             data['company'] = ""
             if 'sfp' in data['advisor']['email'] or 'succession' in data['advisor']['email']:
                 data['company'] = "SFP"
@@ -5222,10 +5225,10 @@ class printROA(APIView):
             response =  PDFTemplateResponse(request=request, template=template,context=data, cmd_options=cmd_options)
             if request.data['dra_status']:
                 # fileName = "Sample.pdf"
-                fileName = "Dynamic Risk Assessment for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
+                fileName = "Dynamic Risk Assessment for %s Filled by %s %s" %(data['client_name'], data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
             else:
                 # fileName = "Sample.pdf"
-                fileName = "Client Record of Advice for %s Filled by %s %s" %(data['RF_ClientName'], data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
+                fileName = "Client Record of Advice for %s Filled by %s %s" %(data['client_name'], data['advisor']['first_name'] + " " + data['advisor']['last_name'] ,uuid.uuid4())
             with open("static/pdf/%s.pdf"%(fileName), "wb") as f:
                 f.write(response.rendered_content)
             return Response({"file":"static/pdf/%s.pdf"%(fileName)})

@@ -1,0 +1,103 @@
+import React, { useState, useEffect } from 'react'
+import Loader from '../../../../hocs/Loader'
+import Swal from 'sweetalert2'
+import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
+// import Filters from './Filters'
+import Moment from 'moment'
+import dynamic from 'next/dynamic'
+import Layout from '../../../../hocs/Layout'
+import DashboardLayout from '../../../../hocs/DashboardLayout'
+
+const BulkUserUpdate = () => {
+    const router = useRouter()
+    const user = useSelector(state => state.auth.user)
+    const [file, setFile] = useState({
+        usersCsvFile: ""
+    })
+    console.log(file)
+    const [response, setResponse] = useState(null)
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0]
+        const reader = new FileReader()
+
+        reader.onload = () => {
+            const base64String = reader.result
+            setFile(
+                {
+                    usersCsvFile: base64String
+                }
+            )
+        }
+
+        reader.readAsDataURL(file)
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        if (file?.usersCsvFile != "") {
+            const Body = JSON.stringify(file)
+
+            try {
+                const res = await axios.post('/api/users/bulk/upload', Body, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    responseType: 'stream'
+                })
+
+                // Handle streaming response
+                res.data.on('data', (chunk) => {
+                    // Process the streaming response here
+                    // For example, update the response state
+                    setResponse(chunk.toString())
+                })
+
+                res.data.on('end', () => {
+                    // Streaming response ended
+                })
+            } catch (error) {
+                console.error(error)
+            }
+        }
+    }
+
+    return (
+        <Layout
+            title={ "Bulk User Management" }
+            content={ "Bulk User Management" }
+        >
+            <DashboardLayout
+                appTitle={ 'Bulk User Update' }
+                app={ 'users' }
+            >
+                <div className='col-lg-9 bulkupdate'>
+                    <div className='roa-edit-card'>
+                        <div className='inital-card-header text-center'>
+                            <b>Bulk User Update</b>
+                        </div>
+                        <hr />
+
+                        <form onSubmit={ handleSubmit } className='container text-center'>
+                            <div className='form-group'>
+                                <input className='form-control form-control-lg' type='file' accept='.csv' id='file' name='file' onChange={ handleFileChange } />
+                            </div>
+                            <br />
+                            <button className='btn btn-primary' type='submit'>Submit</button>
+                        </form>
+
+                        { response && (
+                            <div className='response'>
+                                Streaming Response: { response }
+                            </div>
+                        ) }
+                    </div>
+                </div>
+            </DashboardLayout>
+        </Layout>
+    )
+}
+
+export default BulkUserUpdate

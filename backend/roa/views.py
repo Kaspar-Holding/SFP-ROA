@@ -41,7 +41,7 @@ class FormListAPIs(APIView):
             data = p.page(request.data['page_number']).object_list
             for row in data:
                 if user.is_superuser:
-                    advisor = UserAccount.objects.filter(pk=row['advisor'])
+                    advisor = UserAccount.objects.filter(pk=row['advisorId'])
                     if advisor.exists():
                         advisor = advisor.values().first()
                         row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"

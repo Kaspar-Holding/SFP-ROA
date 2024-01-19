@@ -81,6 +81,8 @@ INSTALLED_APPS = [
     'insights',
     'roa',
     'scim',
+    'notifications',
+    'logs',
 ]
 
 MIDDLEWARE = [

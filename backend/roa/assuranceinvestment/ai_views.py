@@ -68,7 +68,7 @@ class AssuranceInvestmentAPIs(APIView):
             snippets = self.get_object(pk)
             aiData = request.data['assuranceInvestment']
             aiData['advisorId'] = formData.advisorId            
-            serializer = AssuranceInvestmentSerializers(snippets, data=aiData)
+            serializer = AssuranceInvestmentSerializers(snippets, data=aiData, partial=True)
             if serializer.is_valid():
                 serializer.save()
             else:

@@ -1,25 +1,40 @@
+import secrets
+import string
+import uuid
+from djoser import utils
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.core.paginator import Paginator
 import json
 from django.shortcuts import render
 from rest_framework.response import Response
 from django.http import StreamingHttpResponse
 from rest_framework.decorators import api_view, APIView
-from data.models import UserAccount, user_profile
-from data.serializers import user_profile_Serializer
+from data.models import UserAccount, user_profile, regions, region_manager
+from data.serializers import UserAccountsSerializers, regions_Serializer, user_profile_Serializer, region_manager_Serializer
 from django.core.files.base import ContentFile
+import re
 import base64
 import pandas as pd
+from django.db.models import Q
 from datetime import datetime
 import pytz
 from dateutil.relativedelta import relativedelta
+from logs.models import Log, LogContent, LogKPIs
+from logs.serializers import LogSerializer, LogContentSerializer, LogKPIsSerializer
 # Create your views here.
 
 @api_view(['GET'])
 def getUserInfo(request):
 
     user = request.user
-
     userData = UserAccount.objects.filter(id=user.pk).values('id','email', 'first_name', 'last_name', 'is_superuser', 'userType').first()
-
+    user_profile_data = user_profile.objects.filter(user=user.pk)
+    userData['full_name'] = userData['first_name'] + " " + userData['last_name'] if userData['last_name'] != "nan" else userData['first_name']
+    userData.pop('first_name')
+    userData.pop('last_name')
+    if user_profile_data.exists():
+        user_profile_data = user_profile_data.values().first()
+        userData['full_name'] = user_profile_data['Full_Name']
     return Response({"user" : userData}, 200)
 
 @api_view(['GET'])
@@ -34,7 +49,9 @@ def getUserProfileInfo(request):
         user_profile_data = user_profile_data.values().first()
         userData['full_name'] = user_profile_data['Full_Name']
         userData['contact_cell'] = user_profile_data['Contact_Cell']
-
+        userData['qualification'] = ""
+        if user_profile_data['Qualification_Name'] != "nan" or user_profile_data['Qualification_Name'] != "" :
+            userData['qualification'] = user_profile_data['Qualification_Name']
         userData['address'] = ""
         if user_profile_data['Address_Postal_1'] != "nan" :
             userData['address'] += user_profile_data['Address_Postal_1'] + ", "
@@ -125,23 +142,75 @@ def getUserProfileInfo(request):
         
     return Response({"profile" : userData}, 200)
 
+class BulkUserUpdate(APIView):
+    def post(self, request, format=None):
+        if 'usersCsvFile' not in request.data:
+            return Response({"message" : "No file found"}, 400)
+        else:
+            csv_data = request.data['usersCsvFile']
+            format, csvstr = csv_data.split(';base64,')
+            ext = format.split('/')[-1]
+            file_name = "'usersCsvFile." + ext
+            csvData = ContentFile(base64.b64decode(csvstr), name=file_name) 
+            users_profile_df = pd.read_csv(csvData)
+            
+            # Remove columns starting with "Do not modify"
+            columns = [col for col in users_profile_df.columns if not col.startswith("(Do Not Modify)")]
+            field_names = []
+            non_added = ["id", "user", "bac", "supervision", "categorisation", "region", "id_number", "initials", "full_name", "nick_name", "contact_number", "address_physical_1", "address_physical_2", "address_physical_3", "address_postal_code", ]
+            for field in user_profile._meta.get_fields():
+                if field.name not in non_added:
+                    field_names.append(str(field.name))
+            return Response({
+                "usersCsvFile" : request.data['usersCsvFile'],
+                "uploaded_file_columns" : columns,
+                "field_names" : field_names
+            })
+            
+
 class BulkUserUpload(APIView):
     def post(self, request, format=None):
+        def error401():
+            res = {"message":"You can't perform this action"}
+            yield f"data: {json.dumps(res)}\n\n" 
+        
         def response():
             yield "data: [START]\n\n" 
-            # if request.user.is_superuser == False:
-            #     return Response({"message" : "You are not authorized to perform this action"}, 401)
-            if 'usersExcelFile' not in request.data:
+            if 'usersCsvFile' not in request.data:
                 yield "data: [ERROR] No file found\n\n"
             else:
                 yield "data: [SUCCESS] File found\n\n"
-                csv_data = request.data['usersExcelFile']
+                logData = {
+                    "account" : request.user.pk,
+                    "log_name" : f"Bulk User Upload {uuid.uuid4()}",
+                    "log_type" : 1,
+                    "status" : 0,
+                }
+                log_serializer = LogSerializer(data=logData)
+                if log_serializer.is_valid():
+                    log_serializer.save()
+                    log_id = log_serializer.data['id']
+                else:
+                    print(log_serializer.errors)
+                logKPIs = {
+                    "account" : request.user.pk,
+                    "log" : log_id,
+                    "kpis" : {
+                        "total": 0,"updated":0, "created": 0, "not_existing" : 0,
+                    }
+                }
+                log_kpis_serializer = LogKPIsSerializer(data=logKPIs)
+                if log_kpis_serializer.is_valid():
+                    log_kpis_serializer.create(log_kpis_serializer.validated_data)
+                else:
+                    print(log_kpis_serializer.errors)
+                csv_data = request.data['usersCsvFile']
                 format, csvstr = csv_data.split(';base64,')
                 ext = format.split('/')[-1]
-                file_name = "'usersExcelFile." + ext
+                file_name = "'usersCsvFile." + ext
                 csvData = ContentFile(base64.b64decode(csvstr), name=file_name) 
-                users_profile_df = pd.read_excel(csvData)
-                # users_profile_df = users_profile_df.fillna('')
+                users_profile_df = pd.read_csv(csvData)
+                users_profile_df.fillna('', inplace=True)
                 users_profile_df.columns = users_profile_df.columns.str.replace(' ', '_').str.replace('__', '_').str.replace('.', '_')
                 total = 0
                 updated = 0
@@ -150,22 +219,92 @@ class BulkUserUpload(APIView):
                 created_users = []
                 not_existing = 0
                 not_existing_users = []
+                new_users = []
                 for i in range(len(users_profile_df)):
                     user_profile_data = users_profile_df.iloc[i].to_dict()
-                    user_profile_data = {k: datetime.now(pytz.timezone("Africa/Johannesburg")).strftime('%Y-%m-%d') if ('Date' in k or 'Created_On' in k) and pd.isnull(v) else v for k, v in user_profile_data.items()}
-                    user = UserAccount.objects.filter(email__iexact=user_profile_data['Email'])
+                    full_name = user_profile_data['Full_Name']
+                    email = user_profile_data['Email'] if "/" not in user_profile_data['Email'] else str(user_profile_data['Email']).split("/")[0].strip()
+                    email = str(email).replace(',','.')
+                    logContent = {
+                        "account" : request.user.pk,
+                        "log" : log_id,
+                        "log_type" : 1,
+                        "log_description" : f"Updating User {full_name} ({email}).",
+                    } 
+                    log_content_serializer = LogContentSerializer(data=logContent)
+                    if log_content_serializer.is_valid():
+                        log_content_serializer.create(log_content_serializer.validated_data)
+                    else:
+                        print(log_content_serializer.errors)
+                    user_profile_data = {k: v for k, v in user_profile_data.items() if v != ""}
+                    user_profile_data = {k: datetime.strptime(v, "%d-%m-%y").date() if ('Date' in k or 'DOFA' in k) else v for k, v in user_profile_data.items()}
+                    user_profile_data = {k: datetime.strptime(v, "%d-%m-%y %H:%M") if ('Modified_On' in k or 'Created_On' in k) else v for k, v in user_profile_data.items()}
+                    user = UserAccount.objects.filter(email__iexact=email)
+                    manager = user_profile_data['Manager']
+                    region = str(manager.split("-")[0]).strip()
+                    region = re.sub(r'[^A-Za-z0-9 ]+', '', region)
+                    region_data = regions.objects.filter(region=region)
+                    if region_data.exists():
+                        region_data = region_data.first()
+                        user_profile_data['region'] = region_data.pk
+                    else:
+                        data = {
+                            "region" : region
+                        }
+                        region_serializer = regions_Serializer(data=data)
+                        if region_serializer.is_valid():
+                            region_data = region_serializer.create(region_serializer.validated_data)
+                            user_profile_data['region'] = region_data.pk
+                            logContent = {
+                                "account" : request.user.pk,
+                                "log" : log_id,
+                                "log_type" : 6,
+                                "log_description" : f"Region {region} didn't exist and added into database.",
+                            } 
+                            log_content_serializer = LogContentSerializer(data=logContent)
+                            if log_content_serializer.is_valid():
+                                log_content_serializer.create(log_content_serializer.validated_data)
+                            else:
+                                print(log_content_serializer.errors)
+                    update_log = ""
+                    create_log = ""
+                    not_existing_log = ""
                     if user.exists():
+                        logContent = {
+                            "account" : request.user.pk,
+                            "log" : log_id,
+                            "log_type" : 2,
+                            "log_description" : f"User {full_name} ({email}) found in database.",
+                        } 
+                        log_content_serializer = LogContentSerializer(data=logContent)
+                        if log_content_serializer.is_valid():
+                            log_content_serializer.create(log_content_serializer.validated_data)
+                        else:
+                            print(log_content_serializer.errors)
                         user = user.values().first()
                         user_profile_data['user'] = user['id']
                         old_user_profile = user_profile.objects.filter(user=user['id'])
                         if old_user_profile.exists():
                             old_user_profile = user_profile.objects.get(user=user['id'])                    
-                            user_profile_serializer = user_profile_Serializer(old_user_profile, data=user_profile_data)
+                            user_profile_serializer = user_profile_Serializer(old_user_profile, data=user_profile_data, partial=True)
                             if user_profile_serializer.is_valid():
                                 user_profile_serializer.save()
                                 print(f"Updated {user['email']}")
+                                update_log = f"<p>User {full_name} ({email}) updated</p>"
                                 updated += 1
                                 updated_users.append(user['email'])
+                                logContent = {
+                                    "account" : request.user.pk,
+                                    "log" : log_id,
+                                    "log_type" : 3,
+                                    "log_description" : f"User {full_name} ({email}) updated.",
+                                } 
+                                log_content_serializer = LogContentSerializer(data=logContent)
+                                if log_content_serializer.is_valid():
+                                    log_content_serializer.create(log_content_serializer.validated_data)
+                                else:
+                                    print(log_content_serializer.errors)
+                                
                             else:
                                 print(user_profile_serializer.errors)
                         else:
@@ -173,17 +312,374 @@ class BulkUserUpload(APIView):
                             if user_profile_serializer.is_valid():
                                 user_profile_serializer.create(user_profile_serializer.validated_data)
                                 print(f"Created {user['email']}")
+                                create_log = f"<p>User {full_name} ({email}) created</p>"
                                 created += 1
                                 created_users.append(user['email'])
+                                logContent = {
+                                    "account" : request.user.pk,
+                                    "log" : log_id,
+                                    "log_type" : 4,
+                                    "log_description" : f"User {full_name} ({email}) created.",
+                                } 
+                                log_content_serializer = LogContentSerializer(data=logContent)
+                                if log_content_serializer.is_valid():
+                                    log_content_serializer.create(log_content_serializer.validated_data)
+                                else:
+                                    print(log_content_serializer.errors)
                             else:
                                 print(user_profile_serializer.errors)
                     else:
-                        print(f"User {user_profile_data['Email']} does not exist")
+                        not_existing_log = f"<p>User {full_name} ({email}) does not exist</p>"
+                        ALPHABET = string.ascii_letters + string.digits
+                        print(f"User {email} does not exist")
+                        logContent = {
+                            "account" : request.user.pk,
+                            "log" : log_id,
+                            "log_type" : 5,
+                            "log_description" : f"User {full_name} ({email}) does not exist.",
+                        } 
+                        log_content_serializer = LogContentSerializer(data=logContent)
+                        if log_content_serializer.is_valid():
+                            log_content_serializer.create(log_content_serializer.validated_data)
+                        else:
+                            print(log_content_serializer.errors)
+                        password = ''.join(secrets.choice(ALPHABET) for i in range(10))
+                        new_user_data = {
+                            "email" : email,
+                            "first_name" : user_profile_data['Nick_Name'] if "Nick_Name" in user_profile_data else user_profile_data['Full_Name'],
+                            "last_name" : user_profile_data['Surname'],
+                            "password" : password,
+                            "is_active" : 1,
+                            "userType" : 6,
+                        }
+                        new_user_serializer = UserAccountsSerializers(data=new_user_data)
+                        if new_user_serializer.is_valid():
+                            new_user_serializer.create(new_user_serializer.validated_data)
+                            new_users.append(new_user_data)
+                            print(f"User {email} does not exist")
+                            logContent = {
+                                "account" : request.user.pk,
+                                "log" : log_id,
+                                "log_type" : 6,
+                                "log_description" : f"User {full_name} ({email}) created with Advisor.",
+                            } 
+                            log_content_serializer = LogContentSerializer(data=logContent)
+                            if log_content_serializer.is_valid():
+                                new_user = log_content_serializer.create(log_content_serializer.validated_data)
+                            else:
+                                print(log_content_serializer.errors)
+                            new_user = UserAccount.objects.filter(email__icontains=email).first()
+                            user_profile_data['user'] = new_user.pk
+                            user_profile_serializer = user_profile_Serializer(data=user_profile_data)
+                            if user_profile_serializer.is_valid():
+                                user_profile_serializer.create(user_profile_serializer.validated_data)
+                                print(f"Created {email}")
+                                create_log = f"<p>User {full_name} ({email}) created</p>"
+                                created += 1
+                                created_users.append(email)
+                                logContent = {
+                                    "account" : request.user.pk,
+                                    "log" : log_id,
+                                    "log_type" : 4,
+                                    "log_description" : f"User {full_name} ({email}) created.",
+                                } 
+                                log_content_serializer = LogContentSerializer(data=logContent)
+                                if log_content_serializer.is_valid():
+                                    log_content_serializer.create(log_content_serializer.validated_data)
+                                else:
+                                    print(log_content_serializer.errors)
+                            else:
+                                print(user_profile_serializer.errors)
                         not_existing += 1
                         not_existing_users.append(user_profile_data['Email'])
                     total += 1
-                    kpis = {"total": total,"updated":updated, "created": created, "not_existing" : not_existing}
+                    kpis = {"total": total,"updated":updated, "created": created, "not_existing" : not_existing, "logs": {
+                        "create_log": create_log,
+                        "update_log": update_log,
+                        "not_existing_log": not_existing_log,
+                        "downloading_link" : ""
+                    }}
+                    logKPIs = {
+                        "account" : request.user.pk,
+                        "log" : log_id,
+                        "kpis" : {
+                            "total": total,"updated":updated, "created": created, "not_existing" : not_existing,
+                        }
+                    }
+                    kpisID = LogKPIs.objects.get(account=request.user.pk, log=log_id)
+                    log_kpis_serializer = LogKPIsSerializer(instance=kpisID, data=logKPIs)
+                    if log_kpis_serializer.is_valid():
+                        log_kpis_serializer.save()
+                    else:
+                        print(log_kpis_serializer.errors)
+                    yield f"data: {json.dumps(kpis)}\n\n"
+                if len(new_users) > 0:
+                    new_users_df = pd.DataFrame(new_users)
+                    csv_name = f"static/{str(logData['log_name']).replace(' ','_')}_new_users.csv"
+                    new_users_df.to_csv(csv_name)
+                    logContent = {
+                        "account" : request.user.pk,
+                        "log" : log_id,
+                        "log_type" : 7,
+                        "downloading_link" : csv_name,
+                        "log_description" : f"New Added Users Downloading Link.",
+                    } 
+                    log_content_serializer = LogContentSerializer(data=logContent)
+                    if log_content_serializer.is_valid():
+                        log_content_serializer.create(log_content_serializer.validated_data)
+                    else:
+                        print(log_content_serializer.errors)
+                    kpis['downloading_link'] = csv_name
                     yield f"data: {json.dumps(kpis)}\n\n"
                 yield f"data: [DONE]\n\n"
-        
+                logData = {
+                    "status" : 1,
+                    "closed_at" : datetime.now(),
+                }
+                log = Log.objects.get(id=log_id)
+                log_serializer = LogSerializer(log, data=logData, partial=True)
+                if log_serializer.is_valid():
+                    log_serializer.save()
+                    print("Log updated")
+                else:
+                    print(log_serializer.errors)
+        if request.user.is_superuser == False:
+            return StreamingHttpResponse(error401(), content_type='text/event-stream')
         return StreamingHttpResponse(response(), content_type='text/event-stream')
+    
+class UsersList(APIView):
+    def get(self, request):
+        if request.user.is_superuser == False:
+            return Response({"message" : "You are not authorized to perform this action"}, 401)
+        users = UserAccount.objects.all().order_by('email')
+        all_users = users.count()
+        admin_users = users.filter(is_superuser=True).count()
+        arc_users = users.filter(userType=1).count()
+        gk_users = users.filter(userType=2).count()
+        manager_users = users.filter(userType=3).count()
+        manager_users += users.filter(userType=4).count()
+        bac_users = users.filter(userType=5).count()
+        advisor_users = users.filter(userType=6).count()
+        return Response(
+            {
+                "all_users" : all_users,
+                "admin_users" : admin_users,
+                "arc_users" : arc_users,
+                "gk_users" : gk_users,
+                "manager_users" : manager_users,
+                "bac_users" : bac_users,
+                "advisor_users" : advisor_users,
+            }
+        )
+
+    def post(self, request):
+        if request.user.is_superuser == False:
+            return Response({"message" : "You are not authorized to perform this action"}, 401)
+        userType = request.data['user_type']
+        sortBy = request.data['sort_by']
+        sortDirection = request.data['sort_direction']
+        if sortDirection == "asc":
+            sortBy = sortBy
+        else:
+            sortBy = f"-{sortBy}"
+        users = user_profile.objects.all().order_by(sortBy)
+        if userType != "all":
+            if userType == "admins":
+                users = user_profile.objects.all().filter(user__is_superuser=True).order_by(sortBy)
+            else:
+                users = user_profile.objects.all().filter(user__userType=userType).order_by(sortBy)
+            
+        search_query = request.data['search_query']
+        if request.data['search_query'] != "":
+            # users = UserAccount.objects.filter(Q(first_name__icontains=searchQuery) | Q(last_name__icontains=searchQuery) | Q(email__icontains=searchQuery)).order_by('id').values('id','email','first_name', 'last_name','is_superuser','is_active')
+            users = users.filter(Q(Full_Name=search_query)|Q(Full_Name__icontains=search_query)|Q(user__email=search_query)|Q(user__email__icontains=search_query))
+        else:
+            users = users
+        users = users.select_related('user')
+        total_users = users.count()
+        p = Paginator(users, request.data['page_size'])
+        users = p.page(request.data['page_number']).object_list
+        users_list = []
+        for user in users:
+            users_list.append({
+                "user_id" : utils.encode_uid(user.user.pk),
+                "email" : user.user.email,
+                "full_name" : user.Full_Name,
+                "first_name" : user.user.first_name,
+                "last_name" : user.user.last_name if user.user.last_name != "nan" else "",
+                "id_number" : user.ID_Number,
+                "user_type" : user.user.userType,
+            })
+        if request.data['page_number'] <= p.num_pages:
+                
+            return Response(
+                {
+                    "total_pages" : p.num_pages,
+                    "has_pages" : p.num_pages,
+                    "total_records" : total_users,
+                    "results" :users_list
+                }
+            )
+        else:
+            return Response(
+                {
+                    "total_pages" : p.num_pages,
+                    "has_pages" : p.num_pages,
+                    "total_records" : total_users,
+                    "results" : None
+                }
+            )
+    
+class UserDetail(APIView):
+    def get(self, request, pk):
+        if request.user.is_superuser == False:
+            return Response({"message" : "You are not authorized to perform this action"}, 401)
+        user = UserAccount.objects.filter(id=utils.decode_uid(pk)).values('id','email', 'first_name', 'last_name', 'is_superuser', 'is_active','userType').values().first()
+        user_profile_data = user_profile.objects.filter(user=utils.decode_uid(pk))
+        if user_profile_data.exists():
+            user['profile'] = user_profile_data.values().first()
+            profile = user_profile_data.first()
+            profile_list = user_profile._meta.get_fields()
+            user['profile_columns'] = [column.name for column in profile_list if column.name not in ["id", "user", "bac", "supervision", "categorisation","id_number", "initials", "full_name", "nick_name", "contact_number", "address_physical_1", "address_physical_2", "address_physical_3", "address_postal_code", ]]
+            user['full_name'] = user['profile']['Full_Name']
+            user['profile']['region'] = regions.objects.filter(id=profile.region.pk).values().first()
+            # user['profile']['bac'] = user_profile.objects.filter(id=user['profile']['bac']).values().first()
+        user['regions'] = regions.objects.all().values()
+
+        return Response({"user" : user}, 200)
+    
+    def put(self, request, pk):
+        if request.user.is_superuser == False:
+            return Response({"message" : "You are not authorized to perform this action"}, 401)
+        user = UserAccount.objects.filter(id=utils.decode_uid(pk))
+        data = request.data
+        if user.exists():
+            old_user_profile = user_profile.objects.filter(user=utils.decode_uid(pk))
+            if old_user_profile.exists():
+                old_user_profile = old_user_profile.first()
+                user_profile_serializer = user_profile_Serializer(instance=old_user_profile, data=data, partial=True)
+                if user_profile_serializer.is_valid():
+                    user_profile_serializer.save()
+                    return Response({"message" : "User profile updated"}, 200)
+                else:
+                    print(user_profile_serializer.errors)
+                    return Response({"message" : user_profile_serializer.errors}, 400)
+        else:
+            return Response({"message" : "User not found"}, 400)
+    
+class UserRole(APIView):
+    
+    def put(self, request, pk):
+        if request.user.is_superuser == False:
+            return Response({"message" : "You are not authorized to perform this action"}, 401)
+        user = UserAccount.objects.filter(id=utils.decode_uid(pk))
+        data = request.data
+        if user.exists():
+            old = user.first()
+            user_type = "Admin"
+            if int(data['userType']) == 0:
+                data['is_superuser'] = True
+            if int(data['userType']) == 1:
+                user_type = "ARC"
+                data['is_superuser'] = False
+            if int(data['userType']) == 2:
+                user_type = "Gatekeeper"
+                data['is_superuser'] = False
+            if int(data['userType']) == 3:
+                user_type = "Manager"
+                data['is_superuser'] = False
+            if int(data['userType']) == 5:
+                user_type = "BAC"
+                data['is_superuser'] = False
+            if int(data['userType']) == 6:
+                user_type = "Advisor"
+                data['is_superuser'] = False
+            serializer = UserAccountsSerializers(instance=old, data=data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({"message": f"{old.email} updated to {user_type}"})
+            else:
+                return Response({"errors" : serializer.errors}, 400)
+        else:
+            return Response({"message" : "User not found"}, 400)
+        
+class RegionsAPI(APIView):
+
+    def get(self, request):
+
+        region_data = regions.objects.all()
+        regions_data = []
+        for region in region_data:
+            manager = region_manager.objects.filter(region=region.pk)
+            manager_name = "N.A."
+            if manager.exists():
+                manager = manager.first()
+                manager_name = manager.manager.first_name
+                manager_name +=  manager_name + " " + manager.manager.last_name if manager.manager.last_name != "nan" else ""
+            regions_data.append({
+                "id" : utils.encode_uid(region.pk),
+                "region" : region.region,
+                "manager" : manager_name
+            })
+        return Response({
+            "regions" : regions_data
+        })
+        
+class RegionsDetailsAPI(APIView):
+
+    def get(self, request, pk):
+
+        region_data = regions.objects.filter(id=utils.decode_uid(pk))
+        managers = UserAccount.objects.filter(userType = 3)
+        if region_data.exists():
+            region_data = region_data.first()
+            manager = region_manager.objects.filter(region=region_data.pk)
+            managerId = 0
+            if manager.exists():
+                manager = manager.first()
+                managerId = manager.manager.pk
+            regions_data = {
+                "id" : utils.encode_uid(region_data.pk),
+                "region" : region_data.region,
+                "manager" : managerId
+            }
+            return Response({
+                "region" : regions_data,
+                "managers" : managers.values('id','first_name','last_name','email')
+            })
+        return Response(404)
+    def put(self, request, pk):
+
+        region_data = regions.objects.filter(id=utils.decode_uid(pk))
+        manager = UserAccount.objects.filter(id=request.data['manager'])
+        if region_data.exists():
+            old = region_data.first()
+            if manager.exists():
+                manager = manager.first()
+            else:
+                return Response({
+                    "message": "Manager does not exist"
+                }, 400)
+            data = {
+                "manager" : manager.pk
+            }
+            region_manager_data = region_manager.objects.filter(region=old.pk)
+            if region_manager_data.exists():
+                old_data = region_manager_data.first()  
+                serializer = region_manager_Serializer(old_data, data, partial=True)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response({
+                        "message" : f"{old.region}'s Manager updated to {manager.first_name}"
+                    })
+                return Response({"errors" : serializer.errors}, 400)
+            else:
+                data['region'] = old.pk
+                serializer = region_manager_Serializer(data=data)
+                if serializer.is_valid():
+                    serializer.create(serializer.validated_data)
+                    return Response({
+                        "message" : f"{old.region}'s Manager updated to {manager.first_name}"
+                    })
+                return Response({"errors" : serializer.errors}, 400)
+        return Response(404)
