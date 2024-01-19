@@ -41,7 +41,15 @@ class LogListView(APIView):
                     }
                 )
                     
-        return Response({'message': "Not Found"},404)
+        return Response(
+                    {
+                        "total_pages" : 0,
+                        "has_pages" : 0,
+                        "total_records" : 0,
+                        "next" : None,
+                        "results" : []
+                    }
+                )
 
 class LogView(APIView):
     def post(self, request):
