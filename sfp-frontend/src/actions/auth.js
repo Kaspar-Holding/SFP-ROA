@@ -1,12 +1,12 @@
 import axios from "axios"
-import { 
-    REGISTER_FAILED, 
-    REGISTER_SUCCESS, 
+import {
+    REGISTER_FAILED,
+    REGISTER_SUCCESS,
     RESET_REGISTER_SUCCESS,
-    LOGGED_IN_FAILED, 
-    LOGGED_IN_SUCCESS, 
-    REMOVE_AUTH_LOADING, 
-    SET_AUTH_LOADING, 
+    LOGGED_IN_FAILED,
+    LOGGED_IN_SUCCESS,
+    REMOVE_AUTH_LOADING,
+    SET_AUTH_LOADING,
     LOGGED_OUT_SUCCESS,
     LOGGED_OUT_FAILED,
     LOAD_USER_SUCCESS,
@@ -22,11 +22,11 @@ import {
 } from "./types"
 import Swal from "sweetalert2"
 import { useRouter } from "next/router"
-    
+
 const config = {
     headers: {
-        'Content-Type' : 'application/json',
-        'Accept' : 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
     }
 }
 
@@ -39,7 +39,7 @@ export const resetPasswordConfirm = (uid, token, new_password, re_new_password) 
         re_new_password
     })
 
-    
+
     dispatch({
         type: SET_AUTH_LOADING
     })
@@ -66,13 +66,13 @@ export const resetPasswordConfirm = (uid, token, new_password, re_new_password) 
                 type: PASSWORD_RESET_CONFIRM_FAILED
             })
         }
-    } catch (error) {        
+    } catch (error) {
         dispatch({
             type: PASSWORD_RESET_CONFIRM_FAILED
         })
     }
 
-    
+
     dispatch({
         type: REMOVE_AUTH_LOADING
     })
@@ -80,9 +80,9 @@ export const resetPasswordConfirm = (uid, token, new_password, re_new_password) 
 
 export const resetPasswordRequest = (email) => async dispatch => {
 
-    const Body = JSON.stringify({email: email})
+    const Body = JSON.stringify({ email: email })
 
-    
+
     dispatch({
         type: SET_AUTH_LOADING
     })
@@ -94,7 +94,7 @@ export const resetPasswordRequest = (email) => async dispatch => {
             dispatch({
                 type: PASSWORD_RESET_REQUEST_SUCCESS
             })
-            
+
             Swal.fire({
                 position: "bottom-end",
                 type: "error",
@@ -105,17 +105,17 @@ export const resetPasswordRequest = (email) => async dispatch => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            
+
         } else {
             dispatch({
                 type: PASSWORD_RESET_REQUEST_FAILED
             })
         }
-    } catch (error) {        
+    } catch (error) {
         dispatch({
             type: PASSWORD_RESET_REQUEST_FAILED
         })
-        
+
         Swal.fire({
             position: "bottom-end",
             type: "error",
@@ -128,7 +128,7 @@ export const resetPasswordRequest = (email) => async dispatch => {
         })
     }
 
-    
+
     dispatch({
         type: REMOVE_AUTH_LOADING
     })
@@ -136,7 +136,7 @@ export const resetPasswordRequest = (email) => async dispatch => {
 
 export const refreshUser = () => async dispatch => {
     try {
-        const apiResponse = await axios.get('/api/account/refresh', config)
+        const apiResponse = await axios.get('/api/account/refresh/', config)
 
         if (apiResponse.status === 200) {
             dispatch({
@@ -149,7 +149,7 @@ export const refreshUser = () => async dispatch => {
             })
             dispatch(loadUser())
         }
-    } catch (error) {        
+    } catch (error) {
         dispatch({
             type: REFRESH_FAILED
         })
@@ -158,7 +158,7 @@ export const refreshUser = () => async dispatch => {
 
 export const verifyUser = () => async dispatch => {
     try {
-        const apiResponse = await axios.get('/api/account/verify', config)
+        const apiResponse = await axios.get('/api/account/verify/', config)
 
         if (apiResponse.status === 200) {
             dispatch({
@@ -171,7 +171,7 @@ export const verifyUser = () => async dispatch => {
                 type: AUTHENTICATED_FAILED
             })
         }
-    } catch (error) {        
+    } catch (error) {
         dispatch({
             type: AUTHENTICATED_FAILED
         })
@@ -192,7 +192,7 @@ export const loadUser = () => async dispatch => {
                 type: LOAD_USER_FAILED
             })
         }
-    } catch (error) {        
+    } catch (error) {
         dispatch({
             type: LOAD_USER_FAILED
         })
@@ -226,7 +226,7 @@ export const register = (
             dispatch({
                 type: REGISTER_SUCCESS
             })
-        }else {
+        } else {
             dispatch({
                 type: REGISTER_FAILED
             })
@@ -237,7 +237,7 @@ export const register = (
         })
     }
 
-    
+
     dispatch({
         type: REMOVE_AUTH_LOADING
     })
@@ -246,7 +246,7 @@ export const register = (
 
 export const reset_register_success = () => dispatch => {
     dispatch({
-        type : RESET_REGISTER_SUCCESS
+        type: RESET_REGISTER_SUCCESS
     })
 }
 
@@ -272,7 +272,7 @@ export const login = (
                 type: LOGGED_IN_SUCCESS
             })
             dispatch(loadUser())
-        }else {
+        } else {
             dispatch({
                 type: LOGGED_IN_FAILED
             })
@@ -303,7 +303,7 @@ export const login = (
         })
     }
 
-    
+
     dispatch({
         type: REMOVE_AUTH_LOADING
     })
@@ -322,7 +322,7 @@ export const logout = () => async dispatch => {
             dispatch({
                 type: LOGGED_OUT_SUCCESS
             })
-        }else {
+        } else {
             dispatch({
                 type: LOGGED_OUT_FAILED
             })
@@ -334,7 +334,7 @@ export const logout = () => async dispatch => {
         })
     }
 
-    
+
     dispatch({
         type: REMOVE_AUTH_LOADING
     })
