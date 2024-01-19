@@ -2,7 +2,7 @@ import { API_URL } from '../../../../../config';
 import cookie from 'cookie'
 
 export default async (req, res) => {
-    var stream = require('stream')
+
     if (req.method === 'POST') {
         const url = `${API_URL}/api/users/bulk/update/`;
         const cookies = cookie.parse(req.headers.cookie ?? '')
@@ -27,7 +27,7 @@ export default async (req, res) => {
         });
         const reader = response.body.getReader();
 
-        const stream = new stream.ReadableStream({
+        const stream = new ReadableStream({
             start(controller) {
                 function push() {
                     reader.read().then(({ done, value }) => {
@@ -43,7 +43,7 @@ export default async (req, res) => {
             },
         });
 
-        const writableStream = new stream.WritableStream({
+        const writableStream = new WritableStream({
             write(chunk) {
                 // Process the received chunk of data
                 console.log(chunk);
