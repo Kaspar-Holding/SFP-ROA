@@ -39,7 +39,7 @@ const UsersList = () => {
 
             setUserDetails(response?.data?.data?.user)
             setProfileData(response?.data?.data?.user?.profile)
-            setRegions(response?.data?.data?.regions)
+            setRegions(response?.data?.data?.user?.regions)
         } catch (error) {
             Swal.fire({
                 position: "bottom-end",
@@ -137,7 +137,7 @@ const UsersList = () => {
                                             <input type="email" className="form-control" value={ UserDetails?.email } name="email" id="exampleInputEmail1" aria-describedby="emailHelp" disabled />
                                         </div>
                                         <form onSubmit={ e => onSubmit(e) }>
-                                            <div className="mb-3">
+                                            {/* <div className="mb-3">
                                                 <label htmlFor="Role" className="form-label">Region { }</label>
                                                 <select className="form-select" onChange={ e => onChange(e) } value={ UserDetails?.userType } name="is_active" aria-label="Default select example">
                                                     <option value="0">Admin</option>
@@ -162,71 +162,69 @@ const UsersList = () => {
                                                     <option value="false">Agent</option>
                                                 </select>
                                             </div>
-                                            <div className='row'>
-                                                {
-                                                    Regions ?
-                                                        <div className="mb-3">
-                                                            <label htmlFor="Role" className="form-label">Region</label>
-                                                            <select className="form-select" onChange={ e => onChange(e) } value={ ProfileData?.region } name="region" aria-label="Default select example">
-                                                                {
-                                                                    Regions.map((item, index) => {
-                                                                        return (
-                                                                            <option key={ index } value={ item?.id }>{ item?.region }</option>
-                                                                        )
-                                                                    })
-                                                                }
-                                                            </select>
-                                                        </div>
-                                                        : <></>
-                                                }
-                                            </div>
-                                            <hr />
+                                            <hr /> */}
                                             <div className='col-lg-12 text-center'>
                                                 <h1 className='app-dashboard-header'>{ UserDetails?.full_name } Profile</h1>
                                             </div>
                                             <hr />
                                             <div className='row'>
+
                                                 { UserDetails?.profile_columns?.map((item, index) => (
                                                     <div className='col-lg-3' key={ index }>
                                                         <div className="mb-3">
                                                             <label htmlFor={ `exampleInputEmail${index + 1}` } className="form-label">{ item.replace(/_/g, ' ') }</label>
                                                             {
-                                                                item.includes('Date') || item.includes('_On') ? (
-                                                                    <div className='row'>
-                                                                        <div className='col'>
-                                                                            <input
-                                                                                type="date"
-                                                                                className="form-control"
-                                                                                onMouseLeave={ (e) => { updating(e) } }
-                                                                                value={ ProfileData[item]?.split('T')[0] } // Convert to YYYY-MM-DD format
-                                                                                name={ item }
-                                                                                onChange={ e => onChange(e) }
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                )
-                                                                    : ProfileData[item] == "Yes" || ProfileData[item] == "No" ? (
-                                                                        <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
-                                                                            <option value="Yes">Yes</option>
-                                                                            <option value="No">No</option>
-                                                                        </select>
-                                                                    )
-                                                                        : ProfileData[item] == "Active" ? (
-                                                                            <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
-                                                                                <option value="Active">Active</option>
-                                                                                <option value="Inactive">Inactive</option>
+                                                                item === 'region' ? (
+                                                                    <>
+                                                                        <div className="mb-3">
+                                                                            <select onMouseLeave={ (e) => { updating(e) } } className="form-select" onChange={ e => onChange(e) } value={ ProfileData[item] } name="region" aria-label="Default select example">
+                                                                                {
+                                                                                    Regions.map((item, index) => {
+                                                                                        return (
+                                                                                            <option key={ index } value={ item?.id }>{ item?.region }</option>
+                                                                                        )
+                                                                                    })
+                                                                                }
                                                                             </select>
-                                                                        )
-                                                                            : (
+                                                                        </div>
+                                                                    </>
+                                                                ) :
+                                                                    item.includes('Date') || item.includes('_On') ? (
+                                                                        <div className='row'>
+                                                                            <div className='col'>
                                                                                 <input
-                                                                                    type="text"
+                                                                                    type="date"
                                                                                     className="form-control"
                                                                                     onMouseLeave={ (e) => { updating(e) } }
-                                                                                    value={ ProfileData[item] != "nan" ? ProfileData[item] : "" }
+                                                                                    value={ ProfileData[item]?.split('T')[0] } // Convert to YYYY-MM-DD format
                                                                                     name={ item }
                                                                                     onChange={ e => onChange(e) }
                                                                                 />
+                                                                            </div>
+                                                                        </div>
+                                                                    )
+                                                                        : ProfileData[item] == "Yes" || ProfileData[item] == "No" ? (
+                                                                            <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
+                                                                                <option value="Yes">Yes</option>
+                                                                                <option value="No">No</option>
+                                                                            </select>
+                                                                        )
+                                                                            : ProfileData[item] == "Active" ? (
+                                                                                <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
+                                                                                    <option value="Active">Active</option>
+                                                                                    <option value="Inactive">Inactive</option>
+                                                                                </select>
                                                                             )
+                                                                                : (
+                                                                                    <input
+                                                                                        type="text"
+                                                                                        className="form-control"
+                                                                                        onMouseLeave={ (e) => { updating(e) } }
+                                                                                        value={ ProfileData[item] != "nan" ? ProfileData[item] : "" }
+                                                                                        name={ item }
+                                                                                        onChange={ e => onChange(e) }
+                                                                                    />
+                                                                                )
                                                             }
                                                             {/* <input type="text" className="form-control" value={ ProfileData[item] != "nan" ? ProfileData[item] : "" } name={ item } /> */ }
                                                         </div>

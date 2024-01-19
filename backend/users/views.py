@@ -544,7 +544,7 @@ class UserDetail(APIView):
             profile_list = user_profile._meta.get_fields()
             user['profile_columns'] = [column.name for column in profile_list if column.name not in ["id", "user", "bac", "supervision", "categorisation","id_number", "initials", "full_name", "nick_name", "contact_number", "address_physical_1", "address_physical_2", "address_physical_3", "address_postal_code", ]]
             user['full_name'] = user['profile']['Full_Name']
-            user['profile']['region'] = regions.objects.filter(id=profile.region.pk).values().first()
+            user['profile']['region'] = profile.region.pk
             # user['profile']['bac'] = user_profile.objects.filter(id=user['profile']['bac']).values().first()
         user['regions'] = regions.objects.all().values()
 
