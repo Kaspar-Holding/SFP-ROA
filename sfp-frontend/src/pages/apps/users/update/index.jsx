@@ -38,7 +38,6 @@ const BulkUserUpdate = () => {
 
         reader.readAsDataURL(file)
     }
-    console.log(JSON.stringify(file))
     const [DownloadingLink, setDownloadingLink] = useState("")
     const [Completed, setCompleted] = useState(true)
     const handleSubmit = async (event) => {
