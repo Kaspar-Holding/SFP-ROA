@@ -171,7 +171,7 @@ const UsersList = () => {
                                                                 {
                                                                     Regions.map((item, index) => {
                                                                         return (
-                                                                            <option value={ item?.id }>{ item?.region }</option>
+                                                                            <option key={ index } value={ item?.id }>{ item?.region }</option>
                                                                         )
                                                                     })
                                                                 }
