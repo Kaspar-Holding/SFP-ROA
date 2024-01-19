@@ -491,8 +491,10 @@ class UsersList(APIView):
             
         search_query = request.data['search_query']
         if request.data['search_query'] != "":
+            search_vector = SearchVector('Full_Name','user__email')
             # users = UserAccount.objects.filter(Q(first_name__icontains=searchQuery) | Q(last_name__icontains=searchQuery) | Q(email__icontains=searchQuery)).order_by('id').values('id','email','first_name', 'last_name','is_superuser','is_active')
-            users = users.filter(Q(Full_Name=search_query)|Q(Full_Name__icontains=search_query)|Q(user__email=search_query)|Q(user__email__icontains=search_query))
+            users = users.annotate(search=search_vector).filter(Q(search=search_query) | Q(search__icontains=search_query))
+            # users = users.filter(Q(Full_Name=search_query)|Q(Full_Name__icontains=search_query)|Q(user__email=search_query)|Q(user__email__icontains=search_query))
         else:
             users = users
         users = users.select_related('user')
