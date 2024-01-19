@@ -174,9 +174,9 @@ class BulkUserUpload(APIView):
             res = {"message":"You can't perform this action"}
             yield f"data: {json.dumps(res)}\n\n" 
         
-        def response():
+        def response(requestedData):
             yield "data: [START]\n\n" 
-            if 'usersCsvFile' not in request.data:
+            if 'usersCsvFile' not in requestedData:
                 yield "data: [ERROR] No file found\n\n"
             else:
                 yield "data: [SUCCESS] File found\n\n"
@@ -445,7 +445,7 @@ class BulkUserUpload(APIView):
                     print(log_serializer.errors)
         if request.user.is_superuser == False:
             return StreamingHttpResponse(error401(), content_type='text/event-stream')
-        return StreamingHttpResponse(response(), content_type='text/event-stream')
+        return StreamingHttpResponse(response(request.data), content_type='text/event-stream')
     
 class UsersList(APIView):
     def get(self, request):
