@@ -244,6 +244,8 @@ class BulkUserUpload(APIView):
                     user_profile_data = {k: datetime.strptime(v, "%d-%m-%y").date() if ('Date' in k or 'DOFA' in k) else v for k, v in user_profile_data.items()}
                     user_profile_data = {k: datetime.strptime(v, "%d-%m-%y %H:%M") if ('Modified_On' in k or 'Created_On' in k) else v for k, v in user_profile_data.items()}
                     user = UserAccount.objects.filter(email__iexact=email)
+                    if "Email" not in user_profile_data:
+                        continue
                     if "Manager" in user_profile_data:
                         manager = user_profile_data['Manager']
                         region = str(manager.split("-")[0]).strip()
@@ -352,11 +354,24 @@ class BulkUserUpload(APIView):
                         new_user_data = {
                             "email" : email,
                             "first_name" : user_profile_data['Nick_Name'] if "Nick_Name" in user_profile_data else user_profile_data['Full_Name'],
-                            "last_name" : user_profile_data['Surname'],
+                            "last_name" : user_profile_data['Surname'] if "Surname" in user_profile_data else "",
                             "password" : password,
                             "is_active" : 1,
-                            "userType" : 6,
+                            "userType" : user_profile_data['UserRole'] if "UserRole" in user_profile_data else 6,
                         }
+                        if "ROLE" in user_profile_data:
+                            if user_profile_data["ROLE"] == "National":
+                                new_user_data['is_superuser'] = True
+                                new_user_data['userType'] = 0
+                            elif user_profile_data["ROLE"] == "ARC":
+                                new_user_data['userType'] = 1
+                            elif user_profile_data["ROLE"] == "GK":
+                                new_user_data['userType'] = 2
+                            else:
+                                new_user_data['userType'] = 3
+                                new_user_data['region'] = user_profile_data["ROLE"]
+
+
                         new_user_serializer = UserAccountsSerializers(data=new_user_data)
                         if new_user_serializer.is_valid():
                             new_user_serializer.create(new_user_serializer.validated_data)
@@ -371,6 +386,36 @@ class BulkUserUpload(APIView):
                             log_content_serializer = LogContentSerializer(data=logContent)
                             if log_content_serializer.is_valid():
                                 new_user = log_content_serializer.create(log_content_serializer.validated_data)
+                                if new_user_data['userType'] == 3:
+                                    region = regions.objects.filter(region__icontains=str(new_user_data['region']).lower())
+                                    if region.exists():
+                                        region_data = {
+                                            "region" : region.first().pk,
+                                            "manager" : new_user.pk
+                                        }
+                                        region_manager_serializer = region_manager_Serializer(region_data)
+                                        if region_manager_serializer.is_valid():
+                                            region_manager_serializer.save()
+                                        else:
+                                            print(region_manager_serializer.errors)
+                                    else:
+                                        region_data = {
+                                            "region" : new_user_data['region']
+                                        }
+                                        region_serializer = regions_Serializer(data=region_data)
+                                        if region_serializer.is_valid():
+                                            new_region = region_serializer.create(region_serializer.validated_data)
+                                            region_data = {
+                                                "region" : new_region.pk,
+                                                "manager" : new_user.pk
+                                            }
+                                            region_manager_serializer = region_manager_Serializer(region_data)
+                                            if region_manager_serializer.is_valid():
+                                                region_manager_serializer.save()
+                                            else:
+                                                print(region_manager_serializer.errors)
+                                        else:
+                                            print(region_manager_serializer.errors)
                             else:
                                 print(log_content_serializer.errors)
                             new_user = UserAccount.objects.filter(email__icontains=email).first()

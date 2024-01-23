@@ -2,7 +2,7 @@ import { API_URL } from '../../../../config'
 import axios from 'axios'
 import cookie from 'cookie'
 
-export default async (req, res ) => {
+export default async (req, res) => {
     if (req.method === "GET") {
         const cookies = cookie.parse(req.headers.cookie ?? '')
 
@@ -14,15 +14,15 @@ export default async (req, res ) => {
             })
         }
 
-        
+
         const config = {
             headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
 
-        const body = JSON.stringify({'token': access})
+        const body = JSON.stringify({ 'token': access })
 
         try {
             const apiResponse = await axios.post(
@@ -34,7 +34,7 @@ export default async (req, res ) => {
                 return res.status(200).json({
                     user: apiResponse?.data?.user
                 })
-            }else {
+            } else {
                 return res.status(apiResponse?.status).json({
                     error: "Failed to authenticate"
                 })
@@ -43,12 +43,12 @@ export default async (req, res ) => {
             return res.status(500).json({
                 error: "Something went wrong"
             })
-            
+
         }
     } else {
         res.setHeader('Allow', ['POST'])
         return res.status(405).json({
-            'error' : `Method ${req.method} not allowed.`
+            'error': `Method ${req.method} not allowed.`
         })
     }
 }

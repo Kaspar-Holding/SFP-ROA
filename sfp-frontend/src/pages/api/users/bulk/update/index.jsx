@@ -46,7 +46,6 @@ export default async (req, res) => {
         const writableStream = new WritableStream({
             write(chunk) {
                 // Process the received chunk of data
-                console.log(chunk);
                 // Send the chunk as a streaming response to the frontend
                 res.write(chunk);
             },

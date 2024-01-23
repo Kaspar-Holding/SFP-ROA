@@ -222,6 +222,17 @@ const SideBar = ({ appTitle, app }) => {
                             </li>
                             : <></>
                     }
+                    {
+                        app === "roa" && user?.is_superuser ?
+
+                            <li>
+                                <Link href={ `/apps/${app}/products` } className={ router.pathname === `/apps/${app}/products` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                    <i className='bi pe-none me-2 fa-solid fa-clipboard' />
+                                    Disclosure Products
+                                </Link>
+                            </li>
+                            : <></>
+                    }
                     <li>
                         <Link href="/" className={ router.pathname === `/apps/` ? "nav-link active" : "nav-link link-body-emphasis" }>
                             <i className='bi pe-none me-2 fa-solid fa-boxes-stacked' />
