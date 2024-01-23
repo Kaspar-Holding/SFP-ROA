@@ -532,7 +532,7 @@ class UsersList(APIView):
             sortBy = sortBy
         else:
             sortBy = f"-{sortBy}"
-        users = user_profile.objects.all().order_by(sortBy)
+        users = user_profile.objects.filter(~Q(user=None)).order_by(sortBy)
         if userType != "all":
             if userType == "admins":
                 users = user_profile.objects.all().filter(user__is_superuser=True).order_by(sortBy)
