@@ -342,13 +342,13 @@ const UsersList = () => {
                                                                             </div>
                                                                             :
                                                                             user?.is_superuser ? "Admin" :
-                                                                                user?.user_type === 0 ? "Admin" :
-                                                                                    user?.user_type === 1 ? "ARC" :
-                                                                                        user?.user_type === 2 ? "Gatekeeper" :
-                                                                                            user?.user_type === 3 ? "Manager" :
-                                                                                                user?.user_type === 4 ? "Manager" :
-                                                                                                    user?.user_type === 5 ? "BAC" :
-                                                                                                        user?.user_type === 6 ? "Advisor" : ""
+                                                                                Number(user?.user_type) === 0 ? "Admin" :
+                                                                                    Number(user?.user_type) === 1 ? "ARC" :
+                                                                                        Number(user?.user_type) === 2 ? "Gatekeeper" :
+                                                                                            Number(user?.user_type) === 3 ? "Manager" :
+                                                                                                Number(user?.user_type) === 4 ? "Manager" :
+                                                                                                    Number(user?.user_type) === 5 ? "BAC" :
+                                                                                                        Number(user?.user_type) === 6 ? "Advisor" : ""
                                                                         // : formatter.format(0)
                                                                     }
                                                                 </td>

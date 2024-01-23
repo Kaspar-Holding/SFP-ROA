@@ -1,5 +1,5 @@
-import DashboardLayout from '@/hocs/DashboardLayout'
-import Layout from '@/hocs/Layout'
+import DashboardLayout from '../../../../hocs/DashboardLayout'
+import Layout from '../../../../hocs/Layout'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
@@ -7,11 +7,11 @@ import Moment from 'moment'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
-import Loader from '@/hocs/Loader'
-import CompliancePagination from '@/modules/CompliancePagination'
-import AppLayout from '@/hocs/AppLayout'
-import InsightsLayout from '@/hocs/InsightsLayout'
-import { currencyFormatter, numberFormatter } from '@/modules/formatter'
+import Loader from '../../../../hocs/Loader'
+import CompliancePagination from '../../../../modules/CompliancePagination'
+import AppLayout from '../../../../hocs/AppLayout'
+import InsightsLayout from '../../../../hocs/InsightsLayout'
+import { currencyFormatter, numberFormatter } from '../../../../modules/formatter'
 // import FilterComponent from './Filters'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
@@ -20,9 +20,9 @@ const AdvisorsInsights = () => {
     // const Chart = dynamic(() => import('react-apexcharts'), {})
     const router = useRouter()
     const [Loaded, setLoaded] = useState(false)
-    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
-    const user = useSelector(state=>state.auth.user)
-	const [FilterType, setFilterType] = useState(2)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const user = useSelector(state => state.auth.user)
+    const [FilterType, setFilterType] = useState(2)
 
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
@@ -30,11 +30,11 @@ const AdvisorsInsights = () => {
     const [Month, setMonth] = useState(("0" + (Date_Var.getMonth() + 1)).slice(-2))
     const [Year, setYear] = useState(currentYear)
     const [MonthYear, setMonthYear] = useState(currentYear)
-    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
-    const [FromDate, setFromDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
-    const [ToDate, setToDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
+    const [FromDate, setFromDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
+    const [ToDate, setToDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
     const year = 2023
-    const years = Array.from(new Array(currentYear - year + 1),( val, index) => index + year)
+    const years = Array.from(new Array(currentYear - year + 1), (val, index) => index + year)
 
 
     const chart1Series = [
@@ -75,7 +75,7 @@ const AdvisorsInsights = () => {
             align: 'left'
         },
         legend: {
-            tooltipHoverFormatter: function(val, opts) {
+            tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
             }
         },
@@ -135,7 +135,7 @@ const AdvisorsInsights = () => {
         }
     ]
 
-    const mixSeries = (series_1_name, series_1_data, series_1_type, series_2_name, series_2_data, series_2_type, ) => [
+    const mixSeries = (series_1_name, series_1_data, series_1_type, series_2_name, series_2_data, series_2_type,) => [
         {
             name: series_1_name,
             data: series_1_data,
@@ -147,7 +147,7 @@ const AdvisorsInsights = () => {
             type: series_2_type,
         },
     ]
-    
+
     const mixOptions = (categories, title, y_title, y_title1) => ({
         chart: {
             height: 350,
@@ -171,24 +171,24 @@ const AdvisorsInsights = () => {
             title: {
                 text: y_title
             },
-          
-            }, 
-            {
-                opposite: true,
-                title: {
-                    text: y_title1,
-                    formatter: function (val) {
-                        return val + " %"
-                    }
+
+        },
+        {
+            opposite: true,
+            title: {
+                text: y_title1,
+                formatter: function (val) {
+                    return val + " %"
                 }
             }
+        }
         ],
         legend: {
             show: false
         }
-        
+
     })
-    
+
     const totalAdvisorsOptions = (categories, title, y_title, y_title1) => ({
         chart: {
             height: 350,
@@ -212,7 +212,7 @@ const AdvisorsInsights = () => {
             align: 'left'
         },
         legend: {
-            tooltipHoverFormatter: function(val, opts) {
+            tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
             }
         },
@@ -284,12 +284,12 @@ const AdvisorsInsights = () => {
         tooltip: {
             y: {
                 formatter: function (val) {
-                return "R " + val + " "
+                    return "R " + val + " "
                 }
             }
         }
     })
-    
+
     const totalRegionAdvisorsOptions = (categories, title) => ({
         chart: {
             height: 350,
@@ -313,7 +313,7 @@ const AdvisorsInsights = () => {
             align: 'left'
         },
         legend: {
-            tooltipHoverFormatter: function(val, opts) {
+            tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
             }
         },
@@ -333,8 +333,8 @@ const AdvisorsInsights = () => {
 
     const lineSeries = (data) => [
         {
-          name: "Trend of last 15 days",
-          data: data
+            name: "Trend of last 15 days",
+            data: data
         }
     ]
 
@@ -356,10 +356,10 @@ const AdvisorsInsights = () => {
         },
         colors: ['#77B6EA', '#545454'],
         dataLabels: {
-                enabled: true,
+            enabled: true,
         },
         stroke: {
-                curve: 'smooth'
+            curve: 'smooth'
         },
         grid: {
             borderColor: '#e7e7e7',
@@ -398,26 +398,26 @@ const AdvisorsInsights = () => {
             {
                 breakpoint: 480,
                 options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    show: false 
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        show: false
+                    }
                 }
-            }
-        }],
-        legend :{
+            }],
+        legend: {
             show: true,
             position: "bottom"
         }
-      
-      
+
+
     }
 
     const config = {
-        headers : {
-            'Content-Type' : 'application/json',
-            'Accept' : 'application/json',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
         }
     }
 
@@ -431,7 +431,7 @@ const AdvisorsInsights = () => {
     const [AdvisorsLumpSum, setAdvisorsLumpSum] = useState([])
     const [AdvisorsRecurring, setAdvisorsRecurring] = useState([])
 
-    const LoadData = async() => {
+    const LoadData = async () => {
         setLoaded(true)
         const Body = JSON.stringify()
 
@@ -441,7 +441,7 @@ const AdvisorsInsights = () => {
                 Body,
                 config
             )
-            
+
             setKPIs(response?.data?.data)
             // setAdvisorsTrend(response?.data?.data?.advisors_trend)
             // setRegionsLumpSum(response?.data?.data?.top_regions)
@@ -452,7 +452,7 @@ const AdvisorsInsights = () => {
             // setBusinessTypeAdvisorsTrend(response?.data?.data?.businessType_advisors_trend)
 
         } catch (error) {
-            
+
         }
         setLoaded(false)
     }
@@ -461,7 +461,7 @@ const AdvisorsInsights = () => {
         LoadData()
     }, [])
 
-    
+
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
     }
@@ -472,8 +472,8 @@ const AdvisorsInsights = () => {
 
     return (
         <Layout
-            title={"Insights"}
-            content={"Insights"}
+            title={ "Insights" }
+            content={ "Insights" }
         >
             <InsightsLayout>
                 <div className='container-fluid'>
@@ -501,60 +501,60 @@ const AdvisorsInsights = () => {
                     {
                         Loaded ?
                             <Loader />
-                        :
-                        <>
-                            <div className='row row-cols-5'>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_ROA_forms)}</h5>
-                                            <hr/>
-                                            <span>ROA Forms</span>
+                            :
+                            <>
+                                <div className='row row-cols-5'>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total_ROA_forms) }</h5>
+                                                <hr />
+                                                <span>ROA Forms</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total_reviews) }</h5>
+                                                <hr />
+                                                <span>Compliances Reviews</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total_approved) }</h5>
+                                                <hr />
+                                                <span>Compliances Approved</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total_not_approved) }</h5>
+                                                <hr />
+                                                <span>Compliances Resubmission</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total__partial_approved) }</h5>
+                                                <hr />
+                                                <span>Compliances Minor Approved</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
-                                            <hr/>
-                                            <span>Compliances Reviews</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_approved)}</h5>
-                                            <hr/>
-                                            <span>Compliances Approved</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total_not_approved)}</h5>
-                                            <hr/>
-                                            <span>Compliances Resubmission</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{numberFormatter('en-ZA',0).format(KPIs?.total__partial_approved)}</h5>
-                                            <hr/>
-                                            <span>Compliances Minor Approved</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                        </>
+                                <hr />
+                            </>
                     }
                 </div>
-                
+
             </InsightsLayout>
         </Layout>
     )

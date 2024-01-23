@@ -103,7 +103,7 @@ const AppPage = () => {
                                                             <h5 className="card-title text-center"><i className="fa-solid fa-check-double"></i></h5>
                                                             <br />
                                                             <p className="card-text text-center">
-                                                                <Link href="/apps/compliance" className="appLabel">Advisor Monitoring</Link>
+                                                                <Link href="/apps/compliance" className="appLabel">Advice Monitoring</Link>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -168,7 +168,7 @@ const AppPage = () => {
                                                     <h5 className="card-title text-center"><i className="fa-solid fa-g"></i><i className="fa-solid fa-q"></i></h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">Get Quote</a>
+                                                        <a href="#" className="appLabel">GetQuote</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -268,7 +268,7 @@ const AppPage = () => {
                                                     </h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">Seed</a>
+                                                        <a href="#" className="appLabel">Possibilites</a>
                                                     </p>
                                                 </div>
                                             </div>

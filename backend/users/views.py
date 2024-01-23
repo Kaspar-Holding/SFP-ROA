@@ -132,13 +132,17 @@ def getUserProfileInfo(request):
         # Get the current date and time in the 'Africa/Johannesburg' timezone
         now = datetime.now(pytz.timezone('Africa/Johannesburg'))
         # Get the appointment date from the user_profile_data dictionary
-        userData['inservice'] = user_profile_data['Appointment_Date']
-        appointment_date = user_profile_data['Appointment_Date']
+        userData['inservice'] = (user_profile_data['Appointment_Date'])
+        appointment_date = (user_profile_data['Appointment_Date'])
+        experience = now.year - appointment_date.year
+        experience = experience if experience != 0 else 1
         dofa = user_profile_data['DOFA']
+        industry_experience = now.year - dofa.year
+        industry_experience = industry_experience if industry_experience != 0 else 1
 
         # Calculate the difference in years
-        userData['experience'] = relativedelta(now, appointment_date).years if relativedelta(now, appointment_date).years != 0 else 1 
-        userData['industry_experience'] = relativedelta(now, dofa).years if relativedelta(now, dofa).years != 0 else 1 
+        userData['experience'] = experience
+        userData['industry_experience'] = industry_experience
         
     return Response({"profile" : userData}, 200)
 
@@ -240,32 +244,33 @@ class BulkUserUpload(APIView):
                     user_profile_data = {k: datetime.strptime(v, "%d-%m-%y").date() if ('Date' in k or 'DOFA' in k) else v for k, v in user_profile_data.items()}
                     user_profile_data = {k: datetime.strptime(v, "%d-%m-%y %H:%M") if ('Modified_On' in k or 'Created_On' in k) else v for k, v in user_profile_data.items()}
                     user = UserAccount.objects.filter(email__iexact=email)
-                    manager = user_profile_data['Manager']
-                    region = str(manager.split("-")[0]).strip()
-                    region = re.sub(r'[^A-Za-z0-9 ]+', '', region)
-                    region_data = regions.objects.filter(region=region)
-                    if region_data.exists():
-                        region_data = region_data.first()
-                        user_profile_data['region'] = region_data.pk
-                    else:
-                        data = {
-                            "region" : region
-                        }
-                        region_serializer = regions_Serializer(data=data)
-                        if region_serializer.is_valid():
-                            region_data = region_serializer.create(region_serializer.validated_data)
+                    if "Manager" in user_profile_data:
+                        manager = user_profile_data['Manager']
+                        region = str(manager.split("-")[0]).strip()
+                        region = re.sub(r'[^A-Za-z0-9 ]+', '', region)
+                        region_data = regions.objects.filter(region=region)
+                        if region_data.exists():
+                            region_data = region_data.first()
                             user_profile_data['region'] = region_data.pk
-                            logContent = {
-                                "account" : request.user.pk,
-                                "log" : log_id,
-                                "log_type" : 6,
-                                "log_description" : f"Region {region} didn't exist and added into database.",
-                            } 
-                            log_content_serializer = LogContentSerializer(data=logContent)
-                            if log_content_serializer.is_valid():
-                                log_content_serializer.create(log_content_serializer.validated_data)
-                            else:
-                                print(log_content_serializer.errors)
+                        else:
+                            data = {
+                                "region" : region
+                            }
+                            region_serializer = regions_Serializer(data=data)
+                            if region_serializer.is_valid():
+                                region_data = region_serializer.create(region_serializer.validated_data)
+                                user_profile_data['region'] = region_data.pk
+                                logContent = {
+                                    "account" : request.user.pk,
+                                    "log" : log_id,
+                                    "log_type" : 6,
+                                    "log_description" : f"Region {region} didn't exist and added into database.",
+                                } 
+                                log_content_serializer = LogContentSerializer(data=logContent)
+                                if log_content_serializer.is_valid():
+                                    log_content_serializer.create(log_content_serializer.validated_data)
+                                else:
+                                    print(log_content_serializer.errors)
                     update_log = ""
                     create_log = ""
                     not_existing_log = ""

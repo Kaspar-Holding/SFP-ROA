@@ -1,5 +1,5 @@
-import DashboardLayout from '@/hocs/DashboardLayout'
-import Layout from '@/hocs/Layout'
+import DashboardLayout from '../../../../hocs/DashboardLayout'
+import Layout from '../../../../hocs/Layout'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
@@ -7,11 +7,11 @@ import Moment from 'moment'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
-import Loader from '@/hocs/Loader'
-import CompliancePagination from '@/modules/CompliancePagination'
-import AppLayout from '@/hocs/AppLayout'
-import InsightsLayout from '@/hocs/InsightsLayout'
-import { currencyFormatter, numberFormatter } from '@/modules/formatter'
+import Loader from '../../../../hocs/Loader'
+import CompliancePagination from '../../../../modules/CompliancePagination'
+import AppLayout from '../../../../hocs/AppLayout'
+import InsightsLayout from '../../../../hocs/InsightsLayout'
+import { currencyFormatter, numberFormatter } from '../../../../modules/formatter'
 import FilterComponent from '../Filters'
 import Filters from './Filters'
 
@@ -21,10 +21,10 @@ const GatekeepingInsights = () => {
     // const Chart = dynamic(() => import('react-apexcharts'), {})
     const router = useRouter()
     const [Loaded, setLoaded] = useState(false)
-    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
-    const user = useSelector(state=>state.auth.user)
-	const [FilterType, setFilterType] = useState(2)
-	const [CustomFilterType, setCustomFilterType] = useState(1)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const user = useSelector(state => state.auth.user)
+    const [FilterType, setFilterType] = useState(2)
+    const [CustomFilterType, setCustomFilterType] = useState(1)
 
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
@@ -32,11 +32,11 @@ const GatekeepingInsights = () => {
     const [Month, setMonth] = useState(("0" + (Date_Var.getMonth() + 1)).slice(-2))
     const [Year, setYear] = useState(currentYear)
     const [MonthYear, setMonthYear] = useState(currentYear)
-    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
-    const [FromDate, setFromDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
-    const [ToDate, setToDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
+    const [FromDate, setFromDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
+    const [ToDate, setToDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
     const year = 2023
-    const years = Array.from(new Array(currentYear - year + 1),( val, index) => index + year)
+    const years = Array.from(new Array(currentYear - year + 1), (val, index) => index + year)
 
 
     const chart1Series = [
@@ -77,7 +77,7 @@ const GatekeepingInsights = () => {
             align: 'left'
         },
         legend: {
-            tooltipHoverFormatter: function(val, opts) {
+            tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
             }
         },
@@ -143,7 +143,7 @@ const GatekeepingInsights = () => {
         // }
     ]
 
-    const mixSeries = (series_1_name, series_1_data, series_1_type, series_2_name, series_2_data, series_2_type, ) => [
+    const mixSeries = (series_1_name, series_1_data, series_1_type, series_2_name, series_2_data, series_2_type,) => [
         {
             name: series_1_name,
             data: series_1_data,
@@ -155,7 +155,7 @@ const GatekeepingInsights = () => {
             type: series_2_type,
         },
     ]
-    
+
     const mixOptions = (categories, title, y_title, y_title1) => ({
         chart: {
             height: 350,
@@ -179,24 +179,24 @@ const GatekeepingInsights = () => {
             title: {
                 text: y_title
             },
-          
-            }, 
-            {
-                opposite: true,
-                title: {
-                    text: y_title1,
-                    formatter: function (val) {
-                        return val + " %"
-                    }
+
+        },
+        {
+            opposite: true,
+            title: {
+                text: y_title1,
+                formatter: function (val) {
+                    return val + " %"
                 }
             }
+        }
         ],
         legend: {
             show: false
         }
-        
+
     })
-    
+
     const totalGatekeepingOptions = (categories, title) => ({
         chart: {
             height: 350,
@@ -220,7 +220,7 @@ const GatekeepingInsights = () => {
             align: 'left'
         },
         legend: {
-            tooltipHoverFormatter: function(val, opts) {
+            tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
             }
         },
@@ -292,12 +292,12 @@ const GatekeepingInsights = () => {
         tooltip: {
             y: {
                 formatter: function (val) {
-                return "R " + val + " "
+                    return "R " + val + " "
                 }
             }
         }
     })
-    
+
     const totalRegionGatekeepingOptions = (categories, title) => ({
         chart: {
             height: 350,
@@ -321,7 +321,7 @@ const GatekeepingInsights = () => {
             align: 'left'
         },
         legend: {
-            tooltipHoverFormatter: function(val, opts) {
+            tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
             }
         },
@@ -341,8 +341,8 @@ const GatekeepingInsights = () => {
 
     const lineSeries = (data) => [
         {
-          name: "Trend of last 15 days",
-          data: data
+            name: "Trend of last 15 days",
+            data: data
         }
     ]
 
@@ -364,10 +364,10 @@ const GatekeepingInsights = () => {
         },
         colors: ['#77B6EA', '#545454'],
         dataLabels: {
-                enabled: true,
+            enabled: true,
         },
         stroke: {
-                curve: 'smooth'
+            curve: 'smooth'
         },
         grid: {
             borderColor: '#e7e7e7',
@@ -407,30 +407,30 @@ const GatekeepingInsights = () => {
             {
                 breakpoint: 480,
                 options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    show: false 
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        show: false
+                    }
                 }
-            }
-        }],
+            }],
         title: {
             text: title,
             fontFamily: "Open Sans",
             align: 'left'
         },
-        legend :{
+        legend: {
             show: true,
             position: "bottom"
         }
-      
-      
+
+
     })
     const config = {
-        headers : {
-            'Content-Type' : 'application/json',
-            'Accept' : 'application/json',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
         }
     }
 
@@ -443,17 +443,17 @@ const GatekeepingInsights = () => {
     const [BusinessTypeGatekeepingTrend, setBusinessTypeGatekeepingTrend] = useState([])
     // console.log(BusinessTypeGatekeepingTrend)
 
-    const LoadData = async(filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, gatekeeper, businessType) => {
+    const LoadData = async (filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, gatekeeper, businessType) => {
         setLoaded(true)
-        const Body = JSON.stringify({filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, gatekeeper, businessType})
-    
+        const Body = JSON.stringify({ filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, gatekeeper, businessType })
+
         try {
             const response = await axios.post(
                 '/api/insights/gatekeeping',
                 Body,
                 config
             )
-            
+
             setKPIs(response?.data?.data?.kpis)
             setGatekeepingTrend(response?.data?.data?.businessType_trend)
             setGatekeepingTrendList(response?.data?.data?.businessType_trend_list)
@@ -464,7 +464,7 @@ const GatekeepingInsights = () => {
             setBusinessTypeGatekeepingTrend(response?.data?.data?.date_businesstype_trend)
             setRejectionGatekeepingTrend(response?.data?.data?.businessType_rejection_trend)
         } catch (error) {
-            
+
         }
         setLoaded(false)
     }
@@ -493,9 +493,9 @@ const GatekeepingInsights = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            
+
         }
-    } 
+    }
     // Load Advisors
     const LoadGatekeepers = async () => {
         try {
@@ -512,9 +512,9 @@ const GatekeepingInsights = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            
+
         }
-    } 
+    }
 
     useEffect(() => {
         LoadData(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedGatekeepers, BusinessType)
@@ -522,7 +522,7 @@ const GatekeepingInsights = () => {
         LoadRegions()
     }, [])
 
-    
+
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
     }
@@ -533,164 +533,164 @@ const GatekeepingInsights = () => {
 
     return (
         <Layout
-            title={"Insights"}
-            content={"Insights"}
+            title={ "Insights" }
+            content={ "Insights" }
         >
             <InsightsLayout>
                 <div className='container-fluid'>
                     <Filters
-                        filterType={FilterType} 
-                        updateFilter={setFilterType} 
-                        Month={Month} 
-                        updateMonth={setMonth} 
-                        Year={Year} 
-                        updateYear={setYear} 
-                        MonthYear={MonthYear} 
-                        updateMonthYear={setMonthYear} 
-                        CurrentDate={CurrentDate} 
-                        updateCurrentDate={setCurrentDate} 
-                        FromDate={FromDate} 
-                        updateFromDate={setFromDate} 
-                        ToDate={ToDate} 
-                        updateToDate={setToDate} 
-                        years={years}
-                        loadData={LoadData}
-                        CustomFilterType={CustomFilterType}
-                        setCustomFilterType={setCustomFilterType}
-                        Regions={Regions}
-                        gatekeepers={Gatekeepers}
-                        SelectedRegions={SelectedRegions}
-                        SelectedGatekeepers={SelectedGatekeepers}
-                        setSelectedRegions={setSelectedRegions}
-                        setSelectedGatekeepers={setSelectedGatekeepers}
-                        BusinessType={BusinessType}
-                        setBusinessType={setBusinessType}
+                        filterType={ FilterType }
+                        updateFilter={ setFilterType }
+                        Month={ Month }
+                        updateMonth={ setMonth }
+                        Year={ Year }
+                        updateYear={ setYear }
+                        MonthYear={ MonthYear }
+                        updateMonthYear={ setMonthYear }
+                        CurrentDate={ CurrentDate }
+                        updateCurrentDate={ setCurrentDate }
+                        FromDate={ FromDate }
+                        updateFromDate={ setFromDate }
+                        ToDate={ ToDate }
+                        updateToDate={ setToDate }
+                        years={ years }
+                        loadData={ LoadData }
+                        CustomFilterType={ CustomFilterType }
+                        setCustomFilterType={ setCustomFilterType }
+                        Regions={ Regions }
+                        gatekeepers={ Gatekeepers }
+                        SelectedRegions={ SelectedRegions }
+                        SelectedGatekeepers={ SelectedGatekeepers }
+                        setSelectedRegions={ setSelectedRegions }
+                        setSelectedGatekeepers={ setSelectedGatekeepers }
+                        BusinessType={ BusinessType }
+                        setBusinessType={ setBusinessType }
                     />
                     {
                         Loaded ?
                             <Loader />
-                        :
-                        <>
-                            <div className='row row-cols-4'>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
-                                            <span className='scoreCard-title'>Total Reviews</span>
+                            :
+                            <>
+                                <div className='row row-cols-4'>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_reviews) }</h5>
+                                                <span className='scoreCard-title'>Total Reviews</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_approvals) }</h5>
+                                                <span className='scoreCard-title'>Total Approvals</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_denied) }</h5>
+                                                <span className='scoreCard-title'>Total Denied</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_partial_approvals) }</h5>
+                                                <span className='scoreCard-title'>Total Partial Approvals</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_approvals)}</h5>
-                                            <span className='scoreCard-title'>Total Approvals</span>
-                                        </div>
+                                <hr />
+                                <div className='row'>
+                                    <div className='col-lg-3 col-md-6 col-sm-12 bg-white py-2'>
+                                        {
+                                            (typeof window !== 'undefined') && <Chart options={ pieChartOptions("Type of Business", [GatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2)) } series={ [GatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2) } type="pie" width={ '100%' } />
+                                        }
                                     </div>
-                                </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_denied)}</h5>
-                                            <span className='scoreCard-title'>Total Denied</span>
-                                        </div>
+                                    <div className='col-lg-3 col-md-6 col-sm-12 bg-white py-2'>
+                                        {
+                                            (typeof window !== 'undefined') && <Chart options={ pieChartOptions("Reason for Rejection", [RejectionGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2)) } series={ [RejectionGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2) } type="pie" width={ '100%' } />
+                                        }
                                     </div>
-                                </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_partial_approvals)}</h5>
-                                            <span className='scoreCard-title'>Total Partial Approvals</span>
-                                        </div>
+                                    <div className='col-lg-6 col-md-6 col-sm-12 bg-white'>
+                                        {
+                                            (typeof window !== 'undefined') && <Chart options={ totalGatekeepingOptions([DatewiseGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2), "Gatekeeping Approval", "Reviews", "Approved at 1st Review") } series={ totalGatekeepingSeries("Reviews", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "First Approval", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[2]))).flat(2), "bar") } type="bar" height={ 350 } />
+                                        }
                                     </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div className='row'>
-                                <div className='col-lg-3 col-md-6 col-sm-12 bg-white py-2'>
+                                    {/* <div className='col-lg-3 col-md-6 col-sm-12 bg-white'>
                                     {
-                                        (typeof window !== 'undefined') && <Chart options={pieChartOptions("Reviews Trend", [GatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2))} series={[GatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2)} type="pie" width={'100%'} />
-                                    }
-                                </div>
-                                <div className='col-lg-3 col-md-6 col-sm-12 bg-white py-2'>
-                                    {
-                                        (typeof window !== 'undefined') && <Chart options={pieChartOptions("Rejection Trend", [RejectionGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2))} series={[RejectionGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2)} type="pie" width={'100%'} />
-                                    }
-                                </div>
-                                <div className='col-lg-6 col-md-6 col-sm-12 bg-white'>
-                                    {
-                                        (typeof window !== 'undefined') && <Chart options={totalGatekeepingOptions([DatewiseGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2),"Datewise Trend", "Reviews", "1st Approval")} series={totalGatekeepingSeries("Reviews",[DatewiseGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "First Approval",[DatewiseGatekeepingTrend].map(x => x.map(a => (a[2]))).flat(2), "bar")} type="bar" height={350} />
-                                    }
-                                </div>
-                                {/* <div className='col-lg-3 col-md-6 col-sm-12 bg-white'>
-                                    {
-                                        (typeof window !== 'undefined') && <Chart options={totalGatekeepingOptions([BusinessTypeGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2),"Business Type Trend", "Reviews", "1st Approval")} series={totalGatekeepingSeries("Reviews",[BusinessTypeGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "First Approval",[BusinessTypeGatekeepingTrend].map(x => x.map(a => (a[2]))).flat(2), "bar")} type="bar" height={350} />
+                                        (typeof window !== 'undefined') && <Chart options={totalGatekeepingOptions([BusinessTypeGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2),"Business Type Trend", "Reviews", "Approved at 1st Review")} series={totalGatekeepingSeries("Reviews",[BusinessTypeGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "First Approval",[BusinessTypeGatekeepingTrend].map(x => x.map(a => (a[2]))).flat(2), "bar")} type="bar" height={350} />
                                     }
                                 </div> */}
-                                {/* <div className='col-lg-5 col-md-6 col-sm-12 bg-white'>
+                                    {/* <div className='col-lg-5 col-md-6 col-sm-12 bg-white'>
                                     {
                                         (typeof window !== 'undefined') && <Chart options={mixOptions([BusinessTypeGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2),'Business Type based Trend', "Total Gatekeeping", "Percentage of Gatekeeping")} series={mixSeries("Total Gatekeeping", [BusinessTypeGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2), 'column', "Percentage of Gatekeeping", [BusinessTypeGatekeepingTrend].map(x => x.map(a => (a[2]))).flat(2), 'line')} type="line" height={350} />
                                     }
                                 </div> */}
-                            </div>
-                            <br/>
-                            <div className='row'>
-                                <div className='col-lg-6 col-md-6 col-sm-12 bg-white insight-gatekeeping-card py-1'>
-                                    <h5 class="app-dashboard-header">Reviews per Business Type</h5>
-                                    <table className="table mx-1">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Business Type</th>
-                                            <th scope="col">Total Reviews</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {
-                                                GatekeepingTrendList.map(
-                                                    (row, key) => {
-                                                        return(
-                                                            <tr key={key}>
-                                                                <th scope="row">{key+1}</th>
-                                                                <td>{row?.businessType}</td>
-                                                                <td>{numberFormatter('en-ZA',0).format(row?.reviews)}</td>
-                                                            </tr>
-                                                        )
-                                                    }
-                                                )
-                                            }
-                                        </tbody>
-                                    </table>
                                 </div>
-                                <div className='col-lg-6 col-md-6 col-sm-12 bg-white insight-gatekeeping-card py-1'>
-                                    <h5 class="app-dashboard-header">1st Approval per Business Type</h5>
-                                    <table className="table mx-1">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Business Type</th>
-                                            <th scope="col">1st Approval</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {
-                                                GatekeepingTrendList.map(
-                                                    (row, key) => {
-                                                        return(
-                                                            <tr key={key}>
-                                                                <th scope="row">{key+1}</th>
-                                                                <td>{row?.businessType}</td>
-                                                                <td>{numberFormatter('en-ZA',0).format(row?.rejected_reviews)}</td>
-                                                            </tr>
-                                                        )
-                                                    }
-                                                )
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                {/* <div className='col-lg-4 col-md-6 col-sm-12 bg-white insight-gatekeeping-card'>
+                                <br />
+                                <div className='row'>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white insight-gatekeeping-card py-1'>
+                                        <h5 class="app-dashboard-header">Reviews per Business Type</h5>
+                                        <table className="table mx-1">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Business Type</th>
+                                                    <th scope="col">Total Reviews</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    GatekeepingTrendList.map(
+                                                        (row, key) => {
+                                                            return (
+                                                                <tr key={ key }>
+                                                                    <th scope="row">{ key + 1 }</th>
+                                                                    <td>{ row?.businessType }</td>
+                                                                    <td>{ numberFormatter('en-ZA', 0).format(row?.reviews) }</td>
+                                                                </tr>
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white insight-gatekeeping-card py-1'>
+                                        <h5 class="app-dashboard-header">Approved at 1st Review per Business Type</h5>
+                                        <table className="table mx-1">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Business Type</th>
+                                                    <th scope="col">Approved at 1st Review</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    GatekeepingTrendList.map(
+                                                        (row, key) => {
+                                                            return (
+                                                                <tr key={ key }>
+                                                                    <th scope="row">{ key + 1 }</th>
+                                                                    <td>{ row?.businessType }</td>
+                                                                    <td>{ numberFormatter('en-ZA', 0).format(row?.rejected_reviews) }</td>
+                                                                </tr>
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    {/* <div className='col-lg-4 col-md-6 col-sm-12 bg-white insight-gatekeeping-card'>
                                     <h5 class="app-dashboard-header">Top 10 Advisors</h5>
                                     <table className="table mx-1">
                                         <thead>
@@ -719,13 +719,13 @@ const GatekeepingInsights = () => {
                                         </tbody>
                                     </table>
                                 </div> */}
-                            </div>
-                            <br/>
-                            <br/>
-                        </>
+                                </div>
+                                <br />
+                                <br />
+                            </>
                     }
                 </div>
-                
+
             </InsightsLayout>
         </Layout>
     )

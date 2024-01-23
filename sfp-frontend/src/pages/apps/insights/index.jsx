@@ -21,10 +21,10 @@ const Insights = () => {
     // const Chart = dynamic(() => import('react-apexcharts'), {})
     const router = useRouter()
     const [Loaded, setLoaded] = useState(false)
-    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
-    const user = useSelector(state=>state.auth.user)
-	const [FilterType, setFilterType] = useState(2)
-	const [CustomFilterType, setCustomFilterType] = useState(1)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const user = useSelector(state => state.auth.user)
+    const [FilterType, setFilterType] = useState(2)
+    const [CustomFilterType, setCustomFilterType] = useState(1)
 
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
@@ -32,11 +32,11 @@ const Insights = () => {
     const [Month, setMonth] = useState(("0" + (Date_Var.getMonth() + 1)).slice(-2))
     const [Year, setYear] = useState(currentYear)
     const [MonthYear, setMonthYear] = useState(currentYear)
-    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
-    const [FromDate, setFromDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
-    const [ToDate, setToDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
+    const [FromDate, setFromDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
+    const [ToDate, setToDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
     const year = 2023
-    const years = Array.from(new Array(currentYear - year + 1),( val, index) => index + year)
+    const years = Array.from(new Array(currentYear - year + 1), (val, index) => index + year)
     const [RegionsData, setRegionsData] = useState([])
     const [AdvisorsData, setAdvisorsData] = useState([])
 
@@ -64,9 +64,9 @@ const Insights = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            
+
         }
-    } 
+    }
     // Load Advisors
     const LoadAdvisors = async () => {
         try {
@@ -84,11 +84,11 @@ const Insights = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            
+
         }
-    } 
-    
-    
+    }
+
+
 
 
     const chart1Series = [
@@ -129,7 +129,7 @@ const Insights = () => {
             align: 'left'
         },
         legend: {
-            tooltipHoverFormatter: function(val, opts) {
+            tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
             }
         },
@@ -181,7 +181,7 @@ const Insights = () => {
         }
     ]
 
-    const mixSeries = (series_1_name, series_1_data, series_1_type, series_2_name, series_2_data, series_2_type, ) => [
+    const mixSeries = (series_1_name, series_1_data, series_1_type, series_2_name, series_2_data, series_2_type,) => [
         {
             name: series_1_name,
             data: series_1_data,
@@ -193,7 +193,7 @@ const Insights = () => {
             type: series_2_type,
         },
     ]
-    
+
     const mixOptions = (categories, title, y_title, y_title1) => ({
         chart: {
             height: 350,
@@ -217,24 +217,24 @@ const Insights = () => {
             title: {
                 text: y_title
             },
-          
-            }, 
-            {
-                opposite: true,
-                title: {
-                    text: y_title1,
-                    formatter: function (val) {
-                        return val + " %"
-                    }
+
+        },
+        {
+            opposite: true,
+            title: {
+                text: y_title1,
+                formatter: function (val) {
+                    return val + " %"
                 }
             }
+        }
         ],
         legend: {
             show: false
         }
-        
+
     })
-    
+
     const totalCommissionOptions = (categories, title) => ({
         chart: {
             height: 350,
@@ -258,7 +258,7 @@ const Insights = () => {
             align: 'left'
         },
         legend: {
-            tooltipHoverFormatter: function(val, opts) {
+            tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
             }
         },
@@ -330,12 +330,12 @@ const Insights = () => {
         tooltip: {
             y: {
                 formatter: function (val) {
-                return "R " + val + " "
+                    return "R " + val + " "
                 }
             }
         }
     })
-    
+
     const totalRegionCommissionOptions = (categories, title) => ({
         chart: {
             height: 350,
@@ -359,7 +359,7 @@ const Insights = () => {
             align: 'left'
         },
         legend: {
-            tooltipHoverFormatter: function(val, opts) {
+            tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
             }
         },
@@ -379,8 +379,8 @@ const Insights = () => {
 
     const lineSeries = (data) => [
         {
-          name: "Trend of last 15 days",
-          data: data
+            name: "Trend of last 15 days",
+            data: data
         }
     ]
 
@@ -402,10 +402,10 @@ const Insights = () => {
         },
         colors: ['#77B6EA', '#545454'],
         dataLabels: {
-                enabled: true,
+            enabled: true,
         },
         stroke: {
-                curve: 'smooth'
+            curve: 'smooth'
         },
         grid: {
             borderColor: '#e7e7e7',
@@ -444,26 +444,26 @@ const Insights = () => {
             {
                 breakpoint: 480,
                 options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    show: false 
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        show: false
+                    }
                 }
-            }
-        }],
-        legend :{
+            }],
+        legend: {
             show: true,
             position: "bottom"
         }
-      
-      
+
+
     }
 
     const config = {
-        headers : {
-            'Content-Type' : 'application/json',
-            'Accept' : 'application/json',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
         }
     }
 
@@ -472,16 +472,16 @@ const Insights = () => {
     const [RegionCommissionTrend, setRegionCommissionTrend] = useState([])
     const [BusinessTypeCommissionTrend, setBusinessTypeCommissionTrend] = useState([])
 
-    const LoadData = async(filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType) => {
+    const LoadData = async (filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType) => {
         setLoaded(true)
-        const Body = JSON.stringify({filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType})
+        const Body = JSON.stringify({ filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType })
         try {
             const response = await axios.post(
                 '/api/insights/commission',
                 Body,
                 config
             )
-            
+
             setKPIs(response?.data?.data)
             setCommissionTrend(response?.data?.data?.commission_trend)
             setRegionsData(response?.data?.data?.top_regions)
@@ -489,7 +489,7 @@ const Insights = () => {
             setRegionCommissionTrend(response?.data?.data?.region_commission_trend)
             setBusinessTypeCommissionTrend(response?.data?.data?.businessType_commission_trend)
         } catch (error) {
-            
+
         }
         setLoaded(false)
     }
@@ -500,7 +500,7 @@ const Insights = () => {
         LoadRegions()
     }, [])
 
-    
+
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
     }
@@ -511,162 +511,162 @@ const Insights = () => {
 
     return (
         <Layout
-            title={"Insights"}
-            content={"Insights"}
+            title={ "Insights" }
+            content={ "Insights" }
         >
             <InsightsLayout>
                 <div className='container-fluid'>
                     <Filters
-                        filterType={FilterType} 
-                        updateFilter={setFilterType} 
-                        Month={Month} 
-                        updateMonth={setMonth} 
-                        Year={Year} 
-                        updateYear={setYear} 
-                        MonthYear={MonthYear} 
-                        updateMonthYear={setMonthYear} 
-                        CurrentDate={CurrentDate} 
-                        updateCurrentDate={setCurrentDate} 
-                        FromDate={FromDate} 
-                        updateFromDate={setFromDate} 
-                        ToDate={ToDate} 
-                        updateToDate={setToDate} 
-                        years={years}
-                        loadData={LoadData}
-                        CustomFilterType={CustomFilterType}
-                        setCustomFilterType={setCustomFilterType}
-                        Regions={Regions}
-                        advisors={Advisors}
-                        SelectedRegions={SelectedRegions}
-                        SelectedAdvisors={SelectedAdvisors}
-                        setSelectedRegions={setSelectedRegions}
-                        setSelectedAdvisors={setSelectedAdvisors}
-                        BusinessType={BusinessType}
-                        setBusinessType={setBusinessType}
+                        filterType={ FilterType }
+                        updateFilter={ setFilterType }
+                        Month={ Month }
+                        updateMonth={ setMonth }
+                        Year={ Year }
+                        updateYear={ setYear }
+                        MonthYear={ MonthYear }
+                        updateMonthYear={ setMonthYear }
+                        CurrentDate={ CurrentDate }
+                        updateCurrentDate={ setCurrentDate }
+                        FromDate={ FromDate }
+                        updateFromDate={ setFromDate }
+                        ToDate={ ToDate }
+                        updateToDate={ setToDate }
+                        years={ years }
+                        loadData={ LoadData }
+                        CustomFilterType={ CustomFilterType }
+                        setCustomFilterType={ setCustomFilterType }
+                        Regions={ Regions }
+                        advisors={ Advisors }
+                        SelectedRegions={ SelectedRegions }
+                        SelectedAdvisors={ SelectedAdvisors }
+                        setSelectedRegions={ setSelectedRegions }
+                        setSelectedAdvisors={ setSelectedAdvisors }
+                        BusinessType={ BusinessType }
+                        setBusinessType={ setBusinessType }
                     />
                     {
                         Loaded ?
                             <Loader />
-                        :
-                        <>
-                            <div className='row row-cols-4'>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_reviews)}</h5>
-                                            <span className='scoreCard-title'>Total Reviews</span>
+                            :
+                            <>
+                                <div className='row row-cols-4'>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_reviews) }</h5>
+                                                <span className='scoreCard-title'>Total Reviews</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="scoreCard">{ currencyFormatter('en-ZA', 'ZAR').format(KPIs?.total_commission) }</h5>
+                                                <span className='scoreCard-title'>Total Commission</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_regions) }</h5>
+                                                <span className='scoreCard-title'>Total Regions</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col'>
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_advisors) }</h5>
+                                                <span className='scoreCard-title'>Total Advisors</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="scoreCard">{currencyFormatter('en-ZA','ZAR').format(KPIs?.total_commission)}</h5>
-                                            <span className='scoreCard-title'>Total Commission</span>
-                                        </div>
+                                <hr />
+                                <div className='row'>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
+                                        {
+                                            (typeof window !== 'undefined') && <Chart options={ totalCommissionOptions([CommissionTrend].map(x => x.map(a => (a[0]))).flat(2), "Commission Sum Trend") } series={ totalCommissionSeries("Commission", [CommissionTrend].map(x => x.map(a => (a[1]))).flat(2)) } type="line" height={ 350 } />
+                                        }
+                                    </div>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white'>
+                                        {
+                                            (typeof window !== 'undefined') && <Chart options={ columnChartOptions([RegionCommissionTrend].map(x => x.map(a => (a[0]))).flat(2), 'Region based Trend') } series={ totalCommissionSeries("Total Commission", [RegionCommissionTrend].map(x => x.map(a => (a[1]))).flat(2)) } type="bar" height={ 350 } />
+                                        }
+                                    </div>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white'>
+                                        {
+                                            (typeof window !== 'undefined') && <Chart options={ mixOptions([BusinessTypeCommissionTrend].map(x => x.map(a => (a[0]))).flat(2), 'Business Type based Trend', "Total Commission", "Percentage of Commission") } series={ mixSeries("Total Commission", [BusinessTypeCommissionTrend].map(x => x.map(a => (a[1]))).flat(2), 'column', "Percentage of Commission", [BusinessTypeCommissionTrend].map(x => x.map(a => (a[2]))).flat(2), 'line') } type="line" height={ 350 } />
+                                        }
                                     </div>
                                 </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_regions)}</h5>
-                                            <span className='scoreCard-title'>Total Regions</span>
-                                        </div>
+                                <br />
+                                <div className='row'>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white insight-commission-card'>
+                                        <h5 class="app-dashboard-header">Top Regions</h5>
+                                        <table className="table mx-1">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Region</th>
+                                                    <th scope="col">Commission</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    RegionsData.map(
+                                                        (row, key) => {
+                                                            return (
+                                                                <tr key={ key }>
+                                                                    <th scope="row">{ key + 1 }</th>
+                                                                    <td>{ row?.region }</td>
+                                                                    <td>{ currencyFormatter('en-ZA', 'ZAR').format(row?.commission) }</td>
+                                                                </tr>
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div className='col-lg-7 col-md-6 col-sm-12 bg-white insight-commission-card'>
+                                        <h5 class="app-dashboard-header">Top Advisors</h5>
+                                        <table className="table mx-1">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Commission</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    AdvisorsData.map(
+                                                        (row, key) => {
+                                                            return (
+                                                                <tr key={ key }>
+                                                                    <th scope="row">{ key + 1 }</th>
+                                                                    <td>{ row?.advisor }</td>
+                                                                    <td>{ row?.email }</td>
+                                                                    <td>{ currencyFormatter('en-ZA', 'ZAR').format(row?.commission) }</td>
+                                                                </tr>
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                                <div className='col'>
-                                    <div className="card text-center">
-                                        <div className="card-body">
-                                            <h5 className="scoreCard">{numberFormatter('en-ZA',0).format(KPIs?.total_advisors)}</h5>
-                                            <span className='scoreCard-title'>Total Advisors</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div className='row'>
-                                <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
-                                    {
-                                        (typeof window !== 'undefined') && <Chart options={totalCommissionOptions([CommissionTrend].map(x => x.map(a => (a[0]))).flat(2),"Commission Sum Trend")} series={totalCommissionSeries("Commission",[CommissionTrend].map(x => x.map(a => (a[1]))).flat(2))} type="line" height={350} />
-                                    }
-                                </div>
-                                <div className='col-lg-4 col-md-6 col-sm-12 bg-white'>
-                                    {
-                                        (typeof window !== 'undefined') && <Chart options={columnChartOptions([RegionCommissionTrend].map(x => x.map(a => (a[0]))).flat(2),'Region based Trend')} series={totalCommissionSeries("Total Commission", [RegionCommissionTrend].map(x => x.map(a => (a[1]))).flat(2))} type="bar" height={350} />
-                                    }
-                                </div>
-                                <div className='col-lg-4 col-md-6 col-sm-12 bg-white'>
-                                    {
-                                        (typeof window !== 'undefined') && <Chart options={mixOptions([BusinessTypeCommissionTrend].map(x => x.map(a => (a[0]))).flat(2),'Business Type based Trend', "Total Commission", "Percentage of Commission")} series={mixSeries("Total Commission", [BusinessTypeCommissionTrend].map(x => x.map(a => (a[1]))).flat(2), 'column', "Percentage of Commission", [BusinessTypeCommissionTrend].map(x => x.map(a => (a[2]))).flat(2), 'line')} type="line" height={350} />
-                                    }
-                                </div>
-                            </div>
-                            <br/>
-                            <div className='row'>
-                                <div className='col-lg-4 col-md-6 col-sm-12 bg-white insight-commission-card'>
-                                    <h5 class="app-dashboard-header">Top 5 Regions</h5>
-                                    <table className="table mx-1">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Region</th>
-                                            <th scope="col">Commission</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {
-                                                RegionsData.map(
-                                                    (row, key) => {
-                                                        return(
-                                                            <tr key={key}>
-                                                                <th scope="row">{key+1}</th>
-                                                                <td>{row?.region}</td>
-                                                                <td>{currencyFormatter('en-ZA','ZAR').format(row?.commission)}</td>
-                                                            </tr>
-                                                        )
-                                                    }
-                                                )
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                <div className='col-lg-7 col-md-6 col-sm-12 bg-white insight-commission-card'>
-                                    <h5 class="app-dashboard-header">Top 10 Advisors</h5>
-                                    <table className="table mx-1">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Commission</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>                                            
-                                            {
-                                                AdvisorsData.map(
-                                                    (row, key) => {
-                                                        return(
-                                                            <tr key={key}>
-                                                                <th scope="row">{key+1}</th>
-                                                                <td>{row?.advisor}</td>
-                                                                <td>{row?.email}</td>
-                                                                <td>{currencyFormatter('en-ZA','ZAR').format(row?.commission)}</td>
-                                                            </tr>
-                                                        )
-                                                    }
-                                                )
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <br/>
-                            <br/>
-                        </>
+                                <br />
+                                <br />
+                            </>
                     }
-                </div>  
-                
+                </div>
+
             </InsightsLayout>
         </Layout>
     )

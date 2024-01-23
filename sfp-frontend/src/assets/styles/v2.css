@@ -309,10 +309,28 @@ header {
     font-size: 12px;
 }
 
+.firstApproval {
+    background-color: green;
+    color: white;
+    border-color: green;
+}
+
+.partialApproval {
+    background-color: orange;
+    color: white;
+    border-color: orange;
+}
+
+.notApproval {
+    background-color: red;
+    color: white;
+    border-color: red;
+}
+
 .insight-investment-card {
     background-color: #ffffff;
     margin-top: 1%;
-    height: 40vh;
+    height: auto;
     width: 24%;
     margin-left: 1%;
     padding: 1%;

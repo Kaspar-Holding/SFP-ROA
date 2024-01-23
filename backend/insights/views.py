@@ -171,11 +171,14 @@ class commissionInsights(APIView):
             else:
                 commission = 0
                     # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-            if commission != 0:
-                region_commission_trend.append([region['region'], commission])
-                top_regions.append({"region": region['region'], "commission": commission})
-                regionsData.append(region['region'])
-        top_regions = sorted(top_regions, key=lambda d: d['commission'], reverse=True)[:5]
+            region_commission_trend.append([region['region'], int(commission)])
+            top_regions.append({"region": region['region'], "commission": int(commission)})
+            regionsData.append(region['region'])
+            # if commission != 0:
+            #     region_commission_trend.append([region['region'], int(commission)])
+            #     top_regions.append({"region": region['region'], "commission": int(commission)})
+            #     regionsData.append(region['region'])
+        top_regions = sorted(top_regions, key=lambda d: d['commission'], reverse=True)
         # Advisor wise Trend
         advisor_commission_trend = []
         available_advisors = UserAccount.objects.filter(userType=6).values()
@@ -198,7 +201,7 @@ class commissionInsights(APIView):
                     # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             if commission != 0:
                 top_advisors.append({"advisor": f"{advisor['first_name']} {advisor['last_name']}", "email": advisor['email'], "commission": commission})
-        top_advisors = sorted(top_advisors, key=lambda d: d['commission'], reverse=True)[:10]
+        top_advisors = sorted(top_advisors, key=lambda d: d['commission'], reverse=True)
         # Business Type wise Trend
         businessType_commission_trend = []
         business_total_commission = 0
@@ -208,7 +211,7 @@ class commissionInsights(APIView):
                 commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
             else:
                 commission = 0
-            business_total_commission += commission
+            business_total_commission += int(commission)
 
             # reviewIds = ComplianceDocument.objects.filter(businessType=i).values_list('id', flat=True)
             # commission = 0
@@ -249,11 +252,12 @@ class commissionInsights(APIView):
                 businessType = "Short Term Commercial"
             if i == 15:
                 businessType = "Short Term Personal"    
-            if commission != 0:
-                # businessType_commission_trend.append([businessType, commission, round(commission/total_commission*100,2)])
-                businessType_commission_trend.append([businessType, commission])
+            businessType_commission_trend.append([businessType, int(commission)])
+            # if commission != 0:
+            #     # businessType_commission_trend.append([businessType, commission, round(commission/total_commission*100)])
+            #     businessType_commission_trend.append([businessType, int(commission)])
         for row in businessType_commission_trend:
-            commission_percentage = round(row[1]/business_total_commission * 100,2)
+            commission_percentage = round(row[1]/business_total_commission * 100)
             row.append(commission_percentage)
         commissiondata = {
             "total_reviews" : total_reviews,
@@ -428,12 +432,15 @@ class investmentInsights(APIView):
                 lump_sum = 0
                 recurring = 0
                     # lump_sum_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "lump_sum": float(gk['lump_sum'].replace(',', '.'))})
-            if lump_sum != 0:
-                region_investment_trend.append([region['region'], lump_sum, recurring])
-                top_regions.append({"region": region['region'], "lump_sum": lump_sum, "recurring":recurring})
-                regionsData.append(region['region'])
-        top_regions_lump_sum = sorted(top_regions, key=lambda d: d['lump_sum'], reverse=True)[:5]
-        top_regions_recurring = sorted(top_regions, key=lambda d: d['recurring'], reverse=True)[:5]
+            region_investment_trend.append([region['region'], int(lump_sum), int(recurring)])
+            top_regions.append({"region": region['region'], "lump_sum": int(lump_sum), "recurring":int(recurring)})
+            regionsData.append(region['region'])
+            # if lump_sum != 0:
+            #     region_investment_trend.append([region['region'], lump_sum, recurring])
+            #     top_regions.append({"region": region['region'], "lump_sum": lump_sum, "recurring":recurring})
+            #     regionsData.append(region['region'])
+        top_regions_lump_sum = sorted(top_regions, key=lambda d: d['lump_sum'], reverse=True)
+        top_regions_recurring = sorted(top_regions, key=lambda d: d['recurring'], reverse=True)
         # Advisor wise Trend
         advisor_lump_sum_trend = []
         available_advisors = UserAccount.objects.filter(userType=6).values()
@@ -458,8 +465,8 @@ class investmentInsights(APIView):
                     # lump_sum_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "lump_sum": float(gk['lump_sum'].replace(',', '.'))})
             if lump_sum != 0:
                 top_advisors.append({"advisor": f"{advisor['first_name']} {advisor['last_name']}", "email": advisor['email'], "lump_sum": lump_sum, "recurring": recurring})
-        top_advisors_lump_sum = sorted(top_advisors, key=lambda d: d['lump_sum'], reverse=True)[:10]
-        top_advisors_recurring = sorted(top_advisors, key=lambda d: d['recurring'], reverse=True)[:10]
+        top_advisors_lump_sum = sorted(top_advisors, key=lambda d: d['lump_sum'], reverse=True)
+        top_advisors_recurring = sorted(top_advisors, key=lambda d: d['recurring'], reverse=True)
         # Business Type wise Trend
         businessType_investment_trend = []
         business_total_investment_lump_sum = 0
@@ -514,13 +521,14 @@ class investmentInsights(APIView):
                 businessType = "Short Term Commercial"
             if i == 15:
                 businessType = "Short Term Personal"    
-            if lump_sum != 0:
-                # businessType_investment_trend.append([businessType, lump_sum, round(lump_sum/total_investment_lump_sum*100,2)])
-                businessType_investment_trend.append([businessType, lump_sum, recurring])
+            businessType_investment_trend.append([businessType, int(lump_sum), int(recurring)])
+            # if lump_sum != 0:
+            #     # businessType_investment_trend.append([businessType, lump_sum, round(lump_sum/total_investment_lump_sum*100)])
+            #     businessType_investment_trend.append([businessType, lump_sum, recurring])
         # for row in businessType_investment_trend:
-        #     lump_sum_percentage = round(row[1]/business_total_investment_lump_sum * 100,2)
+        #     lump_sum_percentage = round(row[1]/business_total_investment_lump_sum * 100)
         #     row.append(lump_sum_percentage)
-        #     recurring_percentage = round(row[2]/business_total_investment_recurring * 100,2)
+        #     recurring_percentage = round(row[2]/business_total_investment_recurring * 100)
         #     row.append(recurring_percentage)
         lump_sumdata = {
             "total_reviews" : total_reviews,
@@ -932,7 +940,7 @@ class monitoringInsights(APIView):
             if review_first_approval != 0:
                 top_regions.append({"region": region['region'], "first_approval": review_first_approval})
         
-        top_regions = sorted(top_regions, key=lambda d: d['first_approval'], reverse=True)[:5]
+        top_regions = sorted(top_regions, key=lambda d: d['first_approval'], reverse=True)
         # Top 10 Advisors
         available_advisors = UserAccount.objects.filter(userType=6).values()
         top_advisors = []
@@ -960,7 +968,7 @@ class monitoringInsights(APIView):
             if review_first_approval != 0:
                 top_advisors.append({"advisor": f"{advisor['first_name']} {advisor['last_name']}", "email": advisor['email'], "first_approval": review_first_approval})
             
-        top_advisors = sorted(top_advisors, key=lambda d: d['first_approval'], reverse=True)[:10]
+        top_advisors = sorted(top_advisors, key=lambda d: d['first_approval'], reverse=True)
 
         monitoringData = {
             "kpis" : {
@@ -1093,10 +1101,10 @@ class gatekeeperInsights(APIView):
                 if rejected_reviews != 0:
                     businessType_rejection_trend.append([businessType, rejected_reviews, first_approval])
             for row in businessType_trend:
-                percentage = round(row[1]/business_total_reviews * 100,2) if business_total_reviews != 0 else 0
+                percentage = round(row[1]/business_total_reviews * 100) if business_total_reviews != 0 else 0
                 row.append(percentage)
             for row in businessType_rejection_trend:
-                percentage = round(row[1]/business_total_rejected_reviews * 100,2) if business_total_rejected_reviews != 0 else 0
+                percentage = round(row[1]/business_total_rejected_reviews * 100) if business_total_rejected_reviews != 0 else 0
                 row.append(percentage)
             businessType_trend_list = sorted(businessType_trend_list, key=lambda d: d["reviews"], reverse=True) 
             # Datewise Data
