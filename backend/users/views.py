@@ -592,12 +592,21 @@ class UserDetail(APIView):
             user['profile'] = user_profile_data.values().first()
             profile = user_profile_data.first()
             profile_list = user_profile._meta.get_fields()
-            user['profile_columns'] = [column.name for column in profile_list if column.name not in ["id", "user", "bac", "supervision", "categorisation","id_number", "initials", "full_name", "nick_name", "contact_number", "address_physical_1", "address_physical_2", "address_physical_3", "address_postal_code", ]]
+            user['profile_columns'] = [column.name for column in profile_list if column.name not in ["id", "user", "supervision", "categorisation","id_number", "initials", "full_name", "nick_name", "contact_number", "address_physical_1", "address_physical_2", "address_physical_3", "address_postal_code", ]]
             user['full_name'] = user['profile']['Full_Name']
-            user['profile']['region'] = profile.region.pk
-            # user['profile']['bac'] = user_profile.objects.filter(id=user['profile']['bac']).values().first()
+            user['profile']['region'] = profile.region.pk if profile.region else 0
+            user['profile']['bac'] = user_profile_data.first().bac.pk if user_profile_data.first().bac else 0
+            # print(user_profile_data.first().bac.pk)
         user['regions'] = regions.objects.all().values()
-
+        bacs = user_profile.objects.filter(user__userType=5).select_related('user')
+        bacs_data = []
+        for bac in bacs:
+            bacs_data.append({
+                "id": bac.user.pk,
+                "name": bac.Full_Name,
+                "email": bac.user.email,
+            })
+        user['bacs'] = bacs_data
         return Response({"user" : user}, 200)
     
     def put(self, request, pk):
@@ -606,6 +615,17 @@ class UserDetail(APIView):
         user = UserAccount.objects.filter(id=utils.decode_uid(pk))
         data = request.data
         if user.exists():
+            if "userType" in data:
+                updatedData = {
+                    "userType" : data['userType']
+                }
+                serializer = UserAccountsSerializers(instance=user.first(), data=updatedData, partial=True)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response({"message" : "User profile updated"}, 200)
+                else:
+                    print(serializer.errors)
+                    return Response({"message" : serializer.errors}, 400) 
             old_user_profile = user_profile.objects.filter(user=utils.decode_uid(pk))
             if old_user_profile.exists():
                 old_user_profile = old_user_profile.first()
@@ -667,7 +687,7 @@ class RegionsAPI(APIView):
             if manager.exists():
                 manager = manager.first()
                 manager_name = manager.manager.first_name
-                manager_name +=  manager_name + " " + manager.manager.last_name if manager.manager.last_name != "nan" else ""
+                manager_name +=  " " + manager.manager.last_name if manager.manager.last_name != "" else ""
             regions_data.append({
                 "id" : utils.encode_uid(region.pk),
                 "region" : region.region,

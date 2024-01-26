@@ -35,7 +35,8 @@ class FiduciaryAPIs(APIView):
         coverData = []
         
         return Response({
-            "fiduciary": serializer.data
+            "fiduciary": serializer.data,
+            "form_status": Disclosures.objects.get(id=pk).status,
         }, 200)
         
     def post(self, request, format=None):

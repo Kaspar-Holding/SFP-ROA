@@ -7,7 +7,7 @@ import datetime
 class ComplianceDocument(models.Model):   
     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     previous_user = models.IntegerField(default=0)
-    advisor = models.IntegerField(default=0)
+    advisor = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name="advisor")
     policy_number = models.CharField(max_length=256, unique=True)
     clientName = models.TextField( default="")
     IdNumber = models.TextField( default="")

@@ -69,6 +69,7 @@ class AssuranceRiskAPIs(APIView):
             "debit_otherData": debit_otherData,
             "keyp_otherData": keyP_otherData,
             "sureNLia_otherData": sureNLia_otherData,
+            "form_status": Disclosures.objects.get(id=pk).status,
         })
         
     def post(self, request, format=None):

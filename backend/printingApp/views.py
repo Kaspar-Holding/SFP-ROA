@@ -2664,10 +2664,16 @@ class disclosuresPDF(APIView):
             data['user']['inservice'] = user_profile_data['Appointment_Date'].strftime("%d %B %Y")
             appointment_date = user_profile_data['Appointment_Date']
             dofa = user_profile_data['DOFA']
+            appointment_date = (user_profile_data['Appointment_Date'])
+            experience = now.year - appointment_date.year
+            experience = experience if experience != 0 else 1
+            dofa = user_profile_data['DOFA']
+            industry_experience = now.year - dofa.year
+            industry_experience = industry_experience if industry_experience != 0 else 1
 
             # Calculate the difference in years
-            data['user']['experience'] = relativedelta(now, appointment_date).years if relativedelta(now, appointment_date).years != 0 else 1 
-            data['user']['industry_experience'] = relativedelta(now, dofa).years if relativedelta(now, dofa).years != 0 else 1 
+            data['user']['experience'] = experience
+            data['user']['industry_experience'] = industry_experience
         
         data['company'] = ""
         if 'sfp' in data['user']['email'] or 'succession' in data['user']['email']:
@@ -3064,7 +3070,7 @@ class printROA(APIView):
 
                 data['val2n']=val1+val2+val3+val4+val5+val6+val7+val8
                 data['val3n']=val6+val7+val8+val9+val10+val11
-                data['RF_Scores'] = RF_Scores.objects.filter(form=data['id']).values().first()
+                data['RF_Scores'] = RF_Scores.objects.filter(form=data['id'], advisorId=data['advisorId']).values().first()
                 CountryList =["", "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Aukland Islands", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bonaire (Sint Eustatius aand Saba)", "Bosnia and Herzegovina", "Botswana", "Bouvet Islands", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo (Democratic Republic)", "Congo (Republic)", "Cook Islands", "Costa Rica", "Côte D'Ivoire (Ivory Coast)", "Croatia", "Cuba", "Curacao", "Cyprus", "Czechia (Czech Republic)", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "eSwatini (Previously Swaziland)", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Holy See", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea ((North) Democratic People's Republic)", "Korea ((South) Republic)", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia (Former Yugoslavia)", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia (Federal States)", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norfolk Island", "Northern Mariana Islands", "Norway", "Nuie", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcaim", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Barthelemy", "Saint Helena, Ascension and Tristan da Cunha", "Saint Kitts and Nevis", "Saint Lucia", "Saint Martin (French part)", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten (Dutch Part)", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States Minor Outlying Islands", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (US)", "Wallis and Futuna", "West Bank and Gaza (Palestine)", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"]
                 Industry = ['','Administrative and support services','Adult Entertainment','Agriculture,forestry and fishing','Arts,Entertainment and Recreation','Broadcasting and Entertainment','Chemical engineering/manufacturing',
                 'Community and social activities','Construction and civil engineering','Consumer goods:wholesale and retail','Education','Electricity,solar,water,gas','Entrepreneurship','Estate living and family trusts','Extractive services,mining and quarrying','Financial and insurance','Gambling','Government services,armed and state owned enterprise','Health care and medical','Information technology,communication and telecom','Legal practitioner','Manufacturing','Motor wholesale,retail trade and repair','Non profit organization','Non government organization(NGO)','other','PFMA schedule 1','PFMA schedule 2','PFMA schedule 3A','Professional sport','Real estate and property services','Shell Banking','Transport storage,courier and freight','Travel,tourism and accomodation','Virtual currencies']
@@ -3206,7 +3212,7 @@ class printROA(APIView):
                 data['val4n'] = val4n 
             else:
                 if Form.objects.filter(formId = pk).exists():            
-                    data['RoA'] = Form.objects.filter(formId = pk).values().first()
+                    data['RoA'] = Form.objects.filter(formId = pk, advisorId=data['advisorId']).values().first()
                     if (
                         # data['RoA']['clientEmail'] == "" and 
                         data['RoA']['clientAddress'] == "" and 
@@ -3237,7 +3243,7 @@ class printROA(APIView):
                 Product_Taken = ["","Endowment","RA","TSFA","Unit Trust","Life Annuity","Living Annuity","Other"]
 
                 if RiskPlanning.objects.filter(formId = pk).exists():
-                    data['RP'] = RiskPlanning.objects.filter(formId = pk).values().first()
+                    data['RP'] = RiskPlanning.objects.filter(formId = pk, advisorId=data['advisorId']).values().first()
                     if (
                         data['RP']['RP_DC_LumpSumExistingProvisions'] == "" and
                         data['RP']['RP_DC_LumpSumExistingShortfallSurplus'] == "" and
@@ -3328,25 +3334,25 @@ class printROA(APIView):
                 else:
                     data['rp_status'] = False
                 if InvestmentPlanning.objects.filter(formId=pk).exists():
-                    data['IP'] = InvestmentPlanning.objects.filter(formId=pk).values().first()
+                    data['IP'] = InvestmentPlanning.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
                     if (
-                        data['IP']['IP_SourceOfIncome'] == 0 and
+                        data['IP']['IP_SourceOfIncome'] == 1 and
                         data['IP']['IP_OtherSourceOfIncome'] == "" and
                         data['IP']['IP_InvestmentTerm'] == "" and
                         data['IP']['IP_InvestmentTermDetails'] == "" and
-                        data['IP']['IP_Liquidity'] == 2 and
+                        data['IP']['IP_Liquidity'] == 0 and
                         data['IP']['IP_LiquidityDetails'] == "" and
-                        data['IP']['IP_Type'] == 2 and
+                        data['IP']['IP_Type'] == 0 and
                         data['IP']['IP_TypeDetails'] == "" and
-                        data['IP']['IP_PremiumType'] == 2 and
+                        data['IP']['IP_PremiumType'] == 0 and
                         data['IP']['IP_PremiumTypeDetails'] == "" and
-                        data['IP']['IP_IncomeRequired'] == 2 and
+                        data['IP']['IP_IncomeRequired'] == 0 and
                         data['IP']['IP_IncomeRequiredDetails'] == "" and
-                        data['IP']['IP_InvestmentStrategy'] == 2 and
+                        data['IP']['IP_InvestmentStrategy'] == 1 and
                         data['IP']['IP_InvestmentStrategyDetails'] == "" and
-                        data['IP']['IP_ReturnRequired'] == 2 and
+                        data['IP']['IP_ReturnRequired'] == 1 and
                         data['IP']['IP_ReturnRequiredDetails'] == "" and
-                        data['IP']['IP_RiskProfile'] == 2 and
+                        data['IP']['IP_RiskProfile'] == 1 and
                         data['IP']['IP_RiskProfileDetails'] == "" and
                         data['IP']['IP_RecommendationSummary'] == "" and
                         data['IP']['IP_AltS_1'] == "" and
@@ -3370,29 +3376,28 @@ class printROA(APIView):
                     data['ip_status'] = False
                 
                 if AssuranceRisk.objects.filter(formId=pk).exists():
-                    data['BA_Risk'] = AssuranceRisk.objects.filter(formId=pk).values().first()
+                    data['BA_Risk'] = AssuranceRisk.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
                     if (
                         data['BA_Risk']['AR_BusinessTradeName'] == "" and   
                         data['BA_Risk']['AR_BusinessRegisteredName'] == "" and   
                         data['BA_Risk']['AR_BusinessAuthorisedPersons'] == "" and   
-                        # data['BA_Risk']['AR_BusinessFinancialAdvisor'] == "" and   
                         data['BA_Risk']['AR_BusinessAddress'] == "" and   
                         data['BA_Risk']['AR_BusinessEmail'] == "" and   
                         data['BA_Risk']['AR_BusinessPhoneNumber'] == "" and   
                         data['BA_Risk']['AR_BusinessDate'] == "" and   
-                        data['BA_Risk']['AR_ComDisc_AuthorizedPerson'] == 2 and 
+                        data['BA_Risk']['AR_ComDisc_AuthorizedPerson'] == 0 and 
                         data['BA_Risk']['AR_ComDisc_AuthorizedPersonDetail'] == "" and   
-                        data['BA_Risk']['AR_ComDisc_Authority'] == 2 and 
+                        data['BA_Risk']['AR_ComDisc_Authority'] == 0 and 
                         data['BA_Risk']['AR_ComDisc_AuthorityDetail'] == "" and   
-                        data['BA_Risk']['AR_FICA'] == 2 and 
+                        data['BA_Risk']['AR_FICA'] == 0 and 
                         data['BA_Risk']['AR_FICADetail'] == "" and   
-                        data['BA_Risk']['AR_RepPrs_Taken'] == 2 and 
+                        data['BA_Risk']['AR_RepPrs_Taken'] == 0 and 
                         data['BA_Risk']['AR_RepPrs_TakenDetail'] == "" and   
-                        data['BA_Risk']['AR_RepPrs_Explained'] == 2 and 
+                        data['BA_Risk']['AR_RepPrs_Explained'] == 0 and 
                         data['BA_Risk']['AR_RepPrs_ExplainedDetail'] == "" and   
-                        data['BA_Risk']['AR_RepPrs_Cancelled'] == 2 and 
+                        data['BA_Risk']['AR_RepPrs_Cancelled'] == 0 and 
                         data['BA_Risk']['AR_RepPrs_CancelledDetail'] == "" and  
-                        data['BA_Risk']['AR_SourceOfFunds'] == 2 and 
+                        data['BA_Risk']['AR_SourceOfFunds'] == 0 and 
                         data['BA_Risk']['AR_SourceOfFundsDetail'] == "" and           
                         data['BA_Risk']['AR_ReplacementBackInfo'] == "" and   
                         data['BA_Risk']['AR_BusA_BnS'] == False and  
@@ -3404,10 +3409,6 @@ class printROA(APIView):
                         data['BA_Risk']['AR_BusA_FundingOfFutureExpenses'] == False and  
                         data['BA_Risk']['AR_BusA_FundingOfDeferredGratuities'] == False and  
                         data['BA_Risk']['AR_BusA_Details'] == "" and    
-                        # data['BA_Risk']['AR_BnS_DeathTotalNeed'] == "" and   
-                        # data['BA_Risk']['AR_BnS_DeathProvisions'] == "" and   
-                        # data['BA_Risk']['AR_BnS_DeathShortfallSurplus'] == "" and   
-                        # data['BA_Risk']['AR_BnS_DeathAssuranceInvestments'] == "" and   
                         data['BA_Risk']['AR_BnS_DiC_TotalNeed'] == "" and   
                         data['BA_Risk']['AR_BnS_DiC_ExistingProvisions'] == "" and   
                         data['BA_Risk']['AR_BnS_DiC_ExistingShortfallSurplus'] == "" and   
@@ -3439,11 +3440,7 @@ class printROA(APIView):
                         data['BA_Risk']['AR_KeyP_OtherExistingProvisions'] == "" and   
                         data['BA_Risk']['AR_KeyP_OtherExistingShortfallSurplus'] == "" and   
                         data['BA_Risk']['AR_KeyP_OtherInvestments'] == "" and                
-                        data['BA_Risk']['AR_KeyP_Comments'] == "" and       
-                        # data['BA_Risk']['AR_SureNLia_DeathTotalNeed'] == "" and   
-                        # data['BA_Risk']['AR_SureNLia_DeathProvisions'] == "" and   
-                        # data['BA_Risk']['AR_SureNLia_DeathShortfallSurplus'] == "" and   
-                        # data['BA_Risk']['AR_SureNLia_DeathAssuranceInvestments'] == "" and               
+                        data['BA_Risk']['AR_KeyP_Comments'] == "" and          
                         data['BA_Risk']['AR_SureNLia_DiC_TotalNeed'] == "" and   
                         data['BA_Risk']['AR_SureNLia_DiC_Provisions'] == "" and   
                         data['BA_Risk']['AR_SureNLia_DiC_ShortfallSurplus'] == "" and   
@@ -3531,11 +3528,11 @@ class printROA(APIView):
                 RiskProfile = ["" , "Ultra Conservative", "Conservative", "Cautious", "Moderate"] 
                 SourceOfFunds = ["", "Salary", "Savings", "Inheritence", "Resignation", "Retirement", "Other", ]
                 if AssuranceInvestment.objects.filter(formId=pk).exists():
-                    data['BA_Investment'] = AssuranceInvestment.objects.filter(formId=pk).values().first()
+                    data['BA_Investment'] = AssuranceInvestment.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
                     if (
                         data['BA_Investment']['AI_Term'] == "" and    
                         data['BA_Investment']['AI_TermDetails'] == "" and    
-                        data['BA_Investment']['AI_PremiumType'] == 2 and    
+                        data['BA_Investment']['AI_PremiumType'] == 0 and    
                         data['BA_Investment']['AI_PremiumTypeDetails'] == "" and       
                         data['BA_Investment']['AI_Strategy'] == 1 and    
                         data['BA_Investment']['AI_StrategyDetails'] == "" and    
@@ -3553,13 +3550,11 @@ class printROA(APIView):
                         data['BA_Investment']['AI_RA_ExistingInvestments'] == "" and    
                         data['BA_Investment']['AI_CR_TotalNeed'] == "" and    
                         data['BA_Investment']['AI_CR_ExistingProvisions'] == "" and    
-                        data['BA_Investment']['AI_CR_ExistingShortfallSurplus'] == "" and    
-                        # data['BA_Investment']['AI_CR_Investments'] == "" and    
+                        data['BA_Investment']['AI_CR_ExistingShortfallSurplus'] == "" and   
                         data['BA_Investment']['AI_Other'] == "" and    
                         data['BA_Investment']['AI_Other_TotalNeed'] == "" and    
                         data['BA_Investment']['AI_Other_ExistingProvisions'] == "" and    
                         data['BA_Investment']['AI_Other_ExistingShortfallSurplus'] == "" and    
-                        # data['BA_Investment']['AI_Other_Investments'] == "" and    
                         data['BA_Investment']['AI_FinancialSolutions'] == "" and    
                         data['BA_Investment']['AI_AltS_1'] == "" and    
                         data['BA_Investment']['AI_AltS_2'] == "" and    
@@ -3584,7 +3579,7 @@ class printROA(APIView):
                 else:
                     data['BA_Investment_status'] = False
                 if EmployeeBenefits.objects.filter(formId=pk).exists():
-                    data['EB'] = EmployeeBenefits.objects.filter(formId=pk).values().first()
+                    data['EB'] = EmployeeBenefits.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
                     if (
                         # data['EB']['EB_ClientAddress'] == "" and
                         # data['EB']['EB_ClientPhoneNumber'] == "" and
@@ -3600,7 +3595,7 @@ class printROA(APIView):
                         data['EB']['EB_BusinessCellNumber'] == "" and
                         data['EB']['EB_BusinessEmail'] == "" and
                         data['EB']['EB_BusinessNature'] == "" and
-                        data['EB']['EB_BusinessUnion'] == 2 and
+                        data['EB']['EB_BusinessUnion'] == 0 and
                         data['EB']['EB_BusinessDetails'] == "" and
                         data['EB']['EB_BusinessNumberOfEmployees'] == "" and
                         data['EB']['EB_BusinessNumberOfEligibleEmployees'] == "" and
@@ -3612,17 +3607,17 @@ class printROA(APIView):
                         data['EB']['EB_BusEx_FundsFullyPaidMembers'] == "" and
                         data['EB']['EB_BusEx_FundsFullyReasonForChange'] == "" and
                         data['EB']['EB_BusB_CoverDetails'] == "" and
-                        data['EB']['EB_BusEmp_Retire_In5Years'] == 2 and
+                        data['EB']['EB_BusEmp_Retire_In5Years'] == 0 and
                         data['EB']['EB_BusEmp_Retire_In5YearsPercentage'] == "" and
-                        data['EB']['EB_BusEmp_Fin_Illiterate'] == 2 and
+                        data['EB']['EB_BusEmp_Fin_Illiterate'] == 0 and
                         data['EB']['EB_BusEmp_Fin_IlliteratePercentage'] == "" and
-                        data['EB']['EB_BusEmp_Fin_Sophisticated'] == 2 and
+                        data['EB']['EB_BusEmp_Fin_Sophisticated'] == 0 and
                         data['EB']['EB_BusEmp_Fin_SophisticatedPercentage'] == "" and
-                        data['EB']['EB_BusHS_TurnOver'] == 2 and
+                        data['EB']['EB_BusHS_TurnOver'] == 0 and
                         data['EB']['EB_BusHS_TurnOverPercentage'] == "" and
-                        data['EB']['EB_BusI_Choice'] == 2 and
+                        data['EB']['EB_BusI_Choice'] == 0 and
                         data['EB']['EB_BusI_ChoicePercentage'] == "" and
-                        data['EB']['EB_BusinessItP'] == 2 and
+                        data['EB']['EB_BusinessItP'] == 0 and
                         data['EB']['EB_BusinessItP_Percentage'] == "" and
                         data['EB']['EB_BusEmp_AdditionalComments'] == "" and
                         data['EB']['EB_BusRB_Category1'] == "" and
@@ -3642,17 +3637,17 @@ class printROA(APIView):
                         data['EB']['EB_BusRB_NormRetire_AgeCategory3'] == "" and
                         data['EB']['EB_BusRB_NormRetire_AgeCategory4'] == "" and
                         data['EB']['EB_BusRB_FlexibleGroupLife'] == "" and
-                        data['EB']['EB_BusRB_Approved'] == 2 and
+                        data['EB']['EB_BusRB_Approved'] == 0 and
                         data['EB']['EB_BusRB_ApprovedCategory1'] == "" and
                         data['EB']['EB_BusRB_ApprovedCategory2'] == "" and
                         data['EB']['EB_BusRB_ApprovedCategory3'] == "" and
                         data['EB']['EB_BusRB_ApprovedCategory4'] == "" and
-                        data['EB']['EB_BusRB_UnApproved'] == 2 and
+                        data['EB']['EB_BusRB_UnApproved'] == 0 and
                         data['EB']['EB_BusRB_UnApprovedCategory1'] == "" and
                         data['EB']['EB_BusRB_UnApprovedCategory2'] == "" and
                         data['EB']['EB_BusRB_UnApprovedCategory3'] == "" and
                         data['EB']['EB_BusRB_UnApprovedCategory4'] == "" and
-                        data['EB']['EB_BusinessRiskFundTakeOver'] == 2 and
+                        data['EB']['EB_BusinessRiskFundTakeOver'] == 0 and
                         data['EB']['EB_BusRB_SpouseLC_Category1'] == "" and
                         data['EB']['EB_BusRB_SpouseLC_Category2'] == "" and
                         data['EB']['EB_BusRB_SpouseLC_Category3'] == "" and
@@ -3666,20 +3661,20 @@ class printROA(APIView):
                         data['EB']['EB_BusRB_FB_CoverCategory2'] == "" and
                         data['EB']['EB_BusRB_FB_CoverCategory3'] == "" and
                         data['EB']['EB_BusRB_FB_CoverCategory4'] == "" and
-                        data['EB']['EB_BusRB_CapDisBen_Approved'] == 2 and
+                        data['EB']['EB_BusRB_CapDisBen_Approved'] == 0 and
                         data['EB']['EB_BusRB_CapDisBen_ApprovedCategory1'] == "" and
                         data['EB']['EB_BusRB_CapDisBen_ApprovedCategory2'] == "" and
                         data['EB']['EB_BusRB_CapDisBen_ApprovedCategory3'] == "" and
                         data['EB']['EB_BusRB_CapDisBen_ApprovedCategory4'] == "" and
-                        data['EB']['EB_BusRB_CapDisBen_UnApproved'] == 2 and
+                        data['EB']['EB_BusRB_CapDisBen_UnApproved'] == 0 and
                         data['EB']['EB_BusRB_CapDisBen_UnApprovedCategory1'] == "" and
                         data['EB']['EB_BusRB_CapDisBen_UnApprovedCategory2'] == "" and
                         data['EB']['EB_BusRB_CapDisBen_UnApprovedCategory3'] == "" and
                         data['EB']['EB_BusRB_CapDisBen_UnApprovedCategory4'] == "" and
-                        (data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] == "0" or data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] == "") and
-                        (data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] == "0" or data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] == "") and
-                        (data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] == "0" or data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] == "") and
-                        (data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] == "0" or data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] == "") and
+                        data['EB']['EB_BusRB_DiIBenWaitPer_Category1'] == 0 and
+                        data['EB']['EB_BusRB_DiIBenWaitPer_Category2'] == 0 and
+                        data['EB']['EB_BusRB_DiIBenWaitPer_Category3'] == 0 and
+                        data['EB']['EB_BusRB_DiIBenWaitPer_Category4'] == 0 and
                         data['EB']['EB_BusRB_ConvOp'] == "" and
                         data['EB']['EB_BusRB_GrowthRates'] == "" and
                         data['EB']['EB_BusRB_DisabilityBenefitsNotes'] == "" and
@@ -3696,13 +3691,13 @@ class printROA(APIView):
                         data['EB']['EB_BusRecom_ProductName'] == "" and
                         data['EB']['EB_BusRecom_FundType'] == "" and
                         data['EB']['EB_BusRecom_RecommendationFundType'] == "" and
-                        data['EB']['EB_BusRecom_Portfolio'] == 2 and
-                        data['EB']['EB_BusRecom_ClientAccepted'] == 2 and
+                        data['EB']['EB_BusRecom_Portfolio'] == 0 and
+                        data['EB']['EB_BusRecom_ClientAccepted'] == 0 and
                         data['EB']['EB_BusRecom_ClientRisks'] == "" and
                         data['EB']['EB_BusFReplace_Name'] == "" and
                         data['EB']['EB_BusFReplace_RegNo'] == "" and
                         data['EB']['EB_BusFReplace_Type'] == "" and
-                        data['EB']['EB_BusFReplace_Detail'] == 2 and
+                        data['EB']['EB_BusFReplace_Detail'] == 0 and
                         data['EB']['EB_BusFReplace_FeeChargesReplaced'] == "" and
                         data['EB']['EB_BusFReplace_FeeChargesExisting'] == "" and
                         data['EB']['EB_BusFReplace_TnC_Replaced'] == "" and
@@ -3769,9 +3764,9 @@ class printROA(APIView):
                 else:
                     data['EB_status'] = False
                 if Fiduciary.objects.filter(formId=pk).exists():
-                    data['Fiduciary'] = Fiduciary.objects.filter(formId=pk).values().first()
+                    data['Fiduciary'] = Fiduciary.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
                     if (
-                        data['Fiduciary']['fiduciaryWillInPlace'] == 2 and
+                        data['Fiduciary']['fiduciaryWillInPlace'] == 0 and
                         data['Fiduciary']['fiduciaryWillUpdationDate'] == "" and
                         data['Fiduciary']['fiduciaryWillKeepingPlace'] == "" and
                         data['Fiduciary']['fiduciaryExecutorDetails'] == "" and
@@ -3785,11 +3780,8 @@ class printROA(APIView):
                 else:
                     data['Fiduciary_status'] = False
                 if Medical.objects.filter(formId=pk).exists():
-                    data['MD'] = Medical.objects.filter(formId=pk).values().first()
+                    data['MD'] = Medical.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
                     if (
-                        data['MD']['MSA_ClientAddress'] == "" and
-                        data['MD']['MSA_ClientEmail'] == "" and
-                        data['MD']['MSA_ClientPhone'] == "" and
                         data['MD']['MSA_ClientDate'] == "" and
                         data['MD']['MSA_Name'] == "" and
                         data['MD']['MSA_MaritalStatus'] == "" and
@@ -3808,26 +3800,26 @@ class printROA(APIView):
                         data['MD']['MSA_PFromDate'] == "" and
                         data['MD']['MSA_PTODate'] == "" and
                         data['MD']['BackInfo'] == "" and        
-                        data['MD']['SNA_Needs1'] == 2 and
+                        data['MD']['SNA_Needs1'] == 1 and
                         data['MD']['SNA_Comments1'] == "" and
-                        data['MD']['SNA_Needs2'] == 2 and
+                        data['MD']['SNA_Needs2'] == 1 and
                         data['MD']['SNA_Comments2'] == "" and
-                        data['MD']['SNA_Needs3'] == 2 and
+                        data['MD']['SNA_Needs3'] == 1 and
                         data['MD']['SNA_Comments3'] == "" and
-                        data['MD']['SNA_Needs4'] == 2 and
+                        data['MD']['SNA_Needs4'] == 1 and
                         data['MD']['SNA_Comments4'] == "" and
-                        data['MD']['SNA_Needs5'] == 2 and
+                        data['MD']['SNA_Needs5'] == 1 and
                         data['MD']['SNA_Comments5'] == "" and
-                        data['MD']['SNA_Needs6'] == 2 and
+                        data['MD']['SNA_Needs6'] == 1 and
                         data['MD']['SNA_Comments6'] == "" and
-                        data['MD']['SNA_Needs7'] == 2 and
+                        data['MD']['SNA_Needs7'] == 1 and
                         data['MD']['SNA_Comments7'] == "" and
-                        data['MD']['SNA_Needs8'] == 2 and
+                        data['MD']['SNA_Needs8'] == 1 and
                         data['MD']['SNA_Comments8'] == "" and
-                        data['MD']['SNA_Needs9'] == 2 and
+                        data['MD']['SNA_Needs9'] == 1 and
                         data['MD']['SNA_Comments9'] == "" and
                         data['MD']['SNA_Other'] == "" and
-                        data['MD']['SNA_Needs10'] == 2 and
+                        data['MD']['SNA_Needs10'] == 1 and
                         data['MD']['SNA_Comments10'] == "" and        
                         data['MD']['CoMAB_Current1'] == "" and
                         data['MD']['CoMAB_Replaced1'] == "" and
@@ -3857,11 +3849,10 @@ class printROA(APIView):
                         data['MD']['SectionE_PMB'] == "" and
                         data['MD']['SectionF_NotAccepted'] == "" and
                         data['MD']['SectionF_Reasons'] == "" and
-                        data['MD']['SectionF_Consequences'] == 2 and
+                        data['MD']['SectionF_Consequences'] == 1 and
                         data['MD']['SectionF_Fee'] == "" and
                         data['MD']['SectionF_Comments'] == "" and
-                        data['MD']['SectionF_Date'] == "" and
-                        data['MD']['SectionF_ClientName'] == "" 
+                        data['MD']['SectionF_Date'] == ""
                     ):
                         data['MD_status'] = False
                     else:
@@ -3873,16 +3864,13 @@ class printROA(APIView):
                 else:
                     data['MD_status'] = False
                 if GapCover.objects.filter(formId=pk).exists():
-                    data['GP'] = GapCover.objects.filter(formId=pk).values().first()
+                    data['GP'] = GapCover.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
                     if (
-                        data['GP']['GP_ClientAddress'] == "" and
-                        data['GP']['GP_ClientEmail'] == "" and
-                        data['GP']['GP_ClientPhoneNumber'] == "" and
                         data['GP']['GP_ClientMedicalAidName'] == "" and
                         data['GP']['GP_ClientInceptionDate'] == "" and
                         data['GP']['GP_Date'] == "" and        
                         data['GP']['GP_Benefits'] == "" and
-                        data['GP']['GP_MedicalDependent'] == 2 and
+                        data['GP']['GP_MedicalDependent'] == 1 and
                         data['GP']['GP_MemberName1'] == "" and
                         data['GP']['GP_MemberRelationship1'] == "" and
                         data['GP']['GP_MemberAidPlan1'] == "" and
@@ -3931,12 +3919,12 @@ class printROA(APIView):
                         data['GP']['GP_NP_PreExist_P'] == "" and
                         data['GP']['GP_CP_Specific_P'] == "" and
                         data['GP']['GP_NP_Specific_P'] == "" and
-                        data['GP']['GP_Exclusions'] == 2 and
+                        data['GP']['GP_Exclusions'] == 1 and
                         data['GP']['GP_Other_Exclusions'] == "" and
                         data['GP']['GP_GeneralComments'] == "" and        
                         data['GP']['GP_FinanAdvisor_ProdRecomm'] == "" and
                         data['GP']['GP_FinanAdvisor_Reasons'] == "" and
-                        data['GP']['GP_FinanAdvisor_Consequences'] == 2 and
+                        data['GP']['GP_FinanAdvisor_Consequences'] == 1 and
                         data['GP']['GP_FinanAdvisor_FeeCommission'] == "" and
                         data['GP']['GP_FinanAdvisor_OtherComments'] == "" and
                         data['GP']['GP_FinanAdvisor_Date'] == ""
@@ -3951,7 +3939,7 @@ class printROA(APIView):
                     data['GP_status'] = False
                 
                 if ShortTermInsuranceCommerical.objects.filter(formId=pk).exists():
-                    data['STIC'] = ShortTermInsuranceCommerical.objects.filter(formId=pk).values().first()
+                    data['STIC'] = ShortTermInsuranceCommerical.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
                     stic_status1 = False
                     stic_status2 = False
                     stic_status3 = False
@@ -3985,14 +3973,9 @@ class printROA(APIView):
                         data['STIC']['STIC_Lower_Premium'] == 0 and
                         data['STIC']['STIC_Higher_Premium'] == 0 and
                         data['STIC']['STIC_Applicable_Option'] == "" and
-                        data['STIC']['STIC_General_Cancelled'] == 2 and
+                        data['STIC']['STIC_General_Cancelled'] == 0 and
                         data['STIC']['STIC_General_Cancelled_Detail'] == "" and
-                        # data['STIC']['STIC_General_LossType'] == "" and
-                        # data['STIC']['STIC_General_Year'] == "" and
-                        # data['STIC']['STIC_General_Amount'] == "" and
-                        # data['STIC']['STIC_General_History'] == "" and
-                        # data['STIC']['STIC_General_Insurer'] == "" and
-                        data['STIC']['STIC_Replacement_Advise'] == 2 and
+                        data['STIC']['STIC_Replacement_Advise'] == 0 and
                         data['STIC']['STIC_Replacement_Purpose'] == "" and
                         data['STIC']['STIC_Replacement_Reason'] == "" and
                         data['STIC']['STIC_Replacement_Suppliers'] == "" and
@@ -4327,131 +4310,16 @@ class printROA(APIView):
                         data['STIC']['STIC_ProdComp_RecommP_Excess44'] == "" and
                         data['STIC']['STIC_ProdComp_FeeNCharges'] == "" and
                         data['STIC']['STIC_ProdComp_Commission'] == "" and
-                        data['STIC']['STIC_ProdComp_TotalPremium'] == "" # and        
-                        # data['STIC']['STIC_Fire_Limit'] == "" and
-                        # data['STIC']['STIC_Fire_ItemNumber'] == "" and
-                        # data['STIC']['STIC_Fire_Premium'] == "" and
-                        # data['STIC']['STIC_Fire_PremNumber'] == "" and
-                        # data['STIC']['STIC_Buildings_Insured'] == "" and
-                        # data['STIC']['STIC_Rental_Insured'] == "" and
-                        # data['STIC']['STIC_Others_Insured'] == "" and
-                        # data['STIC']['STIC_Stocks_Insured'] == "" and
-                        # data['STIC']['STIC_Miscellaneous1_Insured'] == "" and
-                        # data['STIC']['STIC_Miscellaneous2_Insured'] == "" and
-                        # data['STIC']['STIC_Earthquake_Insured'] == 2 and
-                        # data['STIC']['STIC_Malicious_Damage_Insured'] == 2 and
-                        # data['STIC']['STIC_Special_Insured'] == 2 and
-                        # data['STIC']['STIC_LeakFull_Insured'] == 2 and
-                        # data['STIC']['STIC_LeakFirst_Insured'] == 2 and
-                        # data['STIC']['STIC_SnLLimited_Insured'] == 2 and
-                        # data['STIC']['STIC_SnLComprehensive_Insured'] == 2 and
-                        # data['STIC']['STIC_RnS_Insured'] == 2 and
-                        # data['STIC']['STIC_SDC_Insured'] == 2 and
-                        # data['STIC']['STIC_BuildCombined_Limit'] == "" and
-                        # data['STIC']['STIC_BuildCombined_ItemNumber'] == "" and
-                        # data['STIC']['STIC_BuildCombined_Premium'] == "" and
-                        # data['STIC']['STIC_BuildCombined_PremNumber'] == "" and
-                        # data['STIC']['STIC_BuildCombined_ColumnRef'] == "" and
-                        # data['STIC']['STIC_BuildCombined_Sum'] == "" and
-                        # data['STIC']['STIC_BuildCombined_Construct'] == 2 and
-                        # data['STIC']['STIC_BuildCombined_Desc'] == "" and
-                        # int(data['STIC']['STIC_Extensions_RnS']) == 2 and
-                        # int(data['STIC']['STIC_Extensions_Geysers']) == 2 and
-                        # int(data['STIC']['STIC_Extensions_SnL']) == 2 and
-                        # int(data['STIC']['STIC_Extensions_PoA']) == 2 and
-                        # int(data['STIC']['STIC_Extensions_IorE']) == 2 and
-                        # data['STIC']['STIC_OC_Limit'] == "" and
-                        # data['STIC']['STIC_OC_ItemNumber'] == "" and
-                        # data['STIC']['STIC_OC_Premium'] == "" and
-                        # data['STIC']['STIC_OC_PremNumber'] == "" and
-                        # data['STIC']['STIC_OC_PremisesNum'] == "" and
-                        # data['STIC']['STIC_OC_Sum'] == "" and
-                        # data['STIC']['STIC_OC_Construct'] == 2 and
-                        # data['STIC']['STIC_OC_Desc'] == "" and
-                        # data['STIC']['STIC_OC_Doc_Sum'] == "" and
-                        # data['STIC']['STIC_OC_Doc_Premium'] == "" and
-                        # data['STIC']['STIC_OC_LLDoc_Sum'] == "" and
-                        # data['STIC']['STIC_OC_LLDoc_Premium'] == "" and
-                        # data['STIC']['STIC_OC_RnS_Sum'] == "" and
-                        # data['STIC']['STIC_OC_RnS_Premium'] == "" and
-                        # data['STIC']['STIC_OC_TheftF_Sum'] == "" and
-                        # data['STIC']['STIC_OC_TheftF_Premium'] == "" and
-                        # data['STIC']['STIC_OC_Theft_Sum'] == "" and
-                        # data['STIC']['STIC_OC_Theft_Premium'] == "" and
-                        # data['STIC']['STIC_OC_Total_Premium'] == "" and
-                        # data['STIC']['STIC_BusInt_Limit'] == "" and
-                        # data['STIC']['STIC_BusInt_Premium'] == "" 
+                        data['STIC']['STIC_ProdComp_TotalPremium'] == "" 
                     ) :
                         stic_status3 = True
                     else:
                         stic_status3 = False
                     if (
-                        
-                        # data['STIC']['STIC_Sec19_Limit'] == "" and
-                        # data['STIC']['STIC_Sec19_Premium'] == "" and
-                        # data['STIC']['STIC_Sec19_ItemNumber'] == "" and
-                        # data['STIC']['STIC_Sec19_PremNumber'] == "" and
-                        # data['STIC']['STIC_Sec19_Part1_1'] == "" and
-                        # data['STIC']['STIC_Sec19_Part1_2'] == "" and
-                        # data['STIC']['STIC_Sec19_Part1_3'] == "" and
-                        # data['STIC']['STIC_Sec19_Part1_4'] == "" and
-                        # data['STIC']['STIC_Sec19_Part1_5'] == "" and
-                        # data['STIC']['STIC_Sec19_Part1_6'] == "" and
-                        # data['STIC']['STIC_Sec19_Part1_7'] == "" and
-                        # data['STIC']['STIC_Sec19_Part1_8'] == "" and
-                        # data['STIC']['STIC_Sec19_Part1_9'] == "" and
-                        # data['STIC']['STIC_Sec19_Part2_1'] == "" and
-                        # data['STIC']['STIC_Sec19_Part2_2'] == "" and
-                        # data['STIC']['STIC_Sec19_Part2_3'] == "" and
-                        # data['STIC']['STIC_Sec19_Part2_4'] == "" and
-                        # data['STIC']['STIC_Sec19_Part2_5'] == "" and
-                        # data['STIC']['STIC_Sec19_Extension1'] == 2 and
-                        # data['STIC']['STIC_Sec19_Extension_Premium1'] == "" and
-                        # data['STIC']['STIC_Sec19_Extension2'] == 2 and
-                        # data['STIC']['STIC_Sec19_Extension_Premium2'] == "" and
-                        # data['STIC']['STIC_Sec19_RoD_1'] == "" and
-                        # data['STIC']['STIC_Sec19_RoD_2'] == "" and
-                        # data['STIC']['STIC_Sec19_RoD_3'] == "" and
-                        # data['STIC']['STIC_Sec19_RoD_4'] == "" and
-                        # data['STIC']['STIC_Sec19_RoD_5'] == "" and
-                        # data['STIC']['STIC_Sec19_AnnualPremium'] == "" and
-                        # data['STIC']['STIC_Sec19_Comments'] == "" and
-                        # data['STIC']['STIC_Sec20_Limit'] == "" and
-                        # data['STIC']['STIC_Sec20_Premium'] == "" and
-                        # data['STIC']['STIC_Sec20_ItemNumber'] == "" and
-                        # data['STIC']['STIC_Sec20_PremNumber'] == "" and
-                        # data['STIC']['STIC_Sec20_1'] == "" and
-                        # data['STIC']['STIC_Sec20_2'] == "" and
-                        # data['STIC']['STIC_Sec20_3'] == "" and
-                        # data['STIC']['STIC_Sec20_4'] == "" and
-                        # data['STIC']['STIC_Sec20_5'] == "" and
-                        # data['STIC']['STIC_Sec20_6'] == "" and
-                        # data['STIC']['STIC_Sec20_Extension1'] == 2 and
-                        # data['STIC']['STIC_Sec20_Extension_Premium1'] == "" and
-                        # data['STIC']['STIC_Sec20_Extension2'] == 2 and
-                        # data['STIC']['STIC_Sec20_Extension_Premium2'] == "" and
-                        # data['STIC']['STIC_Sec20_AnnualPremium'] == "" and
-                        # data['STIC']['STIC_Sec20_Comments'] == "" and
-                        # data['STIC']['STIC_Sec21_Limit'] == "" and
-                        # data['STIC']['STIC_Sec21_Premium'] == "" and
-                        # data['STIC']['STIC_Sec21_ItemNumber'] == "" and
-                        # data['STIC']['STIC_Sec21_PremNumber'] == "" and
-                        # data['STIC']['STIC_Sec21_1'] == "" and
-                        # data['STIC']['STIC_Sec21_2'] == "" and
-                        # data['STIC']['STIC_Sec21_3'] == "" and
-                        # data['STIC']['STIC_Sec21_4'] == "" and
-                        # data['STIC']['STIC_Sec21_5'] == "" and
-                        # data['STIC']['STIC_Sec21_6'] == "" and
-                        # data['STIC']['STIC_Sec21_Extension1'] == 2 and
-                        # data['STIC']['STIC_Sec21_Extension_Premium1'] == "" and
-                        # data['STIC']['STIC_Sec21_Extension2'] == 2 and
-                        # data['STIC']['STIC_Sec21_Extension_Premium2'] == "" and
-                        # data['STIC']['STIC_Sec21_AnnualPremium'] == "" and
-                        # data['STIC']['STIC_Sec21_Comments'] == "" and        
                         data['STIC']['STIC_SecD_1'] == "" and
                         data['STIC']['STIC_SecD_2'] == "" and
                         data['STIC']['STIC_SecD_3'] == "" and
-                        data['STIC']['STIC_SecD_4'] == 2 and
+                        data['STIC']['STIC_SecD_4'] == 1 and
                         data['STIC']['STIC_SecD_5'] == "" and
                         data['STIC']['STIC_SecD_6'] == "" and
                         data['STIC']['STIC_SecD_7'] == "" and
@@ -4541,217 +4409,213 @@ class printROA(APIView):
                         data["STIP"]['STIP_Policy_Number'] == "" and
                         data["STIP"]['STIP_Inception_Date'] == "" and
                         data["STIP"]['STIP_Applicant_Surname'] == "" and
-                        data["STIP"]['STIP_Applicant_Gender'] == 2 and
+                        data["STIP"]['STIP_Applicant_Gender'] == 0 and
                         data["STIP"]['STIP_Applicant_Initials'] == "" and
                         data["STIP"]['STIP_Applicant_Title'] == "" and
                         data["STIP"]['STIP_Applicant_DateofBirth'] == "" and
                         data["STIP"]['STIP_Applicant_Email'] == "" and
                         data["STIP"]['STIP_Applicant_ContactNumber'] == "" and
-                        data["STIP"]['STIP_General_Refused'] == 2 and
-                        data["STIP"]['STIP_General_Risks'] == 2 and
+                        data["STIP"]['STIP_General_Refused'] == 0 and
+                        data["STIP"]['STIP_General_Risks'] == 0 and
                         data["STIP"]['STIP_General_LastDate'] == "" and
                         data["STIP"]['STIP_General_InsurerName'] == "" and
-                        # data["STIP"]['STIP_General_TypeOfLoss'] == "" and
-                        # data["STIP"]['STIP_General_LossYear'] == "" and
-                        # data["STIP"]['STIP_General_LossAmount'] == "" and
-                        # data["STIP"]['STIP_General_LossInsurer'] == "" and        
                         data["STIP"]['STIP_CnRI_Existing_Company'] == "" and
                         data["STIP"]['STIP_CnRI_Replacement_Company'] == "" and
                         data["STIP"]['STIP_CnRI_Existing_Provider'] == "" and
                         data["STIP"]['STIP_CnRI_Replacement_Provider'] == "" and
                         data["STIP"]['STIP_CnRI_Existing_Product'] == "" and
                         data["STIP"]['STIP_CnRI_Replacement_Product'] == "" and            
-                        data["STIP"]['STIP_CnRI_1_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_1_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_1_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_1_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_1_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_1_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_1_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_1_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_1_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_2_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_2_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_2_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_2_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_2_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_2_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_2_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_2_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_2_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_3_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_3_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_3_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_3_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_3_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_3_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_3_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_3_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_3_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_4_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_4_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_4_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_4_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_4_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_4_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_4_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_4_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_4_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_4_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_4_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_4_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_4_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_4_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_4_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_4_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_4_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_4_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_5_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_5_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_5_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_5_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_5_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_5_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_5_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_5_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_5_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_6_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_6_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_6_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_6_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_6_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_6_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_6_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_6_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_6_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_7_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_7_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_7_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_7_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_7_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_7_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_7_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_7_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_7_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_8_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_8_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_8_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_8_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_8_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_8_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_8_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_8_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_8_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_9_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_9_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_9_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_9_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_9_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_9_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_9_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_9_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_9_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_10_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_10_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_10_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_10_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_10_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_10_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_10_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_10_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_10_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_11_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_11_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_11_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_11_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_11_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_11_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_11_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_11_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_11_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_12_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_12_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_12_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_12_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_12_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_12_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_12_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_12_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_12_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_13_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_13_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_13_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_13_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_13_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_13_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_13_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_13_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_13_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_14_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_14_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_14_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_14_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_14_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_14_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_14_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_14_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_14_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_15_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_15_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_15_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_15_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_15_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_15_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_15_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_15_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_15_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_16_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_16_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_16_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_16_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_16_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_16_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_16_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_16_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_16_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_17_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_17_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_17_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_17_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_17_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_17_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_17_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_17_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_17_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_18_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_18_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_18_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_18_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_18_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_18_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_18_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_18_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_18_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_19_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_19_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_19_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_19_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_19_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_19_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_19_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_19_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_19_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_20_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_20_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_20_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_20_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_20_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_20_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_20_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_20_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_20_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_21_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_21_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_21_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_21_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_21_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_21_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_21_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_21_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_21_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_22_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_22_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_22_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_22_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_22_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_22_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_22_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_22_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_22_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_23_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_23_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_23_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_23_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_23_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_23_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_23_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_23_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_23_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_24_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_24_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_24_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_24_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_24_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_24_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_24_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_24_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_24_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_25_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_25_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_25_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_25_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_25_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_25_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_25_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_25_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_25_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_26_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRI_26_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRI_26_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRI_26_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRI_26_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRI_26_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRI_26_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRI_26_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRI_26_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRI_27_Recomm'] == 2 and
-                        data["STIP"]['STIP_CnRI_27_Accepted'] == 2 and
+                        data["STIP"]['STIP_CnRI_27_Recomm'] == 1 and
+                        data["STIP"]['STIP_CnRI_27_Accepted'] == 1 and
                         data["STIP"]['STIP_CnRI_27_CoverAmount'] == "" and
                         data["STIP"]['STIP_CnRI_27_Premium1'] == "" and
                         data["STIP"]['STIP_CnRI_27_Premium2'] == "" and
@@ -4771,197 +4635,197 @@ class printROA(APIView):
                         data["STIP"]['STIP_CnRen_Replacement_Provider'] == "" and
                         data["STIP"]['STIP_CnRen_Existing_Product'] == "" and
                         data["STIP"]['STIP_CnRen_Replacement_Product'] == "" and        
-                        data["STIP"]['STIP_CnRen_1_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_1_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_1_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_1_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_1_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_1_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_1_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_1_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_1_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_2_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_2_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_2_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_2_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_2_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_2_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_2_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_2_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_2_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_3_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_3_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_3_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_3_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_3_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_3_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_3_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_3_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_3_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_4_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_4_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_4_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_4_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_4_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_4_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_4_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_4_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_4_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_4_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_4_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_4_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_4_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_4_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_4_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_4_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_4_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_4_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_5_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_5_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_5_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_5_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_5_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_5_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_5_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_5_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_5_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_6_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_6_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_6_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_6_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_6_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_6_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_6_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_6_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_6_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_7_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_7_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_7_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_7_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_7_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_7_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_7_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_7_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_7_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_8_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_8_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_8_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_8_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_8_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_8_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_8_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_8_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_8_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_9_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_9_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_9_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_9_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_9_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_9_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_9_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_9_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_9_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_10_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_10_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_10_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_10_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_10_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_10_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_10_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_10_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_10_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_11_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_11_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_11_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_11_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_11_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_11_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_11_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_11_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_11_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_12_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_12_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_12_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_12_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_12_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_12_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_12_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_12_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_12_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_13_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_13_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_13_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_13_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_13_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_13_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_13_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_13_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_13_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_14_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_14_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_14_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_14_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_14_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_14_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_14_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_14_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_14_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_15_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_15_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_15_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_15_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_15_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_15_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_15_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_15_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_15_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_16_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_16_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_16_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_16_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_16_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_16_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_16_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_16_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_16_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_17_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_17_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_17_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_17_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_17_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_17_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_17_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_17_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_17_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_18_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_18_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_18_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_18_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_18_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_18_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_18_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_18_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_18_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_19_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_19_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_19_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_19_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_19_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_19_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_19_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_19_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_19_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_20_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_20_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_20_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_20_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_20_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_20_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_20_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_20_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_20_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_21_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_21_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_21_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_21_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_21_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_21_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_21_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_21_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_21_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_22_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_22_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_22_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_22_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_22_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_22_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_22_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_22_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_22_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_23_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_23_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_23_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_23_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_23_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_23_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_23_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_23_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_23_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_24_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_24_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_24_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_24_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_24_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_24_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_24_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_24_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_24_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_25_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_25_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_25_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_25_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_25_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_25_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_25_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_25_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_25_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_26_Recomm'] == 2 and 
-                        data["STIP"]['STIP_CnRen_26_Accepted'] == 2 and 
+                        data["STIP"]['STIP_CnRen_26_Recomm'] == 1 and 
+                        data["STIP"]['STIP_CnRen_26_Accepted'] == 1 and 
                         data["STIP"]['STIP_CnRen_26_CoverAmount'] == "" and 
                         data["STIP"]['STIP_CnRen_26_Premium1'] == "" and 
                         data["STIP"]['STIP_CnRen_26_Premium2'] == "" and 
                         data["STIP"]['STIP_CnRen_26_Excess1'] == "" and 
                         data["STIP"]['STIP_CnRen_26_Excess2'] == "" and         
-                        data["STIP"]['STIP_CnRen_27_Recomm'] == 2 and
-                        data["STIP"]['STIP_CnRen_27_Accepted'] == 2 and
+                        data["STIP"]['STIP_CnRen_27_Recomm'] == 1 and
+                        data["STIP"]['STIP_CnRen_27_Accepted'] == 1 and
                         data["STIP"]['STIP_CnRen_27_CoverAmount'] == "" and
                         data["STIP"]['STIP_CnRen_27_Premium1'] == "" and
                         data["STIP"]['STIP_CnRen_27_Premium2'] == "" and
@@ -4975,174 +4839,15 @@ class printROA(APIView):
                     else:
                         stip_status2 = False
                     if (
-                        data["STIP"]['STIP_CnRI_AdviseGiven'] == 2 and
+                        data["STIP"]['STIP_CnRI_AdviseGiven'] == 1 and
                         data["STIP"]['STIP_CnRI_ReplacePurpose'] == "" and
                         data["STIP"]['STIP_CnRI_ReplaceReason'] == "" and
-                        data["STIP"]['STIP_CnRI_ReplaceSupplier'] == "" #and
-                        # data["STIP"]['STIP_HC_ResidentialArea'] == "" and
-                        # data["STIP"]['STIP_HC_StreetNumber'] == "" and
-                        # data["STIP"]['STIP_HC_PostalCode'] == "" and
-                        # data["STIP"]['STIP_HC_ResidenceType'] == "" and
-                        # data["STIP"]['STIP_HC_Flat_GroundLevel'] == 2 and
-                        # data["STIP"]['STIP_HC_WallConstruction'] == 2 and
-                        # data["STIP"]['STIP_HC_RoofConstruction'] == 2 and
-                        # data["STIP"]['STIP_HC_SM_BurglarBar'] == 2 and
-                        # data["STIP"]['STIP_HC_SM_SecurityGate'] == 2 and
-                        # data["STIP"]['STIP_HC_SM_AlarmSystem'] == 2 and
-                        # data["STIP"]['STIP_HC_SM_SecurityArea'] == 2 and
-                        # data["STIP"]['STIP_HC_NoClaimBonus'] == "" and
-                        # data["STIP"]['STIP_HC_SumInsured'] == "" and
-                        # data["STIP"]['STIP_HCEx_BusinessType'] == "" and
-                        # data["STIP"]['STIP_HCEx_InsuredAmount'] == "" and
-                        # int(data["STIP"]['STIP_HC_ADI_General1']) == 2 and
-                        # int(data["STIP"]['STIP_HC_ADI_General2']) == 2 and
-                        # int(data["STIP"]['STIP_HC_ADI_MechElecBreakdown']) == 2 and
-                        # int(data["STIP"]['STIP_HC_ADI_ElectronicalBreakdown']) == 2 and
-                        # int(data["STIP"]['STIP_HC_ADI_PowerSurgeCover1']) == 2 and
-                        # int(data["STIP"]['STIP_HC_ADI_PowerSurgeCover2']) == 2 and
-                        # int(data["STIP"]['STIP_HC_ADI_PowerSurgeCover3']) == 2 and
-                        # data["STIP"]['STIP_HC_Fee'] == "" and
-                        # data["STIP"]['STIP_HC_Commission'] == "" and
-                        # data["STIP"]['STIP_HC_TotalPremium'] == "" and
-                        # data["STIP"]['STIP_Build_ResidentialArea'] == "" and
-                        # data["STIP"]['STIP_Build_StreetNumber'] == "" and
-                        # data["STIP"]['STIP_Build_PostalCode'] == "" and
-                        # data["STIP"]['STIP_Build_ResidenceType'] == "" and
-                        # data["STIP"]['STIP_Build_Type'] == "" and
-                        # data["STIP"]['STIP_Build_Voluntary'] == 2 and
-                        # data["STIP"]['STIP_Build_SnL'] == 2 and
-                        # data["STIP"]['STIP_Build_ADI'] == 2 and
-                        # data["STIP"]['STIP_Build_WallConstruction'] == 2 and
-                        # data["STIP"]['STIP_Build_RoofConstruction'] == 2 and
-                        # data["STIP"]['STIP_Build_Fee'] == "" and
-                        # data["STIP"]['STIP_Build_Commission'] == "" and
-                        # data["STIP"]['STIP_Build_TotalPremium'] == "" and
-                        # data["STIP"]['STIP_Build_AdditionalAdvise'] == "" and
-                        # data["STIP"]['STIP_AddProp_ResidentialArea'] == "" and
-                        # data["STIP"]['STIP_AddProp_StreetNumber'] == "" and
-                        # data["STIP"]['STIP_AddProp_PostalCode'] == "" and
-                        # data["STIP"]['STIP_AddProp_ResidenceType'] == "" and
-                        # data["STIP"]['STIP_AddProp_Type'] == "" and
-                        # data["STIP"]['STIP_AddProp_Voluntary'] == 2 and
-                        # data["STIP"]['STIP_AddProp_SnL'] == 2 and
-                        # data["STIP"]['STIP_AddProp_ADI'] == 2 and
-                        # data["STIP"]['STIP_AddProp_WallConstruction'] == 2 and
-                        # data["STIP"]['STIP_AddProp_RoofConstruction'] == 2 and
-                        # data["STIP"]['STIP_AddProp_Fee'] == "" and
-                        # data["STIP"]['STIP_AddProp_Commission'] == "" and
-                        # data["STIP"]['STIP_AddProp_TotalPremium'] == "" and
-                        # data["STIP"]['STIP_AddProp_AdditionalAdvise'] == "" and
-                        # data["STIP"]['STIP_Vehicle_Owner'] == "" and
-                        # data["STIP"]['STIP_Vehicle_RegOwner'] == "" and
-                        # data["STIP"]['STIP_Vehicle_Usage'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_ONParkingOptions']) == 0 and
-                        # data["STIP"]['STIP_Vehicle_ONParking'] == "" and
-                        # data["STIP"]['STIP_Vehicle_ONOtherParking'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_CoverType']) == 0 and
-                        # int(data["STIP"]['STIP_Vehicle_SM1']) == 2 and
-                        # int(data["STIP"]['STIP_Vehicle_SM2']) == 2 and
-                        # int(data["STIP"]['STIP_Vehicle_SM3']) == 2 and
-                        # int(data["STIP"]['STIP_Vehicle_SM4']) == 2 and
-                        # data["STIP"]['STIP_Vehicle_Driver'] == "" and
-                        # data["STIP"]['STIP_Vehicle_DriverLicIssDate'] == "" and
-                        # data["STIP"]['STIP_Vehicle_LicCode'] == "" and
-                        # data["STIP"]['STIP_Vehicle_SumInsured'] == "" and
-                        # data["STIP"]['STIP_Vehicle_ClaimBonus'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_VoluntaryExcess']) == 2 and
-                        # int(data["STIP"]['STIP_Vehicle_Extras1']) == 2 and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount1'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras2'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount2'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras3'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount3'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras4'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount4'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras5'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount5'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras6'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount6'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras7'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount7'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras8'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount8'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras9'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount9'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras10'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount10'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras11'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount11'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras12'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount12'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_Extras13'] == 2) and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount13'] == "" and
-                        # data["STIP"]['STIP_Vehicle_Extras14'] == "" and
-                        # data["STIP"]['STIP_Vehicle_ExtrasAmount14'] == "" and
-                        # int(data["STIP"]['STIP_Vehicle_AC1']) == 2 and
-                        # int(data["STIP"]['STIP_Vehicle_AC2']) == 2 and
-                        # int(data["STIP"]['STIP_Vehicle_AC3']) == 2 and
-                        # int(data["STIP"]['STIP_Vehicle_AC4']) == 2 and
-                        # int(data["STIP"]['STIP_Vehicle_AC5']) == 2 and
-                        # data["STIP"]['STIP_Vehicle_Fees'] == "" and
-                        # data["STIP"]['STIP_Vehicle_Commission'] == "" and
-                        # data["STIP"]['STIP_Vehicle_TotalPremium'] == "" and
-                        # data["STIP"]['STIP_Vehicle_Comments'] == "" and        
-                        # data["STIP"]['STIP_MotorC_RegOwner'] == "" and
-                        # data["STIP"]['STIP_MotorC_Usage'] == "" and
-                        # int(data["STIP"]['STIP_MotorC_ONParkingOptions']) == 0 and
-                        # data["STIP"]['STIP_MotorC_ONParking'] == "" and
-                        # data["STIP"]['STIP_MotorC_ONOtherParking'] == "" and
-                        # int(data["STIP"]['STIP_MotorC_CoverType']) == 0 and
-                        # int(data["STIP"]['STIP_MotorC_Driver']) == 0 and
-                        # data["STIP"]['STIP_MotorC_Driver1'] == "" and
-                        # data["STIP"]['STIP_MotorC_DriverLicIssDate'] == "" and
-                        # data["STIP"]['STIP_MotorC_LicCode'] == "" and
-                        # data["STIP"]['STIP_MotorC_SumInsured'] == "" and
-                        # data["STIP"]['STIP_MotorC_ClaimBonus'] == "" and
-                        # data["STIP"]['STIP_MotorC_Fees'] == "" and
-                        # data["STIP"]['STIP_MotorC_Commission'] == "" and
-                        # data["STIP"]['STIP_MotorC_TotalPremium'] == "" and
-                        # data["STIP"]['STIP_MotorC_Comments'] == ""
+                        data["STIP"]['STIP_CnRI_ReplaceSupplier'] == "" 
                     ):
                         stip_status3 = True
                     else:
                         stip_status3 = False
                     if (
-                        # data["STIP"]['STIP_Trailer_RegOwner'] == "" and
-                        # data["STIP"]['STIP_Trailer_Type'] == "" and
-                        # data["STIP"]['STIP_Trailer_ONParkingOptions'] == 0 and
-                        # data["STIP"]['STIP_Trailer_ONOtherParking'] == "" and
-                        # data["STIP"]['STIP_Trailer_SumInsured'] == "" and
-                        # data["STIP"]['STIP_Trailer_ClaimBonus'] == "" and
-                        # data["STIP"]['STIP_Trailer_Fees'] == "" and
-                        # data["STIP"]['STIP_Trailer_Commission'] == "" and
-                        # data["STIP"]['STIP_Trailer_TotalPremium'] == "" and
-                        # data["STIP"]['STIP_Trailer_Comments'] == "" and
-                        # data["STIP"]['STIP_WaterC_RegOwner'] == "" and
-                        # data["STIP"]['STIP_WaterC_Type'] == "" and
-                        # data["STIP"]['STIP_WaterC_Hull'] == "" and
-                        # data["STIP"]['STIP_WaterC_SumInsured'] == "" and
-                        # data["STIP"]['STIP_WaterC_VIN'] == "" and
-                        # data["STIP"]['STIP_WaterC_EngineNumber'] == "" and
-                        # data["STIP"]['STIP_WaterC_OC_Glitter'] == "" and
-                        # data["STIP"]['STIP_WaterC_OC_SpecifiedAccessories'] == "" and
-                        # data["STIP"]['STIP_WaterC_OC_MotorType'] == "" and
-                        # data["STIP"]['STIP_WaterC_OC_Output'] == "" and
-                        # data["STIP"]['STIP_WaterC_Fees'] == "" and
-                        # data["STIP"]['STIP_WaterC_Commission'] == "" and
-                        # data["STIP"]['STIP_WaterC_TotalPremium'] == "" and
-                        # data["STIP"]['STIP_WaterC_Comments'] == "" and
-                        # data["STIP"]['STIP_PersonalLL_IndemnityLimit'] == 2 and
-                        # data["STIP"]['STIP_PersonalLL_IndemnityLimitDetail'] == "" and
-                        # data["STIP"]['STIP_PersonalLL_Fees'] == "" and
-                        # data["STIP"]['STIP_PersonalLL_Commission'] == "" and
-                        # data["STIP"]['STIP_PersonalLL_TotalPremium'] == "" and
-                        # data["STIP"]['STIP_PersonalLL_Comments'] == "" and
-                        # data["STIP"]['STIP_LegalA_IndemnityLimit'] == 2 and
-                        # data["STIP"]['STIP_LegalA_IndemnityLimitDetail'] == "" and
-                        # data["STIP"]['STIP_LegalA_Fees'] == "" and
-                        # data["STIP"]['STIP_LegalA_Commission'] == "" and
-                        # data["STIP"]['STIP_LegalA_TotalPremium'] == "" and
-                        # data["STIP"]['STIP_LegalA_Comments'] == "" and
                         data["STIP"]['STIP_ProductConsidered'] == "" and
                         data["STIP"]['STIP_ProductRecommended'] == "" and
                         data["STIP"]['STIP_ProductReasons'] == "" and
@@ -5154,6 +4859,7 @@ class printROA(APIView):
                         stip_status4 = True
                     else:
                         stip_status4 = False
+                    print("stip_status1",stip_status1,"stip_status2",stip_status2,"stip_status3",stip_status3,"stip_status4",stip_status4)
                     if stip_status1 == True and stip_status2 == True and stip_status3 == True and stip_status4 == True:
                         data['STIP_status'] = False
                     else:
@@ -5233,4 +4939,4 @@ class printROA(APIView):
                 f.write(response.rendered_content)
             return Response({"file":"static/pdf/%s.pdf"%(fileName)})
         else:
-            return Response({'message': "Does not exist"}, 404)
+            return Response({'message': "Does not exist"}, 200)

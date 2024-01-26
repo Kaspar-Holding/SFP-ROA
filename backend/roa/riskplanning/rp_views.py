@@ -54,6 +54,7 @@ class RiskPlanningAPIs(APIView):
             "dc_other": dc_otherData,
             "diC_other": diC_otherData,
             "drC_other": drC_otherData,
+            "form_status": Disclosures.objects.get(id=pk).status,
         })
         
     def post(self, request, format=None):

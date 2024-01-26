@@ -109,7 +109,10 @@ const EditROA = () => {
         return true
     }
 
-    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
+    const onChange = e => {
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
+    }
     // API Config
     const config = {
         headers: {
@@ -235,7 +238,8 @@ const EditROA = () => {
         } else {
 
             if (emailValidation()) {
-                updateROAForm(FormData)
+                FormStatus == 0 ? updateROAForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
             } else {
                 if (step != 0) {
                     setStep(0)
@@ -255,7 +259,7 @@ const EditROA = () => {
         }
     }
 
-
+    const [FormStatus, setFormStatus] = useState(0)
     const LoadData = async (formId) => {
 
         setLoaded(true)
@@ -269,6 +273,7 @@ const EditROA = () => {
                 config
             )
             setFormData(response?.data?.data?.roa_data)
+            setFormStatus(response?.data?.data?.form_status)
 
 
         } catch (error) {
@@ -359,7 +364,7 @@ const EditROA = () => {
                                                 </div>
                                                 <div className="col-lg-12 mb-3">
                                                     <label className="form-label compliance-inital-card-text">Client Address</label>
-                                                    <input spellCheck="true" required onKeyUp={ (e) => { onFieldBlur(e) } } id="clientAddress" name="clientAddress" value={ FormData?.clientAddress } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Address" aria-describedby="" />
+                                                    <input spellCheck="true" required onFieldBlur={ (e) => { onFieldBlur(e) } } id="clientAddress" name="clientAddress" value={ FormData?.clientAddress } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Address" aria-describedby="" />
                                                 </div>
                                                 <div className="col-lg-6 mb-3">
                                                     <label className="form-label compliance-inital-card-text">Client Email</label>
@@ -371,7 +376,7 @@ const EditROA = () => {
                                                 </div>
                                                 <div className="col-lg-6 mb-3">
                                                     <label className="form-label compliance-inital-card-text">Financial Advisor:</label>
-                                                    <input spellCheck="true" disabled value={ `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Name" aria-describedby="" />
+                                                    <input spellCheck="true" disabled value={ `${user?.full_name}` } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Name" aria-describedby="" />
                                                 </div>
                                                 <div className="col-lg-6 mb-3">
                                                     <label className="form-label compliance-inital-card-text">Date:</label>

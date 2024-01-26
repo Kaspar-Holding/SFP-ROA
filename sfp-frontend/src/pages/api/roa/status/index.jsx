@@ -1,4 +1,4 @@
-import { API_URL } from '../../../../../config'
+import { API_URL } from '../../../../config'
 import axios from 'axios'
 import cookie from 'cookie'
 
@@ -23,12 +23,9 @@ export default async (req, res) => {
             }
         }
 
-
-        const Body = JSON.stringify(req.body)
         try {
-            const apiResponse = await axios.post(
-                `${API_URL}/api/printing/client/pdf/${req?.body?.fId}/`,
-                Body,
+            const apiResponse = await axios.get(
+                `${API_URL}/api/roa/form/status/${req.body}/`,
                 config
             )
 
@@ -37,13 +34,12 @@ export default async (req, res) => {
                 return res.status(apiResponse.status).json(
                     {
                         success: "Successfully updated.",
-                        data: apiResponse?.data,
                     }
                 )
 
             } else {
                 return res.status(apiResponse?.status).json({
-                    error: error?.response?.data
+                    error: data
                 })
             }
 

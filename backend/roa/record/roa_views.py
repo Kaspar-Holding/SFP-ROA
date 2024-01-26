@@ -31,7 +31,10 @@ class FormAPIs(APIView):
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
         serializer = FormSerializers(snippet)
-        return Response({"roa_data":serializer.data})
+        return Response({
+            "roa_data":serializer.data,
+            "form_status": Disclosures.objects.get(id=pk).status,
+        })
 
     def post(self, request, format=None):
         requestData = request.data

@@ -64,7 +64,9 @@ const STPersonal = () => {
 
 
 
-    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
+    const onChange = e => {
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+    }
     // API Config
     const config = {
         headers: {
@@ -991,7 +993,7 @@ const STPersonal = () => {
     const compulsoryAEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
 
-
+    const [FormStatus, setFormStatus] = useState(0)
     const LoadData = async (formId) => {
 
         setLoaded(true)
@@ -1004,7 +1006,7 @@ const STPersonal = () => {
                 Body,
                 config
             )
-
+            setFormStatus(response?.data?.data?.form_status)
             setFormData(response?.data?.data?.st_personal)
             setLossType(response?.data?.data?.stip_loss)
             setSection_AddProp(response?.data?.data?.stip_sec_addprop)
@@ -1077,7 +1079,8 @@ const STPersonal = () => {
     }
 
     const onFieldBlur = (e) => {
-        updateSTIPData()
+        FormStatus == 0 ? updateSTIPData() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
     }
 
     useEffect(() => {

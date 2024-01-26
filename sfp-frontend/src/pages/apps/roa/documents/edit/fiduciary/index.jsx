@@ -26,7 +26,9 @@ const Fiduciary = () => {
 
 
 
-    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
+    const onChange = e => {
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+    }
     // API Config
     const config = {
         headers: {
@@ -59,7 +61,7 @@ const Fiduciary = () => {
 
     const compulsoryAEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
-
+    const [FormStatus, setFormStatus] = useState(0)
 
     const LoadData = async (formId) => {
 
@@ -74,6 +76,7 @@ const Fiduciary = () => {
                 config
             )
             setFormData(response?.data?.data?.fiduciary)
+            setFormStatus(response?.data?.data?.form_status)
 
         } catch (error) {
 
@@ -115,7 +118,8 @@ const Fiduciary = () => {
 
 
     const onFieldBlur = (e) => {
-        updateFiduciaryForm()
+        FormStatus == 0 ? updateFiduciaryForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
     }
 
     useEffect(() => {

@@ -94,6 +94,7 @@ class ShortTermInsurancePersonalAPIs(APIView):
             "stip_sec_trailer": stip_sec_trailer_data,
             "stip_sec_vehicle": stip_sec_vehicle_data,
             "stip_sec_waterc": stip_sec_waterc_data,
+            "form_status": Disclosures.objects.get(id=pk).status,
 
         }, 200)
         

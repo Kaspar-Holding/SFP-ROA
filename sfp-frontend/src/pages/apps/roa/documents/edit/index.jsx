@@ -317,7 +317,7 @@ const EditROA = () => {
                     appName={ 'ROA' }
                     app={ 'roa' }
                 >
-                    <div className='compliance-inital-card'>
+                    <div className='roa-edit-card'>
                         <div className='position-relative'>
                             <div className='position-absolute top-0 start-50 translate-middle'>
                                 <p className='compliance-inital-card-header'>Disclosure And Consent Document </p>

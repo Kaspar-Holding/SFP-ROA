@@ -946,10 +946,10 @@ class EmployeeBenefits(models.Model):
     EB_BusRB_CapDisBen_UnApprovedCategory3 = models.TextField( default="", blank=True)
     EB_BusRB_CapDisBen_UnApprovedCategory4 = models.TextField( default="", blank=True)
     
-    EB_BusRB_DiIBenWaitPer_Category1 = models.TextField( default="", blank=True)
-    EB_BusRB_DiIBenWaitPer_Category2 = models.TextField( default="", blank=True)
-    EB_BusRB_DiIBenWaitPer_Category3 = models.TextField( default="", blank=True)
-    EB_BusRB_DiIBenWaitPer_Category4 = models.TextField( default="", blank=True)
+    EB_BusRB_DiIBenWaitPer_Category1 = models.IntegerField( default=0, blank=True)
+    EB_BusRB_DiIBenWaitPer_Category2 = models.IntegerField( default=0, blank=True)
+    EB_BusRB_DiIBenWaitPer_Category3 = models.IntegerField( default=0, blank=True)
+    EB_BusRB_DiIBenWaitPer_Category4 = models.IntegerField( default=0, blank=True)
 
     EB_BusRB_ConvOp = models.TextField( default="", blank=True)
     EB_BusRB_GrowthRates = models.TextField( default="", blank=True)

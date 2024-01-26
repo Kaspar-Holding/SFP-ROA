@@ -64,7 +64,10 @@ const InvestPlanning = () => {
 
 
 
-    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
+    const onChange = e => {
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
+    }
     // API Config
     const config = {
         headers: {
@@ -210,7 +213,7 @@ const InvestPlanning = () => {
 
     const compulsoryAEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
-
+    const [FormStatus, setFormStatus] = useState(0)
     const LoadData = async (formId) => {
 
         setLoaded(true)
@@ -223,7 +226,7 @@ const InvestPlanning = () => {
                 Body,
                 config
             )
-            console.log(response?.data)
+            setFormStatus(response?.data?.data?.form_status)
 
 
             setFormData(response?.data?.data?.investmentPlanning)
@@ -272,7 +275,8 @@ const InvestPlanning = () => {
 
 
     const onFieldBlur = (e) => {
-        updateIPForm()
+        FormStatus == 0 ? updateIPForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
     }
 
     const [SicaVisibility, setSicaVisibility] = useState(false)

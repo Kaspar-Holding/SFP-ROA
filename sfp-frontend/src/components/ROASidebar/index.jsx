@@ -5,6 +5,8 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { logout } from '../../actions/auth'
+import Swal from 'sweetalert2'
+import { API_URL } from '../../config'
 const ROASidebar = ({ appTitle }) => {
 
     const router = useRouter()
@@ -35,7 +37,7 @@ const ROASidebar = ({ appTitle }) => {
                 config
             )
 
-            const url = `${process.env.REACT_APP_BACKEND_URL}/${response?.data?.data?.file}`
+            const url = `${API_URL}/${response?.data?.data?.file}`
             window.open(url, '_blank').focus()
 
 
@@ -66,8 +68,59 @@ const ROASidebar = ({ appTitle }) => {
                 config
             )
 
-            const url = `${process.env.REACT_APP_BACKEND_URL}/${response?.data?.data?.file}`
+            const url = `${API_URL}/${response?.data?.data?.file}`
             window.open(url, '_blank').focus()
+
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `${error?.response?.data?.error?.message}`,
+                showConfirmButton: !1,
+                timer: 10000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+        }
+
+    }
+
+    const updateFormStatus = async (e) => {
+        e.preventDefault()
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+
+        const Body = JSON.stringify(fId)
+
+        try {
+            const response = await axios.post(
+                `/api/roa/status`,
+                Body,
+                config
+            )
+
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Update",
+                html: `${response?.data?.success}`,
+                showConfirmButton: !1,
+                timer: 10000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            LoadData(fId)
+            if (router.pathname != "/apps/roa/documents/edit") {
+                router.push({ pathname: '/apps/roa/documents/edit', query: { fId: fId } })
+            } else {
+                router.push({ pathname: '/apps/roa/documents/edit/record', query: { fId: fId } })
+            }
 
 
         } catch (error) {
@@ -111,11 +164,11 @@ const ROASidebar = ({ appTitle }) => {
 
             setFormData(response?.data?.data)
 
-
         } catch (error) {
 
         }
     }
+
 
     useEffect(() => {
 
@@ -148,7 +201,7 @@ const ROASidebar = ({ appTitle }) => {
                         { appTitle }
                     </p>
                     <p className='sidebar-user'>
-                        { user ? `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` : "" }
+                        { user ? user?.full_name : `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` }
                     </p>
                     <p className='sidebar-date'>
                         { CurrentDate }
@@ -235,24 +288,47 @@ const ROASidebar = ({ appTitle }) => {
                                     </button>
                                 </div>
                             </div><br />
-                            <div className="container sidebar-footer">
-                                <div className="d-grid gap-2">
-                                    <button onClick={ (e) => { downloadDisclosureForm(e) } } className="btn btn-primary btn-sfp" type="button">
-                                        <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
-                                        Disclosure Document PDF
-                                    </button>
-                                </div>
-                            </div>
+                            {
+                                FormData?.status == 1 ?
+                                    <div>
+                                        <div className="container sidebar-footer">
+                                            <div className="d-grid gap-2">
+                                                <button onClick={ (e) => { updateFormStatus(e) } } className="btn btn-primary" type="button">
+                                                    <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
+                                                    Mark Incomplete
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div className="container sidebar-footer">
+                                            <div className="d-grid gap-2">
+                                                <button onClick={ (e) => { downloadDisclosureForm(e) } } className="btn btn-primary btn-sfp" type="button">
+                                                    <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
+                                                    Disclosure Document PDF
+                                                </button>
+                                            </div>
+                                        </div>
 
-                            <br />
-                            <div className="container sidebar-footer">
-                                <div className="d-grid gap-2">
-                                    <button onClick={ (e) => { downloadClient(e) } } className="btn btn-primary btn-sfp" type="button">
-                                        <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
-                                        Print for Client
-                                    </button>
-                                </div>
-                            </div>
+                                        <br />
+                                        <div className="container sidebar-footer">
+                                            <div className="d-grid gap-2">
+                                                <button onClick={ (e) => { downloadClient(e) } } className="btn btn-primary btn-sfp" type="button">
+                                                    <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
+                                                    Print for Client
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    :
+                                    <div className="container sidebar-footer">
+                                        <div className="d-grid gap-2">
+                                            <button onClick={ (e) => { updateFormStatus(e) } } className="btn btn-primary" type="button">
+                                                <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
+                                                Mark Complete
+                                            </button>
+                                        </div>
+                                    </div>
+                            }
 
 
                         </div>

@@ -23,6 +23,29 @@ import uuid
 from data.models import user_profile, DisclosuresProductProviders, DisclosuresAdvisorSubCodes
 # Create your views here.
 
+
+class updateFormAPI(APIView):
+    def get(self, request, pk):
+        form = Disclosures.objects.filter(id=pk)
+        if form.exists():
+            form = form.first()
+            form_status = form.status
+            new_status = 0
+            if form_status == 0:
+                new_status = 1
+            data = {
+                "status" : new_status
+            }
+            
+            serializers = Disclosures_Serializer(form, data=data, partial=True)
+            if serializers.is_valid():
+                serializers.save()
+                return Response({'message': "Successfully updated"}, 200)
+            else:
+                return Response({"errors" : serializers.errors},400)
+
+        return Response(404)
+
 class FormListAPIs(APIView):
     
     def get(self, request, format=None):
@@ -303,6 +326,7 @@ class roaKPISnTrends(APIView):
                         "completed" : data.filter(status=1).count(),
                     }
                     kpis = {
+                        "total" : data.count(),
                         "new" : data.filter(status=0).count(),
                         "completed" : data.filter(status=1).count(),
                     }
@@ -318,10 +342,12 @@ class roaKPISnTrends(APIView):
                     data = data.filter(created_at__year=monthyear, created_at__month=month)
                     trend = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     kpis = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     # Trending
@@ -336,11 +362,13 @@ class roaKPISnTrends(APIView):
                     data = data.filter(created_at__date=date)
                     trend = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     kpis = {
                         "new" : data.filter(status=0).count(),
                         "completed" : data.filter(status=1).count(),
+                        "total" : data.count(),
                     }
                     # Trending
                     datewise_data = data.values('created_at__date', 'created_at__hour').distinct().order_by('created_at__date', 'created_at__hour')
@@ -355,10 +383,12 @@ class roaKPISnTrends(APIView):
                     data = data.filter(created_at__range=date_range)
                     trend = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     kpis = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     # Trending
@@ -448,10 +478,12 @@ class roaKPISnTrends(APIView):
                     trend = {
                         # "created" : data.filter(created_at__range=date_range).count(),
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     kpis = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     # Trending
@@ -466,10 +498,12 @@ class roaKPISnTrends(APIView):
                     data = data.filter(created_at__year=monthyear, created_at__month=month)
                     trend = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     kpis = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     # Trending
@@ -484,10 +518,12 @@ class roaKPISnTrends(APIView):
                     data = data.filter(created_at__date=date)
                     trend = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     kpis = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     # Trending
@@ -503,10 +539,12 @@ class roaKPISnTrends(APIView):
                     data = data.filter(created_at__range=date_range)
                     trend = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     kpis = {
                         "new" : data.filter(status=0).count(),
+                        "total" : data.count(),
                         "completed" : data.filter(status=1).count(),
                     }
                     # Trending

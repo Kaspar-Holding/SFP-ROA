@@ -64,7 +64,9 @@ const BARisk = () => {
 
 
 
-    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
+    const onChange = e => {
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+    }
     // API Config
     const config = {
         headers: {
@@ -484,7 +486,7 @@ const BARisk = () => {
 
     const compulsoryAEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
-
+    const [FormStatus, setFormStatus] = useState(0)
 
     const LoadData = async (formId) => {
 
@@ -498,6 +500,7 @@ const BARisk = () => {
                 Body,
                 config
             )
+            setFormStatus(response?.data?.data?.form_status)
             setFormData(response?.data?.data?.assuranceRisk)
             setProductTaken(response?.data?.data?.productTaken)
             setAR_BnS_Data(response?.data?.data?.ar_bns_other)
@@ -514,7 +517,7 @@ const BARisk = () => {
         setLoaded(false)
     }
 
-    const updateRPForm = async () => {
+    const updateRAForm = async () => {
 
         setLoaded(true)
         const Body = JSON.stringify({
@@ -555,7 +558,7 @@ const BARisk = () => {
     }
 
     const onFieldBlur = (e) => {
-        updateRPForm()
+        FormStatus == 0 ? updateRAForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
     }
 
     const [letterOfIntroductionVisibility, setletterOfIntroductionVisibility] = useState(false)
@@ -850,7 +853,7 @@ const BARisk = () => {
                                     <label className="roa-font"><b>Financial Advisor:</b></label>
                                 </div>
                                 <div className='col-lg-9 col-md-6 col-sm-12'>
-                                    <input value={ `${user?.first_name} ${user?.last_name != 'nan' ? user?.last_name : ''} ` } disabled className="form-control roa-label" aria-describedby="" style={ { width: '100%' } } />
+                                    <input value={ `${user?.full_name} ` } disabled className="form-control roa-label" aria-describedby="" style={ { width: '100%' } } />
                                 </div>
                             </div>
                             <div className='row'>

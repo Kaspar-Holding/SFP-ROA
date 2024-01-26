@@ -14,11 +14,11 @@ import Filters from '../Filters'
 
 const ComplianceList = () => {
     const router = useRouter()
-    
+
     const [Loaded, setLoaded] = useState(false)
-    const isAuthenticated = useSelector(state=>state.auth.isAuthenticated)
-	const [FilterType, setFilterType] = useState(2)
-	const [CustomFilterType, setCustomFilterType] = useState(1)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const [FilterType, setFilterType] = useState(2)
+    const [CustomFilterType, setCustomFilterType] = useState(1)
     const [currentPage, setCurrentPage] = useState(1)
     const Date_Var = new Date()
     const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
@@ -26,20 +26,20 @@ const ComplianceList = () => {
     const [Month, setMonth] = useState(("0" + (Date_Var.getMonth() + 1)).slice(-2))
     const [Year, setYear] = useState(currentYear)
     const [MonthYear, setMonthYear] = useState(currentYear)
-    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
-    const [FromDate, setFromDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
-    const [ToDate, setToDate] = useState(Date_Var.getFullYear()+"-"+ ("0" + (Date_Var.getMonth() + 1)).slice(-2)+"-"+("0" + Date_Var.getDate()).slice(-2))
+    const [CurrentDate, setCurrentDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
+    const [FromDate, setFromDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
+    const [ToDate, setToDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
     const year = 2023
-    const years = Array.from(new Array(currentYear - year + 1),( val, index) => index + year)
+    const years = Array.from(new Array(currentYear - year + 1), (val, index) => index + year)
 
-    
-    const LoadDayStats = async(inputDate) => {
+
+    const LoadDayStats = async (inputDate) => {
     }
-    const LoadMonthlyStats = async(inputDate) => {
+    const LoadMonthlyStats = async (inputDate) => {
     }
-    const LoadAnnualStats = async(inputDate) => {
+    const LoadAnnualStats = async (inputDate) => {
     }
-    const LoadCustomStats = async(toDate, fromDate) => {
+    const LoadCustomStats = async (toDate, fromDate) => {
     }
 
     const [PageSize, setPageSize] = useState(20)
@@ -48,7 +48,7 @@ const ComplianceList = () => {
     const [TrendData, setTrendData] = useState([])
     const [Sortby, setSortby] = useState('created_at')
     const [SortDirection, setSortDirection] = useState("down")
-    const user = useSelector(state=>state.auth.user)
+    const user = useSelector(state => state.auth.user)
     const [SearchQuery, setSearchQuery] = useState("")
     const [KPITrend, setKPITrend] = useState({})
     const onSearchQueryChange = (e) => {
@@ -74,8 +74,8 @@ const ComplianceList = () => {
 
     const lineSeries = (data) => [
         {
-          name: "Total Forms",
-          data: data
+            name: "Total Forms",
+            data: data
         }
     ]
 
@@ -97,10 +97,10 @@ const ComplianceList = () => {
         },
         colors: ['#77B6EA', '#545454'],
         dataLabels: {
-                enabled: true,
+            enabled: true,
         },
         stroke: {
-                curve: 'smooth'
+            curve: 'smooth'
         },
         grid: {
             borderColor: '#e7e7e7',
@@ -139,26 +139,26 @@ const ComplianceList = () => {
             {
                 breakpoint: 480,
                 options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    show: false 
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        show: false
+                    }
                 }
-            }
-        }],
-        legend :{
+            }],
+        legend: {
             show: true,
             position: "bottom"
         }
-      
-      
+
+
     }
 
     const config = {
-        headers : {
-            'Content-Type' : 'application/json',
-            'Accept' : 'application/json',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
         }
     }
 
@@ -168,7 +168,7 @@ const ComplianceList = () => {
 
     const searchReviews = async (search_query, page_size, page_number) => {
 
-        const Body = JSON.stringify({search_query, page_size, page_number})
+        const Body = JSON.stringify({ search_query, page_size, page_number })
 
         try {
             const response = await axios.post(
@@ -188,7 +188,7 @@ const ComplianceList = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            
+
         }
 
     }
@@ -197,10 +197,10 @@ const ComplianceList = () => {
         setLoaded(true)
         try {
             const Body = JSON.stringify({
-                "page_number" : pNumber,
-                "page_size" : pSize,
-                "sort_by" : sBy,
-                "sort_direction" : sDirection,
+                "page_number": pNumber,
+                "page_size": pSize,
+                "sort_by": sBy,
+                "sort_direction": sDirection,
             })
             const response = await axios.post(
                 '/api/compliance',
@@ -210,7 +210,7 @@ const ComplianceList = () => {
             setTotalPages(response?.data?.data?.total_pages)
             setReviews(response?.data?.data?.results)
             setTotalRecords(response?.data?.data?.total_records)
-            
+
         } catch (error) {
             Swal.fire({
                 position: "bottom-end",
@@ -222,7 +222,7 @@ const ComplianceList = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            
+
         }
         setLoaded(false)
 
@@ -230,7 +230,7 @@ const ComplianceList = () => {
 
     const loadKPIsandTrends = async (filterType, year, monthyear, month, date, customFilterType, fromdate, todate) => {
         try {
-            const Body = JSON.stringify({filterType, year, monthyear, month, date, customFilterType, fromdate, todate})
+            const Body = JSON.stringify({ filterType, year, monthyear, month, date, customFilterType, fromdate, todate })
             const response = await axios.post(
                 '/api/compliance/kpisntrend',
                 Body,
@@ -239,7 +239,7 @@ const ComplianceList = () => {
             setTrendData(response?.data?.data?.trend_data)
             setKPIs(response?.data?.data?.kpis)
             setKPITrend(response?.data?.data?.trend)
-            
+
         } catch (error) {
             Swal.fire({
                 position: "bottom-end",
@@ -251,7 +251,7 @@ const ComplianceList = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            
+
         }
     }
 
@@ -259,10 +259,10 @@ const ComplianceList = () => {
         setCurrentPage(pNumber)
         try {
             const Body = JSON.stringify({
-                "page_number" : pNumber,
-                "page_size" : pSize,
-                "sort_by" : sBy,
-                "sort_direction" : sDirection,
+                "page_number": pNumber,
+                "page_size": pSize,
+                "sort_by": sBy,
+                "sort_direction": sDirection,
             })
             const response = await axios.post(
                 '/api/compliance',
@@ -272,7 +272,7 @@ const ComplianceList = () => {
             setTotalPages(response?.data?.data?.total_pages)
             setReviews(response?.data?.data?.results)
             setTotalRecords(response?.data?.data?.total_records)
-            
+
         } catch (error) {
             Swal.fire({
                 position: "bottom-end",
@@ -284,16 +284,16 @@ const ComplianceList = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            
+
         }
 
     }
-    
+
     useEffect(() => {
         loadReviews(1, PageSize, Sortby, SortDirection)
     }, [])
 
-    
+
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
     }
@@ -302,258 +302,258 @@ const ComplianceList = () => {
         router.push('/')
     }
     return (
-        
+
         <Layout
-            title={"Compliance"}
-            content={"Compliance"}
+            title={ "Compliance" }
+            content={ "Compliance" }
         >
             <DashboardLayout
-                appTitle={'Compliance'}
-                app={'compliance'}
+                appTitle={ 'Compliance' }
+                app={ 'compliance' }
             >
                 {
                     Loaded ?
-                    <Loader />
-                    :
-                    <div className='col-lg-9'>
-                        <div className='row'>
-                            <div className='col-lg-12 app-full-records'>
-                                <div className='row'>
-                                    <div className='col-lg-3'>
-                                        <h1 className='app-dashboard-header'>Cases</h1>
+                        <Loader />
+                        :
+                        <div className='col-lg-9'>
+                            <div className='row'>
+                                <div className='col-lg-12 app-full-records'>
+                                    <div className='row'>
+                                        <div className='col-lg-3'>
+                                            <h1 className='app-dashboard-header'>Cases</h1>
+
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            <div className="input-group mb-3">
+                                                <span className="input-group-text" id="basic-addon1">
+                                                    <i className='fa-solid fa-search' />
+                                                </span>
+                                                <input type="text" className="form-control" value={ SearchQuery } onChange={ (e) => { onSearchQueryChange(e) } } placeholder="Search by Advisor, Policy No# or Client" />
+                                            </div>
+                                        </div>
+                                        <div className='col-lg-1'>
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */ }
+                                            <div className='row'>
+                                                <div className="col-3 dropdown mx-1">
+                                                    <button className="btn btn-sm btn-sfp btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Page Size
+                                                    </button>
+                                                    <ul className="dropdown-menu">
+                                                        <li><a className={ PageSize == 5 ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onPageSizeChange(e, "5") } } href="#">5</a></li>
+                                                        <li><a className={ PageSize == 10 ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onPageSizeChange(e, "10") } } href="#">10</a></li>
+                                                        <li><a className={ PageSize == 20 ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onPageSizeChange(e, "20") } } href="#">20</a></li>
+                                                        <li><a className={ PageSize == 50 ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onPageSizeChange(e, "50") } } href="#">50</a></li>
+                                                        <li><a className={ PageSize == 100 ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onPageSizeChange(e, "100") } } href="#">100</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div className="col-3 dropdown">
+                                                    <button className="btn btn-sm btn-sfp btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Sort by
+                                                    </button>
+                                                    <ul className="dropdown-menu">
+                                                        <li><a className={ Sortby === "policy_number" ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onSortChange(e, "policy_number") } } href="#">Policy Number</a></li>
+                                                        <li><a className={ Sortby === "created_at" ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onSortChange(e, "created_at") } } href="#">Creation Time</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div className='col-1'>
+                                                    <button
+                                                        onClick={ (e) => { onSortDirectionChange(e, "up") } }
+                                                        className={
+                                                            SortDirection === "up" ?
+                                                                'btn btn-sm btn-sfp btn-secondary'
+                                                                :
+                                                                'btn btn-sm btn-outline-secondary'
+                                                        }
+                                                    >
+                                                        <i className="fa-solid fa-arrow-up-wide-short"></i>
+                                                    </button>
+                                                </div>
+                                                <div className='col-1'>
+                                                    <button
+                                                        onClick={ (e) => { onSortDirectionChange(e, "down") } }
+                                                        className={
+                                                            SortDirection === "down" ?
+                                                                'btn btn-sm btn-sfp btn-secondary'
+                                                                :
+                                                                'btn btn-sm btn-outline-secondary'
+                                                        }
+                                                    >
+                                                        <i className="fa-solid fa-arrow-down-wide-short"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     </div>
-                                    <div className='col-lg-4'>
-                                        <div className="input-group mb-3">
-                                            <span className="input-group-text" id="basic-addon1">
-                                                <i className='fa-solid fa-search' />
-                                            </span>
-                                            <input type="text"  className="form-control" value={SearchQuery} onChange={(e)=>{onSearchQueryChange(e)}} placeholder="Search Policy No# or Client" />
-                                        </div>
-                                    </div>
-                                    <div className='col-lg-1'>
-                                    </div>
-                                    <div className='col-lg-4'>
-                                        {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */}
-                                        <div className='row'>
-                                            <div className="col-3 dropdown mx-1">
-                                                <button className="btn btn-sm btn-sfp btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Page Size
-                                                </button>
-                                                <ul className="dropdown-menu">
-                                                    <li><a className={PageSize == 5 ? "dropdown-item active" : "dropdown-item"} onClick={(e)=>{onPageSizeChange(e, "5")}} href="#">5</a></li>
-                                                    <li><a className={PageSize == 10 ? "dropdown-item active" : "dropdown-item"} onClick={(e)=>{onPageSizeChange(e, "10")}} href="#">10</a></li>
-                                                    <li><a className={PageSize == 20 ? "dropdown-item active" : "dropdown-item"} onClick={(e)=>{onPageSizeChange(e, "20")}} href="#">20</a></li>
-                                                    <li><a className={PageSize == 50 ? "dropdown-item active" : "dropdown-item"} onClick={(e)=>{onPageSizeChange(e, "50")}} href="#">50</a></li>
-                                                    <li><a className={PageSize == 100 ? "dropdown-item active" : "dropdown-item"} onClick={(e)=>{onPageSizeChange(e, "100")}} href="#">100</a></li>
-                                                </ul>
-                                            </div>
-                                            <div className="col-3 dropdown">
-                                                <button className="btn btn-sm btn-sfp btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Sort by
-                                                </button>
-                                                <ul className="dropdown-menu">
-                                                    <li><a className={Sortby === "policy_number" ? "dropdown-item active" : "dropdown-item"} onClick={(e)=>{onSortChange(e, "policy_number")}} href="#">Policy Number</a></li>
-                                                    <li><a className={Sortby === "created_at" ? "dropdown-item active" : "dropdown-item"} onClick={(e)=>{onSortChange(e, "created_at")}} href="#">Creation Time</a></li>
-                                                </ul>
-                                            </div>
-                                            <div className='col-1'>
-                                                <button
-                                                    onClick={(e)=>{onSortDirectionChange(e, "up")}}
-                                                    className={
-                                                        SortDirection === "up" ? 
-                                                            'btn btn-sm btn-sfp btn-secondary'
-                                                        :
-                                                            'btn btn-sm btn-outline-secondary'
+                                    <div className='app-full-records-table'>
+                                        <table className="table" >
+                                            <thead className='tableHead'>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Policy Number</th>
+                                                    <th scope="col">Advisor</th>
+                                                    <th scope="col">Client Name</th>
+                                                    {
+                                                        user?.userType === 1 ?
+                                                            <th scope="col">Gatekeeper / ARC</th>
+                                                            : ""
                                                     }
-                                                    >
-                                                    <i className="fa-solid fa-arrow-up-wide-short"></i>
-                                                </button>
-                                            </div>
-                                            <div className='col-1'>
-                                                <button
-                                                    onClick={(e)=>{onSortDirectionChange(e, "down")}}
-                                                    className={
-                                                        SortDirection === "down" ? 
-                                                            'btn btn-sm btn-sfp btn-secondary'
-                                                        :
-                                                            'btn btn-sm btn-outline-secondary'
-                                                    }
-                                                >
-                                                    <i className="fa-solid fa-arrow-down-wide-short"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div className='app-full-records-table'>
-                                    <table className="table" >
-                                        <thead className='tableHead'>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Policy Number</th>
-                                                <th scope="col">Advisor</th>
-                                                <th scope="col">Client Name</th>
+                                                    <th scope="col">Last Review Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className='tableContent'>
                                                 {
-                                                    user?.userType === 1?
-                                                        <th scope="col">Gatekeeper / ARC</th>
-                                                    : ""
-                                                }
-                                                <th scope="col">Last Review Date</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className='tableContent'>
-                                            {
-                                                Reviews ?
-                                                    Reviews.map(
-                                                        (review, i) => {
-                                                            return(
-                                                                <tr key={i}>
-                                                                    <th scope="row">{i+1}</th>
-                                                                    <td>
-                                                                        {
-                                                                            review?.policy_number
-                                                                        }
-                                                                    </td>
-                                                                    <td>
-                                                                        {
-                                                                            review?.advisor
-                                                                        }
-                                                                    </td>
-                                                                    <td>
-                                                                        {
-                                                                            review?.clientName
-                                                                        }
-                                                                    </td>
-                                                                    {
-                                                                        user?.userType === 1?
+                                                    Reviews ?
+                                                        Reviews.map(
+                                                            (review, i) => {
+                                                                return (
+                                                                    <tr key={ i }>
+                                                                        <th scope="row">{ i + 1 }</th>
                                                                         <td>
-                                                                            {review?.review_user}
+                                                                            {
+                                                                                review?.policy_number
+                                                                            }
                                                                         </td>
-                                                                        : ""
-                                                                    }
-                                                                    <td>
-                                                                        {
-                                                                            Moment(review?.last_review_date).format('DD MMMM YYYY, hh:mm A')
-                                                                        }
-                                                                    </td>
-                                                                    <td>
-                                                                        {
-                                                                            review?.referred ?
-                                                                                review?.status === 0 ? "New Case" :
-                                                                                review?.status === 1 ? "Reffered - Approved" :
-                                                                                review?.status === 2 ? "Reffered - Not Approved" :
-                                                                                review?.status === 7 ? "Reffered - Not Approved & Editing" :
-                                                                                review?.status === 3 ? "Reffered - Referred" :
-                                                                                review?.status === 4 ? "Reffered - Partial Approved" : 
-                                                                                review?.status === 5 ? "Reffered - Picked Up" : ""
-                                                                            :
-                                                                                review?.status === 0 ? "New Case" :
-                                                                                review?.status === 1 ? "Approved" :
-                                                                                review?.status === 2 ? "Not Approved" :
-                                                                                review?.status === 7 ? "Not Approved & Editing" :
-                                                                                review?.status === 3 ? "Referred" :
-                                                                                review?.status === 4 ? "Partial Approved" : 
-                                                                                review?.status === 5 ? "Picked Up" : ""
-                                                                        }
-                                                                    </td>
-                                                                    <td>
-                                                                        <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                                        <td>
                                                                             {
-                                                                                
-                                                                                user?.is_superuser ?
-                                                                                    <button 
-                                                                                        type="button" 
-                                                                                        className={
-                                                                                            "btn btn-sm btn-success"                                                                          
-                                                                                        }
-                                                                                        onClick={()=> {
-                                                                                            router.push({
-                                                                                                pathname: "/apps/compliance/documents/view",
-                                                                                                query: { dId: review?.id }
-                                                                                            })
-                                                                                        }}
-                                                                                    >
-                                                                                        <i className="fa-solid fa-eye"></i>
-                                                                                        View
-                                                                                    </button>
-                                                                                :<></>
+                                                                                review?.advisor
                                                                             }
+                                                                        </td>
+                                                                        <td>
                                                                             {
-                                                                                !user?.is_superuser && user?.userType === 1 ?
-                                                                                    review?.status === 1 ?
-                                                                                        <button 
-                                                                                            type="button" 
+                                                                                review?.clientName
+                                                                            }
+                                                                        </td>
+                                                                        {
+                                                                            user?.userType === 1 ?
+                                                                                <td>
+                                                                                    { review?.review_user }
+                                                                                </td>
+                                                                                : ""
+                                                                        }
+                                                                        <td>
+                                                                            {
+                                                                                Moment(review?.last_review_date).format('DD MMMM YYYY, hh:mm A')
+                                                                            }
+                                                                        </td>
+                                                                        <td>
+                                                                            {
+                                                                                review?.referred ?
+                                                                                    review?.status === 0 ? "New Case" :
+                                                                                        review?.status === 1 ? "Reffered - Approved" :
+                                                                                            review?.status === 2 ? "Reffered - Not Approved" :
+                                                                                                review?.status === 7 ? "Reffered - Not Approved & Editing" :
+                                                                                                    review?.status === 3 ? "Reffered - Referred" :
+                                                                                                        review?.status === 4 ? "Reffered - Partial Approved" :
+                                                                                                            review?.status === 5 ? "Reffered - Picked Up" : ""
+                                                                                    :
+                                                                                    review?.status === 0 ? "New Case" :
+                                                                                        review?.status === 1 ? "Approved" :
+                                                                                            review?.status === 2 ? "Not Approved" :
+                                                                                                review?.status === 7 ? "Not Approved & Editing" :
+                                                                                                    review?.status === 3 ? "Referred" :
+                                                                                                        review?.status === 4 ? "Partial Approved" :
+                                                                                                            review?.status === 5 ? "Picked Up" : ""
+                                                                            }
+                                                                        </td>
+                                                                        <td>
+                                                                            <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                                                {
+
+                                                                                    user?.is_superuser ?
+                                                                                        <button
+                                                                                            type="button"
                                                                                             className={
-                                                                                                "btn btn-sm btn-success"                                                                          
+                                                                                                "btn btn-sm btn-success"
                                                                                             }
-                                                                                            onClick={()=> {
+                                                                                            onClick={ () => {
                                                                                                 router.push({
                                                                                                     pathname: "/apps/compliance/documents/view",
                                                                                                     query: { dId: review?.id }
                                                                                                 })
-                                                                                            }}
+                                                                                            } }
                                                                                         >
                                                                                             <i className="fa-solid fa-eye"></i>
                                                                                             View
                                                                                         </button>
-                                                                                    :
-                                                                                        <button 
-                                                                                            type="button" 
-                                                                                            className={"btn btn-sm btn-secondary"}
-                                                                                            onClick={()=> {
-                                                                                                router.push({
-                                                                                                    pathname: "/apps/compliance/documents/edit",
-                                                                                                    query: { dId: review?.id }
-                                                                                                })
-                                                                                            }}
-                                                                                        >
-                                                                                            <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
-                                                                                            Edit
-                                                                                        </button>
-                                                                                    :
-                                                                                <></>
-                                                                            }
-                                                                            {
-                                                                                !user?.is_superuser && user?.userType === 2 ?
-                                                                                    review?.status === 1 || review?.status === 3 || review?.status === 5 || review?.referred ?
-                                                                                        <button 
-                                                                                            type="button" 
-                                                                                            className={
-                                                                                                "btn btn-sm btn-success"                                                                          
-                                                                                            }
-                                                                                            onClick={()=> {
-                                                                                                router.push({
-                                                                                                    pathname: "/apps/compliance/documents/view",
-                                                                                                    query: { dId: review?.id }
-                                                                                                })
-                                                                                            }}
-                                                                                        >
-                                                                                            <i className="fa-solid fa-eye"></i>
-                                                                                            View
-                                                                                        </button>
-                                                                                    :
-                                                                                        <button 
-                                                                                            type="button" 
-                                                                                            className={"btn btn-sm btn-secondary"}
-                                                                                            onClick={()=> {
-                                                                                                router.push({
-                                                                                                    pathname: "/apps/compliance/documents/edit",
-                                                                                                    query: { dId: review?.id }
-                                                                                                })
-                                                                                            }}
-                                                                                        >
-                                                                                            <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
-                                                                                            Edit
-                                                                                        </button>
-                                                                                    :
-                                                                                <></>
-                                                                            }
-                                                                            
-                                                                            {/* <button 
+                                                                                        : <></>
+                                                                                }
+                                                                                {
+                                                                                    !user?.is_superuser && user?.userType === 1 ?
+                                                                                        review?.status === 1 ?
+                                                                                            <button
+                                                                                                type="button"
+                                                                                                className={
+                                                                                                    "btn btn-sm btn-success"
+                                                                                                }
+                                                                                                onClick={ () => {
+                                                                                                    router.push({
+                                                                                                        pathname: "/apps/compliance/documents/view",
+                                                                                                        query: { dId: review?.id }
+                                                                                                    })
+                                                                                                } }
+                                                                                            >
+                                                                                                <i className="fa-solid fa-eye"></i>
+                                                                                                View
+                                                                                            </button>
+                                                                                            :
+                                                                                            <button
+                                                                                                type="button"
+                                                                                                className={ "btn btn-sm btn-secondary" }
+                                                                                                onClick={ () => {
+                                                                                                    router.push({
+                                                                                                        pathname: "/apps/compliance/documents/edit",
+                                                                                                        query: { dId: review?.id }
+                                                                                                    })
+                                                                                                } }
+                                                                                            >
+                                                                                                <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
+                                                                                                Edit
+                                                                                            </button>
+                                                                                        :
+                                                                                        <></>
+                                                                                }
+                                                                                {
+                                                                                    !user?.is_superuser && user?.userType === 2 ?
+                                                                                        review?.status === 1 || review?.status === 3 || review?.status === 5 || review?.referred ?
+                                                                                            <button
+                                                                                                type="button"
+                                                                                                className={
+                                                                                                    "btn btn-sm btn-success"
+                                                                                                }
+                                                                                                onClick={ () => {
+                                                                                                    router.push({
+                                                                                                        pathname: "/apps/compliance/documents/view",
+                                                                                                        query: { dId: review?.id }
+                                                                                                    })
+                                                                                                } }
+                                                                                            >
+                                                                                                <i className="fa-solid fa-eye"></i>
+                                                                                                View
+                                                                                            </button>
+                                                                                            :
+                                                                                            <button
+                                                                                                type="button"
+                                                                                                className={ "btn btn-sm btn-secondary" }
+                                                                                                onClick={ () => {
+                                                                                                    router.push({
+                                                                                                        pathname: "/apps/compliance/documents/edit",
+                                                                                                        query: { dId: review?.id }
+                                                                                                    })
+                                                                                                } }
+                                                                                            >
+                                                                                                <i className='bi pe-none me-2 fa-solid fa-pen-to-square' />
+                                                                                                Edit
+                                                                                            </button>
+                                                                                        :
+                                                                                        <></>
+                                                                                }
+
+                                                                                {/* <button 
                                                                                 type="button" 
                                                                                 className="btn btn-danger"
                                                                                 onClick={(e)=>{deleteQuestionBtn(e, row?.id)}}
@@ -561,41 +561,41 @@ const ComplianceList = () => {
                                                                                 <i className='bi pe-none me-2 fa-solid fa-trash' />
                                                                                 Delete
                                                                             </button> */}
-                                                                        </div>
-                                                                    </td>
-                                                                    
-                                                                </tr>
-                                                            )
-                                                        }
-                                                    )
-                                                : <></>
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <br/>
-                                <div className='d-flex justify-content-center'>
-                                    {/* <CompliancePagination totalRecords={TotalRecords} pageLimit={PageSize} paginationSearchQuery={SearchQuery} paginationOrderBy={Sortby} paginationOrderDirection={SortDirection} onPageChanged={loadReviews} /> */}
-                                    {
-                                        TotalRecords !== 0 && TotalPages != 1 ?
-                                        <CompliancePagination 
-                                            currentPage={currentPage}
-                                            setPage={setCurrentPage}
-                                            totalPages={TotalPages}
-                                            pageSize={PageSize}
-                                            sBy={Sortby}
-                                            sDirection={SortDirection}
-                                            onPageChange={loadPaginatedData}
-                                        />
-                                        :
-                                        <></>
-                                    }
-                                    
-                                </div>
+                                                                            </div>
+                                                                        </td>
 
+                                                                    </tr>
+                                                                )
+                                                            }
+                                                        )
+                                                        : <></>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <br />
+                                    <div className='d-flex justify-content-center'>
+                                        {/* <CompliancePagination totalRecords={TotalRecords} pageLimit={PageSize} paginationSearchQuery={SearchQuery} paginationOrderBy={Sortby} paginationOrderDirection={SortDirection} onPageChanged={loadReviews} /> */ }
+                                        {
+                                            TotalRecords !== 0 && TotalPages != 1 ?
+                                                <CompliancePagination
+                                                    currentPage={ currentPage }
+                                                    setPage={ setCurrentPage }
+                                                    totalPages={ TotalPages }
+                                                    pageSize={ PageSize }
+                                                    sBy={ Sortby }
+                                                    sDirection={ SortDirection }
+                                                    onPageChange={ loadPaginatedData }
+                                                />
+                                                :
+                                                <></>
+                                        }
+
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
                 }
             </DashboardLayout>
         </Layout>

@@ -437,7 +437,7 @@ const Compliance = () => {
                                                 <span className="input-group-text" id="basic-addon1">
                                                     <i className='fa-solid fa-search' />
                                                 </span>
-                                                <input type="text" className="form-control" value={ SearchQuery } onChange={ (e) => { onSearchQueryChange(e) } } placeholder="Search Policy No# or Client" />
+                                                <input type="text" className="form-control" value={ SearchQuery } onChange={ (e) => { onSearchQueryChange(e) } } placeholder="Search by Advisor, Policy No# or Client" />
                                             </div>
                                         </div>
                                         <div className='col-lg-1'>

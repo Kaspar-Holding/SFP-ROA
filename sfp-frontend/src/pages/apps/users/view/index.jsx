@@ -26,7 +26,7 @@ const UsersList = () => {
             'Accept': 'application/json',
         }
     }
-
+    const [BACs, setBACs] = useState([])
     const loadUsers = async (uId, load) => {
         load ? setLoaded(true) : ""
         try {
@@ -39,6 +39,7 @@ const UsersList = () => {
 
             setUserDetails(response?.data?.data?.user)
             setProfileData(response?.data?.data?.user?.profile)
+            setBACs(response?.data?.data?.user?.bacs)
             setRegions(response?.data?.data?.user?.regions)
         } catch (error) {
             Swal.fire({
@@ -93,6 +94,12 @@ const UsersList = () => {
         }
 
     }
+    const onDetailsChange = (e) => {
+        setUserDetails({
+            ...UserDetails,
+            [e.target.name]: e.target.value
+        })
+    }
     const onChange = (e) => {
         setProfileData({
             ...ProfileData,
@@ -103,6 +110,11 @@ const UsersList = () => {
     const updating = (e) => {
         e.preventDefault()
         updateUser(uId, ProfileData)
+    }
+
+    const userStatus = (e) => {
+        e.preventDefault()
+        updateUser(uId, { "userType": UserDetails?.userType })
     }
 
     useEffect(() => {
@@ -129,17 +141,17 @@ const UsersList = () => {
                                             <h1 className='app-dashboard-header'>{ UserDetails?.full_name } Details</h1>
                                         </div>
                                         <div className="mb-3">
-                                            <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
+                                            <label htmlFor="inputID_1" className="form-label">Name</label>
                                             <input type="text" className="form-control" value={ UserDetails?.full_name } name='name' disabled />
                                         </div>
                                         <div className="mb-3">
-                                            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                                            <input type="email" className="form-control" value={ UserDetails?.email } name="email" id="exampleInputEmail1" aria-describedby="emailHelp" disabled />
+                                            <label htmlFor="inputID_1" className="form-label">Email address</label>
+                                            <input type="email" className="form-control" value={ UserDetails?.email } name="email" id="inputID_1" aria-describedby="emailHelp" disabled />
                                         </div>
                                         <form onSubmit={ e => onSubmit(e) }>
-                                            {/* <div className="mb-3">
-                                                <label htmlFor="Role" className="form-label">Region { }</label>
-                                                <select className="form-select" onChange={ e => onChange(e) } value={ UserDetails?.userType } name="is_active" aria-label="Default select example">
+                                            <div className="mb-3">
+                                                <label htmlFor="userType" className="form-label">User Type</label>
+                                                <select className="form-select" onBlur={ (e) => { userStatus(e) } } onChange={ e => onDetailsChange(e) } value={ UserDetails?.userType } name="userType" aria-label="Default select example">
                                                     <option value="0">Admin</option>
                                                     <option value="1">Gatekeeper</option>
                                                     <option value="2">ARC</option>
@@ -148,7 +160,7 @@ const UsersList = () => {
                                                     <option value="6">Advisor</option>
                                                 </select>
                                             </div>
-                                            <div className="mb-3">
+                                            {/* <div className="mb-3">
                                                 <label htmlFor="Role" className="form-label">Account Status</label>
                                                 <select className="form-select" onChange={ e => onChange(e) } value={ UserDetails['is_active'] } name="is_active" aria-label="Default select example">
                                                     <option value="1">Active</option>
@@ -172,12 +184,13 @@ const UsersList = () => {
                                                 { UserDetails?.profile_columns?.map((item, index) => (
                                                     <div className='col-lg-3' key={ index }>
                                                         <div className="mb-3">
-                                                            <label htmlFor={ `exampleInputEmail${index + 1}` } className="form-label">{ item.replace(/_/g, ' ') }</label>
+                                                            <label htmlFor={ `inputID_${index + 1}` } className="form-label">{ item === 'bac' ? "BAC" : item === 'region' ? "Region" : item.replace(/_/g, ' ') }</label>
                                                             {
                                                                 item === 'region' ? (
                                                                     <>
                                                                         <div className="mb-3">
-                                                                            <select onMouseLeave={ (e) => { updating(e) } } className="form-select" onChange={ e => onChange(e) } value={ ProfileData[item] } name="region" aria-label="Default select example">
+                                                                            <select onBlur={ (e) => { updating(e) } } className="form-select" onChange={ e => onChange(e) } value={ ProfileData[item] } name="region" aria-label="Default select example">
+                                                                                <option key={ index } value={ 0 }>Select Region</option>
                                                                                 {
                                                                                     Regions.map((item, index) => {
                                                                                         return (
@@ -189,42 +202,58 @@ const UsersList = () => {
                                                                         </div>
                                                                     </>
                                                                 ) :
-                                                                    item.includes('Date') || item.includes('_On') ? (
-                                                                        <div className='row'>
-                                                                            <div className='col'>
-                                                                                <input
-                                                                                    type="date"
-                                                                                    className="form-control"
-                                                                                    onMouseLeave={ (e) => { updating(e) } }
-                                                                                    value={ ProfileData[item]?.split('T')[0] } // Convert to YYYY-MM-DD format
-                                                                                    name={ item }
-                                                                                    onChange={ e => onChange(e) }
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    )
-                                                                        : ProfileData[item] == "Yes" || ProfileData[item] == "No" ? (
-                                                                            <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
-                                                                                <option value="Yes">Yes</option>
-                                                                                <option value="No">No</option>
-                                                                            </select>
-                                                                        )
-                                                                            : ProfileData[item] == "Active" ? (
-                                                                                <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
-                                                                                    <option value="Active">Active</option>
-                                                                                    <option value="Inactive">Inactive</option>
+                                                                    item === 'bac' ? (
+                                                                        <>
+                                                                            <div className="mb-3">
+                                                                                <select onBlur={ (e) => { updating(e) } } className="form-select" onChange={ e => onChange(e) } value={ ProfileData[item] } name="bac" aria-label="Default select example">
+                                                                                    <option key={ index } value={ 0 }>Select BAC</option>
+                                                                                    {
+                                                                                        BACs.map((item, index) => {
+                                                                                            return (
+                                                                                                <option key={ index } value={ item?.id }>{ item?.name } ({ item?.email })</option>
+                                                                                            )
+                                                                                        })
+                                                                                    }
                                                                                 </select>
-                                                                            )
-                                                                                : (
+                                                                            </div>
+                                                                        </>
+                                                                    ) :
+                                                                        item.includes('Date') || item.includes('_On') ? (
+                                                                            <div className='row'>
+                                                                                <div className='col'>
                                                                                     <input
-                                                                                        type="text"
+                                                                                        type="date"
                                                                                         className="form-control"
                                                                                         onMouseLeave={ (e) => { updating(e) } }
-                                                                                        value={ ProfileData[item] != "nan" ? ProfileData[item] : "" }
+                                                                                        value={ ProfileData[item]?.split('T')[0] } // Convert to YYYY-MM-DD format
                                                                                         name={ item }
                                                                                         onChange={ e => onChange(e) }
                                                                                     />
+                                                                                </div>
+                                                                            </div>
+                                                                        )
+                                                                            : ProfileData[item] == "Yes" || ProfileData[item] == "No" ? (
+                                                                                <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
+                                                                                    <option value="Yes">Yes</option>
+                                                                                    <option value="No">No</option>
+                                                                                </select>
+                                                                            )
+                                                                                : ProfileData[item] == "Active" ? (
+                                                                                    <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
+                                                                                        <option value="Active">Active</option>
+                                                                                        <option value="Inactive">Inactive</option>
+                                                                                    </select>
                                                                                 )
+                                                                                    : (
+                                                                                        <input
+                                                                                            type="text"
+                                                                                            className="form-control"
+                                                                                            onMouseLeave={ (e) => { updating(e) } }
+                                                                                            value={ ProfileData[item] != "nan" ? ProfileData[item] : "" }
+                                                                                            name={ item }
+                                                                                            onChange={ e => onChange(e) }
+                                                                                        />
+                                                                                    )
                                                             }
                                                             {/* <input type="text" className="form-control" value={ ProfileData[item] != "nan" ? ProfileData[item] : "" } name={ item } /> */ }
                                                         </div>

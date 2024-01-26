@@ -64,7 +64,10 @@ const BAInvestment = () => {
 
 
 
-    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
+    const onChange = e => {
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
+    }
     // API Config
     const config = {
         headers: {
@@ -249,7 +252,7 @@ const BAInvestment = () => {
 
     const compulsoryAEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
-
+    const [FormStatus, setFormStatus] = useState(0)
 
     const LoadData = async (formId) => {
 
@@ -264,6 +267,7 @@ const BAInvestment = () => {
                 config
             )
             setFormData(response?.data?.data?.assuranceInvestment)
+            setFormStatus(response?.data?.data?.form_status)
             setProductTaken(response?.data?.data?.productTaken)
             setAI_Others_Data(response?.data?.data?.ai_other)
 
@@ -309,7 +313,7 @@ const BAInvestment = () => {
     }
 
     const onFieldBlur = (e) => {
-        updateRPForm()
+        FormStatus == 0 ? updateRPForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
     }
 
     const [backgroundInfoVisibility8, setbackgroundInfoVisibility8] = useState(false)

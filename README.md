@@ -14,6 +14,14 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 26 January 2024:
+- Users App updates
+1. Regions can be updated
+2. BACs can be updated
+- ROA App updates
+1. PDF is now working
+- Deployment on Staging 
+
 ### 19 January 2024:
 - Users App done
 1. Added User List

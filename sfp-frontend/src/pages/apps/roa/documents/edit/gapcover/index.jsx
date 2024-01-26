@@ -64,7 +64,10 @@ const GapCover = () => {
 
 
 
-    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
+    const onChange = e => {
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
+    }
     // API Config
     const config = {
         headers: {
@@ -161,7 +164,7 @@ const GapCover = () => {
         e.preventDefault()
 
     }
-
+    const [FormStatus, setFormStatus] = useState(0)
     const LoadData = async (formId) => {
 
         setLoaded(true)
@@ -175,6 +178,7 @@ const GapCover = () => {
                 config
             )
             setFormData(response?.data?.data?.gapcover)
+            setFormStatus(response?.data?.data?.form_status)
 
 
         } catch (error) {
@@ -218,7 +222,8 @@ const GapCover = () => {
 
 
     const onFieldBlur = (e) => {
-        updateForm()
+        FormStatus == 0 ? updateForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
     }
     const [backgroundInfoVisibility, setbackgroundInfoVisibility] = useState(false)
 
@@ -341,7 +346,7 @@ const GapCover = () => {
                                             <label htmlFor="email" className="col-form-label"><b>Financial Advisor:</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input disabled value={ `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` } name="GP_FinancialAdvisor" className="form-control" placeholder="Primary intermediary's name" aria-describedby="" />
+                                            <input disabled value={ `${user?.full_name}` } name="GP_FinancialAdvisor" className="form-control" placeholder="Primary intermediary's name" aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>

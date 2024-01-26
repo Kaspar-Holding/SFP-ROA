@@ -66,7 +66,9 @@ const EmployeeBenefits = () => {
 
 
 
-    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
+    const onChange = e => {
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+    }
     // API Config
     const config = {
         headers: {
@@ -355,7 +357,7 @@ const EmployeeBenefits = () => {
 
     }
 
-
+    const [FormStatus, setFormStatus] = useState(0)
     const LoadData = async (formId) => {
 
         setLoaded(true)
@@ -368,6 +370,7 @@ const EmployeeBenefits = () => {
                 Body,
                 config
             )
+            setFormStatus(response?.data?.data?.form_status)
             setFormData(response?.data?.data?.employeeBenefits)
             setCoverData(response?.data?.data?.cover)
 
@@ -414,7 +417,8 @@ const EmployeeBenefits = () => {
 
 
     const onFieldBlur = (e) => {
-        updateEBForm()
+        FormStatus == 0 ? updateEBForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
     }
 
     useEffect(() => {
@@ -530,7 +534,7 @@ const EmployeeBenefits = () => {
                                                 <label htmlFor="advisor" className="col-form-label roa-label"><b>Financial Advisor:</b></label>
                                             </div>
                                             <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="EB_ClientFinancialAdvisor" name="EB_ClientFinancialAdvisor" onChange={ (e) => { onChange(e) } } value={ FormData['EB_ClientFinancialAdvisor'] } className="form-control roa-label" placeholder="Primary Intermediary’s name" aria-describedby="" />
+                                                <input onBlur={ (e) => { onFieldBlur(e) } } value={ user?.full_name } className="form-control roa-label" placeholder="Primary Intermediary’s name" aria-describedby="" />
                                             </div>
                                         </div>
                                     </div>

@@ -34,7 +34,8 @@ class MedicalAPIs(APIView):
         serializer = MedicalSerializers(snippet)
        
         return Response({
-            "medical": serializer.data
+            "medical": serializer.data,
+            "form_status": Disclosures.objects.get(id=pk).status,
         })
         
     def post(self, request, format=None):

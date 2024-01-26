@@ -64,13 +64,13 @@ def searchComplianceDocument(request):
             search_vector = SearchVector('policy_number')
             if request.data['search_query'] != "":
                 # data = data.annotate(search=search_vector).filter(search=search_query).values().order_by('-created_at')
-                data = data.filter(Q(policy_number__icontains=request.data['search_query'])|Q(clientName__icontains=request.data['search_query'])).values().order_by('-created_at')
+                data = data.filter(Q(advisor__user_profile__Full_Name=request.data['search_query'])|Q(advisor__first_name=request.data['search_query'])|Q(policy_number__icontains=request.data['search_query'])|Q(clientName__icontains=request.data['search_query'])).values().order_by('-created_at')
             else:
                 data = data.values().order_by('-created_at')
             p = Paginator(data, request.data['page_size'])
             data = p.page(request.data['page_number']).object_list
             for row in data:
-                advisor = UserAccount.objects.filter(pk=row['advisor'])
+                advisor = UserAccount.objects.filter(pk=row['advisor_id'])
                 if advisor.exists():
                     advisor = advisor.values().first()
                     row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
@@ -129,10 +129,10 @@ def searchComplianceDocument(request):
             p = Paginator(data, request.data['page_size'])
             data = p.page(request.data['page_number']).object_list
             for row in data:
-                advisor = UserAccount.objects.filter(pk=row['advisor'])
+                advisor = UserAccount.objects.filter(pk=row['advisor_id'])
                 if advisor.exists():
                     advisor = advisor.values().first()
-                    row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                    row['advisor_id'] = f"{advisor['first_name']} ({advisor['email']})"
                 else:
                     raise Http404
                 userData = UserAccount.objects.filter(pk=row['user_id'])
@@ -202,7 +202,7 @@ class complainceDocumentsInfo(APIView):
                 p = Paginator(data, request.data['page_size'])
                 data = p.page(request.data['page_number']).object_list
                 for row in data:
-                    advisor = UserAccount.objects.filter(pk=row['advisor'])
+                    advisor = UserAccount.objects.filter(pk=row['advisor_id'])
                     if advisor.exists():
                         advisor = advisor.values().first()
                         row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
@@ -255,10 +255,10 @@ class complainceDocumentsInfo(APIView):
                     p = Paginator(data, request.data['page_size'])
                     data = p.page(request.data['page_number']).object_list
                     for row in data:
-                        advisor = UserAccount.objects.filter(pk=row['advisor'])
+                        advisor = UserAccount.objects.filter(pk=row['advisor_id'])
                         if advisor.exists():
                             advisor = advisor.values().first()
-                            row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                            row['advisor_id'] = f"{advisor['first_name']} ({advisor['email']})"
                         else:
                             raise Http404
                         arc_status = False
@@ -316,10 +316,10 @@ class complainceDocumentsInfo(APIView):
                     p = Paginator(data, request.data['page_size'])
                     data = p.page(request.data['page_number']).object_list
                     for row in data:
-                        advisor = UserAccount.objects.filter(pk=row['advisor'])
+                        advisor = UserAccount.objects.filter(pk=row['advisor_id'])
                         if advisor.exists():
                             advisor = advisor.values().first()
-                            row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                            row['advisor_id'] = f"{advisor['first_name']} ({advisor['email']})"
                         else:
                             raise Http404
                         arc_status = False
@@ -906,10 +906,10 @@ class ComplianceDocumentList(APIView):
                 p = Paginator(data, request.data['page_size'])
                 data = p.page(request.data['page_number']).object_list
                 for row in data:
-                    advisor = UserAccount.objects.filter(pk=row['advisor'])
+                    advisor = UserAccount.objects.filter(pk=row['advisor_id'])
                     if advisor.exists():
                         advisor = advisor.values().first()
-                        row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                        row['advisor_id'] = f"{advisor['first_name']} ({advisor['email']})"
                     else:
                         raise Http404
                     dId = row['id']
@@ -947,10 +947,10 @@ class ComplianceDocumentList(APIView):
                     }
                     data = data.values()
                     for row in data:
-                        advisor = UserAccount.objects.filter(pk=row['advisor'])
+                        advisor = UserAccount.objects.filter(pk=row['advisor_id'])
                         if advisor.exists():
                             advisor = advisor.values().first()
-                            row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                            row['advisor_id'] = f"{advisor['first_name']} ({advisor['email']})"
                         else:
                             raise Http404
                         arc_status = False
@@ -996,10 +996,10 @@ class ComplianceDocumentList(APIView):
                     }
                     data = data.values()
                     for row in data:
-                        advisor = UserAccount.objects.filter(pk=row['advisor'])
+                        advisor = UserAccount.objects.filter(pk=row['advisor_id'])
                         if advisor.exists():
                             advisor = advisor.values().first()
-                            row['advisor'] = f"{advisor['first_name']} ({advisor['email']})"
+                            row['advisor_id'] = f"{advisor['first_name']} ({advisor['email']})"
                         else:
                             raise Http404
                         dId = row['id']

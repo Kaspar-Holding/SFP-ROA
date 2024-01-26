@@ -146,6 +146,7 @@ class ShortTermInsuranceCommericalAPIs(APIView):
             "stic_19": stic_19_data,
             "stic_20": stic_20_data,
             "stic_21": stic_21_data,
+            "form_status": Disclosures.objects.get(id=pk).status,
         }, 200)
         
     def post(self, request, format=None):

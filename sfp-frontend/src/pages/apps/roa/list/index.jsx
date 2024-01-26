@@ -1,19 +1,18 @@
 import { useRouter } from 'next/router'
-import DashboardLayout from '../../../hocs/DashboardLayout'
-import Layout from '../../../hocs/Layout'
-import Loader from '../../../hocs/Loader'
+import DashboardLayout from '../../../../hocs/DashboardLayout'
+import Layout from '../../../../hocs/Layout'
+import Loader from '../../../../hocs/Loader'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import axios from 'axios'
-import Filters from './Filters'
 import Moment from 'moment'
 import dynamic from 'next/dynamic'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
 
-const ROA = () => {
+const ROAList = () => {
     const router = useRouter()
     const user = useSelector(state => state.auth.user)
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
@@ -109,124 +108,10 @@ const ROA = () => {
 
     }
 
-    const loadKPIsandTrends = async (filterType, year, monthyear, month, date, customFilterType, fromdate, todate) => {
-        try {
-            const Body = JSON.stringify({ filterType, year, monthyear, month, date, customFilterType, fromdate, todate })
-            const response = await axios.post(
-                '/api/roa/kpisntrend',
-                Body,
-                config
-            )
-            setTrendData(response?.data?.data?.trend_data)
-            setKPIs(response?.data?.data?.kpis)
-            setKPITrend(response?.data?.data?.trend)
-
-        } catch (error) {
-            Swal.fire({
-                position: "bottom-end",
-                type: "error",
-                title: "Error",
-                html: `${error?.response?.data?.error}`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
-            })
-
-        }
-    }
-
     useEffect(() => {
-        loadKPIsandTrends(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate)
         loadForms(1, PageSize, Sortby, SortDirection, SearchQuery, true)
     }, [])
 
-
-    // Chart Configurtions
-    // Pie Chart
-    const pieChartOptions = {
-        // colors: ["#FEEAE5", "#FFE5E9", "#FFFAE4", "#F6E4FF"],
-        chart: {
-            type: 'pie',
-        },
-        labels: ['Incompleted', 'Completed'],
-        responsive: [
-            {
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    },
-                    legend: {
-                        show: false
-                    }
-                }
-            }],
-        legend: {
-            show: true,
-            position: "bottom"
-        }
-
-
-    }
-
-    // Line Chart
-
-    const lineSeries = (data) => [
-        {
-            name: "Total Forms",
-            data: data
-        }
-    ]
-
-    const lineOptions = (header, max) => ({
-        chart: {
-            height: 350,
-            type: 'line',
-            dropShadow: {
-                enabled: true,
-                color: '#000',
-                top: 18,
-                left: 7,
-                blur: 10,
-                opacity: 0.2
-            },
-            toolbar: {
-                show: true
-            }
-        },
-        colors: ['#77B6EA', '#545454'],
-        dataLabels: {
-            enabled: true,
-        },
-        stroke: {
-            curve: 'smooth'
-        },
-        grid: {
-            borderColor: '#e7e7e7',
-            row: {
-                colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                opacity: 0.5
-            },
-        },
-        markers: {
-            size: 1
-        },
-        xaxis: {
-            categories: header,
-            title: {
-                text: 'Dates'
-            }
-        },
-        yaxis: {
-            title: {
-                text: 'Count'
-            },
-        },
-        legend: {
-            show: false
-        }
-    })
 
     return (
         <Layout
@@ -243,112 +128,7 @@ const ROA = () => {
                         :
                         <div className='col-lg-9'>
                             <div className='row'>
-                                <div className='col-lg-5 app-dashboard-kpi'>
-                                    <div className='row'>
-                                        <div className='col-8'>
-                                            <h1 className='app-dashboard-header'>Total Summary</h1>
-                                        </div>
-                                    </div>
-                                    {/* <p className='app-dashboard-subheader'>Compliance KPIs</p> */ }
-                                    <Filters
-                                        filterType={ FilterType }
-                                        updateFilter={ setFilterType }
-                                        Month={ Month }
-                                        updateMonth={ setMonth }
-                                        Year={ Year }
-                                        updateYear={ setYear }
-                                        MonthYear={ MonthYear }
-                                        updateMonthYear={ setMonthYear }
-                                        CurrentDate={ CurrentDate }
-                                        updateCurrentDate={ setCurrentDate }
-                                        FromDate={ FromDate }
-                                        updateFromDate={ setFromDate }
-                                        ToDate={ ToDate }
-                                        updateToDate={ setToDate }
-                                        years={ years }
-                                        loadData={ loadKPIsandTrends }
-                                        CustomFilterType={ CustomFilterType }
-                                        setCustomFilterType={ setCustomFilterType }
-                                    />
-                                    <div className='row'>
-                                        <div className='col-lg-4 p-0 m-0'>
-                                            <div className="card kpi-card-1">
-                                                <div className="card-body">
-                                                    <h1 className='roa-kpi-number'>
-                                                        {
-                                                            KPIs?.total ? KPIs?.total : 0
-                                                        }
-                                                    </h1>
-                                                    <p className='roa-kpi-title'>
-                                                        Total
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className='col-lg-4 p-0 m-0'>
-                                            <div className="card kpi-card-2">
-                                                <div className="card-body">
-                                                    <h1 className='roa-kpi-number'>
-                                                        {
-                                                            KPIs?.new ? KPIs?.new : 0
-                                                        }
-                                                    </h1>
-                                                    <p className='roa-kpi-title'>
-                                                        Incomplete
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className='col-lg-4 p-0 m-0'>
-                                            <div className="card kpi-card-3">
-                                                <div className="card-body">
-                                                    <h1 className='roa-kpi-number'>
-                                                        {
-                                                            KPIs?.completed ? KPIs?.completed : 0
-                                                        }
-                                                    </h1>
-                                                    <p className='roa-kpi-title'>
-                                                        Complete
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/* <div className='col-lg-3 p-0 m-0'>
-                                    <div className="card kpi-card-4">
-                                        <div className="card-body">
-                                            <h1 className='roa-kpi-number'>
-                                                {
-                                                    KPIs?.referred ? KPIs?.referred : 0 
-                                                }
-                                            </h1>
-                                            <p className='kpi-title'>
-                                                Referred
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div> */}
-                                    </div>
-                                </div>
-                                <div className='col-lg-3 app-dashboard-progress'>
-                                    <h1 className='app-dashboard-header'>Progress</h1>
-                                    {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */ }
-                                    {
-                                        KPITrend ?
-                                            (typeof window !== 'undefined') && <Chart options={ pieChartOptions } series={ KPITrend ? [KPITrend?.new, KPITrend?.completed] : [0, 0, 0, 0] } type="pie" width={ '100%' } />
-                                            : <></>
-                                    }
-                                </div>
-                                <div className='col-lg-4 app-dashboard-trend'>
-                                    <h1 className='app-dashboard-header'>Trending Data</h1>
-                                    {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */ }
-                                    {/* <Chart options={lineOptions} series={lineSeries} type="line" height={210} /> */ }
-                                    {
-                                        TrendData.length > 0 ?
-                                            (typeof window !== 'undefined') && <Chart options={ lineOptions([TrendData].map(x => x.map(a => (a[0]))).flat(2), 2) } series={ lineSeries([TrendData].map(x => x.map(a => (a[1]))).flat(2)) } type="bar" height={ 210 } />
-                                            : <></>
-                                    }
-                                </div>
-                                <div className='col-lg-12 app-dashboard-records'>
+                                <div className='col-lg-12 roa-list-records'>
                                     <div className='row'>
                                         <div className='col-lg-3'>
                                             <h1 className='app-dashboard-header'>Recent Cases</h1>
@@ -418,7 +198,7 @@ const ROA = () => {
                                         </div>
 
                                     </div>
-                                    <div className='roa-dashboard-records-table'>
+                                    <div className='roa-list-records-table'>
                                         <table className="table" >
                                             <thead className='tableHead'>
                                                 <tr>
@@ -558,4 +338,4 @@ const ROA = () => {
     )
 }
 
-export default ROA
+export default ROAList

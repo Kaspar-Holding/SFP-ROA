@@ -64,7 +64,10 @@ const RiskPlanning = () => {
 
 
 
-    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
+    const onChange = e => {
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
+    }
     // API Config
     const config = {
         headers: {
@@ -327,7 +330,7 @@ const RiskPlanning = () => {
     const compulsoryAEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
 
-
+    const [FormStatus, setFormStatus] = useState(0)
     const LoadData = async (formId) => {
 
         setLoaded(true)
@@ -345,7 +348,7 @@ const RiskPlanning = () => {
             setRisk_DC_Data(response?.data?.data?.dc_other)
             setRisk_DiC_Data(response?.data?.data?.diC_other)
             setRisk_DrC_Data(response?.data?.data?.drC_other)
-
+            setFormStatus(response?.data?.data?.form_status)
         } catch (error) {
 
             setProductTaken([])
@@ -395,7 +398,8 @@ const RiskPlanning = () => {
 
 
     const onFieldBlur = (e) => {
-        updateRPForm()
+        FormStatus == 0 ? updateRPForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+
     }
 
 

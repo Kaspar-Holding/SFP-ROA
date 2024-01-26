@@ -40,6 +40,7 @@ class InvestmentPlanningAPIs(APIView):
         return Response({
             "investmentPlanning": serializer.data,
             "productTaken": productTakenData,
+            "form_status": Disclosures.objects.get(id=pk).status,
         }, 200)
         
     def post(self, request, format=None):

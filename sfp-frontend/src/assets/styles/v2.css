@@ -967,6 +967,24 @@ header {
     overflow-y: auto;
 }
 
+.roa-list-records {
+    background-color: #ffffff;
+    margin-top: 1%;
+    height: 85vh;
+    margin-right: 0.5%;
+    padding: 2%;
+}
+
+.roa-dashboard-records-table {
+    height: 30vh;
+    overflow-y: auto;
+}
+
+.roa-list-records-table {
+    height: 75vh;
+    overflow-y: auto;
+}
+
 .bulkupdate {
     height: 85vh;
     background-color: #ffffff;
@@ -1374,6 +1392,17 @@ header {
 }
 
 
+.roa-kpi-number {
+    padding-top: 40%;
+    color: #333;
+    font-family: Open Sans;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
 .kpi-number {
     padding-top: 50%;
     color: #333;
@@ -1385,6 +1414,15 @@ header {
 }
 
 .kpi-title {
+    color: #333;
+    font-family: Open Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.roa-kpi-title {
     color: #333;
     font-family: Open Sans;
     font-size: 12px;

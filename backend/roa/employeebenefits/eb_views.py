@@ -39,6 +39,7 @@ class EmployeeBenefitsAPIs(APIView):
         
         return Response({
             "employeeBenefits": serializer.data,
+            "form_status": Disclosures.objects.get(id=pk).status,
             "cover": coverData
         }, 200)
         

@@ -34,7 +34,8 @@ class GapCoverAPIs(APIView):
         serializer = GapCoverSerializers(snippet)
        
         return Response({
-            "gapcover": serializer.data
+            "gapcover": serializer.data,
+            "form_status": Disclosures.objects.get(id=pk).status,
         })
         
     def post(self, request, format=None):

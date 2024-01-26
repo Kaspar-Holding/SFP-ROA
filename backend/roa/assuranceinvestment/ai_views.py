@@ -43,6 +43,7 @@ class AssuranceInvestmentAPIs(APIView):
         return Response({
             "assuranceInvestment": serializer.data,
             "productTaken": productTakenData,
+            "form_status": Disclosures.objects.get(id=pk).status,
             "ai_other": ai_otherData
         }, 200)
         
