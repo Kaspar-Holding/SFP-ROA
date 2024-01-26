@@ -130,6 +130,12 @@ const GatekeepingInsights = () => {
             type: type ? type : "line"
         },
         {
+            name: name_2,
+            data: data_2,
+            color: '#FFF000',
+            type: type_2 ? type_2 : "line"
+        },
+        {
             name: name_1,
             data: data_1,
             color: '#00FF00',
@@ -197,7 +203,7 @@ const GatekeepingInsights = () => {
 
     })
 
-    const totalGatekeepingOptions = (categories, title) => ({
+    const totalGatekeepingOptions = (categories, title, y_title, y_title1) => ({
         chart: {
             height: 350,
             type: 'line',
@@ -233,6 +239,22 @@ const GatekeepingInsights = () => {
         xaxis: {
             categories: categories,
         },
+        yaxis: [{
+            title: {
+                text: y_title
+            },
+
+        },
+        {
+            opposite: true,
+            title: {
+                text: y_title1,
+                formatter: function (val) {
+                    return val + " %"
+                }
+            }
+        }
+        ],
         tooltip: {
             y: [
                 {
@@ -527,10 +549,6 @@ const GatekeepingInsights = () => {
         router.push('/auth/login')
     }
 
-    if (user?.userType === 6) {
-        router.push('/')
-    }
-
     return (
         <Layout
             title={ "Insights" }
@@ -619,7 +637,7 @@ const GatekeepingInsights = () => {
                                     </div>
                                     <div className='col-lg-6 col-md-6 col-sm-12 bg-white'>
                                         {
-                                            (typeof window !== 'undefined') && <Chart options={ totalGatekeepingOptions([DatewiseGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2), "Gatekeeping Approval", "Reviews", "Approved at 1st Review") } series={ totalGatekeepingSeries("Reviews", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "First Approval", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[2]))).flat(2), "bar") } type="bar" height={ 350 } />
+                                            (typeof window !== 'undefined') && <Chart options={ totalGatekeepingOptions([DatewiseGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2), "Gatekeeping Approval", "Reviews", "Percentage Approved at 1st Review") } series={ totalGatekeepingSeries("Reviews", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "First Approval", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[2]))).flat(2), "bar", "First Approval Percentage", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[3]))).flat(2), "bar") } type="bar" height={ 350 } />
                                         }
                                     </div>
                                     {/* <div className='col-lg-3 col-md-6 col-sm-12 bg-white'>
@@ -691,7 +709,7 @@ const GatekeepingInsights = () => {
                                     </div>
 
                                     {/* <div className='col-lg-4 col-md-6 col-sm-12 bg-white insight-gatekeeping-card'>
-                                    <h5 class="app-dashboard-header">Top 10 Advisors</h5>
+                                    <h5 class="app-dashboard-header">10 Advisors</h5>
                                     <table className="table mx-1">
                                         <thead>
                                             <tr>

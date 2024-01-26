@@ -4453,7 +4453,7 @@ const STCommercial = () => {
 
                                                 <tr >
 
-                                                    <td colSpan={ 1 }> <b>.</b>Top up personal Liability</td>
+                                                    <td colSpan={ 1 }> <b>.</b>up personal Liability</td>
                                                     <td class="col-2" style={ { width: "100px" } }>
                                                         <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_ProdComp_Recommended17"] === 1 ? true : false } name="STIC_ProdComp_Recommended17" onChange={ (e) => { FormData["STIC_ProdComp_Recommended17"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } align="center" />
                                                     </td>
@@ -17544,7 +17544,7 @@ const STCommercial = () => {
 
                                                 <tbody>
                                                     <tr>
-                                                        <td style={ { fontSize: '14px', } } align="left">Top up personal liability</td>
+                                                        <td style={ { fontSize: '14px', } } align="left">up personal liability</td>
                                                         <td>
                                                             <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_Sec14_Recommended1"] === 1 ? true : false } name="STIC_Sec14_Recommended1" onChange={ (e) => { FormData["STIC_Sec14_Recommended1"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
                                                         </td>
@@ -17855,7 +17855,7 @@ const STCommercial = () => {
 
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td style={ { fontSize: '14px', } } align="left">Top up personal liability</td>
+                                                                            <td style={ { fontSize: '14px', } } align="left">up personal liability</td>
                                                                             <td>
                                                                                 <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ key.Sec14_Recommended1 == 1 ? true : false } name="Sec14_Recommended1" onChange={ (e) => { key.Sec14_Recommended1 == 1 ? on_Section_14_Value_Change("Sec14_Recommended1", i, 0) : on_Section_14_Value_Change("Sec14_Recommended1", i, 1) } } />
                                                                             </td>

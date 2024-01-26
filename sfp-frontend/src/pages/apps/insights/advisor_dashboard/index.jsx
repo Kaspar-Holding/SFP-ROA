@@ -466,10 +466,6 @@ const AdvisorsInsights = () => {
         router.push('/auth/login')
     }
 
-    if (user?.userType === 6) {
-        router.push('/')
-    }
-
     return (
         <Layout
             title={ "Insights" }

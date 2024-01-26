@@ -302,7 +302,7 @@ header {
 .insight-commission-card {
     background-color: #ffffff;
     margin-top: 1%;
-    height: 40vh;
+    height: auto;
     margin-left: 1%;
     padding: 1%;
     font-family: 'Open Sans';

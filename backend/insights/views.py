@@ -7,7 +7,7 @@ from django.db.models.functions import Cast
 from django.http import Http404
 # Create your views here.
 from compliance.models import ComplianceDocument, GateKeeping, arc
-from data.models import regions, UserAccount, RiskFactors
+from data.models import regions, UserAccount, RiskFactors, user_profile, region_manager
 from django.db.models.functions import (
     ExtractDay, ExtractMonth, ExtractQuarter, ExtractWeek,
     ExtractWeekDay, ExtractIsoYear, ExtractYear,
@@ -32,6 +32,25 @@ class commissionInsights(APIView):
         businessType = (request.data['businessType'])
         # Annual Data
         reviewsData = ComplianceDocument.objects.all()
+        if user.userType == 1:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 2:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 3:
+            regional_manager = region_manager.objects.filter(manager=user.pk)
+            if regional_manager.exists():
+                advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                if advisor_ids.exists():
+                    advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 5:
+            advisor_ids = user_profile.objects.filter(bac=user.pk)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 6:
+            reviewsData = reviewsData.filter(advisor=user.pk)
         if filterType == 1:
             reviewsData = reviewsData.filter(updated_at__year=year)
         if filterType == 2:
@@ -153,6 +172,18 @@ class commissionInsights(APIView):
                     commission_trend.append([f"{date['updated_at__year']}", commission])
         # Regions
         available_regions = regions.objects.all().values('region')
+        if user.userType == 3:
+            regional_manager = region_manager.objects.filter(manager=user.pk)
+            if regional_manager.exists():
+                available_regions = available_regions.filter(id=regional_manager.first().region.pk)
+        if user.userType == 5:
+            region_ids = user_profile.objects.filter(bac=user.pk)
+            if region_ids.exists():
+                region_ids = list(region_ids.values_list('region',flat=True))
+                available_regions = available_regions.filter(id__in=region_ids)
+        if user.userType == 6:
+            region = user_profile.objects.filter(user=user.pk).first()
+            reviewsData = reviewsData.filter(advisor=region.region.pk)
         # Region wise Trend
         region_commission_trend = []
         regionsData = []
@@ -200,7 +231,12 @@ class commissionInsights(APIView):
 
                     # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
             if commission != 0:
-                top_advisors.append({"advisor": f"{advisor['first_name']} {advisor['last_name']}", "email": advisor['email'], "commission": commission})
+                advisor_profile = user_profile.objects.filter(user=advisor['id'])
+                name = f"{advisor['first_name']} {advisor['last_name']}"
+                if advisor_profile.exists():
+                    name = advisor_profile.first().Full_Name
+                    name = f"{name} ({advisor_profile.first().ID_Number})"
+                top_advisors.append({"advisor": f"{name}", "email": advisor['email'], "commission": commission})
         top_advisors = sorted(top_advisors, key=lambda d: d['commission'], reverse=True)
         # Business Type wise Trend
         businessType_commission_trend = []
@@ -257,7 +293,7 @@ class commissionInsights(APIView):
             #     # businessType_commission_trend.append([businessType, commission, round(commission/total_commission*100)])
             #     businessType_commission_trend.append([businessType, int(commission)])
         for row in businessType_commission_trend:
-            commission_percentage = round(row[1]/business_total_commission * 100)
+            commission_percentage = round(row[1]/business_total_commission * 100) if business_total_commission != 0 else 0
             row.append(commission_percentage)
         commissiondata = {
             "total_reviews" : total_reviews,
@@ -290,6 +326,25 @@ class investmentInsights(APIView):
         businessType = (request.data['businessType'])
         # Annual Data
         reviewsData = ComplianceDocument.objects.all()
+        if user.userType == 1:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 2:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 3:
+            regional_manager = region_manager.objects.filter(manager=user.pk)
+            if regional_manager.exists():
+                advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                if advisor_ids.exists():
+                    advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 5:
+            advisor_ids = user_profile.objects.filter(bac=user.pk)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 6:
+            reviewsData = reviewsData.filter(advisor=user.pk)
         if filterType == 1:
             reviewsData = reviewsData.filter(updated_at__year=year)
         if filterType == 2:
@@ -326,7 +381,7 @@ class investmentInsights(APIView):
                     lump_sum = 0
                     recurring = 0
                     
-                lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), lump_sum, recurring])
+                lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(lump_sum), int(recurring)])
         if filterType == 2:
             datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
             for date in datewise_data:
@@ -337,7 +392,7 @@ class investmentInsights(APIView):
                 else:
                     lump_sum = 0
                     recurring = 0
-                lump_sum_trend.append([date['updated_at__date'].strftime('%d %b %Y'), lump_sum, recurring])
+                lump_sum_trend.append([date['updated_at__date'].strftime('%d %b %Y'), int(lump_sum), int(recurring)])
         if filterType == 3:
             datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
             for date in datewise_data:
@@ -348,7 +403,7 @@ class investmentInsights(APIView):
                 else:
                     lump_sum = 0
                     recurring = 0                    
-                lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), lump_sum, recurring])
+                lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), int(lump_sum), int(recurring)])
         if filterType == 4:
             if customFilterType == 1:
                 if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
@@ -361,7 +416,7 @@ class investmentInsights(APIView):
                         else:
                             lump_sum = 0
                             recurring = 0    
-                        lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), lump_sum, recurring])
+                        lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(lump_sum), int(recurring)])
                 else:
                     datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
                     for date in datewise_data:
@@ -372,7 +427,7 @@ class investmentInsights(APIView):
                         else:
                             lump_sum = 0
                             recurring = 0   
-                        lump_sum_trend.append([date['updated_at__date'].strftime('%d %b %Y'), lump_sum, recurring])
+                        lump_sum_trend.append([date['updated_at__date'].strftime('%d %b %Y'), int(lump_sum), int(recurring)])
             if customFilterType == 2:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
                 for date in datewise_data:
@@ -383,7 +438,7 @@ class investmentInsights(APIView):
                     else:
                         lump_sum = 0
                         recurring = 0   
-                    lump_sum_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", lump_sum, recurring])
+                    lump_sum_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", int(lump_sum), int(recurring)])
             if customFilterType == 3:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
                 for date in datewise_data:
@@ -394,7 +449,7 @@ class investmentInsights(APIView):
                     else:
                         lump_sum = 0
                         recurring = 0   
-                    lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), lump_sum, recurring])
+                    lump_sum_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(lump_sum), int(recurring)])
             if customFilterType == 4:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
                 for date in datewise_data:
@@ -405,7 +460,7 @@ class investmentInsights(APIView):
                     else:
                         lump_sum = 0
                         recurring = 0   
-                    lump_sum_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", lump_sum, recurring])
+                    lump_sum_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", int(lump_sum), int(recurring)])
             if customFilterType == 5:
                 datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
                 for date in datewise_data:
@@ -416,9 +471,22 @@ class investmentInsights(APIView):
                     else:
                         lump_sum = 0
                         recurring = 0   
-                    lump_sum_trend.append([f"{date['updated_at__year']}", lump_sum, recurring])
+                    lump_sum_trend.append([f"{date['updated_at__year']}", int(lump_sum), int(recurring)])
             # Regions
         available_regions = regions.objects.all().values('region')
+        available_regions = regions.objects.all().values('region')
+        if user.userType == 3:
+            regional_manager = region_manager.objects.filter(manager=user.pk)
+            if regional_manager.exists():
+                available_regions = available_regions.filter(id=regional_manager.first().region.pk)
+        if user.userType == 5:
+            region_ids = user_profile.objects.filter(bac=user.pk)
+            if region_ids.exists():
+                region_ids = list(region_ids.values_list('region',flat=True))
+                available_regions = available_regions.filter(id__in=region_ids)
+        if user.userType == 6:
+            region = user_profile.objects.filter(user=user.pk).first()
+            reviewsData = reviewsData.filter(advisor=region.region.pk)
         # Region wise Trend
         region_investment_trend = []
         regionsData = []
@@ -436,7 +504,7 @@ class investmentInsights(APIView):
             top_regions.append({"region": region['region'], "lump_sum": int(lump_sum), "recurring":int(recurring)})
             regionsData.append(region['region'])
             # if lump_sum != 0:
-            #     region_investment_trend.append([region['region'], lump_sum, recurring])
+            #     region_investment_trend.append([region['region'], int(lump_sum), int(recurring)])
             #     top_regions.append({"region": region['region'], "lump_sum": lump_sum, "recurring":recurring})
             #     regionsData.append(region['region'])
         top_regions_lump_sum = sorted(top_regions, key=lambda d: d['lump_sum'], reverse=True)
@@ -464,7 +532,12 @@ class investmentInsights(APIView):
 
                     # lump_sum_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "lump_sum": float(gk['lump_sum'].replace(',', '.'))})
             if lump_sum != 0:
-                top_advisors.append({"advisor": f"{advisor['first_name']} {advisor['last_name']}", "email": advisor['email'], "lump_sum": lump_sum, "recurring": recurring})
+                advisor_profile = user_profile.objects.filter(user=advisor['id'])
+                name = f"{advisor['first_name']} {advisor['last_name']}"
+                if advisor_profile.exists():
+                    name = advisor_profile.first().Full_Name
+                    name = f"{name} ({advisor_profile.first().ID_Number})"
+                top_advisors.append({"advisor": f"{name}", "email": advisor['email'], "lump_sum": lump_sum, "recurring": recurring})
         top_advisors_lump_sum = sorted(top_advisors, key=lambda d: d['lump_sum'], reverse=True)
         top_advisors_recurring = sorted(top_advisors, key=lambda d: d['recurring'], reverse=True)
         # Business Type wise Trend
@@ -524,7 +597,7 @@ class investmentInsights(APIView):
             businessType_investment_trend.append([businessType, int(lump_sum), int(recurring)])
             # if lump_sum != 0:
             #     # businessType_investment_trend.append([businessType, lump_sum, round(lump_sum/total_investment_lump_sum*100)])
-            #     businessType_investment_trend.append([businessType, lump_sum, recurring])
+            #     businessType_investment_trend.append([businessType, int(lump_sum), int(recurring)])
         # for row in businessType_investment_trend:
         #     lump_sum_percentage = round(row[1]/business_total_investment_lump_sum * 100)
         #     row.append(lump_sum_percentage)
@@ -565,6 +638,25 @@ class monitoringInsights(APIView):
         businessType = (request.data['businessType'])
         # Annual Data
         reviewsData = ComplianceDocument.objects.all()
+        if user.userType == 1:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 2:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 3:
+            regional_manager = region_manager.objects.filter(manager=user.pk)
+            if regional_manager.exists():
+                advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                if advisor_ids.exists():
+                    advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 5:
+            advisor_ids = user_profile.objects.filter(bac=user.pk)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 6:
+            reviewsData = reviewsData.filter(advisor=user.pk)
         if filterType == 1:
             reviewsData = reviewsData.filter(updated_at__year=year)
         if filterType == 2:
@@ -578,7 +670,7 @@ class monitoringInsights(APIView):
             reviewsData = reviewsData.filter(region=region)
         if advisor != "all":
             reviewsData = reviewsData.filter(advisor=int(advisor))
-        print(reviewsData)
+
         if businessType != "all":
             reviewsData = reviewsData.filter(businessType=int(businessType))
         total_cases = reviewsData.count()
@@ -610,12 +702,13 @@ class monitoringInsights(APIView):
                             first_not_approved += 1
                         if review['status'] == 4:
                             first_partial_approval += 1
-        print(first_approval)
+        
         # Trend
         monitoring_trend = []
         
         if filterType == 1:
             datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+            total_review_first_approval = 0
             for date in datewise_data:
                 reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).values_list('id', flat=True)
                 review_first_approval = 0
@@ -646,9 +739,11 @@ class monitoringInsights(APIView):
                                 if reviewData['status'] == 4:
                                     review_first_partial_approval += 1
                 if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:
+                    total_review_first_approval += review_first_approval
                     monitoring_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
         if filterType == 2:
             datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+            total_review_first_approval = 0
             for date in datewise_data:
                 reviewIds = reviewsData.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
                 review_first_approval = 0
@@ -679,9 +774,11 @@ class monitoringInsights(APIView):
                                 if reviewData['status'] == 4:
                                     review_first_partial_approval += 1
                 if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:
+                    total_review_first_approval += review_first_approval
                     monitoring_trend.append([date['updated_at__date'].strftime('%d %b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
         if filterType == 3:
             datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
+            total_review_first_approval = 0
             for date in datewise_data:
                 reviewIds = reviewsData.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour']).values_list('id', flat=True)
                 review_first_approval = 0
@@ -712,11 +809,13 @@ class monitoringInsights(APIView):
                                 if reviewData['status'] == 4:
                                     review_first_partial_approval += 1
                 if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:               
+                    total_review_first_approval += review_first_approval
                     monitoring_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), review_first_approval, review_first_not_approved, review_first_partial_approval])
         if filterType == 4:
             if customFilterType == 1:
                 if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
                     datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                    total_review_first_approval = 0
                     for date in datewise_data:
                         reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).values_list('id', flat=True)
                         review_first_approval = 0
@@ -747,9 +846,11 @@ class monitoringInsights(APIView):
                                         if reviewData['status'] == 4:
                                             review_first_partial_approval += 1
                         if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:       
+                            total_review_first_approval += review_first_approval
                             monitoring_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
                 else:
                     datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+                    total_review_first_approval = 0
                     for date in datewise_data:
                         reviewIds = reviewsData.filter(updated_at__date=date['updated_at__date']).values_list('id', flat=True)
                         review_first_approval = 0
@@ -780,9 +881,11 @@ class monitoringInsights(APIView):
                                         if reviewData['status'] == 4:
                                             review_first_partial_approval += 1
                         if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                            total_review_first_approval += review_first_approval
                             monitoring_trend.append([date['updated_at__date'].strftime('%d %b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
             if customFilterType == 2:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
+                total_review_first_approval = 0
                 for date in datewise_data:
                     reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week']).values_list('id', flat=True)
                     review_first_approval = 0
@@ -813,9 +916,11 @@ class monitoringInsights(APIView):
                                     if reviewData['status'] == 4:
                                         review_first_partial_approval += 1
                     if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                        total_review_first_approval += review_first_approval
                         monitoring_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", review_first_approval, review_first_not_approved, review_first_partial_approval])
             if customFilterType == 3:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                total_review_first_approval = 0
                 for date in datewise_data:
                     reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month']).values_list('id', flat=True)
                     review_first_approval = 0
@@ -846,9 +951,11 @@ class monitoringInsights(APIView):
                                     if reviewData['status'] == 4:
                                         review_first_partial_approval += 1
                     if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                        total_review_first_approval += review_first_approval
                         monitoring_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), review_first_approval, review_first_not_approved, review_first_partial_approval])
             if customFilterType == 4:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
+                total_review_first_approval = 0
                 for date in datewise_data:
                     reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter']).values_list('id', flat=True)
                     review_first_approval = 0
@@ -879,9 +986,11 @@ class monitoringInsights(APIView):
                                     if reviewData['status'] == 4:
                                         review_first_partial_approval += 1
                     if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                        total_review_first_approval += review_first_approval
                         monitoring_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", review_first_approval, review_first_not_approved, review_first_partial_approval])
             if customFilterType == 5:
                 datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
+                total_review_first_approval = 0
                 for date in datewise_data:
                     reviewIds = reviewsData.filter(updated_at__year=date['updated_at__year']).values_list('id', flat=True)
                     review_first_approval = 0
@@ -912,9 +1021,25 @@ class monitoringInsights(APIView):
                                     if reviewData['status'] == 4:
                                         review_first_partial_approval += 1
                     if review_first_approval != 0 or review_first_not_approved != 0 or review_first_partial_approval != 0:      
+                        total_review_first_approval += review_first_approval
                         monitoring_trend.append([f"{date['updated_at__year']}", review_first_approval, review_first_not_approved, review_first_partial_approval])
+        for row in monitoring_trend:
+            percentage = round(row[1]/total_review_first_approval * 100) if total_review_first_approval != 0 else 0
+            row.append(percentage)
         # Top Regions
         available_regions = regions.objects.all().values('region')
+        if user.userType == 3:
+            regional_manager = region_manager.objects.filter(manager=user.pk)
+            if regional_manager.exists():
+                available_regions = available_regions.filter(id=regional_manager.first().region.pk)
+        if user.userType == 5:
+            region_ids = user_profile.objects.filter(bac=user.pk)
+            if region_ids.exists():
+                region_ids = list(region_ids.values_list('region',flat=True))
+                available_regions = available_regions.filter(id__in=region_ids)
+        if user.userType == 6:
+            region = user_profile.objects.filter(user=user.pk).first()
+            reviewsData = reviewsData.filter(advisor=region.region.pk)
         top_regions = []
         for region in available_regions:
             reviewIds = ComplianceDocument.objects.filter(region=region['region']).values_list('id', flat=True)
@@ -966,7 +1091,11 @@ class monitoringInsights(APIView):
                             if reviewData['status'] == 1:
                                 review_first_approval += 1
             if review_first_approval != 0:
-                top_advisors.append({"advisor": f"{advisor['first_name']} {advisor['last_name']}", "email": advisor['email'], "first_approval": review_first_approval})
+                advisor_profile = user_profile.objects.filter(user=advisor['id'])
+                name = f"{advisor['first_name']} {advisor['last_name']}"
+                if advisor_profile.exists():
+                    name = advisor_profile.first().Full_Name
+                top_advisors.append({"advisor": f"{name}", "email": advisor['email'], "first_approval": review_first_approval})
             
         top_advisors = sorted(top_advisors, key=lambda d: d['first_approval'], reverse=True)
 
@@ -1005,6 +1134,25 @@ class gatekeeperInsights(APIView):
         businessType = (request.data['businessType'])
         # Annual Data
         reviewsData = ComplianceDocument.objects.all()
+        if user.userType == 1:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 2:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 3:
+            regional_manager = region_manager.objects.filter(manager=user.pk)
+            if regional_manager.exists():
+                advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                if advisor_ids.exists():
+                    advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 5:
+            advisor_ids = user_profile.objects.filter(bac=user.pk)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 6:
+            reviewsData = reviewsData.filter(advisor=user.pk)
         if filterType == 1:
             reviewsData = reviewsData.filter(updated_at__year=year)
         if filterType == 2:
@@ -1110,6 +1258,7 @@ class gatekeeperInsights(APIView):
             # Datewise Data
             date_gatekeeping_trend = []
             date_businesstype_trend = []
+            total_review_first_approval = 0
             if filterType == 1:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
                 for date in datewise_data:
@@ -1126,6 +1275,7 @@ class gatekeeperInsights(APIView):
                                     if reviewData['status'] == 1:
                                         review_first_approval += 1
                     if gk_total_reviews != 0 :
+                        total_review_first_approval += review_first_approval
                         date_gatekeeping_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), gk_total_reviews, review_first_approval])
             if filterType == 2:
                 datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
@@ -1143,6 +1293,7 @@ class gatekeeperInsights(APIView):
                                     if reviewData['status'] == 1:
                                         review_first_approval += 1
                     if gk_total_reviews != 0 :
+                        total_review_first_approval += review_first_approval
                         date_gatekeeping_trend.append([date['updated_at__date'].strftime('%d %b %Y'), gk_total_reviews, review_first_approval])
             if filterType == 3:
                 datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
@@ -1160,6 +1311,7 @@ class gatekeeperInsights(APIView):
                                     if reviewData['status'] == 1:
                                         review_first_approval += 1
                     if gk_total_reviews != 0 :
+                        total_review_first_approval += review_first_approval
                         date_gatekeeping_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), gk_total_reviews, review_first_approval])
             if filterType == 4:
                 if customFilterType == 1:
@@ -1179,6 +1331,7 @@ class gatekeeperInsights(APIView):
                                             if reviewData['status'] == 1:
                                                 review_first_approval += 1
                             if gk_total_reviews != 0 :
+                                total_review_first_approval += review_first_approval
                                 date_gatekeeping_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), gk_total_reviews, review_first_approval])
                     else:
                         datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
@@ -1196,6 +1349,7 @@ class gatekeeperInsights(APIView):
                                             if reviewData['status'] == 1:
                                                 review_first_approval += 1
                             if gk_total_reviews != 0 :
+                                total_review_first_approval += review_first_approval
                                 date_gatekeeping_trend.append([date['updated_at__date'].strftime('%d %b %Y'), gk_total_reviews, review_first_approval])
                 if customFilterType == 2:
                     datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
@@ -1213,6 +1367,7 @@ class gatekeeperInsights(APIView):
                                         if reviewData['status'] == 1:
                                             review_first_approval += 1
                         if gk_total_reviews != 0 :
+                            total_review_first_approval += review_first_approval
                             date_gatekeeping_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", gk_total_reviews, review_first_approval])
                 if customFilterType == 3:
                     datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
@@ -1230,6 +1385,7 @@ class gatekeeperInsights(APIView):
                                         if reviewData['status'] == 1:
                                             review_first_approval += 1
                         if gk_total_reviews != 0 :
+                            total_review_first_approval += review_first_approval
                             date_gatekeeping_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), gk_total_reviews, review_first_approval])
                 if customFilterType == 4:
                     datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
@@ -1247,6 +1403,7 @@ class gatekeeperInsights(APIView):
                                         if reviewData['status'] == 1:
                                             review_first_approval += 1
                         if gk_total_reviews != 0 :
+                            total_review_first_approval += review_first_approval
                             date_gatekeeping_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", gk_total_reviews, review_first_approval])
                 if customFilterType == 5:
                     datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
@@ -1264,6 +1421,7 @@ class gatekeeperInsights(APIView):
                                         if reviewData['status'] == 1:
                                             review_first_approval += 1
                         if gk_total_reviews != 0 :
+                            total_review_first_approval += review_first_approval
                             date_gatekeeping_trend.append([f"{date['updated_at__year']}", gk_total_reviews, review_first_approval])    
                 
                 
@@ -1321,7 +1479,9 @@ class gatekeeperInsights(APIView):
                 #         bt_data.append({"name": businessType, "data":""})
                 # date_businesstype_trend.append([date['updated_at__date'].strftime('%d %b %Y'), bt_total_reviews, review_first_approval])
                 
-
+            for row in date_gatekeeping_trend:
+                commission_percentage = round(row[1]/total_review_first_approval * 100) if total_review_first_approval != 0 else 0
+                row.append(commission_percentage)
             gatekeeperData = {
                 "kpis" : {
                     "total_reviews" : total_reviews,

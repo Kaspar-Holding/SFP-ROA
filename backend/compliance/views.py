@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import APIView, api_view
 from rest_framework.response import Response
-from data.models import UserAccount, categorisation, user_profile, regions
+from data.models import UserAccount, categorisation, user_profile, regions, region_manager
 from .models import ComplianceDocument, GateKeeping, DocumentComments, arc_questions, arc, arc_question_header, review_status
 from .serializers import ComplianceDocument_Serializer, review_status_Serializer, GateKeeping_Serializer, DocumentComments_Serializer, arc_questions_Serializer, arc_Serializer, arc_question_header_Serializer
 from rest_framework import status
@@ -3039,8 +3039,22 @@ class loadRegions(APIView):
 
     def get(self, request):
         user = request.user
-        if user.is_superuser or user.userType == 1 or user.userType == 2:
+        if user.is_superuser or user.userType != 6:
             regionsData = regions.objects.all().order_by('region')
+            if user.userType == 3:
+                regional_manager = region_manager.objects.filter(manager=user.pk)
+                if regional_manager.exists():
+                    regional_manager = regional_manager.first()
+                    regionsData = regionsData.filter(id=regional_manager.region.pk)
+                else:
+                    raise Http404
+            if user.userType == 5:
+                region_ids = user_profile.objects.filter(bac=user.pk)
+                if region_ids.exists():
+                    region_ids = list(region_ids.values_list('region', flat=True))
+                    regionsData = regionsData.filter(id__in=region_ids)
+                else:
+                    raise Http404
             if regionsData.exists():
                 regionsData = regionsData.values()
                 data = []
@@ -3057,36 +3071,78 @@ class loadRegions(APIView):
             else:
                 raise Http404
         else:
-            return Response(status.HTTP_401_UNAUTHORIZED)
+            user_profile_data = user_profile.objects.filter(user=user.pk).select_related('region')
+            if user_profile_data.exists():
+                region = user_profile_data.first().region
+                if region is not None:
+                    data = [{
+                            "value" : region.pk,
+                            "label" : f"{region.region}",
+                            "name" : "region",
+                            "id" : f"{region.region}",
+                        }]
+                    return Response({
+                        "regions" : data
+                    })
+                else:
+                    raise Http404
+            else:
+                raise Http404
         
 class loadagents(APIView):
 
     def get(self, request):
         user = request.user
-        if user.is_superuser or user.userType == 1 or user.userType == 2:
-            advisors = UserAccount.objects.filter(userType = 6)
+        if user.is_superuser or user.userType != 6:
+            advisors = user_profile.objects.filter(user__userType = 6).order_by('Full_Name')
+            if "region" in request.data:
+                advisors = advisors.filter(region=request.data['region'])
+            if user.userType == 3:
+                region = region_manager.objects.filter(manager=user.pk)
+                if region.exists():
+                    advisors = advisors.filter(region=region.first().region.pk)
+                else:
+                    raise Http404
+            if user.userType == 5:
+                advisors = advisors.filter(bac=user.pk)
+            data = []
+            if advisors.exists():
+                for advisor in advisors:
+                    data.append({
+                        "value" : advisor.user.pk,
+                        "label" : f"{advisor.Full_Name} ({advisor.ID_Number})",
+                        "name" : "advisor",
+                        "id" : advisor.user.pk,
+                    })
+                return Response({
+                    "advisors" : data
+                })
+        else:
+            advisors = UserAccount.objects.filter(id=user.pk).order_by('first_name')
             if advisors.exists():
                 advisors = advisors.values()
+                print(advisors)
                 data = []
                 for advisor in advisors:
                     profile = user_profile.objects.filter(user=advisor['id'])
+                    name = f"{advisor['first_name']} {advisor['last_name']}"
                     id_number = ""
                     if profile.exists():
                         profile = user_profile.objects.filter(user=advisor['id']).values().first()
                         id_number = profile['ID_Number']
+                        name = profile['Full_Name']
                     data.append({
                         "value" : advisor['id'],
-                        "label" : f"{advisor['first_name']} {advisor['last_name']} ({id_number})",
+                        "label" : f"{name} ({id_number})",
                         "name" : "advisor",
                         "id" : advisor['id'],
                     })
                 return Response({
                     "advisors" : data
                 })
-            else:
-                raise Http404
-        else:
-            return Response(status.HTTP_401_UNAUTHORIZED)
+            return Response({
+                "advisors" : data
+            })
         
 class loadgatekeepers(APIView):
 

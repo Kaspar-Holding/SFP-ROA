@@ -122,39 +122,33 @@ const MonitoringInsights = () => {
         }
     }
 
-    const totalMonitoringSeries = (name, data, type, name_1, data_1, type_1, name_2, data_2, type_2) => [
+    const totalMonitoringSeries = (name, data, type, name_1, data_1, type_1, name_2, data_2, type_2, name_3, data_3, type_3) => [
         {
             name: name,
             data: data,
-            color: '#007A8D',
+            color: '#008000',
             type: type ? type : "line"
         },
         {
             name: name_1,
             data: data_1,
-            color: '#00FF00',
+            color: '#FFF000',
             type: type_1 ? type_1 : "line"
         },
         {
             name: name_2,
             data: data_2,
-            color: '#000000',
+            color: '#FF0000',
             type: type_2 ? type_2 : "line"
-        }
+        },
+        {
+            name: name_3,
+            data: data_3,
+            color: '#FFA500',
+            type: type_3 ? type_3 : "line"
+        },
     ]
 
-    const mixSeries = (series_1_name, series_1_data, series_1_type, series_2_name, series_2_data, series_2_type,) => [
-        {
-            name: series_1_name,
-            data: series_1_data,
-            type: series_1_type,
-        },
-        {
-            name: series_2_name,
-            data: series_2_data,
-            type: series_2_type,
-        },
-    ]
 
     const mixOptions = (categories, title, y_title, y_title1) => ({
         chart: {
@@ -246,7 +240,22 @@ const MonitoringInsights = () => {
         },
         grid: {
             borderColor: '#f1f1f1',
-        }
+        },
+        yaxis: [{
+            title: {
+                text: y_title
+            },
+
+        },
+        {
+            opposite: true,
+            title: {
+                text: y_title1,
+                formatter: function (val) {
+                    return val + " %"
+                }
+            }
+        }]
     })
 
     const columnChartOptions = (categories, title) => ({
@@ -533,9 +542,7 @@ const MonitoringInsights = () => {
         router.push('/auth/login')
     }
 
-    if (user?.userType === 6) {
-        router.push('/')
-    }
+    user?.full_name
 
     return (
         <Layout
@@ -615,19 +622,19 @@ const MonitoringInsights = () => {
                                 <div className='row'>
                                     <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
                                         {
-                                            (typeof window !== 'undefined') && <Chart options={ pieChartOptions("Advice Monitoring Approval") } series={ MonitoringTrend ? Object.values(MonitoringTrend) : [0, 0, 0] } type="pie" width={ '100%' } />
+                                            DateMonitoringTrend.length == 0 ? <></> : (typeof window !== 'undefined') && <Chart options={ pieChartOptions("Advice Monitoring Approval") } series={ MonitoringTrend ? Object.values(MonitoringTrend) : [0, 0, 0] } type="pie" width={ '100%' } />
                                         }
                                     </div>
                                     <div className='col-lg-8 col-md-6 col-sm-12 bg-white py-2'>
                                         {
-                                            (typeof window !== 'undefined') && <Chart options={ totalMonitoringOptions([DateMonitoringTrend].map(x => x.map(a => (a[0]))).flat(2), "Total Cases Monitored") } series={ totalMonitoringSeries("Approved at 1st Review", [DateMonitoringTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "Non-Approved at 1st Review", [DateMonitoringTrend].map(x => x.map(a => (a[2]))).flat(2), "bar", "Partial at 1st Review", [DateMonitoringTrend].map(x => x.map(a => (a[2]))).flat(2), "bar") } type="line" height={ 350 } />
+                                            DateMonitoringTrend.length == 0 ? <></> : (typeof window !== 'undefined') && <Chart options={ totalMonitoringOptions([DateMonitoringTrend].map(x => x.map(a => (a[0]))).flat(2), "Total Cases Monitored", "Count", "Percentage of Approved at 1st Review") } series={ totalMonitoringSeries("Approved at 1st Review", [DateMonitoringTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "Percentage of Approved at 1st Review", [DateMonitoringTrend].map(x => x.map(a => (a[4]))).flat(2), "line", "Non-Approved at 1st Review", [DateMonitoringTrend].map(x => x.map(a => (a[2]))).flat(2), "bar", "Partial at 1st Review", [DateMonitoringTrend].map(x => x.map(a => (a[3]))).flat(2), "bar") } type="line" height={ 350 } />
                                         }
                                     </div>
                                 </div>
                                 <br />
                                 <div className='row'>
                                     <div className='col-lg-6 col-md-6 col-sm-12 bg-white insight-monitoring-card'>
-                                        <h5 class="app-dashboard-header">Top Regions</h5>
+                                        <h5 class="app-dashboard-header">Regions</h5>
                                         <table className="table mx-1">
                                             <thead>
                                                 <tr>
@@ -654,7 +661,7 @@ const MonitoringInsights = () => {
                                         </table>
                                     </div>
                                     <div className='col-lg-6 col-md-6 col-sm-12 bg-white insight-monitoring-card'>
-                                        <h5 class="app-dashboard-header">Top Advisors (Lump Sum)</h5>
+                                        <h5 class="app-dashboard-header">Advisors (Lump Sum)</h5>
                                         <table className="table">
                                             <thead>
                                                 <tr>

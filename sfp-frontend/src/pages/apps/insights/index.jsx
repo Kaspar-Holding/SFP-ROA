@@ -505,9 +505,9 @@ const Insights = () => {
         router.push('/auth/login')
     }
 
-    if (user?.userType === 6) {
-        router.push('/')
-    }
+    // if (user?.userType === 6) {
+    //     router.push('/')
+    // }
 
     return (
         <Layout
@@ -603,8 +603,8 @@ const Insights = () => {
                                 </div>
                                 <br />
                                 <div className='row'>
-                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white insight-commission-card'>
-                                        <h5 class="app-dashboard-header">Top Regions</h5>
+                                    <div className='col-lg-5 col-md-6 col-sm-12 insight-commission-card'>
+                                        <h5 class="app-dashboard-header">Regions</h5>
                                         <table className="table mx-1">
                                             <thead>
                                                 <tr>
@@ -631,8 +631,8 @@ const Insights = () => {
                                         </table>
                                     </div>
 
-                                    <div className='col-lg-7 col-md-6 col-sm-12 bg-white insight-commission-card'>
-                                        <h5 class="app-dashboard-header">Top Advisors</h5>
+                                    <div className='col-lg-5 col-md-6 col-sm-12 insight-commission-card'>
+                                        <h5 class="app-dashboard-header">Advisors</h5>
                                         <table className="table mx-1">
                                             <thead>
                                                 <tr>

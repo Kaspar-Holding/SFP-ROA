@@ -20,6 +20,13 @@ Deployed using Nginx and Gunicorn
 2. BACs can be updated
 - ROA App updates
 1. PDF is now working
+- Insights updates (Commit 3)
+1. Advisors Full Name are now being used
+2. Advisors are now loaded on the base of region selection
+3. Added %age to Monitoring and Gatekeeping
+4. Advisor, BAC and Manager based Regions and Advisors and Trends
+5. Removed the Top from it
+6. Filters are now working
 - Deployment on Staging 
 
 ### 19 January 2024:

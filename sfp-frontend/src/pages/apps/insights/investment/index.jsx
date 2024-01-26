@@ -489,7 +489,6 @@ const InvestmentInsights = () => {
     const LoadAdvisors = async () => {
         try {
             const response = await axios.get('/api/account/agents', config)
-            console.log(response?.data?.data?.advisors)
             setAdvisors(response?.data?.data?.advisors)
 
         } catch (error) {
@@ -518,9 +517,6 @@ const InvestmentInsights = () => {
         router.push('/auth/login')
     }
 
-    if (user?.userType === 6) {
-        router.push('/')
-    }
 
     return (
         <Layout
@@ -625,7 +621,7 @@ const InvestmentInsights = () => {
                                 <br />
                                 <div className='row'>
                                     <div className='col-lg-3 col-md-6 col-sm-12 bg-white insight-investment-card'>
-                                        <h5 class="app-dashboard-header">Top Regions (Lump Sum)</h5>
+                                        <h5 class="app-dashboard-header">Regions (Lump Sum)</h5>
                                         <table className="table mx-1">
                                             <thead>
                                                 <tr>
@@ -652,7 +648,7 @@ const InvestmentInsights = () => {
                                         </table>
                                     </div>
                                     <div className='col-lg-3 col-md-6 col-sm-12 bg-white insight-investment-card'>
-                                        <h5 class="app-dashboard-header">Top Regions (Recurring)</h5>
+                                        <h5 class="app-dashboard-header">Regions (Recurring)</h5>
                                         <table className="table mx-1">
                                             <thead>
                                                 <tr>
@@ -680,7 +676,7 @@ const InvestmentInsights = () => {
                                     </div>
 
                                     <div className='col-lg-3 col-md-6 col-sm-12 bg-white insight-investment-card'>
-                                        <h5 class="app-dashboard-header">Top Advisors (Lump Sum)</h5>
+                                        <h5 class="app-dashboard-header">Advisors (Lump Sum)</h5>
                                         <table className="table">
                                             <thead>
                                                 <tr>
@@ -707,7 +703,7 @@ const InvestmentInsights = () => {
                                         </table>
                                     </div>
                                     <div className='col-lg-3 col-md-6 col-sm-12 bg-white insight-investment-card'>
-                                        <h5 class="app-dashboard-header">Top Advisors (Recurring)</h5>
+                                        <h5 class="app-dashboard-header">Advisors (Recurring)</h5>
                                         <table className="table">
                                             <thead>
                                                 <tr>
