@@ -155,7 +155,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
+# WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
 WKHTMLTOPDF_CMD_OPTIONS = {
     'quiet': True, 'enable-local-file-access': True, 'disable-javascript' : True
 }
