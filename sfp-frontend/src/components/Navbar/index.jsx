@@ -204,7 +204,7 @@ const Navbar = () => {
                                 Annonucements.map(
                                     (annonucement, index) => {
                                         return (
-                                            <div className="modal-content">
+                                            <div key={ index } className="modal-content">
                                                 <div className="modal-header">
                                                     <h1 className="modal-title fs-5" id="annonucementModalLabel">{ annonucement?.title }</h1>
                                                 </div>
