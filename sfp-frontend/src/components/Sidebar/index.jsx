@@ -84,11 +84,22 @@ const SideBar = ({ appTitle, app }) => {
                     </p>
                 </div>
                 {
-                    app !== "users" && !appTitle.includes("\n Details") ?
+                    app !== "users" && app !== "notifications" && !appTitle.includes("\n Details") ?
                         <div className="d-grid gap-2">
                             <Link href={ `/apps/${app}/documents/create` } className="btn btn-primary btn-sfp" >
                                 <i className='bi pe-none me-2 fa-solid fa-file'></i>
                                 Create new Document
+                            </Link>
+                        </div>
+                        : <></>
+
+                }
+                {
+                    app === "notifications" && user?.is_superuser ?
+                        <div className="d-grid gap-2">
+                            <Link href={ `/apps/${app}/create` } className="btn btn-primary btn-sfp" >
+                                <i className='bi pe-none me-2 fa-solid fa-bell'></i>
+                                Generate New Notification
                             </Link>
                         </div>
                         : <></>
@@ -192,7 +203,36 @@ const SideBar = ({ appTitle, app }) => {
 
 
                                 </>
-                                : <></>
+                                :
+                                app === "notifications" ?
+                                    <>
+                                        <li>
+                                            <Link href={ `/apps/${app}/logs` } className={ router.pathname === `/apps/${app}/logs` || router.pathname === `/apps/${app}/logs/details` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                                <i className='bi pe-none me-2 fa-solid fa-history' />
+                                                Logs
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href={ `/apps/${app}/events` } className={ router.pathname === `/apps/${app}/events` || router.pathname === `/apps/${app}/logs/details` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                                <i className='bi pe-none me-2 fa-solid fa-calendar' />
+                                                Events
+                                            </Link>
+                                        </li>
+                                        {
+                                            user?.is_superuser ?
+                                                <li>
+                                                    <Link href={ `/apps/${app}/events/update` } className={ router.pathname === `/apps/${app}/events/update` || router.pathname === `/apps/${app}/logs/details` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                                        <i className='bi pe-none me-2 fa-solid fa-calendar' />
+                                                        Events Bulk Update
+                                                    </Link>
+                                                </li>
+                                                :
+                                                <></>
+                                        }
+
+
+                                    </>
+                                    : <></>
                     }
                     {/* <li>
                         <Link href={`/apps/${app}/trends`} className={ router.pathname === `/apps/${app}/trends` ? "nav-link active" :"nav-link link-body-emphasis" }>

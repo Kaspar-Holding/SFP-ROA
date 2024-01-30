@@ -27,6 +27,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls.authtoken')),
     path('auth/', include('djoser.social.urls')),
     path('api/', include('data.urls')),
+    path('api/tasks/', include('tasks.urls')),
     path('api/notifications/', include('notifications.urls')),
     path('api/logs/', include('logs.urls')),
     path('api/compliance/', include('compliance.urls')),

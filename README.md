@@ -14,6 +14,14 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 29 January 2024:
+- Tasks App Introduced
+1. Celery Added
+2. Event Calendar added
+3. Event Management
+4. Automated Events Creations. Calendar is visible on frontend
+- Deployment on Staging 
+
 ### 26 January 2024:
 - Users App updates
 1. Regions can be updated

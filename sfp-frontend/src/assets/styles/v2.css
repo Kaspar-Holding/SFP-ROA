@@ -1355,6 +1355,16 @@ header {
     padding: 2%;
 }
 
+.app-notifications-dashboard {
+    background-color: #ffffff;
+    height: 85vh;
+    width: 100%;
+    overflow-y: auto;
+    margin-top: 0.5%;
+    margin-right: 0.5%;
+    padding: 2%;
+}
+
 .app-dashboard-progress {
     background-color: #ffffff;
     height: 40vh;
@@ -1585,4 +1595,205 @@ header {
 .sfp-online-slider {
     background-color: #ffffff;
     height: 7.5vh;
+}
+
+/* Notifications */
+.notification-dropdown-menu {
+    min-width: 350px;
+}
+
+.notification-card {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.notification-card:last-child {
+    border-bottom: none;
+}
+
+.notification-card:hover {
+    background-color: #f8f9fa;
+}
+
+.nav-link {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-link .badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link.dropdown-toggle::after {
+    display: none;
+    /* Hide the down arrow */
+}
+
+.fa .fa-bell {
+    width: "32";
+    height: "32";
+}
+
+.notifications .noti-content {
+    height: 290px;
+    width: 350px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.notifications .notification-list li {
+    margin-top: 0;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 14px;
+}
+
+.notifications .notification-list li a {
+    display: block;
+    padding: 12px;
+    border-radius: 2px;
+}
+
+.notifications .notification-list li .noti-title {
+    color: #333;
+    font-weight: 500;
+}
+
+.notifications .notification-list li .noti-details {
+    text-decoration: none;
+    color: #989c9e;
+    margin: 0;
+}
+
+.notifications .notification-list li p.noti-time {
+    margin: 0;
+}
+
+.notifications .notification-list li .notification-time {
+    font-size: 12px;
+    line-height: 1.35;
+    color: #637381;
+}
+
+.notifications .notification-list li .list-item {
+    border: 0;
+    padding: 0;
+    position: relative;
+}
+
+.notifications .notification-list li .list-item .list-left {
+    height: 48px;
+    position: absolute;
+    width: 48px;
+}
+
+.notifications .notification-list li .list-item .list-body {
+    padding: 0 0 0 50px;
+}
+
+.notifications .notification-list li .list-item .list-body .message-author {
+    color: #333;
+    float: left;
+    font-weight: 500;
+    width: 175px;
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notifications .notification-list li .list-item .list-body .message-time {
+    color: #888888;
+    float: right;
+    font-size: 11px;
+}
+
+.notifications .notification-list li .list-item .list-body .message-content {
+    color: #333;
+    font-size: 13px;
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nav-item-box>a {
+    background: #F6F7F8;
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.nav-item-box>a:hover {
+    background: #EEF3F5;
+}
+
+
+.topnav-dropdown-header {
+    border-bottom: 1px solid #eeeeee;
+    text-align: center;
+    font-size: 12px;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px;
+}
+
+.topnav-dropdown-header .notification-title {
+    color: #333;
+    display: block;
+    float: left;
+    font-size: 14px;
+}
+
+.topnav-dropdown-header .clear-noti {
+    color: #EA5455;
+    float: right;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+
+.topnav-dropdown-footer {
+    border-top: 1px solid #eeeeee;
+    font-size: 12px;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px;
+}
+
+.topnav-dropdown-footer a {
+    display: block;
+    text-align: center;
+    color: #333;
+}
+
+li.notification-message {
+    height: auto;
+    list-style-type: none;
+
+}
+
+.badge {
+    color: #fff;
+    font-weight: 700;
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    background: #007A8D;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+}
+
+.bg-sfp {
+    background-color: #007A8D;
 }

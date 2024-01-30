@@ -56,6 +56,7 @@ class LogView(APIView):
         data = request.data
         logData = {}
         log = Log.objects.filter(account=request.user.pk, id=data['log_id'])
+        time_taken = 0
         if log.exists():
             updated_by = log.first().account.pk
             log = log.values().first()
@@ -70,8 +71,8 @@ class LogView(APIView):
                     user = user.first()
                     log['updated_by'] = user.first_name + " " + user.last_name
             logs = LogContent.objects.filter( ~Q(log_description=''), account=request.user.pk, log=log['id'])
+            print(logs)
             logData = []
-            time_taken = 0
             time_taken = round((log['closed_at'] - log['created_at']).total_seconds() / 60, 2) if log['status'] == 1 else 0
             if logs.exists():
                 logs = logs.order_by('-created_at')

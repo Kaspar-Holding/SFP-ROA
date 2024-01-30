@@ -60,7 +60,7 @@ const AppPage = () => {
                                 </div>
                             </div>
                             <br />
-                            <h5 className="card-title text-center updated-header">Welcome { user ? user.first_name : "User" }</h5>
+                            <h5 className="card-title text-center updated-header">Welcome { user ? user.full_name : "User" }</h5>
                             <p className="card-text updated-subtitle">Select an App to start your work.</p>
                             <br />
                             <div class="container text-center">
@@ -298,6 +298,20 @@ const AppPage = () => {
                                                     <br />
                                                     <p className="card-text text-center">
                                                         <a href="#" className="appLabel">Settings</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                    <div class="col">
+                                        <Link href="/apps/notifications" style={ { textDecoration: "none" } }>
+                                            <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
+                                                <div className="card-body">
+                                                    <br />
+                                                    <h5 className="card-title text-center"><i className="fa-solid fa-bell"></i></h5>
+                                                    <br />
+                                                    <p className="card-text text-center">
+                                                        <a href="#" className="appLabel">Notifications</a>
                                                     </p>
                                                 </div>
                                             </div>

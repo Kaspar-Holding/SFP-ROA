@@ -11,8 +11,9 @@ data/sfp_venv
 *.csv
 *.pdf
 *.pyc
-
+*.ics
 */*/*/__pycache__/
+
 
 */*/__pycache__/
 
