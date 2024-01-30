@@ -7,9 +7,9 @@ from celery import Celery
 from django.conf import settings
 from celery.schedules import crontab
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'web.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sfp.settings')
 
-app = Celery('web')
+app = Celery('sfp')
 app.conf.enable_utc = False
 
 app.conf.update(timezone = 'Africa/Johannesburg')

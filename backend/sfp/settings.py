@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from urllib.parse import quote
 import django
-django.utils.http.urlquote = quote
 from datetime import timedelta
 import os
 from pathlib import Path
