@@ -651,21 +651,27 @@ class UserRole(APIView):
             user_type = "Admin"
             if int(data['userType']) == 0:
                 data['is_superuser'] = True
+                user.update(is_superuser=True, userType=0)
             if int(data['userType']) == 1:
                 user_type = "ARC"
                 data['is_superuser'] = False
+                user.update(is_superuser=False, userType=data['userType'])
             if int(data['userType']) == 2:
                 user_type = "Gatekeeper"
                 data['is_superuser'] = False
+                user.update(is_superuser=False, userType=data['userType'])
             if int(data['userType']) == 3:
                 user_type = "Manager"
                 data['is_superuser'] = False
+                user.update(is_superuser=False, userType=data['userType'])
             if int(data['userType']) == 5:
                 user_type = "BAC"
                 data['is_superuser'] = False
+                user.update(is_superuser=False, userType=data['userType'])
             if int(data['userType']) == 6:
                 user_type = "Advisor"
                 data['is_superuser'] = False
+                user.update(is_superuser=False, userType=data['userType'])
             serializer = UserAccountsSerializers(instance=old, data=data, partial=True)
             if serializer.is_valid():
                 serializer.save()
