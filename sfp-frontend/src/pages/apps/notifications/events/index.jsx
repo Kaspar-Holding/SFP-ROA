@@ -96,12 +96,6 @@ const Events = () => {
     }
 
 
-    if (user?.userType === 6) {
-        router.push('/')
-    }
-
-
-
 
     return (
         <Layout

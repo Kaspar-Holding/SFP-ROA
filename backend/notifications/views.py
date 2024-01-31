@@ -46,7 +46,7 @@ def getAllNotifications(request):
     user = request.user
     page_size = request.data['page_size']
     page_number = request.data['page_number']
-    notificationsData = Notifications.objects.filter( ~Q(notificationType=2),account=user.pk).select_related('account','log').order_by('-created_at')
+    notificationsData = Notifications.objects.filter(account=user.pk).select_related('account','log').order_by('-created_at')
     total_records = notificationsData.count()
     p = Paginator(notificationsData, page_size)
     notificationsData = p.page(page_number).object_list
@@ -316,6 +316,11 @@ class Events(APIView):
 
     def get(self, request):
         events = CalendarEvents.objects.all()
+        if not request.user.is_superuser:
+            if "sfp" or "succession" in request.user.email:
+                events = events.filter(title__icontains="sfp")
+            else:
+                events = events.filter(title__icontains="afp")
         event_data = []
         for event in events:
             background_color = ""
