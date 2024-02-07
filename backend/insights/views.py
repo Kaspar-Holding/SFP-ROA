@@ -1182,13 +1182,13 @@ class gatekeeperInsights(APIView):
             businessType_trend_list = []
             businessType_rejection_trend = []
             rejection_reasons = {
-                "FICA (Clear ID" : 0,
+                "FICA (Clear ID)" : 0,
                 "Proof of Screening" : 0,
                 "DRA" : 0,
                 "Letter of Introduction" : 0,
                 "Authorisation Letter" : 0,
                 "ROA Type" : 0,
-                "ROA (All sections completed" : 0,
+                "ROA (All sections completed)" : 0,
                 "FNA (Appropriate FNA filed" : 0,
                 "Application" : 0,
                 "Quotation" : 0,
@@ -1228,12 +1228,12 @@ class gatekeeperInsights(APIView):
                 rejected_reviews = reviewsData.filter(user__in=gatekeeperIds,businessType=i,status=2).count()
                 business_total_first_approvals += first_approval
                 # Rejected
-                rejected_reviews_data = reviewsData.filter(user__in=gatekeeperIds,businessType=i,status=2)
+                rejected_reviews_data = reviewsData.filter(user__in=gatekeeperIds,status=2)
                 if rejected_reviews_data.exists():
                     for rejected_document in rejected_reviews_data:
                         rejected = GateKeeping.objects.filter(document=rejected_document.pk).latest('-updated_at')
                         if rejected.fica == 0:
-                            rejection_reasons['FICA (Clear ID'] = rejection_reasons['FICA (Clear ID'] + 1
+                            rejection_reasons['FICA (Clear ID)'] = rejection_reasons['FICA (Clear ID)'] + 1
                         if rejected.proof_of_screening == 0:
                             rejection_reasons['Proof of Screening'] = rejection_reasons['Proof of Screening'] + 1
                         if rejected.dra == 0:
@@ -1245,7 +1245,7 @@ class gatekeeperInsights(APIView):
                         if rejected.roa_type == 0:
                             rejection_reasons['ROA Type'] = rejection_reasons['ROA Type'] + 1
                         if rejected.roa == 0:
-                            rejection_reasons['ROA (All sections completed'] = rejection_reasons['ROA (All sections completed'] + 1
+                            rejection_reasons['ROA (All sections completed)'] = rejection_reasons['ROA (All sections completed)'] + 1
                         if rejected.fna == 0:
                             rejection_reasons['FNA (Appropriate FNA filed'] = rejection_reasons['FNA (Appropriate FNA filed'] + 1
                         if rejected.application == 0:
