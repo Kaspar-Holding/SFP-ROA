@@ -3947,9 +3947,9 @@ class ExportData(APIView):
                 "Gatekeeping Final Score" : final_gatekeeping_score, 
                 "ARC Versions" : total_arc_versions, 
                 "ARC Final Score" : final_arc_score, 
-                "Lump Sum" : babel.numbers.format_currency(str(document.lump_sum).replace(",","."), 'ZAR', locale='en_ZA', currency_digits=False), 
-                "Monthly Premium" : babel.numbers.format_currency(str(document.monthly_premium).replace(",","."), 'ZAR', locale='en_ZA', currency_digits=False), 
-                "Commission" : babel.numbers.format_currency(str(document.commission).replace(",","."), 'ZAR', locale='en_ZA', currency_digits=False), 
+                "Lump Sum" : babel.numbers.format_currency(str(document.lump_sum).replace(" ","").replace(",","."), 'ZAR', locale='en_ZA', currency_digits=False), 
+                "Monthly Premium" : babel.numbers.format_currency(str(document.monthly_premium).replace(" ","").replace(",","."), 'ZAR', locale='en_ZA', currency_digits=False), 
+                "Commission" : babel.numbers.format_currency(str(document.commission).replace(" ","").replace(",","."), 'ZAR', locale='en_ZA', currency_digits=False), 
             }
             document_data.update(gatekeeping_data)
             document_data.update(arc_data)
