@@ -1244,9 +1244,7 @@ class gatekeeperInsights(APIView):
             for reason in rejection_reasons.keys():
                 if rejection_reasons[reason] != 0:
                     businessType_rejection_trend.append([reason, rejection_reasons[reason]]) 
-            for row in businessType_rejection_trend:
-                percentage = round(row[1]/business_total_rejected_reviews * 100) if business_total_rejected_reviews != 0 else 0
-                row.append(percentage) 
+
             business_total_reviews = 0
             business_total_rejected_reviews = 0
             business_total_first_approvals = 0
@@ -1315,9 +1313,9 @@ class gatekeeperInsights(APIView):
             for row in businessType_trend:
                 percentage = round(row[1]/business_total_reviews * 100) if business_total_reviews != 0 else 0
                 row.append(percentage)
-            # for row in businessType_rejection_trend:
-            #     percentage = round(row[1]/business_total_rejected_reviews * 100) if business_total_rejected_reviews != 0 else 0
-            #     row.append(percentage)
+            for row in businessType_rejection_trend:
+                percentage = round(row[1]/business_total_rejected_reviews * 100) if business_total_rejected_reviews != 0 else 0
+                row.append(percentage)
             businessType_trend_list = sorted(businessType_trend_list, key=lambda d: d["reviews"], reverse=True) 
             # Datewise Data
             date_gatekeeping_trend = []
