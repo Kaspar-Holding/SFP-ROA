@@ -11,6 +11,7 @@ urlpatterns = [
     path('document/kpis-and-trends/', views.complainceKPISnTrends.as_view()),
     path('document/info/', views.complainceDocumentsInfo.as_view()),
     path('document/', views.ComplianceDocumentList.as_view()),
+    path('document/export/', views.ExportData.as_view()),
     path('document/search/', views.searchComplianceDocument),
     path('document/<int:pk>/', views.ComplianceDocumentDetails.as_view()),
     path('document/status/', views.updateDocumentStatus.as_view()),

@@ -232,7 +232,8 @@ const SideBar = ({ appTitle, app }) => {
 
 
                                     </>
-                                    : <></>
+                                    :
+                                    <></>
                     }
                     {/* <li>
                         <Link href={`/apps/${app}/trends`} className={ router.pathname === `/apps/${app}/trends` ? "nav-link active" :"nav-link link-body-emphasis" }>
@@ -271,6 +272,24 @@ const SideBar = ({ appTitle, app }) => {
                                     Disclosure Products
                                 </Link>
                             </li>
+                            : <></>
+                    }
+                    {
+                        app === "roa" || app === "compliance" ?
+                            <>
+                                <li>
+                                    <Link href={ `/apps/${app}/export` } className={ router.pathname === `/apps/${app}/export` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                        <i className='bi pe-none me-2 fa-solid fa-file-export' />
+                                        Export
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={ `/apps/${app}/import` } className={ router.pathname === `/apps/${app}/import` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                        <i className='bi pe-none me-2 fa-solid fa-file-import' />
+                                        Import
+                                    </Link>
+                                </li>
+                            </>
                             : <></>
                     }
                     <li>

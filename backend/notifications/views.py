@@ -81,12 +81,11 @@ def getAllNotifications(request):
                 'downloading_link' : link,
                 'status' : notification.status
             })
-            break
         responseData = {
             "total_pages" : p.num_pages,
             "has_pages" : p.num_pages,
             "total_records" : total_records,
-            "results" : [data[0]]
+            "results" : data
         }
         return Response(responseData, 200)
     else:

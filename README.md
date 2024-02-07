@@ -14,6 +14,14 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 07 February 2024:
+- Compliance
+1. Export Added
+- Insights
+1. Reason of Rejection Updated
+2. Work on Advisor Dashboard started
+- Deployment on Staging 
+
 ### 29 January 2024:
 - Tasks App Introduced
 1. Celery Added

@@ -23,7 +23,7 @@ const Navbar = () => {
             'Accept': 'application/json',
         }
     }
-    console.log(ModalVisible)
+    const [AnnoucementShown, setAnnoucementShown] = useState(false)
     const loadAnnonucements = async () => {
         const Body = JSON.stringify({
             "page_number": 1,
@@ -38,24 +38,141 @@ const Navbar = () => {
             setAnnonucements(response?.data?.data?.results)
             let ams = response?.data?.data?.results
             if (ams.length > 0) {
+                if (!document.querySelector('#announcement-modal')) {
+                    // Create a modal
+                    const modal = document.createElement('div')
+                    modal.setAttribute("id", "announcement-modal")
+                    modal.setAttribute("data-bs-backdrop", "static")
+                    modal.classList.add('modal', 'fade')
 
-                if (ModalVisible == false) {
-                    const myModal = new bootstrap.Modal('#annonucementModal')
+                    // Create a modal dialog
+                    const modalDialog = document.createElement('div')
+                    modalDialog.classList.add('modal-dialog', 'modal-lg')
+
+                    // Create a modal content element
+                    const modalContent = document.createElement('div')
+                    modalContent.classList.add('modal-content')
+
+                    // Create a modal header
+                    const modalHeader = document.createElement('div')
+                    modalHeader.classList.add('modal-header')
+                    modalHeader.innerHTML = `<h3 className="modal-title fs-5" id="annonucementModalLabel">Announcements</h3>`
+
+                    // Create a close button
+                    const closeButton = document.createElement('button')
+                    closeButton.classList.add('btn-close')
+                    closeButton.setAttribute('data-bs-dismiss', 'modal')
+
+                    // Append close button to modal header
+                    modalHeader.appendChild(closeButton)
+
+                    // Append modal header to modal content
+                    modalContent.appendChild(modalHeader)
+
+                    // Create a modal body
+                    const modalBody = document.createElement('div')
+
+
+                    // Loop through announcements to create carousel items
+                    // Create a variable to keep track of the current announcement index
+                    let currentIndex = 0
+
+                    // Function to show the current announcement
+                    const showAnnouncement = () => {
+                        // Clear modal body content
+                        modalBody.innerHTML = ''
+
+                        // Create announcement element
+
+                        const announcementElement = document.createElement('div')
+                        announcementElement.classList.add('container', 'text-center')
+                        announcementElement.innerHTML = `<h3>${ams[currentIndex]['title']}</h3>`
+
+                        const announcementContent = document.createElement('div')
+                        announcementContent.classList.add('container')
+                        announcementContent.innerHTML = ams[currentIndex]['message']
+
+                        // Append announcement element to modal body
+                        modalBody.appendChild(announcementElement)
+                        modalBody.appendChild(announcementContent)
+                    }
+
+                    // Function to show next announcement
+                    const showNextAnnouncement = () => {
+                        currentIndex = (currentIndex + 1) % ams.length
+                        showAnnouncement()
+                    }
+
+                    // Function to show previous announcement
+                    const showPreviousAnnouncement = () => {
+                        currentIndex = (currentIndex - 1 + ams.length) % ams.length
+                        showAnnouncement()
+                    }
+
+                    // Create next and previous buttons
+                    const nextButton = document.createElement('button')
+                    nextButton.classList.add('btn', 'btn-primary', 'btn-sfp')
+                    nextButton.innerText = 'Next'
+                    nextButton.addEventListener('click', showNextAnnouncement)
+
+                    const markButton = document.createElement('button')
+                    markButton.classList.add('btn', 'btn-primary', 'me-2', 'btn-sfp')
+                    markButton.innerText = 'Mark Notification Read'
+                    markButton.addEventListener('click', (event) => markAnnoucementRead(event, ams[currentIndex]['id'], ams.length, currentIndex))
+
+                    const prevButton = document.createElement('button')
+                    prevButton.classList.add('btn', 'btn-primary', 'me-2', 'btn-sfp')
+                    prevButton.innerText = 'Previous'
+                    prevButton.addEventListener('click', showPreviousAnnouncement)
+
+
+                    // Show the first announcement
+                    showAnnouncement()
+
+
+
+                    // Append modal body to modal content
+                    modalContent.appendChild(modalBody)
+
+                    // Create modal footer
+                    const modalFooter = document.createElement('div')
+                    modalFooter.classList.add('modal-footer', 'text-center')
+                    modalFooter.appendChild(markButton)
+                    if (ams.length > 1) {
+                        modalFooter.appendChild(prevButton)
+                        modalFooter.appendChild(nextButton)
+                    }
+
+                    // Append modal footer to modal content
+                    modalContent.appendChild(modalFooter)
+
+                    // Append modal content to modal dialog
+                    modalDialog.appendChild(modalContent)
+
+                    // Append modal dialog to modal
+                    modal.appendChild(modalDialog)
+
+                    // Append modal to body
+                    document.body.appendChild(modal)
+
+                    // Show the modal
+                    const myModal = new bootstrap.Modal(modal)
                     myModal.show()
-                    setModalVisible(true)
+
                 }
             }
         } catch (error) {
-            Swal.fire({
-                position: "bottom-end",
-                type: "error",
-                title: "Error",
-                html: `${error?.response?.data?.error}`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
-            })
+            // console.log(error)
+            // Swal.fire({
+            //     position: "bottom-end",
+            //     type: "error",
+            //     title: "Error",
+            //     html: `${error?.response?.data?.error}`,
+            //     showConfirmButton: !1,
+            //     timer: 5000,
+            //     confirmButtonClass: "btn btn-primary",
+            //     buttonsStyling: !1,
+            // })
 
         }
 
@@ -68,16 +185,16 @@ const Navbar = () => {
             )
             setUnreadNotificationsCount(response?.data?.data?.total)
         } catch (error) {
-            Swal.fire({
-                position: "bottom-end",
-                type: "error",
-                title: "Error",
-                html: `${error?.response?.data?.error}`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
-            })
+            // Swal.fire({
+            //     position: "bottom-end",
+            //     type: "error",
+            //     title: "Error",
+            //     html: `${error?.response?.data?.error}`,
+            //     showConfirmButton: !1,
+            //     timer: 5000,
+            //     confirmButtonClass: "btn btn-primary",
+            //     buttonsStyling: !1,
+            // })
 
         }
 
@@ -95,16 +212,16 @@ const Navbar = () => {
             )
             setNotificationsData(response?.data?.data?.results)
         } catch (error) {
-            Swal.fire({
-                position: "bottom-end",
-                type: "error",
-                title: "Error",
-                html: `${error?.response?.data?.error}`,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                buttonsStyling: !1,
-            })
+            // Swal.fire({
+            //     position: "bottom-end",
+            //     type: "error",
+            //     title: "Error",
+            //     html: `${error?.response?.data?.error}`,
+            //     showConfirmButton: !1,
+            //     timer: 5000,
+            //     confirmButtonClass: "btn btn-primary",
+            //     buttonsStyling: !1,
+            // })
 
         }
 
@@ -134,7 +251,6 @@ const Navbar = () => {
     const markAnnoucementRead = async (e, id) => {
         e.preventDefault()
         const Body = JSON.stringify(id)
-        setModalVisible(false)
         try {
             await axios.post(
                 '/api/notifications/annonucement/read',
@@ -145,13 +261,32 @@ const Navbar = () => {
                 position: "bottom-end",
                 type: "error",
                 title: "Success",
-                html: `Annoucement was marked as read`,
+                html: `Announcement was marked as read`,
                 showConfirmButton: !1,
                 timer: 5000,
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
+            // Get the modal element
+            const modal = document.getElementById('announcement-modal')
+            if (modal) {
+                // Hide the modal
+                const myModal = new bootstrap.Modal(modal)
+                myModal.hide()
+                // remove backdrop
+                const backdrop = document.querySelector('.modal-backdrop')
+
+                // Remove the backdrop
+                if (backdrop) {
+                    backdrop.remove()
+                }
+            }
+
+
+            // Remove the modal from the DOM
+            modal.remove()
         } catch (error) {
+            console.log(error)
             Swal.fire({
                 position: "bottom-end",
                 type: "error",
@@ -185,7 +320,7 @@ const Navbar = () => {
         }, 3000
         )
         return () => {
-            clearInterval(interval);
+            clearInterval(interval)
         }
     }, [])
 
@@ -197,37 +332,6 @@ const Navbar = () => {
     return (
         <>
             <header className="p-3 mb-3 border-bottom">
-                <div>
-                    <div className="modal fade" onMouseLeave={ (e) => { markAnnoucementRead(e, Annonucements[0]['id']) } } id="annonucementModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="annonucementModalLabel" aria-hidden="true">
-                        <div className="modal-dialog">
-                            {
-                                Annonucements.map(
-                                    (annonucement, index) => {
-                                        return (
-                                            <div key={ index } className="modal-content">
-                                                <div className="modal-header">
-                                                    <h1 className="modal-title fs-5" id="annonucementModalLabel">{ annonucement?.title }</h1>
-                                                </div>
-                                                <div className="modal-body">
-                                                    {
-                                                        /<\/?[a-z][\s\S]*>/i.test(annonucement?.message) ?
-                                                            <div dangerouslySetInnerHTML={ { __html: annonucement?.message } } className="small p-2 me-3 mb-3 rounded-3" style={ annonucement?.notificationType == 1 ? { backgroundColor: '#007A8D', color: 'black' } : {} }>
-                                                            </div>
-                                                            :
-                                                            annonucement?.message
-                                                    }
-                                                </div>
-                                                <div className="modal-footer">
-                                                    <button type="button" onClick={ (e) => { markAnnoucementRead(e, annonucement?.id) } } className="btn btn-primary btn-sfp" data-bs-dismiss="modal">Read</button>
-                                                </div>
-                                            </div>
-                                        )
-                                    }
-                                )
-                            }
-                        </div>
-                    </div>
-                </div>
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
