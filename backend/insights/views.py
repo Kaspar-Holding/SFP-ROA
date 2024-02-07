@@ -98,7 +98,7 @@ class commissionInsights(APIView):
                 else:
                     commission = 0
                         # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-                commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), commission])
+                commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), int(commission)])
         if filterType == 3:
             datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
             for date in datewise_data:
@@ -108,7 +108,7 @@ class commissionInsights(APIView):
                 else:
                     commission = 0
                         # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-                commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), commission])
+                commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), int(commission)])
         if filterType == 4:
             if customFilterType == 1:
                 if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
@@ -120,7 +120,7 @@ class commissionInsights(APIView):
                         else:
                             commission = 0
                                 # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-                        commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), commission])
+                        commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(commission)])
                 else:
                     datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
                     for date in datewise_data:
@@ -130,7 +130,7 @@ class commissionInsights(APIView):
                         else:
                             commission = 0
                                 # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-                        commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), commission])
+                        commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), int(commission)])
             if customFilterType == 2:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
                 for date in datewise_data:
@@ -140,7 +140,7 @@ class commissionInsights(APIView):
                     else:
                         commission = 0
                             # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-                    commission_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", commission])
+                    commission_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", int(commission)])
             if customFilterType == 3:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
                 for date in datewise_data:
@@ -150,7 +150,7 @@ class commissionInsights(APIView):
                     else:
                         commission = 0
                             # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-                    commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), commission])
+                    commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(commission)])
             if customFilterType == 4:
                 datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
                 for date in datewise_data:
@@ -160,7 +160,7 @@ class commissionInsights(APIView):
                     else:
                         commission = 0
                             # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-                    commission_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", commission])
+                    commission_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", int(commission)])
             if customFilterType == 5:
                 datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
                 for date in datewise_data:
@@ -169,7 +169,7 @@ class commissionInsights(APIView):
                         commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                     else:
                         commission = 0
-                    commission_trend.append([f"{date['updated_at__year']}", commission])
+                    commission_trend.append([f"{date['updated_at__year']}", int(commission)])
         # Regions
         available_regions = regions.objects.all().values('region')
         if user.userType == 3:

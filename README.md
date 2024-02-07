@@ -20,6 +20,7 @@ Deployed using Nginx and Gunicorn
 - Insights
 1. Reason of Rejection Updated
 2. Work on Advisor Dashboard started
+3. Float Values converted to Integer in Commission
 - Deployment on Staging 
 
 ### 29 January 2024:
