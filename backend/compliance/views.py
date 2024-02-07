@@ -1,4 +1,6 @@
-from django.shortcuts import render
+import uuid
+import babel.numbers
+import pandas as pd
 from rest_framework.decorators import APIView, api_view
 from rest_framework.response import Response
 from data.models import UserAccount, categorisation, user_profile, regions, region_manager
@@ -1089,7 +1091,7 @@ class ComplianceDocumentDetails(APIView):
     def get(self, request, pk, format=None):
         document = self.get_object(pk)
         document = document.values().latest('created_at')
-        advisor = UserAccount.objects.filter(pk=document['advisor']).values().first()
+        advisor = UserAccount.objects.filter(pk=document['advisor_id']).values().first()
         # advisor_profile = user_profile.objects.filter(user=document['advisor']).values().first()
         document['advisor_name'] = f"{advisor['first_name']} {advisor['last_name']}"
         document['advisor_email'] = advisor['email']
@@ -3242,6 +3244,7 @@ class loadagentsDetail(APIView):
                         user_bac = user_bac.values().first()
                         data['bac'] = f"{user_bac['id']}"
                         data['bac_name'] = f"{user_bac['first_name']} {user_bac['last_name']}"
+                    data['flag'] = profile['Advisor_Tag']
                     # user_supervision = UserAccount.objects.filter(pk=profile['supervision_id'])
                     # data['supervisor'] = ""
                     # data['supervisor_name'] = ""
@@ -3250,15 +3253,14 @@ class loadagentsDetail(APIView):
                     #     data['supervisor'] = f"{user_supervision['id']}"
                     #     data['supervisor_name'] = f"{user_supervision['first_name']} {user_supervision['last_name']}"
                     data['supervisor_name'] = f"N.A."
-                flaggedData = flagged_users.objects.filter(user=request.data['advisorId'])
-                flag_color = ""
-                if flaggedData.exists():
-                    flaggedData = flaggedData.values().first()
-                    flag_color_data = flag_colors.objects.filter(id=flaggedData['color_id'])
-                    if flag_color_data.exists():
-                        flag_color_data = flag_color_data.values().first()
-                        flag_color = flag_color_data['color']
-                data['flag'] = flag_color
+                # flaggedData = flagged_users.objects.filter(user=request.data['advisorId'])
+                # flag_color = ""
+                # if flaggedData.exists():
+                #     flaggedData = flaggedData.values().first()
+                #     flag_color_data = flag_colors.objects.filter(id=flaggedData['color_id'])
+                #     if flag_color_data.exists():
+                #         flag_color_data = flag_color_data.values().first()
+                #         flag_color = flag_color_data['color']
                 
                 return Response({
                     "data" : data
@@ -3268,3 +3270,307 @@ class loadagentsDetail(APIView):
         else:
             return Response(status.HTTP_401_UNAUTHORIZED)
         
+
+class ExportData(APIView):
+
+    def post(self, request):
+        data = request.data
+        documents = ComplianceDocument.objects.all()
+        filter_type = int(data['filter_type'])
+        if filter_type != 0:
+            if filter_type == 1:
+                year = data['year']
+                documents = documents.filter(created_at__year=year).order_by('created_at__year')
+            elif filter_type == 2:
+                date = str(data['month_date'])
+                month = date.split('-')[1]
+                year = date.split('-')[0]
+                documents = documents.filter(created_at__year=year, created_at__month=month).order_by('created_at__year', 'created_at__month')
+            elif filter_type == 3:
+                date = str(data['date'])
+                day = date.split('-')[2]
+                month = date.split('-')[1]
+                year = date.split('-')[0]
+                documents = documents.filter(created_at__year=year, created_at__month=month, created_at__day=day).order_by('created_at__year', 'created_at__month', 'created_at__day')
+            else:
+                fromdate = request.data['fromdate']
+                todate = request.data['todate']
+                date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+                documents = documents.filter(created_at__range=date_range)
+        requestedData = []
+        for document in documents:
+            advisor_name = document.advisor.first_name + " " + document.advisor.last_name
+            advisor_id = document.IdNumber
+            region_name = "N/A"
+            regional_manager_name = "N/A"
+            regional_manager_email = "N/A"
+            advisor = user_profile.objects.filter(id=document.advisor.pk)
+            if advisor.exists():
+                advisor = advisor.first()
+                advisor_name = advisor.Full_Name 
+                advisor_id = advisor.ID_Number 
+                region_name = regions.objects.get(id=advisor.region.pk).region
+                regional_manager = region_manager.objects.filter(region=advisor.region.pk)
+                if regional_manager.exists():
+                    regional_manager = regional_manager.first()
+                    regional_manager = UserAccount.objects.filter(id=regional_manager.pk)
+                    if regional_manager.exists():
+                        regional_manager = regional_manager.first()
+                        regional_manager_name = regional_manager.first_name + " " + regional_manager.last_name
+                        regional_manager_email = regional_manager.email
+                        regional_manager_profile = user_profile.objects.filter(user=regional_manager.pk)
+                        if regional_manager_profile.exists():
+                            regional_manager_name = regional_manager_profile.first().Full_Name
+
+            bac = document.BAC
+            bac_name = "N/A"
+            bac_email = "N/A"
+            if bac != "":
+                bac = UserAccount.objects.get(id=bac)
+                bac_name = bac.first_name + " " + bac.last_name
+                bac_email = bac.email
+                bac_details = user_profile.objects.filter(id=bac.pk)
+                if bac_details.exists():
+                    bac_details = bac_details.first()
+                    bac_name = bac_details.Full_Name
+            business_type = document.businessType
+            business_type_name = ""
+            if business_type == 1:
+                business_type_name = "Business Assurance"
+            if business_type == 2:
+                business_type_name = "Comm release"
+            if business_type == 3:
+                business_type_name = "Employee Benefits"
+            if business_type == 4:
+                business_type_name = "Funeral"
+            if business_type == 5:
+                business_type_name = "GAP Cover"
+            if business_type == 6:
+                business_type_name = "Recurring - Investment"
+            if business_type == 7:
+                business_type_name = "Lumpsum - Investment"
+            if business_type == 8:
+                business_type_name = "Investment- Both"
+            if business_type == 9:
+                business_type_name = "Medical Aid"
+            if business_type == 10:
+                business_type_name = "Other"
+            if business_type == 11:
+                business_type_name = "Will"
+            if business_type == 12:
+                business_type_name = "Risk"
+            if business_type == 13:
+                business_type_name = "ST Re-issued/instated"
+            if business_type == 14:
+                business_type_name = "Short Term Commercial"
+            if business_type == 15:
+                business_type_name = "Short Term Personal" 
+            initiating_user_type = "Admin"
+            if document.user.userType == 1:
+                initiating_user_type = "ARC"
+            if document.user.userType == 2:
+                initiating_user_type = "Gatekeeper"
+            if document.user.userType == 3:
+                initiating_user_type = "Manager"
+            if document.user.userType == 5:
+                initiating_user_type = "B.A.C."
+            gatekeeping_data = {}
+            total_gatekeeping_versions = 0
+            gatekeeping = GateKeeping.objects.filter(document=document.pk)
+            if gatekeeping.exists():
+                total_gatekeeping_versions = gatekeeping.count()
+                gatekeeping = gatekeeping.values()
+                for counter, gatekeeping_record in enumerate(gatekeeping):
+                    fica = ""
+                    if gatekeeping_record["fica"] == 100:
+                        fica = "Yes"
+                    elif gatekeeping_record["fica"] == 1:
+                        fica = "No"
+                    elif gatekeeping_record["fica"] == 0:
+                        fica = "N/A"
+                    proof_of_screening = ""
+                    if gatekeeping_record["proof_of_screening"] == 100:
+                        proof_of_screening = "Yes"
+                    elif gatekeeping_record["proof_of_screening"] == 1:
+                        proof_of_screening = "No"
+                    elif gatekeeping_record["proof_of_screening"] == 2:
+                        proof_of_screening = "N/A"
+                    dra = ""
+                    if gatekeeping_record["dra"] == 100:
+                        proof_of_screening = "Yes"
+                    elif gatekeeping_record["dra"] == 1:
+                        proof_of_screening = "No"
+                    elif gatekeeping_record["dra"] == 0:
+                        proof_of_screening = "N/A"
+                    letter_of_intro = ""
+                    if gatekeeping_record["letter_of_intro"] == 100:
+                        letter_of_intro = "Yes"
+                    elif gatekeeping_record["letter_of_intro"] == 1:
+                        letter_of_intro = "No"
+                    elif gatekeeping_record["letter_of_intro"] == 0:
+                        letter_of_intro = "N/A"
+                    authorisation_letter = ""
+                    if gatekeeping_record["authorisation_letter"] == 100:
+                        authorisation_letter = "Yes"
+                    elif gatekeeping_record["authorisation_letter"] == 1:
+                        authorisation_letter = "No"
+                    elif gatekeeping_record["authorisation_letter"] == 0:
+                        authorisation_letter = "N/A"
+                    roa_type = ""
+                    if gatekeeping_record["roa_type"] == 100:
+                        roa_type = "SanFin ROA"
+                    elif gatekeeping_record["roa_type"] == 0:
+                        roa_type = "SFP ROA"
+                    elif gatekeeping_record["roa_type"] == 1:
+                        roa_type = "Glacier Ice"
+                    elif gatekeeping_record["roa_type"] == 2:
+                        roa_type = "Compare Med"
+                    elif gatekeeping_record["roa_type"] == 3:
+                        roa_type = "Get Quote"
+                    elif gatekeeping_record["roa_type"] == 4:
+                        roa_type = "No"
+                    roa = ""
+                    if gatekeeping_record["roa"] == 100:
+                        roa = "Yes"
+                    elif gatekeeping_record["roa"] == 1:
+                        roa = "No"
+                    elif gatekeeping_record["roa"] == 0:
+                        roa = "N/A"
+                    fna = ""
+                    if gatekeeping_record["fna"] == 100:
+                        fna = "Yes"
+                    elif gatekeeping_record["fna"] == 1:
+                        fna = "No"
+                    elif gatekeeping_record["fna"] == 0:
+                        fna = "N/A"
+                    application = ""
+                    if gatekeeping_record["application"] == 100:
+                        application = "Yes"
+                    elif gatekeeping_record["application"] == 1:
+                        application = "No"
+                    elif gatekeeping_record["application"] == 0:
+                        application = "N/A"
+                    quotation = ""
+                    if gatekeeping_record["quotation"] == 100:
+                        quotation = "Yes"
+                    elif gatekeeping_record["quotation"] == 1:
+                        quotation = "No"
+                    elif gatekeeping_record["quotation"] == 0:
+                        quotation = "N/A"
+                    risk_portfolio = ""
+                    if gatekeeping_record["risk_portfolio"] == 1:
+                        risk_portfolio = "Yes"
+                    elif gatekeeping_record["risk_portfolio"] == 1:
+                        risk_portfolio = "No"
+                    elif gatekeeping_record["risk_portfolio"] == 0:
+                        risk_portfolio = "N/A"
+                    mandate = ""
+                    if gatekeeping_record["mandate"] == 1:
+                        mandate = "Yes"
+                    elif gatekeeping_record["mandate"] == 1:
+                        mandate = "No"
+                    elif gatekeeping_record["mandate"] == 0:
+                        mandate = "N/A"
+                    replacement = ""
+                    if gatekeeping_record["replacement"] == 1:
+                        replacement = "Yes"
+                    elif gatekeeping_record["replacement"] == 1:
+                        replacement = "No"
+                    elif gatekeeping_record["replacement"] == 0:
+                        replacement = "N/A"
+                    replacement_type = ""
+                    if gatekeeping_record["replacement_type"] == 100:
+                        replacement_type = "Rule 19"
+                    elif gatekeeping_record["replacement_type"] == 1:
+                        replacement_type = "Not Rule 19"
+                    elif gatekeeping_record["replacement_type"] == 0:
+                        replacement_type = "N/A"
+                    date_of_screening = ""
+                    if int(gatekeeping_record["date_of_screening"]) == 100:
+                        date_of_screening = "Before quote date"
+                    elif int(gatekeeping_record["date_of_screening"]) == 1:
+                        date_of_screening = "After quote date"
+                    elif gatekeeping_record["replacement_type"] == 0:
+                        date_of_screening = "N/A"
+                    timeously = ""
+                    if int(gatekeeping_record["timeously"]) == 100:
+                        timeously = "Yes"
+                    elif int(gatekeeping_record["timeously"]) == 1:
+                        timeously = "No"
+                    elif int(gatekeeping_record["timeously"]) == 0:
+                        timeously = "N/A"
+                    policy_schedule = ""
+                    if gatekeeping_record["policy_schedule"] == 100:
+                        policy_schedule = "Yes"
+                    elif gatekeeping_record["policy_schedule"] == 1:
+                        policy_schedule = "No"
+                    elif gatekeeping_record["policy_schedule"] == 0:
+                        policy_schedule = "N/A"
+                    commission_release_form = ""
+                    if gatekeeping_record["commission_release_form"] == 100:
+                        commission_release_form = "Yes"
+                    elif gatekeeping_record["commission_release_form"] == 1:
+                        commission_release_form = "No"
+                    elif gatekeeping_record["commission_release_form"] == 0:
+                        commission_release_form = "N/A"
+                    iteration = "First"
+                    if counter+1 == 1:
+                        iteration = "First"
+                    elif counter+1 == 2:
+                        iteration = "Second"
+                    elif counter+1 == 3:
+                        iteration = "3rd"
+                    else:
+                        iteration = f"{counter+1}th"
+                    
+                    gatekeeping_data[f"{iteration} Review - FICA (Clear ID)"] = fica
+                    gatekeeping_data[f"{iteration} Review - Proof of Screening"] = proof_of_screening
+                    gatekeeping_data[f"{iteration} Review - DRA"] = dra
+                    gatekeeping_data[f"{iteration} Review - Letter of Introduction"] = letter_of_intro
+                    gatekeeping_data[f"{iteration} Review - Authorisation Letter"] = authorisation_letter
+                    gatekeeping_data[f"{iteration} Review - ROA Type"] = roa_type
+                    gatekeeping_data[f"{iteration} Review - ROA (All sections completed)"] = roa
+                    gatekeeping_data[f"{iteration} Review - FNA (Appropriate FNA filed"] = fna
+                    gatekeeping_data[f"{iteration} Review - Application"] = application
+                    gatekeeping_data[f"{iteration} Review - Quotation"] = quotation
+                    gatekeeping_data[f"{iteration} Review - Risk Portfolio"] = risk_portfolio
+                    gatekeeping_data[f"{iteration} Review - Mandate"] = mandate
+                    gatekeeping_data[f"{iteration} Review - Replacement"] = replacement
+                    gatekeeping_data[f"{iteration} Review - Replacement Type"] = replacement_type
+                    gatekeeping_data[f"{iteration} Review - Date of Screening"] = date_of_screening
+                    gatekeeping_data[f"{iteration} Review - Timeously"] = timeously
+                    gatekeeping_data[f"{iteration} Review - Policy Schedule"] = policy_schedule
+                    gatekeeping_data[f"{iteration} Review - Commission Release Form"] = commission_release_form
+            document_data = {
+                "id" : document.pk, 
+                "Policy Number" : document.policy_number, 
+                "Initiating User" : document.user.first_name + " " + document.user.last_name, 
+                "Initiating User Email" : document.user.email, 
+                "Initiating User Type" : initiating_user_type, 
+                "Advisor" : advisor_name, 
+                "Advisor Email" : document.advisor.email, 
+                "Advisor ID Number" : advisor_id, 
+                "Advisor Region." : region_name, 
+                "Advisor Regional Manager" : regional_manager_name, 
+                "Advisor Regional Manager Email" : regional_manager_email, 
+                "Advisor B.A.C." : bac_name, 
+                "Advisor B.A.C. Email" : bac_email, 
+                "Client Name" : document.clientName, 
+                "Supplier" : document.supplier, 
+                "Product" : document.product, 
+                "Business Type" : business_type_name, 
+                "Starting Type" : "Gatekeeper Level" if document.starting_point == 1 else "ARC Level", 
+                "Gatekeeping Versions" : total_gatekeeping_versions, 
+                "Lump Sum" : babel.numbers.format_currency(document.lump_sum, 'ZAR', locale='en_ZA', currency_digits=False), 
+                "Monthly Premium" : babel.numbers.format_currency(document.monthly_premium, 'ZAR', locale='en_ZA', currency_digits=False), 
+                "Commission" : babel.numbers.format_currency(document.commission, 'ZAR', locale='en_ZA', currency_digits=False), 
+            }
+            document_data.update(gatekeeping_data)
+            print(gatekeeping_data)
+            requestedData.append(document_data)
+        document_df = pd.DataFrame(requestedData)
+        if len(requestedData) > 0:
+            file_name = f"static/csv/complaince_export_{uuid.uuid4()}.csv"
+            document_df.to_csv(f"data/{file_name}")
+            return Response({"file": file_name},200)
+        return Response({"message": "No data found"},200)
