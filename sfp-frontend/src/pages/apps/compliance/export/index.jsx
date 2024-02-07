@@ -100,7 +100,7 @@ const ExportData = () => {
                                 setCustomFilterType={ setCustomFilterType }
                             />
                             {
-                                user.is_superuser == 1 ?
+                                user?.is_superuser == 1 ?
                                     <>
                                         <button
                                             className={
