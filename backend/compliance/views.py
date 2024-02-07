@@ -3958,6 +3958,6 @@ class ExportData(APIView):
         document_df = pd.DataFrame(requestedData)
         if len(requestedData) > 0:
             file_name = f"static/csv/complaince_export_{uuid.uuid4()}.csv"
-            document_df.to_csv(f"data/{file_name}")
+            document_df.to_csv(f"{file_name}")
             return Response({"file": file_name},200)
         return Response({"message": "No data found"},404)
