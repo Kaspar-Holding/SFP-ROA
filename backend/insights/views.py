@@ -1230,44 +1230,43 @@ class gatekeeperInsights(APIView):
                 # Rejected
                 rejected_reviews_data = reviewsData.filter(user__in=gatekeeperIds,businessType=i,status=2)
                 if rejected_reviews_data.exists():
-                    rejected_reviews_ids = list(rejected_reviews_data.values_list('id', flat=True))
-                    rejected_gk_data = GateKeeping.objects.filter(document__in=rejected_reviews_ids).latest('-updated_at')
-                    for rejected in rejected_gk_data:
-                        if rejected['fica'] == 0:
+                    for rejected_document in rejected_reviews_data:
+                        rejected = GateKeeping.objects.filter(document=rejected_document.pk).latest('-updated_at')
+                        if rejected.fica == 0:
                             rejection_reasons['FICA (Clear ID'] = rejection_reasons['FICA (Clear ID'] + 1
-                        if rejected['proof_of_screening'] == 0:
+                        if rejected.proof_of_screening == 0:
                             rejection_reasons['Proof of Screening'] = rejection_reasons['Proof of Screening'] + 1
-                        if rejected['dra'] == 0:
+                        if rejected.dra == 0:
                             rejection_reasons['DRA'] = rejection_reasons['DRA'] + 1
-                        if rejected['letter_of_intro'] == 0:
+                        if rejected.letter_of_intro == 0:
                             rejection_reasons['Letter of Introduction'] = rejection_reasons['Letter of Introduction'] + 1
-                        if rejected['authorisation_letter'] == 0:
+                        if rejected.authorisation_letter == 0:
                             rejection_reasons['Authorisation Letter'] = rejection_reasons['Authorisation Letter'] + 1
-                        if rejected['roa_type'] == 0:
+                        if rejected.roa_type == 0:
                             rejection_reasons['ROA Type'] = rejection_reasons['ROA Type'] + 1
-                        if rejected['roa'] == 0:
+                        if rejected.roa == 0:
                             rejection_reasons['ROA (All sections completed'] = rejection_reasons['ROA (All sections completed'] + 1
-                        if rejected['fna'] == 0:
+                        if rejected.fna == 0:
                             rejection_reasons['FNA (Appropriate FNA filed'] = rejection_reasons['FNA (Appropriate FNA filed'] + 1
-                        if rejected['application'] == 0:
+                        if rejected.application == 0:
                             rejection_reasons['Application'] = rejection_reasons['Application'] + 1
-                        if rejected['quotation'] == 0:
+                        if rejected.quotation == 0:
                             rejection_reasons['Quotation'] = rejection_reasons['Quotation'] + 1
-                        if rejected['risk_portfolio'] == 0:
+                        if rejected.risk_portfolio == 0:
                             rejection_reasons['Risk Portfolio'] = rejection_reasons['Risk Portfolio'] + 1
-                        if rejected['mandate'] == 0:
+                        if rejected.mandate == 0:
                             rejection_reasons['Mandate'] = rejection_reasons['Mandate'] + 1
-                        if rejected['replacement'] == 0:
+                        if rejected.replacement == 0:
                             rejection_reasons['Replacement'] = rejection_reasons['Replacement'] + 1
-                        if rejected['replacement_type'] == 0:
+                        if rejected.replacement_type == 0:
                             rejection_reasons['Replacement Type'] = rejection_reasons['Replacement Type'] + 1
-                        if rejected['date_of_screening'] == 0:
+                        if rejected.date_of_screening == 0:
                             rejection_reasons['Date of Screening'] = rejection_reasons['Date of Screening'] + 1
-                        if rejected['timeously'] == 0:
+                        if rejected.timeously == 0:
                             rejection_reasons['Timeously'] = rejection_reasons['Timeously'] + 1
-                        if rejected['policy_schedule'] == 0:
+                        if rejected.policy_schedule == 0:
                             rejection_reasons['Policy Schedule'] = rejection_reasons['Policy Schedule'] + 1
-                        if rejected['commission_release_form'] == 0:
+                        if rejected.commission_release_form == 0:
                             rejection_reasons['Commission Release Form'] = rejection_reasons['Commission Release Form'] + 1
                 for reason in rejection_reasons.keys():
                     if rejection_reasons[reason] != 0:
