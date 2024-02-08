@@ -3534,7 +3534,7 @@ class ExportData(APIView):
                                 score += int(gkDocument[key])
                             if int(gkDocument[key]) == 0:
                                 total += 100
-                        score = round(score/total *100)
+                        score = round(score/total *100) if total != 0 else 0
                     if business_type == 3 or business_type == 4:
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                         gkDocument = GateKeeping.objects.filter(pk=gatekeeping_record.pk).values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
@@ -3544,7 +3544,7 @@ class ExportData(APIView):
                                 score += int(gkDocument[key])
                             if int(gkDocument[key]) == 0:
                                 total += 100
-                        score = round(score/total *100)
+                        score = round(score/total *100) if total != 0 else 0
                     if business_type == 5 or business_type == 9:
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation']
                         gkDocument = GateKeeping.objects.filter(pk=gatekeeping_record.pk).values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation").latest('created_at')
@@ -3554,7 +3554,7 @@ class ExportData(APIView):
                                 score += int(gkDocument[key])
                             if int(gkDocument[key]) == 0:
                                 total += 100
-                        score = round(score/total *100)
+                        score = round(score/total *100) if total != 0 else 0
                     if business_type == 12:
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement'] + gatekeepingDocument['replacement_type']
                         gkDocument = GateKeeping.objects.filter(pk=gatekeeping_record.pk).values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
@@ -3564,7 +3564,7 @@ class ExportData(APIView):
                                 score += int(gkDocument[key])
                             if int(gkDocument[key]) == 0:
                                 total += 100
-                        score = round(score/total *100)
+                        score = round(score/total *100) if total != 0 else 0
                     if business_type == 10 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa_type'] + gatekeepingDocument['roa']
                         gkDocument = GateKeeping.objects.filter(pk=gatekeeping_record.pk).values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa").latest('created_at')
@@ -3574,7 +3574,7 @@ class ExportData(APIView):
                                 score += int(gkDocument[key])
                             if int(gkDocument[key]) == 0:
                                 total += 100
-                        score = round(score/total *100)
+                        score = round(score/total *100) if total != 0 else 0
                     if business_type == 11 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['application']
                         gkDocument = GateKeeping.objects.filter(pk=gatekeeping_record.pk).values("fica","proof_of_screening","dra","letter_of_intro","authorisation_letter","application").latest('created_at')
@@ -3584,7 +3584,7 @@ class ExportData(APIView):
                                 score += int(gkDocument[key])
                             if int(gkDocument[key]) == 0:
                                 total += 100
-                        score = round(score/total *100)
+                        score = round(score/total *100) if total != 0 else 0
                     if business_type == 13 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra']
                         gkDocument = GateKeeping.objects.filter(pk=gatekeeping_record.pk).values("fica","policy_schedule","proof_of_screening","dra").latest('created_at')
@@ -3594,7 +3594,7 @@ class ExportData(APIView):
                                 score += int(gkDocument[key])
                             if int(gkDocument[key]) == 0:
                                 total += 100
-                        score = round(score/total *100)
+                        score = round(score/total *100) if total != 0 else 0
                     if business_type == 14 or business_type == 15 :
                         # score = gatekeepingDocument['fica'] + gatekeepingDocument['proof_of_screening'] + gatekeepingDocument['dra'] + gatekeepingDocument['letter_of_intro'] + gatekeepingDocument['authorisation_letter'] + gatekeepingDocument['roa'] + gatekeepingDocument['fna'] + gatekeepingDocument['application'] + gatekeepingDocument['quotation'] + gatekeepingDocument['replacement']
                         gkDocument = GateKeeping.objects.filter(pk=gatekeeping_record.pk).values("fica","policy_schedule","proof_of_screening","dra","letter_of_intro","authorisation_letter","roa","fna","application","quotation","replacement").latest('created_at')
@@ -3604,7 +3604,7 @@ class ExportData(APIView):
                                 score += int(gkDocument[key])
                             if int(gkDocument[key]) == 0:
                                 total += 100
-                        score = round(score/total *100)
+                        score = round(score/total *100) if total != 0 else 0
                     if business_type == 2 :
                     # score = gatekeepingDocument['proof_of_screening']
                         gkDocument = GateKeeping.objects.filter(pk=gatekeeping_record.pk).values("commission_release_form" ).latest('created_at')
@@ -3614,7 +3614,7 @@ class ExportData(APIView):
                             if int(gkDocument[key]) == 100:
                                 total += 100
                                 score += int(gkDocument[key])
-                        score = round(score/total *100)
+                        score = round(score/total *100) if total != 0 else 0
                     if counter+1 == total_gatekeeping_versions:
                         final_gatekeeping_score = score
                     
@@ -3850,7 +3850,7 @@ class ExportData(APIView):
                             if key == "replacement_terms" and replacement:
                                 continue    
                             arc_score += aDocument[key]
-                        arc_score = round(arc_score/arc_total *100)
+                        arc_score = round(arc_score/arc_total *100) if total != 0 else 0
                     if business_type >= 14 :
                         aDocument = arc.objects.filter(pk=arc_record.pk).values("disclosure_a", "disclosure_b", "personal_details_a", "personal_details_b", "general_a", "general_b", "general_c", "general_d", "risk_classes_a", "risk_classes_b", "fna_a", "fna_b", "recommended_products_a", "recommended_products_b", "recommended_products_c", "replacements_a", "replacements_b", "replacements_c", "replacements_d", "client_consent_a", "client_consent_b", ).latest('id')
                         for key in aDocument:
@@ -3859,7 +3859,7 @@ class ExportData(APIView):
                         for key in aDocument:
                             if aDocument[key] == 5:
                                 arc_score += aDocument[key]
-                        arc_score = round(arc_score/arc_total *100)
+                        arc_score = round(arc_score/arc_total *100) if total != 0 else 0
 
                     if counter+1 == total_arc_versions:
                         final_arc_score = arc_score
