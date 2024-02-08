@@ -3923,6 +3923,8 @@ class ExportData(APIView):
                         picked_up_user_profile = picked_up_user_profile.first()
                         picked_up_name = picked_up_user_profile.Full_Name
             document_data = {
+                "Document Creation Date" : document.created_at.strftime('%H:%M:%S %d %b %Y'), 
+                "Document Last Update Date" : document.updated_at.strftime('%H:%M:%S %d %b %Y'), 
                 "Policy Number" : document.policy_number, 
                 "Initiating User" : document.user.first_name + " " + document.user.last_name, 
                 "Initiating User Email" : document.user.email, 
