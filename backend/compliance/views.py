@@ -3276,7 +3276,7 @@ class ExportData(APIView):
 
     def post(self, request):
         data = request.data
-        documents = ComplianceDocument.objects.all()
+        documents = ComplianceDocument.objects.all().order_by('-created_at')
         filter_type = int(data['filter_type'])
         if filter_type != 0:
             if filter_type == 1:
