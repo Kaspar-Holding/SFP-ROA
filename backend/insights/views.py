@@ -72,7 +72,7 @@ class commissionInsights(APIView):
         total_documents = reviewsData.values()
         total_regions = reviewsData.values('region').distinct().count()
         total_advisors = reviewsData.values('advisor').distinct().count()
-        total_commission = reviewsData.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        total_commission = round(reviewsData.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission'],2)
         # for review_document in total_documents:
         #     gk = GateKeeping.objects.filter(document=review_document['id'])
         #     if gk.exists():
@@ -91,9 +91,9 @@ class commissionInsights(APIView):
                         # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
                 commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(commission)])
         if filterType == 2:
-            datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+            datewise_data = reviewsData.values('updated_at__year','updated_at__month', 'updated_at__day').distinct().order_by('updated_at__year','updated_at__month', 'updated_at__day')
             for date in datewise_data:
-                commission = reviewsData.filter(updated_at__date=date['updated_at__date'])
+                commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'], updated_at__day=date['updated_at__day'])
                 if commission.exists():
                     commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                 else:

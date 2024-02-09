@@ -26,6 +26,8 @@ Deployed using Nginx and Gunicorn
 1. Added Conditions for Superusers
 2. Commission aggregate formula updated
 3. Updated formulas for total reviews, regions and advisors
+4. Removed 2 and 3
+5. Updated condition for datewise trend
 - Deployment on Staging and Production 
 
 ### 07 February 2024:
