@@ -1,6 +1,7 @@
 backend/sfp_venv/
 *.env
 sfp_roa
+sfpvenv
 /sfp_venv
 prodEnv
 /venv

@@ -3310,7 +3310,7 @@ class ExportData(APIView):
                 advisor = advisor.first()
                 advisor_name = advisor.Full_Name 
                 advisor_id = advisor.ID_Number 
-                region_name = regions.objects.get(id=advisor.region.pk).region
+                region_name = advisor.region.region
                 regional_manager = region_manager.objects.filter(region=advisor.region.pk)
                 if regional_manager.exists():
                     regional_manager = regional_manager.first()
