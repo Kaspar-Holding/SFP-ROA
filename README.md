@@ -21,6 +21,7 @@ Deployed using Nginx and Gunicorn
 3. BAC bug resolved
 4. Added Loader on Frontend
 5. Users Redirect not working bug resolved on frontend.
+6. Added Filter in naming convention
 - Deployment on Staging 
 
 ### 07 February 2024:

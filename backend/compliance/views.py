@@ -3278,24 +3278,29 @@ class ExportData(APIView):
         data = request.data
         documents = ComplianceDocument.objects.all().order_by('-created_at')
         filter_type = int(data['filter_type'])
+        file_initial_name = ""
         if filter_type != 0:
             if filter_type == 1:
                 year = data['year']
+                file_initial_name = year
                 documents = documents.filter(created_at__year=year).order_by('created_at__year')
             elif filter_type == 2:
                 date = str(data['month_date'])
                 month = date.split('-')[1]
                 year = date.split('-')[0]
+                file_initial_name = year + "/" + month
                 documents = documents.filter(created_at__year=year, created_at__month=month).order_by('created_at__year', 'created_at__month')
             elif filter_type == 3:
                 date = str(data['date'])
                 day = date.split('-')[2]
                 month = date.split('-')[1]
                 year = date.split('-')[0]
+                file_initial_name = year + "/" + month + "/" + day
                 documents = documents.filter(created_at__year=year, created_at__month=month, created_at__day=day).order_by('created_at__year', 'created_at__month', 'created_at__day')
             else:
                 fromdate = request.data['fromdate']
                 todate = request.data['todate']
+                file_initial_name = fromdate + "to" + todate
                 date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
                 documents = documents.filter(created_at__range=date_range)
         requestedData = []
@@ -3961,7 +3966,7 @@ class ExportData(APIView):
             requestedData.append(document_data)
         document_df = pd.DataFrame(requestedData)
         if len(requestedData) > 0:
-            file_name = f"static/csv/complaince_export_{uuid.uuid4()}.csv"
+            file_name = f"static/csv/{file_initial_name}complaince_export_{uuid.uuid4()}.csv"
             document_df.to_csv(f"{file_name}")
             return Response({"file": file_name},200)
         return Response({"message": "No data found"},404)
