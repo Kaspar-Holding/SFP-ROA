@@ -3314,7 +3314,7 @@ class ExportData(APIView):
                 regional_manager = region_manager.objects.filter(region=advisor.region.pk)
                 if regional_manager.exists():
                     regional_manager = regional_manager.first()
-                    regional_manager = UserAccount.objects.filter(id=regional_manager.pk)
+                    regional_manager = UserAccount.objects.filter(id=regional_manager.manager.pk)
                     if regional_manager.exists():
                         regional_manager = regional_manager.first()
                         regional_manager_name = regional_manager.first_name + " " + regional_manager.last_name
