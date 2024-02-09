@@ -3324,7 +3324,7 @@ class ExportData(APIView):
                         regional_manager_profile = user_profile.objects.filter(user=regional_manager.pk)
                         if regional_manager_profile.exists():
                             regional_manager_name = regional_manager_profile.first().Full_Name
-                bac = advisor.bac.pk
+                bac = advisor.bac.pk if advisor.bac else ""
                 if bac != "":
                     bac = UserAccount.objects.get(id=bac)
                     bac_name = bac.first_name + " " + bac.last_name
