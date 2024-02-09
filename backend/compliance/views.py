@@ -3324,7 +3324,6 @@ class ExportData(APIView):
                             regional_manager_name = regional_manager_profile.first().Full_Name
             print(advisor_name, advisor_id, region_name)
             print(regional_manager_name, regional_manager_email)
-            break
             bac = document.BAC
             bac_name = ""
             bac_email = ""

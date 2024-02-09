@@ -14,6 +14,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 09 February 2024:
+- Compliance
+1. Export user profile bug resolved
+- Deployment on Staging 
+
 ### 07 February 2024:
 - Compliance
 1. Export Added
