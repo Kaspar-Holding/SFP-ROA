@@ -24,6 +24,7 @@ Deployed using Nginx and Gunicorn
 6. Added Filter in naming convention
 - Insights:
 1. Added Conditions for Superusers
+2. Commission aggregate formula updated
 - Deployment on Staging 
 
 ### 07 February 2024:

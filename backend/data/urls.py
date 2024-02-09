@@ -10,7 +10,7 @@ from . import views, printFormViews
 from .importExportViews.ExportViews import exportViews
 from .schema import schema
 urlpatterns = [
-    path('graphql/' , PrivateGraphQLView.as_view(graphiql=True, schema=schema)),
+    # path('graphql/' , PrivateGraphQLView.as_view(graphiql=True, schema=schema)),
     path('excel/' , exportViews.exportData,name='excel'),
     path('sample/' , views.sample,name='sample'),
     # path('printStatus/' , views.printStatus,name='printStatus'),

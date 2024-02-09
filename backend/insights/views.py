@@ -72,7 +72,8 @@ class commissionInsights(APIView):
         total_documents = reviewsData.values()
         total_regions = reviewsData.values('region').distinct().count()
         total_advisors = reviewsData.values('advisor').distinct().count()
-        total_commission = reviewsData.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        # total_commission = reviewsData.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        total_commission = 0
         # for review_document in total_documents:
         #     gk = GateKeeping.objects.filter(document=review_document['id'])
         #     if gk.exists():
@@ -86,6 +87,7 @@ class commissionInsights(APIView):
                 commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
                 if commission.exists():
                     commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                    total_commission += commission
                 else:
                     commission = 0
                         # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
@@ -96,6 +98,7 @@ class commissionInsights(APIView):
                 commission = reviewsData.filter(updated_at__date=date['updated_at__date'])
                 if commission.exists():
                     commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                    total_commission += commission
                 else:
                     commission = 0
                         # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
@@ -106,6 +109,7 @@ class commissionInsights(APIView):
                 commission = reviewsData.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour'])
                 if commission.exists():
                     commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                    total_commission += commission
                 else:
                     commission = 0
                         # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
@@ -118,6 +122,7 @@ class commissionInsights(APIView):
                         commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
                         if commission.exists():
                             commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                            total_commission += commission
                         else:
                             commission = 0
                                 # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
@@ -128,6 +133,7 @@ class commissionInsights(APIView):
                         commission = reviewsData.filter(updated_at__date=date['updated_at__date'])
                         if commission.exists():
                             commission = commission.values('updated_at__date').aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                            total_commission += commission
                         else:
                             commission = 0
                                 # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
@@ -138,6 +144,7 @@ class commissionInsights(APIView):
                     commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week'])
                     if commission.exists():
                         commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                        total_commission += commission
                     else:
                         commission = 0
                             # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
@@ -148,6 +155,7 @@ class commissionInsights(APIView):
                     commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
                     if commission.exists():
                         commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                        total_commission += commission
                     else:
                         commission = 0
                             # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
@@ -158,6 +166,7 @@ class commissionInsights(APIView):
                     commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter'])
                     if commission.exists():
                         commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                        total_commission += commission
                     else:
                         commission = 0
                             # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
@@ -168,6 +177,7 @@ class commissionInsights(APIView):
                     commission = reviewsData.filter(updated_at__year=date['updated_at__year'])
                     if commission.exists():
                         commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                        total_commission += commission
                     else:
                         commission = 0
                     commission_trend.append([f"{date['updated_at__year']}", int(commission)])
