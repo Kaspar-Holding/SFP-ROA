@@ -25,7 +25,8 @@ Deployed using Nginx and Gunicorn
 - Insights:
 1. Added Conditions for Superusers
 2. Commission aggregate formula updated
-- Deployment on Staging 
+3. Updated formulas for total reviews, regions and advisors
+- Deployment on Staging and Production 
 
 ### 07 February 2024:
 - Compliance

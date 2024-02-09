@@ -68,10 +68,14 @@ class commissionInsights(APIView):
         if businessType != "all":
             reviewsData = reviewsData.filter(businessType=int(businessType))
         
-        total_reviews = reviewsData.count()
-        total_documents = reviewsData.values()
-        total_regions = reviewsData.values('region').distinct().count()
-        total_advisors = reviewsData.values('advisor').distinct().count()
+        total_reviews = 0
+        total_documents = 0
+        total_regions = 0
+        total_advisors = 0
+        # total_reviews = reviewsData.count()
+        # total_documents = reviewsData.values()
+        # total_regions = reviewsData.values('region').distinct().count()
+        # total_advisors = reviewsData.values('advisor').distinct().count()
         # total_commission = reviewsData.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
         total_commission = 0
         # for review_document in total_documents:
@@ -86,6 +90,9 @@ class commissionInsights(APIView):
             for date in datewise_data:
                 commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
                 if commission.exists():
+                    total_reviews += commission.count()
+                    total_regions += commission.values('region').distinct().count()
+                    total_advisors += commission.values('advisor').distinct().count()
                     commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                     total_commission += commission
                 else:
@@ -97,6 +104,9 @@ class commissionInsights(APIView):
             for date in datewise_data:
                 commission = reviewsData.filter(updated_at__date=date['updated_at__date'])
                 if commission.exists():
+                    total_reviews += commission.count()
+                    total_regions += commission.values('region').distinct().count()
+                    total_advisors += commission.values('advisor').distinct().count()
                     commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                     total_commission += commission
                 else:
@@ -108,6 +118,9 @@ class commissionInsights(APIView):
             for date in datewise_data:
                 commission = reviewsData.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour'])
                 if commission.exists():
+                    total_reviews += commission.count()
+                    total_regions += commission.values('region').distinct().count()
+                    total_advisors += commission.values('advisor').distinct().count()
                     commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                     total_commission += commission
                 else:
@@ -121,6 +134,9 @@ class commissionInsights(APIView):
                     for date in datewise_data:
                         commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
                         if commission.exists():
+                            total_reviews += commission.count()
+                            total_regions += commission.values('region').distinct().count()
+                            total_advisors += commission.values('advisor').distinct().count()
                             commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                             total_commission += commission
                         else:
@@ -132,7 +148,10 @@ class commissionInsights(APIView):
                     for date in datewise_data:
                         commission = reviewsData.filter(updated_at__date=date['updated_at__date'])
                         if commission.exists():
-                            commission = commission.values('updated_at__date').aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                            total_reviews += commission.count()
+                            total_regions += commission.values('region').distinct().count()
+                            total_advisors += commission.values('advisor').distinct().count()
+                            commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                             total_commission += commission
                         else:
                             commission = 0
@@ -143,6 +162,9 @@ class commissionInsights(APIView):
                 for date in datewise_data:
                     commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week'])
                     if commission.exists():
+                        total_reviews += commission.count()
+                        total_regions += commission.values('region').distinct().count()
+                        total_advisors += commission.values('advisor').distinct().count()
                         commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                         total_commission += commission
                     else:
@@ -154,6 +176,9 @@ class commissionInsights(APIView):
                 for date in datewise_data:
                     commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
                     if commission.exists():
+                        total_reviews += commission.count()
+                        total_regions += commission.values('region').distinct().count()
+                        total_advisors += commission.values('advisor').distinct().count()
                         commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                         total_commission += commission
                     else:
@@ -165,6 +190,9 @@ class commissionInsights(APIView):
                 for date in datewise_data:
                     commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter'])
                     if commission.exists():
+                        total_reviews += commission.count()
+                        total_regions += commission.values('region').distinct().count()
+                        total_advisors += commission.values('advisor').distinct().count()
                         commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                         total_commission += commission
                     else:
@@ -176,6 +204,9 @@ class commissionInsights(APIView):
                 for date in datewise_data:
                     commission = reviewsData.filter(updated_at__year=date['updated_at__year'])
                     if commission.exists():
+                        total_reviews += commission.count()
+                        total_regions += commission.values('region').distinct().count()
+                        total_advisors += commission.values('advisor').distinct().count()
                         commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
                         total_commission += commission
                     else:
