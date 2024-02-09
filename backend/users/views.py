@@ -1,6 +1,7 @@
 import secrets
 import string
 import uuid
+from dateutil.parser import parser
 from djoser import utils
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.core.paginator import Paginator
@@ -241,8 +242,8 @@ class BulkUserUpload(APIView):
                     else:
                         print(log_content_serializer.errors)
                     user_profile_data = {k: v for k, v in user_profile_data.items() if v != ""}
-                    user_profile_data = {k: datetime.strptime(v, "%d/%m/%y").date() if ('Date' in k or 'DOFA' in k) else v for k, v in user_profile_data.items()}
-                    user_profile_data = {k: datetime.strptime(v, "%d/%m/%y %H:%M") if ('Modified_On' in k or 'Created_On' in k) else v for k, v in user_profile_data.items()}
+                    user_profile_data = {k: parser(v) if ('Date' in k or 'DOFA' in k) else v for k, v in user_profile_data.items()}
+                    user_profile_data = {k: parser(v) if ('Modified_On' in k or 'Created_On' in k) else v for k, v in user_profile_data.items()}
                     user = UserAccount.objects.filter(email__iexact=email)
                     if "Email" not in user_profile_data:
                         continue
