@@ -3305,7 +3305,7 @@ class ExportData(APIView):
             region_name = "N/A"
             regional_manager_name = "N/A"
             regional_manager_email = "N/A"
-            advisor = user_profile.objects.filter(id=document.advisor.pk)
+            advisor = user_profile.objects.filter(user=document.advisor.pk)
             if advisor.exists():
                 advisor = advisor.first()
                 advisor_name = advisor.Full_Name 
@@ -3322,7 +3322,9 @@ class ExportData(APIView):
                         regional_manager_profile = user_profile.objects.filter(user=regional_manager.pk)
                         if regional_manager_profile.exists():
                             regional_manager_name = regional_manager_profile.first().Full_Name
-
+            print(advisor_name, advisor_id, region_name)
+            print(regional_manager_name, regional_manager_email)
+            break
             bac = document.BAC
             bac_name = ""
             bac_email = ""
