@@ -3305,6 +3305,8 @@ class ExportData(APIView):
             region_name = "N/A"
             regional_manager_name = "N/A"
             regional_manager_email = "N/A"
+            bac_name = ""
+            bac_email = ""
             advisor = user_profile.objects.filter(user=document.advisor.pk)
             if advisor.exists():
                 advisor = advisor.first()
@@ -3322,19 +3324,15 @@ class ExportData(APIView):
                         regional_manager_profile = user_profile.objects.filter(user=regional_manager.pk)
                         if regional_manager_profile.exists():
                             regional_manager_name = regional_manager_profile.first().Full_Name
-            print(advisor_name, advisor_id, region_name)
-            print(regional_manager_name, regional_manager_email)
-            bac = document.BAC
-            bac_name = ""
-            bac_email = ""
-            if bac != "":
-                bac = UserAccount.objects.get(id=bac)
-                bac_name = bac.first_name + " " + bac.last_name
-                bac_email = bac.email
-                bac_details = user_profile.objects.filter(id=bac.pk)
-                if bac_details.exists():
-                    bac_details = bac_details.first()
-                    bac_name = bac_details.Full_Name
+                bac = advisor.bac.pk
+                if bac != "":
+                    bac = UserAccount.objects.get(id=bac)
+                    bac_name = bac.first_name + " " + bac.last_name
+                    bac_email = bac.email
+                    bac_details = user_profile.objects.filter(id=bac.pk)
+                    if bac_details.exists():
+                        bac_details = bac_details.first()
+                        bac_name = bac_details.Full_Name
             business_type = document.businessType
             business_type_name = ""
             if business_type == 1:

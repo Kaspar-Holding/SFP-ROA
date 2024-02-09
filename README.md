@@ -15,9 +15,10 @@ Deployed using Nginx and Gunicorn
 ## Updates
 
 ### 09 February 2024:
-- Compliance
+- Compliance Export
 1. Export user profile bug resolved
 2. Regional Manager bug resolved
+3. BAC not showing up
 - Deployment on Staging 
 
 ### 07 February 2024:
