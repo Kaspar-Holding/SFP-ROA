@@ -3278,7 +3278,7 @@ class ExportData(APIView):
         data = request.data
         documents = ComplianceDocument.objects.all().order_by('-created_at')
         filter_type = int(data['filter_type'])
-        file_initial_name = ""
+        file_initial_name = "all"
         if filter_type != 0:
             if filter_type == 1:
                 year = data['year']
@@ -3966,7 +3966,7 @@ class ExportData(APIView):
             requestedData.append(document_data)
         document_df = pd.DataFrame(requestedData)
         if len(requestedData) > 0:
-            file_name = f"static/csv/{file_initial_name}complaince_export_{uuid.uuid4()}.csv"
+            file_name = f"static/csv/{file_initial_name}_complaince_export_{uuid.uuid4()}.csv"
             document_df.to_csv(f"{file_name}")
             return Response({"file": file_name},200)
         return Response({"message": "No data found"},404)
