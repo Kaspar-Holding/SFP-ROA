@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django_celery_results',
     'django_celery_beat',
+    'graphene_django',
     'wkhtmltopdf',
     'data',
     'compliance',
@@ -321,3 +322,7 @@ CELERY_TIMEZONE = "Africa/Johannesburg"
 
 # Celery Beat
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
+
+GRAPHENE = {
+    "SCHEMA": "data.schema.schema"
+}

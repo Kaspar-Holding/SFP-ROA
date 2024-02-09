@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.shortcuts import render
+from graphene_django.views import GraphQLView
 from django.views.generic import TemplateView
 def render_react(request):
     return render(request, "index.html")
@@ -37,6 +38,7 @@ urlpatterns = [
     path('api/users/', include('users.urls')),
     path('api/scim/', include('scim.urls')),
     path('api/roa/', include('roa.urls')),
+    re_path(r"graphql", GraphQLView.as_view(graphiql=True)),
     # re_path(r"^$", render_react),
     # re_path(r"^(?:.*)/?$", render_react),
     

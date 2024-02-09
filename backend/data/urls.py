@@ -1,8 +1,16 @@
-from django.urls import path
+from django.urls import path, re_path
+from django.contrib.auth.mixins import LoginRequiredMixin
+from graphene_django.views import GraphQLView
+
+
+class PrivateGraphQLView(LoginRequiredMixin, GraphQLView):
+    pass
+
 from . import views, printFormViews
 from .importExportViews.ExportViews import exportViews
-
+from .schema import schema
 urlpatterns = [
+    path('graphql/' , PrivateGraphQLView.as_view(graphiql=True, schema=schema)),
     path('excel/' , exportViews.exportData,name='excel'),
     path('sample/' , views.sample,name='sample'),
     # path('printStatus/' , views.printStatus,name='printStatus'),

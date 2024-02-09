@@ -32,25 +32,26 @@ class commissionInsights(APIView):
         businessType = (request.data['businessType'])
         # Annual Data
         reviewsData = ComplianceDocument.objects.all()
-        if user.userType == 1:
-            reviewsData = reviewsData.filter(user=user.pk)
-        if user.userType == 2:
-            reviewsData = reviewsData.filter(user=user.pk)
-        if user.userType == 3:
-            regional_manager = region_manager.objects.filter(manager=user.pk)
-            if regional_manager.exists():
-                advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+        if not user.is_superuser:
+            if user.userType == 1:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 2:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 3:
+                regional_manager = region_manager.objects.filter(manager=user.pk)
+                if regional_manager.exists():
+                    advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                    if advisor_ids.exists():
+                        advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                        reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            if user.userType == 5:
+                advisor_ids = user_profile.objects.filter(bac=user.pk)
                 if advisor_ids.exists():
                     advisor_ids = list(advisor_ids.values_list('user',flat=True))
                     reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-        if user.userType == 5:
-            advisor_ids = user_profile.objects.filter(bac=user.pk)
-            if advisor_ids.exists():
-                advisor_ids = list(advisor_ids.values_list('user',flat=True))
-                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-        if user.userType == 6:
-            reviewsData = reviewsData.filter(advisor=user.pk)
+            if user.userType == 6:
+                reviewsData = reviewsData.filter(advisor=user.pk)
         if filterType == 1:
             reviewsData = reviewsData.filter(updated_at__year=year)
         if filterType == 2:
@@ -326,25 +327,26 @@ class investmentInsights(APIView):
         businessType = (request.data['businessType'])
         # Annual Data
         reviewsData = ComplianceDocument.objects.all()
-        if user.userType == 1:
-            reviewsData = reviewsData.filter(user=user.pk)
-        if user.userType == 2:
-            reviewsData = reviewsData.filter(user=user.pk)
-        if user.userType == 3:
-            regional_manager = region_manager.objects.filter(manager=user.pk)
-            if regional_manager.exists():
-                advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+        if not user.is_superuser:
+            if user.userType == 1:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 2:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 3:
+                regional_manager = region_manager.objects.filter(manager=user.pk)
+                if regional_manager.exists():
+                    advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                    if advisor_ids.exists():
+                        advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                        reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            if user.userType == 5:
+                advisor_ids = user_profile.objects.filter(bac=user.pk)
                 if advisor_ids.exists():
                     advisor_ids = list(advisor_ids.values_list('user',flat=True))
                     reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-        if user.userType == 5:
-            advisor_ids = user_profile.objects.filter(bac=user.pk)
-            if advisor_ids.exists():
-                advisor_ids = list(advisor_ids.values_list('user',flat=True))
-                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-        if user.userType == 6:
-            reviewsData = reviewsData.filter(advisor=user.pk)
+            if user.userType == 6:
+                reviewsData = reviewsData.filter(advisor=user.pk)
         if filterType == 1:
             reviewsData = reviewsData.filter(updated_at__year=year)
         if filterType == 2:
@@ -638,25 +640,26 @@ class monitoringInsights(APIView):
         businessType = (request.data['businessType'])
         # Annual Data
         reviewsData = ComplianceDocument.objects.all()
-        if user.userType == 1:
-            reviewsData = reviewsData.filter(user=user.pk)
-        if user.userType == 2:
-            reviewsData = reviewsData.filter(user=user.pk)
-        if user.userType == 3:
-            regional_manager = region_manager.objects.filter(manager=user.pk)
-            if regional_manager.exists():
-                advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+        if not user.is_superuser:
+            if user.userType == 1:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 2:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 3:
+                regional_manager = region_manager.objects.filter(manager=user.pk)
+                if regional_manager.exists():
+                    advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                    if advisor_ids.exists():
+                        advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                        reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            if user.userType == 5:
+                advisor_ids = user_profile.objects.filter(bac=user.pk)
                 if advisor_ids.exists():
                     advisor_ids = list(advisor_ids.values_list('user',flat=True))
                     reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-        if user.userType == 5:
-            advisor_ids = user_profile.objects.filter(bac=user.pk)
-            if advisor_ids.exists():
-                advisor_ids = list(advisor_ids.values_list('user',flat=True))
-                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-        if user.userType == 6:
-            reviewsData = reviewsData.filter(advisor=user.pk)
+            if user.userType == 6:
+                reviewsData = reviewsData.filter(advisor=user.pk)
         if filterType == 1:
             reviewsData = reviewsData.filter(updated_at__year=year)
         if filterType == 2:
@@ -1134,25 +1137,26 @@ class gatekeeperInsights(APIView):
         businessType = (request.data['businessType'])
         # Annual Data
         reviewsData = ComplianceDocument.objects.all()
-        if user.userType == 1:
-            reviewsData = reviewsData.filter(user=user.pk)
-        if user.userType == 2:
-            reviewsData = reviewsData.filter(user=user.pk)
-        if user.userType == 3:
-            regional_manager = region_manager.objects.filter(manager=user.pk)
-            if regional_manager.exists():
-                advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+        if not user.is_superuser:
+            if user.userType == 1:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 2:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 3:
+                regional_manager = region_manager.objects.filter(manager=user.pk)
+                if regional_manager.exists():
+                    advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                    if advisor_ids.exists():
+                        advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                        reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            if user.userType == 5:
+                advisor_ids = user_profile.objects.filter(bac=user.pk)
                 if advisor_ids.exists():
                     advisor_ids = list(advisor_ids.values_list('user',flat=True))
                     reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-        if user.userType == 5:
-            advisor_ids = user_profile.objects.filter(bac=user.pk)
-            if advisor_ids.exists():
-                advisor_ids = list(advisor_ids.values_list('user',flat=True))
-                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
-        if user.userType == 6:
-            reviewsData = reviewsData.filter(advisor=user.pk)
+            if user.userType == 6:
+                reviewsData = reviewsData.filter(advisor=user.pk)
         if filterType == 1:
             reviewsData = reviewsData.filter(updated_at__year=year)
         if filterType == 2:
