@@ -99,7 +99,7 @@ class commissionInsights(APIView):
                 else:
                     commission = 0
                         # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
-                commission_trend.append([date['updated_at__date'].strftime('%d %b %Y'), int(commission)])
+                commission_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}-{date['updated_at__day']}", '%Y-%m-%d') , '%d %b %Y'), int(commission)])
         if filterType == 3:
             datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
             for date in datewise_data:
