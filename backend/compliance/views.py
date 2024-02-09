@@ -3288,14 +3288,14 @@ class ExportData(APIView):
                 date = str(data['month_date'])
                 month = date.split('-')[1]
                 year = date.split('-')[0]
-                file_initial_name = year + "/" + month
+                file_initial_name = year + "_" + month
                 documents = documents.filter(created_at__year=year, created_at__month=month).order_by('created_at__year', 'created_at__month')
             elif filter_type == 3:
                 date = str(data['date'])
                 day = date.split('-')[2]
                 month = date.split('-')[1]
                 year = date.split('-')[0]
-                file_initial_name = year + "/" + month + "/" + day
+                file_initial_name = year + "_" + month + "_" + day
                 documents = documents.filter(created_at__year=year, created_at__month=month, created_at__day=day).order_by('created_at__year', 'created_at__month', 'created_at__day')
             else:
                 fromdate = request.data['fromdate']
