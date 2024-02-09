@@ -18,7 +18,9 @@ Deployed using Nginx and Gunicorn
 - Compliance Export
 1. Export user profile bug resolved
 2. Regional Manager bug resolved
-3. BAC not showing up
+3. BAC bug resolved
+4. Added Loader on Frontend
+5. Users Redirect not working bug resolved on frontend.
 - Deployment on Staging 
 
 ### 07 February 2024:

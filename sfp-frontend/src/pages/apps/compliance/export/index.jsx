@@ -17,9 +17,8 @@ const ExportData = () => {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const [FilterType, setFilterType] = useState(0)
     const [CustomFilterType, setCustomFilterType] = useState(1)
-    const [currentPage, setCurrentPage] = useState(1)
+    const [Loading, setLoading] = useState(false)
     const Date_Var = new Date()
-    const yesterday = Moment(new Date(Date.now() - 86400000)).format('YYYY-MM-DD')
     const currentYear = Date_Var.getFullYear()
     const [Month, setMonth] = useState(("0" + (Date_Var.getMonth() + 1)).slice(-2))
     const [Year, setYear] = useState(currentYear)
@@ -31,6 +30,17 @@ const ExportData = () => {
     const years = Array.from(new Array(currentYear - year + 1), (val, index) => index + year)
     const onDowloadCSV = async (e, filter_type, year, month_date, date, from_date, to_date) => {
         e.preventDefault()
+        setLoading(true)
+        Swal.fire({
+            position: "bottom-end",
+            type: "success",
+            title: "Message",
+            html: `Export Started`,
+            showConfirmButton: !1,
+            timer: 5000,
+            confirmButtonClass: "btn btn-primary",
+            buttonsStyling: !1,
+        })
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -58,6 +68,7 @@ const ExportData = () => {
                 buttonsStyling: !1,
             })
         }
+        setLoading(false)
 
     }
 
@@ -78,40 +89,47 @@ const ExportData = () => {
                     <div className='row'>
                         <div className='col-lg-12 roa-list-records text-center'>
                             <h1 className='app-dashboard-header'>Export Data</h1>
-                            <hr />
-                            <Filters
-                                filterType={ FilterType }
-                                updateFilter={ setFilterType }
-                                Month={ Month }
-                                updateMonth={ setMonth }
-                                Year={ Year }
-                                updateYear={ setYear }
-                                MonthYear={ MonthYear }
-                                updateMonthYear={ setMonthYear }
-                                CurrentDate={ CurrentDate }
-                                updateCurrentDate={ setCurrentDate }
-                                FromDate={ FromDate }
-                                updateFromDate={ setFromDate }
-                                ToDate={ ToDate }
-                                updateToDate={ setToDate }
-                                years={ years }
-                                loadData={ {} }
-                                CustomFilterType={ CustomFilterType }
-                                setCustomFilterType={ setCustomFilterType }
-                            />
                             {
-                                user?.is_superuser == 1 ?
+                                Loading ?
+                                    <Loader />
+                                    :
                                     <>
-                                        <button
-                                            className={
-                                                user?.email?.includes('sfp') || user?.email?.includes('succession') ? "btn btn-primary sfp"
-                                                    : user?.email?.includes('fs4p') ? "btn btn-primary fs4p"
-                                                        : user?.email?.includes('sanlam') ? "btn btn-primary sanlam"
-                                                            : "btn btn-primary "
-                                            }
-                                            style={ { marginRight: 50 } } onClick={ (e) => { onDowloadCSV(e, FilterType, Year, `${MonthYear}-${Month}`, CurrentDate, FromDate, ToDate) } }>Click here to Download the data export</button>
-                                    </>
-                                    : <>
+                                        <hr />
+                                        <Filters
+                                            filterType={ FilterType }
+                                            updateFilter={ setFilterType }
+                                            Month={ Month }
+                                            updateMonth={ setMonth }
+                                            Year={ Year }
+                                            updateYear={ setYear }
+                                            MonthYear={ MonthYear }
+                                            updateMonthYear={ setMonthYear }
+                                            CurrentDate={ CurrentDate }
+                                            updateCurrentDate={ setCurrentDate }
+                                            FromDate={ FromDate }
+                                            updateFromDate={ setFromDate }
+                                            ToDate={ ToDate }
+                                            updateToDate={ setToDate }
+                                            years={ years }
+                                            loadData={ {} }
+                                            CustomFilterType={ CustomFilterType }
+                                            setCustomFilterType={ setCustomFilterType }
+                                        />
+                                        {
+                                            user?.is_superuser == 1 ?
+                                                <>
+                                                    <button
+                                                        className={
+                                                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? "btn btn-primary sfp"
+                                                                : user?.email?.includes('fs4p') ? "btn btn-primary fs4p"
+                                                                    : user?.email?.includes('sanlam') ? "btn btn-primary sanlam"
+                                                                        : "btn btn-primary "
+                                                        }
+                                                        style={ { marginRight: 50 } } onClick={ (e) => { onDowloadCSV(e, FilterType, Year, `${MonthYear}-${Month}`, CurrentDate, FromDate, ToDate) } }>Click here to Download the data export</button>
+                                                </>
+                                                : <>
+                                                </>
+                                        }
                                     </>
                             }
                         </div>
