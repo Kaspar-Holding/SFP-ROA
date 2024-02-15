@@ -103,6 +103,73 @@ const RegionsList = () => {
         load ? setLoaded(false) : ""
 
     }
+    const onRegionDelete = (e, region, regionId) => {
+        e.preventDefault()
+        Swal.fire({
+            title: "Are you sure?",
+            text: `You won't be able to revert this and all data related to ${region} will be deleted.!`,
+            type: "error",
+            showCancelButton: !0,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+            confirmButtonClass: "btn btn-sfp",
+            cancelButtonClass: "btn btn-danger ml-1",
+            buttonsStyling: !1,
+        }).then(function (t) {
+            t.value
+                ? deleteRegion(true, region, regionId)
+                : t.dismiss === Swal.DismissReason.cancel &&
+                Swal.fire({
+                    title: "Cancelled",
+                    text: `Your store ${region} is safe :)`,
+                    type: "error",
+                    confirmButtonClass: "btn btn-success",
+                })
+        })
+
+    }
+    const deleteRegion = async (load, region, regionId) => {
+        load ? setLoaded(true) : ""
+        const Body = JSON.stringify(regionId)
+        console.log(Body)
+        try {
+            const response = await axios.post(
+                '/api/users/regions/delete',
+                Body,
+                config
+            )
+
+            loadRegions(true)
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Success",
+                html: `${region} deleted successfully`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "error",
+                title: "Error",
+                html: `${error?.response?.data?.error}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+        load ? setLoaded(false) : ""
+
+    }
+
     useEffect(() => {
         loadRegions(true)
     }, [])
@@ -166,7 +233,7 @@ const RegionsList = () => {
                                                                         <i className='fa-solid fa-eye'></i>
                                                                     </button>
                                                                     <button
-                                                                        onClick={ (e) => { } }
+                                                                        onClick={ (e) => { onRegionDelete(e, row?.region, row?.id) } }
                                                                         className='btn btn-sm btn-danger mx-1'
                                                                     >
                                                                         <i className='fa-solid fa-trash'></i>

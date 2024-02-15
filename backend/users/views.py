@@ -1006,3 +1006,11 @@ class RegionsDetailsAPI(APIView):
                     })
                 return Response({"errors" : serializer.errors}, 400)
         return Response(404)
+        
+    def delete(self, request, pk):
+
+        region_data = regions.objects.filter(id=utils.decode_uid(pk))
+        if region_data.exists():
+            region_data.delete()
+            return Response(200)
+        return Response(404)

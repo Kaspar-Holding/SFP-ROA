@@ -24,6 +24,8 @@ Deployed using Nginx and Gunicorn
 3. Updating Commission, Lump Sum and Premium on refer. 
 - Tasks:
 1. Updated to call it a day before it.
+- Users:
+1. Region deletion.
 - Deployment on Staging and Production 
 
 ### 09 February 2024:
