@@ -21,6 +21,7 @@ Deployed using Nginx and Gunicorn
 - Advisor Compliance:
 1. Added Form Status on Sidebar.
 2. Name undefined bug resolved. 
+3. Updating Commission, Lump Sum and Premium on refer. 
 - Tasks:
 1. Updated to call it a day before it.
 - Deployment on Staging and Production 
