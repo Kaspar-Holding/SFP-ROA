@@ -53,7 +53,33 @@ const SideBar = ({ appTitle, app }) => {
                                         <li className="breadcrumb-item active">{ appTitle }</li>
                                     </>
                                     :
-                                    <li className="breadcrumb-item active">{ appTitle }</li>
+                                    <>
+                                        {
+                                            router.pathname === `/apps/${app}` ?
+                                                <li className="breadcrumb-item">
+                                                    {
+                                                        app === "roa" ?
+                                                            app.toUpperCase()
+                                                            :
+                                                            app.charAt(0).toUpperCase() + app.slice(1)
+                                                    }
+                                                </li>
+                                                :
+                                                <>
+                                                    <li className="breadcrumb-item">
+                                                        <Link href={ `/apps/${app}` }>
+                                                            {
+                                                                app === "roa" ?
+                                                                    app.toUpperCase()
+                                                                    :
+                                                                    app.charAt(0).toUpperCase() + app.slice(1)
+                                                            }
+                                                        </Link>
+                                                    </li>
+                                                    <li className="breadcrumb-item active">{ appTitle }</li>
+                                                </>
+                                        }
+                                    </>
                             }
                         </ol>
                     </nav>
@@ -84,7 +110,7 @@ const SideBar = ({ appTitle, app }) => {
                     </p>
                 </div>
                 {
-                    app !== "users" && app !== "notifications" && !appTitle.includes("\n Details") ?
+                    app !== "users" && app !== "profile" && app !== "notifications" && !appTitle.includes("\n Details") ?
                         <div className="d-grid gap-2">
                             <Link href={ `/apps/${app}/documents/create` } className="btn btn-primary btn-sfp" >
                                 <i className='bi pe-none me-2 fa-solid fa-file'></i>
@@ -113,12 +139,16 @@ const SideBar = ({ appTitle, app }) => {
                 }
                 <hr />
                 <ul className="nav nav-pills flex-column mb-auto">
-                    <li className="nav-item">
-                        <Link href={ `/apps/${app}` } className={ router.pathname === `/apps/${app}` ? "nav-link active" : "nav-link link-body-emphasis" } aria-current="page">
-                            <i className='bi pe-none me-2 fa-solid fa-chart-simple' />
-                            Dashboard
-                        </Link>
-                    </li>
+                    {
+                        app !== "profile" ?
+                            <li className="nav-item">
+                                <Link href={ `/apps/${app}` } className={ router.pathname === `/apps/${app}` ? "nav-link active" : "nav-link link-body-emphasis" } aria-current="page">
+                                    <i className='bi pe-none me-2 fa-solid fa-chart-simple' />
+                                    Dashboard
+                                </Link>
+                            </li>
+                            : <></>
+                    }
                     {
                         appTitle.includes("\n Details") ?
                             <>
@@ -253,7 +283,7 @@ const SideBar = ({ appTitle, app }) => {
                         : <></>
                     } */}
                     {
-                        app !== "users" ?
+                        app !== "users" && app !== "profile" ?
 
                             <li>
                                 <Link href={ `/apps/${app}/list` } className={ router.pathname === `/apps/${app}/list` ? "nav-link active" : "nav-link link-body-emphasis" }>

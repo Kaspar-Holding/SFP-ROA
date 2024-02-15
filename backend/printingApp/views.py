@@ -5,7 +5,7 @@ import tempfile
 from django_pdfkit import PDFView
 from django.core.files.base import ContentFile
 import uuid
-from data.models import Disclosures, RF_Scores, user_profile
+from data.models import Disclosures, RF_Scores, user_profile, DisclosuresProducts, DisclosuresAdvisorSubCodes
 from data.models import STIC_Sec_Fire, STIC_Sec_2, STIC_Sec_3, STIC_Sec_4, STIC_Sec_5, STIC_Sec_6, STIC_Sec_7, STIC_Sec_8, STIC_Sec_9, STIC_Sec_10, STIC_Sec_11, STIC_Sec_12, STIC_Sec_13, STIC_Sec_14, STIC_Sec_15, STIC_Sec_16, STIC_Sec_17, STIC_Sec_18, STIC_Sec_19, STIC_Sec_20, STIC_Sec_21 
 from data.models import STIP_Loss, STIC_Loss, EB_Cover, IP_ProductTaken, AR_ProductTaken, AI_ProductTaken, RP_ProductTaken, RF_LinkedParty, RiskFactors, Form, UserAccount, AssuranceRisk, RiskPlanning, GapCover, Medical, Fiduciary, InvestmentPlanning, EmployeeBenefits, ShortTermInsuranceCommerical, ShortTermInsurancePersonal, AssuranceInvestment
 from data.models import STIP_Sec_HC, STIP_Sec_Build, STIP_Sec_AddProp, STIP_Sec_PersonalLL, STIP_Sec_LegalA, STIP_Sec_MotorC, STIP_Sec_Trailer, STIP_Sec_Vehicle, STIP_Sec_WaterC
@@ -2572,6 +2572,18 @@ class disclosuresPDF(APIView):
         data['client_date'] = data['client_date'].strftime('%d %b %Y')
         data['client_authorization_date'] = data['client_authorization_date'].strftime('%d %b %Y')
         data['appointment_date'] = data['appointment_date'].strftime('%d %b %Y')
+        data['products'] = []
+        productsData = DisclosuresProducts.objects.filter(formId=disclosureData['id'])
+        disclosureProducts = []
+        for product in productsData:
+            advisorProductData = DisclosuresAdvisorSubCodes.objects.filter(id=product.product_provider.pk)
+            if advisorProductData.exists():
+                advisorProductData = advisorProductData.first()
+                disclosureProducts.append({
+                    "product" : advisorProductData.product.product,
+                    "subcode" : advisorProductData.subcode,
+                })
+        data['products'] = disclosureProducts
         data['user'] = UserAccount.objects.filter(id=data['advisorId']).values('first_name', 'last_name', 'email').first()
         user_profile_data = user_profile.objects.filter(user=data['advisorId'])
         if user_profile_data.exists():
@@ -2719,8 +2731,8 @@ class disclosuresPDF(APIView):
             'margin-bottom': '20mm'
         }
         response =  PDFTemplateResponse(request=request, template=template,context=data, cmd_options=cmd_options)
-        # fileName = "DISCLOSURE AND CONSENT DOCUMENT  %s" %(uuid.uuid4())
-        fileName = "DISCLOSURE AND CONSENT DOCUMENT" 
+        fileName = "Disclosure and Consent Document for %s - %s" %(disclosureData['client_id_number'],uuid.uuid4())
+        # fileName = "DISCLOSURE AND CONSENT DOCUMENT" 
         with open("static/pdf/%s.pdf"%(fileName), "wb") as f:
             f.write(response.rendered_content)
         os.unlink(temp_file.name)

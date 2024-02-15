@@ -4,7 +4,7 @@ import base64
 import pandas as pd
 from django.shortcuts import render
 import pytz
-from data.models import Form, UserAccount, Disclosures
+from data.models import Form, UserAccount, Disclosures, DisclosuresAdvisorSubCodes, DisclosuresProducts
 from data.serializers import FormSerializers, Disclosures_Serializer, DisclosuresProducts_Serializer, RiskPlanningSerializers, InvestmentPlanningSerializers
 from data.serializers import AssuranceInvestmentSerializers, AssuranceRiskSerializers, EmployeeBenefitsSerializers, FiduciarySerializers, ShortTermInsuranceCommericalSerializers
 from data.serializers import ShortTermInsurancePersonalSerializers, MedicalSerializers, GapCoverSerializers, DisclosuresProductProviders_Serializer, DisclosuresAdvisorSubCodes_Serializer
@@ -123,7 +123,19 @@ class FormAPIs(APIView):
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
         serializer = Disclosures_Serializer(snippet)
-        return Response(serializer.data)
+        products = DisclosuresProducts.objects.filter(formId=pk)
+        products_data = []
+        for product in products:
+            subcode = ""
+            advisorProduct = DisclosuresAdvisorSubCodes.objects.filter(product=product.product_provider.pk)
+            if advisorProduct.exists():
+                subcode = advisorProduct.first().subcode
+            products_data.append({
+                "product_id" : product.product_provider.pk,
+                "product" : product.product_provider.product,
+                "subcode" : subcode
+            })
+        return Response({"data": serializer.data, "products" :products_data})
 
     def post(self, request, format=None):
         disclosuresData = request.data['data']
@@ -150,6 +162,14 @@ class FormAPIs(APIView):
                 roa_serializer.create(roa_serializer.validated_data)
             else:
                 print(roa_serializer.errors)
+            product_data = request.data['product_data']
+            for product in product_data:
+                product['formId'] = formId
+            pd_serializer = DisclosuresAdvisorSubCodes_Serializer(data=product_data)
+            if pd_serializer.is_valid():
+                pd_serializer.create(pd_serializer.validated_data)
+            else:
+                print(pd_serializer.errors)
             rp_data = {
                 "advisorId" : request.user.pk,
                 "formId" : formId,
@@ -862,3 +882,16 @@ class BulkProductUpdate(APIView):
             return StreamingHttpResponse(error401(), content_type='text/event-stream')
         return StreamingHttpResponse(response(request.data), content_type='text/event-stream')
     
+
+class advisorDisclosureProducts(APIView):
+
+    def get(self, request):
+        disclosureProducts = DisclosuresAdvisorSubCodes.objects.filter(user=request.user.pk)
+        products_data = []
+        for product in disclosureProducts:
+            products_data.append({
+                "product_id" : product.pk,
+                "product" : product.product.product,
+                "subcode" : product.subcode
+            })
+        return Response(products_data, 200)

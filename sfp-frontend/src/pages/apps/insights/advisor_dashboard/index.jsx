@@ -12,6 +12,7 @@ import CompliancePagination from '../../../../modules/CompliancePagination'
 import AppLayout from '../../../../hocs/AppLayout'
 import InsightsLayout from '../../../../hocs/InsightsLayout'
 import { currencyFormatter, numberFormatter } from '../../../../modules/formatter'
+import Filters from '../Filters'
 // import FilterComponent from './Filters'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
@@ -35,6 +36,7 @@ const AdvisorsInsights = () => {
     const [ToDate, setToDate] = useState(Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + Date_Var.getDate()).slice(-2))
     const year = 2023
     const years = Array.from(new Array(currentYear - year + 1), (val, index) => index + year)
+    const [CustomFilterType, setCustomFilterType] = useState(1)
 
 
     const chart1Series = [
@@ -423,17 +425,18 @@ const AdvisorsInsights = () => {
 
     const [KPIs, setKPIs] = useState({})
     const [AdvisorsTrend, setAdvisorsTrend] = useState([])
-    const [RegionAdvisorsTrend, setRegionAdvisorsTrend] = useState([])
-    const [BusinessTypeAdvisorsTrend, setBusinessTypeAdvisorsTrend] = useState([])
-    const [RegionsLumpSum, setRegionsLumpSum] = useState([])
-    const [RegionsRecurring, setRegionsRecurring] = useState([])
     const [Advisors, setAdvisors] = useState([])
-    const [AdvisorsLumpSum, setAdvisorsLumpSum] = useState([])
-    const [AdvisorsRecurring, setAdvisorsRecurring] = useState([])
+    const [RegionsData, setRegionsData] = useState([])
+    const [AdvisorsData, setAdvisorsData] = useState([])
 
-    const LoadData = async () => {
+    // Filter Data
+    const [Regions, setRegions] = useState([])
+    const [SelectedRegions, setSelectedRegions] = useState("all")
+    const [SelectedAdvisors, setSelectedAdvisors] = useState("all")
+    const [BusinessType, setBusinessType] = useState("all")
+    const LoadData = async (filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType) => {
         setLoaded(true)
-        const Body = JSON.stringify()
+        const Body = JSON.stringify({ filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType })
 
         try {
             const response = await axios.post(
@@ -443,13 +446,9 @@ const AdvisorsInsights = () => {
             )
 
             setKPIs(response?.data?.data)
-            // setAdvisorsTrend(response?.data?.data?.advisors_trend)
-            // setRegionsLumpSum(response?.data?.data?.top_regions)
-            // setRegionsRecurring(response?.data?.data?.top_regions)
-            // setAdvisorsLumpSum(response?.data?.data?.top_advisors_lump_sum)
-            // setAdvisorsRecurring(response?.data?.data?.top_advisors_recurring)
-            // setRegionAdvisorsTrend(response?.data?.data?.region_advisors_trend)
-            // setBusinessTypeAdvisorsTrend(response?.data?.data?.businessType_advisors_trend)
+            setAdvisorsTrend(response?.data?.data?.roa_trend)
+            setRegionsData(response?.data?.data?.region_wise_data)
+            setAdvisorsData(response?.data?.data?.advisor_wise_data)
 
         } catch (error) {
 
@@ -457,9 +456,133 @@ const AdvisorsInsights = () => {
         setLoaded(false)
     }
 
+
+    const LoadRegions = async () => {
+        try {
+            const response = await axios.get('/api/account/regions', config)
+            // console.log(first)
+            setRegions(response?.data?.data?.regions)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+    }
+    // Load Advisors
+    const LoadAdvisors = async () => {
+        try {
+            const response = await axios.get('/api/account/agents', config)
+            setAdvisors(response?.data?.data?.advisors)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+    }
+    // Load Region based Advisors
+    const LoadRegionAdvisors = async (region) => {
+        const Body = JSON.stringify({ region })
+        try {
+            const response = await axios.post('/api/insights/agents', Body, config)
+            setAdvisors(response?.data?.data?.advisors)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+    }
+
     useEffect(() => {
-        LoadData()
+        LoadData(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedAdvisors, BusinessType)
+        LoadAdvisors()
+        LoadRegions()
     }, [])
+
+    const roaSeries = (name, data) => [
+        {
+            name: name,
+            data: data
+        }
+    ]
+
+    const roaOptions = (categories, title) => ({
+        chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            },
+            fontFamily: "Open Sans",
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [2, 2, 2],
+            curve: 'smooth',
+            dashArray: [0, 0, 0]
+        },
+        title: {
+            text: title,
+            fontFamily: "Open Sans",
+            align: 'left'
+        },
+        legend: {
+            tooltipHoverFormatter: function (val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
+        xaxis: {
+            categories: categories,
+        },
+        tooltip: {
+            y: [
+                {
+                    title: {
+                        formatter: function (val) {
+                            return val;
+                        }
+                    }
+                }
+            ]
+        },
+        grid: {
+            borderColor: '#f1f1f1',
+        }
+    })
 
 
     if (typeof window != 'undefined' && !isAuthenticated) {
@@ -473,27 +596,35 @@ const AdvisorsInsights = () => {
         >
             <InsightsLayout>
                 <div className='container-fluid'>
-                    {/* <FilterComponent
-                        filterType={FilterType} 
-                        updateFilter={setFilterType} 
-                        Month={Month} 
-                        updateMonth={setMonth} 
-                        Year={Year} 
-                        updateYear={setYear} 
-                        MonthYear={MonthYear} 
-                        updateMonthYear={setMonthYear} 
-                        CurrentDate={CurrentDate} 
-                        updateCurrentDate={setCurrentDate} 
-                        FromDate={FromDate} 
-                        updateFromDate={setFromDate} 
-                        ToDate={ToDate} 
-                        updateToDate={setToDate} 
-                        years={years}
-                        dayStats={()=>{}}
-                        monthStats={()=>{}}
-                        annualStats={()=>{}}
-                        customStats={()=>{}}
-                    /> */}
+                    <Filters
+                        filterType={ FilterType }
+                        updateFilter={ setFilterType }
+                        Month={ Month }
+                        updateMonth={ setMonth }
+                        Year={ Year }
+                        updateYear={ setYear }
+                        MonthYear={ MonthYear }
+                        updateMonthYear={ setMonthYear }
+                        CurrentDate={ CurrentDate }
+                        updateCurrentDate={ setCurrentDate }
+                        FromDate={ FromDate }
+                        updateFromDate={ setFromDate }
+                        ToDate={ ToDate }
+                        updateToDate={ setToDate }
+                        years={ years }
+                        loadData={ LoadData }
+                        CustomFilterType={ CustomFilterType }
+                        setCustomFilterType={ setCustomFilterType }
+                        Regions={ Regions }
+                        advisors={ Advisors }
+                        SelectedRegions={ SelectedRegions }
+                        SelectedAdvisors={ SelectedAdvisors }
+                        loadAdvisors={ LoadRegionAdvisors }
+                        setSelectedRegions={ setSelectedRegions }
+                        setSelectedAdvisors={ setSelectedAdvisors }
+                        BusinessType={ BusinessType }
+                        setBusinessType={ setBusinessType }
+                    />
                     {
                         Loaded ?
                             <Loader />
@@ -503,50 +634,113 @@ const AdvisorsInsights = () => {
                                     <div className='col'>
                                         <div className="card text-center">
                                             <div className="card-body">
-                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total_ROA_forms) }</h5>
-                                                <hr />
-                                                <span>ROA Forms</span>
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_ROA_forms) }</h5>
+                                                <span className='scoreCard-title'>Total Forms</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className='col'>
                                         <div className="card text-center">
                                             <div className="card-body">
-                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total_reviews) }</h5>
-                                                <hr />
-                                                <span>Compliances Reviews</span>
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_reviews) }</h5>
+                                                <span className='scoreCard-title'>Compliances Reviews</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className='col'>
                                         <div className="card text-center">
                                             <div className="card-body">
-                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total_approved) }</h5>
-                                                <hr />
-                                                <span>Compliances Approved</span>
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_approved) }</h5>
+                                                <span className='scoreCard-title'>Compliances Approved</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className='col'>
                                         <div className="card text-center">
                                             <div className="card-body">
-                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total_not_approved) }</h5>
-                                                <hr />
-                                                <span>Compliances Resubmission</span>
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_not_approved) }</h5>
+                                                <span className='scoreCard-title'>Compliances Resubmission</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className='col'>
                                         <div className="card text-center">
                                             <div className="card-body">
-                                                <h5 className="card-title">{ numberFormatter('en-ZA', 0).format(KPIs?.total__partial_approved) }</h5>
-                                                <hr />
-                                                <span>Compliances Minor Approved</span>
+                                                <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total__partial_approved) }</h5>
+                                                <span className='scoreCard-title'>Compliances Partial Approved</span>
                                             </div>
                                         </div>
                                     </div>
+                                    {
+
+                                    }
                                 </div>
                                 <hr />
+                                <div className='row'>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
+                                        {
+                                            (typeof window !== 'undefined') && <Chart options={ roaOptions([AdvisorsTrend].map(x => x.map(a => (a[0]))).flat(2), "ROA Form Trend") } series={ roaSeries("Forms", [AdvisorsTrend].map(x => x.map(a => (a[1]))).flat(2)) } type="line" height={ 350 } />
+                                        }
+                                    </div>
+                                </div>
+                                <br />
+                                <div className='row'>
+                                    <div className='col-lg-5 col-md-6 col-sm-12 insight-commission-card'>
+                                        <h5 class="app-dashboard-header">Regions</h5>
+                                        <table className="table mx-1">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Region</th>
+                                                    <th scope="col">Forms</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    RegionsData.map(
+                                                        (row, key) => {
+                                                            return (
+                                                                <tr key={ key }>
+                                                                    <th scope="row">{ key + 1 }</th>
+                                                                    <td>{ row?.region }</td>
+                                                                    <td>{ numberFormatter('en-ZA', 0).format(row?.total_forms) }</td>
+                                                                </tr>
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div className='col-lg-5 col-md-6 col-sm-12 insight-commission-card'>
+                                        <h5 class="app-dashboard-header">Advisors</h5>
+                                        <table className="table mx-1">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Forms</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    AdvisorsData.map(
+                                                        (row, key) => {
+                                                            return (
+                                                                <tr key={ key }>
+                                                                    <th scope="row">{ key + 1 }</th>
+                                                                    <td>{ row?.advisor }</td>
+                                                                    <td>{ numberFormatter('en-ZA', 0).format(row?.total_forms) }</td>
+                                                                </tr>
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </>
                     }
                 </div>

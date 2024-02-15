@@ -7,7 +7,7 @@ from django.db.models.functions import Cast
 from django.http import Http404
 # Create your views here.
 from compliance.models import ComplianceDocument, GateKeeping, arc
-from data.models import regions, UserAccount, RiskFactors, user_profile, region_manager
+from data.models import regions, UserAccount, Disclosures, user_profile, region_manager
 from django.db.models.functions import (
     ExtractDay, ExtractMonth, ExtractQuarter, ExtractWeek,
     ExtractWeekDay, ExtractIsoYear, ExtractYear,
@@ -72,7 +72,8 @@ class commissionInsights(APIView):
         total_documents = reviewsData.values()
         total_regions = reviewsData.values('region').distinct().count()
         total_advisors = reviewsData.values('advisor').distinct().count()
-        total_commission = round(reviewsData.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission'],2)
+        total_commission = reviewsData.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        total_commission = round(total_commission,2) if total_commission else 0.0
         # for review_document in total_documents:
         #     gk = GateKeeping.objects.filter(document=review_document['id'])
         #     if gk.exists():
@@ -1568,16 +1569,71 @@ class gatekeeperInsights(APIView):
 class advisorInsights(APIView):
 
     def post(self, request):
-        advisors = UserAccount.objects.filter(userType=6)
+        advisors = user_profile.objects.filter(user__userType=6)
+        user = request.user
+        filterType = int(request.data['filterType'])
+        year = request.data['year']
+        monthyear = request.data['monthyear']
+        month = request.data['month']
+        date = request.data['date']
+        fromdate = request.data['fromdate']
+        todate = request.data['todate']
+        customFilterType = int(request.data['customFilterType'])
+        region = (request.data['region'])
+        advisor = request.data['advisor']
+        businessType = (request.data['businessType'])
         if advisors.exists():
-            advisorIds = advisors.values_list('id', flat=True)
-            roa_data = RiskFactors.objects.filter(advisorId__in=advisorIds)
-            total_ROA_forms = roa_data.count()
+            if region != "all":
+                advisors = advisors.filter(region__region=region)
+            advisorIds = advisors.values_list('user__pk', flat=True) if advisor == "all" else advisors.filter(pk=advisor).values_list('id', flat=True)
+            roa_data = Disclosures.objects.filter(advisorId__in=advisorIds)
             compliance_data = ComplianceDocument.objects.filter(advisor__in=advisorIds)
+            if not user.is_superuser:
+                if user.userType == 1:
+                    compliance_data = compliance_data.filter(user=user.pk)
+                if user.userType == 2:
+                    compliance_data = compliance_data.filter(user=user.pk)
+                if user.userType == 3:
+                    regional_manager = region_manager.objects.filter(manager=user.pk)
+                    if regional_manager.exists():
+                        advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                        if advisor_ids.exists():
+                            advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                            compliance_data = compliance_data.filter(advisor__in=advisor_ids)
+                        compliance_data = compliance_data.filter(advisor__in=advisor_ids)
+                if user.userType == 5:
+                    advisor_ids = user_profile.objects.filter(bac=user.pk)
+                    if advisor_ids.exists():
+                        advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                        compliance_data = compliance_data.filter(advisor__in=advisor_ids)
+                if user.userType == 6:
+                    compliance_data = compliance_data.filter(advisor=user.pk)
+                    roa_data = roa_data.filter(advisorId=user.pk)
+            if filterType == 1:
+                compliance_data = compliance_data.filter(updated_at__year=year)
+                roa_data = roa_data.filter(updated_at__year=year)
+            if filterType == 2:
+                compliance_data = compliance_data.filter(updated_at__year=monthyear, updated_at__month=month)
+                roa_data = roa_data.filter(updated_at__year=monthyear, updated_at__month=month)
+            if filterType == 3:
+                compliance_data = compliance_data.filter(updated_at__date=date)
+                roa_data = roa_data.filter(updated_at__date=date)
+            if filterType == 4:
+                date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+                compliance_data = compliance_data.filter(updated_at__range=date_range)
+                roa_data = roa_data.filter(updated_at__range=date_range)
+            if region != "all":
+                compliance_data = compliance_data.filter(region=region)
+                roa_data = roa_data
+            if advisor != "all":
+                compliance_data = compliance_data.filter(advisor=int(advisor))
+            if businessType != "all":
+                compliance_data = compliance_data.filter(businessType=int(businessType))  
             total_reviews = compliance_data.count()
             total_approved = compliance_data.filter(status=1).count()
             total_not_approved = compliance_data.filter(status=2).count()
             total__partial_approved = compliance_data.filter(status=4).count()
+            total_ROA_forms = roa_data.count()
             advisorsData = {
                 "total_ROA_forms" : total_ROA_forms,
                 "total_reviews" : total_reviews,
@@ -1585,6 +1641,202 @@ class advisorInsights(APIView):
                 "total_not_approved" : total_not_approved,
                 "total__partial_approved" : total__partial_approved,
             }
+
+            roa_trend = []
+            if filterType == 1:
+                datewise_data = roa_data.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                for date in datewise_data:
+                    roa_forms = roa_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                    if roa_forms.exists():
+                        roa_forms = roa_forms.aggregate(total_forms=Count("id"))['total_forms']
+                    else:
+                        roa_forms = 0
+                            # roa_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "roa_forms": float(gk['roa_forms'].replace(',', '.'))})
+                    roa_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(roa_forms)])
+            if filterType == 2:
+                datewise_data = roa_data.values('updated_at__year','updated_at__month', 'updated_at__day').distinct().order_by('updated_at__year','updated_at__month', 'updated_at__day')
+                for date in datewise_data:
+                    roa_forms = roa_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'], updated_at__day=date['updated_at__day'])
+                    if roa_forms.exists():
+                        roa_forms = roa_forms.aggregate(total_forms=Count("id"))['total_forms']
+                    else:
+                        roa_forms = 0
+                            # roa_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "roa_forms": float(gk['roa_forms'].replace(',', '.'))})
+                    roa_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}-{date['updated_at__day']}", '%Y-%m-%d') , '%d %b %Y'), int(roa_forms)])
+            if filterType == 3:
+                datewise_data = roa_data.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
+                for date in datewise_data:
+                    roa_forms = roa_data.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour'])
+                    if roa_forms.exists():
+                        roa_forms = roa_forms.aggregate(total_forms=Count("id"))['total_forms']
+                    else:
+                        roa_forms = 0
+                            # roa_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "roa_forms": float(gk['roa_forms'].replace(',', '.'))})
+                    roa_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), int(roa_forms)])
+            if filterType == 4:
+                if customFilterType == 1:
+                    if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                        datewise_data = roa_data.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                        for date in datewise_data:
+                            roa_forms = roa_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                            if roa_forms.exists():
+                                roa_forms = roa_forms.aggregate(total_forms=Count("id"))['total_forms']
+                            else:
+                                roa_forms = 0
+                                    # roa_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "roa_forms": float(gk['roa_forms'].replace(',', '.'))})
+                            roa_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(roa_forms)])
+                    else:
+                        datewise_data = roa_data.values('updated_at__date').distinct().order_by('updated_at__date')
+                        for date in datewise_data:
+                            roa_forms = roa_data.filter(updated_at__date=date['updated_at__date'])
+                            if roa_forms.exists():
+                                roa_forms = roa_forms.values('updated_at__date').aggregate(total_forms=Count("id"))['total_forms']
+                            else:
+                                roa_forms = 0
+                                    # roa_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "roa_forms": float(gk['roa_forms'].replace(',', '.'))})
+                            roa_trend.append([date['updated_at__date'].strftime('%d %b %Y'), int(roa_forms)])
+                if customFilterType == 2:
+                    datewise_data = roa_data.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
+                    for date in datewise_data:
+                        roa_forms = roa_data.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week'])
+                        if roa_forms.exists():
+                            roa_forms = roa_forms.aggregate(total_forms=Count("id"))['total_forms']
+                        else:
+                            roa_forms = 0
+                                # roa_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "roa_forms": float(gk['roa_forms'].replace(',', '.'))})
+                        roa_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", int(roa_forms)])
+                if customFilterType == 3:
+                    datewise_data = roa_data.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                    for date in datewise_data:
+                        roa_forms = roa_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                        if roa_forms.exists():
+                            roa_forms = roa_forms.aggregate(total_forms=Count("id"))['total_forms']
+                        else:
+                            roa_forms = 0
+                                # roa_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "roa_forms": float(gk['roa_forms'].replace(',', '.'))})
+                        roa_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(roa_forms)])
+                if customFilterType == 4:
+                    datewise_data = roa_data.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
+                    for date in datewise_data:
+                        roa_forms = roa_data.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter'])
+                        if roa_forms.exists():
+                            roa_forms = roa_forms.aggregate(total_forms=Count("id"))['total_forms']
+                        else:
+                            roa_forms = 0
+                                # roa_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "roa_forms": float(gk['roa_forms'].replace(',', '.'))})
+                        roa_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", int(roa_forms)])
+                if customFilterType == 5:
+                    datewise_data = roa_data.values('updated_at__year').distinct().order_by('updated_at__year')
+                    for date in datewise_data:
+                        roa_forms = roa_data.filter(updated_at__year=date['updated_at__year'])
+                        if roa_forms.exists():
+                            roa_forms = roa_forms.aggregate(total_forms=Count("id"))['total_forms']
+                        else:
+                            roa_forms = 0
+                        roa_trend.append([f"{date['updated_at__year']}", int(roa_forms)])
+            advisorsData['roa_trend'] = roa_trend
+            region_data = []
+            available_regions = regions.objects.all()
+            if user.userType == 3:
+                regional_manager = region_manager.objects.filter(manager=user.pk)
+                if regional_manager.exists():
+                    available_regions = available_regions.filter(id=regional_manager.first().region.pk)
+            if user.userType == 5:
+                region_ids = user_profile.objects.filter(bac=user.pk)
+                if region_ids.exists():
+                    region_ids = list(region_ids.values_list('region',flat=True))
+                    available_regions = available_regions.filter(id__in=region_ids)
+            if user.userType == 6:
+                advisorRegion = user_profile.objects.get(user=user.pk).region
+                available_regions = available_regions.filter(id=advisorRegion.pk)
+                advisors = advisors.filter(user__pk=user.pk)
+            for region in available_regions:
+                advisors_ids = list(user_profile.objects.filter(user__userType=6, region=region.pk).values_list('user__pk', flat=True))
+                forms = roa_data.filter(advisorId__in=advisors_ids)
+                total_forms = forms.count()
+                total_forms = total_forms if total_forms else 0
+                total_completed_forms = forms.filter(status=1).count()
+                total_completed_forms = total_completed_forms if total_completed_forms else 0
+                region_data.append({
+                    'region' : region.region,
+                    'total_forms': total_forms,
+                    'total_completed': total_completed_forms
+                })
+            region_data = sorted(region_data, key=lambda d: d['total_forms'], reverse=True)
+            advisorsData['region_wise_data'] = region_data
+
+            advisor_wise_data = []
+            for advisor in advisors:
+                forms = roa_data.filter(advisorId=advisor.user.pk)
+                total_forms = forms.count()
+                total_forms = total_forms if total_forms else 0
+                total_completed_forms = forms.filter(status=1).count()
+                total_completed_forms = total_completed_forms if total_completed_forms else 0
+                if total_forms != 0:
+                    advisor_wise_data.append({
+                        "advisor" : f"{advisor.Full_Name} ({advisor.user.email})",
+                        'total_forms': total_forms,
+                        'total_completed': total_completed_forms
+                    })
+            advisor_wise_data = sorted(advisor_wise_data, key=lambda d: d['total_forms'], reverse=True)
+            advisorsData['advisor_wise_data'] = advisor_wise_data
+                
             return Response(advisorsData, 200)
         else:
             raise Http404
+        
+
+     
+class loadAdvisors(APIView):
+
+    def post(self, request):
+        user = request.user
+        if user.is_superuser or user.userType != 6:
+            advisors = user_profile.objects.filter(user__userType = 6).order_by('Full_Name')
+            if "region" in request.data:
+                advisors = advisors.filter(region__region=request.data['region']) if request.data['region'] != "all" else advisors
+            if user.userType == 3:
+                region = region_manager.objects.filter(manager=user.pk)
+                if region.exists():
+                    advisors = advisors.filter(region=region.first().region.pk)
+                else:
+                    raise Http404
+            if user.userType == 5:
+                advisors = advisors.filter(bac=user.pk)
+            data = []
+            if advisors.exists():
+                for advisor in advisors:
+                    data.append({
+                        "value" : advisor.user.pk,
+                        "label" : f"{advisor.Full_Name} ({advisor.ID_Number})",
+                        "name" : "advisor",
+                        "id" : advisor.user.pk,
+                    })
+                return Response({
+                    "advisors" : data
+                })
+        else:
+            advisors = UserAccount.objects.filter(id=user.pk).order_by('first_name')
+            if advisors.exists():
+                advisors = advisors.values()
+                data = []
+                for advisor in advisors:
+                    profile = user_profile.objects.filter(user=advisor['id'])
+                    name = f"{advisor['first_name']} {advisor['last_name']}"
+                    id_number = ""
+                    if profile.exists():
+                        profile = user_profile.objects.filter(user=advisor['id']).values().first()
+                        id_number = profile['ID_Number']
+                        name = profile['Full_Name']
+                    data.append({
+                        "value" : advisor['id'],
+                        "label" : f"{name} ({id_number})",
+                        "name" : "advisor",
+                        "id" : advisor['id'],
+                    })
+                return Response({
+                    "advisors" : data
+                })
+            return Response({
+                "advisors" : data
+            })

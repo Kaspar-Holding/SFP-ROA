@@ -506,6 +506,28 @@ const InvestmentInsights = () => {
         }
     }
 
+    // Load Region based Advisors
+    const LoadRegionAdvisors = async (region) => {
+        const Body = JSON.stringify({ region })
+        try {
+            const response = await axios.post('/api/insights/agents', Body, config)
+            setAdvisors(response?.data?.data?.advisors)
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+    }
+
     useEffect(() => {
         LoadData(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedAdvisors, BusinessType)
         LoadAdvisors()
@@ -550,6 +572,7 @@ const InvestmentInsights = () => {
                         SelectedAdvisors={ SelectedAdvisors }
                         setSelectedRegions={ setSelectedRegions }
                         setSelectedAdvisors={ setSelectedAdvisors }
+                        loadAdvisors={ LoadRegionAdvisors }
                         BusinessType={ BusinessType }
                         setBusinessType={ setBusinessType }
                     />

@@ -240,14 +240,17 @@ def delete_backup():
 
 @shared_task
 def events():
-    events = CalendarEvents.objects.filter(start_time=datetime.today().date())
+    events = CalendarEvents.objects.filter(start_time=(datetime.today() + timedelta(days=1)).date())
     for event in events:
         if "cut-off" in str(event.title).lower():
             users = UserAccount.objects.all()
+            event_name = ""
             if "afp" in str(event.title).lower():
                 users = users.filter(Q(email__icontains="sanlam")|Q(email__icontains="kaspar")|Q(email__icontains="yahoo")|Q(email__icontains="gmail"))
+                event_name = "AFP"
             if 'sfp' in str(event.title).lower():
                 users = users.filter(Q(email__icontains="sfp")|Q(email__icontains="kaspar")|Q(email__icontains="yahoo")|Q(email__icontains="gmail"))
+                event_name = "SFP"
             for user in users:
                 user_name = user.first_name + " " + user.last_name
                 user_profile_data = user_profile.objects.filter(user=user.pk)
@@ -262,24 +265,18 @@ def events():
                         <h1 style="color: #333; margin-bottom: 20px;">📢 Important Announcement: {event.title}</h1>
                         <div style="background-color: #6AC7D2; color: #fff; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
                             <p style="margin: 0;">Dear {user_name},</p>
-                            <p style="margin: 0;">We would like to bring to your attention an important event: today marks the {event.title} Date. This date is a significant milestone in our project timeline and requires everyone's attention and cooperation to ensure its smooth execution.</p>
+                            <p style="margin: 0;">We would like to bring to your attention an important event: tomorrow marks the {event.title} Date. This date is a significant milestone in our project timeline and requires everyone's attention and cooperation to ensure its smooth execution.</p>
                         </div>
                         <p style="color: #666; line-height: 1.6; margin-bottom: 15px;"><strong>Event Details:</strong></p>
                         <ul style="color: #666; line-height: 1.6; margin-bottom: 15px;">
                             <li><strong>Title:</strong> {event.title}</li>
                             <li><strong>Date:</strong> {event.start_time.strftime('%d %b %Y')}</li>
                             <li><strong>End Date:</strong> {event.end_time.strftime('%d %b %Y')}</li>
-                            <li><strong>Purpose:</strong> The {event.title} signifies the deadline for completing specific tasks, finalizing key deliverables, and preparing for the next phase of our project.</li>
                         </ul>
                         <p style="color: #666; line-height: 1.6; margin-bottom: 15px;"><strong>Actions Required:</strong></p>
                         <ol style="color: #666; line-height: 1.6; margin-bottom: 15px;">
-                            <li>Completion of Pending Tasks: Ensure that all pending tasks assigned to you are completed by the {event.title}.</li>
-                            <li>Quality Check: Perform a thorough quality check of your work to ensure accuracy and completeness.</li>
-                            <li>Coordination: Coordinate with your team members to address any dependencies or issues that may affect the project timeline.</li>
-                            <li>Documentation: Complete and update project documentation to reflect the current status and any changes made leading up to the {event.title}.</li>
+                            <li>Please be reminded of the {event_name} cut-off tomorrow. You got this!.</li>
                         </ol>
-                        <p style="color: #666; line-height: 1.6; margin-bottom: 15px;"><strong>Importance:</strong></p>
-                        <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Meeting the {event.title} is crucial for maintaining project momentum, meeting client expectations, and achieving project success. Your contribution and commitment to meeting this deadline are greatly appreciated and essential for the overall success of our project.</p>
                         <p style="color: #666; line-height: 1.6; margin-bottom: 15px;"><strong>Need Assistance?</strong></p>
                         <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or require assistance regarding the {event.title} or related tasks, please don't hesitate to reach out to your project manager or team lead for guidance.</p>
                         <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Thank you for your attention to this matter, and let's work together to ensure a successful {event.title}!</p>
@@ -294,10 +291,13 @@ def events():
                     print(notificationSerializer.errors)
         if "pay run" in str(event.title).lower() or "pay-run" in str(event.title).lower():
             users = UserAccount.objects.all()
+            event_name = ""
             if "afp" in str(event.title).lower():
                 users = users.filter(Q(email__icontains="sanlam")|Q(email__icontains="kaspar")|Q(email__icontains="yahoo")|Q(email__icontains="gmail"))
+                event_name = "AFP"
             if 'sfp' in str(event.title).lower():
                 users = users.filter(Q(email__icontains="sfp")|Q(email__icontains="kaspar")|Q(email__icontains="yahoo")|Q(email__icontains="gmail"))
+                event_name = "SFP"
     
             for user in users:
                 user_name = user.first_name + " " + user.last_name
@@ -314,7 +314,43 @@ def events():
                             <h1 style="color: #333; margin-bottom: 20px;">💰 Pay Run Announcement 💵</h1>
                             <div style="background-color: #FFCC00; color: #333; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
                                 <p style="margin: 0;">Dear {user_name},</p>
-                                <p style="margin: 0;">This is a friendly reminder that the next pay run is scheduled for today {event.start_time.strftime('%d %b %Y')}. Please ensure that all necessary paperwork and approvals are completed by today to avoid any delays in payment.</p>
+                                <p style="margin: 0;">This is a friendly reminder that the next pay run 🤑 is scheduled for tomorrow {event.start_time.strftime('%d %b %Y')}.</p>
+                            </div>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns regarding the pay run, feel free to reach out to the HR department.</p>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
+                        </div>"""
+                }
+                notificationSerializer = NotificationsSerializer(data=data)
+                if notificationSerializer.is_valid():
+                    notificationSerializer.create(notificationSerializer.validated_data)
+                else:
+                    print(notificationSerializer.errors)
+        if "query" in str(event.title).lower():
+            users = UserAccount.objects.all()
+            event_name = ""
+            if "afp" in str(event.title).lower():
+                users = users.filter(Q(email__icontains="sanlam")|Q(email__icontains="kaspar")|Q(email__icontains="yahoo")|Q(email__icontains="gmail"))
+                event_name = "AFP"
+            if 'sfp' in str(event.title).lower():
+                users = users.filter(Q(email__icontains="sfp")|Q(email__icontains="kaspar")|Q(email__icontains="yahoo")|Q(email__icontains="gmail"))
+                event_name = "SFP"
+    
+            for user in users:
+                user_name = user.first_name + " " + user.last_name
+                user_profile_data = user_profile.objects.filter(user=user.pk)
+                if user_profile_data.exists():
+                    user_profile_data = user_profile_data.first()
+                    user_name = user_profile_data.Full_Name
+                data = {
+                    "title" : event.title,
+                    "notificationType" : 2,
+                    "account" : user.pk,
+                    "message" : f"""
+                        <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                            <h1 style="color: #333; margin-bottom: 20px;">💰 Pay Run Announcement 💵</h1>
+                            <div style="background-color: #FFCC00; color: #333; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+                                <p style="margin: 0;">Dear {user_name},</p>
+                                <p style="margin: 0;">This is a friendly reminder that the next query is scheduled for tomorrow {event.start_time.strftime('%d %b %Y')}. Please submit any pay run related query by tomorrow to ensure it's resolved before the pay run finalisation.</p>
                             </div>
                             <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns regarding the pay run, feel free to reach out to the HR department.</p>
                             <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
@@ -341,7 +377,7 @@ def events():
                         <h1 style="color: #333; margin-bottom: 20px;">Birthday ({event.title}) Celebration Announcement 🎂</h1>
                         <div style="background-color: #6AC7D2; color: #fff; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
                             <p style="margin: 0;">Dear {user_name},</p>
-                            <p style="margin: 0;">Please join us in wishing a very happy birthday to [Employee Name]! 🎈🎂 Let's make their day special with your warm wishes and greetings!</p>
+                            <p style="margin: 0;">Please join us in wishing a very happy birthday to {event.title}! 🎈🎂 Let's make their day special with your warm wishes and greetings!</p>
                         </div>
                         <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
 

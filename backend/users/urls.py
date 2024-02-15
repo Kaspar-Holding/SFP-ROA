@@ -11,6 +11,7 @@ urlpatterns = [
     path('details/<str:pk>/' , views.UserDetail.as_view(),name='Get User Details'),
     path('update/role/<str:pk>/' , views.UserRole.as_view(),name='Get User Details'),
     path('load/profile/' , views.getUserProfileInfo,name='Validate UID'),
+    path('load/profile/details/' , views.LoadUserDetails.as_view(),name='Get User Details'),
     path('bulk/update/' , views.BulkUserUpload.as_view(),name='Bulk Update'),
     path('bulk/upload/' , views.BulkUserUpdate.as_view(),name='Bulk Update'),
 ]

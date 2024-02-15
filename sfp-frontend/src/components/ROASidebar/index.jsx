@@ -162,7 +162,7 @@ const ROASidebar = ({ appTitle }) => {
                 config
             )
 
-            setFormData(response?.data?.data)
+            setFormData(response?.data?.data?.data)
 
         } catch (error) {
 
@@ -201,7 +201,7 @@ const ROASidebar = ({ appTitle }) => {
                         { appTitle }
                     </p>
                     <p className='sidebar-user'>
-                        { user ? user?.full_name : `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` }
+                        { user?.full_name }
                     </p>
                     <p className='sidebar-date'>
                         { CurrentDate }

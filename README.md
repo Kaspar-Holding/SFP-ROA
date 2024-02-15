@@ -14,6 +14,17 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 15 February 2024:
+- Insights Dashboard
+1. Advisor Dashboard working
+2. Advisor List updating as per region
+- Advisor Compliance:
+1. Added Form Status on Sidebar.
+2. Name undefined bug resolved. 
+- Tasks:
+1. Updated to call it a day before it.
+- Deployment on Staging and Production 
+
 ### 09 February 2024:
 - Compliance Export
 1. Export user profile bug resolved

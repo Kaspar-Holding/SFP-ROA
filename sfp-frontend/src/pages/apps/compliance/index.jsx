@@ -505,7 +505,7 @@ const Compliance = () => {
                                                     <th scope="col">Advisor</th>
                                                     <th scope="col">Client Name</th>
                                                     {
-                                                        user?.userType === 1 ?
+                                                        user?.userType === 1 && !user?.is_superuser ?
                                                             <th scope="col">Gatekeeper / ARC</th>
                                                             : ""
                                                     }
@@ -529,7 +529,7 @@ const Compliance = () => {
                                                                         </td>
                                                                         <td>
                                                                             {
-                                                                                review?.advisor
+                                                                                review?.advisor || review?.advisor_id
                                                                             }
                                                                         </td>
                                                                         <td>
@@ -538,11 +538,11 @@ const Compliance = () => {
                                                                             }
                                                                         </td>
                                                                         {
-                                                                            user?.userType === 1 ?
+                                                                            user?.userType === 1 && !user?.is_superuser ?
                                                                                 <td>
                                                                                     { review?.review_user }
                                                                                 </td>
-                                                                                : ""
+                                                                                : review?.review_user
                                                                         }
                                                                         <td>
                                                                             {

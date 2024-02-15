@@ -1185,12 +1185,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td style='border: 1px solid black; padding: 1%;'>
-                    </td>
-                    <td style='border: 1px solid black; padding: 1%;'>
-                    </td>
-                </tr>
+                {% for product in products %}
+                    <tr style="text-align: center;">
+                        <td style='border: 1px solid black; padding: 1%;'>
+                            {{product.product}}
+                        </td>
+                        <td style='border: 1px solid black; padding: 1%;'>
+                            {{product.subcode}}
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     {% endif %}

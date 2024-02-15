@@ -274,7 +274,7 @@ const AppPage = () => {
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col">
+                                    {/* <div class="col">
                                         <Link href="/" style={ { textDecoration: "none" } }>
                                             <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
                                                 <div className="card-body">
@@ -287,7 +287,7 @@ const AppPage = () => {
                                                 </div>
                                             </div>
                                         </Link>
-                                    </div>
+                                    </div> */}
                                     <div class="col">
                                         <Link href="/apps/notifications" style={ { textDecoration: "none" } }>
                                             <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
@@ -303,14 +303,14 @@ const AppPage = () => {
                                         </Link>
                                     </div>
                                     <div class="col">
-                                        <Link href="/" style={ { textDecoration: "none" } }>
+                                        <Link href="/apps/profile" style={ { textDecoration: "none" } }>
                                             <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
                                                 <div className="card-body">
                                                     <br />
                                                     <h5 className="card-title text-center"><i className="fa-solid fa-user"></i></h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <Link href="/profile" className="appLabel">User Profile</Link>
+                                                        <Link href="/apps/profile" className="appLabel">User Profile</Link>
                                                     </p>
                                                 </div>
                                             </div>

@@ -248,12 +248,12 @@ class complainceDocumentsInfo(APIView):
                 )
         else:
             if user.userType == 1:  
-                data = ComplianceDocument.objects.filter(Q(user=user.pk) | Q(picked_up=user.pk)).order_by('-created_at')
+                data = ComplianceDocument.objects.filter(Q(user=user.pk) | Q(picked_up=user.pk) | Q(status=3)).order_by('-created_at')
                 records = []
                 if data.exists():
                     created = 0
                     total = data.count()
-                    data = ComplianceDocument.objects.filter(Q(user=user.pk) | Q(picked_up=user.pk) | Q(status=3)).order_by('-created_at')
+                    # data = ComplianceDocument.objects.filter(Q(user=user.pk) | Q(picked_up=user.pk) | Q(status=3)).order_by('-created_at')
                     data = data.values()
                     p = Paginator(data, request.data['page_size'])
                     data = p.page(request.data['page_number']).object_list

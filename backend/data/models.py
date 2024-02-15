@@ -4755,6 +4755,7 @@ class Disclosures(models.Model):
 
 class DisclosuresProductProviders(models.Model):
     product = models.TextField(default=0)
+    product_subcode = models.TextField(default=0,  null=True, blank=True)
     product_type = models.IntegerField(default=1, null=True, blank=True)
     status = models.IntegerField(default=1)
     
@@ -4773,11 +4774,8 @@ class DisclosuresAdvisorSubCodes(models.Model):
 
 
 class DisclosuresProducts(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
-
-    product_provider = models.TextField( default="", blank=True)
-    subcode = models.TextField( default="", blank=True)
+    formId = models.ForeignKey(Disclosures, on_delete=models.SET_NULL, null=True)
+    product_provider = models.ForeignKey(DisclosuresProductProviders, on_delete=models.SET_NULL, null=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)

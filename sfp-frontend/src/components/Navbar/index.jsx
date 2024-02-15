@@ -120,6 +120,11 @@ const Navbar = () => {
                     markButton.innerText = 'Mark Notification Read'
                     markButton.addEventListener('click', (event) => markAnnoucementRead(event, ams[currentIndex]['id'], ams.length, currentIndex))
 
+                    const markAllButton = document.createElement('button')
+                    markAllButton.classList.add('btn', 'btn-primary', 'me-2', 'btn-sfp')
+                    markAllButton.innerText = 'Mark All Read'
+                    markAllButton.addEventListener('click', (event) => markNotificationsReadModal(event))
+
                     const prevButton = document.createElement('button')
                     prevButton.classList.add('btn', 'btn-primary', 'me-2', 'btn-sfp')
                     prevButton.innerText = 'Previous'
@@ -144,6 +149,7 @@ const Navbar = () => {
                     }
 
                     // Append modal footer to modal content
+                    modalFooter.appendChild(markAllButton)
                     modalContent.appendChild(modalFooter)
 
                     // Append modal content to modal dialog
@@ -233,6 +239,45 @@ const Navbar = () => {
                 config
             )
             loadUnreadNotifications()
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "error",
+                title: "Error",
+                html: `${error?.response?.data?.error}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+
+    }
+    const markNotificationsReadModal = async (e) => {
+        try {
+            const response = await axios.get(
+                '/api/notifications/read',
+                config
+            )
+            loadUnreadNotifications()
+            const modal = document.getElementById('announcement-modal')
+            if (modal) {
+                // Hide the modal
+                const myModal = new bootstrap.Modal(modal)
+                myModal.hide()
+                // remove backdrop
+                const backdrop = document.querySelector('.modal-backdrop')
+
+                // Remove the backdrop
+                if (backdrop) {
+                    backdrop.remove()
+                }
+            }
+
+
+            // Remove the modal from the DOM
+            modal.remove()
         } catch (error) {
             Swal.fire({
                 position: "bottom-end",
@@ -412,8 +457,8 @@ const Navbar = () => {
                                 { `${user?.full_name}` }
                             </a>
                             <ul className="dropdown-menu text-small">
-                                <li><a className="dropdown-item" href="#">Settings</a></li>
-                                <li><a className="dropdown-item" href="#">Profile</a></li>
+                                {/* <li><a className="dropdown-item" href="#">Settings</a></li> */ }
+                                <li><Link className="dropdown-item" href="/apps/profile">Profile</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><a className="dropdown-item" href="#" onClick={ (e) => { logOutBtn(e) } }>Sign out</a></li>
                             </ul>

@@ -119,7 +119,7 @@ const ROAList = () => {
             content={ "Record of Advice" }
         >
             <DashboardLayout
-                appTitle={ 'ROA' }
+                appTitle={ 'ROA List' }
                 app={ 'roa' }
             >
                 {

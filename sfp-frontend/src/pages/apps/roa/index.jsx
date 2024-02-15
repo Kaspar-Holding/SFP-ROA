@@ -483,7 +483,7 @@ const ROA = () => {
                                                                                             }
                                                                                             onClick={ () => {
                                                                                                 router.push({
-                                                                                                    pathname: "/apps/roa/documents/view",
+                                                                                                    pathname: "/apps/roa/documents/edit",
                                                                                                     query: { fId: form?.id }
                                                                                                 })
                                                                                             } }

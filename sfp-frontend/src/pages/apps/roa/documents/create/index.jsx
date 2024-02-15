@@ -48,6 +48,7 @@ const CreateROA = () => {
     const [letterOfIntroductionAccessVisibility, setletterOfIntroductionAccessVisibility] = useState(false)
     const [FicaVisibility, setFicaVisibility] = useState(false)
     const [backgroundInfoVisibility, setbackgroundInfoVisibility] = useState(false)
+    const [DisclosureProducts, setDisclosureProducts] = useState([])
 
     const [errorData, setErrorData] = useState({
         status: "",
@@ -210,7 +211,7 @@ const CreateROA = () => {
         //     product_provider : "",
         //     subcode : "",
         // }
-    ]);
+    ])
 
     const addRow = () => {
         const newId = ProductData.length + 1;
@@ -265,19 +266,30 @@ const CreateROA = () => {
         }
     }
 
+    const getDisclosureProducts = async () => {
+        try {
+            const response = await axios.get('/api/roa/products', config)
+            setDisclosureProducts(response?.data?.data)
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+    }
+
     useEffect(() => {
         getUserProfile()
+        getDisclosureProducts()
     }, [])
 
-    const [step, setStep] = useState(0);
-
-    const nextStep = () => {
-        setStep(step + 1);
-    };
-
-    const prevStep = () => {
-        setStep(step - 1);
-    };
     return (
         <div>
             <Layout
@@ -1655,12 +1667,7 @@ const CreateROA = () => {
                                                             <tr>
                                                                 <th scope="col">
                                                                     <p className='text-center roa-table-head'>
-                                                                        Product Provider<br />Authorised to sell
-                                                                    </p>
-                                                                </th>
-                                                                <th scope="col">
-                                                                    <p className='text-center roa-table-head'>
-                                                                        Intermediary Sub-Code
+                                                                        Product Provider (Subcodes)<br />Authorised to sell
                                                                     </p>
                                                                 </th>
                                                                 <th scope="col">
@@ -1673,21 +1680,27 @@ const CreateROA = () => {
                                                         <tbody>
                                                             { ProductData.map((row, id) => (
                                                                 <tr key={ row?.id }>
-                                                                    <td>
+                                                                    {/* <td>
                                                                         <input
                                                                             type="text"
                                                                             className="form-control roa-label"
                                                                             value={ row?.product_provider }
                                                                             onChange={ (e) => handleContentChange(row.id, "product_provider", e.target.value) }
                                                                         />
-                                                                    </td>
+                                                                    </td> */}
                                                                     <td>
-                                                                        <input
-                                                                            type="text"
-                                                                            className="form-control roa-label"
-                                                                            value={ row?.subcode }
-                                                                            onChange={ (e) => handleContentChange(row.id, "subcode", e.target.value) }
-                                                                        />
+                                                                        <select required className="form-select" name="product_provider" value={ row?.product_provider } onChange={ (e) => handleContentChange(row.id, "product_provider", e.target.value) }>
+                                                                            <option value={ 0 }>Select Product</option>
+                                                                            {
+                                                                                DisclosureProducts.map(
+                                                                                    (product, index) => {
+                                                                                        return (
+                                                                                            <option value={ product?.product_id } key={ index }>{ product?.product } { product?.subcode ? `(${product?.subcode})` : '' }</option>
+                                                                                        )
+                                                                                    }
+                                                                                )
+                                                                            }
+                                                                        </select>
                                                                     </td>
                                                                     <td>
                                                                         <button

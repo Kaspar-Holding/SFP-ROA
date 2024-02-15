@@ -1058,6 +1058,15 @@ header {
     padding: 2%;
 }
 
+.app-user-details {
+    background-color: #ffffff;
+    margin-top: 1%;
+    height: 85vh;
+    margin-right: 0.5%;
+    padding: 2%;
+    overflow-y: auto;
+}
+
 .app-users-list-records {
     background-color: #ffffff;
     margin-top: 1%;

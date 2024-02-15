@@ -125,7 +125,7 @@ const EditROA = () => {
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
-            console.log(response?.data?.data?.id)
+
             router.push({
                 pathname: "/apps/roa/documents/complete",
                 query: { dId: response?.data?.data?.id }
@@ -249,7 +249,7 @@ const EditROA = () => {
     const compulsoryAEditorRef = useRef(null);
     const FICAEditorRef = useRef(null);
 
-
+    const [DisclosureProducts, setDisclosureProducts] = useState([])
     const LoadData = async (formId) => {
 
         setLoaded(true)
@@ -262,8 +262,8 @@ const EditROA = () => {
                 Body,
                 config
             )
-            setFormData(response?.data?.data)
-
+            setFormData(response?.data?.data?.data)
+            setProductData(response?.data?.data?.products)
 
         } catch (error) {
 
@@ -291,8 +291,29 @@ const EditROA = () => {
         }
     }
 
+
+    const getDisclosureProducts = async () => {
+        try {
+            const response = await axios.get('/api/roa/products', config)
+            setDisclosureProducts(response?.data?.data)
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `An error has occured.`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+    }
+
     useEffect(() => {
         getUserProfile()
+        getDisclosureProducts()
         LoadData(formId)
     }, [])
 
@@ -1673,7 +1694,7 @@ const EditROA = () => {
                                                     </p>
                                                 </li>
                                             </ul>
-                                            <hr />
+                                            <hr />{ console.log(DisclosureProducts) }
                                             {
                                                 ProductData.length > 0 ?
                                                     <table className="table">
@@ -1684,11 +1705,11 @@ const EditROA = () => {
                                                                         Product Provider<br />Authorised to sell
                                                                     </p>
                                                                 </th>
-                                                                <th scope="col">
+                                                                {/* <th scope="col">
                                                                     <p className='text-center roa-table-head'>
                                                                         Intermediary Sub-Code
                                                                     </p>
-                                                                </th>
+                                                                </th> */}
                                                                 <th scope="col">
                                                                     <p className='text-center roa-table-head'>
                                                                         Actions
@@ -1699,21 +1720,27 @@ const EditROA = () => {
                                                         <tbody>
                                                             { ProductData.map((row, id) => (
                                                                 <tr key={ row?.id }>
-                                                                    <td>
+                                                                    {/* <td>
                                                                         <input
                                                                             type="text"
                                                                             className="form-control roa-label"
                                                                             value={ row?.product_provider }
                                                                             onChange={ (e) => handleContentChange(row.id, "product_provider", e.target.value) }
                                                                         />
-                                                                    </td>
+                                                                    </td> */}
                                                                     <td>
-                                                                        <input
-                                                                            type="text"
-                                                                            className="form-control roa-label"
-                                                                            value={ row?.subcode }
-                                                                            onChange={ (e) => handleContentChange(row.id, "subcode", e.target.value) }
-                                                                        />
+                                                                        <select required className="form-select" name="product_provider" value={ row?.product_id } onChange={ (e) => handleContentChange(row.id, "product_provider", e.target.value) }>
+                                                                            <option value={ 0 }>Select Product</option>
+                                                                            {
+                                                                                DisclosureProducts.map(
+                                                                                    (product, index) => {
+                                                                                        return (
+                                                                                            <option value={ product?.product_id } key={ index }>{ product?.product } { product?.subcode ? `(${product?.subcode})` : '' }</option>
+                                                                                        )
+                                                                                    }
+                                                                                )
+                                                                            }
+                                                                        </select>
                                                                     </td>
                                                                     <td>
                                                                         <button
