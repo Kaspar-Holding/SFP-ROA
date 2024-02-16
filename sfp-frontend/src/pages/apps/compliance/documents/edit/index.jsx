@@ -328,7 +328,7 @@ const EditDocument = () => {
                                                 <div className='col-lg-8 col-md-12 col-sm-12'>
                                                     <div className="mb-3">
                                                         <label for="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
-                                                        <select required className="form-select" name="businessType" value={ DocumentInitalData?.referred ? "" : DocumentInitalData?.businessType } onChange={ (e) => { onChange(e) } } aria-label="Default select example">
+                                                        <select required className="form-select" name="businessType" value={ DocumentInitalData?.businessType } onChange={ (e) => { "" } } aria-label="Default select example">
                                                             <option value={ 0 }>Select Business Type</option>
                                                             <option value="1">Business Assurance</option>
                                                             <option value="2">Comm release</option>
@@ -424,7 +424,7 @@ const EditDocument = () => {
                                         </div>
                                     </div>
                                     <div className="d-grid col-4 mx-auto">
-                                        <button className="btn btn-primary compliance-inital-card-button-text btn-sfp" type="submit">Save and Pick Up</button>
+                                        <button className="btn btn-primary compliance-inital-card-button-text btn-sfp" type="submit">Save and { !DocumentInitalData?.referred && DocumentInitalData?.user_id == user?.id ? "Continue" : "Pickup" }</button>
                                     </div>
                                 </form>
                             </div>

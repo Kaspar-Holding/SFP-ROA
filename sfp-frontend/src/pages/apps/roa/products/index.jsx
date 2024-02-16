@@ -43,14 +43,14 @@ const ROAProducts = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         if (file?.productsCsvFile != "") {
-            setCompleted(false)
+            // setCompleted(false)
             const Body = JSON.stringify(file)
             setCreateLogs("")
             setUpdateLogs("")
             setNotExistingLogs("")
             setResponse(null)
             try {
-                const response = await fetch(`/api/users/bulk/update`, {
+                const response = await fetch(`/api/roa/products/update`, {
                     method: 'POST',
                     body: Body,
                     headers: {
@@ -102,8 +102,6 @@ const ROAProducts = () => {
                                 setResponse(JSONResponse)
                                 setCreateLogs((value) => value + JSONResponse?.logs['create_log'])
                                 setUpdateLogs((value) => value + JSONResponse?.logs['update_log'])
-                                setNotExistingLogs((value) => value + JSONResponse?.logs['not_existing_log'])
-                                setDownloadingLink(JSONResponse?.downloading_link)
                             }
                         }
 
@@ -127,11 +125,11 @@ const ROAProducts = () => {
                 })
 
             } catch (error) {
-                console.log(error.response)
+                console.log(error)
             }
         }
     }
-    console.log(file)
+
     return (
         <Layout
             title={ "Disclousre Products Management" }
@@ -156,25 +154,25 @@ const ROAProducts = () => {
                                         <div className="card-body">
                                             <h1 className='kpi-users-number'>
                                                 {
-                                                    response?.total ? response?.total : 0
+                                                    response?.total_sheets ? response?.total_sheets : 0
                                                 }
                                             </h1>
                                             <p className='kpi-users-title'>
-                                                Total
+                                                Total Sheets
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col p-0 m-0'>
-                                    <div className="card kpi-users-card-2">
+                                    <div className="card kpi-users-card-1">
                                         <div className="card-body">
                                             <h1 className='kpi-users-number'>
                                                 {
-                                                    response?.updated ? response?.updated : 0
+                                                    response?.total_products ? response?.total_products : 0
                                                 }
                                             </h1>
                                             <p className='kpi-users-title'>
-                                                Updated
+                                                Total Products
                                             </p>
                                         </div>
                                     </div>
@@ -184,11 +182,25 @@ const ROAProducts = () => {
                                         <div className="card-body">
                                             <h1 className='kpi-users-number'>
                                                 {
-                                                    response?.created ? response?.created : 0
+                                                    response?.total_products_added ? response?.total_products_added : 0
                                                 }
                                             </h1>
                                             <p className='kpi-users-title'>
                                                 Created
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col p-0 m-0'>
+                                    <div className="card kpi-users-card-2">
+                                        <div className="card-body">
+                                            <h1 className='kpi-users-number'>
+                                                {
+                                                    response?.total_products_updated ? response?.total_products_updated : 0
+                                                }
+                                            </h1>
+                                            <p className='kpi-users-title'>
+                                                Updated
                                             </p>
                                         </div>
                                     </div>
@@ -220,7 +232,7 @@ const ROAProducts = () => {
                                     <div className='col'>
                                         <div className='log'>
                                             <div className='text-center'>
-                                                <h3>Created Users Profiles</h3>
+                                                <h3>Created Products</h3>
                                             </div>
                                             { CreateLogs && (
 
@@ -237,7 +249,7 @@ const ROAProducts = () => {
                                     <div className='col'>
                                         <div className='log'>
                                             <div className='text-center'>
-                                                <h3>Updated Users Profiles</h3>
+                                                <h3>Updated Products</h3>
                                             </div>
                                             { UpdateLogs && (
 
@@ -273,7 +285,7 @@ const ROAProducts = () => {
                             Completed ?
                                 <form onSubmit={ handleSubmit } className='container text-center'>
                                     <div className='form-group'>
-                                        <input disabled={ Columns?.length > 0 } className='form-control form-control-lg' type='file' accept='.csv' id='file' name='file' onChange={ handleFileChange } />
+                                        <input disabled={ Columns?.length > 0 } className='form-control form-control-lg' type='file' accept='.xls' id='file' name='file' onChange={ handleFileChange } />
                                     </div>
                                     <br />
                                     <button className='btn btn-primary' type='submit'>Submit</button>

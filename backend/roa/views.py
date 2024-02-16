@@ -689,167 +689,243 @@ class BulkProductUpdate(APIView):
                 ext = format.split('/')[-1]
                 file_name = "'productsCsvFile." + ext
                 csvData = ContentFile(base64.b64decode(csvstr), name=file_name) 
-                disclosures_product_df = pd.read_csv(csvData)
-                disclosures_product_df.fillna('', inplace=True)
-                disclosures_product_df.columns = disclosures_product_df.columns.str.replace(' ', '_').str.replace('__', '_').str.replace('.', '_')
-                logContent = {
-                    "account" : request.user.pk,
-                    "log" : log_id,
-                    "log_type" : 1,
-                    "log_description" : f"Updating products in database.",
-                } 
-                log_content_serializer = LogContentSerializer(data=logContent)
-                if log_content_serializer.is_valid():
-                    log_content_serializer.create(log_content_serializer.validated_data)
-                else:
-                    print(log_content_serializer.errors)
+                sheets = pd.read_excel(csvData, sheet_name=None)
+
+                # Access sheet names as a dictionary
+                sheet_names = sheets.keys()
+                
                 total_users = 0
+                total_sheets = 0
                 total_products = 0
                 total_products_added = 0
-                total_user_products_updated = 0
-                for product in disclosures_product_df.columns:
-                    total_products += 1
-                    disclosure_product = DisclosuresProductProviders.objects.filter(product=product)
-                    if disclosure_product.exists():
-                        logContent = {
-                            "account" : request.user.pk,
-                            "log" : log_id,
-                            "log_type" : 1,
-                            "log_description" : f"Product {product} already exists.",
-                        } 
-                        log_content_serializer = LogContentSerializer(data=logContent)
-                        if log_content_serializer.is_valid():
-                            log_content_serializer.create(log_content_serializer.validated_data)
-                        else:
-                            print(log_content_serializer.errors)
-                        continue
-                    else:
-                        disclosure_product_data = {
-                            "product" : product
-                        }
-                        disclosure_product_serializer = DisclosuresProductProviders_Serializer(data=disclosure_product_data)
-                        if disclosure_product_serializer.is_valid():
-                            disclosure_product_serializer.create(disclosure_product_serializer.validated_data)
-                            logContent = {
-                                "account" : request.user.pk,
-                                "log" : log_id,
-                                "log_type" : 1,
-                                "log_description" : f"Product {product} already exists.",
-                            } 
-                            log_content_serializer = LogContentSerializer(data=logContent)
-                            if log_content_serializer.is_valid():
-                                log_content_serializer.create(log_content_serializer.validated_data)
-                            else:
-                                print(log_content_serializer.errors)
-                        else:
-                            print(disclosure_product_serializer.errors)    
-                    logKPIs = {
-                        "account" : request.user.pk,
-                        "log" : log_id,
-                        "kpis" : {
-                            "total_users": total_users,"total_products":total_products, "total_products_added": total_products_added, "total_user_products_updated" : total_user_products_updated,
-                        }
-                    }
-                    kpisID = LogKPIs.objects.get(account=request.user.pk, log=log_id)
-                    log_kpis_serializer = LogKPIsSerializer(instance=kpisID, data=logKPIs)
-                    if log_kpis_serializer.is_valid():
-                        log_kpis_serializer.save()
-                    else:
-                        print(log_kpis_serializer.errors)
-                    kpis = {
-                        "total_users" : total_users,
-                        "total_products" : total_products,
-                        "total_products_added" : total_products_added,
-                        "total_user_products_updated" : total_user_products_updated,
-                    }
-                    yield f"data: {json.dumps(kpis)}\n\n"                 
+                total_products_updated = 0
+                for sheet in sheet_names:
+                    total_sheets += 1
                     logContent = {
                         "account" : request.user.pk,
                         "log" : log_id,
-                        "log_type" : 2,
-                        "log_description" : f"Products updated.",
+                        "log_type" : 1,
+                        "log_description" : f"Updating products for {sheet}.",
                     } 
                     log_content_serializer = LogContentSerializer(data=logContent)
                     if log_content_serializer.is_valid():
                         log_content_serializer.create(log_content_serializer.validated_data)
                     else:
                         print(log_content_serializer.errors)
-                for i in range(len(disclosures_product_df)):
-                    disclosures_product_data = disclosures_product_df.iloc[i].to_dict()
-                    name = disclosures_product_data['MPY']
+                    
+                    product_type = 1
+                    if "ST" in sheet:
+                        product_type = 1
+                    if "Health" in sheet:
+                        product_type = 2
+                    if "Life" in sheet:
+                        product_type = 3
+
+                    disclosures_product_df = pd.read_excel(csvData, sheet_name=sheet, header = 1)
+
+                    disclosures_product_df.fillna('', inplace=True)
+                    disclosures_product_df.rename(columns={'Unnamed: 0': 'ProductsList'}, inplace=True)
+                    # disclosures_product_df.columns = disclosures_product_df.columns.str.replace(' ', '_').str.replace('__', '_').str.replace('.', '_')
+
                     logContent = {
                         "account" : request.user.pk,
                         "log" : log_id,
-                        "log_type" : 3,
-                        "log_description" : f"Updating User {name} products.",
+                        "log_type" : 1,
+                        "log_description" : f"Updating products in database.",
                     } 
                     log_content_serializer = LogContentSerializer(data=logContent)
                     if log_content_serializer.is_valid():
                         log_content_serializer.create(log_content_serializer.validated_data)
                     else:
                         print(log_content_serializer.errors)
-                    disclosures_product_data = {k: v for k, v in disclosures_product_data.items() if v != ""}
-                    user = user_profile.objects.filter(Full_Name__iexact=name)
-                    if user.exists():
-                        total_users += 1
-                        user = user.first().user.pk
-                        for product in disclosures_product_data.keys():
-                            disclosure_product = DisclosuresProductProviders.objects.filter(product=product)
-                            if disclosure_product.exists():
-                                disclosure_product = disclosure_product.first()
-                                user_disclosures_product_data = {
-                                    "product" : disclosure_product.pk,
-                                    "user" : disclosure_product.pk,
-                                    "subcode" : disclosures_product_data[product]
-                                }
-                                advisor_product = DisclosuresAdvisorSubCodes.objects.filter(product=disclosure_product.pk, user=user)
-                                if advisor_product.exists():
-                                    serializer = DisclosuresAdvisorSubCodes_Serializer(instance=advisor_product.first().pk,data=user_disclosures_product_data, partial=True)
-                                    if serializer.is_valid():
-                                        serializer.save()
-                                        logContent = {
-                                            "account" : request.user.pk,
-                                            "log" : log_id,
-                                            "log_type" : 4,
-                                            "log_description" : f"User {name} subcodes updated for {product}.",
-                                        } 
-                                        log_content_serializer = LogContentSerializer(data=logContent)
-                                        if log_content_serializer.is_valid():
-                                            log_content_serializer.create(log_content_serializer.validated_data)
-                                            total_user_products_updated += 1
-                                        else:
-                                            print(log_content_serializer.errors)
+                    total_users = 0
+                    for product in disclosures_product_df.columns:
+                        users = disclosures_product_df['ProductsList'].tolist()
+                        if product == "MPY":
+                            continue
+                        if product == "ProductsList":
+                            continue
+                        product = product.strip()
+                        update_log = ""
+                        create_log = ""
+                        total_products += 1
+                        disclosure_product = DisclosuresProductProviders.objects.filter(product=product)
+                        if disclosure_product.exists():
+                            total_products_updated += 1
+                            update_log = f"<p>Product {product} exists and updated.</p>"
+                            disclosure_product_data = {
+                                "product" : product,
+                                "product_type" : product_type,
+                            }
+                            disclosure_product_serializer = DisclosuresProductProviders_Serializer(instance=disclosure_product.first(), data=disclosure_product_data, partial=True)
+                            if disclosure_product_serializer.is_valid():
+                                disclosure_product_serializer.save()
+                                logContent = {
+                                    "account" : request.user.pk,
+                                    "log" : log_id,
+                                    "log_type" : 1,
+                                    "log_description" : f"Product {product} exists and updated.",
+                                } 
+                                log_content_serializer = LogContentSerializer(data=logContent)
+                                if log_content_serializer.is_valid():
+                                    log_content_serializer.create(log_content_serializer.validated_data)
                                 else:
-                                    serializer = DisclosuresAdvisorSubCodes_Serializer(data=user_disclosures_product_data)
-                                    if serializer.is_valid():
-                                        serializer.create(serializer.validated_data)
-                                        logContent = {
-                                            "account" : request.user.pk,
-                                            "log" : log_id,
-                                            "log_type" : 5,
-                                            "log_description" : f"User {name} subcodes updated for {product}.",
-                                        } 
-                                        log_content_serializer = LogContentSerializer(data=logContent)
-                                        if log_content_serializer.is_valid():
-                                            log_content_serializer.create(log_content_serializer.validated_data)
-                                        else:
-                                            print(log_content_serializer.errors)
-                            logContent = {
-                                "account" : request.user.pk,
-                                "log" : log_id,
-                                "log_type" : 6,
-                                "log_description" : f"User {name} subcodes updated for all available products.",
-                            } 
-                            log_content_serializer = LogContentSerializer(data=logContent)
-                            if log_content_serializer.is_valid():
-                                log_content_serializer.create(log_content_serializer.validated_data)
+                                    print(log_content_serializer.errors)
                             else:
-                                print(log_content_serializer.errors)
+                                print(disclosure_product_serializer.errors) 
+                            for user in users:
+                                if user == "":
+                                    continue
+                                if user == "Email":
+                                    continue
+                                if user == "N/A":
+                                    continue
+                                user_data = user_profile.objects.filter(user__email__iexact=user)
+                                if user_data.exists():
+                                    user_data = user_data.first()
+                                    logContent = {
+                                        "account" : request.user.pk,
+                                        "log" : log_id,
+                                        "log_type" : 1,
+                                        "log_description" : f"User {user_data.Full_Name} exists.",
+                                    } 
+                                    log_content_serializer = LogContentSerializer(data=logContent)
+                                    if log_content_serializer.is_valid():
+                                        log_content_serializer.create(log_content_serializer.validated_data)
+                                    else:
+                                        print(log_content_serializer.errors)
+                                    user_product_data = disclosures_product_df.iloc[disclosures_product_df.loc[disclosures_product_df['ProductsList']==user].index[0]].to_dict()
+                                    user_product_data = {k: v for k, v in user_product_data.items() if v != ""}
+                                    if product in user_product_data:
+                                        if user_product_data[product] != "RESIGNED":
+                                            user_product_data = {
+                                                "email": user,
+                                                "user": user_data.user.pk,
+                                                "product": disclosure_product.first().pk,
+                                                "subcode": user_product_data[product]
+                                            }
+                                            old_data = DisclosuresAdvisorSubCodes.objects.filter(user=user_data.user.pk, product=disclosure_product.first().pk)
+                                            if old_data.exists():
+                                                serializer = DisclosuresAdvisorSubCodes_Serializer(instance=old_data.first(), data=user_product_data)
+                                                if serializer.is_valid():
+                                                    serializer.save()
+                                                    logContent = {
+                                                        "account" : request.user.pk,
+                                                        "log" : log_id,
+                                                        "log_type" : 1,
+                                                        "log_description" : f"Product {product} for user {user_data.Full_Name} updated.",
+                                                    } 
+                                                    log_content_serializer = LogContentSerializer(data=logContent)
+                                                    if log_content_serializer.is_valid():
+                                                        log_content_serializer.create(log_content_serializer.validated_data)
+                                                    else:
+                                                        print(log_content_serializer.errors)
+                                            else:
+                                                serializer = DisclosuresAdvisorSubCodes_Serializer(data=user_product_data)
+                                                if serializer.is_valid():
+                                                    serializer.create(serializer.validated_data)
+                                                    logContent = {
+                                                        "account" : request.user.pk,
+                                                        "log" : log_id,
+                                                        "log_type" : 1,
+                                                        "log_description" : f"Product {product} for user {user_data.Full_Name} added.",
+                                                    } 
+                                                    log_content_serializer = LogContentSerializer(data=logContent)
+                                                    if log_content_serializer.is_valid():
+                                                        log_content_serializer.create(log_content_serializer.validated_data)
+                                                    else:
+                                                        print(log_content_serializer.errors)
+                        else:
+                            total_products_added += 1
+                            create_log = f"<p>Product {product} added</p>"
+
+                            disclosure_product_data = {
+                                "product" : product,
+                                "product_type" : product_type,
+                            }
+                            disclosure_product_serializer = DisclosuresProductProviders_Serializer(data=disclosure_product_data)
+                            if disclosure_product_serializer.is_valid():
+                                disclosure_product = disclosure_product_serializer.create(disclosure_product_serializer.validated_data)
+                                logContent = {
+                                    "account" : request.user.pk,
+                                    "log" : log_id,
+                                    "log_type" : 1,
+                                    "log_description" : f"Product {product} already exists.",
+                                } 
+                                log_content_serializer = LogContentSerializer(data=logContent)
+                                if log_content_serializer.is_valid():
+                                    log_content_serializer.create(log_content_serializer.validated_data)
+                                else:
+                                    print(log_content_serializer.errors)
+                            else:
+                                print(disclosure_product_serializer.errors) 
+                            for user in users:
+                                if user == "":
+                                    continue
+                                if user == "Email":
+                                    continue
+                                if user == "N/A":
+                                    continue
+                                user_data = user_profile.objects.filter(user__email__iexact=user)
+                                if user_data.exists():
+                                    user_data = user_data.first()
+                                    logContent = {
+                                        "account" : request.user.pk,
+                                        "log" : log_id,
+                                        "log_type" : 1,
+                                        "log_description" : f"User {user_data.Full_Name} exists.",
+                                    } 
+                                    log_content_serializer = LogContentSerializer(data=logContent)
+                                    if log_content_serializer.is_valid():
+                                        log_content_serializer.create(log_content_serializer.validated_data)
+                                    else:
+                                        print(log_content_serializer.errors)
+                                    user_product_data = disclosures_product_df.iloc[disclosures_product_df.loc[disclosures_product_df['ProductsList']==user].index[0]].to_dict()
+                                    user_product_data = {k: v for k, v in user_product_data.items() if v != ""}
+                                    if product in user_product_data:
+                                        if user_product_data[product] != "RESIGNED":
+                                            user_product_data = {
+                                                "email": user,
+                                                "user": user_data.user.pk,
+                                                "product": disclosure_product.pk,
+                                                "subcode": user_product_data[product]
+                                            }
+                                            old_data = DisclosuresAdvisorSubCodes.objects.filter(user=user_data.user.pk, product=disclosure_product.pk)
+                                            if old_data.exists():
+                                                serializer = DisclosuresAdvisorSubCodes_Serializer(instance=old_data.first(), data=user_product_data)
+                                                if serializer.is_valid():
+                                                    serializer.save()
+                                                    logContent = {
+                                                        "account" : request.user.pk,
+                                                        "log" : log_id,
+                                                        "log_type" : 1,
+                                                        "log_description" : f"Product {product} for user {user_data.Full_Name} updated.",
+                                                    } 
+                                                    log_content_serializer = LogContentSerializer(data=logContent)
+                                                    if log_content_serializer.is_valid():
+                                                        log_content_serializer.create(log_content_serializer.validated_data)
+                                                    else:
+                                                        print(log_content_serializer.errors)
+                                            else:
+                                                serializer = DisclosuresAdvisorSubCodes_Serializer(data=user_product_data)
+                                                if serializer.is_valid():
+                                                    serializer.create(serializer.validated_data)
+                                                    logContent = {
+                                                        "account" : request.user.pk,
+                                                        "log" : log_id,
+                                                        "log_type" : 1,
+                                                        "log_description" : f"Product {product} for user {user_data.Full_Name} added.",
+                                                    } 
+                                                    log_content_serializer = LogContentSerializer(data=logContent)
+                                                    if log_content_serializer.is_valid():
+                                                        log_content_serializer.create(log_content_serializer.validated_data)
+                                                    else:
+                                                        print(log_content_serializer.errors)   
                         logKPIs = {
                             "account" : request.user.pk,
                             "log" : log_id,
                             "kpis" : {
-                                "total_users": total_users,"total_products":total_products, "total_products_added": total_products_added, "total_user_products_updated" : total_user_products_updated,
+                                "total_sheets":total_sheets, "total_products":total_products, "total_products_added": total_products_added, "total_products_updated" : total_products_updated,
                             }
                         }
                         kpisID = LogKPIs.objects.get(account=request.user.pk, log=log_id)
@@ -860,24 +936,132 @@ class BulkProductUpdate(APIView):
                             print(log_kpis_serializer.errors)
                         kpis = {
                             "total_users" : total_users,
+                            "total_sheets" : total_sheets,
                             "total_products" : total_products,
                             "total_products_added" : total_products_added,
-                            "total_user_products_updated" : total_user_products_updated,
+                            "total_products_updated" : total_products_updated,
+                            "logs": {
+                                "create_log": create_log,
+                                "update_log": update_log
+                            }
                         }
-                        yield f"data: {json.dumps(kpis)}\n\n"
-                    else:
+                        yield f"data: {json.dumps(kpis)}\n\n"                 
                         logContent = {
                             "account" : request.user.pk,
                             "log" : log_id,
-                            "log_type" : 404,
-                            "log_description" : f"User {name} does not exists.",
+                            "log_type" : 2,
+                            "log_description" : f"Products updated.",
                         } 
                         log_content_serializer = LogContentSerializer(data=logContent)
                         if log_content_serializer.is_valid():
                             log_content_serializer.create(log_content_serializer.validated_data)
                         else:
                             print(log_content_serializer.errors)
-                        continue
+                    # for i in range(len(disclosures_product_df)):
+                    #     disclosures_product_data = disclosures_product_df.iloc[i].to_dict()
+                    #     name = disclosures_product_data['MPY']
+                    #     logContent = {
+                    #         "account" : request.user.pk,
+                    #         "log" : log_id,
+                    #         "log_type" : 3,
+                    #         "log_description" : f"Updating User {name} products.",
+                    #     } 
+                    #     log_content_serializer = LogContentSerializer(data=logContent)
+                    #     if log_content_serializer.is_valid():
+                    #         log_content_serializer.create(log_content_serializer.validated_data)
+                    #     else:
+                    #         print(log_content_serializer.errors)
+                    #     disclosures_product_data = {k: v for k, v in disclosures_product_data.items() if v != ""}
+                    #     user = user_profile.objects.filter(Full_Name__iexact=name)
+                    #     if user.exists():
+                    #         total_users += 1
+                    #         user = user.first().user.pk
+                    #         for product in disclosures_product_data.keys():
+                    #             disclosure_product = DisclosuresProductProviders.objects.filter(product=product)
+                    #             if disclosure_product.exists():
+                    #                 disclosure_product = disclosure_product.first()
+                    #                 user_disclosures_product_data = {
+                    #                     "product" : disclosure_product.pk,
+                    #                     "user" : disclosure_product.pk,
+                    #                     "subcode" : disclosures_product_data[product]
+                    #                 }
+                    #                 advisor_product = DisclosuresAdvisorSubCodes.objects.filter(product=disclosure_product.pk, user=user)
+                    #                 if advisor_product.exists():
+                    #                     serializer = DisclosuresAdvisorSubCodes_Serializer(instance=advisor_product.first().pk,data=user_disclosures_product_data, partial=True)
+                    #                     if serializer.is_valid():
+                    #                         serializer.save()
+                    #                         logContent = {
+                    #                             "account" : request.user.pk,
+                    #                             "log" : log_id,
+                    #                             "log_type" : 4,
+                    #                             "log_description" : f"User {name} subcodes updated for {product}.",
+                    #                         } 
+                    #                         log_content_serializer = LogContentSerializer(data=logContent)
+                    #                         if log_content_serializer.is_valid():
+                    #                             log_content_serializer.create(log_content_serializer.validated_data)
+                    #                             total_user_products_updated += 1
+                    #                         else:
+                    #                             print(log_content_serializer.errors)
+                    #                 else:
+                    #                     serializer = DisclosuresAdvisorSubCodes_Serializer(data=user_disclosures_product_data)
+                    #                     if serializer.is_valid():
+                    #                         serializer.create(serializer.validated_data)
+                    #                         logContent = {
+                    #                             "account" : request.user.pk,
+                    #                             "log" : log_id,
+                    #                             "log_type" : 5,
+                    #                             "log_description" : f"User {name} subcodes updated for {product}.",
+                    #                         } 
+                    #                         log_content_serializer = LogContentSerializer(data=logContent)
+                    #                         if log_content_serializer.is_valid():
+                    #                             log_content_serializer.create(log_content_serializer.validated_data)
+                    #                         else:
+                    #                             print(log_content_serializer.errors)
+                    #             logContent = {
+                    #                 "account" : request.user.pk,
+                    #                 "log" : log_id,
+                    #                 "log_type" : 6,
+                    #                 "log_description" : f"User {name} subcodes updated for all available products.",
+                    #             } 
+                    #             log_content_serializer = LogContentSerializer(data=logContent)
+                    #             if log_content_serializer.is_valid():
+                    #                 log_content_serializer.create(log_content_serializer.validated_data)
+                    #             else:
+                    #                 print(log_content_serializer.errors)
+                    #         logKPIs = {
+                    #             "account" : request.user.pk,
+                    #             "log" : log_id,
+                    #             "kpis" : {
+                    #                 "total_users": total_users,"total_products":total_products, "total_products_added": total_products_added, "total_user_products_updated" : total_user_products_updated,
+                    #             }
+                    #         }
+                    #         kpisID = LogKPIs.objects.get(account=request.user.pk, log=log_id)
+                    #         log_kpis_serializer = LogKPIsSerializer(instance=kpisID, data=logKPIs)
+                    #         if log_kpis_serializer.is_valid():
+                    #             log_kpis_serializer.save()
+                    #         else:
+                    #             print(log_kpis_serializer.errors)
+                    #         kpis = {
+                    #             "total_users" : total_users,
+                    #             "total_products" : total_products,
+                    #             "total_products_added" : total_products_added,
+                    #             "total_user_products_updated" : total_user_products_updated,
+                    #         }
+                    #         yield f"data: {json.dumps(kpis)}\n\n"
+                    #     else:
+                    #         logContent = {
+                    #             "account" : request.user.pk,
+                    #             "log" : log_id,
+                    #             "log_type" : 404,
+                    #             "log_description" : f"User {name} does not exists.",
+                    #         } 
+                    #         log_content_serializer = LogContentSerializer(data=logContent)
+                    #         if log_content_serializer.is_valid():
+                    #             log_content_serializer.create(log_content_serializer.validated_data)
+                    #         else:
+                    #             print(log_content_serializer.errors)
+                    #         continue
+            
         if request.user.is_superuser == False:
             return StreamingHttpResponse(error401(), content_type='text/event-stream')
         return StreamingHttpResponse(response(request.data), content_type='text/event-stream')

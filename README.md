@@ -14,6 +14,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 16 February 2024:
+- ROA
+1. Disclosure Products Bulk update
+- Deployment on Staging and Production 
+
 ### 15 February 2024:
 - Insights Dashboard
 1. Advisor Dashboard working

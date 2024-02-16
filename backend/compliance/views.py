@@ -1116,7 +1116,7 @@ class ComplianceDocumentDetails(APIView):
         document['flag'] = flag_color
         if profile.exists():
             profile = user_profile.objects.filter(user=advisor['id']).values().first()
-            document['IdNumber'] = profile['id_number']
+            document['IdNumber'] = profile['ID_Number']
             user_region = regions.objects.filter(pk=profile['region_id'])
             document['region'] = ""
             if user_region.exists():
@@ -1156,7 +1156,7 @@ class ComplianceDocumentDetails(APIView):
                 gk = GateKeeping.objects.filter(document=pk)
                 if gk.exists():
                     gk.delete()
-            old.update(policy_number=request.data['policy_number'],clientName=request.data['clientName'],supplier=request.data['supplier'],product=request.data['product'],businessType=request.data['businessType'],otherBusinessType=request.data['otherBusinessType'])
+            old.update(lump_sum=request.data['lump_sum'],monthly_premium=request.data['monthly_premium'],commission=request.data['commission'],policy_number=request.data['policy_number'],clientName=request.data['clientName'],supplier=request.data['supplier'],product=request.data['product'],businessType=request.data['businessType'],otherBusinessType=request.data['otherBusinessType'])
             return Response(200)
         else:
             raise Http404
