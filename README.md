@@ -31,6 +31,7 @@ Deployed using Nginx and Gunicorn
 1. Updated to call it a day before it.
 - Users:
 1. Region deletion.
+2. BAC and Regional Manager update via bulk update
 - Deployment on Staging and Production 
 
 ### 09 February 2024:
