@@ -14,6 +14,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 19 February 2024:
+- Email
+1. SMTP Server Updated
+- Deployment on Staging and Production 
+
 ### 16 February 2024:
 - ROA
 1. Disclosure Products Bulk update
