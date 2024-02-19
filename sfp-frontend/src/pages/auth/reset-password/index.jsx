@@ -101,7 +101,7 @@ const ResetPasswordPage = () => {
                                     </div>
                                 </div>
                             </form>
-                            <div className="updated-footer position-absolute bottom-0 start-50 translate-middle">
+                            <div className="updated-footer text-light position-absolute bottom-0 start-50 translate-middle">
                                 © SFP by KCS 2023
                             </div>
                         </div>

@@ -347,7 +347,7 @@ def events():
                     "account" : user.pk,
                     "message" : f"""
                         <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                            <h1 style="color: #333; margin-bottom: 20px;">💰 Pay Run Announcement 💵</h1>
+                            <h1 style="color: #333; margin-bottom: 20px;">Query Day Annoucement</h1>
                             <div style="background-color: #FFCC00; color: #333; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
                                 <p style="margin: 0;">Dear {user_name},</p>
                                 <p style="margin: 0;">This is a friendly reminder that the next query is scheduled for tomorrow {event.start_time.strftime('%d %b %Y')}. Please submit any pay run related query by tomorrow to ensure it's resolved before the pay run finalisation.</p>

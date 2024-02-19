@@ -584,6 +584,7 @@ from djoser import utils
 from djoser.conf import settings
 import environ
 import os
+from django.core.mail import send_mail, EmailMultiAlternatives
 env = environ.Env(
     # set casting, default value
 )
@@ -597,7 +598,7 @@ class PasswordResetEmail(BaseEmailMessage):
         context = super().get_context_data()
 
         user = context.get("user")
-        context["site"] = "SFP Web ROA"
+        context["site"] = "SFP Online"
         context["URL"] = env('FRONTEND_URL') +"/auth/reset-password-confirm"
         context["uid"] = utils.encode_uid(user.pk)
         context["token"] = default_token_generator.make_token(user)
@@ -610,7 +611,7 @@ class PasswordChangedConfirmationEmail(BaseEmailMessage):
     def get_context_data(self):
         context = super().get_context_data()
 
-        context["site"] = "SFP Web ROA"
+        context["site"] = "SFP Online"
         return context
 
 
