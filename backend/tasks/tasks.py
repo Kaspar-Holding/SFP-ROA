@@ -316,7 +316,7 @@ def events():
                                 <p style="margin: 0;">Dear {user_name},</p>
                                 <p style="margin: 0;">This is a friendly reminder that the next pay run 🤑 is scheduled for tomorrow {event.start_time.strftime('%d %b %Y')}.</p>
                             </div>
-                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns regarding the pay run, feel free to reach out to the HR department.</p>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns regarding the pay run, feel free to reach out.</p>
                             <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
                         </div>"""
                 }
@@ -352,7 +352,7 @@ def events():
                                 <p style="margin: 0;">Dear {user_name},</p>
                                 <p style="margin: 0;">This is a friendly reminder that the next query is scheduled for tomorrow {event.start_time.strftime('%d %b %Y')}. Please submit any pay run related query by tomorrow to ensure it's resolved before the pay run finalisation.</p>
                             </div>
-                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns regarding the pay run, feel free to reach out to the HR department.</p>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns regarding the pay run, feel free to reach out.</p>
                             <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
                         </div>"""
                 }
