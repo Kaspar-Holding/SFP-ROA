@@ -15,6 +15,7 @@ from .medical import medical_views
 from .gapcover import gc_views
 urlpatterns = [
     path('bulk/products/update/', views.BulkProductUpdate.as_view()),
+    path('bulk/products/update/v2/', views.BulkProductUpdate_v2.as_view()),
     path('formList/', views.FormListAPIs.as_view()),
     path('form/kpis-and-trends/', views.roaKPISnTrends.as_view()),
     path('form/', views.FormAPIs.as_view()),

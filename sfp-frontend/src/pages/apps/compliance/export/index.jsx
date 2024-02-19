@@ -31,16 +31,7 @@ const ExportData = () => {
     const onDowloadCSV = async (e, filter_type, year, month_date, date, from_date, to_date) => {
         e.preventDefault()
         setLoading(true)
-        Swal.fire({
-            position: "bottom-end",
-            type: "success",
-            title: "Message",
-            html: `Export Started`,
-            showConfirmButton: !1,
-            timer: 5000,
-            confirmButtonClass: "btn btn-primary",
-            buttonsStyling: !1,
-        })
+
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -54,8 +45,18 @@ const ExportData = () => {
                 Body,
                 config
             )
-            const url = `${API_URL}/${response?.data?.file}`
-            window.open(url, '_blank').focus()
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Message",
+                html: response?.data?.message,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            // const url = `${API_URL}/${response?.data?.file}`
+            // window.open(url, '_blank').focus()
         } catch (error) {
             Swal.fire({
                 position: "bottom-end",

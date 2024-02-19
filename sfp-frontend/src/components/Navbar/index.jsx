@@ -434,6 +434,14 @@ const Navbar = () => {
                                                                             :
                                                                             <></>
                                                                     }
+                                                                    {
+                                                                        notification?.downloading_link ?
+                                                                            <>
+                                                                                <a target='_blank' href={ `${API_URL}/${notification.downloading_link}` } className="btn btn-primary btn-sfp btn-sm text-light" style={ { color: 'white' } }>Download</a>
+                                                                            </>
+                                                                            :
+                                                                            <></>
+                                                                    }
                                                                     <p className="noti-time"><span className="notification-time">{ notification?.time }</span></p>
                                                                 </div>
                                                             </div>

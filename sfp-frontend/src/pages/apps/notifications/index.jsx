@@ -9,6 +9,7 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 import Link from 'next/link'
 import DashboardLayout from '../../../hocs/DashboardLayout'
+import { API_URL } from '../../../config'
 
 const Notifications = () => {
     const router = useRouter()
@@ -121,7 +122,7 @@ const Notifications = () => {
                                                 {
                                                     notification?.downloading_link ?
                                                         <>
-                                                            <a target='_blank' href={ `${process.env.REACT_APP_BACKEND_URL}/${notification.downloading_link}` } className="btn btn-primary btn-lg" style={ { color: 'white' } }>Download</a>
+                                                            <a target='_blank' href={ `${API_URL}/${notification.downloading_link}` } className="btn btn-primary btn-sm btn-sfp" style={ { color: 'white' } }>Download</a>
                                                         </>
                                                         :
                                                         <></>
@@ -143,6 +144,7 @@ const Notifications = () => {
                                                         :
                                                         <></>
                                                 }
+                                                <br />
                                                 <span className={
                                                     notification?.type == 4 ?
                                                         "time text-light"
@@ -151,7 +153,7 @@ const Notifications = () => {
                                                             "time text-light"
                                                             :
                                                             "time"
-                                                }>{ notification?.time }</span>
+                                                } style={ { fontSize: '12px' } }>{ notification?.time }</span>
                                             </div>
 
                                         )

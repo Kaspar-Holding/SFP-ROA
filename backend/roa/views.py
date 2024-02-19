@@ -10,6 +10,7 @@ from data.serializers import AssuranceInvestmentSerializers, AssuranceRiskSerial
 from data.serializers import ShortTermInsurancePersonalSerializers, MedicalSerializers, GapCoverSerializers, DisclosuresProductProviders_Serializer, DisclosuresAdvisorSubCodes_Serializer
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
+from tasks.tasks import roa_disclosure_products_update
 from rest_framework import status
 from django.http import Http404
 from django.db.models import Q, Count, Sum
@@ -1065,6 +1066,15 @@ class BulkProductUpdate(APIView):
         if request.user.is_superuser == False:
             return StreamingHttpResponse(error401(), content_type='text/event-stream')
         return StreamingHttpResponse(response(request.data), content_type='text/event-stream')
+
+class BulkProductUpdate_v2(APIView):
+    def post(self, request, format=None):
+        if not request.user.is_superuser:
+            return Response(401)
+        else:
+            roa_disclosure_products_update.delay(request.user.pk, request.data)
+            return Response({"message": "Product excel file added to queue"})
+
     
 
 class advisorDisclosureProducts(APIView):

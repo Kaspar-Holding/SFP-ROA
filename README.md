@@ -17,6 +17,10 @@ Deployed using Nginx and Gunicorn
 ### 19 February 2024:
 - Email
 1. SMTP Server Updated
+- Compliance
+1. Export is now done using the Celery to avoid the 504 error
+- ROA
+1. Disclosure Products Update is now done using the Celery to avoid the 504 error
 - Deployment on Staging and Production 
 
 ### 16 February 2024:

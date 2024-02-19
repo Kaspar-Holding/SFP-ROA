@@ -69,7 +69,7 @@ def getAllNotifications(request):
             else:
                 time =  f"{(currentTime - notification.created_at).days} days ago."
             link = None
-            if notification.downloading_link != "" and datetime.now(timezone.utc) < notification.downloading_expiry:
+            if notification.downloading_link != "":
                 link = notification.downloading_link
             data.append({
                 'title' : notification.title,
@@ -124,7 +124,7 @@ def getAnnoucementNotifications(request):
             else:
                 time =  f"{(currentTime - notification.created_at).days} days ago."
             link = None
-            if notification.downloading_link != "" and datetime.now(timezone.utc) < notification.downloading_expiry:
+            if notification.downloading_link != "" and datetime.now(timezone.utc):
                 link = notification.downloading_link
             data.append({
                 'id' : notification.pk,

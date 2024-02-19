@@ -123,7 +123,7 @@ const LogsList = () => {
             <DashboardLayout
 
                 appTitle={ 'Logs' }
-                app={ 'users' }
+                app={ 'notifications' }
             >
                 {
                     Loaded ?
