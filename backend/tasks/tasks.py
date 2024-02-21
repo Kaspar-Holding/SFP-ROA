@@ -1366,7 +1366,6 @@ def roa_disclosure_products_update(userId, data):
                         else:
                             print(disclosure_product_serializer.errors)
                             total_products_added += 1
-                            create_log = f"<p>Product {product} added</p>"
                     else:
                         disclosure_product_data = {
                             "product" : product,
