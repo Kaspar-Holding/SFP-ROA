@@ -62,10 +62,10 @@ class FormListAPIs(APIView):
             data = Disclosures.objects.filter(advisorId=request.user.pk)
         if data.exists():
             search_query = SearchQuery(request.data['search_query'], search_type='websearch')
-            search_vector = SearchVector('clientName','clientIdNumber', 'clientPhoneNumber')
+            search_vector = SearchVector('policy_number','client_name','client_id_number', 'client_contact', 'client_email')
             if "search_query" in request.data and request.data['search_query'] != "":
-                data = data.annotate(search=search_vector).filter(search=search_query).values().order_by('-created_at')
-                # data = data.filter(Q(clientName__icontains=request.data['search_query'])|Q(clientIdNumber__icontains=request.data['search_query'])|Q(clientEmail__icontains=request.data['search_query'])).values().order_by('-created_at')
+                # data = data.annotate(search=search_vector).filter(search=search_query).values().order_by('-created_at')
+                data = data.filter(Q(policy_number__icontains=request.data['search_query'])|Q(client_name__icontains=request.data['search_query'])|Q(client_id_number__icontains=request.data['search_query'])|Q(client_contact__icontains=request.data['search_query'])|Q(client_email__icontains=request.data['search_query'])).values().order_by('-created_at')
             else:
                 data = data.values().order_by('-created_at')
             # data = data.values().order_by('-created_at')
@@ -124,9 +124,11 @@ class FormAPIs(APIView):
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
         serializer = Disclosures_Serializer(snippet)
-        products = DisclosuresProducts.objects.filter(formId=pk)
+        products = DisclosuresProducts.objects.filter(~Q(product_provider=None),formId=pk)
         products_data = []
         for product in products:
+            if product is None:
+                continue
             subcode = ""
             advisorProduct = DisclosuresAdvisorSubCodes.objects.filter(product=product.product_provider.pk)
             if advisorProduct.exists():

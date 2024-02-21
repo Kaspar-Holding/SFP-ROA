@@ -11,6 +11,8 @@ import { useRouter } from 'next/router'
 import Moment from 'moment'
 import dynamic from 'next/dynamic'
 import { API_URL } from '../../../../../config'
+import UserPagination from '../../../../../modules/LogPagination'
+import LogPagination from '../../../../../modules/LogPagination'
 
 const LogList = () => {
     const router = useRouter()
@@ -30,7 +32,10 @@ const LogList = () => {
     }
     const [TotalLogs, setTotalLogs] = useState(0)
     const [PageSize, setPageSize] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [TotalPages, setTotalPages] = useState(1)
     const loadLog = async (log_id, page_number, load) => {
+        setCurrentPage(page_number)
         load ? setLoaded(true) : ""
         try {
             const Body = JSON.stringify({ log_id, page_number })
@@ -39,7 +44,8 @@ const LogList = () => {
                 Body,
                 config
             )
-            setPageSize(response?.data?.data?.total_logs)
+            setTotalLogs(response?.data?.data?.total_logs)
+            setTotalPages(response?.data?.data?.total_pages)
             setLogDetails(response?.data?.data?.logInfo)
             setLogContent(response?.data?.data?.logData)
             setLogKPIs(response?.data?.data?.kpisData)
@@ -65,20 +71,20 @@ const LogList = () => {
         loadLog(lId, 1, true)
     }, [lId])
 
-    const rowsPerPage = 10
+    // const rowsPerPage = 10
 
-    const [currentPage, setCurrentPage] = useState(1);
+    // const [currentPage, setCurrentPage] = useState(1);
 
-    const handleClick = (newPage) => {
-        setCurrentPage(newPage);
-    }
+    // const handleClick = (newPage) => {
+    //     setCurrentPage(newPage);
+    // }
 
-    let startPage = Math.max(currentPage - 1, 1);
-    let endPage = Math.min(startPage + 2, Math.ceil(LogContent?.length / rowsPerPage));
+    // let startPage = Math.max(currentPage - 1, 1);
+    // let endPage = Math.min(startPage + 2, Math.ceil(LogContent?.length / rowsPerPage));
 
-    if (endPage - startPage < 2) {
-        startPage = Math.max(endPage - 2, 1);
-    }
+    // if (endPage - startPage < 2) {
+    //     startPage = Math.max(endPage - 2, 1);
+    // }
     return (
         <Layout
             title={ "Log Details" }
@@ -180,7 +186,7 @@ const LogList = () => {
                                             </thead>
                                             <tbody className='tableContent'>
                                                 {
-                                                    LogContent?.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage).map((log, index) => {
+                                                    LogContent?.map((log, index) => {
                                                         return (
                                                             <tr key={ index } className={ log?.log_type === 3 ? "table-success" : log?.log_type === 5 ? "table-danger" : "" }>
                                                                 <th scope="row">{ index + 1 }</th>
@@ -222,43 +228,19 @@ const LogList = () => {
                                                 }
                                             </tbody>
                                         </table>
-                                        <nav aria-label="Page navigation example">
-                                            <ul className="pagination justify-content-center">
-                                                {
-                                                    currentPage != 1 ?
-                                                        <>
-                                                            <li className={ `page-item ${currentPage === 1 && 'disabled'}` }>
-                                                                <button className="page-link" onClick={ () => handleClick(1) }>First</button>
-                                                            </li>
-                                                            <li className={ `page-item ${currentPage === 1 && 'disabled'}` }>
-                                                                <button className="page-link" onClick={ () => handleClick(currentPage - 1) }>Previous</button>
-                                                            </li>
-                                                        </>
-                                                        :
-                                                        null
-                                                }
-                                                {
-                                                    [...Array(endPage - startPage + 1)].map((e, i) => (
-                                                        <li key={ i + startPage } className={ `page-item ${currentPage === i + startPage ? 'active' : ''}` }>
-                                                            <button className="page-link" onClick={ () => handleClick(i + startPage) }>{ i + startPage }</button>
-                                                        </li>
-                                                    ))
-                                                }
-                                                {
-                                                    currentPage != Math.ceil(LogContent?.length / rowsPerPage) ?
-                                                        <>
-                                                            <li className={ `page-item ${currentPage === Math.ceil(LogContent?.length / rowsPerPage) && 'disabled'}` }>
-                                                                <button className="page-link" onClick={ () => handleClick(currentPage + 1) }>Next</button>
-                                                            </li>
-                                                            <li className={ `page-item ${currentPage === Math.ceil(LogContent?.length / rowsPerPage) && 'disabled'}` }>
-                                                                <button className="page-link" onClick={ () => handleClick(Math.ceil(LogContent?.length / rowsPerPage)) }>Last</button>
-                                                            </li>
-                                                        </>
-                                                        :
-                                                        null
-                                                }
-                                            </ul>
-                                        </nav>
+                                        {
+                                            TotalLogs !== 0 && TotalLogs != 1 ?
+                                                <LogPagination
+                                                    currentPage={ currentPage }
+                                                    setPage={ setCurrentPage }
+                                                    totalPages={ TotalPages }
+                                                    pageSize={ PageSize }
+                                                    logId={ lId }
+                                                    onPageChange={ loadLog }
+                                                />
+                                                :
+                                                <></>
+                                        }
                                     </div>
                                 </div>
                             </div>

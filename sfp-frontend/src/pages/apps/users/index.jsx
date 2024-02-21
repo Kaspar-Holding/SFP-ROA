@@ -144,6 +144,11 @@ const Users = () => {
     }, [])
 
 
+    if (typeof window != 'undefined' && !user?.is_superuser) {
+        router.push('/')
+    }
+
+
     // Chart Configurtions
     // Pie Chart
     const pieChartOptions = {

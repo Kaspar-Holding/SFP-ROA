@@ -14,6 +14,17 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 21 February 2024:
+- Tasks
+1. Disclosure Products Bulk update bug resolved
+- Users
+1. Manual User Creation with Password Generator
+- ROA
+1. Added Policy Number
+- Insights
+1. Added Advisor Position in selected region
+- Deployment on Staging and Production 
+
 ### 19 February 2024:
 - Email
 1. SMTP Server Updated

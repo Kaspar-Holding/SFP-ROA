@@ -177,15 +177,16 @@ class commissionInsights(APIView):
         if user.userType == 3:
             regional_manager = region_manager.objects.filter(manager=user.pk)
             if regional_manager.exists():
-                available_regions = available_regions.filter(id=regional_manager.first().region.pk)
+                available_regions = available_regions.filter(id=regional_manager.first().region.pk).values('region')
         if user.userType == 5:
             region_ids = user_profile.objects.filter(bac=user.pk)
             if region_ids.exists():
                 region_ids = list(region_ids.values_list('region',flat=True))
-                available_regions = available_regions.filter(id__in=region_ids)
+                available_regions = available_regions.filter(id__in=region_ids).values('region')
         if user.userType == 6:
-            region = user_profile.objects.filter(user=user.pk).first()
-            reviewsData = reviewsData.filter(advisor=region.region.pk)
+            region = user_profile.objects.filter(user=user.pk).first().region
+            reviewsData = reviewsData.filter(region=region.region)
+            available_regions = available_regions.filter(id=region.pk).values('region')
         # Region wise Trend
         region_commission_trend = []
         regionsData = []
@@ -198,7 +199,9 @@ class commissionInsights(APIView):
             #     if gk.exists():
             #         gk = gk.values().latest('version')
             #         commission += float(gk['commission'].replace(',', '.'))
+            # print(reviewsData)
             commission = reviewsData.filter(region=region['region'])
+            # print(commission)
             if commission.exists():
                 commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
             else:
@@ -489,7 +492,8 @@ class investmentInsights(APIView):
                 available_regions = available_regions.filter(id__in=region_ids)
         if user.userType == 6:
             region = user_profile.objects.filter(user=user.pk).first()
-            reviewsData = reviewsData.filter(advisor=region.region.pk)
+            reviewsData = reviewsData.filter(advisor=user.pk)
+            available_regions = available_regions.filter(id=region.region.pk)
         # Region wise Trend
         region_investment_trend = []
         regionsData = []
@@ -1043,7 +1047,8 @@ class monitoringInsights(APIView):
                 available_regions = available_regions.filter(id__in=region_ids)
         if user.userType == 6:
             region = user_profile.objects.filter(user=user.pk).first()
-            reviewsData = reviewsData.filter(advisor=region.region.pk)
+            reviewsData = reviewsData.filter(advisor=user.pk)
+            available_regions = available_regions.filter(id=region.region.pk)
         top_regions = []
         for region in available_regions:
             reviewIds = ComplianceDocument.objects.filter(region=region['region']).values_list('id', flat=True)
@@ -1072,6 +1077,8 @@ class monitoringInsights(APIView):
         top_regions = sorted(top_regions, key=lambda d: d['first_approval'], reverse=True)
         # Top 10 Advisors
         available_advisors = UserAccount.objects.filter(userType=6).values()
+        if user.userType == 6:
+            available_advisors = available_advisors.filter(id=user.pk)
         top_advisors = []
         for advisor in available_advisors:
             reviewIds = ComplianceDocument.objects.filter(advisor=advisor['id']).values_list('id', flat=True)
@@ -1570,6 +1577,11 @@ class advisorInsights(APIView):
 
     def post(self, request):
         advisors = user_profile.objects.filter(user__userType=6)
+        
+        roa_forms_position_per_region = 0 
+        investment_position_per_region = 0 
+        first_approved_position_per_region = 0 
+
         user = request.user
         filterType = int(request.data['filterType'])
         year = request.data['year']
@@ -1607,6 +1619,7 @@ class advisorInsights(APIView):
                         advisor_ids = list(advisor_ids.values_list('user',flat=True))
                         compliance_data = compliance_data.filter(advisor__in=advisor_ids)
                 if user.userType == 6:
+                    advisors = advisors.filter(user=user.pk)
                     compliance_data = compliance_data.filter(advisor=user.pk)
                     roa_data = roa_data.filter(advisorId=user.pk)
             if filterType == 1:
@@ -1737,6 +1750,7 @@ class advisorInsights(APIView):
             advisorsData['roa_trend'] = roa_trend
             region_data = []
             available_regions = regions.objects.all()
+
             if user.userType == 3:
                 regional_manager = region_manager.objects.filter(manager=user.pk)
                 if regional_manager.exists():
@@ -1750,8 +1764,54 @@ class advisorInsights(APIView):
                 advisorRegion = user_profile.objects.get(user=user.pk).region
                 available_regions = available_regions.filter(id=advisorRegion.pk)
                 advisors = advisors.filter(user__pk=user.pk)
+
+            if user.userType == 6:
+                position_regions = regions.objects.all()
+                if region != "all":
+                    position_regions = position_regions.filter(region=region)
+                roa_position_data = []
+                investment_position_data = []
+                for region in regions.objects.all():
+                    advisors_list = user_profile.objects.filter(user__userType=6, region=region.pk)
+                    for advisor in advisors_list:
+                        total_forms = Disclosures.objects.filter(advisorId=advisor.user.pk).count()
+                        if total_forms != 0:
+                            roa_position_data.append({
+                                "advisor" : advisor.user.pk,
+                                "total_forms" : Disclosures.objects.filter(advisorId=advisor.user.pk).count()
+                            })
+                        investment_data = ComplianceDocument.objects.filter(advisor=advisor.user.pk)
+                        lump_sum = investment_data.aggregate(total_investment_lump_sum=Sum(Cast('lump_sum', output_field=FloatField())))['total_investment_lump_sum']
+                        recurring = investment_data.aggregate(total_investment_recurring=Sum(Cast('monthly_premium', output_field=FloatField())))['total_investment_recurring']
+                        lump_sum = lump_sum if lump_sum is not None else 0
+                        recurring = recurring if recurring is not None else 0
+                        total_investment = lump_sum + recurring
+                        if total_investment != 0:
+                            investment_position_data.append({
+                                "advisor" : advisor.user.pk,
+                                "advisor_name" : advisor.Full_Name,
+                                "total_investment" : lump_sum + recurring
+                            })
+                roa_position_data = sorted(roa_position_data, key=lambda d: d['total_forms'], reverse=True)
+                investment_position_data = sorted(investment_position_data, key=lambda d: d['total_investment'], reverse=True)                
+                for i in range(len(roa_position_data)):
+                    if roa_position_data[i]['advisor'] == user.pk:
+                        roa_forms_position_per_region = i+1
+                        break
+                
+                for i in range(len(investment_position_data)):
+                    if investment_position_data[i]['advisor'] == user.pk:
+                        investment_position_per_region = i+1
+                        break
+                    
+
+                    
+
             for region in available_regions:
-                advisors_ids = list(user_profile.objects.filter(user__userType=6, region=region.pk).values_list('user__pk', flat=True))
+                if user.userType == 6:
+                    advisors_ids = list(user_profile.objects.filter(user__userType=6, user=user.pk, region=region.pk).values_list('user__pk', flat=True))
+                else:
+                    advisors_ids = list(user_profile.objects.filter(user__userType=6, region=region.pk).values_list('user__pk', flat=True))
                 forms = roa_data.filter(advisorId__in=advisors_ids)
                 total_forms = forms.count()
                 total_forms = total_forms if total_forms else 0
@@ -1762,9 +1822,14 @@ class advisorInsights(APIView):
                     'total_forms': total_forms,
                     'total_completed': total_completed_forms
                 })
-            region_data = sorted(region_data, key=lambda d: d['total_forms'], reverse=True)
-            advisorsData['region_wise_data'] = region_data
 
+            region_data = sorted(region_data, key=lambda d: d['total_forms'], reverse=True)
+
+            advisorsData['region_wise_data'] = region_data
+            advisorsData['roa_forms_position_per_region'] = roa_forms_position_per_region
+            advisorsData['investment_position_per_region'] = investment_position_per_region
+            advisorsData['first_approved_position_per_region'] = first_approved_position_per_region
+            print(advisors)
             advisor_wise_data = []
             for advisor in advisors:
                 forms = roa_data.filter(advisorId=advisor.user.pk)

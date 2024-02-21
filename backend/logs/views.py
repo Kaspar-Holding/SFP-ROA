@@ -58,6 +58,7 @@ class LogView(APIView):
         log = Log.objects.filter(account=request.user.pk, id=data['log_id'])
         time_taken = 0
         total_logs = 0
+        total_pages = 0
         if log.exists():
             updated_by = log.first().account.pk
             log = log.values().first()
@@ -77,13 +78,14 @@ class LogView(APIView):
             if logs.exists():
                 logs = logs.order_by('-created_at')
                 total_logs = logs.count()
-                logData = LogContentSerializer(logs, many=True).data
-                p = Paginator(logData, 10)
-                data = p.page(request.data['page_number']).object_list
+                # logData = LogContentSerializer(logs, many=True).data
+                p = Paginator(logs.values(), 20)
+                total_pages = p.num_pages
+                logData = p.page(request.data['page_number']).object_list
         kpis = LogKPIs.objects.filter(account=request.user.pk, log=data['log_id'])
         kpisData = {}
         if kpis.exists():
             kpis = kpis.values().first()
             kpisData = kpis['kpis']
         kpisData['time_taken'] = time_taken
-        return Response({'message': "Found","code": "200", "logInfo" : log, "logData" : logData, "kpisData": kpisData , "total_logs": total_logs},200)
+        return Response({'message': "Found","code": "200", "logInfo" : log, "logData" : logData, "kpisData": kpisData , "total_logs": total_logs, "total_pages": total_pages},200)

@@ -359,7 +359,7 @@ const ROA = () => {
                                                 <span className="input-group-text" id="basic-addon1">
                                                     <i className='fa-solid fa-search' />
                                                 </span>
-                                                <input type="text" className="form-control" value={ SearchQuery } onChange={ (e) => { onSearchQueryChange(e) } } placeholder="Search Client Name / ID / Phone Number" />
+                                                <input type="text" className="form-control" value={ SearchQuery } onChange={ (e) => { onSearchQueryChange(e) } } placeholder="Search Policy Number / Client Name / ID" />
                                             </div>
                                         </div>
                                         <div className='col-lg-1'>
@@ -423,6 +423,7 @@ const ROA = () => {
                                             <thead className='tableHead'>
                                                 <tr>
                                                     <th scope="col">#</th>
+                                                    <th scope="col">Policy Number</th>
                                                     <th scope="col">Client Name</th>
                                                     <th scope="col">Client ID Number</th>
                                                     <th scope="col">Client Phone</th>
@@ -440,6 +441,11 @@ const ROA = () => {
                                                                 return (
                                                                     <tr key={ i }>
                                                                         <th scope="row">{ i + 1 }</th>
+                                                                        <td>
+                                                                            {
+                                                                                form?.policy_number
+                                                                            }
+                                                                        </td>
                                                                         <td>
                                                                             {
                                                                                 form?.client_name

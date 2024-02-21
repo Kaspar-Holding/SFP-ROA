@@ -11,7 +11,7 @@ from rest_framework.response import Response
 from django.http import StreamingHttpResponse
 from rest_framework.decorators import api_view, APIView
 from data.models import UserAccount, user_profile, regions, region_manager
-from data.serializers import UserAccountsSerializers, regions_Serializer, user_profile_Serializer, region_manager_Serializer
+from data.serializers import UserAccountsSerializers, regions_Serializer, user_profile_Serializer, region_manager_Serializer, UserCreateSerializer
 from django.core.files.base import ContentFile
 import re
 import base64
@@ -1014,3 +1014,21 @@ class RegionsDetailsAPI(APIView):
             region_data.delete()
             return Response(200)
         return Response(404)
+    
+class CreateUserAPI(APIView):
+
+    def post(self, request):
+        if not request.user.is_superuser:
+            return Response(401)
+        data = request.data
+        if data['userType'] == 0:
+            data['is_superuser'] = True
+        data['is_active'] = 1
+        data['admin_id'] = request.user.pk
+        serializer = UserCreateSerializer(data=data)
+        if serializer.is_valid():
+            serializer.create(serializer.validated_data)
+        else:
+            print(serializer.errors)
+            return Response({"errors":serializer.errors}, 401)
+        return Response({"message": "User Created Successfully"}, 201)

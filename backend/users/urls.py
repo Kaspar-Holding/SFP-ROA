@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     # path('alert/' , views.sendEmail,name='Alert Email'),
+    path('create/' , views.CreateUserAPI.as_view(),name='User List and KPIs'),
     path('list/' , views.UsersList.as_view(),name='User List and KPIs'),
     path('regions/' , views.RegionsAPI.as_view(),name='Regions'),
     path('region/details/<str:pk>/' , views.RegionsDetailsAPI.as_view(),name='Regions'),

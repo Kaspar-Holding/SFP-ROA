@@ -630,12 +630,12 @@ const AdvisorsInsights = () => {
                             <Loader />
                             :
                             <>
-                                <div className='row row-cols-5'>
+                                <div className='row'>
                                     <div className='col'>
                                         <div className="card text-center">
                                             <div className="card-body">
                                                 <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_ROA_forms) }</h5>
-                                                <span className='scoreCard-title'>Total Forms</span>
+                                                <span className='scoreCard-title'>Total { user?.userType == 6 ? <br /> : "" }Forms</span>
                                             </div>
                                         </div>
                                     </div>
@@ -643,7 +643,7 @@ const AdvisorsInsights = () => {
                                         <div className="card text-center">
                                             <div className="card-body">
                                                 <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_reviews) }</h5>
-                                                <span className='scoreCard-title'>Compliances Reviews</span>
+                                                <span className='scoreCard-title'>Compliances { user?.userType == 6 ? <br /> : "" }Reviews</span>
                                             </div>
                                         </div>
                                     </div>
@@ -651,7 +651,7 @@ const AdvisorsInsights = () => {
                                         <div className="card text-center">
                                             <div className="card-body">
                                                 <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_approved) }</h5>
-                                                <span className='scoreCard-title'>Compliances Approved</span>
+                                                <span className='scoreCard-title'>Compliances { user?.userType == 6 ? <br /> : "" }Approved</span>
                                             </div>
                                         </div>
                                     </div>
@@ -659,7 +659,7 @@ const AdvisorsInsights = () => {
                                         <div className="card text-center">
                                             <div className="card-body">
                                                 <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total_not_approved) }</h5>
-                                                <span className='scoreCard-title'>Compliances Resubmission</span>
+                                                <span className='scoreCard-title'>Compliances { user?.userType == 6 ? <br /> : "" }Resubmission</span>
                                             </div>
                                         </div>
                                     </div>
@@ -667,12 +667,40 @@ const AdvisorsInsights = () => {
                                         <div className="card text-center">
                                             <div className="card-body">
                                                 <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.total__partial_approved) }</h5>
-                                                <span className='scoreCard-title'>Compliances Partial Approved</span>
+                                                <span className='scoreCard-title'>Compliances Partial { user?.userType == 6 ? <br /> : "" } Approved</span>
                                             </div>
                                         </div>
                                     </div>
                                     {
-
+                                        user?.userType == 6 ?
+                                            <>
+                                                <div className='col'>
+                                                    <div className="card text-center">
+                                                        <div className="card-body">
+                                                            <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.roa_forms_position_per_region) }</h5>
+                                                            <span className='scoreCard-title'>Position in Region <br />(Forms)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className='col'>
+                                                    <div className="card text-center">
+                                                        <div className="card-body">
+                                                            <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.investment_position_per_region) }</h5>
+                                                            <span className='scoreCard-title'>Position in Region <br />(Investment)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {/* <div className='col'>
+                                                    <div className="card text-center">
+                                                        <div className="card-body">
+                                                            <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.first_approved_position_per_region) }</h5>
+                                                            <span className='scoreCard-title'>Position in Region <br /> (1st Approved)</span>
+                                                        </div>
+                                                    </div>
+                                                </div> */}
+                                            </>
+                                            :
+                                            <></>
                                     }
                                 </div>
                                 <hr />

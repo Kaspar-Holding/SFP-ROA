@@ -1304,6 +1304,8 @@ def roa_disclosure_products_update(userId, data):
                         continue
                     if product == "Sanlam":
                         continue
+                    if product == "ProductsList":
+                        continue
                     if "Unnamed" in product:
                         continue
                     disclosure_product = DisclosuresProductProviders.objects.filter(product=product)

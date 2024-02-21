@@ -121,6 +121,17 @@ const SideBar = ({ appTitle, app }) => {
 
                 }
                 {
+                    app == "users" ?
+                        <div className="d-grid gap-2">
+                            <Link href={ `/apps/${app}/create` } className="btn btn-primary btn-sfp" >
+                                <i className='bi pe-none me-2 fa-solid fa-file'></i>
+                                Create new User
+                            </Link>
+                        </div>
+                        : <></>
+
+                }
+                {
                     app === "notifications" && user?.is_superuser ?
                         <div className="d-grid gap-2">
                             <Link href={ `/apps/${app}/create` } className="btn btn-primary btn-sfp" >

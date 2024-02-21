@@ -3125,7 +3125,6 @@ class loadagents(APIView):
             advisors = UserAccount.objects.filter(id=user.pk).order_by('first_name')
             if advisors.exists():
                 advisors = advisors.values()
-                print(advisors)
                 data = []
                 for advisor in advisors:
                     profile = user_profile.objects.filter(user=advisor['id'])
