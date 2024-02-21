@@ -1365,68 +1365,68 @@ def roa_disclosure_products_update(userId, data):
                                         log_content_serializer.create(log_content_serializer.validated_data)
                                     else:
                                         print(log_content_serializer.errors)
-                        else:
-                            print(disclosure_product_serializer.errors)
-                            total_products_added += 1
-                            create_log = f"<p>Product {product} added</p>"
+                    else:
+                        print(disclosure_product_serializer.errors)
+                        total_products_added += 1
+                        create_log = f"<p>Product {product} added</p>"
 
-                            disclosure_product_data = {
-                                "product" : product,
-                                "product_type" : product_type,
-                            }
-                            disclosure_product_serializer = DisclosuresProductProviders_Serializer(data=disclosure_product_data)
-                            if disclosure_product_serializer.is_valid():
-                                disclosure_product = disclosure_product_serializer.create(disclosure_product_serializer.validated_data)
+                        disclosure_product_data = {
+                            "product" : product,
+                            "product_type" : product_type,
+                        }
+                        disclosure_product_serializer = DisclosuresProductProviders_Serializer(data=disclosure_product_data)
+                        if disclosure_product_serializer.is_valid():
+                            disclosure_product = disclosure_product_serializer.create(disclosure_product_serializer.validated_data)
+                            logContent = {
+                                "account" : input_user.pk,
+                                "log" : log_id,
+                                "log_type" : 1,
+                                "log_description" : f"Product {product} already exists.",
+                            } 
+                            log_content_serializer = LogContentSerializer(data=logContent)
+                            if log_content_serializer.is_valid():
+                                log_content_serializer.create(log_content_serializer.validated_data)
+                            else:
+                                print(log_content_serializer.errors)
+                        else:
+                            print(disclosure_product_serializer.errors) 
+                        update_user_product_data = {
+                            "email": user,
+                            "user": user_data.user.pk,
+                            "product": disclosure_product.pk,
+                            "subcode": user_product_data[product]
+                        }
+                        old_data = DisclosuresAdvisorSubCodes.objects.filter(user=user_data.user.pk, product=disclosure_product.pk)
+                        if old_data.exists():
+                            serializer = DisclosuresAdvisorSubCodes_Serializer(instance=old_data.first(), data = update_user_product_data)
+                            if serializer.is_valid():
+                                serializer.save()
                                 logContent = {
                                     "account" : input_user.pk,
                                     "log" : log_id,
                                     "log_type" : 1,
-                                    "log_description" : f"Product {product} already exists.",
+                                    "log_description" : f"Product {product} for user {user_data.Full_Name} updated.",
                                 } 
                                 log_content_serializer = LogContentSerializer(data=logContent)
                                 if log_content_serializer.is_valid():
                                     log_content_serializer.create(log_content_serializer.validated_data)
                                 else:
                                     print(log_content_serializer.errors)
-                            else:
-                                print(disclosure_product_serializer.errors) 
-                            update_user_product_data = {
-                                "email": user,
-                                "user": user_data.user.pk,
-                                "product": disclosure_product.pk,
-                                "subcode": user_product_data[product]
-                            }
-                            old_data = DisclosuresAdvisorSubCodes.objects.filter(user=user_data.user.pk, product=disclosure_product.pk)
-                            if old_data.exists():
-                                serializer = DisclosuresAdvisorSubCodes_Serializer(instance=old_data.first(), data = update_user_product_data)
-                                if serializer.is_valid():
-                                    serializer.save()
-                                    logContent = {
-                                        "account" : input_user.pk,
-                                        "log" : log_id,
-                                        "log_type" : 1,
-                                        "log_description" : f"Product {product} for user {user_data.Full_Name} updated.",
-                                    } 
-                                    log_content_serializer = LogContentSerializer(data=logContent)
-                                    if log_content_serializer.is_valid():
-                                        log_content_serializer.create(log_content_serializer.validated_data)
-                                    else:
-                                        print(log_content_serializer.errors)
-                            else:
-                                serializer = DisclosuresAdvisorSubCodes_Serializer(data = update_user_product_data)
-                                if serializer.is_valid():
-                                    serializer.create(serializer.validated_data)
-                                    logContent = {
-                                        "account" : input_user.pk,
-                                        "log" : log_id,
-                                        "log_type" : 1,
-                                        "log_description" : f"Product {product} for user {user_data.Full_Name} added.",
-                                    } 
-                                    log_content_serializer = LogContentSerializer(data=logContent)
-                                    if log_content_serializer.is_valid():
-                                        log_content_serializer.create(log_content_serializer.validated_data)
-                                    else:
-                                        print(log_content_serializer.errors)
+                        else:
+                            serializer = DisclosuresAdvisorSubCodes_Serializer(data = update_user_product_data)
+                            if serializer.is_valid():
+                                serializer.create(serializer.validated_data)
+                                logContent = {
+                                    "account" : input_user.pk,
+                                    "log" : log_id,
+                                    "log_type" : 1,
+                                    "log_description" : f"Product {product} for user {user_data.Full_Name} added.",
+                                } 
+                                log_content_serializer = LogContentSerializer(data=logContent)
+                                if log_content_serializer.is_valid():
+                                    log_content_serializer.create(log_content_serializer.validated_data)
+                                else:
+                                    print(log_content_serializer.errors)
     title = "Disclosure Products"
     message  = "ROA Disclosures Products bulk update completed"
     notificationData = {
