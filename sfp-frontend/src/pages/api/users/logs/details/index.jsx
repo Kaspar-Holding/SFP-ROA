@@ -23,10 +23,7 @@ export default async (req, res) => {
             }
         }
 
-        const Body = JSON.stringify({
-            log_id: req.body
-        }
-        )
+        const Body = JSON.stringify(req.body)
 
         try {
             const apiResponse = await axios.post(

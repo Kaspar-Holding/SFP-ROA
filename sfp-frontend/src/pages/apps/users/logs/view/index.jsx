@@ -28,16 +28,18 @@ const LogList = () => {
             'Accept': 'application/json',
         }
     }
-
-    const loadLog = async (lId, load) => {
+    const [TotalLogs, setTotalLogs] = useState(0)
+    const [PageSize, setPageSize] = useState(1)
+    const loadLog = async (log_id, page_number, load) => {
         load ? setLoaded(true) : ""
         try {
-            const Body = JSON.stringify(lId)
+            const Body = JSON.stringify({ log_id, page_number })
             const response = await axios.post(
                 '/api/users/logs/details',
                 Body,
                 config
             )
+            setPageSize(response?.data?.data?.total_logs)
             setLogDetails(response?.data?.data?.logInfo)
             setLogContent(response?.data?.data?.logData)
             setLogKPIs(response?.data?.data?.kpisData)
@@ -60,7 +62,7 @@ const LogList = () => {
     }
 
     useEffect(() => {
-        loadLog(lId, true)
+        loadLog(lId, 1, true)
     }, [lId])
 
     const rowsPerPage = 10

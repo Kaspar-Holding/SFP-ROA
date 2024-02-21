@@ -1080,7 +1080,7 @@ class BulkProductUpdate_v2(APIView):
 class advisorDisclosureProducts(APIView):
 
     def get(self, request):
-        disclosureProducts = DisclosuresAdvisorSubCodes.objects.filter(user=request.user.pk)
+        disclosureProducts = DisclosuresAdvisorSubCodes.objects.filter(~Q(product=None), user=request.user.pk)
         products_data = []
         for product in disclosureProducts:
             products_data.append({
