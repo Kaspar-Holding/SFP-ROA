@@ -1273,7 +1273,6 @@ def roa_disclosure_products_update(userId, data):
             product_type = 3
 
         disclosures_product_df = pd.read_excel(csvData, sheet_name=sheet, header = 1)
-        logger.info(f"Sheet {sheet} has products {disclosures_product_df.columns}")
 
         disclosures_product_df.fillna('', inplace=True)
         disclosures_product_df.rename(columns={'Unnamed: 0': 'ProductsList'}, inplace=True)
@@ -1297,7 +1296,6 @@ def roa_disclosure_products_update(userId, data):
                 continue
             user_product_data = disclosures_product_df.iloc[disclosures_product_df.loc[disclosures_product_df['ProductsList']==user].index[0]].to_dict()
             update_user_product_data = {k: v for k, v in user_product_data.items() if v != ""}
-            logger.info(update_user_product_data)
             user_data = user_profile.objects.filter(user__email__iexact=user)
             if user_data.exists():
                 user_data = user_data.first()
@@ -1365,11 +1363,11 @@ def roa_disclosure_products_update(userId, data):
                                         log_content_serializer.create(log_content_serializer.validated_data)
                                     else:
                                         print(log_content_serializer.errors)
+                        else:
+                            print(disclosure_product_serializer.errors)
+                            total_products_added += 1
+                            create_log = f"<p>Product {product} added</p>"
                     else:
-                        print(disclosure_product_serializer.errors)
-                        total_products_added += 1
-                        create_log = f"<p>Product {product} added</p>"
-
                         disclosure_product_data = {
                             "product" : product,
                             "product_type" : product_type,
