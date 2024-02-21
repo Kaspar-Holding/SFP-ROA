@@ -1297,6 +1297,7 @@ def roa_disclosure_products_update(userId, data):
                 continue
             user_product_data = disclosures_product_df.iloc[disclosures_product_df.loc[disclosures_product_df['ProductsList']==user].index[0]].to_dict()
             update_user_product_data = {k: v for k, v in user_product_data.items() if v != ""}
+            logger.info(update_user_product_data)
             user_data = user_profile.objects.filter(user__email__iexact=user)
             if user_data.exists():
                 user_data = user_data.first()
