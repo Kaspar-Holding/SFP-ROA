@@ -1250,6 +1250,7 @@ def roa_disclosure_products_update(userId, data):
     total_products_added = 0
     total_products_updated = 0
     for sheet in sheet_names:
+        logger.info(f"Started for {sheet}")
         total_sheets += 1
         logContent = {
             "account" : input_user.pk,
@@ -1272,6 +1273,7 @@ def roa_disclosure_products_update(userId, data):
             product_type = 3
 
         disclosures_product_df = pd.read_excel(csvData, sheet_name=sheet, header = 1)
+        logger.info(f"Sheet {sheet} has products {disclosures_product_df.columns}")
 
         disclosures_product_df.fillna('', inplace=True)
         disclosures_product_df.rename(columns={'Unnamed: 0': 'ProductsList'}, inplace=True)

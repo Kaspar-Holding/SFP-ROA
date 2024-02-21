@@ -71,7 +71,6 @@ class LogView(APIView):
                     user = user.first()
                     log['updated_by'] = user.first_name + " " + user.last_name
             logs = LogContent.objects.filter( ~Q(log_description=''), account=request.user.pk, log=log['id'])
-            print(logs)
             logData = []
             time_taken = round((log['closed_at'] - log['created_at']).total_seconds() / 60, 2) if log['status'] == 1 else 0
             if logs.exists():

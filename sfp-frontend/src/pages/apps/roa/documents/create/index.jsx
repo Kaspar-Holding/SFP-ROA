@@ -270,6 +270,7 @@ const CreateROA = () => {
         try {
             const response = await axios.get('/api/roa/products', config)
             setDisclosureProducts(response?.data?.data)
+            setProductData(response?.data?.data)
         } catch (error) {
             console.log(error.response)
             Swal.fire({

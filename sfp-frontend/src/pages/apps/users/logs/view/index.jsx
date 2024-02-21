@@ -38,7 +38,6 @@ const LogList = () => {
                 Body,
                 config
             )
-
             setLogDetails(response?.data?.data?.logInfo)
             setLogContent(response?.data?.data?.logData)
             setLogKPIs(response?.data?.data?.kpisData)
@@ -62,7 +61,7 @@ const LogList = () => {
 
     useEffect(() => {
         loadLog(lId, true)
-    }, [])
+    }, [lId])
 
     const rowsPerPage = 10
 
