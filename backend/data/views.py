@@ -417,8 +417,8 @@ def viewFormData(request):
 
 @api_view(['POST'])
 def updateFormData(request):
-    if Form.objects.filter(formId=request.data['formId']).exists():
-        form = Form.objects.get(formId=request.data['formId'])
+    if Form.objects.filter(formId=request.data['formId'], advisorId=request.user.pk).exists():
+        form = Form.objects.filter(formId=request.data['formId'], advisorId=request.user.pk).latest('id')
         serializer = FormSerializers(instance=form, data=request.data)
         if serializer.is_valid():
             serializer.save()
