@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        {% load static %}
+        {% load intlib %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .div {
+                padding-bottom: 1%;
+            }
+            .row {margin: 0;padding: 0;}
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .row2 {margin-left: 5%;}
+            .row3 {margin-left: 2%;}
+
+            .row2:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .row1 {margin: 0;}
+
+            .row1:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+              
+            .column {
+                float: left;
+                width: 22%;
+                padding: 0 10px;
+            }
+              
+            .column2 {
+                float: left;
+                width: 22%;
+                padding: 0 10px;
+            }
+                
+            .column2_1 {
+                float: left;
+                width: 22%;
+                padding: 0 1px;
+            }
+                
+            .column2_2 {
+                float: left;
+                width: 25%;
+                padding: 0 1px;
+            }
+              
+            .column22 {
+                float: left;
+                width: 40%;
+                padding-left: 10px;
+            }
+              
+            .column21 {
+                float: left;
+                width: 22%;
+                padding: 0px;
+            }
+              
+            .white {
+                color: white;
+            }
+              
+            .column12 {
+                float: left;
+                width: 99%;
+                padding: 0 10px;
+                text-align: justify;
+            }
+              
+            .column11 {
+                float: left;
+                padding-left: 10px;
+                width: 79%;
+                text-align: justify;
+            }
+
+            span {
+                word-wrap: break-word;
+                width: 100%;
+                white-space: normal;
+              }
+              
+            .column10 {
+                float: left;
+                padding-left: 10px;
+                width: 89%;
+                text-align: justify;
+            }
+              
+            .col4 {
+                float: left;
+                width: 30%;
+                padding: 0 1px;
+            }
+              
+            .column5 {
+                float: left;
+                width: 35%;
+                padding: 0 10px;
+            }
+
+            .column5_1 {
+                float: left;
+                width: 50%;
+                padding: 0 10px;
+            }
+              
+            .column5_2 {
+                float: left;
+                width: 15%;
+                padding: 0 10px;
+            }
+              
+            .column5_3 {
+                float: left;
+                width: 50%;
+                padding: 0 20px;
+            }
+              
+              
+            .column4 {
+                float: left;
+                width: 6%;
+            }
+              
+            .column42 {
+                float: left;
+                width: 1%;
+            }
+              
+              
+            .column41 {
+                float: left;
+                width: 18%;
+                padding: 0 10px;
+            }
+            
+            .col3 {
+                float: left;
+                width: 31%;
+                padding: 0 10px;
+            }
+            
+            
+            .col33 {
+                float: left;
+                width: 25%;
+                padding: 0 10px;
+            }
+            
+            .col7 {
+                float: left;
+                width: 60%;
+                padding: 0 10px;
+            }
+            
+            .col1 {
+                float: left;
+                width: 10%;
+            }
+            
+            .col99 {
+                float: left;
+                width: 85%;
+            }
+            
+            .col9 {
+                float: left;
+                width: 35%;
+            }
+              
+            .column3 {
+                float: left;
+                width: 12%;
+                padding: 0 10px;
+            }
+              
+            .column31 {
+                float: left;
+                width: 19%;
+                padding: 0 0px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+              
+            .column33 {
+                float: left;
+                width: 19%;
+                padding: 0 0px;
+                font-size: 12px;
+            }
+              
+            .column32 {
+                float: left;
+                width: 19%;
+                padding: 0 0px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-size: 12px;
+            }
+              
+            .column6 {
+                float: left;
+                width: 50%;
+                padding: 0 10px;
+            }
+              
+            .column61 {
+                float: left;
+                width: 40%;
+                padding-left: 3%;
+            }
+            {% if company == "SFP" %}
+                .header {
+                    color: #14848A;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    fontWeight:'bold';
+                }
+                ol li {
+                    color: #00788A;
+                }
+                .colorheader {
+                    color: #00788A;
+                }
+            {% endif %}
+            {% if company == "FS4P" %}
+                .header {
+                    color: #6AC7D2;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    fontWeight:'bold';
+                }
+                ol li {
+                    color: #6AC7D2;
+                }
+                .colorheader {
+                    color: #6AC7D2;
+                }
+            {% endif %}
+            {% if company == "AFP" %}
+                .header {
+                    color: #0074C9;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    fontWeight:'bold';
+                }
+                ol li {
+                    color: #0074C9;
+                }
+                .colorheader {
+                    color: #0074C9;
+                }
+            {% endif %}
+            {% if company == "SFP" %}
+                .background {
+                    color: #00788A
+                }
+            {% endif %}
+            {% if company == "FS4P" %}
+                .background {
+                    color: #6AC7D2
+                }
+            {% endif %}
+            {% if company == "AFP" %}
+                .background {
+                    color: #0074C9
+                }
+            {% endif %}
+            ol > li:marker {
+                font-weight: bold;
+            }
+            input[type=radio] { 
+                -webkit-transform: scale(6);
+                transform: scale(6);
+                -webkit-transform-origin: left;
+            }
+            input[type=checkbox] { 
+                -webkit-transform: scale(6);
+                transform: scale(6);
+                -webkit-transform-origin: left;
+            }
+        </style>
+    </head>
+    <body>
+        {% if company == 'SFP' %}
+            <img  src="{% get_media_prefix %}logo.png" class='iconDetails'/>
+        {% endif %}
+        {% if company == 'FS4P' %}
+            <div style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+                <img  src="{% get_media_prefix %}fs4p_logo.jpg" class='iconDetails'/>
+            </div>
+        {% endif %}
+        {% if company == 'AFP' %}
+            <img  src="{% get_media_prefix %}afp_logo.png" class='iconDetails'/>
+        {% endif %}
+        <br/>
+        <br/>
+        {% if dra_status %}
+            <div>
+                <b class="header">DYNAMIC RISK ASSESSMENT</b>
+            </div>
+            <div>
+                <br/>
+                <div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 15px;'>
+                    <div class='row div'>
+                        <div class="column">
+                            <b>Business Unit Risk</b>
+                        </div>
+                        <div class="column">
+                            <span class="" >
+                                {% if RF_ClientType_id == 1 and RF_Transaction_Flow_id == 1 %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 42 and RF_Scores.TransactionInFlowRiskLevel < 42 and RF_Scores.DReputationRiskLevel == 1 %}
+                                        <span style="green"><b>Low</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 65 and RF_Scores.ClientIndividualRiskLevel > 42 and RF_Scores.TransactionInFlowRiskLevel < 65 and RF_Scores.TransactionInFlowRiskLevel > 42 and RF_Scores.DReputationRiskLevel == 2  %}
+                                        <span style="#FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel > 65 and RF_Scores.TransactionInFlowRiskLevel > 65 and RF_Scores.DReputationRiskLevel == 3 %}
+                                        <span style="red"><b>High</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.DReputationRiskLevel == 4  %}
+                                        <span style="maroon"><b>Intolerable</b></span>
+                                    {% endif %}
+                                {% endif %}
+                                {% if RF_ClientType_id == 2 and RF_Transaction_Flow_id == 1 %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 42 and RF_Scores.TransactionInFlowRiskLevel < 42 and RF_Scores.DReputationRiskLevel == 1 %}
+                                        <span style="green"><b>Low</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 65 and RF_Scores.ClientLegalRiskLevel > 42 and RF_Scores.TransactionInFlowRiskLevel < 65 and RF_Scores.TransactionInFlowRiskLevel > 42 and RF_Scores.DReputationRiskLevel == 2  %}
+                                        <span style="#FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel > 65 and RF_Scores.TransactionInFlowRiskLevel > 65 and RF_Scores.DReputationRiskLevel == 3 %}
+                                        <span style="red"><b>High</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.DReputationRiskLevel == 4  %}
+                                        <span style="maroon"><b>Intolerable</b></span>
+                                    {% endif %}
+                                {% endif %}
+                                {% if RF_ClientType_id == 1 and RF_Transaction_Flow_id == 2 %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 42 and RF_Scores.TransactionOutFlowRiskLevel < 42 and RF_Scores.DReputationRiskLevel == 1 %}
+                                        <span style="green"><b>Low</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 65 and RF_Scores.ClientIndividualRiskLevel > 42 and RF_Scores.TransactionOutFlowRiskLevel < 65 and RF_Scores.TransactionOutFlowRiskLevel > 42 and RF_Scores.DReputationRiskLevel == 2  %}
+                                        <span style="#FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel > 65 and RF_Scores.TransactionOutFlowRiskLevel > 65 and RF_Scores.DReputationRiskLevel == 3 %}
+                                        <span style="red"><b>High</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.DReputationRiskLevel == 4  %}
+                                        <span style="maroon"><b>Intolerable</b></span>
+                                    {% endif %}
+                                {% endif %}
+                                {% if RF_ClientType_id == 2 and RF_Transaction_Flow_id == 2 %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 42 and RF_Scores.TransactionOutFlowRiskLevel < 42 and RF_Scores.DReputationRiskLevel == 1 %}
+                                        <span style="green"><b>Low</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 65 and RF_Scores.ClientLegalRiskLevel > 42 and RF_Scores.TransactionOutFlowRiskLevel < 65 and RF_Scores.TransactionOutFlowRiskLevel > 42 and RF_Scores.DReputationRiskLevel == 2  %}
+                                        <span style="#FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel > 65 and RF_Scores.TransactionOutFlowRiskLevel > 65 and RF_Scores.DReputationRiskLevel == 3 %}
+                                        <span style="red"><b>High</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.DReputationRiskLevel == 4  %}
+                                        <span style="maroon"><b>Intolerable</b></span>
+                                    {% endif %}
+                                {% endif %}
+                            </span>
+                        </div>                   
+                        <div class="column">
+                            <b>Date</b>
+                        </div>
+                        <div class="column">
+                            <span class="text-start form-select" >
+                                {{ RF_Date }}
+                            </span>
+                        </div>                   
+                    </div>
+                    <hr />
+                    <div class='row div'>
+                        <div class="column">
+                            <b>Client Name</b>
+                        </div>
+                        <div class="column">
+                            <span class="" >
+                                {{ RF_ClientName }}
+                            </span>
+                        </div>                   
+                        <div class="column">
+                            <b>Client ID</b>
+                        </div>
+                        <div class="column">
+                            <span class="text-start form-select" >
+                                {{ RF_ClientId }}
+                            </span>
+                        </div>                   
+                    </div>
+                    <hr />
+                    <div class='row div'>
+                        <div class="column">
+                            <b>Completed By:</b>
+                        </div>
+                        <div class="column">
+                            <span class="" >
+                                {{ RF_CompleteByName }}
+                            </span>
+                        </div>                   
+                        <div class="column">
+                            <b>Completed By: Role/Designation</b>
+                        </div>
+                        <div class="column">
+                            <span class="text-start form-select" >
+                                {{ RF_CompleteByRole }}
+                            </span>
+                        </div>                   
+                    </div>
+                    <hr />
+                    <br />
+                    <div class='row div'>
+                        <div class="column">
+                            <b>Overall Dynamic Risk:</b>
+                        </div>
+                        <div class="column">
+                            <b class="" >                                
+                                {% if RF_ClientType_id == 1 and RF_Transaction_Flow_id == 1 %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 42 and RF_Scores.TransactionInFlowRiskLevel < 42 and RF_Scores.DReputationRiskLevel == 1 %}
+                                        <span style="green"><b>Low</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 65 and RF_Scores.ClientIndividualRiskLevel > 42 and RF_Scores.TransactionInFlowRiskLevel < 65 and RF_Scores.TransactionInFlowRiskLevel > 42 and RF_Scores.DReputationRiskLevel == 2  %}
+                                        <span style="#FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel > 65 and RF_Scores.TransactionInFlowRiskLevel > 65 and RF_Scores.DReputationRiskLevel == 3 %}
+                                        <span style="red"><b>High</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.DReputationRiskLevel == 4  %}
+                                        <span style="maroon"><b>Intolerable</b></span>
+                                    {% endif %}
+                                {% endif %}
+                                {% if RF_ClientType_id == 2 and RF_Transaction_Flow_id == 1 %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 42 and RF_Scores.TransactionInFlowRiskLevel < 42 and RF_Scores.DReputationRiskLevel == 1 %}
+                                        <span style="green"><b>Low</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 65 and RF_Scores.ClientLegalRiskLevel > 42 and RF_Scores.TransactionInFlowRiskLevel < 65 and RF_Scores.TransactionInFlowRiskLevel > 42 and RF_Scores.DReputationRiskLevel == 2  %}
+                                        <span style="#FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel > 65 and RF_Scores.TransactionInFlowRiskLevel > 65 and RF_Scores.DReputationRiskLevel == 3 %}
+                                        <span style="red"><b>High</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.DReputationRiskLevel == 4  %}
+                                        <span style="maroon"><b>Intolerable</b></span>
+                                    {% endif %}
+                                {% endif %}
+                                {% if RF_ClientType_id == 1 and RF_Transaction_Flow_id == 2 %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 42 and RF_Scores.TransactionOutFlowRiskLevel < 42 and RF_Scores.DReputationRiskLevel == 1 %}
+                                        <span style="green"><b>Low</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 65 and RF_Scores.ClientIndividualRiskLevel > 42 and RF_Scores.TransactionOutFlowRiskLevel < 65 and RF_Scores.TransactionOutFlowRiskLevel > 42 and RF_Scores.DReputationRiskLevel == 2  %}
+                                        <span style="#FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel > 65 and RF_Scores.TransactionOutFlowRiskLevel > 65 and RF_Scores.DReputationRiskLevel == 3 %}
+                                        <span style="red"><b>High</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.DReputationRiskLevel == 4  %}
+                                        <span style="maroon"><b>Intolerable</b></span>
+                                    {% endif %}
+                                {% endif %}
+                                {% if RF_ClientType_id == 2 and RF_Transaction_Flow_id == 2 %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 42 and RF_Scores.TransactionOutFlowRiskLevel < 42 and RF_Scores.DReputationRiskLevel == 1 %}
+                                        <span style="green"><b>Low</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 65 and RF_Scores.ClientLegalRiskLevel > 42 and RF_Scores.TransactionOutFlowRiskLevel < 65 and RF_Scores.TransactionOutFlowRiskLevel > 42 and RF_Scores.DReputationRiskLevel == 2  %}
+                                        <span style="#FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel > 65 and RF_Scores.TransactionOutFlowRiskLevel > 65 and RF_Scores.DReputationRiskLevel == 3 %}
+                                        <span style="red"><b>High</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.DReputationRiskLevel == 4  %}
+                                        <span style="maroon"><b>Intolerable</b></span>
+                                    {% endif %}
+                                {% endif %}
+                            </b>
+                        </div>                     
+                    </div>
+                    <br />
+                    <hr />                
+                    <div class='row div'>
+                        <div class="column2">
+                            <b style="color: white">A</b>
+                        </div>
+                        <div class="column2">                        
+                            <b style="color: white">A</b>
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">A</b>
+                        </div>          
+                        {% if advisor.is_superuser %}
+                            <div class="column3">                        
+                                <b>Score</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b>Weight</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b>Risk Factor</b>
+                            </div>                     
+                        {% endif %}          
+                    </div>
+                    <hr />              
+                    <div class='row div'>
+                        <div class="column2">
+                            <b style="">A. Client Risk</b>
+                        </div>
+                        <div class="column2">                        
+                            <b style="color: white">A</b>
+                        </div>                     
+                        <div class="column4">                        
+                            {% if advisor.is_superuser %} 
+                                {% if RF_ClientType_id == 1 %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel > 65 %}
+                                        <span style="color: red"><b>High</b></span>  
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 65 and RF_Scores.ClientIndividualRiskLevel > 42 %}
+                                        <span style="color: #FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientIndividualRiskLevel < 42 %}
+                                        <span style="color: green"><b>Low</b></span>
+                                    {% endif %}
+                                {% elif RF_ClientType_id == 2 %}
+                                    {% if RF_Scores.ClientLegalRiskLevel > 65 %}
+                                        <span style="color: red"><b>High</b></span>  
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 65 and RF_Scores.ClientLegalRiskLevel > 42 %}
+                                        <span style="color: #FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.ClientLegalRiskLevel < 42 %}
+                                        <span style="color: green"><b>Low</b></span>
+                                    {% endif %}
+                                {% else %}
+                                    <span style="color: green"><b>Low</b></span>
+                                {% endif %}
+                            {% endif %}   
+                            <b style="color: white">A</b>
+                        </div>   
+                        {% if advisor.is_superuser %}    
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">               
+                                {% if RF_ClientType_id == 1 %}
+                                    <span style="color: black">{{RF_Scores.ClientIndividualRiskLevel}}</span>
+                                {% elif RF_ClientType_id == 2 %}
+                                    <span style="color: black">{{RF_Scores.ClientLegalRiskLevel}}</span>
+                                {% else %}
+                                    <span style="color: green">0</span>
+                                {% endif %}
+                            </div> 
+                        {% endif %}          
+                    </div>                    
+                    <hr />              
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Client Type</span>
+                        </div>
+                        <div class="column2">                        
+                            <span>
+                                {% if RF_ClientType_id == 1 %}Individual{% endif %}
+                                {% if RF_ClientType_id == 2 %}Legal{% endif %}
+                            </span>
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>                     
+                        <div class="column3">                        
+                            <b style="color: white">0</b>
+                        </div>                     
+                        <div class="column3">                        
+                            <b style="color: white">0</b>
+                        </div>                     
+                        <div class="column3">                        
+                            <b style="color: white">0</b>
+                        </div>                     
+                    </div>
+                    <hr />
+                    {% if RF_ClientType == 1 %}
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Occupation</span>
+                            </div>
+                            <div class="column2">                        
+                                <span>
+                                    {% if RF_Occupation == "0" %}N.A.{% endif %}
+                                    {% if RF_Occupation == "1" %}Minor/Scholar{% endif %}
+                                    {% if RF_Occupation == "2" %}Retired{% endif %}
+                                    {% if RF_Occupation == "3" %}Salaried Employee{% endif %}
+                                    {% if RF_Occupation == "4" %}Self Employed{% endif %}
+                                    {% if RF_Occupation == "5" %}Student{% endif %}
+                                    {% if RF_Occupation == "6" %}Unemployed{% endif %}
+                                </span>
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>    
+                            {% if advisor.is_superuser %}
+                                <div class="column3">                        
+                                    <span>
+                                        {{RF_Scores.ClientOccupation}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">                        
+                                    <span>
+                                        {{RF_Scores.ClientOccupationWeight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">                        
+                                    <span>
+                                        {% widthratio RF_Scores.ClientOccupation 1 RF_Scores.ClientOccupationWeight %}
+                                        {% comment %} {{RF_Scores.ClientOccupation * RF_Scores.ClientOccupationWeight}} {% endcomment %}
+                                    </span>
+                                </div>                     
+                            {% endif %}                 
+                        </div>
+                        <hr />
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Country of Birth</span>
+                            </div>
+                            <div class="column2">                        
+                                <span>
+                                    {{ RF_CountryOfBirth  }}
+                                </span>
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>    
+                            {% if advisor.is_superuser %}
+                                <div class="column3">                        
+                                    <span>
+                                        {{RF_Scores.RF_CountryOfBirth_Score}}    
+                                    </span>
+                                </div>                     
+                                <div class="column3">                        
+                                    <span>                                        
+                                        {{RF_Scores.RF_Country_Weight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">                        
+                                    <span>
+                                        {% widthratio RF_Scores.RF_CountryOfBirth_Score 1 RF_Scores.RF_Country_Weight %}
+                                        {% comment %} {{RF_Scores.RF_CountryOfBirth_Score * RF_Scores.RF_Country_Weight}} {% endcomment %}
+                                    </span>
+                                </div>                     
+                            {% endif %}                 
+                        </div>
+                        <hr />
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Country of Residence</span>
+                            </div>
+                            <div class="column2">                        
+                                <span>
+                                    {{ RF_CountryOfResidence  }}
+                                </span>
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>               
+                            {% if advisor.is_superuser %}
+                                <div class="column3">              
+                                    <span>
+                                        {{RF_Scores.RF_CountryOfResidence_Score}}    
+                                    </span>   
+                                </div>                     
+                                <div class="column3">              
+                                    <span>                                        
+                                        {{RF_Scores.RF_Country_Weight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">                  
+                                    <span>
+                                        {% widthratio RF_Scores.RF_CountryOfResidence_Score 1 RF_Scores.RF_Country_Weight %}
+                                        {% comment %} {{RF_Scores.RF_CountryOfResidence_Score * RF_Scores.RF_Country_Weight}} {% endcomment %}
+                                    </span>
+                                </div>                     
+                            {% endif %}       
+                        </div>
+                        <hr />                
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Nationality</span>
+                            </div>
+                            <div class="column2">                        
+                                <span>
+                                    {{ RF_Nationality  }}
+                                </span>
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>        
+                            
+                            {% if advisor.is_superuser %}
+                                <div class="column3">                        
+                                    <span>                                        
+                                        {{RF_Scores.RF_Nationality_Score}}    
+                                    </span>
+                                </div>                     
+                                <div class="column3">                        
+                                    <span>
+                                        {{RF_Scores.RF_Country_Weight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">                        
+                                    <span>                                        
+                                        {% comment %} {{RF_Scores.RF_Nationality_Score * RF_Scores.RF_Country_Weight}}   {% endcomment %}
+                                        {% widthratio RF_Scores.RF_Nationality_Score 1 RF_Scores.RF_Country_Weight %}
+                                    </span>
+                                </div>                     
+                            {% endif %}              
+                        </div>
+                        <hr />
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Is nationality different to current jurisdiction?</span>
+                            </div>
+                            <div class="column2">                        
+                                <span>
+                                    {% if RF_Different_Nationality == "1" %}Yes{% endif %}
+                                    {% if RF_Different_Nationality == "0" %}No{% endif %}
+                                </span>
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>       
+                            
+                            {% if advisor.is_superuser %}
+                                <div class="column3">                        
+                                    <b style="color: white">0</b>
+                                </div>                     
+                                <div class="column3">                        
+                                    <b style="color: white">0</b>
+                                </div>                     
+                                <div class="column3">                        
+                                    <b style="color: white">0</b>
+                                </div>                     
+                            {% endif %}               
+                        </div>
+                        <hr />
+                        {% if RF_Different_Nationality == "1" %}
+                            <div class='row div'>
+                                <div class="column2">
+                                    <span>Country of tax residence</span>
+                                </div>
+                                <div class="column2">                        
+                                    <span>
+                                        {% if RF_CountryOfTax != "" %}
+                                            {{ RF_CountryOfTax }}
+                                        {% else %}
+                                            Not Given
+                                        {% endif %}
+                                    </span>
+                                </div>                     
+                                <div class="column4">                        
+                                    <b style="color: white">0</b>
+                                </div> 
+                                {% if advisor.is_superuser %}
+                                    <div class="column3">                  
+                                        <span>                                        
+                                            {{RF_Scores.RF_CountryOfTax_Score}}    
+                                        </span>
+                                    </div>                     
+                                    <div class="column3">         
+                                        <span>
+                                            {{RF_Scores.RF_Country_Weight}}
+                                        </span>
+                                    </div>                     
+                                    <div class="column3">                
+                                        <span>                                        
+                                            {% comment %} {{RF_Scores.RF_CountryOfTax_Score * RF_Scores.RF_Country_Weight}}   {% endcomment %}
+                                            {% widthratio RF_Scores.RF_CountryOfTax_Score 1 RF_Scores.RF_Country_Weight %}
+                                        </span>
+                                    </div>                  
+                                {% endif %} 
+                            </div>
+                            <hr />
+                        {% endif %}
+                    {% endif %}
+                    {% if RF_ClientType == 2 %}
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Country of registration</span>
+                            </div>
+                            <div class="column2">                        
+                                <span>
+                                    {{RF_CountryOfRegistration}}
+                                </span>
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div> 
+                            
+                            {% if advisor.is_superuser %}
+                                <div class="column3">                  
+                                    <span>                                        
+                                        {{RF_Scores.RF_CountryOfRegistration_Score}}    
+                                    </span>
+                                </div>                     
+                                <div class="column3">          
+                                    <span>
+                                        {{RF_Scores.RF_Country_Weight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">             
+                                    <span>                                        
+                                        {% comment %} {{RF_Scores.RF_CountryOfRegistration_Score * RF_Scores.RF_Country_Weight}}   {% endcomment %}
+                                        {% widthratio RF_Scores.RF_CountryOfRegistration_Score 1 RF_Scores.RF_Country_Weight %}
+                                    </span>
+                                </div>                  
+                            {% endif %} 
+                        </div>
+                        <hr />
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Country of Operation</span>
+                            </div>
+                            <div class="column2">                        
+                                <span>
+                                    {{RF_CountryOfOperation}}
+                                </span>
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div> 
+                            {% if advisor.is_superuser %}
+                                <div class="column3">                 
+                                    <span>                                        
+                                        {{RF_Scores.RF_CountryOfOperation_Score}}    
+                                    </span>
+                                </div>                     
+                                <div class="column3">        
+                                    <span>
+                                        {{RF_Scores.RF_Country_Weight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">        
+                                    <span>                                        
+                                        {% comment %} {{RF_Scores.RF_CountryOfOperation_Score * RF_Scores.RF_Country_Weight}}   {% endcomment %}
+                                        {% widthratio RF_Scores.RF_CountryOfOperation_Score 1 RF_Scores.RF_Country_Weight %}
+                                    </span>
+                                </div>                 
+                            {% endif %} 
+                            
+                        </div>
+                        <hr />
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Type of Legal Entity</span>
+                            </div>
+                            <div class="column2">                        
+                                <span>
+                                    {% if RF_Type_Legal_Entity %}
+                                        {{RF_Type_Legal_Entity}}
+                                    {% else %}
+                                        N.A.
+                                    {% endif %}
+                                </span>
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>
+                            {% if advisor.is_superuser %}
+                                <div class="column3">   
+                                    <span>                                        
+                                        {{RF_Scores.RF_Type_Legal_Entity_Score}}    
+                                    </span>
+                                </div>                     
+                                <div class="column3">   
+                                    <span>
+                                        {{RF_Scores.RF_Type_Legal_Entity_Weight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">       
+                                    <span>                                        
+                                        {% comment %} {{RF_Scores.RF_Type_Legal_Entity_Score * RF_Scores.RF_Type_Legal_Entity_Weight}}   {% endcomment %}
+                                        {% widthratio RF_Scores.RF_Type_Legal_Entity_Score 1 RF_Scores.RF_Type_Legal_Entity_Weight %}
+                                    </span>
+                                </div>                 
+                            {% endif %}  
+                        </div>
+                        <hr />
+                    {% endif %}
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Industry</span>
+                        </div>
+                        <div class="column2">  
+                            {% if RF_Industry %}
+                                <span>
+                                    {{RF_Industry}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>         
+                        {% if advisor.is_superuser %}
+                            <div class="column3">               
+                                <span>                                        
+                                    {{RF_Scores.RF_Industry_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">       
+                                <span>
+                                    {{RF_Scores.RF_Industry_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3">         
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_Industry_Score * RF_Scores.RF_Industry_Weight}}   {% endcomment %}
+                                    {% widthratio RF_Scores.RF_Industry_Score 1 RF_Scores.RF_Industry_Weight %}
+                                </span>
+                            </div>                     
+                        {% endif %}             
+                    </div>
+                    <hr />
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Source of Funds</span>
+                        </div>
+                        <div class="column2">  
+                            {% if RF_SourceOfFunds %}
+                                <span>
+                                    {{RF_SourceOfFunds}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>   
+                        {% if advisor.is_superuser %}
+                                                
+                            <div class="column3">          
+                                <span>                                        
+                                    {{RF_Scores.RF_SourceOfFunds_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">     
+                                <span>
+                                    {{RF_Scores.RF_SourceOfFunds_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3">         
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_SourceOfFunds_Score * RF_Scores.RF_SourceOfFunds_Weight}}   {% endcomment %}
+                                    {% widthratio RF_Scores.RF_SourceOfFunds_Score 1 RF_Scores.RF_SourceOfFunds_Weight %}
+                                </span>
+                            </div>                     
+                        {% endif %}  
+                    </div>
+                    <hr />
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Relationship to client</span>
+                        </div>
+                        <div class="column2">  
+                            {% if RF_RelationshipToClient %}
+                                <span>
+                                    {{RF_RelationshipToClient}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}        
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>       
+                        {% if advisor.is_superuser %}
+                            <div class="column3">          
+                                <span>                                        
+                                    {{RF_Scores.RF_RelationshipToClient_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">      
+                                <span>
+                                    {{RF_Scores.RF_RelationshipToClient_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3">   
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_RelationshipToClient_Score * RF_Scores.RF_RelationshipToClient_Weight}}   {% endcomment %}
+                                    {% widthratio RF_Scores.RF_RelationshipToClient_Score 1 RF_Scores.RF_RelationshipToClient_Weight %}
+                                </span>
+                            </div>                     
+                        {% endif %}               
+                    </div>
+                    <hr />
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>B. Product/Service Risk</b>
+                        </div>
+                        <div class="column2">                        
+                            <b style="color: white">0</b>
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: green">Low</b>
+                        </div>           
+                        {% if advisor.is_superuser %}
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b style="color: black">3</b>
+                            </div>                     
+                        {% endif %}           
+                    </div>
+                    <hr />
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Product/Service Risk</span>
+                        </div>
+                        <div class="column2">   
+                            {% if RF_Product_Name %}
+                                <span>
+                                    {{RF_Product_Name}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}  
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>             
+                        {% if advisor.is_superuser %}
+                            <div class="column3">                        
+                                <span>
+                                    3
+                                </span>
+                            </div>                     
+                            <div class="column3">                        
+                                <span>2</span>
+                            </div>                     
+                            <div class="column3">                        
+                                <span>
+                                    {% if RF_Product_Name_id == 1 or RF_Product_Name_id == 2 or RF_Product_Name_id == 6 or RF_Product_Name_id == 9 or RF_Product_Name_id == 12 or RF_Product_Name_id == 13 or RF_Product_Name_id == 16 or RF_Product_Name_id == 19 or RF_Product_Name_id == 20 or RF_Product_Name_id == 24 or RF_Product_Name_id == 26 or RF_Product_Name_id == 27 %}
+                                        1
+                                    {% elif RF_Product_Name_id == 3 or RF_Product_Name_id == 4 or RF_Product_Name_id == 5 or RF_Product_Name_id == 8 or RF_Product_Name_id == 11 or RF_Product_Name_id == 18 or RF_Product_Name_id == 21 %}
+                                        2
+                                    {% elif RF_Product_Name_id == 7 or RF_Product_Name_id == 10 or RF_Product_Name_id == 14 or RF_Product_Name_id == 15 or RF_Product_Name_id == 17 or RF_Product_Name_id == 22 or RF_Product_Name_id == 23 or RF_Product_Name_id == 25 or RF_Product_Name_id == 28 or RF_Product_Name_id == 29 %}
+                                        3
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                    {% endif %}
+                                </span>
+                            </div>                     
+                        {% endif %}         
+                    </div>
+                    <hr />
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Product/Service Category</span>
+                        </div>
+                        <div class="column2">                        
+                            <span>
+                                Advisory services: non financial
+                                {% comment %} {{RF_Product_Category}} {% endcomment %}
+                            </span>
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>    
+                        {% if advisor.is_superuser %}
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                        {% endif %}                  
+                    </div>
+                    <hr />
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>C. Transaction Risk</b>
+                        </div>
+                        <div class="column2">                        
+                            <b style="color: white">0</b>
+                        </div>                     
+                        <div class="column4">                        
+                            {% if advisor.is_superuser %} 
+                                {% if RF_Transaction_Flow_id == 1 %}
+                                    {% if RF_Scores.TransactionInFlowRiskLevel > 65 %}
+                                        <span style="color: red"><b>High</b></span>  
+                                    {% endif %}
+                                    {% if RF_Scores.TransactionInFlowRiskLevel < 65 and RF_Scores.TransactionInFlowRiskLevel > 42 %}
+                                        <span style="color: #FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.TransactionInFlowRiskLevel < 42 %}
+                                        <span style="color: green"><b>Low</b></span>
+                                    {% endif %}
+                                {% elif RF_Transaction_Flow_id == 2 %}
+                                    {% if RF_Scores.TransactionOutFlowRiskLevel > 65 %}
+                                        <span style="color: red"><b>High</b></span>  
+                                    {% endif %}
+                                    {% if RF_Scores.TransactionOutFlowRiskLevel < 65 and RF_Scores.TransactionOutFlowRiskLevel > 42 %}
+                                        <span style="color: #FFA500"><b>Medium</b></span>
+                                    {% endif %}
+                                    {% if RF_Scores.TransactionOutFlowRiskLevel < 42 %}
+                                        <span style="color: green"><b>Low</b></span>
+                                    {% endif %}
+                                {% else %}
+                                    <span style="color: green"><b>Low</b></span>
+                                {% endif %}
+                            {% endif %}   
+                            <b style="color: white">A</b>
+                        </div>   
+                        {% if advisor.is_superuser %}    
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">               
+                                {% if RF_Transaction_Flow_id == 1 %}
+                                    <span style="color: black">{{RF_Scores.TransactionInFlowRiskLevel}}</span>
+                                {% elif RF_Transaction_Flow_id == 2 %}
+                                    <span style="color: black">{{RF_Scores.TransactionOutFlowRiskLevel}}</span>
+                                {% else %}
+                                    <span style="color: green">0</span>
+                                {% endif %}
+                            </div> 
+                        {% endif %}         
+                    </div>
+                    <hr />
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Transaction Flow</span>
+                        </div>
+                        <div class="column2">           
+                            {% if RF_Transaction_Flow %}
+                                <span>
+                                    {{RF_Transaction_Flow}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}               
+                        </div>                     
+                        <div class="column4">
+                            {% if RF_Transaction_Flow_id == 3 %}
+                                <b>Low</b>
+                            {% else %}
+                                <b style="color: white">0</b>
+                            {% endif %}                      
+                        </div>     
+                        {% if advisor.is_superuser %}
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                        {% endif %}                 
+                    </div>
+                    <hr />
+                    {% if RF_Transaction_Flow_id != 0 and RF_Transaction_Flow_id != 3 %}
+
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Method of Transaction</span>
+                        </div>
+                        <div class="column2">          
+                            {% if RF_Transaction_Method %}
+                                <span>
+                                    {{RF_Transaction_Method}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}  
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>   
+                        {% if advisor.is_superuser %}
+                            <div class="column3">          
+                                <span>                                        
+                                    {{RF_Scores.RF_Transaction_Method_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">   
+                                <span>
+                                    {{RF_Scores.RF_Transaction_Method_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3"> 
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_Transaction_Method_Score * RF_Scores.RF_Transaction_Method_Weight}}   {% endcomment %}
+                                    {% widthratio RF_Scores.RF_Transaction_Method_Score 1 RF_Scores.RF_Transaction_Method_Weight %}
+                                </span>
+                            </div>                     
+                        {% endif %}                   
+                    </div>
+                    <hr />
+                        
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Reason of Transaction</span>
+                        </div>
+                        <div class="column2">         
+                            {% if RF_Transaction_Reason %}
+                                <span>
+                                    {{RF_Transaction_Reason}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}     
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>    
+                        {% if advisor.is_superuser %}
+                            <div class="column3">             
+                                <span>                                        
+                                    {{RF_Scores.RF_Transaction_Reason_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">    
+                                <span>
+                                    {{RF_Scores.RF_Transaction_Reason_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3">          
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_Transaction_Reason_Score * RF_Scores.RF_Transaction_Reason_Weight}} {% endcomment %}
+                                    {% widthratio RF_Scores.RF_Transaction_Reason_Score 1 RF_Scores.RF_Transaction_Reason_Weight %}  
+                                </span>
+                            </div>                     
+                        {% endif %}                  
+                    </div>
+                    <hr />
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Has this Reason for Transaction been considered as a High Risk in any Typology report/guidance?</span>
+                        </div>
+                        <div class="column2">          
+                            {% if RF_High_Transaction_Reason %}
+                                <span>
+                                    {{RF_High_Transaction_Reason}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}     
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>     
+                        {% if advisor.is_superuser %}
+                            <div class="column3">             
+                                <span>                                        
+                                    {{RF_Scores.RF_High_Transaction_Reason_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">    
+                                <span>
+                                    {{RF_Scores.RF_High_Transaction_Reason_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3">          
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_High_Transaction_Reason_Score * RF_Scores.RF_High_Transaction_Reason_Weight}}   {% endcomment %}
+                                    {% widthratio RF_Scores.RF_High_Transaction_Reason_Score 1 RF_Scores.RF_High_Transaction_Reason_Weight %}  
+                                </span>
+                            </div>                     
+                        {% endif %}                      
+                    </div>
+                    <hr />
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Frequency of Transaction</span>
+                        </div>
+                        <div class="column2">          
+                            {% if RF_Transaction_Frequency %}
+                                <span>
+                                    {{RF_Transaction_Frequency}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>          
+                        {% if advisor.is_superuser %}
+                            <div class="column3">             
+                                <span>                                        
+                                    {{RF_Scores.RF_Transaction_Frequency_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">    
+                                <span>
+                                    {{RF_Scores.RF_Transaction_Frequency_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3">          
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_Transaction_Frequency_Score * RF_Scores.RF_Transaction_Frequency_Weight}}   {% endcomment %}
+                                    {% widthratio RF_Scores.RF_Transaction_Frequency_Score 1 RF_Scores.RF_Transaction_Frequency_Weight %} 
+                                </span>
+                            </div>                     
+                        {% endif %}               
+                    </div>
+                    <hr />
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Value of Transaction:</span>
+                        </div>
+                        <div class="column2">         
+                            {% if RF_Transaction_Value %}
+                                <span>
+                                    {{RF_Transaction_Value}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}
+                        </div>                     
+                        <div class="column2">
+                            <span>Currency:</span>
+                        </div>
+                        <div class="column2">                        
+                            <span>
+                                {{RF_Currency_Value}}
+                            </span>
+                        </div>                     
+                    </div>
+                    <hr />
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Transaction Geography</span>
+                        </div>
+                        <div class="column2">       
+                            {% if RF_Transaction_Geography %}
+                                <span>
+                                    {{RF_Transaction_Geography}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}   
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>         
+                        {% if advisor.is_superuser %}
+                            <div class="column3">             
+                                <span>                                        
+                                    {{RF_Scores.RF_Transaction_Geography_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">    
+                                <span>
+                                    {{RF_Scores.RF_Transaction_Geography_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3">          
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_Transaction_Geography_Score * RF_Scores.RF_Transaction_Geography_Weight}}   {% endcomment %}
+                                    {% widthratio RF_Scores.RF_Transaction_Geography_Score 1 RF_Scores.RF_Transaction_Geography_Weight %} 
+                                </span>
+                            </div>                     
+                        {% endif %}         
+                    </div>
+                    <hr />
+                    {% if RF_Transaction_Geography == 1 %}
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Jurisdiction of funds</span>
+                            </div>
+                            <div class="column2">      
+                                {% if RF_Funds_Jurisdiction %}
+                                    <span>
+                                        {{RF_Funds_Jurisdiction}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %}  
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>         
+                            {% if advisor.is_superuser %}
+                                <div class="column3">             
+                                    <span>                                        
+                                        {{RF_Scores.RF_Funds_Jurisdiction_Score}}    
+                                    </span>
+                                </div>                     
+                                <div class="column3">    
+                                    <span>
+                                        {{RF_Scores.RF_Funds_Jurisdiction_Weight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">          
+                                    <span>                                        
+                                        {% comment %} {{RF_Scores.RF_Funds_Jurisdiction_Score * RF_Scores.RF_Funds_Jurisdiction_Weight}}   {% endcomment %}
+                                        {% widthratio RF_Scores.RF_Funds_Jurisdiction_Score 1 RF_Scores.RF_Funds_Jurisdiction_Weight %} 
+                                    </span>
+                                </div>                     
+                            {% endif %}                
+                        </div>
+                        <hr />
+                    {% endif %}
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Delivery channel</span>
+                        </div>
+                        <div class="column2">                        
+                            <span>
+                                Succession Finance Planning
+                                {% comment %} {{RF_Delivery_Channel}} {% endcomment %}
+                            </span>
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>                                              
+                        <div class="column3">                        
+                            <b style="color: white">0</b>
+                        </div>       
+                        <div class="column3">                        
+                            <b style="color: white">0</b>
+                        </div>       
+                        <div class="column3">                        
+                            <b style="color: white">0</b>
+                        </div>       
+                                       
+                    </div>
+                    <hr />
+                    {% if RF_Transaction_Flow_id == 2 %}
+                        <div class='row div'>
+                            <div class="column2">
+                                <span>Inception Timeframe?</span>
+                            </div>
+                            <div class="column2">       
+                                {% if RF_Inception_Timeframe %}
+                                    <span>
+                                        {{RF_Inception_Timeframe}}
+                                    </span>
+                                {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                {% endif %} 
+                            </div>                     
+                            <div class="column4">                        
+                                <b style="color: white">0</b>
+                            </div>     
+                            {% if advisor.is_superuser %}
+                                <div class="column3">             
+                                    <span>                                        
+                                        {{RF_Scores.RF_Inception_Timeframe_Score}}    
+                                    </span>
+                                </div>                     
+                                <div class="column3">    
+                                    <span>
+                                        {{RF_Scores.RF_Inception_Timeframe_Weight}}
+                                    </span>
+                                </div>                     
+                                <div class="column3">          
+                                    <span>                                        
+                                        {% comment %} {{RF_Scores.RF_Inception_Timeframe_Score * RF_Scores.RF_Inception_Timeframe_Weight}}   {% endcomment %}
+                                        {% widthratio RF_Scores.RF_Inception_Timeframe_Score 1 RF_Scores.RF_Inception_Timeframe_Weight %} 
+                                    </span>
+                                </div>                     
+                            {% endif %}                      
+                        </div>
+                        <hr />
+                    {% endif %}
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Linked Party acting on behalf of Client?</span>
+                        </div>
+                        <div class="column2">       
+                            {% if RF_Linked_Party_Acting %}
+                                <span>
+                                    {{RF_Linked_Party_Acting}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>       
+                        {% if advisor.is_superuser %}
+                            <div class="column3">             
+                                <span>                                        
+                                    {{RF_Scores.RF_Linked_Party_Acting_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">    
+                                <span>
+                                    {{RF_Scores.RF_Linked_Party_Acting_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3">          
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_Linked_Party_Acting_Score * RF_Scores.RF_Linked_Party_Acting_Weight}}   {% endcomment %}
+                                    {% widthratio RF_Scores.RF_Linked_Party_Acting_Score 1 RF_Scores.RF_Linked_Party_Acting_Weight %} 
+                                </span>
+                            </div>                     
+                        {% endif %}                       
+                    </div>
+                    <hr />
+
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Linked Party paying / receiving funds</span>
+                        </div>
+                        <div class="column2">      
+                            {% if RF_Linked_Party_Paying %}
+                                <span>
+                                    {{RF_Linked_Party_Paying}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %} 
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>     
+                        {% if advisor.is_superuser %}
+                            <div class="column3">             
+                                <span>                                        
+                                    {{RF_Scores.RF_Linked_Party_Paying_Score}}    
+                                </span>
+                            </div>                     
+                            <div class="column3">    
+                                <span>
+                                    {{RF_Scores.RF_Linked_Party_Paying_Weight}}
+                                </span>
+                            </div>                     
+                            <div class="column3">          
+                                <span>                                        
+                                    {% comment %} {{RF_Scores.RF_Linked_Party_Paying_Score * RF_Scores.RF_Linked_Party_Paying_Weight}}   {% endcomment %}
+                                    {% widthratio RF_Scores.RF_Linked_Party_Paying_Score 1 RF_Scores.RF_Linked_Party_Paying_Weight %} 
+                                </span>
+                            </div>                     
+                        {% endif %}      
+                    </div>
+                    <hr />
+                    {% endif %}
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>D. Reputation Risk</b>
+                        </div>
+                        <div class="column2">                        
+                            <span>
+                                {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}Medium{% endif %}
+                                {% if RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8 or RF_Client_Match_id == 11 %}High{% endif %}
+                                {% if RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}Low{% endif %}
+                                {% if RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}Intolerable{% endif %}
+                            </span>
+                        </div>                     
+                        <div class="column4">                        
+                            {% if advisor.is_superuser %} 
+                                {% if RF_Scores.DReputationRiskLevel == 4 %}
+                                    <span style="color: maroon"><b>Intolerable</b></span>  
+                                {% endif %}
+                                {% if RF_Scores.DReputationRiskLevel == 3 %}
+                                    <span style="color: red"><b>High</b></span>  
+                                {% endif %}
+                                {% if RF_Scores.DReputationRiskLevel == 2 %}
+                                    <span style="color: #FFA500"><b>Medium</b></span>
+                                {% endif %}
+                                {% if RF_Scores.DReputationRiskLevel == 1 %}
+                                    <span style="color: green"><b>Low</b></span>
+                                {% endif %}
+                            {% endif %}   
+                            <b style="color: white">A</b>
+                        </div>   
+                        {% if advisor.is_superuser %}    
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">                        
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">               
+                                {% if RF_Scores.DReputationRiskLevel == 4 %}
+                                    <span style="color: maroon"><b>4</b></span>  
+                                {% endif %}
+                                {% if RF_Scores.DReputationRiskLevel == 3 %}
+                                    <span style="color: red"><b>3</b></span>  
+                                {% endif %}
+                                {% if RF_Scores.DReputationRiskLevel == 2 %}
+                                    <span style="color: #FFA500"><b>2</b></span>
+                                {% endif %}
+                                {% if RF_Scores.DReputationRiskLevel == 1 %}
+                                    <span style="color: green"><b>1</b></span>
+                                {% endif %}
+                            </div> 
+                        {% endif %}                 
+                    </div>
+                    <hr />
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Client is a true match on:</span>
+                        </div>
+                        <div class="column2">    
+                            {% if RF_Client_Match %}
+                                <span>
+                                    {{RF_Client_Match}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}  
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>        
+                        {% if advisor.is_superuser %}
+                            <div class="column3">                        
+                                <span>
+                                    {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}
+                                    2{% elif RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8 or RF_Client_Match_id == 11 %}
+                                    3{% elif RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}
+                                    1{% elif RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}
+                                    4
+                                    {% else %}
+                                        <span class="white">
+                                            0
+                                        </span>
+                                    {% endif %}
+                                </span>
+                            </div>                     
+                            <div class="column3">                        
+                                <span>1</span>
+                            </div>                     
+                            <div class="column3">                        
+                                <span>
+                                    {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}
+                                    2{% elif RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8 or RF_Client_Match_id == 11 %}
+                                    3{% elif RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}
+                                    1{% elif RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}
+                                        4
+                                    {% else %}
+                                    <span class="white">
+                                        0
+                                    </span>
+                                    {% endif %}
+                                </span>
+                            </div>                     
+                        {% endif %}              
+                    </div>
+                    <hr />
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <span>Are there Linked Parties / Beneficiaries to Client?</span>
+                        </div>
+                        <div class="column2">   
+                            {% if RF_Client_Beneficiaries %}
+                                <span>
+                                    {{RF_Client_Beneficiaries}}
+                                </span>
+                            {% else %}
+                                <span class="white">
+                                    0
+                                </span>
+                            {% endif %}  
+                        </div>                     
+                        <div class="column4">                        
+                            <b style="color: white">0</b>
+                        </div>     
+                        {% if advisor.is_superuser %}
+                            <div class="column3">                
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">               
+                                <b style="color: white">0</b>
+                            </div>                     
+                            <div class="column3">               
+                                <b style="color: white">0</b>
+                            </div>                     
+                        {% endif %}                 
+                    </div>
+                    <hr />
+                    {% if RF_Client_Beneficiaries_id == 1 %}
+                        {% if RF_LinkedParty %}
+                            {% for party in RF_LinkedParty %}
+                                <div class='row div'>
+                                    <div class="column2">
+                                        <b>Linked Party {{forloop.counter}}</b>
+                                    </div>
+                                    <div class="column2">      
+                                        <b>
+                                            {% if party.RF_LP_Adjust_Risk_id == 1 %}Low
+                                            {% elif party.RF_LP_Adjust_Risk_id == 2 %}Medium
+                                            {% elif party.RF_LP_Adjust_Risk_id == 3 %}High
+                                            {% elif party.RF_LP_Adjust_Risk_id == 4 %}Intolerable
+                                            {% else %}N.A.{% endif %}
+                                        </b>
+                                    </div>                     
+                                    <div class="column2">
+                                        <b>Adjust Risk</b>
+                                    </div>
+                                    <div class="column2"> 
+                                        {% if party.RF_LP_Adjust_Risk %}
+                                            <span>
+                                                {{party.RF_LP_Adjust_Risk}}
+                                            </span>
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                        {% endif %}                        
+                                    </div>                     
+                                </div>
+                                <hr />
+                                
+                                <div class='row div'>
+                                    <div class="column2">
+                                        <span>Name and surname</span>
+                                    </div>
+                                    <div class="column2">  
+                                        {% if party.RF_LP_Name %}
+                                            <span>
+                                                {{party.RF_LP_Name}}
+                                            </span>
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                        {% endif %}    
+                                    </div>                     
+                                    <div class="column4">                        
+                                        <b style="color: white">0</b>
+                                    </div>          
+                                    {% if advisor.is_superuser %}
+                                        <div class="column3">                   
+                                            <b style="color: white">0</b>
+                                        </div>                     
+                                        <div class="column3">            
+                                            <b style="color: white">0</b>
+                                        </div>                     
+                                        <div class="column3">                 
+                                            <b style="color: white">0</b>
+                                        </div>                     
+                                    {% endif %}            
+                                </div>
+                                <hr />
+                                
+                                <div class='row div'>
+                                    <div class="column2">
+                                        <span>Relationship to client</span>
+                                    </div>
+                                    <div class="column2">   
+                                        {% if party.RF_LP_Client_Relationship %}
+                                            <span>
+                                                {{party.RF_LP_Client_Relationship}}
+                                            </span>
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                        {% endif %}  
+                                    </div>                     
+                                    <div class="column4">                        
+                                        <b style="color: white">0</b>
+                                    </div>      
+                                    {% if advisor.is_superuser %}
+                                        <div class="column3">                    
+                                            <b style="color: white">0</b>
+                                        </div>                     
+                                        <div class="column3">             
+                                            <b style="color: white">0</b>
+                                        </div>                     
+                                        <div class="column3">                  
+                                            <b style="color: white">0</b>
+                                        </div>                     
+                                    {% endif %}                
+                                </div>
+                                <hr />
+                                
+                                <div class='row div'>
+                                    <div class="column2">
+                                        <span>ID/Passport Number/Tax Number</span>
+                                    </div>
+                                    <div class="column2">  
+                                        {% if party.RF_LP_ID %}
+                                            <span>
+                                                {{party.RF_LP_ID}}
+                                            </span>
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                        {% endif %}   
+                                    </div>                     
+                                    <div class="column4">                        
+                                        <b style="color: white">0</b>
+                                    </div>               
+                                    {% if advisor.is_superuser %}
+                                        <div class="column3">                    
+                                            <b style="color: white">0</b>
+                                        </div>                     
+                                        <div class="column3">             
+                                            <b style="color: white">0</b>
+                                        </div>                     
+                                        <div class="column3">                  
+                                            <b style="color: white">0</b>
+                                        </div>                   
+                                    {% endif %}       
+                                </div>
+                                <hr />
+                                
+                                <div class='row div'>
+                                    <div class="column2">
+                                        <span>Linked Party is a true match on</span>
+                                    </div>
+                                    <div class="column2">  
+                                        {% if party.RF_LP_Linked_Party %}
+                                            <span>
+                                                {{party.RF_LP_Linked_Party}}
+                                            </span>
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                        {% endif %}
+                                    </div>                     
+                                    <div class="column4">                        
+                                        <b style="color: white">0</b>
+                                    </div>               
+                                    {% if advisor.is_superuser %}
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_Linked_Party_id == 1 or party.RF_LP_Linked_Party_id == 4 or party.RF_LP_Linked_Party_id == 7 %}
+                                                    2
+                                                {% elif party.RF_LP_Linked_Party_id == 2 or party.RF_LP_Linked_Party_id == 5 or party.RF_LP_Linked_Party_id == 8 or party.RF_LP_Linked_Party_id == 11 %}
+                                                    3
+                                                {% elif party.RF_LP_Linked_Party_id == 3 or party.RF_LP_Linked_Party_id == 6 %}
+                                                    3
+                                                {% elif party.RF_LP_Linked_Party_id == 9 or party.RF_LP_Linked_Party_id == 10 %}
+                                                    4
+                                                {% else %}
+                                                    <span class="white">
+                                                        0
+                                                    </span>
+                                                {% endif %}
+                                            </span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>1</span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_Linked_Party_id == 1 or party.RF_LP_Linked_Party_id == 4 or party.RF_LP_Linked_Party_id == 7 %}
+                                                    2
+                                                {% elif party.RF_LP_Linked_Party_id == 2 or party.RF_LP_Linked_Party_id == 5 or party.RF_LP_Linked_Party_id == 8 or party.RF_LP_Linked_Party_id == 11 %}
+                                                    3
+                                                {% elif party.RF_LP_Linked_Party_id == 3 or party.RF_LP_Linked_Party_id == 6 %}
+                                                    3
+                                                {% elif party.RF_LP_Linked_Party_id == 9 or party.RF_LP_Linked_Party_id == 10 %}
+                                                    4
+                                                    {% else %}
+                                                        <span class="white">
+                                                            0
+                                                        </span>
+                                                {% endif %}
+                                            </span>
+                                        </div>                     
+                                    {% endif %}       
+                                </div>
+                                <hr />
+                                
+                                <div class='row div'>
+                                    <div class="column2">
+                                        <span>Is this a RCA (relative / close associate) to Client?</span>
+                                    </div>
+                                    <div class="column2">  
+                                        {% if party.RF_LP_RCA %}
+                                            <span>
+                                                {{party.RF_LP_RCA}}
+                                            </span>
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                        {% endif %} 
+                                    </div>                     
+                                    <div class="column4">                        
+                                        <b style="color: white">0</b>
+                                    </div>        
+                                    {% if advisor.is_superuser %}
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_RCA_id == 1 %}
+                                                    2
+                                                {% elif party.RF_LP_RCA_id == 2 %}
+                                                    0
+                                                    {% else %}
+                                                        <span class="white">
+                                                            0
+                                                        </span>
+                                                {% endif %}
+                                            </span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>1</span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_RCA_id == 1 %}
+                                                    2
+                                                {% elif party.RF_LP_RCA_id == 2 %}
+                                                    0
+                                                    {% else %}
+                                                        <span class="white">
+                                                            0
+                                                        </span>
+                                                {% endif %}
+                                            </span>
+                                        </div>                     
+                                    {% endif %}              
+                                </div>
+                                <hr />
+                                
+                                <div class='row div'>
+                                    <div class="column2">
+                                        <span>Country of Birth</span>
+                                    </div>
+                                    <div class="column2">  
+                                        {% if party.RF_LP_Birth_Country %}
+                                            <span>
+                                                {{party.RF_LP_Birth_Country}}
+                                            </span>
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                        {% endif %}   
+                                    </div>                     
+                                    <div class="column4">                        
+                                        <b style="color: white">0</b>
+                                    </div>               
+                                    {% if advisor.is_superuser %}
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_Birth_Country_id == 1 or party.RF_LP_Birth_Country_id == 2 or party.RF_LP_Birth_Country_id == 3 or party.RF_LP_Birth_Country_id == 4 or party.RF_LP_Birth_Country_id == 6 or party.RF_LP_Birth_Country_id == 8 or party.RF_LP_Birth_Country_id == 10 or party.RF_LP_Birth_Country_id == 13 or party.RF_LP_Birth_Country_id == 16 or party.RF_LP_Birth_Country_id == 17 or party.RF_LP_Birth_Country_id == 19 or party.RF_LP_Birth_Country_id == 20 or party.RF_LP_Birth_Country_id == 24 or party.RF_LP_Birth_Country_id == 27 or party.RF_LP_Birth_Country_id == 28 or party.RF_LP_Birth_Country_id == 29 or party.RF_LP_Birth_Country_id == 31 or party.RF_LP_Birth_Country_id == 32 or party.RF_LP_Birth_Country_id == 33 or party.RF_LP_Birth_Country_id == 36 or party.RF_LP_Birth_Country_id == 37 or party.RF_LP_Birth_Country_id == 39 or party.RF_LP_Birth_Country_id == 41 or party.RF_LP_Birth_Country_id == 42 or party.RF_LP_Birth_Country_id == 43 or party.RF_LP_Birth_Country_id == 46 or party.RF_LP_Birth_Country_id == 47 or party.RF_LP_Birth_Country_id == 48 or party.RF_LP_Birth_Country_id == 49 or party.RF_LP_Birth_Country_id == 50 or party.RF_LP_Birth_Country_id == 51 or party.RF_LP_Birth_Country_id == 52 or party.RF_LP_Birth_Country_id == 53 or party.RF_LP_Birth_Country_id == 55 or party.RF_LP_Birth_Country_id == 58 or party.RF_LP_Birth_Country_id == 62 or party.RF_LP_Birth_Country_id == 64 or party.RF_LP_Birth_Country_id == 65 or party.RF_LP_Birth_Country_id == 66 or party.RF_LP_Birth_Country_id == 67 or party.RF_LP_Birth_Country_id == 68 or party.RF_LP_Birth_Country_id == 69 or party.RF_LP_Birth_Country_id == 71 or party.RF_LP_Birth_Country_id == 72 or party.RF_LP_Birth_Country_id == 73 or party.RF_LP_Birth_Country_id == 74 or party.RF_LP_Birth_Country_id == 82 or party.RF_LP_Birth_Country_id == 85 or party.RF_LP_Birth_Country_id == 86 or party.RF_LP_Birth_Country_id == 90 or party.RF_LP_Birth_Country_id == 91 or party.RF_LP_Birth_Country_id == 92 or party.RF_LP_Birth_Country_id == 93 or party.RF_LP_Birth_Country_id == 94 or party.RF_LP_Birth_Country_id == 95 or party.RF_LP_Birth_Country_id == 97 or party.RF_LP_Birth_Country_id == 98 or party.RF_LP_Birth_Country_id == 99 or party.RF_LP_Birth_Country_id == 100 or party.RF_LP_Birth_Country_id == 103 or party.RF_LP_Birth_Country_id == 109  or party.RF_LP_Birth_Country_id == 112  or party.RF_LP_Birth_Country_id == 115  or party.RF_LP_Birth_Country_id == 116  or party.RF_LP_Birth_Country_id == 117  or party.RF_LP_Birth_Country_id == 121  or party.RF_LP_Birth_Country_id == 123  or party.RF_LP_Birth_Country_id == 124 or party.RF_LP_Birth_Country_id == 126  or party.RF_LP_Birth_Country_id == 127  or party.RF_LP_Birth_Country_id == 128  or party.RF_LP_Birth_Country_id == 129  or party.RF_LP_Birth_Country_id == 134  or party.RF_LP_Birth_Country_id == 135  or party.RF_LP_Birth_Country_id == 136 or party.RF_LP_Birth_Country_id == 139  or party.RF_LP_Birth_Country_id == 143  or party.RF_LP_Birth_Country_id == 145  or party.RF_LP_Birth_Country_id == 146  or party.RF_LP_Birth_Country_id == 148  or party.RF_LP_Birth_Country_id == 150 or party.RF_LP_Birth_Country_id == 151 or party.RF_LP_Birth_Country_id == 152 or party.RF_LP_Birth_Country_id == 153 or party.RF_LP_Birth_Country_id == 154 or party.RF_LP_Birth_Country_id == 155 or party.RF_LP_Birth_Country_id == 158 or party.RF_LP_Birth_Country_id == 160 or party.RF_LP_Birth_Country_id == 162 or party.RF_LP_Birth_Country_id == 163 or party.RF_LP_Birth_Country_id == 164 or party.RF_LP_Birth_Country_id == 165 or party.RF_LP_Birth_Country_id == 166 or party.RF_LP_Birth_Country_id == 168 or party.RF_LP_Birth_Country_id == 170 or party.RF_LP_Birth_Country_id == 172 or party.RF_LP_Birth_Country_id == 173 or party.RF_LP_Birth_Country_id == 174 or party.RF_LP_Birth_Country_id == 175 or party.RF_LP_Birth_Country_id == 176 or party.RF_LP_Birth_Country_id == 177 or party.RF_LP_Birth_Country_id == 186 or party.RF_LP_Birth_Country_id == 187 or party.RF_LP_Birth_Country_id == 188 or party.RF_LP_Birth_Country_id == 190 or party.RF_LP_Birth_Country_id == 191 or party.RF_LP_Birth_Country_id == 193 or party.RF_LP_Birth_Country_id == 195 or party.RF_LP_Birth_Country_id == 197 or party.RF_LP_Birth_Country_id == 198 or party.RF_LP_Birth_Country_id == 200 or party.RF_LP_Birth_Country_id == 202 or party.RF_LP_Birth_Country_id == 203 or party.RF_LP_Birth_Country_id == 206 or party.RF_LP_Birth_Country_id == 208 or party.RF_LP_Birth_Country_id == 209 or party.RF_LP_Birth_Country_id == 211 or party.RF_LP_Birth_Country_id == 212 or party.RF_LP_Birth_Country_id == 213 or party.RF_LP_Birth_Country_id == 214 or party.RF_LP_Birth_Country_id == 219 or party.RF_LP_Birth_Country_id == 220 or party.RF_LP_Birth_Country_id == 221 or party.RF_LP_Birth_Country_id == 222 or party.RF_LP_Birth_Country_id == 223 or party.RF_LP_Birth_Country_id == 224 or party.RF_LP_Birth_Country_id == 226 or party.RF_LP_Birth_Country_id == 230 or party.RF_LP_Birth_Country_id == 232 or party.RF_LP_Birth_Country_id == 233 or party.RF_LP_Birth_Country_id == 236 or party.RF_LP_Birth_Country_id == 237 or party.RF_LP_Birth_Country_id == 238 or party.RF_LP_Birth_Country_id == 239 %}
+                                                    3
+                                                {% elif party.RF_LP_Birth_Country_id == 5 or party.RF_LP_Birth_Country_id == 7 or party.RF_LP_Birth_Country_id == 9 or party.RF_LP_Birth_Country_id == 12 or party.RF_LP_Birth_Country_id == 25 or party.RF_LP_Birth_Country_id == 34 or party.RF_LP_Birth_Country_id == 35 or party.RF_LP_Birth_Country_id == 61 or party.RF_LP_Birth_Country_id == 76 or party.RF_LP_Birth_Country_id == 84 or party.RF_LP_Birth_Country_id == 88 or party.RF_LP_Birth_Country_id == 114 or party.RF_LP_Birth_Country_id == 130 or party.RF_LP_Birth_Country_id == 132 or party.RF_LP_Birth_Country_id == 142 or party.RF_LP_Birth_Country_id == 149 or party.RF_LP_Birth_Country_id == 159 or party.RF_LP_Birth_Country_id == 161  or party.RF_LP_Birth_Country_id == 167 or party.RF_LP_Birth_Country_id == 194 or party.RF_LP_Birth_Country_id == 215 or party.RF_LP_Birth_Country_id == 216 %}
+                                                1{% elif party.RF_LP_Birth_Country_id == 11 or party.RF_LP_Birth_Country_id == 14 or party.RF_LP_Birth_Country_id == 15 or party.RF_LP_Birth_Country_id == 18 or party.RF_LP_Birth_Country_id == 22 or party.RF_LP_Birth_Country_id == 23 or party.RF_LP_Birth_Country_id == 26 or party.RF_LP_Birth_Country_id == 30 or party.RF_LP_Birth_Country_id == 38 or party.RF_LP_Birth_Country_id == 40 or party.RF_LP_Birth_Country_id == 44 or party.RF_LP_Birth_Country_id == 45 or party.RF_LP_Birth_Country_id == 54 or party.RF_LP_Birth_Country_id == 56 or party.RF_LP_Birth_Country_id == 59 or party.RF_LP_Birth_Country_id == 60 or party.RF_LP_Birth_Country_id == 63 or party.RF_LP_Birth_Country_id == 70 or party.RF_LP_Birth_Country_id == 75 or party.RF_LP_Birth_Country_id == 77 or party.RF_LP_Birth_Country_id == 78 or party.RF_LP_Birth_Country_id == 79 or party.RF_LP_Birth_Country_id == 80 or party.RF_LP_Birth_Country_id == 81 or party.RF_LP_Birth_Country_id == 83 or party.RF_LP_Birth_Country_id == 87 or party.RF_LP_Birth_Country_id == 89 or party.RF_LP_Birth_Country_id == 96 or party.RF_LP_Birth_Country_id == 101 or party.RF_LP_Birth_Country_id == 104 or party.RF_LP_Birth_Country_id == 105 or party.RF_LP_Birth_Country_id == 108 or party.RF_LP_Birth_Country_id == 110 or party.RF_LP_Birth_Country_id == 111 or party.RF_LP_Birth_Country_id == 113 or party.RF_LP_Birth_Country_id == 118 or party.RF_LP_Birth_Country_id == 120 or party.RF_LP_Birth_Country_id == 125 or party.RF_LP_Birth_Country_id == 131 or party.RF_LP_Birth_Country_id == 133 or  party.RF_LP_Birth_Country_id == 137 or party.RF_LP_Birth_Country_id == 138 or party.RF_LP_Birth_Country_id == 140 or party.RF_LP_Birth_Country_id == 141 or party.RF_LP_Birth_Country_id == 144 or party.RF_LP_Birth_Country_id == 147 or party.RF_LP_Birth_Country_id == 156 or party.RF_LP_Birth_Country_id == 157 or party.RF_LP_Birth_Country_id == 169 or party.RF_LP_Birth_Country_id == 171 or party.RF_LP_Birth_Country_id == 178 or party.RF_LP_Birth_Country_id == 179 or party.RF_LP_Birth_Country_id == 180 or party.RF_LP_Birth_Country_id == 181 or party.RF_LP_Birth_Country_id == 182 or party.RF_LP_Birth_Country_id == 183 or party.RF_LP_Birth_Country_id == 185 or party.RF_LP_Birth_Country_id == 189 or party.RF_LP_Birth_Country_id == 192 or party.RF_LP_Birth_Country_id == 196 or party.RF_LP_Birth_Country_id == 199 or party.RF_LP_Birth_Country_id == 201 or party.RF_LP_Birth_Country_id == 204 or party.RF_LP_Birth_Country_id == 205 or party.RF_LP_Birth_Country_id == 207 or party.RF_LP_Birth_Country_id == 210 or party.RF_LP_Birth_Country_id == 218 or party.RF_LP_Birth_Country_id == 225 or party.RF_LP_Birth_Country_id == 231 or party.RF_LP_Birth_Country_id == 234 or party.RF_LP_Birth_Country_id == 235 or party.RF_LP_Birth_Country_id == 237 or party.RF_LP_Birth_Country_id == 238  %}
+                                                2{% elif party.RF_LP_Birth_Country_id == 21 or party.RF_LP_Birth_Country_id == 57 or party.RF_LP_Birth_Country_id == 106 or party.RF_LP_Birth_Country_id == 107 or party.RF_LP_Birth_Country_id == 119 or party.RF_LP_Birth_Country_id == 187 or party.RF_LP_Birth_Country_id == 217 %}
+                                                4
+                                                {% else %}
+                                                    <span class="white">
+                                                        0
+                                                    </span>{% endif %}
+                                            </span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>3</span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_Birth_Country_id == 1 or party.RF_LP_Birth_Country_id == 2 or party.RF_LP_Birth_Country_id == 3 or party.RF_LP_Birth_Country_id == 4 or party.RF_LP_Birth_Country_id == 6 or party.RF_LP_Birth_Country_id == 8 or party.RF_LP_Birth_Country_id == 10 or party.RF_LP_Birth_Country_id == 13 or party.RF_LP_Birth_Country_id == 16 or party.RF_LP_Birth_Country_id == 17 or party.RF_LP_Birth_Country_id == 19 or party.RF_LP_Birth_Country_id == 20 or party.RF_LP_Birth_Country_id == 24 or party.RF_LP_Birth_Country_id == 27 or party.RF_LP_Birth_Country_id == 28 or party.RF_LP_Birth_Country_id == 29 or party.RF_LP_Birth_Country_id == 31 or party.RF_LP_Birth_Country_id == 32 or party.RF_LP_Birth_Country_id == 33 or party.RF_LP_Birth_Country_id == 36 or party.RF_LP_Birth_Country_id == 37 or party.RF_LP_Birth_Country_id == 39 or party.RF_LP_Birth_Country_id == 41 or party.RF_LP_Birth_Country_id == 42 or party.RF_LP_Birth_Country_id == 43 or party.RF_LP_Birth_Country_id == 46 or party.RF_LP_Birth_Country_id == 47 or party.RF_LP_Birth_Country_id == 48 or party.RF_LP_Birth_Country_id == 49 or party.RF_LP_Birth_Country_id == 50 or party.RF_LP_Birth_Country_id == 51 or party.RF_LP_Birth_Country_id == 52 or party.RF_LP_Birth_Country_id == 53 or party.RF_LP_Birth_Country_id == 55 or party.RF_LP_Birth_Country_id == 58 or party.RF_LP_Birth_Country_id == 62 or party.RF_LP_Birth_Country_id == 64 or party.RF_LP_Birth_Country_id == 65 or party.RF_LP_Birth_Country_id == 66 or party.RF_LP_Birth_Country_id == 67 or party.RF_LP_Birth_Country_id == 68 or party.RF_LP_Birth_Country_id == 69 or party.RF_LP_Birth_Country_id == 71 or party.RF_LP_Birth_Country_id == 72 or party.RF_LP_Birth_Country_id == 73 or party.RF_LP_Birth_Country_id == 74 or party.RF_LP_Birth_Country_id == 82 or party.RF_LP_Birth_Country_id == 85 or party.RF_LP_Birth_Country_id == 86 or party.RF_LP_Birth_Country_id == 90 or party.RF_LP_Birth_Country_id == 91 or party.RF_LP_Birth_Country_id == 92 or party.RF_LP_Birth_Country_id == 93 or party.RF_LP_Birth_Country_id == 94 or party.RF_LP_Birth_Country_id == 95 or party.RF_LP_Birth_Country_id == 97 or party.RF_LP_Birth_Country_id == 98 or party.RF_LP_Birth_Country_id == 99 or party.RF_LP_Birth_Country_id == 100 or party.RF_LP_Birth_Country_id == 103 or party.RF_LP_Birth_Country_id == 109  or party.RF_LP_Birth_Country_id == 112  or party.RF_LP_Birth_Country_id == 115  or party.RF_LP_Birth_Country_id == 116  or party.RF_LP_Birth_Country_id == 117  or party.RF_LP_Birth_Country_id == 121  or party.RF_LP_Birth_Country_id == 123  or party.RF_LP_Birth_Country_id == 124 or party.RF_LP_Birth_Country_id == 126  or party.RF_LP_Birth_Country_id == 127  or party.RF_LP_Birth_Country_id == 128  or party.RF_LP_Birth_Country_id == 129  or party.RF_LP_Birth_Country_id == 134  or party.RF_LP_Birth_Country_id == 135  or party.RF_LP_Birth_Country_id == 136 or party.RF_LP_Birth_Country_id == 139  or party.RF_LP_Birth_Country_id == 143  or party.RF_LP_Birth_Country_id == 145  or party.RF_LP_Birth_Country_id == 146  or party.RF_LP_Birth_Country_id == 148  or party.RF_LP_Birth_Country_id == 150 or party.RF_LP_Birth_Country_id == 151 or party.RF_LP_Birth_Country_id == 152 or party.RF_LP_Birth_Country_id == 153 or party.RF_LP_Birth_Country_id == 154 or party.RF_LP_Birth_Country_id == 155 or party.RF_LP_Birth_Country_id == 158 or party.RF_LP_Birth_Country_id == 160 or party.RF_LP_Birth_Country_id == 162 or party.RF_LP_Birth_Country_id == 163 or party.RF_LP_Birth_Country_id == 164 or party.RF_LP_Birth_Country_id == 165 or party.RF_LP_Birth_Country_id == 166 or party.RF_LP_Birth_Country_id == 168 or party.RF_LP_Birth_Country_id == 170 or party.RF_LP_Birth_Country_id == 172 or party.RF_LP_Birth_Country_id == 173 or party.RF_LP_Birth_Country_id == 174 or party.RF_LP_Birth_Country_id == 175 or party.RF_LP_Birth_Country_id == 176 or party.RF_LP_Birth_Country_id == 177 or party.RF_LP_Birth_Country_id == 186 or party.RF_LP_Birth_Country_id == 187 or party.RF_LP_Birth_Country_id == 188 or party.RF_LP_Birth_Country_id == 190 or party.RF_LP_Birth_Country_id == 191 or party.RF_LP_Birth_Country_id == 193 or party.RF_LP_Birth_Country_id == 195 or party.RF_LP_Birth_Country_id == 197 or party.RF_LP_Birth_Country_id == 198 or party.RF_LP_Birth_Country_id == 200 or party.RF_LP_Birth_Country_id == 202 or party.RF_LP_Birth_Country_id == 203 or party.RF_LP_Birth_Country_id == 206 or party.RF_LP_Birth_Country_id == 208 or party.RF_LP_Birth_Country_id == 209 or party.RF_LP_Birth_Country_id == 211 or party.RF_LP_Birth_Country_id == 212 or party.RF_LP_Birth_Country_id == 213 or party.RF_LP_Birth_Country_id == 214 or party.RF_LP_Birth_Country_id == 219 or party.RF_LP_Birth_Country_id == 220 or party.RF_LP_Birth_Country_id == 221 or party.RF_LP_Birth_Country_id == 222 or party.RF_LP_Birth_Country_id == 223 or party.RF_LP_Birth_Country_id == 224 or party.RF_LP_Birth_Country_id == 226 or party.RF_LP_Birth_Country_id == 230 or party.RF_LP_Birth_Country_id == 232 or party.RF_LP_Birth_Country_id == 233 or party.RF_LP_Birth_Country_id == 236 or party.RF_LP_Birth_Country_id == 237 or party.RF_LP_Birth_Country_id == 238 or party.RF_LP_Birth_Country_id == 239 %}
+                                                    9
+                                                {% elif party.RF_LP_Birth_Country_id == 5 or party.RF_LP_Birth_Country_id == 7 or party.RF_LP_Birth_Country_id == 9 or party.RF_LP_Birth_Country_id == 12 or party.RF_LP_Birth_Country_id == 25 or party.RF_LP_Birth_Country_id == 34 or party.RF_LP_Birth_Country_id == 35 or party.RF_LP_Birth_Country_id == 61 or party.RF_LP_Birth_Country_id == 76 or party.RF_LP_Birth_Country_id == 84 or party.RF_LP_Birth_Country_id == 88 or party.RF_LP_Birth_Country_id == 114 or party.RF_LP_Birth_Country_id == 130 or party.RF_LP_Birth_Country_id == 132 or party.RF_LP_Birth_Country_id == 142 or party.RF_LP_Birth_Country_id == 149 or party.RF_LP_Birth_Country_id == 159 or party.RF_LP_Birth_Country_id == 161  or party.RF_LP_Birth_Country_id == 167 or party.RF_LP_Birth_Country_id == 194 or party.RF_LP_Birth_Country_id == 215 or party.RF_LP_Birth_Country_id == 216 %}
+                                                3{% elif party.RF_LP_Birth_Country_id == 11 or party.RF_LP_Birth_Country_id == 14 or party.RF_LP_Birth_Country_id == 15 or party.RF_LP_Birth_Country_id == 18 or party.RF_LP_Birth_Country_id == 22 or party.RF_LP_Birth_Country_id == 23 or party.RF_LP_Birth_Country_id == 26 or party.RF_LP_Birth_Country_id == 30 or party.RF_LP_Birth_Country_id == 38 or party.RF_LP_Birth_Country_id == 40 or party.RF_LP_Birth_Country_id == 44 or party.RF_LP_Birth_Country_id == 45 or party.RF_LP_Birth_Country_id == 54 or party.RF_LP_Birth_Country_id == 56 or party.RF_LP_Birth_Country_id == 59 or party.RF_LP_Birth_Country_id == 60 or party.RF_LP_Birth_Country_id == 63 or party.RF_LP_Birth_Country_id == 70 or party.RF_LP_Birth_Country_id == 75 or party.RF_LP_Birth_Country_id == 77 or party.RF_LP_Birth_Country_id == 78 or party.RF_LP_Birth_Country_id == 79 or party.RF_LP_Birth_Country_id == 80 or party.RF_LP_Birth_Country_id == 81 or party.RF_LP_Birth_Country_id == 83 or party.RF_LP_Birth_Country_id == 87 or party.RF_LP_Birth_Country_id == 89 or party.RF_LP_Birth_Country_id == 96 or party.RF_LP_Birth_Country_id == 101 or party.RF_LP_Birth_Country_id == 104 or party.RF_LP_Birth_Country_id == 105 or party.RF_LP_Birth_Country_id == 108 or party.RF_LP_Birth_Country_id == 110 or party.RF_LP_Birth_Country_id == 111 or party.RF_LP_Birth_Country_id == 113 or party.RF_LP_Birth_Country_id == 118 or party.RF_LP_Birth_Country_id == 120 or party.RF_LP_Birth_Country_id == 125 or party.RF_LP_Birth_Country_id == 131 or party.RF_LP_Birth_Country_id == 133 or  party.RF_LP_Birth_Country_id == 137 or party.RF_LP_Birth_Country_id == 138 or party.RF_LP_Birth_Country_id == 140 or party.RF_LP_Birth_Country_id == 141 or party.RF_LP_Birth_Country_id == 144 or party.RF_LP_Birth_Country_id == 147 or party.RF_LP_Birth_Country_id == 156 or party.RF_LP_Birth_Country_id == 157 or party.RF_LP_Birth_Country_id == 169 or party.RF_LP_Birth_Country_id == 171 or party.RF_LP_Birth_Country_id == 178 or party.RF_LP_Birth_Country_id == 179 or party.RF_LP_Birth_Country_id == 180 or party.RF_LP_Birth_Country_id == 181 or party.RF_LP_Birth_Country_id == 182 or party.RF_LP_Birth_Country_id == 183 or party.RF_LP_Birth_Country_id == 185 or party.RF_LP_Birth_Country_id == 189 or party.RF_LP_Birth_Country_id == 192 or party.RF_LP_Birth_Country_id == 196 or party.RF_LP_Birth_Country_id == 199 or party.RF_LP_Birth_Country_id == 201 or party.RF_LP_Birth_Country_id == 204 or party.RF_LP_Birth_Country_id == 205 or party.RF_LP_Birth_Country_id == 207 or party.RF_LP_Birth_Country_id == 210 or party.RF_LP_Birth_Country_id == 218 or party.RF_LP_Birth_Country_id == 225 or party.RF_LP_Birth_Country_id == 231 or party.RF_LP_Birth_Country_id == 234 or party.RF_LP_Birth_Country_id == 235 or party.RF_LP_Birth_Country_id == 237 or party.RF_LP_Birth_Country_id == 238  %}
+                                                6{% elif party.RF_LP_Birth_Country_id == 21 or party.RF_LP_Birth_Country_id == 57 or party.RF_LP_Birth_Country_id == 106 or party.RF_LP_Birth_Country_id == 107 or party.RF_LP_Birth_Country_id == 119 or party.RF_LP_Birth_Country_id == 187 or party.RF_LP_Birth_Country_id == 217 %}
+                                                12
+                                                {% else %}
+                                                    <span class="white">
+                                                        0
+                                                    </span>{% endif %}
+                                            </span>
+                                        </div>                     
+                                    {% endif %}       
+                                </div>
+                                <hr />
+                                
+                                <div class='row div'>
+                                    <div class="column2">
+                                        <span>Country of Residence</span>
+                                    </div>
+                                    <div class="column2">    
+                                        {% if party.RF_LP_Residence_Country %}
+                                            <span>
+                                                {{party.RF_LP_Residence_Country}}
+                                            </span>
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                        {% endif %}  
+                                    </div>                     
+                                    <div class="column4">                        
+                                        <b style="color: white">0</b>
+                                    </div>    
+                                    {% if advisor.is_superuser %}
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_Residence_Country_id == 1 or party.RF_LP_Residence_Country_id == 2 or party.RF_LP_Residence_Country_id == 3 or party.RF_LP_Residence_Country_id == 4 or party.RF_LP_Residence_Country_id == 6 or party.RF_LP_Residence_Country_id == 8 or party.RF_LP_Residence_Country_id == 10 or party.RF_LP_Residence_Country_id == 13 or party.RF_LP_Residence_Country_id == 16 or party.RF_LP_Residence_Country_id == 17 or party.RF_LP_Residence_Country_id == 19 or party.RF_LP_Residence_Country_id == 20 or party.RF_LP_Residence_Country_id == 24 or party.RF_LP_Residence_Country_id == 27 or party.RF_LP_Residence_Country_id == 28 or party.RF_LP_Residence_Country_id == 29 or party.RF_LP_Residence_Country_id == 31 or party.RF_LP_Residence_Country_id == 32 or party.RF_LP_Residence_Country_id == 33 or party.RF_LP_Residence_Country_id == 36 or party.RF_LP_Residence_Country_id == 37 or party.RF_LP_Residence_Country_id == 39 or party.RF_LP_Residence_Country_id == 41 or party.RF_LP_Residence_Country_id == 42 or party.RF_LP_Residence_Country_id == 43 or party.RF_LP_Residence_Country_id == 46 or party.RF_LP_Residence_Country_id == 47 or party.RF_LP_Residence_Country_id == 48 or party.RF_LP_Residence_Country_id == 49 or party.RF_LP_Residence_Country_id == 50 or party.RF_LP_Residence_Country_id == 51 or party.RF_LP_Residence_Country_id == 52 or party.RF_LP_Residence_Country_id == 53 or party.RF_LP_Residence_Country_id == 55 or party.RF_LP_Residence_Country_id == 58 or party.RF_LP_Residence_Country_id == 62 or party.RF_LP_Residence_Country_id == 64 or party.RF_LP_Residence_Country_id == 65 or party.RF_LP_Residence_Country_id == 66 or party.RF_LP_Residence_Country_id == 67 or party.RF_LP_Residence_Country_id == 68 or party.RF_LP_Residence_Country_id == 69 or party.RF_LP_Residence_Country_id == 71 or party.RF_LP_Residence_Country_id == 72 or party.RF_LP_Residence_Country_id == 73 or party.RF_LP_Residence_Country_id == 74 or party.RF_LP_Residence_Country_id == 82 or party.RF_LP_Residence_Country_id == 85 or party.RF_LP_Residence_Country_id == 86 or party.RF_LP_Residence_Country_id == 90 or party.RF_LP_Residence_Country_id == 91 or party.RF_LP_Residence_Country_id == 92 or party.RF_LP_Residence_Country_id == 93 or party.RF_LP_Residence_Country_id == 94 or party.RF_LP_Residence_Country_id == 95 or party.RF_LP_Residence_Country_id == 97 or party.RF_LP_Residence_Country_id == 98 or party.RF_LP_Residence_Country_id == 99 or party.RF_LP_Residence_Country_id == 100 or party.RF_LP_Residence_Country_id == 103 or party.RF_LP_Residence_Country_id == 109  or party.RF_LP_Residence_Country_id == 112  or party.RF_LP_Residence_Country_id == 115  or party.RF_LP_Residence_Country_id == 116  or party.RF_LP_Residence_Country_id == 117  or party.RF_LP_Residence_Country_id == 121  or party.RF_LP_Residence_Country_id == 123  or party.RF_LP_Residence_Country_id == 124 or party.RF_LP_Residence_Country_id == 126  or party.RF_LP_Residence_Country_id == 127  or party.RF_LP_Residence_Country_id == 128  or party.RF_LP_Residence_Country_id == 129  or party.RF_LP_Residence_Country_id == 134  or party.RF_LP_Residence_Country_id == 135  or party.RF_LP_Residence_Country_id == 136 or party.RF_LP_Residence_Country_id == 139  or party.RF_LP_Residence_Country_id == 143  or party.RF_LP_Residence_Country_id == 145  or party.RF_LP_Residence_Country_id == 146  or party.RF_LP_Residence_Country_id == 148  or party.RF_LP_Residence_Country_id == 150 or party.RF_LP_Residence_Country_id == 151 or party.RF_LP_Residence_Country_id == 152 or party.RF_LP_Residence_Country_id == 153 or party.RF_LP_Residence_Country_id == 154 or party.RF_LP_Residence_Country_id == 155 or party.RF_LP_Residence_Country_id == 158 or party.RF_LP_Residence_Country_id == 160 or party.RF_LP_Residence_Country_id == 162 or party.RF_LP_Residence_Country_id == 163 or party.RF_LP_Residence_Country_id == 164 or party.RF_LP_Residence_Country_id == 165 or party.RF_LP_Residence_Country_id == 166 or party.RF_LP_Residence_Country_id == 168 or party.RF_LP_Residence_Country_id == 170 or party.RF_LP_Residence_Country_id == 172 or party.RF_LP_Residence_Country_id == 173 or party.RF_LP_Residence_Country_id == 174 or party.RF_LP_Residence_Country_id == 175 or party.RF_LP_Residence_Country_id == 176 or party.RF_LP_Residence_Country_id == 177 or party.RF_LP_Residence_Country_id == 186 or party.RF_LP_Residence_Country_id == 187 or party.RF_LP_Residence_Country_id == 188 or party.RF_LP_Residence_Country_id == 190 or party.RF_LP_Residence_Country_id == 191 or party.RF_LP_Residence_Country_id == 193 or party.RF_LP_Residence_Country_id == 195 or party.RF_LP_Residence_Country_id == 197 or party.RF_LP_Residence_Country_id == 198 or party.RF_LP_Residence_Country_id == 200 or party.RF_LP_Residence_Country_id == 202 or party.RF_LP_Residence_Country_id == 203 or party.RF_LP_Residence_Country_id == 206 or party.RF_LP_Residence_Country_id == 208 or party.RF_LP_Residence_Country_id == 209 or party.RF_LP_Residence_Country_id == 211 or party.RF_LP_Residence_Country_id == 212 or party.RF_LP_Residence_Country_id == 213 or party.RF_LP_Residence_Country_id == 214 or party.RF_LP_Residence_Country_id == 219 or party.RF_LP_Residence_Country_id == 220 or party.RF_LP_Residence_Country_id == 221 or party.RF_LP_Residence_Country_id == 222 or party.RF_LP_Residence_Country_id == 223 or party.RF_LP_Residence_Country_id == 224 or party.RF_LP_Residence_Country_id == 226 or party.RF_LP_Residence_Country_id == 230 or party.RF_LP_Residence_Country_id == 232 or party.RF_LP_Residence_Country_id == 233 or party.RF_LP_Residence_Country_id == 236 or party.RF_LP_Residence_Country_id == 237 or party.RF_LP_Residence_Country_id == 238 or party.RF_LP_Residence_Country_id == 239 %}
+                                                    3
+                                                {% elif party.RF_LP_Residence_Country_id == 5 or party.RF_LP_Residence_Country_id == 7 or party.RF_LP_Residence_Country_id == 9 or party.RF_LP_Residence_Country_id == 12 or party.RF_LP_Residence_Country_id == 25 or party.RF_LP_Residence_Country_id == 34 or party.RF_LP_Residence_Country_id == 35 or party.RF_LP_Residence_Country_id == 61 or party.RF_LP_Residence_Country_id == 76 or party.RF_LP_Residence_Country_id == 84 or party.RF_LP_Residence_Country_id == 88 or party.RF_LP_Residence_Country_id == 114 or party.RF_LP_Residence_Country_id == 130 or party.RF_LP_Residence_Country_id == 132 or party.RF_LP_Residence_Country_id == 142 or party.RF_LP_Residence_Country_id == 149 or party.RF_LP_Residence_Country_id == 159 or party.RF_LP_Residence_Country_id == 161  or party.RF_LP_Residence_Country_id == 167 or party.RF_LP_Residence_Country_id == 194 or party.RF_LP_Residence_Country_id == 215 or party.RF_LP_Residence_Country_id == 216 %}
+                                                1{% elif party.RF_LP_Residence_Country_id == 11 or party.RF_LP_Residence_Country_id == 14 or party.RF_LP_Residence_Country_id == 15 or party.RF_LP_Residence_Country_id == 18 or party.RF_LP_Residence_Country_id == 22 or party.RF_LP_Residence_Country_id == 23 or party.RF_LP_Residence_Country_id == 26 or party.RF_LP_Residence_Country_id == 30 or party.RF_LP_Residence_Country_id == 38 or party.RF_LP_Residence_Country_id == 40 or party.RF_LP_Residence_Country_id == 44 or party.RF_LP_Residence_Country_id == 45 or party.RF_LP_Residence_Country_id == 54 or party.RF_LP_Residence_Country_id == 56 or party.RF_LP_Residence_Country_id == 59 or party.RF_LP_Residence_Country_id == 60 or party.RF_LP_Residence_Country_id == 63 or party.RF_LP_Residence_Country_id == 70 or party.RF_LP_Residence_Country_id == 75 or party.RF_LP_Residence_Country_id == 77 or party.RF_LP_Residence_Country_id == 78 or party.RF_LP_Residence_Country_id == 79 or party.RF_LP_Residence_Country_id == 80 or party.RF_LP_Residence_Country_id == 81 or party.RF_LP_Residence_Country_id == 83 or party.RF_LP_Residence_Country_id == 87 or party.RF_LP_Residence_Country_id == 89 or party.RF_LP_Residence_Country_id == 96 or party.RF_LP_Residence_Country_id == 101 or party.RF_LP_Residence_Country_id == 104 or party.RF_LP_Residence_Country_id == 105 or party.RF_LP_Residence_Country_id == 108 or party.RF_LP_Residence_Country_id == 110 or party.RF_LP_Residence_Country_id == 111 or party.RF_LP_Residence_Country_id == 113 or party.RF_LP_Residence_Country_id == 118 or party.RF_LP_Residence_Country_id == 120 or party.RF_LP_Residence_Country_id == 125 or party.RF_LP_Residence_Country_id == 131 or party.RF_LP_Residence_Country_id == 133 or  party.RF_LP_Residence_Country_id == 137 or party.RF_LP_Residence_Country_id == 138 or party.RF_LP_Residence_Country_id == 140 or party.RF_LP_Residence_Country_id == 141 or party.RF_LP_Residence_Country_id == 144 or party.RF_LP_Residence_Country_id == 147 or party.RF_LP_Residence_Country_id == 156 or party.RF_LP_Residence_Country_id == 157 or party.RF_LP_Residence_Country_id == 169 or party.RF_LP_Residence_Country_id == 171 or party.RF_LP_Residence_Country_id == 178 or party.RF_LP_Residence_Country_id == 179 or party.RF_LP_Residence_Country_id == 180 or party.RF_LP_Residence_Country_id == 181 or party.RF_LP_Residence_Country_id == 182 or party.RF_LP_Residence_Country_id == 183 or party.RF_LP_Residence_Country_id == 185 or party.RF_LP_Residence_Country_id == 189 or party.RF_LP_Residence_Country_id == 192 or party.RF_LP_Residence_Country_id == 196 or party.RF_LP_Residence_Country_id == 199 or party.RF_LP_Residence_Country_id == 201 or party.RF_LP_Residence_Country_id == 204 or party.RF_LP_Residence_Country_id == 205 or party.RF_LP_Residence_Country_id == 207 or party.RF_LP_Residence_Country_id == 210 or party.RF_LP_Residence_Country_id == 218 or party.RF_LP_Residence_Country_id == 225 or party.RF_LP_Residence_Country_id == 231 or party.RF_LP_Residence_Country_id == 234 or party.RF_LP_Residence_Country_id == 235 or party.RF_LP_Residence_Country_id == 237 or party.RF_LP_Residence_Country_id == 238  %}
+                                                2{% elif party.RF_LP_Residence_Country_id == 21 or party.RF_LP_Residence_Country_id == 57 or party.RF_LP_Residence_Country_id == 106 or party.RF_LP_Residence_Country_id == 107 or party.RF_LP_Residence_Country_id == 119 or party.RF_LP_Residence_Country_id == 187 or party.RF_LP_Residence_Country_id == 217 %}
+                                                4
+                                                {% else %}
+                                                    <span class="white">
+                                                        0
+                                                    </span>{% endif %}
+                                            </span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>3</span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_Residence_Country_id == 1 or party.RF_LP_Residence_Country_id == 2 or party.RF_LP_Residence_Country_id == 3 or party.RF_LP_Residence_Country_id == 4 or party.RF_LP_Residence_Country_id == 6 or party.RF_LP_Residence_Country_id == 8 or party.RF_LP_Residence_Country_id == 10 or party.RF_LP_Residence_Country_id == 13 or party.RF_LP_Residence_Country_id == 16 or party.RF_LP_Residence_Country_id == 17 or party.RF_LP_Residence_Country_id == 19 or party.RF_LP_Residence_Country_id == 20 or party.RF_LP_Residence_Country_id == 24 or party.RF_LP_Residence_Country_id == 27 or party.RF_LP_Residence_Country_id == 28 or party.RF_LP_Residence_Country_id == 29 or party.RF_LP_Residence_Country_id == 31 or party.RF_LP_Residence_Country_id == 32 or party.RF_LP_Residence_Country_id == 33 or party.RF_LP_Residence_Country_id == 36 or party.RF_LP_Residence_Country_id == 37 or party.RF_LP_Residence_Country_id == 39 or party.RF_LP_Residence_Country_id == 41 or party.RF_LP_Residence_Country_id == 42 or party.RF_LP_Residence_Country_id == 43 or party.RF_LP_Residence_Country_id == 46 or party.RF_LP_Residence_Country_id == 47 or party.RF_LP_Residence_Country_id == 48 or party.RF_LP_Residence_Country_id == 49 or party.RF_LP_Residence_Country_id == 50 or party.RF_LP_Residence_Country_id == 51 or party.RF_LP_Residence_Country_id == 52 or party.RF_LP_Residence_Country_id == 53 or party.RF_LP_Residence_Country_id == 55 or party.RF_LP_Residence_Country_id == 58 or party.RF_LP_Residence_Country_id == 62 or party.RF_LP_Residence_Country_id == 64 or party.RF_LP_Residence_Country_id == 65 or party.RF_LP_Residence_Country_id == 66 or party.RF_LP_Residence_Country_id == 67 or party.RF_LP_Residence_Country_id == 68 or party.RF_LP_Residence_Country_id == 69 or party.RF_LP_Residence_Country_id == 71 or party.RF_LP_Residence_Country_id == 72 or party.RF_LP_Residence_Country_id == 73 or party.RF_LP_Residence_Country_id == 74 or party.RF_LP_Residence_Country_id == 82 or party.RF_LP_Residence_Country_id == 85 or party.RF_LP_Residence_Country_id == 86 or party.RF_LP_Residence_Country_id == 90 or party.RF_LP_Residence_Country_id == 91 or party.RF_LP_Residence_Country_id == 92 or party.RF_LP_Residence_Country_id == 93 or party.RF_LP_Residence_Country_id == 94 or party.RF_LP_Residence_Country_id == 95 or party.RF_LP_Residence_Country_id == 97 or party.RF_LP_Residence_Country_id == 98 or party.RF_LP_Residence_Country_id == 99 or party.RF_LP_Residence_Country_id == 100 or party.RF_LP_Residence_Country_id == 103 or party.RF_LP_Residence_Country_id == 109  or party.RF_LP_Residence_Country_id == 112  or party.RF_LP_Residence_Country_id == 115  or party.RF_LP_Residence_Country_id == 116  or party.RF_LP_Residence_Country_id == 117  or party.RF_LP_Residence_Country_id == 121  or party.RF_LP_Residence_Country_id == 123  or party.RF_LP_Residence_Country_id == 124 or party.RF_LP_Residence_Country_id == 126  or party.RF_LP_Residence_Country_id == 127  or party.RF_LP_Residence_Country_id == 128  or party.RF_LP_Residence_Country_id == 129  or party.RF_LP_Residence_Country_id == 134  or party.RF_LP_Residence_Country_id == 135  or party.RF_LP_Residence_Country_id == 136 or party.RF_LP_Residence_Country_id == 139  or party.RF_LP_Residence_Country_id == 143  or party.RF_LP_Residence_Country_id == 145  or party.RF_LP_Residence_Country_id == 146  or party.RF_LP_Residence_Country_id == 148  or party.RF_LP_Residence_Country_id == 150 or party.RF_LP_Residence_Country_id == 151 or party.RF_LP_Residence_Country_id == 152 or party.RF_LP_Residence_Country_id == 153 or party.RF_LP_Residence_Country_id == 154 or party.RF_LP_Residence_Country_id == 155 or party.RF_LP_Residence_Country_id == 158 or party.RF_LP_Residence_Country_id == 160 or party.RF_LP_Residence_Country_id == 162 or party.RF_LP_Residence_Country_id == 163 or party.RF_LP_Residence_Country_id == 164 or party.RF_LP_Residence_Country_id == 165 or party.RF_LP_Residence_Country_id == 166 or party.RF_LP_Residence_Country_id == 168 or party.RF_LP_Residence_Country_id == 170 or party.RF_LP_Residence_Country_id == 172 or party.RF_LP_Residence_Country_id == 173 or party.RF_LP_Residence_Country_id == 174 or party.RF_LP_Residence_Country_id == 175 or party.RF_LP_Residence_Country_id == 176 or party.RF_LP_Residence_Country_id == 177 or party.RF_LP_Residence_Country_id == 186 or party.RF_LP_Residence_Country_id == 187 or party.RF_LP_Residence_Country_id == 188 or party.RF_LP_Residence_Country_id == 190 or party.RF_LP_Residence_Country_id == 191 or party.RF_LP_Residence_Country_id == 193 or party.RF_LP_Residence_Country_id == 195 or party.RF_LP_Residence_Country_id == 197 or party.RF_LP_Residence_Country_id == 198 or party.RF_LP_Residence_Country_id == 200 or party.RF_LP_Residence_Country_id == 202 or party.RF_LP_Residence_Country_id == 203 or party.RF_LP_Residence_Country_id == 206 or party.RF_LP_Residence_Country_id == 208 or party.RF_LP_Residence_Country_id == 209 or party.RF_LP_Residence_Country_id == 211 or party.RF_LP_Residence_Country_id == 212 or party.RF_LP_Residence_Country_id == 213 or party.RF_LP_Residence_Country_id == 214 or party.RF_LP_Residence_Country_id == 219 or party.RF_LP_Residence_Country_id == 220 or party.RF_LP_Residence_Country_id == 221 or party.RF_LP_Residence_Country_id == 222 or party.RF_LP_Residence_Country_id == 223 or party.RF_LP_Residence_Country_id == 224 or party.RF_LP_Residence_Country_id == 226 or party.RF_LP_Residence_Country_id == 230 or party.RF_LP_Residence_Country_id == 232 or party.RF_LP_Residence_Country_id == 233 or party.RF_LP_Residence_Country_id == 236 or party.RF_LP_Residence_Country_id == 237 or party.RF_LP_Residence_Country_id == 238 or party.RF_LP_Residence_Country_id == 239 %}
+                                                    9
+                                                {% elif party.RF_LP_Residence_Country_id == 5 or party.RF_LP_Residence_Country_id == 7 or party.RF_LP_Residence_Country_id == 9 or party.RF_LP_Residence_Country_id == 12 or party.RF_LP_Residence_Country_id == 25 or party.RF_LP_Residence_Country_id == 34 or party.RF_LP_Residence_Country_id == 35 or party.RF_LP_Residence_Country_id == 61 or party.RF_LP_Residence_Country_id == 76 or party.RF_LP_Residence_Country_id == 84 or party.RF_LP_Residence_Country_id == 88 or party.RF_LP_Residence_Country_id == 114 or party.RF_LP_Residence_Country_id == 130 or party.RF_LP_Residence_Country_id == 132 or party.RF_LP_Residence_Country_id == 142 or party.RF_LP_Residence_Country_id == 149 or party.RF_LP_Residence_Country_id == 159 or party.RF_LP_Residence_Country_id == 161  or party.RF_LP_Residence_Country_id == 167 or party.RF_LP_Residence_Country_id == 194 or party.RF_LP_Residence_Country_id == 215 or party.RF_LP_Residence_Country_id == 216 %}
+                                                3{% elif party.RF_LP_Residence_Country_id == 11 or party.RF_LP_Residence_Country_id == 14 or party.RF_LP_Residence_Country_id == 15 or party.RF_LP_Residence_Country_id == 18 or party.RF_LP_Residence_Country_id == 22 or party.RF_LP_Residence_Country_id == 23 or party.RF_LP_Residence_Country_id == 26 or party.RF_LP_Residence_Country_id == 30 or party.RF_LP_Residence_Country_id == 38 or party.RF_LP_Residence_Country_id == 40 or party.RF_LP_Residence_Country_id == 44 or party.RF_LP_Residence_Country_id == 45 or party.RF_LP_Residence_Country_id == 54 or party.RF_LP_Residence_Country_id == 56 or party.RF_LP_Residence_Country_id == 59 or party.RF_LP_Residence_Country_id == 60 or party.RF_LP_Residence_Country_id == 63 or party.RF_LP_Residence_Country_id == 70 or party.RF_LP_Residence_Country_id == 75 or party.RF_LP_Residence_Country_id == 77 or party.RF_LP_Residence_Country_id == 78 or party.RF_LP_Residence_Country_id == 79 or party.RF_LP_Residence_Country_id == 80 or party.RF_LP_Residence_Country_id == 81 or party.RF_LP_Residence_Country_id == 83 or party.RF_LP_Residence_Country_id == 87 or party.RF_LP_Residence_Country_id == 89 or party.RF_LP_Residence_Country_id == 96 or party.RF_LP_Residence_Country_id == 101 or party.RF_LP_Residence_Country_id == 104 or party.RF_LP_Residence_Country_id == 105 or party.RF_LP_Residence_Country_id == 108 or party.RF_LP_Residence_Country_id == 110 or party.RF_LP_Residence_Country_id == 111 or party.RF_LP_Residence_Country_id == 113 or party.RF_LP_Residence_Country_id == 118 or party.RF_LP_Residence_Country_id == 120 or party.RF_LP_Residence_Country_id == 125 or party.RF_LP_Residence_Country_id == 131 or party.RF_LP_Residence_Country_id == 133 or  party.RF_LP_Residence_Country_id == 137 or party.RF_LP_Residence_Country_id == 138 or party.RF_LP_Residence_Country_id == 140 or party.RF_LP_Residence_Country_id == 141 or party.RF_LP_Residence_Country_id == 144 or party.RF_LP_Residence_Country_id == 147 or party.RF_LP_Residence_Country_id == 156 or party.RF_LP_Residence_Country_id == 157 or party.RF_LP_Residence_Country_id == 169 or party.RF_LP_Residence_Country_id == 171 or party.RF_LP_Residence_Country_id == 178 or party.RF_LP_Residence_Country_id == 179 or party.RF_LP_Residence_Country_id == 180 or party.RF_LP_Residence_Country_id == 181 or party.RF_LP_Residence_Country_id == 182 or party.RF_LP_Residence_Country_id == 183 or party.RF_LP_Residence_Country_id == 185 or party.RF_LP_Residence_Country_id == 189 or party.RF_LP_Residence_Country_id == 192 or party.RF_LP_Residence_Country_id == 196 or party.RF_LP_Residence_Country_id == 199 or party.RF_LP_Residence_Country_id == 201 or party.RF_LP_Residence_Country_id == 204 or party.RF_LP_Residence_Country_id == 205 or party.RF_LP_Residence_Country_id == 207 or party.RF_LP_Residence_Country_id == 210 or party.RF_LP_Residence_Country_id == 218 or party.RF_LP_Residence_Country_id == 225 or party.RF_LP_Residence_Country_id == 231 or party.RF_LP_Residence_Country_id == 234 or party.RF_LP_Residence_Country_id == 235 or party.RF_LP_Residence_Country_id == 237 or party.RF_LP_Residence_Country_id == 238  %}
+                                                6{% elif party.RF_LP_Residence_Country_id == 21 or party.RF_LP_Residence_Country_id == 57 or party.RF_LP_Residence_Country_id == 106 or party.RF_LP_Residence_Country_id == 107 or party.RF_LP_Residence_Country_id == 119 or party.RF_LP_Residence_Country_id == 187 or party.RF_LP_Residence_Country_id == 217 %}
+                                                12
+                                                {% else %}
+                                                    <span class="white">
+                                                        0
+                                                    </span>{% endif %}
+                                            </span>  
+                                        </div>                 
+                                    {% endif %} 
+                                </div>
+                                <hr />
+                                
+                                <div class='row div'>
+                                    <div class="column2">
+                                        <span>Nationality</span>
+                                    </div>
+                                    <div class="column2">  
+                                        {% if party.RF_LP_Nationality %}
+                                            <span>
+                                                {{party.RF_LP_Nationality}}
+                                            </span>
+                                        {% else %}
+                                            <span class="white">
+                                                0
+                                            </span>
+                                        {% endif %} 
+                                    </div>                     
+                                    <div class="column4">                        
+                                        <b style="color: white">0</b>
+                                    </div>        
+                                    {% if advisor.is_superuser %}
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_Nationality_id == 1 or party.RF_LP_Nationality_id == 2 or party.RF_LP_Nationality_id == 3 or party.RF_LP_Nationality_id == 4 or party.RF_LP_Nationality_id == 6 or party.RF_LP_Nationality_id == 8 or party.RF_LP_Nationality_id == 10 or party.RF_LP_Nationality_id == 13 or party.RF_LP_Nationality_id == 16 or party.RF_LP_Nationality_id == 17 or party.RF_LP_Nationality_id == 19 or party.RF_LP_Nationality_id == 20 or party.RF_LP_Nationality_id == 24 or party.RF_LP_Nationality_id == 27 or party.RF_LP_Nationality_id == 28 or party.RF_LP_Nationality_id == 29 or party.RF_LP_Nationality_id == 31 or party.RF_LP_Nationality_id == 32 or party.RF_LP_Nationality_id == 33 or party.RF_LP_Nationality_id == 36 or party.RF_LP_Nationality_id == 37 or party.RF_LP_Nationality_id == 39 or party.RF_LP_Nationality_id == 41 or party.RF_LP_Nationality_id == 42 or party.RF_LP_Nationality_id == 43 or party.RF_LP_Nationality_id == 46 or party.RF_LP_Nationality_id == 47 or party.RF_LP_Nationality_id == 48 or party.RF_LP_Nationality_id == 49 or party.RF_LP_Nationality_id == 50 or party.RF_LP_Nationality_id == 51 or party.RF_LP_Nationality_id == 52 or party.RF_LP_Nationality_id == 53 or party.RF_LP_Nationality_id == 55 or party.RF_LP_Nationality_id == 58 or party.RF_LP_Nationality_id == 62 or party.RF_LP_Nationality_id == 64 or party.RF_LP_Nationality_id == 65 or party.RF_LP_Nationality_id == 66 or party.RF_LP_Nationality_id == 67 or party.RF_LP_Nationality_id == 68 or party.RF_LP_Nationality_id == 69 or party.RF_LP_Nationality_id == 71 or party.RF_LP_Nationality_id == 72 or party.RF_LP_Nationality_id == 73 or party.RF_LP_Nationality_id == 74 or party.RF_LP_Nationality_id == 82 or party.RF_LP_Nationality_id == 85 or party.RF_LP_Nationality_id == 86 or party.RF_LP_Nationality_id == 90 or party.RF_LP_Nationality_id == 91 or party.RF_LP_Nationality_id == 92 or party.RF_LP_Nationality_id == 93 or party.RF_LP_Nationality_id == 94 or party.RF_LP_Nationality_id == 95 or party.RF_LP_Nationality_id == 97 or party.RF_LP_Nationality_id == 98 or party.RF_LP_Nationality_id == 99 or party.RF_LP_Nationality_id == 100 or party.RF_LP_Nationality_id == 103 or party.RF_LP_Nationality_id == 109  or party.RF_LP_Nationality_id == 112  or party.RF_LP_Nationality_id == 115  or party.RF_LP_Nationality_id == 116  or party.RF_LP_Nationality_id == 117  or party.RF_LP_Nationality_id == 121  or party.RF_LP_Nationality_id == 123  or party.RF_LP_Nationality_id == 124 or party.RF_LP_Nationality_id == 126  or party.RF_LP_Nationality_id == 127  or party.RF_LP_Nationality_id == 128  or party.RF_LP_Nationality_id == 129  or party.RF_LP_Nationality_id == 134  or party.RF_LP_Nationality_id == 135  or party.RF_LP_Nationality_id == 136 or party.RF_LP_Nationality_id == 139  or party.RF_LP_Nationality_id == 143  or party.RF_LP_Nationality_id == 145  or party.RF_LP_Nationality_id == 146  or party.RF_LP_Nationality_id == 148  or party.RF_LP_Nationality_id == 150 or party.RF_LP_Nationality_id == 151 or party.RF_LP_Nationality_id == 152 or party.RF_LP_Nationality_id == 153 or party.RF_LP_Nationality_id == 154 or party.RF_LP_Nationality_id == 155 or party.RF_LP_Nationality_id == 158 or party.RF_LP_Nationality_id == 160 or party.RF_LP_Nationality_id == 162 or party.RF_LP_Nationality_id == 163 or party.RF_LP_Nationality_id == 164 or party.RF_LP_Nationality_id == 165 or party.RF_LP_Nationality_id == 166 or party.RF_LP_Nationality_id == 168 or party.RF_LP_Nationality_id == 170 or party.RF_LP_Nationality_id == 172 or party.RF_LP_Nationality_id == 173 or party.RF_LP_Nationality_id == 174 or party.RF_LP_Nationality_id == 175 or party.RF_LP_Nationality_id == 176 or party.RF_LP_Nationality_id == 177 or party.RF_LP_Nationality_id == 186 or party.RF_LP_Nationality_id == 187 or party.RF_LP_Nationality_id == 188 or party.RF_LP_Nationality_id == 190 or party.RF_LP_Nationality_id == 191 or party.RF_LP_Nationality_id == 193 or party.RF_LP_Nationality_id == 195 or party.RF_LP_Nationality_id == 197 or party.RF_LP_Nationality_id == 198 or party.RF_LP_Nationality_id == 200 or party.RF_LP_Nationality_id == 202 or party.RF_LP_Nationality_id == 203 or party.RF_LP_Nationality_id == 206 or party.RF_LP_Nationality_id == 208 or party.RF_LP_Nationality_id == 209 or party.RF_LP_Nationality_id == 211 or party.RF_LP_Nationality_id == 212 or party.RF_LP_Nationality_id == 213 or party.RF_LP_Nationality_id == 214 or party.RF_LP_Nationality_id == 219 or party.RF_LP_Nationality_id == 220 or party.RF_LP_Nationality_id == 221 or party.RF_LP_Nationality_id == 222 or party.RF_LP_Nationality_id == 223 or party.RF_LP_Nationality_id == 224 or party.RF_LP_Nationality_id == 226 or party.RF_LP_Nationality_id == 230 or party.RF_LP_Nationality_id == 232 or party.RF_LP_Nationality_id == 233 or party.RF_LP_Nationality_id == 236 or party.RF_LP_Nationality_id == 237 or party.RF_LP_Nationality_id == 238 or party.RF_LP_Nationality_id == 239 %}
+                                                    3
+                                                {% elif party.RF_LP_Nationality_id == 5 or party.RF_LP_Nationality_id == 7 or party.RF_LP_Nationality_id == 9 or party.RF_LP_Nationality_id == 12 or party.RF_LP_Nationality_id == 25 or party.RF_LP_Nationality_id == 34 or party.RF_LP_Nationality_id == 35 or party.RF_LP_Nationality_id == 61 or party.RF_LP_Nationality_id == 76 or party.RF_LP_Nationality_id == 84 or party.RF_LP_Nationality_id == 88 or party.RF_LP_Nationality_id == 114 or party.RF_LP_Nationality_id == 130 or party.RF_LP_Nationality_id == 132 or party.RF_LP_Nationality_id == 142 or party.RF_LP_Nationality_id == 149 or party.RF_LP_Nationality_id == 159 or party.RF_LP_Nationality_id == 161  or party.RF_LP_Nationality_id == 167 or party.RF_LP_Nationality_id == 194 or party.RF_LP_Nationality_id == 215 or party.RF_LP_Nationality_id == 216 %}
+                                                1{% elif party.RF_LP_Nationality_id == 11 or party.RF_LP_Nationality_id == 14 or party.RF_LP_Nationality_id == 15 or party.RF_LP_Nationality_id == 18 or party.RF_LP_Nationality_id == 22 or party.RF_LP_Nationality_id == 23 or party.RF_LP_Nationality_id == 26 or party.RF_LP_Nationality_id == 30 or party.RF_LP_Nationality_id == 38 or party.RF_LP_Nationality_id == 40 or party.RF_LP_Nationality_id == 44 or party.RF_LP_Nationality_id == 45 or party.RF_LP_Nationality_id == 54 or party.RF_LP_Nationality_id == 56 or party.RF_LP_Nationality_id == 59 or party.RF_LP_Nationality_id == 60 or party.RF_LP_Nationality_id == 63 or party.RF_LP_Nationality_id == 70 or party.RF_LP_Nationality_id == 75 or party.RF_LP_Nationality_id == 77 or party.RF_LP_Nationality_id == 78 or party.RF_LP_Nationality_id == 79 or party.RF_LP_Nationality_id == 80 or party.RF_LP_Nationality_id == 81 or party.RF_LP_Nationality_id == 83 or party.RF_LP_Nationality_id == 87 or party.RF_LP_Nationality_id == 89 or party.RF_LP_Nationality_id == 96 or party.RF_LP_Nationality_id == 101 or party.RF_LP_Nationality_id == 104 or party.RF_LP_Nationality_id == 105 or party.RF_LP_Nationality_id == 108 or party.RF_LP_Nationality_id == 110 or party.RF_LP_Nationality_id == 111 or party.RF_LP_Nationality_id == 113 or party.RF_LP_Nationality_id == 118 or party.RF_LP_Nationality_id == 120 or party.RF_LP_Nationality_id == 125 or party.RF_LP_Nationality_id == 131 or party.RF_LP_Nationality_id == 133 or  party.RF_LP_Nationality_id == 137 or party.RF_LP_Nationality_id == 138 or party.RF_LP_Nationality_id == 140 or party.RF_LP_Nationality_id == 141 or party.RF_LP_Nationality_id == 144 or party.RF_LP_Nationality_id == 147 or party.RF_LP_Nationality_id == 156 or party.RF_LP_Nationality_id == 157 or party.RF_LP_Nationality_id == 169 or party.RF_LP_Nationality_id == 171 or party.RF_LP_Nationality_id == 178 or party.RF_LP_Nationality_id == 179 or party.RF_LP_Nationality_id == 180 or party.RF_LP_Nationality_id == 181 or party.RF_LP_Nationality_id == 182 or party.RF_LP_Nationality_id == 183 or party.RF_LP_Nationality_id == 185 or party.RF_LP_Nationality_id == 189 or party.RF_LP_Nationality_id == 192 or party.RF_LP_Nationality_id == 196 or party.RF_LP_Nationality_id == 199 or party.RF_LP_Nationality_id == 201 or party.RF_LP_Nationality_id == 204 or party.RF_LP_Nationality_id == 205 or party.RF_LP_Nationality_id == 207 or party.RF_LP_Nationality_id == 210 or party.RF_LP_Nationality_id == 218 or party.RF_LP_Nationality_id == 225 or party.RF_LP_Nationality_id == 231 or party.RF_LP_Nationality_id == 234 or party.RF_LP_Nationality_id == 235 or party.RF_LP_Nationality_id == 237 or party.RF_LP_Nationality_id == 238  %}
+                                                2{% elif party.RF_LP_Nationality_id == 21 or party.RF_LP_Nationality_id == 57 or party.RF_LP_Nationality_id == 106 or party.RF_LP_Nationality_id == 107 or party.RF_LP_Nationality_id == 119 or party.RF_LP_Nationality_id == 187 or party.RF_LP_Nationality_id == 217 %}
+                                                4
+                                                {% else %}
+                                                    <span class="white">
+                                                        0
+                                                    </span>{% endif %}
+                                            </span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>3</span>
+                                        </div>                     
+                                        <div class="column3">                        
+                                            <span>
+                                                {% if party.RF_LP_Nationality_id == 1 or party.RF_LP_Nationality_id == 2 or party.RF_LP_Nationality_id == 3 or party.RF_LP_Nationality_id == 4 or party.RF_LP_Nationality_id == 6 or party.RF_LP_Nationality_id == 8 or party.RF_LP_Nationality_id == 10 or party.RF_LP_Nationality_id == 13 or party.RF_LP_Nationality_id == 16 or party.RF_LP_Nationality_id == 17 or party.RF_LP_Nationality_id == 19 or party.RF_LP_Nationality_id == 20 or party.RF_LP_Nationality_id == 24 or party.RF_LP_Nationality_id == 27 or party.RF_LP_Nationality_id == 28 or party.RF_LP_Nationality_id == 29 or party.RF_LP_Nationality_id == 31 or party.RF_LP_Nationality_id == 32 or party.RF_LP_Nationality_id == 33 or party.RF_LP_Nationality_id == 36 or party.RF_LP_Nationality_id == 37 or party.RF_LP_Nationality_id == 39 or party.RF_LP_Nationality_id == 41 or party.RF_LP_Nationality_id == 42 or party.RF_LP_Nationality_id == 43 or party.RF_LP_Nationality_id == 46 or party.RF_LP_Nationality_id == 47 or party.RF_LP_Nationality_id == 48 or party.RF_LP_Nationality_id == 49 or party.RF_LP_Nationality_id == 50 or party.RF_LP_Nationality_id == 51 or party.RF_LP_Nationality_id == 52 or party.RF_LP_Nationality_id == 53 or party.RF_LP_Nationality_id == 55 or party.RF_LP_Nationality_id == 58 or party.RF_LP_Nationality_id == 62 or party.RF_LP_Nationality_id == 64 or party.RF_LP_Nationality_id == 65 or party.RF_LP_Nationality_id == 66 or party.RF_LP_Nationality_id == 67 or party.RF_LP_Nationality_id == 68 or party.RF_LP_Nationality_id == 69 or party.RF_LP_Nationality_id == 71 or party.RF_LP_Nationality_id == 72 or party.RF_LP_Nationality_id == 73 or party.RF_LP_Nationality_id == 74 or party.RF_LP_Nationality_id == 82 or party.RF_LP_Nationality_id == 85 or party.RF_LP_Nationality_id == 86 or party.RF_LP_Nationality_id == 90 or party.RF_LP_Nationality_id == 91 or party.RF_LP_Nationality_id == 92 or party.RF_LP_Nationality_id == 93 or party.RF_LP_Nationality_id == 94 or party.RF_LP_Nationality_id == 95 or party.RF_LP_Nationality_id == 97 or party.RF_LP_Nationality_id == 98 or party.RF_LP_Nationality_id == 99 or party.RF_LP_Nationality_id == 100 or party.RF_LP_Nationality_id == 103 or party.RF_LP_Nationality_id == 109  or party.RF_LP_Nationality_id == 112  or party.RF_LP_Nationality_id == 115  or party.RF_LP_Nationality_id == 116  or party.RF_LP_Nationality_id == 117  or party.RF_LP_Nationality_id == 121  or party.RF_LP_Nationality_id == 123  or party.RF_LP_Nationality_id == 124 or party.RF_LP_Nationality_id == 126  or party.RF_LP_Nationality_id == 127  or party.RF_LP_Nationality_id == 128  or party.RF_LP_Nationality_id == 129  or party.RF_LP_Nationality_id == 134  or party.RF_LP_Nationality_id == 135  or party.RF_LP_Nationality_id == 136 or party.RF_LP_Nationality_id == 139  or party.RF_LP_Nationality_id == 143  or party.RF_LP_Nationality_id == 145  or party.RF_LP_Nationality_id == 146  or party.RF_LP_Nationality_id == 148  or party.RF_LP_Nationality_id == 150 or party.RF_LP_Nationality_id == 151 or party.RF_LP_Nationality_id == 152 or party.RF_LP_Nationality_id == 153 or party.RF_LP_Nationality_id == 154 or party.RF_LP_Nationality_id == 155 or party.RF_LP_Nationality_id == 158 or party.RF_LP_Nationality_id == 160 or party.RF_LP_Nationality_id == 162 or party.RF_LP_Nationality_id == 163 or party.RF_LP_Nationality_id == 164 or party.RF_LP_Nationality_id == 165 or party.RF_LP_Nationality_id == 166 or party.RF_LP_Nationality_id == 168 or party.RF_LP_Nationality_id == 170 or party.RF_LP_Nationality_id == 172 or party.RF_LP_Nationality_id == 173 or party.RF_LP_Nationality_id == 174 or party.RF_LP_Nationality_id == 175 or party.RF_LP_Nationality_id == 176 or party.RF_LP_Nationality_id == 177 or party.RF_LP_Nationality_id == 186 or party.RF_LP_Nationality_id == 187 or party.RF_LP_Nationality_id == 188 or party.RF_LP_Nationality_id == 190 or party.RF_LP_Nationality_id == 191 or party.RF_LP_Nationality_id == 193 or party.RF_LP_Nationality_id == 195 or party.RF_LP_Nationality_id == 197 or party.RF_LP_Nationality_id == 198 or party.RF_LP_Nationality_id == 200 or party.RF_LP_Nationality_id == 202 or party.RF_LP_Nationality_id == 203 or party.RF_LP_Nationality_id == 206 or party.RF_LP_Nationality_id == 208 or party.RF_LP_Nationality_id == 209 or party.RF_LP_Nationality_id == 211 or party.RF_LP_Nationality_id == 212 or party.RF_LP_Nationality_id == 213 or party.RF_LP_Nationality_id == 214 or party.RF_LP_Nationality_id == 219 or party.RF_LP_Nationality_id == 220 or party.RF_LP_Nationality_id == 221 or party.RF_LP_Nationality_id == 222 or party.RF_LP_Nationality_id == 223 or party.RF_LP_Nationality_id == 224 or party.RF_LP_Nationality_id == 226 or party.RF_LP_Nationality_id == 230 or party.RF_LP_Nationality_id == 232 or party.RF_LP_Nationality_id == 233 or party.RF_LP_Nationality_id == 236 or party.RF_LP_Nationality_id == 237 or party.RF_LP_Nationality_id == 238 or party.RF_LP_Nationality_id == 239 %}
+                                                    9
+                                                {% elif party.RF_LP_Nationality_id == 5 or party.RF_LP_Nationality_id == 7 or party.RF_LP_Nationality_id == 9 or party.RF_LP_Nationality_id == 12 or party.RF_LP_Nationality_id == 25 or party.RF_LP_Nationality_id == 34 or party.RF_LP_Nationality_id == 35 or party.RF_LP_Nationality_id == 61 or party.RF_LP_Nationality_id == 76 or party.RF_LP_Nationality_id == 84 or party.RF_LP_Nationality_id == 88 or party.RF_LP_Nationality_id == 114 or party.RF_LP_Nationality_id == 130 or party.RF_LP_Nationality_id == 132 or party.RF_LP_Nationality_id == 142 or party.RF_LP_Nationality_id == 149 or party.RF_LP_Nationality_id == 159 or party.RF_LP_Nationality_id == 161  or party.RF_LP_Nationality_id == 167 or party.RF_LP_Nationality_id == 194 or party.RF_LP_Nationality_id == 215 or party.RF_LP_Nationality_id == 216 %}
+                                                3{% elif party.RF_LP_Nationality_id == 11 or party.RF_LP_Nationality_id == 14 or party.RF_LP_Nationality_id == 15 or party.RF_LP_Nationality_id == 18 or party.RF_LP_Nationality_id == 22 or party.RF_LP_Nationality_id == 23 or party.RF_LP_Nationality_id == 26 or party.RF_LP_Nationality_id == 30 or party.RF_LP_Nationality_id == 38 or party.RF_LP_Nationality_id == 40 or party.RF_LP_Nationality_id == 44 or party.RF_LP_Nationality_id == 45 or party.RF_LP_Nationality_id == 54 or party.RF_LP_Nationality_id == 56 or party.RF_LP_Nationality_id == 59 or party.RF_LP_Nationality_id == 60 or party.RF_LP_Nationality_id == 63 or party.RF_LP_Nationality_id == 70 or party.RF_LP_Nationality_id == 75 or party.RF_LP_Nationality_id == 77 or party.RF_LP_Nationality_id == 78 or party.RF_LP_Nationality_id == 79 or party.RF_LP_Nationality_id == 80 or party.RF_LP_Nationality_id == 81 or party.RF_LP_Nationality_id == 83 or party.RF_LP_Nationality_id == 87 or party.RF_LP_Nationality_id == 89 or party.RF_LP_Nationality_id == 96 or party.RF_LP_Nationality_id == 101 or party.RF_LP_Nationality_id == 104 or party.RF_LP_Nationality_id == 105 or party.RF_LP_Nationality_id == 108 or party.RF_LP_Nationality_id == 110 or party.RF_LP_Nationality_id == 111 or party.RF_LP_Nationality_id == 113 or party.RF_LP_Nationality_id == 118 or party.RF_LP_Nationality_id == 120 or party.RF_LP_Nationality_id == 125 or party.RF_LP_Nationality_id == 131 or party.RF_LP_Nationality_id == 133 or  party.RF_LP_Nationality_id == 137 or party.RF_LP_Nationality_id == 138 or party.RF_LP_Nationality_id == 140 or party.RF_LP_Nationality_id == 141 or party.RF_LP_Nationality_id == 144 or party.RF_LP_Nationality_id == 147 or party.RF_LP_Nationality_id == 156 or party.RF_LP_Nationality_id == 157 or party.RF_LP_Nationality_id == 169 or party.RF_LP_Nationality_id == 171 or party.RF_LP_Nationality_id == 178 or party.RF_LP_Nationality_id == 179 or party.RF_LP_Nationality_id == 180 or party.RF_LP_Nationality_id == 181 or party.RF_LP_Nationality_id == 182 or party.RF_LP_Nationality_id == 183 or party.RF_LP_Nationality_id == 185 or party.RF_LP_Nationality_id == 189 or party.RF_LP_Nationality_id == 192 or party.RF_LP_Nationality_id == 196 or party.RF_LP_Nationality_id == 199 or party.RF_LP_Nationality_id == 201 or party.RF_LP_Nationality_id == 204 or party.RF_LP_Nationality_id == 205 or party.RF_LP_Nationality_id == 207 or party.RF_LP_Nationality_id == 210 or party.RF_LP_Nationality_id == 218 or party.RF_LP_Nationality_id == 225 or party.RF_LP_Nationality_id == 231 or party.RF_LP_Nationality_id == 234 or party.RF_LP_Nationality_id == 235 or party.RF_LP_Nationality_id == 237 or party.RF_LP_Nationality_id == 238  %}
+                                                6{% elif party.RF_LP_Nationality_id == 21 or party.RF_LP_Nationality_id == 57 or party.RF_LP_Nationality_id == 106 or party.RF_LP_Nationality_id == 107 or party.RF_LP_Nationality_id == 119 or party.RF_LP_Nationality_id == 187 or party.RF_LP_Nationality_id == 217 %}
+                                                12
+                                                {% else %}
+                                                    <span class="white">
+                                                        0
+                                                    </span>{% endif %}
+                                            </span> 
+                                        </div>           
+                                    {% endif %} 
+                                </div>
+                                <hr />
+
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                    
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>Action</b>
+                        </div>
+                        <div class="column5">                        
+                            <span>
+                                
+                                {% if RF_Client_Match_id == 1 or RF_Client_Match_id == 4 or RF_Client_Match_id == 7 %}
+                                Accept with company=company standard controls
+                                {% endif %}
+                                {% if RF_Client_Match_id == 2 or RF_Client_Match_id == 5 or RF_Client_Match_id == 8  or RF_Client_Match_id == 11 %}
+                                Conduct Enhanced Due Diligence
+                                {% endif %}
+                                {% if RF_Client_Match_id == 3 or RF_Client_Match_id == 6 %}
+                                Accept with company=company simplified or standard Due Diligence
+                                {% endif %}
+                                {% if RF_Client_Match_id == 9 or RF_Client_Match_id == 10 %}
+                                DO NOT ACCEPT.Follow business rules for Sanctioned Entity.
+                                {% endif %}
+                            </span>
+                        </div>                     
+                                                    
+                    </div>
+                    <hr />
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div>
+        {% else %}        
+            {% if roa_status %}
+                {% include 'roa.html' with company=company RoA=RoA %}
+                <hr/>
+            {% endif %}
+            {% if rp_status %}
+                {% include 'riskplanning.html' with company=company RP=RP %}
+                <hr/>
+            {% endif %}
+            {% if ip_status %}
+                {% include 'investmentplanning.html' with company=company IP=IP %}    
+                <hr/>
+            {% endif %}
+            {% if BA_Risk_status %}
+                {% include 'businessRisk.html' with company=company BA_Risk=BA_Risk %}
+                <hr/>
+            {% endif %}
+            {% if BA_Investment_status %}
+                {% include 'businessAssurance.html' with company=company BA_Investment=BA_Investment %}
+                <hr/>
+            {% endif %}
+            {% if EB_status %}
+                {% include 'employee.html' with company=company EB=EB %}
+                <hr/>
+            {% endif %}
+            {% if STIC_status %}
+                {% include 'short-term-commercial.html' with company=company STIC=STIC %}
+                <hr/>
+            {% endif %}
+            {% if STIP_status %}
+                {% include 'short-term-personal.html' with company=company STIP=STIP %}
+                <hr/>
+            {% endif %}
+            {% if Fiduciary_status %}
+                {% include 'fiduciary.html' with company=company Fiduciary=Fiduciary %}
+            {% endif %}
+            {% if MD_status %}
+                {% include 'medical.html' with company=company MD=MD %}
+                <hr/>
+            {% endif %}
+            {% if GP_status %}
+                {% include 'gapCover.html' with company=company GP=GP %}
+                <hr/> 
+            {% endif %}
+        {% endif %}
+        <hr/>
+        {% if company == "SFP" %}
+        <p class="column12" style="font-family:  'Arial Narrow', 'Arial', 'sans-serif';">
+            Succession Financial Planning Advisory Services (Pty) Ltd. |
+            Registration Number: 2001/018056/07<br />
+            PO Box 207, Menlyn 0063 | T 012 471 4900 | E admin@succession.co.za
+            | www.sfpadvice.co.za<br />
+            Succession Financial Planning is a Licensed Financial Services
+            Provider FSP 41158, NCRCP13569
+            </p>
+        {% endif %}
+        {% if company == "FS4P" %}
+        <p class="column12" style="font-family:  'Arial Narrow', 'Arial', 'sans-serif';">
+            Financial Solutions 4 Professionals Advisory Services (Pty) Ltd. |
+            Reg No 2011/009695/07, operating as a Jurastic Representative of <br />
+            Succession Financial Planning (SFP) License Number 41158.<br />
+            Directors: Mr N J Battersby (Chairman), Mr L du Plessis, Mr W Mouton, Mr M Mtshali, Mr I J Smit, Mr M Spies<br />
+            Company Secretary: Mr V E Barnard
+        </p>
+        {% endif %}
+        {% if company == "AFP" %}
+        <p class="column12" style="font-family:  'Arial Narrow', 'Arial', 'sans-serif';">            
+                Sanlam Life Insurance Limited Reg no 1998/021121/06<br />
+                Licensed Financial Services and Registered Credit Provider (NCRCP43)<br />
+                Refer to the Sanlam website for directors and company secretary details. www.sanlam.co.za
+            </p>
+            
+        {% endif %}
+    </body>
+</html>

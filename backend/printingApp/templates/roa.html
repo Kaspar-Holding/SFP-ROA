@@ -1,0 +1,350 @@
+
+<b class="header">RECORD OF ADVICE</b>
+<hr/>
+<div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 15px;;  '>
+    <div class='row div'>
+        <div class="column2">
+            <b>Client Name:</b>
+        </div>
+        <div class="column2">                        
+            {% if RoA.clientName %}
+                <span>
+                    {{RoA.clientName}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
+        </div>                     
+        <div class="column2">
+            <b>ID number:</b>
+        </div>
+        <div class="column2">                        
+            {% if RoA.clientIdNumber %}
+                <span>
+                    {{RoA.clientIdNumber}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
+        </div>                     
+    </div>
+    <hr/>
+    
+    <div class='row div'>
+        <div class="column2">
+            <b>Address</b>
+        </div>
+        <div class="column5">                        
+            {% if RoA.clientAddress %}
+                <span>
+                    {{RoA.clientAddress}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
+        </div>                                        
+    </div>
+    <hr />
+    
+    <div class='row div'>
+        <div class="column2">
+            <b>Email:</b>
+        </div>
+        <div class="column2">                        
+            {% if RoA.clientEmail %}
+                <span>
+                    {{RoA.clientEmail}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
+        </div>                     
+        <div class="column2">
+            <b>Phone:</b>
+        </div>
+        <div class="column2">                        
+            {% if RoA.clientPhoneNumber %}
+                <span>
+                    {{RoA.clientPhoneNumber}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
+        </div>                     
+    </div>
+    <hr/>
+    
+    <div class='row div'>
+        <div class="column2">
+            <b>Financial Advisor:</b>
+        </div>
+        <div class="column2">                        
+            {% if RoA.clientAdvisor %}
+                <span>
+                    {{RoA.clientAdvisor}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
+        </div>                     
+        <div class="column2">
+            <b>Date:</b>
+        </div>
+        <div class="column2">                        
+            {% if RoA.clientDateOfBirth %}
+                <span>
+                    {{RoA.clientDateOfBirth}}
+                </span>
+            {% else %}
+                <span class="white">0</span>
+            {% endif %}
+        </div>                     
+    </div>
+    <hr/>
+    
+    <div class='row div'>
+        <div class="column12">
+            <span>
+                In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. 
+                This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. 
+                If you have any questions concerning the content, please contact your advisor. 
+                You are entitled to a copy of this document for your records. 
+                You consent to Succession Financial Planning (SFP) processing your personal information per the Protection of Personal Information Act (POPIA). 
+                You have given consent to SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. 
+                You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on <a href='https://www.sfpadvice.co.za' target='_blank'>https://www.sfpadvice.co.za</a>
+            </span>            
+        </div>
+                            
+    </div>
+    <br/>
+    
+    <div class='row div'>
+        <div class="">
+            <b style='font-size: 18px'>SECTION A:</b>
+        </div>    
+    </div>                    
+    <ol>
+        <li>
+            <b style="">
+                Compulsory Disclosures
+            </b>
+        </li>                            
+        <div class='row div'>
+            <div class="column6">
+                <span>Client was provided with a copy of the Letter of Introduction.</span>
+            </div>
+            <div class="column5">                        
+                <div class='row div'>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label >
+                            Yes
+                        </label>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroduction == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>                                        
+        </div>
+        {% if RoA.clientLetterOfIntroductionReason %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {% autoescape off %}
+                            {{RoA.clientLetterOfIntroductionReason}}
+                        {% endautoescape %}
+                    </span>
+                </div>                                               
+            </div>
+        {% endif %}
+        <hr/>
+        <div class='row div'>
+            <div class="column6">
+                <span>Client has provided authority to access information.</span>
+            </div>
+            <div class="column5">                        
+                <div class='row div'>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroductionAccess == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label >
+                            Yes
+                        </label>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientLetterOfIntroductionAccess == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>                                        
+        </div>
+        {% if RoA.clientLetterOfIntroductionAccessReason %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {% autoescape off %}
+                            {{RoA.clientLetterOfIntroductionAccessReason}}
+                        {% endautoescape %}
+                    </span>
+                </div>                                               
+            </div>
+        {% endif %}
+        <hr/>
+        <li>
+            <b style="">
+                Financial Intelligence Centre Act (FICA)
+            </b>
+        </li>                            
+        <div class='row div'>
+            <div class="column6">
+                <span>Client has provided a clear copy of his/her identity document.</span>
+            </div>
+            <div class="column5">                        
+                <div class='row div'>
+                    <div class="column4">
+                        {% if RoA.clientFica == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label >
+                            Yes
+                        </label>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientFica == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>                                        
+        </div>
+        {% if RoA.clientFicaReason %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {% autoescape off %}
+                            {{RoA.clientFicaReason}}
+                        {% endautoescape %}
+                    </span>
+                </div>                                               
+            </div>
+        {% endif %}
+        <hr/>
+        <li>
+            <b style="">
+                Replacements
+            </b>
+        </li>                            
+        <div class='row div'>
+            <div class="column6">
+                <span>Does/Do the product(s) taken replace an existing product(s)?</span>
+            </div>
+            <div class="column5">                        
+                <div class='row div'>
+                    <div class="column4">
+                        {% if RoA.clientReplacement == 1 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label >
+                            Yes
+                        </label>
+                    </div>
+                    <div class="column4">
+                        {% if RoA.clientReplacement == 0 %}
+                            <input checked type="radio" />
+                        {% else %}
+                            <input type="radio" />
+                        {% endif %}
+                    </div>
+                    <div class="column2">
+                        <label>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>                                        
+        </div>
+        {% if RoA.clientReplacementReason %}
+            <div class='row div'>
+                <div class="column12">
+                    <span>
+                        {% autoescape off %}
+                            {{RoA.clientReplacementReason}}
+                        {% endautoescape %}
+                    </span>
+                </div>                                               
+            </div>
+        {% endif %}
+        <hr/>
+    </ol>   
+    <div class='row div'>
+        <div class="">
+            <b style='font-size: 18px'>SECTION B:</b>
+        </div>    
+    </div>  
+    <div>
+        <b class="background" style="">
+            Background information
+        </b>
+    </div>                  
+    <div class='row div'>
+        <div class="column12">
+            <span>Your personal circumstances that formed the basis for my recommendation</span>
+        </div>                                  
+    </div>
+    {% if RoA.clientBackgroundInfo %}
+        <div class='row div'>
+            <div class="column12">
+                <span>
+                    {% autoescape off %}
+                        {{RoA.clientBackgroundInfo}}
+                    {% endautoescape %}
+                </span>
+            </div>                                               
+        </div> 
+    {% endif %}
+    <br/>
+</div>

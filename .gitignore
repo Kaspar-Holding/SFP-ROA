@@ -1,1 +1,5 @@
-backend/web
+backend/sfp_venv/
+*.env
+sfp_roa
+/sfp_venv
+prodEnv

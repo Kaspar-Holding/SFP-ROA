@@ -1,0 +1,94 @@
+
+<b class="header">Fiduciary</b>
+<br/>
+<div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 14px;;  '>
+    <div class='row div'>
+        <div class="column6">
+            <span>Is there a valid Will in place?</span>
+        </div>
+        <div class="column5">                        
+            <div class='row div'>
+                <div class="column4">
+                    {% if Fiduciary.fiduciaryWillInPlace == 1 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label >
+                        Yes
+                    </label>
+                </div>
+                <div class="column4">
+                    {% if Fiduciary.fiduciaryWillInPlace == 0 %}
+                        <input checked type="radio" />
+                    {% else %}
+                        <input type="radio" />
+                    {% endif %}
+                </div>
+                <div class="column2">
+                    <label>
+                        No
+                    </label>
+                </div>
+            </div>
+        </div>                                        
+    </div>
+    <hr/>
+    {% if Fiduciary.fiduciaryWillUpdationDate %}
+        <div class='row div'>
+            <div class="column6">
+                <span>Date last updated?</span>
+            </div>                                       
+            <div class="column5">
+                <span>{{Fiduciary.fiduciaryWillUpdationDate}}</span>
+            </div>                                       
+        </div>
+        <hr/>
+    {% endif %}
+    {% if Fiduciary.fiduciaryWillKeepingPlace %}
+        <div class='row div'>
+            <div class="column6">
+                <span>Where is the will kept?</span>
+            </div>                                       
+            <div class="column5">
+                <span>{{Fiduciary.fiduciaryWillKeepingPlace}}</span>
+            </div>                                       
+        </div>
+        <hr/>
+    {% endif %}
+    {% if Fiduciary.fiduciaryExecutorDetails %}
+        <div class='row div'>
+            <div class="column6">
+                <span>Details of Executor?</span>
+            </div>                                       
+            <div class="column5">
+                <span>{{Fiduciary.fiduciaryExecutorDetails}}</span>
+            </div>                                       
+        </div>
+        <hr/>
+    {% endif %}
+    {% if Fiduciary.fiduciaryClientInstructions %}
+        <div class='row div'>
+            <div class="column6">
+                <span>Client instruction in terms of drafting a Will?</span>
+            </div>                                       
+            <div class="column5">
+                <span>{{Fiduciary.fiduciaryClientInstructions}}</span>
+            </div>                                       
+        </div>
+        <hr/>
+    {% endif %}
+    {% if Fiduciary.fiduciaryConsequencesExplained %}
+        <div class='row div'>
+            <div class="column6">
+                <span>Has the consequences of not having a will being explained and discussed?</span>
+            </div>                                       
+            <div class="column5">
+                <span>{{Fiduciary.fiduciaryConsequencesExplained}}</span>
+            </div>                                       
+        </div>
+        <hr/>
+    {% endif %}
+</div> 

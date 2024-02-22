@@ -11,3 +11,151 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.sfp {
+  background-color: #00788b;
+  border-color: #00788b;
+}
+
+.fs4p {
+  background-color: #6AC7D2;
+  border-color: #6AC7D2;
+}
+
+.sanlam {
+  background-color: #0074C9;
+  border-color: #0074C9;
+}
+
+.btn-sfp {
+  background-color: #00788b;
+  border-color: #00788b;
+  color: white;
+}
+
+.btn-fs4p {
+  background-color: #6AC7D2;
+  border-color: #6AC7D2;
+  color: white;
+}
+
+.btn-sanlam {
+  background-color: #0074C9;
+  border-color: #0074C9;
+  color: white;
+}
+
+.sfp-outline-primary {
+  color: #00788b;
+  border-color: #00788b;
+}
+.sfp-outline-primary:hover {
+  color: #ffffff;
+  border-color: #00788b;
+  background-color: #00788b;
+}
+
+.fs4p-outline-primary {
+  color: #6AC7D2;
+  border-color: #6AC7D2;
+  border-color: #6AC7D2;
+}
+.fs4p-outline-primary:hover {
+  color: #ffffff;
+  border-color: #6AC7D2;
+  background-color: #6AC7D2;
+}
+
+.sanlam-outline-primary {
+  color: #0074C9;
+  border-color: #0074C9;
+}
+.sanlam-outline-primary:hover {
+  color: #ffffff;
+  border-color: #0074C9;
+  background-color: #0074C9;
+}
+
+.sfp-text {
+  color: #00788b;
+}
+
+.fs4p-text {
+  color: #6AC7D2;
+}
+
+.sanlam-text {
+  color: #0074C9;
+}
+
+.sfp-nav-link.active {
+  color: #00788b;
+}
+
+.fs4p-nav-link.active {
+  color: #6AC7D2;
+}
+
+.sanlam-nav-link.active {
+  color: #0074C9;
+}
+
+.sfp-nav-link.active {
+  color: #00788b !important;
+}
+.fs4p-nav-link.active {
+  color: #6AC7D2 !important;
+}
+.sanlam-nav-link.active {
+  color: #0074C9 !important;
+}
+
+.sfp-nav-pill-btn {
+  color: #00788b;
+}
+.fs4p-nav-pill-btn {
+  color: #6AC7D2;
+}
+.sanlam-nav-pill-btn {
+  color: #0074C9;
+}
+
+.sfp-nav-pill-btn:hover {
+  color: black;
+}
+.fs4p-nav-pill-btn:hover {
+  color: black;
+}
+.sanlam-nav-pill-btn:hover {
+  color: black;
+}
+
+.sfp-nav-pill-btn.active {
+  background-color: #00788b !important;
+  color: #ffffff;
+}
+.fs4p-nav-pill-btn.active {
+  background-color: #6AC7D2 !important;
+  color: #ffffff;
+}
+.sanlam-nav-pill-btn.active {
+  background-color: #0074C9 !important;
+  color: #ffffff;
+}
+.sfp-logo {  
+  display: "block";
+  margin-left: "auto";
+  margin-right: "auto";
+}
+.fs4p-logo {  
+  display: "block";
+  margin-left: "auto";
+  margin-right: "auto";
+  width:  20%;
+}
+.sanlam-logo {  
+  display: "block";
+  margin-left: "auto";
+  margin-right: "auto";
+  width:  20%;
+}

@@ -1,0 +1,775 @@
+{% load intlib %}
+<b class="header">Risk</b>
+        <br/>
+        <div style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 14px;;  '>
+            <b class="background">Financial Needs Analysis Summary</b>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Financial Planning Need/Objective</b>
+                </div>
+                <div class="column31">
+                    <b>Total need identified</b>
+                </div>
+                <div class="column31">
+                    <b>Existing provisions</b>
+                </div>
+                <div class="column31">
+                    <b>Shortfall/ Surplus</b>
+                </div>
+                <div class="column31">
+                    <b>Cover taken up now</b>
+                </div>
+                                    
+            </div>
+            <hr/>
+            
+            <div class='row1 div'>
+                <div class="column12">
+                    <b class="colorheader">Death Cover:</b>
+                </div>                                    
+            </div>
+            <hr/>
+
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Death Cover:Lump sum</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_LumpSumTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_LumpSumExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_LumpSumTotalNeed|subtract:RP.RP_DC_LumpSumExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_LumpSumInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Death Cover: Income (p.m.)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_IncomeTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_IncomeExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_IncomeTotalNeed|subtract:RP.RP_DC_IncomeExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_IncomeInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Funeral Benefit (p.m.)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_FB_TotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_FB_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_FB_TotalNeed|subtract:RP.RP_DC_FB_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DC_FB_Investments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            {% if RP.DC_Other_Data %}
+                {% for DC_Other in RP.DC_Other_Data %}
+                    <div class='row1 div'>
+                        <div class="column31">
+                            <b>Other: {{DC_Other.DC_Other}}</b>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DC_Other.DC_OtherTotalNeed}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DC_Other.DC_OtherExistingProvisions}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DC_Other.DC_OtherTotalNeed|subtract:DC_Other.DC_OtherExistingProvisions}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DC_Other.DC_OtherInvestments}}</span>
+                        </div>                                    
+                    </div>
+                    <hr/>            
+                {% endfor %}
+            {% endif %}
+            
+            <div class='row div'>
+                <div class="column2">
+                    <b>Comments</b>
+                </div>
+                <div class="column5">                        
+                    <span>
+                        {% autoescape off %}
+                            {{RP.RP_DC_Comments}}
+                        {% endautoescape %}
+                    </span>
+                </div>                                        
+            </div>
+            <hr />
+            <div class='row1 div'>
+                <div class="column12">
+                    <b class="colorheader">Disabiltiy Cover:</b>
+                </div>          
+            </div>
+            <hr/>
+
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Lump sum</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_LumpSumTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_LumpSumExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_LumpSumTotalNeed|subtract:RP.RP_DiC_LumpSumExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_LumpSumInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Permanent Income (p.m.)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_PI_TotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_PI_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_PI_TotalNeed|subtract:RP.RP_DiC_PI_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_PI_Investments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Temporary Income (p.m.)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_TI_TotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_TI_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_TI_TotalNeed|subtract:RP.RP_DiC_TI_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_TI_Investments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Sickness Benefit</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_SiB_TotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_SiB_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_SiB_TotalNeed|subtract:RP.RP_DiC_SiB_ExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DiC_SiB_Investments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            
+            {% if RP.DiC_Other_Data %}
+                {% for DiC_Other in RP.DiC_Other_Data %}
+                    <div class='row1 div'>
+                        <div class="column31">
+                            <b>Other: {{DiC_Other.DiC_Other}}</b>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DiC_Other.DiC_OtherTotalNeed}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DiC_Other.DiC_OtherExistingProvisions}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DiC_Other.DiC_OtherTotalNeed|subtract:DiC_Other.DiC_OtherExistingProvisions}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DiC_Other.DiC_OtherInvestments}}</span>
+                        </div>                                    
+                    </div>
+                    <hr/>            
+                {% endfor %}
+            {% endif %}
+            
+            <div class='row div'>
+                <div class="column2">
+                    <b>Comments</b>
+                </div>
+                <div class="column5">                        
+                    <span>
+                        {% autoescape off %}
+                            {{RP.RP_DiC_Comments}}
+                        {% endautoescape %}
+                    </span>
+                </div>                                        
+            </div>
+            <hr />
+            <div class='row1 div'>
+                <div class="column12">
+                    <b class="colorheader">Dread Disease Cover:</b>
+                </div>                                    
+            </div>
+            <hr/>
+
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Dread Disease:Lump Sum</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_LumpSumTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_LumpSumExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_LumpSumTotalNeed|subtract:RP.RP_DrC_LumpSumExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_LumpSumInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            <div class='row1 div'>
+                <div class="column31">
+                    <b>Dread Disease:Income(p.m)</b>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_IncomeTotalNeed}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_IncomeExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_IncomeTotalNeed|subtract:RP.RP_DrC_IncomeExistingProvisions}}</span>
+                </div>
+                <div class="column32">
+                    <span>R {{RP.RP_DrC_IncomeInvestments}}</span>
+                </div>                                    
+            </div>
+            <hr/>
+            
+            {% if RP.DrC_Other_Data %}
+                {% for DrC_Other in RP.DrC_Other_Data %}
+                    <div class='row1 div'>
+                        <div class="column31">
+                            <b>Other: {{DrC_Other.DrC_Other}}</b>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DrC_Other.DrC_OtherTotalNeed}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DrC_Other.DrC_OtherExistingProvisions}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DrC_Other.DrC_OtherTotalNeed|subtract:DrC_Other.DrC_OtherExistingProvisions}}</span>
+                        </div>
+                        <div class="column32">
+                            <span>R {{DrC_Other.DrC_OtherInvestments}}</span>
+                        </div>                                    
+                    </div>
+                    <hr/>            
+                {% endfor %}
+            {% endif %}
+            
+            <div class='row div'>
+                <div class="column2">
+                    <b>Comments</b>
+                </div>
+                <div class="column5">                        
+                    <span>
+                        {% autoescape off %}
+                            {{RP.RP_DrC_Comments}}
+                        {% endautoescape %}
+                    </span>
+                </div>                                        
+            </div>
+            <hr />
+            <div class='row div'>
+                <div class="">
+                    <b style='font-size: 18px'>SECTION C:</b>
+                </div>    
+            </div>  
+            <div>
+                <b class="background" style="">
+                    Financial Solutions:
+                </b>
+            </div>    
+            <div class='row div'>
+                <div class="column12">
+                    <p>Summary of recommendations to address your identified needs</p>
+                    <p>No cash values are payable/accessible unless a specified event has occurred, i.e., the life event for which cover is taken; in which case the proceeds are payable tax-free. The premiums are not tax-deductible according to current legislation and loans against the policy are not permitted.</p>
+                    <p>Should the policy have an accelerator benefit attached, it means that upon a claim of that benefit the life cover amount will reduce by the claim amount. Standalone benefits are independent of the life cover, and you may claim without affecting the life cover amounts.</p>
+                    <p><u>Life Cover:</u></p>
+                    <p>Policies payable to the estate will attract executors’ fees at a maximum of 3.5% + VAT. Where there is a beneficiary the executors fees will not be levied. Executors’ fees are applicable to all assets in the estate of a client and the exemption only applies to policies with beneficiaries.</p>
+                    <p>Death benefits will not be paid where the life insured commits suicide within 2 years of commencement or reinstatement of the cover.</p>
+                    <hr/>
+                    {% if RP.RP_LC_FinancialSolutions %}
+                        {% autoescape off %}
+                            <p>{{RP.RP_LC_FinancialSolutions}}</p>
+                        {% endautoescape %}
+                        <hr/>
+                    {% endif %}
+                    <p><u>Disability Cover:</u></p>
+                    <hr/>
+                    {% if RP.RP_DiC_FinancialSolutions %}
+                        {% autoescape off %}
+                        <p>{{RP.RP_DiC_FinancialSolutions}}</p>
+                        {% endautoescape %}
+
+                        <hr/>
+                    {% endif %}
+                    <p><u>Dread Disease Cover:</u></p>
+                    <hr/>
+                    {% if RP.RP_DrC_FinancialSolutions %}
+                    {% autoescape off %}
+                    <p>{{RP.RP_DrC_FinancialSolutions}}</p>
+                    {% endautoescape %}
+                        <hr/>
+                    {% endif %}
+                </div>                                    
+            </div>     
+            <hr />
+            {% if RP.RP_AltS_1 or RP.RP_AltS_2 or RP.RP_AltS_3 %}
+                <div class='row div'>
+                    <div class="">
+                        <b style='font-size: 18px'>SECTION D:</b>
+                    </div>    
+                </div>  
+                <div>
+                    <b class="background" style="">
+                        Alternative Solutions Considered
+                    </b>
+                </div>    
+                <div class='row div'>
+                    <div class="column12">
+                        <p>The following solutions were presented to you for consideration but were not selected for the following reasons:</p>
+                        {% if RP.RP_AltS_1 %}
+                            <hr/>
+                            {% autoescape off %}
+                                <p>{{RP.RP_AltS_1}}</p>
+                            {% endautoescape %}
+                        {% endif %}
+                        {% if RP.RP_AltS_2 %}
+                            <hr/>
+                            {% autoescape off %}
+                                <p>{{RP.RP_AltS_2}}</p>
+                            {% endautoescape %}
+                        {% endif %}
+                        {% if RP.RP_AltS_3 %}
+                            <hr/>
+                            {% autoescape off %}
+                                <p>{{RP.RP_AltS_3}}</p>
+                            {% endautoescape %}
+                        {% endif %}
+                    </div>                                    
+                </div>     
+            {% endif %}
+            <div class='row div'>
+                <div class="">
+                    <b style='font-size: 18px'>SECTION E:</b>
+                </div>    
+            </div>  
+            {% if RP.RP_ProductTaken_Data %}
+                {% for productTaken in RP.RP_ProductTaken_Data %}
+                    <div>
+                        <b class="background" style="">
+                            Product Taken {{forloop.counter}}
+                        </b>
+                    </div>    
+                    <div class='row div'>
+                        <div class="column12">
+                            <p>Products accepted by you to meet your requirements</p>                    
+                        </div>                                
+                    </div>     
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>Product:</b>
+                        </div>
+                        <div class="column2">                        
+                            {% if productTaken.Product_Taken %}
+                                <span>{{productTaken.Product_Taken}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                    </div>    
+                    <hr/> 
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>Product Provider:</b>
+                        </div>
+                        <div class="column2">                        
+                            {% if productTaken.Product_Provider %}
+                                <span>{{productTaken.Product_Provider}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                        <div class="column2">
+                            <b>Policy Number:</b>
+                        </div>
+                        <div class="column2">                        
+                            {% if productTaken.Policy_Number %}
+                                <span>{{productTaken.Policy_Number}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                    </div>   
+                    <hr/>  
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>Product Name:</b>
+                        </div>
+                        <div class="column2">                        
+                            {% if productTaken.Product_Name %}
+                                <span>{{productTaken.Product_Name}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                        <div class="column2">
+                            <b>Frequency:</b>
+                        </div>
+                        <div class="column2"> 
+                            {% if productTaken.Product_Premium %}
+                                <span>{{productTaken.Product_Premium}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}       
+                            {% if productTaken.Product_PremiumFrequency %}
+                                <span>{{productTaken.Product_PremiumFrequency}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}       
+                        </div> 
+                    </div> 
+                    <hr/>    
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>Premium Pattern:</b>
+                        </div>
+                        <div class="column2">        
+                            {% if productTaken.Product_Pattern %}
+                                <span>{{productTaken.Product_Pattern}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                        <div class="column2">
+                            <b>Escalation in cover/premium:</b>
+                        </div>
+                        <div class="column2">        
+                            {% if productTaken.Product_Escalation %}
+                                <span>{{productTaken.Product_Escalation}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                    </div>  
+                    <hr/>   
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>Contracting Party:</b>
+                        </div>
+                        <div class="column2">        
+                            {% if productTaken.Product_ContractingParty %}
+                                <span>{{productTaken.Product_ContractingParty}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                        <div class="column2">
+                            <b>Life/Lives covered:</b>
+                        </div>
+                        <div class="column2">        
+                            {% if productTaken.Product_LivesAssured %}
+                                <span>{{productTaken.Product_LivesAssured}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                    </div>     
+                    <hr/>
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>Beneficial/Cessionary:</b>
+                        </div>
+                        <div class="column2">        
+                            {% if productTaken.Product_Beneficiary %}
+                                <span>{{productTaken.Product_Beneficiary}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                        <div class="column2">
+                            <b>Premium payer(s):</b>
+                        </div>
+                        <div class="column2">        
+                            {% if productTaken.Product_PremiumPayer %}
+                                <span>{{productTaken.Product_PremiumPayer}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}
+                        </div> 
+                    </div>    
+                    <hr/> 
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>1st year commission:</b>
+                        </div>
+                        <div class="column2">  
+                            {% if productTaken.Product_1stYearCommission %}
+                                <span>R {{productTaken.Product_1stYearCommission}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}        
+                        </div> 
+                        <div class="column2">
+                            <b>2nd year commission:</b>
+                        </div>
+                        <div class="column2">   
+                            {% if productTaken.Product_2ndYearCommission %}
+                                <span>R {{productTaken.Product_2ndYearCommission}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}             
+                        </div> 
+                    </div>    
+                    <hr/> 
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>Ongoing fees:</b>
+                        </div>
+                        <div class="column2"> 
+                            {% if productTaken.Product_OngoingFees %}
+                                <span>R {{productTaken.Product_OngoingFees}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}                    
+                            <span>R {{productTaken.Product_OngoingFees}}</span>
+                        </div> 
+                        <div class="column2">
+                            <b>Frequency:</b>
+                        </div>
+                        <div class="column2"> 
+                            {% if productTaken.Product_OngoingFeesFrequency %}
+                                <span>R {{productTaken.Product_OngoingFeesFrequency}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}                    
+                            {% if productTaken.Product_OngoingFeesFrequency1 %}
+                                <span>{{productTaken.Product_OngoingFeesFrequency1}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}                    
+                        </div> 
+                    </div> 
+                    <hr/>    
+                    <div class='row div'>
+                        <div class="column2">
+                            <b>Total fees and commission:</b>
+                        </div>
+                        <div class="column2"> 
+                            {% if productTaken.TotalFees_n_Commissions %}
+                                <span>R {{productTaken.TotalFees_n_Commissions}}</span>
+                            {% else %}
+                                <span class="white">0</span>
+                            {% endif %}                    
+                        </div> 
+                    </div> 
+                    <hr/>    
+                    <div class='row div'>
+                        <div class="column61">
+                            <b>Benefit description: life cover, disability etc:</b>
+                        </div>
+                        <div class="column61">        
+                            <b>Cover amount</b>
+                        </div> 
+                    </div> 
+                    <hr/>
+                    {% if productTaken.BenDesc_1 %}
+                        <div class='row div'>
+                            <div class="column61">
+                                <span>{{productTaken.BenDesc_1}}</span>
+                            </div>
+                            <div class="column61">        
+                                <span>R {{productTaken.BenDesc_CoverAmount_1}}</span>
+                            </div> 
+                        </div>
+                        <hr/>
+                    {% endif %}  
+                    {% if productTaken.BenDesc_2 %}
+                        <div class='row div'>
+                            <div class="column61">
+                                <span>{{productTaken.BenDesc_2}}</span>
+                            </div>
+                            <div class="column61">        
+                                <span>R {{productTaken.BenDesc_CoverAmount_2}}</span>
+                            </div> 
+                        </div>
+                        <hr/>
+                    {% endif %}  
+                    {% if productTaken.BenDesc_3 %}
+                        <div class='row div'>
+                            <div class="column61">
+                                <span>{{productTaken.BenDesc_3}}</span>
+                            </div>
+                            <div class="column61">        
+                                <span>R {{productTaken.BenDesc_CoverAmount_3}}</span>
+                            </div> 
+                        </div>
+                        <hr/>
+                    {% endif %}  
+                    {% if productTaken.BenDesc_4 %}
+                        <div class='row div'>
+                            <div class="column61">
+                                <span>{{productTaken.BenDesc_4}}</span>
+                            </div>
+                            <div class="column61">        
+                                <span>R {{productTaken.BenDesc_CoverAmount_4}}</span>
+                            </div> 
+                        </div>
+                        <hr/>
+                    {% endif %}  
+                    {% if productTaken.BenDesc_5 %}
+                        <div class='row div'>
+                            <div class="column61">
+                                <span>{{productTaken.BenDesc_5}}</span>
+                            </div>
+                            <div class="column61">        
+                                <span>R {{productTaken.BenDesc_CoverAmount_5}}</span>
+                            </div> 
+                        </div>
+                        <hr/>
+                    {% endif %}  
+                    {% if productTaken.BenDesc_6 %}
+                        <div class='row div'>
+                            <div class="column61">
+                                <span>{{productTaken.BenDesc_6}}</span>
+                            </div>
+                            <div class="column61">        
+                                <span>R {{productTaken.BenDesc_CoverAmount_6}}</span>
+                            </div> 
+                        </div>
+                        <hr/>
+                    {% endif %}  
+                    {% if productTaken.BenDesc_7 %}
+                        <div class='row div'>
+                            <div class="column61">
+                                <span>{{productTaken.BenDesc_7}}</span>
+                            </div>
+                            <div class="column61">        
+                                <span>R {{productTaken.BenDesc_CoverAmount_7}}</span>
+                            </div> 
+                        </div>
+                        <hr/>
+                    {% endif %}  
+                    
+                    <div class='row div'>
+                        <div class="column12">
+                            <p>The following are reasons why the above-mentioned product best suits your needs and objectives</p>                    
+                        </div>                             
+                    </div>    
+                    <hr/>        
+                    {% if productTaken.ProductReasons %}
+                        <div class='row div'>          
+                            <div class="column12">
+                                {% autoescape off %}
+                                    <p>{{productTaken.ProductReasons}}</p>                    
+                                {% endautoescape %}
+                            </div>                                
+                        </div> 
+                        <hr/>   
+                    {% endif %}     
+                    <div class='row div'>
+                        <div class="column12">
+                            <p>The details of the material aspects of the selected product that were discussed with you are outlined below:</p>                    
+                        </div>                             
+                    </div>    
+                    {% if productTaken.ProductMaterialAspects %}
+                        <hr/>
+                        <div class='row div'>          
+                            <div class="column12">
+                                {% autoescape off %}
+                                <p>{{productTaken.ProductMaterialAspects}}</p>                    
+                                {% endautoescape %}
+                            </div>                                
+                        </div>
+                    {% endif %}             
+                    {% if productTaken.ProductDetails %}
+                        <div class='row div'>          
+                            <div class="column12">
+                                
+                                {% autoescape off %}
+                                    <p>{{productTaken.ProductDetails}}</p>                    
+                                {% endautoescape %}
+                            </div>                                
+                        </div>
+                    {% endif %}    
+                    {% if productTaken.ExecutorFee %}
+                        <div class='row div'>          
+                            <div class="column12">
+                                
+                                {% autoescape off %}
+                                    <p>{{productTaken.ExecutorFee}}</p>                    
+                                {% endautoescape %}
+                            </div>                                
+                        </div>
+                    {% endif %}    
+                    {% if productTaken.NominationOfBeneficiaries %}
+                        <div class='row div'>          
+                            <div class="column12">
+                                
+                                {% autoescape off %}
+                                    <p>{{productTaken.NominationOfBeneficiaries}}</p>                    
+                                {% endautoescape %}
+                            </div>                                
+                        </div>    
+                    {% endif %}    
+                    {% if productTaken.InformationExplained %}
+                        <div class='row div'>          
+                            <div class="column12">
+                                
+                                {% autoescape off %}
+                                    <p>{{productTaken.InformationExplained}}</p>                    
+                                {% endautoescape %}
+                            </div>                                
+                        </div>    
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        
