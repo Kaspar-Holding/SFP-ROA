@@ -476,19 +476,19 @@ def compliance_export(userId, data):
             advisor = advisor.first()
             advisor_name = advisor.Full_Name 
             advisor_id = advisor.ID_Number 
-            logger.info(advisor_name)
-            region_name = advisor.region.region
-            regional_manager = region_manager.objects.filter(region=advisor.region.pk)
-            if regional_manager.exists():
-                regional_manager = regional_manager.first()
-                regional_manager = UserAccount.objects.filter(id=regional_manager.manager.pk)
+            if advisor.region:
+                region_name = advisor.region.region
+                regional_manager = region_manager.objects.filter(region=advisor.region.pk)
                 if regional_manager.exists():
                     regional_manager = regional_manager.first()
-                    regional_manager_name = regional_manager.first_name + " " + regional_manager.last_name
-                    regional_manager_email = regional_manager.email
-                    regional_manager_profile = user_profile.objects.filter(user=regional_manager.pk)
-                    if regional_manager_profile.exists():
-                        regional_manager_name = regional_manager_profile.first().Full_Name
+                    regional_manager = UserAccount.objects.filter(id=regional_manager.manager.pk)
+                    if regional_manager.exists():
+                        regional_manager = regional_manager.first()
+                        regional_manager_name = regional_manager.first_name + " " + regional_manager.last_name
+                        regional_manager_email = regional_manager.email
+                        regional_manager_profile = user_profile.objects.filter(user=regional_manager.pk)
+                        if regional_manager_profile.exists():
+                            regional_manager_name = regional_manager_profile.first().Full_Name
             bac = advisor.bac.pk if advisor.bac else ""
             if bac != "":
                 bac = UserAccount.objects.get(id=bac)
