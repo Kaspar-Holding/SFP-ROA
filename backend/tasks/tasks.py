@@ -476,6 +476,7 @@ def compliance_export(userId, data):
             advisor = advisor.first()
             advisor_name = advisor.Full_Name 
             advisor_id = advisor.ID_Number 
+            logger.info(advisor_name)
             region_name = advisor.region.region
             regional_manager = region_manager.objects.filter(region=advisor.region.pk)
             if regional_manager.exists():
