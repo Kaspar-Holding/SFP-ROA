@@ -423,6 +423,9 @@ const GatekeepingInsights = () => {
         chart: {
             type: 'pie',
             fontFamily: "Open Sans",
+            toolbar: {
+                show: true
+            }
         },
         labels: labels,
         responsive: [
@@ -459,6 +462,7 @@ const GatekeepingInsights = () => {
     const [KPIs, setKPIs] = useState({})
     const [GatekeepingTrend, setGatekeepingTrend] = useState([])
     const [GatekeepingTrendList, setGatekeepingTrendList] = useState([])
+    const [GatekeepingApprovalList, setGatekeepingApprovalList] = useState([])
     const [RejectionGatekeepingTrend, setRejectionGatekeepingTrend] = useState([])
     const [DatewiseGatekeepingTrend, setDatewiseGatekeepingTrend] = useState([])
     const [RegionGatekeepingTrend, setRegionGatekeepingTrend] = useState([])
@@ -479,6 +483,7 @@ const GatekeepingInsights = () => {
             setKPIs(response?.data?.data?.kpis)
             setGatekeepingTrend(response?.data?.data?.businessType_trend)
             setGatekeepingTrendList(response?.data?.data?.businessType_trend_list)
+            setGatekeepingApprovalList(response?.data?.data?.businessType_trend_list)
             setDatewiseGatekeepingTrend(response?.data?.data?.date_gatekeeping_trend)
             // setRegions(response?.data?.data?.top_regions)
             // setAdvisors(response?.data?.data?.top_advisors)
@@ -566,6 +571,53 @@ const GatekeepingInsights = () => {
         LoadRegions()
     }, [])
 
+    const [sortBy, setSortBy] = useState(null);
+    const [sortOrder, setSortOrder] = useState('asc');
+
+    const handleSort = (key) => {
+        if (sortBy === key) {
+            // Toggle sort order if the same column is clicked again
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Sort by the selected column in ascending order
+            setSortBy(key);
+            setSortOrder('asc');
+        }
+    };
+
+    const sortedGatekeepingTrendList = [...GatekeepingTrendList].sort((a, b) => {
+        const factor = sortOrder === 'asc' ? 1 : -1;
+        if (sortBy) {
+            if (a[sortBy] < b[sortBy]) return -1 * factor;
+            if (a[sortBy] > b[sortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+
+    const [ApprovalBy, setApprovalBy] = useState(null);
+    const [ApprovalOrder, setApprovalOrder] = useState('asc');
+
+    const handleApproval = (key) => {
+        if (ApprovalBy === key) {
+            // Toggle Approval order if the same column is clicked again
+            setApprovalOrder(ApprovalOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Approval by the selected column in ascending order
+            setApprovalBy(key);
+            setApprovalOrder('asc');
+        }
+    };
+
+    const sortedGatekeepingApprovalList = [...GatekeepingApprovalList].sort((a, b) => {
+        const factor = ApprovalOrder === 'asc' ? 1 : -1;
+        if (ApprovalBy) {
+            if (a[ApprovalBy] < b[ApprovalBy]) return -1 * factor;
+            if (a[ApprovalBy] > b[ApprovalBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
 
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
@@ -682,13 +734,13 @@ const GatekeepingInsights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Business Type</th>
-                                                    <th scope="col">Total Reviews</th>
+                                                    <th scope="col">Business Type <button onClick={ () => { handleSort('businessType') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">Total Reviews <button onClick={ () => { handleSort('reviews') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    GatekeepingTrendList.map(
+                                                    sortedGatekeepingTrendList.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>
@@ -709,13 +761,13 @@ const GatekeepingInsights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Business Type</th>
-                                                    <th scope="col">Approved at 1st Review</th>
+                                                    <th scope="col">Business Type <button onClick={ () => { handleApproval('businessType') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">Approved at 1st Review <button onClick={ () => { handleApproval('rejected_reviews') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    GatekeepingTrendList.map(
+                                                    sortedGatekeepingApprovalList.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>

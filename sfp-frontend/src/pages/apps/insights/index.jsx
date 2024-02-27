@@ -521,10 +521,58 @@ const Insights = () => {
         LoadRegions()
     }, [])
 
+    const [sortBy, setSortBy] = useState(null);
+    const [sortOrder, setSortOrder] = useState('asc');
+
+    const handleSort = (key) => {
+        if (sortBy === key) {
+            // Toggle sort order if the same column is clicked again
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Sort by the selected column in ascending order
+            setSortBy(key);
+            setSortOrder('asc');
+        }
+    };
+
+    const sortedAdvisorsData = [...AdvisorsData].sort((a, b) => {
+        const factor = sortOrder === 'asc' ? 1 : -1;
+        if (sortBy) {
+            if (a[sortBy] < b[sortBy]) return -1 * factor;
+            if (a[sortBy] > b[sortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+    const [RegionSortBy, setRegionSortBy] = useState(null);
+    const [RegionSortOrder, setRegionSortOrder] = useState('asc');
+
+    const handleRegionSort = (key) => {
+        if (RegionSortBy === key) {
+            // Toggle sort order if the same column is clicked again
+            setRegionSortOrder(RegionSortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Sort by the selected column in ascending order
+            setRegionSortBy(key);
+            setRegionSortOrder('asc');
+        }
+    };
+
+    const sortedRegionData = [...RegionsData].sort((a, b) => {
+        const factor = RegionSortOrder === 'asc' ? 1 : -1;
+        if (RegionSortBy) {
+            if (a[RegionSortBy] < b[RegionSortBy]) return -1 * factor;
+            if (a[RegionSortBy] > b[RegionSortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+
 
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
     }
+
 
     // if (user?.userType === 6) {
     //     router.push('/')
@@ -631,13 +679,13 @@ const Insights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Region</th>
-                                                    <th scope="col">Commission</th>
+                                                    <th scope="col">Region <button onClick={ () => { handleRegionSort('region') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">Commission <button onClick={ () => { handleRegionSort('commission') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    RegionsData.map(
+                                                    sortedRegionData.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>
@@ -659,14 +707,14 @@ const Insights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Commission</th>
+                                                    <th scope="col">Name <button onClick={ () => { handleSort('advisor') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">Email <button onClick={ () => { handleSort('email') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">Commission <button onClick={ () => { handleSort('commission') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    AdvisorsData.map(
+                                                    sortedAdvisorsData.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>

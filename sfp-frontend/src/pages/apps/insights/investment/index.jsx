@@ -534,6 +534,102 @@ const InvestmentInsights = () => {
         LoadRegions()
     }, [])
 
+    const [sortBy, setSortBy] = useState(null);
+    const [sortOrder, setSortOrder] = useState('asc');
+
+    const handleSort = (key) => {
+        if (sortBy === key) {
+            // Toggle sort order if the same column is clicked again
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Sort by the selected column in ascending order
+            setSortBy(key);
+            setSortOrder('asc');
+        }
+    };
+
+    const sortedAdvisorsLumpSum = [...AdvisorsLumpSum].sort((a, b) => {
+        const factor = sortOrder === 'asc' ? 1 : -1;
+        if (sortBy) {
+            if (a[sortBy] < b[sortBy]) return -1 * factor;
+            if (a[sortBy] > b[sortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+
+    const [AdvisorRecurringSortBy, setAdvisorRecurringSortBy] = useState(null);
+    const [AdvisorRecurringSortOrder, setAdvisorRecurringSortOrder] = useState('asc');
+
+    const handleAdvisorRecurringSort = (key) => {
+        if (AdvisorRecurringSortBy === key) {
+            // Toggle sort order if the same column is clicked again
+            setAdvisorRecurringSortOrder(AdvisorRecurringSortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Sort by the selected column in ascending order
+            setAdvisorRecurringSortBy(key);
+            setAdvisorRecurringSortOrder('asc');
+        }
+    };
+
+    const sortedAdvisorsRecurring = [...AdvisorsRecurring].sort((a, b) => {
+        const factor = AdvisorRecurringSortOrder === 'asc' ? 1 : -1;
+        if (AdvisorRecurringSortBy) {
+            if (a[AdvisorRecurringSortBy] < b[AdvisorRecurringSortBy]) return -1 * factor;
+            if (a[AdvisorRecurringSortBy] > b[AdvisorRecurringSortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+
+    const [RegionsLumpSumSortBy, setRegionsLumpSumSortBy] = useState(null);
+    const [RegionsLumpSumSortOrder, setRegionsLumpSumSortOrder] = useState('asc');
+
+    const handleRegionsLumpSumSort = (key) => {
+        if (RegionsLumpSumSortBy === key) {
+            // Toggle sort order if the same column is clicked again
+            setRegionsLumpSumSortOrder(RegionsLumpSumSortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Sort by the selected column in ascending order
+            setRegionsLumpSumSortBy(key);
+            setRegionsLumpSumSortOrder('asc');
+        }
+    };
+
+    const sortedRegionsLumpSum = [...RegionsLumpSum].sort((a, b) => {
+        const factor = RegionsLumpSumSortOrder === 'asc' ? 1 : -1;
+        if (RegionsLumpSumSortBy) {
+            if (a[RegionsLumpSumSortBy] < b[RegionsLumpSumSortBy]) return -1 * factor;
+            if (a[RegionsLumpSumSortBy] > b[RegionsLumpSumSortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+
+    const [RegionRecurringSortBy, setRegionRecurringSortBy] = useState(null);
+    const [RegionRecurringSortOrder, setRegionRecurringSortOrder] = useState('asc');
+
+    const handleRegionRecurringSort = (key) => {
+        if (RegionRecurringSortBy === key) {
+            // Toggle sort order if the same column is clicked again
+            setRegionRecurringSortOrder(RegionRecurringSortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Sort by the selected column in ascending order
+            setRegionRecurringSortBy(key);
+            setRegionRecurringSortOrder('asc');
+        }
+    };
+
+    const sortedRegionsRecurring = [...RegionsRecurring].sort((a, b) => {
+        const factor = RegionRecurringSortOrder === 'asc' ? 1 : -1;
+        if (RegionRecurringSortBy) {
+            if (a[RegionRecurringSortBy] < b[RegionRecurringSortBy]) return -1 * factor;
+            if (a[RegionRecurringSortBy] > b[RegionRecurringSortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+
 
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
@@ -649,13 +745,13 @@ const InvestmentInsights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Region</th>
-                                                    <th scope="col">Lump Sum</th>
+                                                    <th scope="col">Region <button onClick={ () => { handleRegionsLumpSumSort('region') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">Lump Sum <button onClick={ () => { handleRegionsLumpSumSort('lump_sum') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    RegionsLumpSum.map(
+                                                    sortedRegionsLumpSum.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>
@@ -676,13 +772,13 @@ const InvestmentInsights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Region</th>
-                                                    <th scope="col">Recurring</th>
+                                                    <th scope="col">Region <button onClick={ () => { handleRegionRecurringSort('region') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">Recurring <button onClick={ () => { handleRegionRecurringSort('recurring') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    RegionsRecurring.map(
+                                                    sortedRegionsRecurring.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>
@@ -704,13 +800,13 @@ const InvestmentInsights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col" className='col-1'>#</th>
-                                                    <th scope="col" className='col-3'>Advisor</th>
-                                                    <th scope="col" className='col-3'>Lump Sum</th>
+                                                    <th scope="col" className='col-3'>Advisor <button onClick={ () => { handleSort('advisor') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col" className='col-3'>Lump Sum <button onClick={ () => { handleSort('lump_sum') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    AdvisorsLumpSum.map(
+                                                    sortedAdvisorsLumpSum.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>
@@ -731,13 +827,13 @@ const InvestmentInsights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col" className='col-1'>#</th>
-                                                    <th scope="col" className='col-3'>Advisor</th>
-                                                    <th scope="col" className='col-3'>Recurring</th>
+                                                    <th scope="col" className='col-3'>Advisor <button onClick={ () => { handleAdvisorRecurringSort('advisor') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col" className='col-3'>Recurring <button onClick={ () => { handleAdvisorRecurringSort('recurring') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    AdvisorsRecurring.map(
+                                                    sortedAdvisorsRecurring.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>

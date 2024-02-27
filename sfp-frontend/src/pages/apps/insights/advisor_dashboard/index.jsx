@@ -525,6 +525,55 @@ const AdvisorsInsights = () => {
         LoadRegions()
     }, [])
 
+
+    const [sortBy, setSortBy] = useState(null);
+    const [sortOrder, setSortOrder] = useState('asc');
+
+    const handleSort = (key) => {
+        if (sortBy === key) {
+            // Toggle sort order if the same column is clicked again
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Sort by the selected column in ascending order
+            setSortBy(key);
+            setSortOrder('asc');
+        }
+    };
+
+    const sortedRegionsData = [...RegionsData].sort((a, b) => {
+        const factor = sortOrder === 'asc' ? 1 : -1;
+        if (sortBy) {
+            if (a[sortBy] < b[sortBy]) return -1 * factor;
+            if (a[sortBy] > b[sortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+
+    const [AdvisorSortBy, setAdvisorSortBy] = useState(null);
+    const [AdvisorSortOrder, setAdvisorSortOrder] = useState('asc');
+
+    const handleAdvisorSort = (key) => {
+        if (AdvisorSortBy === key) {
+            // Toggle AdvisorSort order if the same column is clicked again
+            setAdvisorSortOrder(AdvisorSortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // AdvisorSort by the selected column in ascending order
+            setAdvisorSortBy(key);
+            setAdvisorSortOrder('asc');
+        }
+    };
+
+    const sortedAdvisorsData = [...AdvisorsData].sort((a, b) => {
+        const factor = AdvisorSortOrder === 'asc' ? 1 : -1;
+        if (AdvisorSortBy) {
+            if (a[AdvisorSortBy] < b[AdvisorSortBy]) return -1 * factor;
+            if (a[AdvisorSortBy] > b[AdvisorSortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+
     const roaSeries = (name, data) => [
         {
             name: name,
@@ -719,13 +768,13 @@ const AdvisorsInsights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Region</th>
-                                                    <th scope="col">Forms</th>
+                                                    <th scope="col">Region <button onClick={ () => { handleSort('region') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">Forms <button onClick={ () => { handleSort('total_forms') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    RegionsData.map(
+                                                    sortedRegionsData.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>
@@ -747,13 +796,13 @@ const AdvisorsInsights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Forms</th>
+                                                    <th scope="col">Advisor Name <button onClick={ () => { handleAdvisorSort('advisor') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">Forms <button onClick={ () => { handleAdvisorSort('total_forms') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    AdvisorsData.map(
+                                                    sortedAdvisorsData.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>

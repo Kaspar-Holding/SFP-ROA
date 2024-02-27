@@ -409,7 +409,13 @@ const MonitoringInsights = () => {
         // colors: ["#FEEAE5", "#FFE5E9", "#FFFAE4"],
         chart: {
             type: 'pie',
+            zoom: {
+                enabled: true
+            },
             fontFamily: "Open Sans",
+            toolbar: {
+                show: true
+            }
         },
         labels: ['Approved at 1st Review', 'Non-Approved at 1st Review', 'Partial at 1st Review'],
         responsive: [
@@ -559,6 +565,53 @@ const MonitoringInsights = () => {
         LoadRegions()
     }, [])
 
+    const [sortBy, setSortBy] = useState(null);
+    const [sortOrder, setSortOrder] = useState('asc');
+
+    const handleSort = (key) => {
+        if (sortBy === key) {
+            // Toggle sort order if the same column is clicked again
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Sort by the selected column in ascending order
+            setSortBy(key);
+            setSortOrder('asc');
+        }
+    };
+
+    const sortedAdvisorsData = [...AdvisorsData].sort((a, b) => {
+        const factor = sortOrder === 'asc' ? 1 : -1;
+        if (sortBy) {
+            if (a[sortBy] < b[sortBy]) return -1 * factor;
+            if (a[sortBy] > b[sortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
+
+    const [RegionSortBy, setRegionSortBy] = useState(null);
+    const [RegionSortOrder, setRegionSortOrder] = useState('asc');
+
+    const handleRegionSort = (key) => {
+        if (RegionSortBy === key) {
+            // Toggle RegionSort order if the same column is clicked again
+            setRegionSortOrder(RegionSortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            // RegionSort by the selected column in ascending order
+            setRegionSortBy(key);
+            setRegionSortOrder('asc');
+        }
+    };
+
+    const sortedRegionsData = [...RegionsData].sort((a, b) => {
+        const factor = RegionSortOrder === 'asc' ? 1 : -1;
+        if (RegionSortBy) {
+            if (a[RegionSortBy] < b[RegionSortBy]) return -1 * factor;
+            if (a[RegionSortBy] > b[RegionSortBy]) return 1 * factor;
+            return 0;
+        }
+        return 0;
+    });
 
     if (typeof window != 'undefined' && !isAuthenticated) {
         router.push('/auth/login')
@@ -662,13 +715,13 @@ const MonitoringInsights = () => {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Region</th>
-                                                    <th scope="col">1st Review Approvals</th>
+                                                    <th scope="col">Region <button onClick={ () => { handleRegionSort('region') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col">1st Review Approvals <button onClick={ () => { handleRegionSort('first_approval') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    RegionsData.map(
+                                                    sortedRegionsData.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>
@@ -684,18 +737,18 @@ const MonitoringInsights = () => {
                                         </table>
                                     </div>
                                     <div className='col-lg-6 col-md-6 col-sm-12 bg-white insight-monitoring-card'>
-                                        <h5 class="app-dashboard-header">Advisors (Lump Sum)</h5>
+                                        <h5 class="app-dashboard-header">Advisors</h5>
                                         <table className="table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" className='col-1'>#</th>
-                                                    <th scope="col" className='col-3'>Advisor</th>
-                                                    <th scope="col" className='col-3'>Lump Sum</th>
+                                                    <th scope="col" className='col-3'>Advisor <button onClick={ () => { handleSort('advisor') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
+                                                    <th scope="col" className='col-3'>1st Review Approvals <button onClick={ () => { handleSort('first_approval') } } className='btn btn-sm btn-sfp'><i className='fa-solid fa-sort' /></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    AdvisorsData.map(
+                                                    sortedAdvisorsData.map(
                                                         (row, key) => {
                                                             return (
                                                                 <tr key={ key }>

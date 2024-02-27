@@ -19,6 +19,11 @@ Deployed using Nginx and Gunicorn
 1. Updated System Generated to Succession
 - ROA
 1. Disclosure Products Updated
+- Insights
+1. Sorted added
+2. Toolbar added
+- Reset Password 
+1. Working
 - Deployment on Staging and Production 
 
 ### 21 February 2024:
