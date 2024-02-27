@@ -129,15 +129,13 @@ class FormAPIs(APIView):
         for product in products:
             if product is None:
                 continue
-            subcode = ""
-            advisorProduct = DisclosuresAdvisorSubCodes.objects.filter(product=product.product_provider.pk)
-            if advisorProduct.exists():
-                subcode = advisorProduct.first().subcode
             products_data.append({
                 "product_id" : product.product_provider.pk,
-                "product" : product.product_provider.product,
-                "subcode" : subcode
+                "product" : product.product_provider.product.product,
+                "subcode" : product.product_provider.subcode,
+                "status" : product.status,
             })
+            # print(products_data)
         return Response({"data": serializer.data, "products" :products_data})
 
     def post(self, request, format=None):
@@ -168,7 +166,8 @@ class FormAPIs(APIView):
             product_data = request.data['product_data']
             for product in product_data:
                 product['formId'] = formId
-            pd_serializer = DisclosuresAdvisorSubCodes_Serializer(data=product_data)
+                product['product_provider'] = product['product_id']
+            pd_serializer = DisclosuresProducts_Serializer(data=product_data, many=True)
             if pd_serializer.is_valid():
                 pd_serializer.create(pd_serializer.validated_data)
             else:
@@ -299,6 +298,16 @@ class FormAPIs(APIView):
         serializer = Disclosures_Serializer(snippet, data=request.data)
         if serializer.is_valid():
             serializer.save()
+            DisclosuresProducts.objects.filter(formId=pk).delete()
+            product_data = request.data['product_data']
+            for product in product_data:
+                product['formId'] = pk
+                product['product_provider'] = product['product_id']
+            pd_serializer = DisclosuresProducts_Serializer(data=product_data, many=True)
+            if pd_serializer.is_valid():
+                pd_serializer.create(pd_serializer.validated_data)
+            else:
+                print(pd_serializer.errors)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -1088,6 +1097,7 @@ class advisorDisclosureProducts(APIView):
             products_data.append({
                 "product_id" : product.pk,
                 "product" : product.product.product,
-                "subcode" : product.subcode
+                "subcode" : product.subcode,
+                "status" : True
             })
         return Response(products_data, 200)

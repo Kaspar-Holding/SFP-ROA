@@ -4774,9 +4774,9 @@ class DisclosuresAdvisorSubCodes(models.Model):
 
 
 class DisclosuresProducts(models.Model):
-    formId = models.ForeignKey(Disclosures, on_delete=models.SET_NULL, null=True)
-    product_provider = models.ForeignKey(DisclosuresProductProviders, on_delete=models.SET_NULL, null=True)
-    
+    formId = models.ForeignKey(Disclosures, on_delete=models.CASCADE, null=True)
+    product_provider = models.ForeignKey(DisclosuresAdvisorSubCodes, on_delete=models.CASCADE, null=True)
+    status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 

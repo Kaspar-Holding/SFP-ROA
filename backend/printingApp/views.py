@@ -2573,16 +2573,13 @@ class disclosuresPDF(APIView):
         data['client_authorization_date'] = data['client_authorization_date'].strftime('%d %b %Y')
         data['appointment_date'] = data['appointment_date'].strftime('%d %b %Y')
         data['products'] = []
-        productsData = DisclosuresProducts.objects.filter(formId=disclosureData['id'])
+        productsData = DisclosuresProducts.objects.filter(formId=disclosureData['id'], status=True)
         disclosureProducts = []
         for product in productsData:
-            advisorProductData = DisclosuresAdvisorSubCodes.objects.filter(id=product.product_provider.pk)
-            if advisorProductData.exists():
-                advisorProductData = advisorProductData.first()
-                disclosureProducts.append({
-                    "product" : advisorProductData.product.product,
-                    "subcode" : advisorProductData.subcode,
-                })
+            disclosureProducts.append({
+                "product" : product.product_provider.product.product,
+                "subcode" : product.product_provider.subcode,
+            })
         data['products'] = disclosureProducts
         data['user'] = UserAccount.objects.filter(id=data['advisorId']).values('first_name', 'last_name', 'email').first()
         user_profile_data = user_profile.objects.filter(user=data['advisorId'])

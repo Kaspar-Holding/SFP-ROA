@@ -1,7 +1,7 @@
 import { API_URL } from '../../../../../config'
 import axios from 'axios'
 
-export default async (req, res ) => {
+export default async (req, res) => {
     if (req.method === "POST") {
         const {
             email
@@ -9,13 +9,13 @@ export default async (req, res ) => {
 
         const config = {
             headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
 
 
-        const Body = JSON.stringify({ 
+        const Body = JSON.stringify({
             email
         })
         try {
@@ -24,7 +24,7 @@ export default async (req, res ) => {
                 Body,
                 config
             )
-            
+
 
             return res.status(200).json({
                 success: "Email was sent"
@@ -35,12 +35,12 @@ export default async (req, res ) => {
             return res.status(error?.response?.status).json({
                 error: error?.response?.data
             })
-            
+
         }
     } else {
         res.setHeader('Allow', ['POST'])
         return res.status(405).json({
-            'error' : `Method ${req.method} not allowed.`
+            'error': `Method ${req.method} not allowed.`
         })
     }
 }

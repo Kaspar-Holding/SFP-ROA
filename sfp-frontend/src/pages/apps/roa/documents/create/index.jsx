@@ -228,12 +228,16 @@ const CreateROA = () => {
         const updatedData = ProductData.filter((row) => row.id !== id);
         setProductData(updatedData);
     };
-
     const handleContentChange = (id, fieldName, content) => {
         const updatedData = ProductData.map((row) =>
-            row.id === id ? { ...row, [fieldName]: content } : row
+            row.id === id ? { ...row, [fieldName]: !content } : row
         );
         setProductData(updatedData);
+    };
+    const handleStatusChange = (e, id) => {
+        let newProductData = [...ProductData]
+        newProductData[id][e.target.name] = !newProductData[id][e.target.name]
+        setProductData(newProductData)
     };
 
 
@@ -1669,12 +1673,17 @@ const CreateROA = () => {
                                                             <tr>
                                                                 <th scope="col">
                                                                     <p className='text-center roa-table-head'>
-                                                                        Product Provider (Subcodes)<br />Authorised to sell
+                                                                        Product Provider<br />Authorised to sell
                                                                     </p>
                                                                 </th>
                                                                 <th scope="col">
                                                                     <p className='text-center roa-table-head'>
-                                                                        Actions
+                                                                        Subcodes
+                                                                    </p>
+                                                                </th>
+                                                                <th scope="col">
+                                                                    <p className='text-center roa-table-head'>
+                                                                        Status
                                                                     </p>
                                                                 </th>
                                                             </tr>
@@ -1690,7 +1699,7 @@ const CreateROA = () => {
                                                                             onChange={ (e) => handleContentChange(row.id, "product_provider", e.target.value) }
                                                                         />
                                                                     </td> */}
-                                                                    <td>
+                                                                    {/* <td>
                                                                         <select required className="form-select" name="product_provider" value={ row?.product_provider } onChange={ (e) => handleContentChange(row.id, "product_provider", e.target.value) }>
                                                                             <option value={ 0 }>Select Product</option>
                                                                             {
@@ -1703,15 +1712,26 @@ const CreateROA = () => {
                                                                                 )
                                                                             }
                                                                         </select>
+                                                                    </td> */}
+                                                                    <td className='roa-label'>
+                                                                        <p value={ row?.product_id } key={ id }>{ row?.product }</p>
+                                                                    </td>
+                                                                    <td className='roa-label'>
+                                                                        <p value={ row?.product_id } key={ id }>{ row?.subcode }</p>
                                                                     </td>
                                                                     <td>
-                                                                        <button
+                                                                        {/* <button
                                                                             className="btn btn-sm btn-danger"
                                                                             type='button'
                                                                             onClick={ () => removeRow(row.id) }
                                                                         >
                                                                             Remove
-                                                                        </button>
+                                                                        </button> */}
+                                                                        <span className='roa-label'>
+                                                                            <div className='form-check'>
+                                                                                <input type='checkbox' className='form-check-input' name="status" onChange={ (e) => { handleStatusChange(e, id) } } checked={ row?.status } />
+                                                                            </div>
+                                                                        </span>
                                                                     </td>
                                                                 </tr>
                                                             )) }
@@ -1720,9 +1740,9 @@ const CreateROA = () => {
                                                     :
                                                     <></>
                                             }
-                                            <button className="btn btn-primary btn-sfp" type='button' onClick={ addRow }>
+                                            {/* <button className="btn btn-primary btn-sfp" type='button' onClick={ addRow }>
                                                 Add Product
-                                            </button>
+                                            </button> */}
                                             <p className='roa-label'>
                                                 Specific need for which Intermediary is authorised (i.e., not for entire portfolio):
                                             </p>

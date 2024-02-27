@@ -14,6 +14,13 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 27 February 2024:
+- Tasks
+1. Updated System Generated to Succession
+- ROA
+1. Disclosure Products Updated
+- Deployment on Staging and Production 
+
 ### 21 February 2024:
 - Tasks
 1. Disclosure Products Bulk update bug resolved

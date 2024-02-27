@@ -295,7 +295,7 @@ def events():
                         <p style="color: #666; line-height: 1.6; margin-bottom: 15px;"><strong>Need Assistance?</strong></p>
                         <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or require assistance regarding the {event.title} or related tasks, please don't hesitate to reach out to your project manager or team lead for guidance.</p>
                         <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Thank you for your attention to this matter, and let's work together to ensure a successful {event.title}!</p>
-                        <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>Succession</p>
 
                     </div>"""
                 }
@@ -332,7 +332,7 @@ def events():
                                 <p style="margin: 0;">This is a friendly reminder that the next pay run 🤑 is scheduled for tomorrow {event.start_time.strftime('%d %b %Y')}.</p>
                             </div>
                             <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns regarding the pay run, feel free to reach out.</p>
-                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>Succession</p>
                         </div>"""
                 }
                 notificationSerializer = NotificationsSerializer(data=data)
@@ -368,7 +368,7 @@ def events():
                                 <p style="margin: 0;">This is a friendly reminder that the next query is scheduled for tomorrow {event.start_time.strftime('%d %b %Y')}. Please submit any pay run related query by tomorrow to ensure it's resolved before the pay run finalisation.</p>
                             </div>
                             <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns regarding the pay run, feel free to reach out.</p>
-                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
+                            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>Succession</p>
                         </div>"""
                 }
                 notificationSerializer = NotificationsSerializer(data=data)
@@ -394,7 +394,7 @@ def events():
                             <p style="margin: 0;">Dear {user_name},</p>
                             <p style="margin: 0;">Please join us in wishing a very happy birthday to {event.title}! 🎈🎂 Let's make their day special with your warm wishes and greetings!</p>
                         </div>
-                        <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>Succession</p>
 
                         
                     </div>"""
@@ -1163,7 +1163,7 @@ def compliance_export(userId, data):
                         </div>
                     </div>
                     <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns feel free to reach out.</p>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>Succession</p>
                 </div>
             """,
             "status" : False,
@@ -1463,7 +1463,7 @@ def roa_disclosure_products_update(userId, data):
                     <p style="margin: 0;">Your requested disclosures product update now completed.</p>
                 </div>
                 <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns feel free to reach out.</p>
-                <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>System Generated</p>
+                <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>Succession</p>
             </div>
         """,
         "status" : False,

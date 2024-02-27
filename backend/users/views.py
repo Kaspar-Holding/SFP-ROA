@@ -1032,3 +1032,37 @@ class CreateUserAPI(APIView):
             print(serializer.errors)
             return Response({"errors":serializer.errors}, 401)
         return Response({"message": "User Created Successfully"}, 201)
+
+from django.conf import settings
+from djoser.compat import get_user_email
+
+class reset_password(APIView):
+    authorization_classes = []
+    permission_classes = []
+    def post(self, request, *args, **kwargs):
+        user = UserAccount.objects.get(email=request.data['email'])
+
+        if user:
+            context = {"user": user}
+            to = [get_user_email(user)]
+            settings.DJOSER.EMAIL.password_reset(self.request, context).send(to)
+
+        return Response(status=204)
+
+class reset_password_confirm(APIView):
+    authorization_classes = []
+    permission_classes = []
+    def post(self, request, *args, **kwargs):
+        serializer = UserAccountsSerializers(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        serializer.user.set_password(serializer.data["new_password"])
+        if hasattr(serializer.user, "last_login"):
+            serializer.user.last_login = datetime.now()
+        serializer.user.save()
+
+        if settings.PASSWORD_CHANGED_EMAIL_CONFIRMATION:
+            context = {"user": serializer.user}
+            to = [get_user_email(serializer.user)]
+            settings.EMAIL.password_changed_confirmation(self.request, context).send(to)
+        return Response(status=204)

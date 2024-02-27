@@ -15,4 +15,6 @@ urlpatterns = [
     path('load/profile/details/' , views.LoadUserDetails.as_view(),name='Get User Details'),
     path('bulk/update/' , views.BulkUserUpload.as_view(),name='Bulk Update'),
     path('bulk/upload/' , views.BulkUserUpdate.as_view(),name='Bulk Update'),
+    path('reset_password/' , views.reset_password.as_view(),name='Bulk Update'),
+    path('reset_password_confirm/' , views.reset_password_confirm.as_view(),name='Bulk Update'),
 ]

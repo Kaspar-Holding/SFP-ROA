@@ -1,7 +1,7 @@
 import { API_URL } from '../../../../../config'
 import axios from 'axios'
 
-export default async (req, res ) => {
+export default async (req, res) => {
     if (req.method === "POST") {
         const {
             uid,
@@ -12,12 +12,12 @@ export default async (req, res ) => {
 
         const config = {
             headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
 
-        const Body = JSON.stringify({ 
+        const Body = JSON.stringify({
             uid,
             token,
             new_password,
@@ -30,14 +30,14 @@ export default async (req, res ) => {
                 Body,
                 config
             )
-            
+
             if (apiResponse?.status === 200) {
 
                 return res.status(apiResponse.status).json(
                     apiResponse?.data
                 )
 
-            } else{
+            } else {
                 return res.status(apiResponse?.status).json({
                     error: data
                 })
@@ -48,12 +48,12 @@ export default async (req, res ) => {
             return res.status(error?.response?.status).json({
                 error: error?.response?.data
             })
-            
+
         }
     } else {
         res.setHeader('Allow', ['POST'])
         return res.status(405).json({
-            'error' : `Method ${req.method} not allowed.`
+            'error': `Method ${req.method} not allowed.`
         })
     }
 }

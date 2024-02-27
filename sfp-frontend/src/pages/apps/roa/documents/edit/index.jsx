@@ -65,37 +65,38 @@ const EditROA = () => {
     const Date_Var = new Date()
     const CurrentData = Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + (Date_Var.getDate())).slice(-2)
     const [FormData, setFormData] = useState({
-        clientName: "",
-        clientIdNumber: "",
-        clientEmail: "",
-        clientAddress: "",
-        clientPhoneNumber: "",
-        clientDateOfBirth: Date_Var.getFullYear() + "-" + ("0" + (Date_Var.getMonth() + 1)).slice(-2) + "-" + ("0" + (Date_Var.getDate())).slice(-2),
-        clientLetterOfIntroduction: 2,
-        clientLetterOfIntroductionReason: "",
-        clientLetterOfIntroductionAccess: 2,
-        clientLetterOfIntroductionAccessReason: "",
-        clientFica: 2,
-        clientFicaReason: "",
-        clientReplacement: 2,
-        clientReplacementReason: "",
-        clientBackgroundInfo: ""
+        existingClient: 1,
+        client_name: "",
+        client_id_number: "",
+        client_contact: "",
+        client_email: "",
+        letter_of_introduction: 0,
+        popi: 0,
+        pi_processing: 0,
+        marketing_purposes: 0,
+        pi_retained: 0,
+        provider_for: 0,
+        policy_number: "",
+        client_date: Moment(new Date(Date.now())).format('YYYY-MM-DD'),
+        client_authorization_date: Moment(new Date(Date.now())).format('YYYY-MM-DD'),
+        appointment_date: Moment(new Date(Date.now())).format('YYYY-MM-DD'),
     })
     // console.log(FormData)
 
     // console.log(localStorage.getItem('access'))
     const emailValidation = () => {
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if (regex.test(FormData?.clientEmail) === false) {
-            setErrorData({
-                status: "Email Validity",
-                message: "Email is not valid, Please enter a valid email",
-                errors: ""
+        if (regex.test(FormData?.client_email) === false) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Error",
+                html: `Email is not valid, Please enter a valid email`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
             })
-            setSubmissionErrorVisibilty("block")
-            setTimeout(() => {
-                setSubmissionErrorVisibilty("none")
-            }, 5000)
             return false
         }
         return true
@@ -110,8 +111,8 @@ const EditROA = () => {
         }
     }
 
-    const updateROAForm = async (data) => {
-        const Body = JSON.stringify(data)
+    const updateROAForm = async (data, product_data) => {
+        const Body = JSON.stringify({ data, product_data })
         try {
             const response = await axios.post(`/api/roa/form/update/`, Body, config)
 
@@ -119,20 +120,17 @@ const EditROA = () => {
                 position: "bottom-end",
                 type: "success",
                 title: "Success",
-                html: `${response?.data?.success}`,
+                html: `Updated`,
                 showConfirmButton: !1,
                 timer: 5000,
                 confirmButtonClass: "btn btn-primary",
                 buttonsStyling: !1,
             })
 
-            router.push({
-                pathname: "/apps/roa/documents/complete",
-                query: { dId: response?.data?.data?.id }
-            })
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             let errors = error?.response?.data?.error?.errors
+            console.log(error?.response?.data)
             Swal.fire({
                 position: "bottom-end",
                 type: "success",
@@ -148,8 +146,8 @@ const EditROA = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        if (FormData?.clientName === "" || FormData?.clientIdNumber === "" || FormData?.clientEmail === "" || FormData?.clientPhoneNumber === "") {
-            if (FormData?.clientName === "" && FormData?.clientIdNumber === "" && FormData?.clientEmail === "" && FormData?.clientPhoneNumber === "") {
+        if (FormData?.client_name === "" || FormData?.client_id_number === "" || FormData?.client_email === "" || FormData?.client_contact === "") {
+            if (FormData?.client_name === "" && FormData?.client_id_number === "" && FormData?.client_email === "" && FormData?.client_contact === "") {
                 Swal.fire({
                     position: "bottom-end",
                     type: "success",
@@ -164,7 +162,7 @@ const EditROA = () => {
                     setStep(0)
                 }
             } else {
-                if (FormData?.clientName === "") {
+                if (FormData?.client_name === "") {
                     Swal.fire({
                         position: "bottom-end",
                         type: "success",
@@ -178,7 +176,7 @@ const EditROA = () => {
                     if (step != 0) {
                         setStep(0)
                     }
-                } if (FormData?.clientIdNumber === "") {
+                } if (FormData?.client_id_number === "") {
                     Swal.fire({
                         position: "bottom-end",
                         type: "success",
@@ -192,7 +190,7 @@ const EditROA = () => {
                     if (step != 0) {
                         setStep(0)
                     }
-                } if (FormData?.clientEmail === "") {
+                } if (FormData?.client_email === "") {
                     Swal.fire({
                         position: "bottom-end",
                         type: "success",
@@ -206,7 +204,7 @@ const EditROA = () => {
                     if (step != 0) {
                         setStep(0)
                     }
-                } if (FormData?.clientPhoneNumber === "") {
+                } if (FormData?.client_contact === "") {
                     Swal.fire({
                         position: "bottom-end",
                         type: "success",
@@ -226,7 +224,7 @@ const EditROA = () => {
         } else {
 
             if (emailValidation()) {
-                updateROAForm(FormData)
+                updateROAForm(FormData, ProductData)
             } else {
                 if (step != 0) {
                     setStep(0)
@@ -264,7 +262,6 @@ const EditROA = () => {
             )
             setFormData(response?.data?.data?.data)
             setProductData(response?.data?.data?.products)
-
         } catch (error) {
 
         }
@@ -310,6 +307,11 @@ const EditROA = () => {
 
         }
     }
+    const handleStatusChange = (e, id) => {
+        let newProductData = [...ProductData]
+        newProductData[id][e.target.name] = !newProductData[id][e.target.name]
+        setProductData(newProductData)
+    };
 
     useEffect(() => {
         getUserProfile()
@@ -1694,7 +1696,7 @@ const EditROA = () => {
                                                     </p>
                                                 </li>
                                             </ul>
-                                            <hr />{ console.log(DisclosureProducts) }
+                                            <hr />
                                             {
                                                 ProductData.length > 0 ?
                                                     <table className="table">
@@ -1728,8 +1730,8 @@ const EditROA = () => {
                                                                             onChange={ (e) => handleContentChange(row.id, "product_provider", e.target.value) }
                                                                         />
                                                                     </td> */}
-                                                                    <td>
-                                                                        <select required className="form-select" name="product_provider" value={ row?.product_id } onChange={ (e) => handleContentChange(row.id, "product_provider", e.target.value) }>
+                                                                    {/* <td>
+                                                                        <select required className="form-select" name="product_provider" value={ row?.product_provider } onChange={ (e) => handleContentChange(row.id, "product_provider", e.target.value) }>
                                                                             <option value={ 0 }>Select Product</option>
                                                                             {
                                                                                 DisclosureProducts.map(
@@ -1741,15 +1743,26 @@ const EditROA = () => {
                                                                                 )
                                                                             }
                                                                         </select>
+                                                                    </td> */}
+                                                                    <td className='roa-label'>
+                                                                        <p value={ row?.product_id } key={ id }>{ row?.product }</p>
+                                                                    </td>
+                                                                    <td className='roa-label'>
+                                                                        <p value={ row?.product_id } key={ id }>{ row?.subcode }</p>
                                                                     </td>
                                                                     <td>
-                                                                        <button
+                                                                        {/* <button
                                                                             className="btn btn-sm btn-danger"
                                                                             type='button'
                                                                             onClick={ () => removeRow(row.id) }
                                                                         >
                                                                             Remove
-                                                                        </button>
+                                                                        </button> */}
+                                                                        <span className='roa-label'>
+                                                                            <div className='form-check'>
+                                                                                <input type='checkbox' className='form-check-input' name="status" onChange={ (e) => { handleStatusChange(e, id) } } checked={ row?.status } />
+                                                                            </div>
+                                                                        </span>
                                                                     </td>
                                                                 </tr>
                                                             )) }
@@ -1758,9 +1771,9 @@ const EditROA = () => {
                                                     :
                                                     <></>
                                             }
-                                            <button className="btn btn-primary btn-sfp" type='button' onClick={ addRow }>
+                                            {/* <button className="btn btn-primary btn-sfp" type='button' onClick={ addRow }>
                                                 Add Product
-                                            </button>
+                                            </button> */}
                                             <p className='roa-label'>
                                                 Specific need for which Intermediary is authorised (i.e., not for entire portfolio):
                                             </p>

@@ -2,7 +2,7 @@ import { API_URL } from '../../../../../config'
 import axios from 'axios'
 import cookie from 'cookie'
 
-export default async (req, res ) => {
+export default async (req, res) => {
     if (req.method === "POST") {
         const cookies = cookie.parse(req.headers.cookie ?? '')
 
@@ -14,12 +14,12 @@ export default async (req, res ) => {
             })
         }
 
-        
+
         const config = {
             headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json',
-                'Authorization' : `JWT ${access}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `JWT ${access}`,
             }
         }
 
@@ -27,36 +27,28 @@ export default async (req, res ) => {
         const Body = JSON.stringify(req.body)
         try {
             const apiResponse = await axios.put(
-                `${API_URL}/api/roa/form/${req.body['id']}/`,
+                `${API_URL}/api/roa/form/${req.body['data']['id']}/`,
                 Body,
                 config
             )
-            
-            if (apiResponse?.status === 201) {
-                
-                return res.status(apiResponse.status).json(
-                    {
-                        success: "Successfully created, you can proceed to next level.",
-                        data: apiResponse?.data,
-                    }
-                )
 
-            } else{
-                return res.status(apiResponse?.status).json({
-                    error: data
-                })
-            }
+            return res.status(apiResponse.status).json(
+                {
+                    success: "Successfully created, you can proceed to next level.",
+                    data: apiResponse?.data,
+                }
+            )
 
         } catch (error) {
             return res.status(error?.response?.status).json({
                 error: error?.response?.data
             })
-            
+
         }
     } else {
         res.setHeader('Allow', ['POST'])
         return res.status(405).json({
-            'error' : `Method ${req.method} not allowed.`
+            'error': `Method ${req.method} not allowed.`
         })
     }
 }
