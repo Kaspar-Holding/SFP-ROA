@@ -137,7 +137,49 @@ const AppPage = () => {
                                                     <h5 className="card-title text-center"><i className="fa-solid fa-calculator"></i></h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">Felicity</a>
+                                                        <a href="#https://forms.office.com/r/n8cTPGJzhu" className="appLabel">Felicity</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="https://sanport.sanlam.co.za/sfpelearning/local/icpdmanager/" target='_blank' style={ { textDecoration: "none" } }>
+                                            <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
+                                                <div className="card-body">
+                                                    <br />
+                                                    <h5 className="card-title text-center"><i className="fa-solid fa-c"></i><i className="fa-solid fa-p"></i><i className="fa-solid fa-d"></i></h5>
+                                                    <br />
+                                                    <p className="card-text text-center">
+                                                        <a href="https://sanport.sanlam.co.za/sfpelearning/local/icpdmanager/" className="appLabel">CPD Manager</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="https://sanport.sanlam.co.za/sfpelearning/my/courses.php" target='_blank' style={ { textDecoration: "none" } }>
+                                            <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
+                                                <div className="card-body">
+                                                    <br />
+                                                    <h5 className="card-title text-center"><i className="fa-solid fa-c"></i><i className="fa-solid fa-p"></i><i className="fa-solid fa-d"></i></h5>
+                                                    <br />
+                                                    <p className="card-text text-center">
+                                                        <a href="https://sanport.sanlam.co.za/sfpelearning/my/courses.php" className="appLabel">CPD Courses</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="https://sanport.sanlam.co.za/sfpelearning/" target='_blank' style={ { textDecoration: "none" } }>
+                                            <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
+                                                <div className="card-body">
+                                                    <br />
+                                                    <h5 className="card-title text-center"><i className="fa-solid fa-c"></i><i className="fa-solid fa-f"></i><i className="fa-solid fa-p"></i></h5>
+                                                    <br />
+                                                    <p className="card-text text-center">
+                                                        <a href="https://sanport.sanlam.co.za/sfpelearning/" className="appLabel">SFP Portal</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -154,7 +196,7 @@ const AppPage = () => {
                                                     </h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">D6 Web app</a>
+                                                        <a href="https://business.d6.co.za/nc/messages" className="appLabel">D6 Web app</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -168,7 +210,7 @@ const AppPage = () => {
                                                     <h5 className="card-title text-center"><i className="fa-solid fa-g"></i><i className="fa-solid fa-q"></i></h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">GetQuote</a>
+                                                        <a href="https://quotes.getquote.co.za/Account/Login" className="appLabel">GetQuote</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -185,7 +227,7 @@ const AppPage = () => {
                                                     </h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">Supervision Quiz</a>
+                                                        <a href="https://forms.office.com/r/k2ch7r0ZnW" className="appLabel">Supervision Quiz</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -199,7 +241,7 @@ const AppPage = () => {
                                                     <h5 className="card-title text-center"><i className="fa-solid fa-s"></i><i className="fa-solid fa-a"></i><i className="fa-solid fa-n">-</i><i className="fa-solid fa-f"></i><i className="fa-solid fa-i"></i><i className="fa-solid fa-n"></i></h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">SanFin</a>
+                                                        <a href="https://sanport.sanlam.co.za/sanfin/dashboard/mainhtml" className="appLabel">SanFin</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -216,7 +258,7 @@ const AppPage = () => {
                                                     </h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">SAGE payslips</a>
+                                                        <a href="https://ess.sagesouthafrica.co.za/" className="appLabel">SAGE payslips</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -234,7 +276,7 @@ const AppPage = () => {
 
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">SFP payrun dates</a>
+                                                        <a href="https://sanport.sanlam.co.za/sfpelearning/mod/folder/view.php?id=1250&forceview=1" className="appLabel">SFP payrun dates</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -251,7 +293,7 @@ const AppPage = () => {
                                                     </h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">Marketing toolkit</a>
+                                                        <a href="https://sanport.sanlam.co.za/sfpelearning/pluginfile.php/2686/mod_resource/content/0/MARKETING%20TOOLKIT%202022.pdf" className="appLabel">Marketing toolkit</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -268,7 +310,7 @@ const AppPage = () => {
                                                     </h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <a href="#" className="appLabel">Possibilites</a>
+                                                        <a href="https://auth.comotion.us/auth/realms/seedanalytics/protocol/openid-connect/auth?client_id=seedanalytics_client&redirect_uri=https%3A%2F%2Fseedanalytics.comodash.io%2Foauth2%2Fidpresponse&response_type=code&scope=openid&state=5C8qcvkaOP6vW5ynY4hOSlAkBv2TVjv2ImHEzzX%2Fy%2FIPChKuK%2Fa6VvzUUO1zxsHau66Qvik3iJjZFo1S%2BuhMMnLpVboZwPAvDRSWBPbSsRY8W4cmc0Mpf9UqrOshwAE3SpMH6d%2B9qqvO7QLUgMLm7HAhlauoqIhOY1I4wyvnL%2BbINdxTD4FAsaakAzSvlcGsJ0O2FaJIyV71NhAZ8nvukt91sQ5Il6%2BHvqtrbCj0W4HswZFOJsdNrQ%3D%3D" className="appLabel">Possibilites</a>
                                                     </p>
                                                 </div>
                                             </div>

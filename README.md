@@ -23,6 +23,8 @@ Deployed using Nginx and Gunicorn
 3. Export Button Added for Reporting
 - ROA
 1. Data transfer from Web ROA to SFP Online
+- Apps
+1. Added 3 requested external apps.
 - Deployment on Staging and Production 
 
 ### 27 February 2024:
