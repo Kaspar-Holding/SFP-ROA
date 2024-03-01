@@ -4494,6 +4494,9 @@ class Disclosures_Serializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
+        validated_data['client_date'] = validated_data['client_date']  
+        validated_data['client_authorization_date'] = validated_data['client_authorization_date']  
+        validated_data['appointment_date'] = validated_data['appointment_date']  
         return Disclosures.objects.create(**validated_data)
 
 class DisclosuresProductProviders_Serializer(serializers.ModelSerializer):
