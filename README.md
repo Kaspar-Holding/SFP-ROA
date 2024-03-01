@@ -21,6 +21,8 @@ Deployed using Nginx and Gunicorn
 1. Non Sanlam vs Sanlam Added
 2. ARC vs Gatekeeper filter added in Monitoring
 3. Export Button Added for Reporting
+- ROA
+1. Data transfer from Web ROA to SFP Online
 - Deployment on Staging and Production 
 
 ### 27 February 2024:
