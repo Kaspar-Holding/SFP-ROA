@@ -153,7 +153,45 @@ const UsersList = () => {
         setUsers(newData)
     }
 
-    const updateUserStatus = async (e, uId, userType) => {
+    const updateUserStatus = async (e, uId, account_status) => {
+        e.preventDefault()
+        const Body = JSON.stringify({
+            uId,
+            account_status
+        })
+        try {
+            const response = await axios.post(
+                '/api/users/status/update',
+                Body,
+                config
+            )
+            setKPIs(response?.data?.data)
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Success",
+                html: `${response?.data?.data?.message}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "error",
+                title: "Error",
+                html: `${error?.response?.data?.error}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+    }
+
+    const updateUserRole = async (e, uId, userType) => {
         e.preventDefault()
         const Body = JSON.stringify({
             uId,
@@ -305,9 +343,10 @@ const UsersList = () => {
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">User Type</th>
+                                                    <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className='tableContent'>
+                                            <tbody className='tableContent'>{ console.log(Users[1]) }
                                                 {
                                                     Users?.map((user, index) => {
                                                         return (
@@ -338,7 +377,7 @@ const UsersList = () => {
                                                                                     <option value="5">BAC</option>
                                                                                     <option value="6">Advisor</option>
                                                                                 </select>
-                                                                                <button class="input-group-text" onClick={ (e) => { updateUserStatus(e, user?.user_id, user?.user_type); setCurrentRow(0) } } type="button"><i class="fa-solid fa-check-to-slot"></i></button>
+                                                                                <button class="input-group-text" onClick={ (e) => { updateUserRole(e, user?.user_id, user?.user_type); setCurrentRow(0) } } type="button"><i class="fa-solid fa-check-to-slot"></i></button>
                                                                             </div>
                                                                             :
                                                                             user?.is_superuser ? "Admin" :
@@ -350,6 +389,21 @@ const UsersList = () => {
                                                                                                     Number(user?.user_type) === 5 ? "BAC" :
                                                                                                         Number(user?.user_type) === 6 ? "Advisor" : ""
                                                                         // : formatter.format(0)
+                                                                    }
+                                                                </td>
+                                                                <td onMouseOver={ (e) => { setCurrentRow(`${user?.user_id}-status`) } }>
+                                                                    {
+                                                                        CurrentRow === `${user?.user_id}-status` ?
+                                                                            <div className="input-group">
+                                                                                <select autoFocus onChange={ (e) => { on_Table_value_update(e, index) } } name="account_status" value={ user?.account_status } className="form-select form-select-sm">
+                                                                                    <option value="0">Inactive</option>
+                                                                                    <option value="1">Active</option>
+                                                                                </select>
+                                                                                <button class="input-group-text" onClick={ (e) => { updateUserStatus(e, user?.user_id, user?.account_status); setCurrentRow(0) } } type="button"><i class="fa-solid fa-check-to-slot"></i></button>
+                                                                            </div>
+                                                                            :
+                                                                            Number(user?.account_status) === 0 ? "Inactive" :
+                                                                                Number(user?.account_status) === 1 ? "Active" : user?.account_status
                                                                     }
                                                                 </td>
                                                             </tr>

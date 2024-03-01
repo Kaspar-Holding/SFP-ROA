@@ -13,8 +13,8 @@ export default async (req, res) => {
 
         const config = {
             headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
 
@@ -26,9 +26,9 @@ export default async (req, res) => {
             re_password
         })
 
-        try {  
+        try {
             const apiResponse = await axios.post(
-                `${API_URL}/auth/users/`, 
+                `${API_URL}/auth/users/`,
                 Body,
                 config
             )
@@ -37,22 +37,22 @@ export default async (req, res) => {
                 return res.status(201).json({
                     success: "Successfully created"
                 })
-            }else {
+            } else {
                 return res.status(apiResponse?.status).json({
                     error: apiResponse?.data
                 })
 
             }
-            
+
         } catch (error) {
-            return res.status(500).json({
-                "error" : "Something went wrong while registering the account."
+            return res.status(error.response.status).json({
+                "error": "Something went wrong while registering the account."
             })
         }
     } else {
         res.setHeader('Allow', ['POST'])
         return res.status(405).json({
-            'error' : `Method ${req.method} not allowed.`
+            'error': `Method ${req.method} not allowed.`
         })
     }
 }

@@ -184,7 +184,7 @@ const Insights = () => {
                 {
                     title: {
                         formatter: function (val) {
-                            return val;
+                            return val
                         }
                     }
                 }
@@ -297,7 +297,7 @@ const Insights = () => {
                 {
                     title: {
                         formatter: function (val) {
-                            return val;
+                            return val
                         }
                     }
                 }
@@ -521,52 +521,100 @@ const Insights = () => {
         LoadRegions()
     }, [])
 
-    const [sortBy, setSortBy] = useState(null);
-    const [sortOrder, setSortOrder] = useState('asc');
+    const [sortBy, setSortBy] = useState(null)
+    const [sortOrder, setSortOrder] = useState('asc')
 
     const handleSort = (key) => {
         if (sortBy === key) {
             // Toggle sort order if the same column is clicked again
-            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
         } else {
             // Sort by the selected column in ascending order
-            setSortBy(key);
-            setSortOrder('asc');
+            setSortBy(key)
+            setSortOrder('asc')
         }
-    };
+    }
 
     const sortedAdvisorsData = [...AdvisorsData].sort((a, b) => {
-        const factor = sortOrder === 'asc' ? 1 : -1;
+        const factor = sortOrder === 'asc' ? 1 : -1
         if (sortBy) {
-            if (a[sortBy] < b[sortBy]) return -1 * factor;
-            if (a[sortBy] > b[sortBy]) return 1 * factor;
-            return 0;
+            if (a[sortBy] < b[sortBy]) return -1 * factor
+            if (a[sortBy] > b[sortBy]) return 1 * factor
+            return 0
         }
-        return 0;
-    });
-    const [RegionSortBy, setRegionSortBy] = useState(null);
-    const [RegionSortOrder, setRegionSortOrder] = useState('asc');
+        return 0
+    })
+    const [RegionSortBy, setRegionSortBy] = useState(null)
+    const [RegionSortOrder, setRegionSortOrder] = useState('asc')
 
     const handleRegionSort = (key) => {
         if (RegionSortBy === key) {
             // Toggle sort order if the same column is clicked again
-            setRegionSortOrder(RegionSortOrder === 'asc' ? 'desc' : 'asc');
+            setRegionSortOrder(RegionSortOrder === 'asc' ? 'desc' : 'asc')
         } else {
             // Sort by the selected column in ascending order
-            setRegionSortBy(key);
-            setRegionSortOrder('asc');
+            setRegionSortBy(key)
+            setRegionSortOrder('asc')
         }
-    };
+    }
 
     const sortedRegionData = [...RegionsData].sort((a, b) => {
-        const factor = RegionSortOrder === 'asc' ? 1 : -1;
+        const factor = RegionSortOrder === 'asc' ? 1 : -1
         if (RegionSortBy) {
-            if (a[RegionSortBy] < b[RegionSortBy]) return -1 * factor;
-            if (a[RegionSortBy] > b[RegionSortBy]) return 1 * factor;
-            return 0;
+            if (a[RegionSortBy] < b[RegionSortBy]) return -1 * factor
+            if (a[RegionSortBy] > b[RegionSortBy]) return 1 * factor
+            return 0
         }
-        return 0;
-    });
+        return 0
+    })
+
+    const exportReport = async (e, filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType) => {
+        e.preventDefault()
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        }
+        const Body = JSON.stringify({ filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType })
+        try {
+            const response = await axios.post(
+                '/api/insights/export',
+                Body,
+                config
+            )
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Message",
+                html: response?.data?.message,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+            // const url = `${API_URL}/${response?.data?.file}`
+            // window.open(url, '_blank').focus()
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "error",
+                title: "Error",
+                html: `${error?.response?.data?.error?.message}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+        }
+
+    }
+
+    const exportReportButtonClick = (e) => {
+        e.preventDefault()
+        exportReport(e, FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedAdvisors, BusinessType)
+    }
 
 
     if (typeof window != 'undefined' && !isAuthenticated) {
@@ -613,6 +661,7 @@ const Insights = () => {
                         setSelectedAdvisors={ setSelectedAdvisors }
                         BusinessType={ BusinessType }
                         setBusinessType={ setBusinessType }
+                        exportReportButtonClick={ exportReportButtonClick }
                     />
                     {
                         Loaded ?

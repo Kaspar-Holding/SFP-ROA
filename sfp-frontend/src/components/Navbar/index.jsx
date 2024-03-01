@@ -218,6 +218,7 @@ const Navbar = () => {
             )
             setNotificationsData(response?.data?.data?.results)
         } catch (error) {
+            console.log(error?.response?.status)
             // Swal.fire({
             //     position: "bottom-end",
             //     type: "error",

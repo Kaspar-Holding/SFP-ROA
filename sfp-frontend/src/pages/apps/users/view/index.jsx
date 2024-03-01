@@ -224,7 +224,7 @@ const UsersList = () => {
                                                                                     <input
                                                                                         type="date"
                                                                                         className="form-control"
-                                                                                        onMouseLeave={ (e) => { updating(e) } }
+                                                                                        onBlur={ (e) => { updating(e) } }
                                                                                         value={ ProfileData[item]?.split('T')[0] } // Convert to YYYY-MM-DD format
                                                                                         name={ item }
                                                                                         onChange={ e => onChange(e) }
@@ -233,13 +233,13 @@ const UsersList = () => {
                                                                             </div>
                                                                         )
                                                                             : ProfileData[item] == "Yes" || ProfileData[item] == "No" ? (
-                                                                                <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
+                                                                                <select className="form-select" onBlur={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
                                                                                     <option value="Yes">Yes</option>
                                                                                     <option value="No">No</option>
                                                                                 </select>
                                                                             )
                                                                                 : ProfileData[item] == "Active" ? (
-                                                                                    <select className="form-select" onMouseLeave={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
+                                                                                    <select className="form-select" onBlur={ (e) => { updating(e) } } onChange={ e => onChange(e) } value={ ProfileData[item] } name={ item } aria-label="Default select example">
                                                                                         <option value="Active">Active</option>
                                                                                         <option value="Inactive">Inactive</option>
                                                                                     </select>
@@ -248,7 +248,7 @@ const UsersList = () => {
                                                                                         <input
                                                                                             type="text"
                                                                                             className="form-control"
-                                                                                            onMouseLeave={ (e) => { updating(e) } }
+                                                                                            onBlur={ (e) => { updating(e) } }
                                                                                             value={ ProfileData[item] != "nan" ? ProfileData[item] : "" }
                                                                                             name={ item }
                                                                                             onChange={ e => onChange(e) }

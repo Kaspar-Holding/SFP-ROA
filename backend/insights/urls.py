@@ -6,6 +6,7 @@ urlpatterns = [
     path('investment/', views.investmentInsights.as_view()),
     path('monitoring/', views.monitoringInsights.as_view()),
     path('gatekeeping/', views.gatekeeperInsights.as_view()),
+    path('sanlam/', views.sanlamInsights.as_view()),
     path('advisors/load/', views.loadAdvisors.as_view()),
     path('advisors/', views.advisorInsights.as_view()),
 ]

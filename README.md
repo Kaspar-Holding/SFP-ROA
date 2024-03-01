@@ -14,6 +14,15 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 01 March 2024:
+- Reports
+1. App is introduced to add the functionality to export the insights
+- Insights
+1. Non Sanlam vs Sanlam Added
+2. ARC vs Gatekeeper filter added in Monitoring
+3. Export Button Added for Reporting
+- Deployment on Staging and Production 
+
 ### 27 February 2024:
 - Tasks
 1. Updated System Generated to Succession

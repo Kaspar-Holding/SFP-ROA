@@ -781,6 +781,7 @@ class UsersList(APIView):
                 "last_name" : user.user.last_name if user.user.last_name != "nan" else "",
                 "id_number" : user.ID_Number,
                 "user_type" : user.user.userType,
+                "account_status" : user.user.is_active,
             })
         if request.data['page_number'] <= p.num_pages:
                 
@@ -923,6 +924,21 @@ class UserRole(APIView):
                 return Response({"message": f"{old.email} updated to {user_type}"})
             else:
                 return Response({"errors" : serializer.errors}, 400)
+        else:
+            return Response({"message" : "User not found"}, 400)
+    
+class UserStatus(APIView):
+    
+    def put(self, request, pk):
+        if request.user.is_superuser == False:
+            return Response({"message" : "You are not authorized to perform this action"}, 401)
+        user = UserAccount.objects.filter(id=utils.decode_uid(pk))
+        data = request.data
+        if user.exists():
+            old = user.first()
+            user.update(is_active=int(data['account_status']))
+            status = "Active" if int(data['account_status']) == 1 else "Inactive"
+            return Response({"message": f"{old.email} updated to {status}"})
         else:
             return Response({"message" : "User not found"}, 400)
         

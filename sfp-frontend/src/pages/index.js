@@ -161,7 +161,7 @@ const AppPage = () => {
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a href="https://business.d6.co.za/nc/messages" target='_blank' style={ { textDecoration: "none" } }>
+                                        <a href="https://quotes.getquote.co.za/Account/Login" target='_blank' style={ { textDecoration: "none" } }>
                                             <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
                                                 <div className="card-body">
                                                     <br />

@@ -13,6 +13,9 @@ data/sfp_venv
 *.pyc
 *.ics
 */*/*/__pycache__/
+*.docx
+report.py
+Picture1.png
 
 
 */*/__pycache__/

@@ -427,9 +427,24 @@ class user_profile(models.Model):
     Wealth_Management_3_Indicator = models.TextField( default="", null=True, blank=True)
     Wealth_Management_3_Obtained_Date = models.DateField(null=True, blank=True)
     Years_of_Service = models.TextField( default="", null=True, blank=True)
+    DEP_Sign_Up = models.IntegerField(null=True, blank=True)
+    CVP = models.IntegerField(null=True, blank=True)
+    DEP_URL = models.TextField( default="", null=True, blank=True)
+    LI_URL = models.TextField( default="", null=True, blank=True)
+    LinkedIn_manage_profile = models.IntegerField(null=True, blank=True)
+    FB_URL = models.TextField( default="", null=True, blank=True)
+    GROUP = models.IntegerField(null=True, blank=True)
+    BI_ACCESS = models.IntegerField(null=True, blank=True) 
+    OTP_Enabled = models.BooleanField(null=True, blank=True)
+    RE_ROLL = models.IntegerField(null=True, blank=True)
+    LMS_ACCESS = models.IntegerField(null=True, blank=True)
+    PROFILEME_DBC_LINK = models.TextField( default="", null=True, blank=True)
+    DDTC = models.IntegerField(null=True, blank=True)
 
-
-
+class user_comission(models.Model):
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    year = models.TextField( default="", null=True, blank=True)
+    commission = models.TextField( default="", null=True, blank=True)
 
 import datetime
 # Create your models here.

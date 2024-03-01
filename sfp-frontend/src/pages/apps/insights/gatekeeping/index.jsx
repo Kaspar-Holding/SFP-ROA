@@ -700,17 +700,17 @@ const GatekeepingInsights = () => {
                                 </div>
                                 <hr />
                                 <div className='row'>
-                                    <div className='col-lg-3 col-md-6 col-sm-12 bg-white py-2'>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
                                         {
                                             (typeof window !== 'undefined') && <Chart options={ pieChartOptions("Type of Business", [GatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2)) } series={ [GatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2) } type="pie" width={ '100%' } />
                                         }
                                     </div>
-                                    <div className='col-lg-3 col-md-6 col-sm-12 bg-white py-2'>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
                                         {
                                             (typeof window !== 'undefined') && <Chart options={ pieChartOptions("Reason for Rejection", [RejectionGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2)) } series={ [RejectionGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2) } type="pie" width={ '100%' } />
                                         }
                                     </div>
-                                    <div className='col-lg-6 col-md-6 col-sm-12 bg-white'>
+                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white'>
                                         {
                                             (typeof window !== 'undefined') && <Chart options={ totalGatekeepingOptions([DatewiseGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2), "Gatekeeping Approval", "Reviews", "Percentage Approved at 1st Review") } series={ totalGatekeepingSeries("Reviews", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "First Approval", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[2]))).flat(2), "bar", "First Approval Percentage", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[3]))).flat(2), "bar") } type="bar" height={ 350 } />
                                         }

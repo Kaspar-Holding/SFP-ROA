@@ -38,8 +38,35 @@ export default async (req, res) => {
                 })
             }
         } catch (error) {
-            console.log(error)
-            return res.status(500).json({
+            if (error.response.status == 401) {
+                res.setHeader(
+                    'Set-Cookie',
+                    [
+                        cookie.serialize(
+                            'access', "", {
+                            httpOnly: true,
+                            secure: process.env.NEXT_ENV !== "development",
+                            expires: new Date(0),
+                            sameSite: 'strict',
+                            path: '/api/'
+                        }
+                        ),
+                        cookie.serialize(
+                            'refresh', "", {
+                            httpOnly: true,
+                            secure: process.env.NEXT_ENV !== "development",
+                            expires: new Date(0),
+                            sameSite: 'strict',
+                            path: '/api/'
+                        }
+                        )
+                    ]
+                )
+                return res.status(error.response.status).json({
+                    error: error.response.data
+                })
+            }
+            return res.status(error.response.status).json({
                 error: "Something went wrong"
             })
 

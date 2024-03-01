@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from django.shortcuts import render
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
-from django.db.models import Sum, Count, FloatField
+from django.db.models import Q, Sum, Count, FloatField
 from django.db.models.functions import Cast
 from django.http import Http404
 # Create your views here.
@@ -643,6 +643,7 @@ class monitoringInsights(APIView):
         region = (request.data['region'])
         advisor = (request.data['advisor'])
         businessType = (request.data['businessType'])
+        starting_point = request.data['starting_point']
         # Annual Data
         reviewsData = ComplianceDocument.objects.all()
         if not user.is_superuser:
@@ -681,6 +682,11 @@ class monitoringInsights(APIView):
 
         if businessType != "all":
             reviewsData = reviewsData.filter(businessType=int(businessType))
+        if starting_point != "all":
+            if starting_point == "arc":
+                reviewsData = reviewsData.filter(starting_point=int(1))
+            if starting_point == "gk":
+                reviewsData = reviewsData.filter(starting_point=int(2))
         total_cases = reviewsData.count()
         first_approval = 0
         first_partial_approval = 0
@@ -1051,12 +1057,12 @@ class monitoringInsights(APIView):
             available_regions = available_regions.filter(id=region.region.pk)
         top_regions = []
         for region in available_regions:
-            reviewIds = ComplianceDocument.objects.filter(region=region['region']).values_list('id', flat=True)
+            reviewIds = reviewsData.filter(region=region['region']).values_list('id', flat=True)
             review_first_approval = 0
             review_first_partial_approval = 0
             review_first_not_approved = 0
             for reviewId in reviewIds:
-                reviewData = ComplianceDocument.objects.filter(id=reviewId).values().first()
+                reviewData = reviewsData.filter(id=reviewId).values().first()
                 if reviewData['referred'] == False:
                     gk = GateKeeping.objects.filter(document=reviewId)
                     if gk.exists():
@@ -1081,12 +1087,12 @@ class monitoringInsights(APIView):
             available_advisors = available_advisors.filter(id=user.pk)
         top_advisors = []
         for advisor in available_advisors:
-            reviewIds = ComplianceDocument.objects.filter(advisor=advisor['id']).values_list('id', flat=True)
+            reviewIds = reviewsData.filter(advisor=advisor['id']).values_list('id', flat=True)
             review_first_approval = 0
             review_first_partial_approval = 0
             review_first_not_approved = 0
             for reviewId in reviewIds:
-                reviewData = ComplianceDocument.objects.filter(id=reviewId).values().first()
+                reviewData = reviewsData.filter(id=reviewId).values().first()
                 if reviewData['referred'] == False:
                     gk = GateKeeping.objects.filter(document=reviewId)
                     if gk.exists():
@@ -1572,6 +1578,200 @@ class gatekeeperInsights(APIView):
             return Response(gatekeeperData, 200)
         else:
             raise Http404
+        
+    
+class sanlamInsights(APIView):
+
+    def post(self, request):
+        user = request.user
+        filterType = int(request.data['filterType'])
+        year = request.data['year']
+        monthyear = request.data['monthyear']
+        month = request.data['month']
+        date = request.data['date']
+        fromdate = request.data['fromdate']
+        todate = request.data['todate']
+        customFilterType = int(request.data['customFilterType'])
+        region = (request.data['region'])
+
+        businessType = (request.data['businessType'])
+        # Annual Data
+        reviewsData = ComplianceDocument.objects.all()
+
+        if not user.is_superuser:
+            if user.userType == 1:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 2:
+                reviewsData = reviewsData.filter(user=user.pk)
+            if user.userType == 3:
+                regional_manager = region_manager.objects.filter(manager=user.pk)
+                if regional_manager.exists():
+                    advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                    if advisor_ids.exists():
+                        advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                        reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            if user.userType == 5:
+                advisor_ids = user_profile.objects.filter(bac=user.pk)
+                if advisor_ids.exists():
+                    advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            if user.userType == 6:
+                reviewsData = reviewsData.filter(advisor=user.pk)
+        if filterType == 1:
+            reviewsData = reviewsData.filter(updated_at__year=year)
+        if filterType == 2:
+            reviewsData = reviewsData.filter(updated_at__year=monthyear, updated_at__month=month)
+        if filterType == 3:
+            reviewsData = reviewsData.filter(updated_at__date=date)
+        if filterType == 4:
+            date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+            reviewsData = reviewsData.filter(updated_at__range=date_range)
+        if region != "all":
+            reviewsData = reviewsData.filter(region=region)
+        if businessType != "all":
+            reviewsData = reviewsData.filter(businessType=int(businessType))
+        sanlam_product_Supplier = ['Sanlam', 'Santam', 'SHA', 'Glacier']
+        sanlam_data = reviewsData.filter(Q(supplier__icontains="sanlam")|Q(supplier__icontains="santam")|Q(supplier__icontains="sha")|Q(supplier__icontains="glacier"))
+        total_sanlam_reviews = sanlam_data.count()
+        total_sanlam_regions = sanlam_data.values('region').distinct().count()
+        total_sanlam_advisors = sanlam_data.values('advisor').distinct().count()
+        total_sanlam_commission = sanlam_data.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        total_sanlam_commission = round(total_sanlam_commission,2) if total_sanlam_commission else 0.0
+
+        non_sanlam_data = reviewsData.filter(~Q(supplier__icontains="sanlam"),~Q(supplier__icontains="santam"),~Q(supplier__icontains="sha"),~Q(supplier__icontains="glacier"))
+        total_non_sanlam_reviews = non_sanlam_data.count()
+        total_non_sanlam_regions = non_sanlam_data.values('region').distinct().count()
+        total_non_sanlam_advisors = non_sanlam_data.values('advisor').distinct().count()
+        total_non_sanlam_commission = non_sanlam_data.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        total_non_sanlam_commission = round(total_non_sanlam_commission,2) if total_non_sanlam_commission else 0.0
+        
+        cases_trend = []
+        if filterType == 1:
+            datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+            for date in datewise_data:
+                sanlam_cases = 0
+                non_sanlam_cases = 0
+                sanlam = sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                if sanlam.exists():
+                    sanlam_cases = sanlam.count()
+                non_sanlam = non_sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                if non_sanlam.exists():
+                    non_sanlam_cases = non_sanlam.count()
+                cases_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(sanlam_cases), int(non_sanlam_cases)])
+        if filterType == 2:
+            datewise_data = reviewsData.values('updated_at__year','updated_at__month', 'updated_at__day').distinct().order_by('updated_at__year','updated_at__month', 'updated_at__day')
+            for date in datewise_data:
+                sanlam = sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'], updated_at__day=date['updated_at__day'])
+                non_sanlam = non_sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'], updated_at__day=date['updated_at__day'])
+                sanlam_cases = 0
+                non_sanlam_cases = 0
+                if sanlam.exists():
+                    sanlam_cases = sanlam.count()
+                if non_sanlam.exists():
+                    non_sanlam_cases = non_sanlam.count()                
+                cases_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}-{date['updated_at__day']}", '%Y-%m-%d') , '%d %b %Y'), int(sanlam_cases), int(non_sanlam_cases)])
+        if filterType == 3:
+            datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
+            for date in datewise_data:
+                sanlam = sanlam_data.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour'])
+                non_sanlam = non_sanlam_data.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour'])
+                sanlam_cases = 0
+                non_sanlam_cases = 0
+                if sanlam.exists():
+                    sanlam_cases = sanlam.count()
+                if non_sanlam.exists():
+                    non_sanlam_cases = non_sanlam.count()  
+                cases_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"), int(sanlam_cases), int(non_sanlam_cases)])
+        if filterType == 4:
+            if customFilterType == 1:
+                if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                    datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                    for date in datewise_data:
+                        sanlam = sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                        non_sanlam = non_sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                        sanlam_cases = 0
+                        non_sanlam_cases = 0
+                        if sanlam.exists():
+                            sanlam_cases = sanlam.count()
+                        if non_sanlam.exists():
+                            non_sanlam_cases = non_sanlam.count()
+                        cases_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(sanlam_cases), int(non_sanlam_cases)])
+                else:
+                    datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+                    for date in datewise_data:
+                        sanlam = sanlam_data.filter(updated_at__date=date['updated_at__date'])
+                        non_sanlam = non_sanlam_data.filter(updated_at__date=date['updated_at__date'])
+                        sanlam_cases = 0
+                        non_sanlam_cases = 0
+                        if sanlam.exists():
+                            sanlam_cases = sanlam.count()
+                        if non_sanlam.exists():
+                            non_sanlam_cases = non_sanlam.count()
+                        cases_trend.append([date['updated_at__date'].strftime('%d %b %Y'), int(sanlam_cases), int(non_sanlam_cases)])
+            if customFilterType == 2:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
+                for date in datewise_data:
+                    sanlam = sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week'])
+                    non_sanlam = non_sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week'])
+                    sanlam_cases = 0
+                    non_sanlam_cases = 0
+                    if sanlam.exists():
+                        sanlam_cases = sanlam.count()
+                    if non_sanlam.exists():
+                        non_sanlam_cases = non_sanlam.count()  
+                    cases_trend.append([f"{date['updated_at__year']} Week {date['updated_at__week']}", int(sanlam_cases), int(non_sanlam_cases)])
+            if customFilterType == 3:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                for date in datewise_data:
+                    sanlam = sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                    non_sanlam = non_sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                    sanlam_cases = 0
+                    non_sanlam_cases = 0
+                    if sanlam.exists():
+                        sanlam_cases = sanlam.count()
+                    if non_sanlam.exists():
+                        non_sanlam_cases = non_sanlam.count()  
+                    cases_trend.append([datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'), int(sanlam_cases), int(non_sanlam_cases)])
+            if customFilterType == 4:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
+                for date in datewise_data:
+                    sanlam = sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter'])
+                    non_sanlam = non_sanlam_data.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter'])
+                    sanlam_cases = 0
+                    non_sanlam_cases = 0
+                    if sanlam.exists():
+                        sanlam_cases = sanlam.count()
+                    if non_sanlam.exists():
+                        non_sanlam_cases = non_sanlam.count()  
+                    cases_trend.append([f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}", int(sanlam_cases), int(non_sanlam_cases)])
+            if customFilterType == 5:
+                datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
+                for date in datewise_data:
+                    sanlam = sanlam_data.filter(updated_at__year=date['updated_at__year'])
+                    non_sanlam = non_sanlam_data.filter(updated_at__year=date['updated_at__year'])
+                    sanlam_cases = 0
+                    non_sanlam_cases = 0
+                    if sanlam.exists():
+                        sanlam_cases = sanlam.count()
+                    if non_sanlam.exists():
+                        non_sanlam_cases = non_sanlam.count()  
+                    cases_trend.append([f"{date['updated_at__year']}", int(sanlam_cases), int(non_sanlam_cases)])
+        return Response({
+            "sanlam_kpis" : {
+                "total_reviews" : total_sanlam_reviews,
+                "total_commission" : total_sanlam_commission,
+                "total_regions" : total_sanlam_regions,
+                "total_advisors" : total_sanlam_advisors,
+            },
+            "non_sanlam_kpis" : {
+                "total_reviews" : total_non_sanlam_reviews,
+                "total_commission" : total_non_sanlam_commission,
+                "total_regions" : total_non_sanlam_regions,
+                "total_advisors" : total_non_sanlam_advisors,
+            },
+            "trend" : cases_trend
+        }, 200)
         
 class advisorInsights(APIView):
 

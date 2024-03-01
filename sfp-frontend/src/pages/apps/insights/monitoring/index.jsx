@@ -454,15 +454,16 @@ const MonitoringInsights = () => {
     const [MonitoringTrend, setMonitoringTrend] = useState([])
     const [DateMonitoringTrend, setDateMonitoringTrend] = useState([])
     const [RegionMonitoringTrend, setRegionMonitoringTrend] = useState([])
+    const [StartingPoint, setStartingPoint] = useState('all')
     const [BusinessTypeMonitoringTrend, setBusinessTypeMonitoringTrend] = useState([])
     const [RegionsData, setRegionsData] = useState([])
     const [RegionsRecurring, setRegionsRecurring] = useState([])
     const [AdvisorsData, setAdvisorsData] = useState([])
     const [AdvisorsRecurring, setAdvisorsRecurring] = useState([])
 
-    const LoadData = async (filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType) => {
+    const LoadData = async (filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType, starting_point) => {
         setLoaded(true)
-        const Body = JSON.stringify({ filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType })
+        const Body = JSON.stringify({ filterType, year, monthyear, month, date, customFilterType, fromdate, todate, region, advisor, businessType, starting_point })
 
         try {
             const response = await axios.post(
@@ -560,7 +561,7 @@ const MonitoringInsights = () => {
     }
 
     useEffect(() => {
-        LoadData(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedAdvisors, BusinessType)
+        LoadData(FilterType, Year, MonthYear, Month, CurrentDate, CustomFilterType, FromDate, ToDate, SelectedRegions, SelectedAdvisors, BusinessType, StartingPoint)
         LoadAdvisors()
         LoadRegions()
     }, [])
@@ -654,6 +655,9 @@ const MonitoringInsights = () => {
                         loadAdvisors={ LoadRegionAdvisors }
                         BusinessType={ BusinessType }
                         setBusinessType={ setBusinessType }
+                        monitoring={ true }
+                        startingPoint={ StartingPoint }
+                        setStartingPoint={ setStartingPoint }
                     />
                     {
                         Loaded ?

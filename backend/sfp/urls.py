@@ -37,6 +37,7 @@ urlpatterns = [
     path('api/users/', include('users.urls')),
     path('api/scim/', include('scim.urls')),
     path('api/roa/', include('roa.urls')),
+    path('api/reports/', include('reports.urls')),
     # re_path(r"^$", render_react),
     # re_path(r"^(?:.*)/?$", render_react),
     

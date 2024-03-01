@@ -1,4 +1,6 @@
 from django.core.files.base import ContentFile
+from matplotlib.ticker import ScalarFormatter
+
 import uuid
 from celery import shared_task
 from celery.utils.log import get_task_logger
@@ -16,18 +18,32 @@ from logs.models import Log, LogKPIs
 from logs.serializers import LogSerializer, LogKPIsSerializer, LogContentSerializer 
 from data.models import UserAccount, user_profile, region_manager, DisclosuresProductProviders, DisclosuresAdvisorSubCodes
 from data.serializers import DisclosuresProductProviders_Serializer, DisclosuresAdvisorSubCodes_Serializer
-from django.db.models import Q
+from django.db.models import Q, Sum, Count, FloatField
+from django.db.models.functions import Cast
 from compliance.models import ComplianceDocument, DocumentComments, arc, GateKeeping
 import base64
 import pandas as pd
 from django.conf import settings
 import environ
+from docx.shared import Pt, RGBColor, Inches
+from docx import Document
+import matplotlib.pyplot as plt
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+import io
+from io import BytesIO
+import os
+from data.models import regions, UserAccount, Disclosures, user_profile, region_manager
+import babel.numbers
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
 from django.conf import settings
 environ.Env.read_env(os.path.join(settings.BASE_DIR, '.env'))
+
+
+def currency_formatter(x, pos):
+    return f'R{x:,.0f}'
 
 class DB_Backup_Command(BaseCommand):
     help = 'Backup PostgreSQL database and upload to Azure Blob'
@@ -1474,3 +1490,713 @@ def roa_disclosure_products_update(userId, data):
     else:
         logger.info(serializer.errors)
     logger.info(f"Completed at {datetime.now()}")
+
+@shared_task
+def commission_report(userId, requestedData):
+    user = UserAccount.objects.get(id=userId)
+    title = "Commission Report Export"
+    message = "Commission Report complete data export"
+    notificationData = {
+        "account" : user.pk,
+        "notificationType" : 6,        
+        "user" : user.pk,
+        "title" : title,
+        "message" : message,
+        "status" : False,
+    }
+    serializer = NotificationsSerializer(data=notificationData)
+    if serializer.is_valid():
+        serializer.create(serializer.validated_data)
+    else:
+        logger.info(serializer.errors)
+    filterType = int(requestedData['filterType'])
+    year = requestedData['year']
+    monthyear = requestedData['monthyear']
+    month = requestedData['month']
+    date = requestedData['date']
+    fromdate = requestedData['fromdate']
+    todate = requestedData['todate']
+    customFilterType = int(requestedData['customFilterType'])
+    region = (requestedData['region'])
+    advisor = (requestedData['advisor'])
+    businessType = (requestedData['businessType'])
+    # Annual Data
+    reviewsData = ComplianceDocument.objects.all()
+    file_initial_name = "Report for all"
+    if not user.is_superuser:
+        if user.userType == 1:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 2:
+            reviewsData = reviewsData.filter(user=user.pk)
+        if user.userType == 3:
+            regional_manager = region_manager.objects.filter(manager=user.pk)
+            if regional_manager.exists():
+                advisor_ids = user_profile.objects.filter(region=regional_manager.first().region.pk)
+                if advisor_ids.exists():
+                    advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                    reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 5:
+            advisor_ids = user_profile.objects.filter(bac=user.pk)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+        if user.userType == 6:
+            reviewsData = reviewsData.filter(advisor=user.pk)
+    if filterType == 1:
+        reviewsData = reviewsData.filter(updated_at__year=year)
+        file_initial_name = f"Report for year {year}"
+    if filterType == 2:
+        reviewsData = reviewsData.filter(updated_at__year=monthyear, updated_at__month=month)
+        date_range_ = datetime.strptime(f"{monthyear}-{month}", "%Y-%m").strftime('%b %Y')
+        file_initial_name = f"Report for {date_range_}"
+    if filterType == 3:
+        reviewsData = reviewsData.filter(updated_at__date=date)
+        date_range_ = datetime.strptime(f"{date}", "%Y-%m-%d").strftime('%d %b %Y')
+        file_initial_name = f"Report for {date_range_}"
+    if filterType == 4:
+        date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
+        reviewsData = reviewsData.filter(updated_at__range=date_range)
+        date_range_ = "From" + datetime.strptime(f"{fromdate}", "%Y-%m-%d").strftime('%d %b %Y') + " to " + datetime.strptime(f"{todate}", "%Y-%m-%d").strftime('%d %b %Y')
+        file_initial_name = f"Report for date range {date_range_}"
+    if region != "all":
+        reviewsData = reviewsData.filter(region=region)
+    if advisor != "all":
+        reviewsData = reviewsData.filter(advisor=int(advisor))
+    if businessType != "all":
+        reviewsData = reviewsData.filter(businessType=int(businessType))
+    
+    total_reviews = reviewsData.count()
+    total_documents = reviewsData.values()
+    total_regions = reviewsData.values('region').distinct().count()
+    total_advisors = reviewsData.values('advisor').distinct().count()
+    total_commission = reviewsData.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+    total_commission = round(total_commission,2) if total_commission else 0.0
+    # for review_document in total_documents:
+    #     gk = GateKeeping.objects.filter(document=review_document['id'])
+    #     if gk.exists():
+    #         gk = gk.values().latest('version')
+    #         total_commission += float(gk['commission'].replace(',', '.'))
+    # Date wise Trend
+    commission_trend = {}
+    labels = []
+    values = []
+    if filterType == 1:
+        datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+        for date in datewise_data:
+            commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+            if commission.exists():
+                commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+            else:
+                commission = 0
+                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+            labels.append(datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'))
+            values.append(int(commission))
+    if filterType == 2:
+        datewise_data = reviewsData.values('updated_at__year','updated_at__month', 'updated_at__day').distinct().order_by('updated_at__year','updated_at__month', 'updated_at__day')
+        for date in datewise_data:
+            commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'], updated_at__day=date['updated_at__day'])
+            if commission.exists():
+                commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+            else:
+                commission = 0
+                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+            labels.append(datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}-{date['updated_at__day']}", '%Y-%m-%d') , '%d %b %Y'))
+            values.append(int(commission))
+    if filterType == 3:
+        datewise_data = reviewsData.values('updated_at__date', 'updated_at__hour').distinct().order_by('updated_at__date', 'updated_at__hour')
+        for date in datewise_data:
+            commission = reviewsData.filter(updated_at__date=date['updated_at__date'], updated_at__hour=date['updated_at__hour'])
+            if commission.exists():
+                commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+            else:
+                commission = 0
+                    # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+            labels.append(datetime.strftime(datetime.strptime(f"{date['updated_at__date']} {date['updated_at__hour']}", '%Y-%m-%d %H'), "%I %p"))
+            values.append(int(commission))
+    if filterType == 4:
+        if customFilterType == 1:
+            if (datetime.strptime(todate, "%Y-%m-%d") - datetime.strptime(fromdate, "%Y-%m-%d")).days > 30:
+                datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+                for date in datewise_data:
+                    commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                    if commission.exists():
+                        commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                    else:
+                        commission = 0
+                            # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                    labels.append(datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'))
+                    values.append(int(commission))
+            else:
+                datewise_data = reviewsData.values('updated_at__date').distinct().order_by('updated_at__date')
+                for date in datewise_data:
+                    commission = reviewsData.filter(updated_at__date=date['updated_at__date'])
+                    if commission.exists():
+                        commission = commission.values('updated_at__date').aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                    else:
+                        commission = 0
+                            # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                    labels.append(date['updated_at__date'].strftime('%d %b %Y'))
+                    values.append(int(commission))
+        if customFilterType == 2:
+            datewise_data = reviewsData.values('updated_at__year','updated_at__week').distinct().order_by('updated_at__year','updated_at__week')
+            for date in datewise_data:
+                commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__week=date['updated_at__week'])
+                if commission.exists():
+                    commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                else:
+                    commission = 0
+                        # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                labels.append(f"{date['updated_at__year']} Week {date['updated_at__week']}")
+                values.append(int(commission))
+        if customFilterType == 3:
+            datewise_data = reviewsData.values('updated_at__year','updated_at__month').distinct().order_by('updated_at__year','updated_at__month')
+            for date in datewise_data:
+                commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__month=date['updated_at__month'])
+                if commission.exists():
+                    commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                else:
+                    commission = 0
+                        # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                labels.append(datetime.strftime(datetime.strptime(f"{date['updated_at__year']}-{date['updated_at__month']}", '%Y-%m') , '%b %Y'))
+                values.append(int(commission))
+        if customFilterType == 4:
+            datewise_data = reviewsData.values('updated_at__year','updated_at__quarter').distinct().order_by('updated_at__year','updated_at__quarter')
+            for date in datewise_data:
+                commission = reviewsData.filter(updated_at__year=date['updated_at__year'], updated_at__quarter=date['updated_at__quarter'])
+                if commission.exists():
+                    commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                else:
+                    commission = 0
+                        # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+                labels.append(f"{date['updated_at__year']} Quarter {date['updated_at__quarter']}")
+                values.append(int(commission))
+        if customFilterType == 5:
+            datewise_data = reviewsData.values('updated_at__year').distinct().order_by('updated_at__year')
+            for date in datewise_data:
+                commission = reviewsData.filter(updated_at__year=date['updated_at__year'])
+                if commission.exists():
+                    commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+                else:
+                    commission = 0
+                labels.append(f"{date['updated_at__year']}")
+                values.append(int(commission))
+    commission_trend = {
+        "labels" : labels,
+        "values" : values
+    }
+    # Regions
+    available_regions = regions.objects.all().values('region')
+    if user.userType == 3:
+        regional_manager = region_manager.objects.filter(manager=user.pk)
+        if regional_manager.exists():
+            available_regions = available_regions.filter(id=regional_manager.first().region.pk).values('region')
+    if user.userType == 5:
+        region_ids = user_profile.objects.filter(bac=user.pk)
+        if region_ids.exists():
+            region_ids = list(region_ids.values_list('region',flat=True))
+            available_regions = available_regions.filter(id__in=region_ids).values('region')
+    if user.userType == 6:
+        region = user_profile.objects.filter(user=user.pk).first().region
+        reviewsData = reviewsData.filter(region=region.region)
+        available_regions = available_regions.filter(id=region.pk).values('region')
+    # Region wise Trend
+    region_commission_trend = {}
+    regionsData = []
+    top_regions = []
+    labels = []
+    values = []
+    values_line = []
+    
+    for region in available_regions:
+        commission = reviewsData.filter(region=region['region'])
+        # print(commission)
+        if commission.exists():
+            commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        else:
+            commission = 0
+                # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+        # region_commission_trend.append([region['region'], int(commission)])
+        labels.append(region['region'])
+        values.append(int(commission))
+        values_line.append(int(int(commission)/int(total_commission)*100))
+    region_commission_trend = {
+        "labels" : labels,
+        "values" : values,
+        "values_line" : values_line
+    }
+    # top_regions = sorted(top_regions, key=lambda d: d['commission'], reverse=True)
+    # Advisor wise Trend
+    available_advisors = UserAccount.objects.filter(userType=6).values()
+    top_advisors = {}
+    labels = []
+    emails = []
+    id_numbers = []
+    values = []
+    for advisor in available_advisors:
+        commission = reviewsData.filter(advisor=advisor['id'])
+        if commission.exists():
+            commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        else:
+            commission = 0
+
+                # commission_trend.append({"date" : review_document['updated_at__date'].strftime('%d %b %Y'), "commission": float(gk['commission'].replace(',', '.'))})
+        if commission != 0:
+            advisor_profile = user_profile.objects.filter(user=advisor['id'])
+            name = f"{advisor['first_name']} {advisor['last_name']}"
+            id = ""
+            if advisor_profile.exists():
+                name = advisor_profile.first().Full_Name
+                name = name
+                id = advisor_profile.first().ID_Number
+            labels.append(name)
+            emails.append(advisor['email'])
+            id_numbers.append(id)
+            values.append(int(commission))
+    top_advisors = {
+        "labels" : labels,
+        "emails" : emails,
+        "id_numbers" : id_numbers,
+        "values" : values
+    }
+    # top_advisors = sorted(top_advisors, key=lambda d: d['commission'], reverse=True)
+    # Business Type wise Trend
+    businessType_commission_trend = {}
+    labels = []
+    values = []
+    values_line = []
+    business_total_commission = 0
+    for i in range(1,16):
+        commission = reviewsData.filter(businessType=i)
+        if commission.exists():
+            commission = commission.aggregate(total_commission=Sum(Cast('commission', output_field=FloatField())))['total_commission']
+        else:
+            commission = 0
+        business_total_commission += int(commission)
+        if i == 1:
+            businessType = "Business Assurance"
+        if i == 2:
+            businessType = "Comm release"
+        if i == 3:
+            businessType = "Employee Benefits"
+        if i == 4:
+            businessType = "Funeral"
+        if i == 5:
+            businessType = "GAP Cover"
+        if i == 6:
+            businessType = "Recurring - Investment"
+        if i == 7:
+            businessType = "Lumpsum - Investment"
+        if i == 8:
+            businessType = "Investment- Both"
+        if i == 9:
+            businessType = "Medical Aid"
+        if i == 10:
+            businessType = "Other"
+        if i == 11:
+            businessType = "Will"
+        if i == 12:
+            businessType = "Risk"
+        if i == 13:
+            businessType = "ST Re-issued/instated"
+        if i == 14:
+            businessType = "Short Term Commercial"
+        if i == 15:
+            businessType = "Short Term Personal"    
+        labels.append(businessType)
+        values.append(int(commission))
+        values_line.append(int(int(commission)/int(total_commission)*100))
+    businessType_commission_trend = {
+        "labels" : labels,
+        "values" : values,
+        "values_line" : values_line,
+    }
+        
+    # plt.bar(data['labels'], data['values'], color='#5ABCFC')
+    fig, ax1 = plt.subplots()
+    ax1.plot(commission_trend['labels'], commission_trend['values'], color='#5ABCFC')
+    ax1.set_xlabel('Date')
+    ax1.set_ylabel('Total Commission', color='#5ABCFC')
+    ax1.tick_params(axis='y', labelcolor='#5ABCFC')
+    ax1.yaxis.set_major_formatter(currency_formatter)
+
+    plt.xlabel('Date')
+    plt.ylabel('Percentage of Commission')
+    plt.title('Commission Sum Trend')
+
+    # plt.bar(commission_trend['labels'], commission_trend['values'], color='#5ABCFC')
+    plt.xticks(rotation=45, ha='right')  # Adjust the rotation angle and alignment as needed
+    # Adjust subplot parameters to remove padding
+    plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.2)  # Adjust as needed
+
+    # Adjust figure size to increase height
+    plt.gcf().set_size_inches(7, 6)  # Adjust the width and height as needed
+
+    # Save the chart to a BytesIO object
+    img_bytes = io.BytesIO()
+    plt.savefig(img_bytes, format='png', bbox_inches='tight')
+    img_bytes.seek(0)
+
+
+
+    # Create a Word document
+    doc = Document()
+
+    # Add heading 1 for "SFP Operations Update Q4:2023"
+    cover_page_heading = doc.add_heading("SFP Commission Report Export", level=1)
+    cover_page_heading.style.font.name = 'Calibri'  # Change font to Calibri Light
+    cover_page_heading.style.font.size = Pt(28) 
+    cover_page_heading.style.font.color.rgb = RGBColor(0,0,0) 
+
+    # Add the date
+    doc.add_paragraph().add_run(f"Date: {datetime.now().strftime('%d %b %Y')}").bold = True
+
+    # Add 5 line breaks
+    for _ in range(5):
+        doc.add_paragraph()
+
+    # Add name
+    # user = request.user
+    requesting_user = user.first_name + " " + user.last_name
+    user_profile_data = user_profile.objects.filter(user=user.pk)
+    if user_profile_data.exists():
+        requesting_user = user_profile_data.first().Full_Name
+    doc.add_paragraph().add_run(requesting_user).bold = True
+    # Add additional content to the cover page as needed
+
+    # Add another page break to start content on the next page
+    doc.add_page_break()
+
+    heading = doc.add_heading('Compliance advice monitoring', level=1)
+    heading.style.font.name = 'Calibri'  # Change font to Calibri Light
+    heading.style.font.size = Pt(14) 
+    heading.style.font.color.rgb = RGBColor(0,0,0) 
+    heading.style.font.bold = False 
+
+    table = doc.add_table(rows=1, cols=4)
+    table.alignment = 1  # Center alignment
+    cell = table.cell(0, 0)
+    # cell.vertical_alignment = docx.enum.text.WD_ALIGN_VERTICAL.CENTER
+    cell_paragraph = cell.paragraphs[0]
+    cell_paragraph.alignment = 1  # Center alignment
+    cell_paragraph.style.font.size = Pt(20)
+    cell_paragraph.style.font.color.rgb = RGBColor(0, 0, 0)  # White color
+    cell_paragraph.style.font.bold = True
+    cell_paragraph.style.font.name = 'Arial'
+    cell_paragraph.alignment = 1  # Center alignment
+    run1 = cell_paragraph.add_run(babel.numbers.format_number(total_reviews,locale='en_ZA'))
+    run1.font.size = Pt(15)
+    run1 = cell_paragraph.add_run('\nTotal Reviews')
+    run1.font.size = Pt(8)
+
+    cell = table.cell(0, 1)
+    # cell.vertical_alignment = docx.enum.text.WD_ALIGN_VERTICAL.CENTER
+    cell_paragraph = cell.paragraphs[0]
+    cell_paragraph.alignment = 1  # Center alignment
+    cell_paragraph.style.font.size = Pt(20)
+    cell_paragraph.style.font.color.rgb = RGBColor(0, 0, 0)  # White color
+    cell_paragraph.style.font.bold = True
+    cell_paragraph.style.font.name = 'Arial'
+    cell_paragraph.alignment = 1  # Center alignment
+    run1 = cell_paragraph.add_run(babel.numbers.format_currency(int(total_commission), 'ZAR', locale='en_ZA', currency_digits=False))
+    run1.font.size = Pt(15)
+    run1 = cell_paragraph.add_run('\nTotal Commission')
+    run1.font.size = Pt(8)
+
+    cell = table.cell(0, 2)
+    # cell.vertical_alignment = docx.enum.text.WD_ALIGN_VERTICAL.CENTER
+    cell_paragraph = cell.paragraphs[0]
+    cell_paragraph.alignment = 1  # Center alignment
+    cell_paragraph.style.font.size = Pt(20)
+    cell_paragraph.style.font.color.rgb = RGBColor(0, 0, 0)  # White color
+    cell_paragraph.style.font.bold = True
+    cell_paragraph.style.font.name = 'Arial'
+    cell_paragraph.alignment = 1  # Center alignment
+    run1 = cell_paragraph.add_run(babel.numbers.format_number(total_regions,locale='en_ZA'))
+    run1.font.size = Pt(15)
+    run1 = cell_paragraph.add_run('\nRegions')
+    run1.font.size = Pt(8)
+
+    cell = table.cell(0, 3)
+    # cell.vertical_alignment = docx.enum.text.WD_ALIGN_VERTICAL.CENTER
+    cell_paragraph = cell.paragraphs[0]
+    cell_paragraph.alignment = 1  # Center alignment
+    cell_paragraph.style.font.size = Pt(20)
+    cell_paragraph.style.font.color.rgb = RGBColor(0, 0, 0)  # White color
+    cell_paragraph.style.font.bold = True
+    cell_paragraph.style.font.name = 'Arial'
+    cell_paragraph.alignment = 1  # Center alignment
+    run1 = cell_paragraph.add_run(babel.numbers.format_number(total_advisors,locale='en_ZA'))
+    run1.font.size = Pt(15)
+    run1 = cell_paragraph.add_run('\nAdvisors')
+    run1.font.size = Pt(8)
+
+
+    heading = doc.add_heading('Commission Trend', level=1)
+    heading.style.font.name = 'Calibri'  # Change font to Calibri Light
+    heading.style.font.size = Pt(14) 
+    heading.style.font.color.rgb = RGBColor(0,0,0) 
+    heading.style.font.bold = False 
+
+
+    # Add a table with headers
+    commission_table = doc.add_table(rows=1, cols=2)
+    commission_hdr_cells = commission_table.rows[0].cells
+    commission_hdr_cells[0].text = 'Date'
+    commission_hdr_cells[1].text = 'Total Commission'
+
+    # Add commission_trend to the table
+    for cell in commission_hdr_cells:
+        cell.paragraphs[0].style.font.name = 'Calibri'
+        cell.paragraphs[0].style.font.size = Pt(20)
+        cell.paragraphs[0].style.font.bold = True
+        cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+
+    # Add commission_trend to the table
+    for label, value in zip(commission_trend["labels"], commission_trend["values"]):
+        row_cells = commission_table.add_row().cells
+        row_cells[0].text = label
+        row_cells[1].text = babel.numbers.format_currency(int(value), 'ZAR', locale='en_ZA', currency_digits=False)
+        
+    # Change font to Calibri and set font size to 12 for commission_trend cells
+    for row in commission_table.rows[1:]:
+        for cell in row.cells:
+            cell.paragraphs[0].style.font.name = 'Calibri'
+            cell.paragraphs[0].style.font.size = Pt(12)
+            cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+            cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+
+    image = doc.add_picture(img_bytes)
+    doc.add_page_break()
+
+    heading = doc.add_heading('Region Based Trend', level=1)
+    heading.style.font.name = 'Calibri'  # Change font to Calibri Light
+    heading.style.font.size = Pt(14) 
+    heading.style.font.color.rgb = RGBColor(0,0,0) 
+    heading.style.font.bold = False 
+
+
+
+    # plt.bar(data['labels'], data['values'], color='#5ABCFC')
+    fig, ax1 = plt.subplots()
+
+    # Plot bar chart on primary y-axis
+    ax1.bar(region_commission_trend['labels'], region_commission_trend['values'], color='#5ABCFC')
+    ax1.set_xlabel('Regions')
+    ax1.set_ylabel('Commission', color='#5ABCFC')
+    ax1.tick_params(axis='y', labelcolor='#5ABCFC')
+
+    # Rotate x-axis labels
+    plt.xticks(rotation=45, ha='right')
+
+    # Create a secondary y-axis and plot line chart
+    ax2 = ax1.twinx()
+    ax2.plot(region_commission_trend['labels'], region_commission_trend['values_line'], color='red', marker='o')
+    ax2.set_ylabel('Percentage of Commission', color='red')
+    ax2.tick_params(axis='y', labelcolor='red')
+
+    ax1.yaxis.set_major_formatter(currency_formatter)
+    ax2.yaxis.set_major_formatter(ScalarFormatter(useMathText=False))
+
+    # Adjust subplot parameters to remove padding
+    plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.2)
+
+    # Adjust figure size to increase height
+    plt.gcf().set_size_inches(7, 6)
+
+    plt.title('Region Based Trend')
+
+    # Save the chart to a BytesIO object
+    region_img_bytes = io.BytesIO()
+    plt.savefig(region_img_bytes, format='png', bbox_inches='tight')
+    region_img_bytes.seek(0)
+
+    # Add a table with headers
+    bt_table = doc.add_table(rows=1, cols=2)
+    bt_hdr_cells = bt_table.rows[0].cells
+    bt_hdr_cells[0].text = 'Region'
+    bt_hdr_cells[1].text = 'Total Commission'
+
+    # Add data to the table
+    for cell in bt_hdr_cells:
+        cell.paragraphs[0].style.font.name = 'Calibri'
+        cell.paragraphs[0].style.font.size = Pt(20)
+        cell.paragraphs[0].style.font.bold = True
+        cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+
+    # Add data to the table
+    for label, value in zip(region_commission_trend["labels"], region_commission_trend["values"]):
+        row_cells = bt_table.add_row().cells
+        row_cells[0].text = label
+        row_cells[1].text = babel.numbers.format_currency(int(value), 'ZAR', locale='en_ZA', currency_digits=False)
+        
+    # Change font to Calibri and set font size to 12 for data cells
+    for row in bt_table.rows[1:]:
+        for cell in row.cells:
+            cell.paragraphs[0].style.font.name = 'Calibri'
+            cell.paragraphs[0].style.font.size = Pt(12)
+            cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+    image = doc.add_picture(region_img_bytes)
+    doc.add_page_break()
+
+    heading = doc.add_heading('Business Type Trend', level=1)
+    heading.style.font.name = 'Calibri'  # Change font to Calibri Light
+    heading.style.font.size = Pt(14) 
+    heading.style.font.color.rgb = RGBColor(0,0,0) 
+    heading.style.font.bold = False 
+    # plt.bar(data['labels'], data['values'], color='#5ABCFC')
+    fig, ax1 = plt.subplots()
+    ax1.bar(businessType_commission_trend['labels'], businessType_commission_trend['values'], color='#5ABCFC')
+    ax1.set_xlabel('Business Type')
+    ax1.set_ylabel('Total Commission', color='#5ABCFC')
+    ax1.tick_params(axis='y', labelcolor='#5ABCFC')
+
+    # Rotate x-axis labels
+    plt.xticks(rotation=45, ha='right')
+
+    # Create a secondary y-axis and plot line chart
+    ax2 = ax1.twinx()
+    ax2.plot(businessType_commission_trend['labels'], businessType_commission_trend['values_line'], color='red', marker='o')
+    ax2.set_ylabel('Percentage', color='red')
+    ax2.tick_params(axis='y', labelcolor='red')
+
+    ax1.yaxis.set_major_formatter(currency_formatter)
+    ax2.yaxis.set_major_formatter(ScalarFormatter(useMathText=False))
+
+    plt.xlabel('Date')
+    plt.ylabel('Values')
+    plt.title('Business Type Based Trend')
+
+    # plt.bar(businessType_commission_trend['labels'], businessType_commission_trend['values'], color='#5ABCFC')
+    plt.xticks(rotation=45, ha='right')  # Adjust the rotation angle and alignment as needed
+
+    # Adjust subplot parameters to remove padding
+    plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.2)  # Adjust as needed
+
+    # Adjust figure size to increase height
+    plt.gcf().set_size_inches(7, 6)  # Adjust the width and height as needed
+
+    # Save the chart to a BytesIO object
+    bt__img_bytes = io.BytesIO()
+    plt.savefig(bt__img_bytes, format='png', bbox_inches='tight')
+    bt__img_bytes.seek(0)
+
+    # Add a table with headers
+    region_table = doc.add_table(rows=1, cols=2)
+    region_hdr_cells = region_table.rows[0].cells
+    region_hdr_cells[0].text = 'Business Type'
+    region_hdr_cells[1].text = 'Total Commission'
+
+    # Add businessType_commission_trend to the table
+    for cell in region_hdr_cells:
+        cell.paragraphs[0].style.font.name = 'Calibri'
+        cell.paragraphs[0].style.font.size = Pt(16)
+        cell.paragraphs[0].style.font.bold = True
+        cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+
+    # Add businessType_commission_trend to the table
+    for label, value in zip(businessType_commission_trend["labels"], businessType_commission_trend["values"]):
+        row_cells = region_table.add_row().cells
+        row_cells[0].text = label
+        row_cells[1].text = babel.numbers.format_currency(int(value), 'ZAR', locale='en_ZA', currency_digits=False)
+        
+    # Change font to Calibri and set font size to 12 for data cells
+    for row in region_table.rows[1:]:
+        for cell in row.cells:
+            cell.paragraphs[0].style.font.name = 'Calibri'
+            cell.paragraphs[0].style.font.size = Pt(10)
+            cell.paragraphs[0].style.font.bold = False
+            cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+
+
+    image = doc.add_picture(bt__img_bytes)
+    doc.add_page_break()
+
+    heading = doc.add_heading('Advisor Data', level=1)
+    heading.style.font.name = 'Calibri'  # Change font to Calibri Light
+    heading.style.font.size = Pt(14) 
+    heading.style.font.color.rgb = RGBColor(0,0,0) 
+    heading.style.font.bold = False 
+    
+
+    # Add a table with headers
+    advisor_table = doc.add_table(rows=1, cols=4)
+    advisor_hdr_cells = advisor_table.rows[0].cells
+    advisor_hdr_cells[0].text = 'Advisor'
+    advisor_hdr_cells[1].text = 'Email'
+    advisor_hdr_cells[2].text = 'ID Number'
+    advisor_hdr_cells[3].text = 'Total Commission'
+
+    # Add businessType_commission_trend to the table
+    for cell in advisor_hdr_cells:
+        cell.paragraphs[0].style.font.name = 'Calibri'
+        cell.paragraphs[0].style.font.size = Pt(20)
+        cell.paragraphs[0].style.font.bold = True
+        cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+
+    # Add businessType_commission_trend to the table
+    for label, email, id, value in zip(top_advisors["labels"], top_advisors["emails"], top_advisors["id_numbers"], top_advisors["values"]):
+        row_cells = advisor_table.add_row().cells
+        row_cells[0].text = label
+        row_cells[1].text = str(email)
+        row_cells[2].text = str(id)
+        row_cells[3].text = babel.numbers.format_currency(int(value), 'ZAR', locale='en_ZA', currency_digits=False)
+        
+    # Change font to Calibri and set font size to 12 for data cells
+    for row in advisor_table.rows[1:]:
+        for cell in row.cells:
+            cell.paragraphs[0].style.font.name = 'Calibri'
+            cell.paragraphs[0].style.font.size = Pt(10)
+            cell.paragraphs[0].style.font.bold = False
+            cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+
+
+    doc.add_page_break()
+
+
+    # cell.fill.solid()
+    # cell.fill.fore_color.rgb = RGBColor(32, 78, 120)  
+    # Save the Word document to the static folder
+    report_path = os.path.join(f'static/reports/{file_initial_name} Report.docx')
+    doc.save(report_path)
+    downloading_link = env('DJANGO_BACKEND_URL') + "/" + report_path
+    notificationData = {
+        "account" : user.pk,
+        "notificationType" : 2,        
+        "user" : user.pk,
+        "title" : title,
+        "message" : f"""
+            <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <h3 class='text-center' style="color: #333; margin-bottom: 20px;">{title}</h3>
+                <div style="background-color: #FFCC00; color: #333; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+                    <p style="margin: 0;">Dear {requesting_user},</p>
+                    <p style="margin: 0;">Your requested commission insights export is ready to be downloaded.</p>
+                    <div class='text-center'>
+                        <a id="downloading_link" href="{downloading_link}" target="_blank" class="btn btn-primary btn-sm btn-sfp">Download</a>
+                    </div>
+                </div>
+                <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">If you have any questions or concerns feel free to reach out.</p>
+                <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Best regards,<br>Succession</p>
+            </div>
+        """,
+        "status" : False,
+    }
+    serializer = NotificationsSerializer(data=notificationData)
+    if serializer.is_valid():
+        serializer.create(serializer.validated_data)
+    else:
+        logger.info(serializer.errors)
+    notificationData = {
+        "account" : user.pk,
+        "notificationType" : 6,        
+        "user" : user.pk,
+        "title" : title,
+        "message" : f"{message} is ready.",
+        "downloading_link" : report_path,
+        "status" : False
+    }
+    serializer = NotificationsSerializer(data=notificationData)
+    if serializer.is_valid():
+        serializer.create(serializer.validated_data)
+    else:
+        logger.info(serializer.errors)

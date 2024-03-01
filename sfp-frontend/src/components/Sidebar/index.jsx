@@ -151,14 +151,21 @@ const SideBar = ({ appTitle, app }) => {
                 <hr />
                 <ul className="nav nav-pills flex-column mb-auto">
                     {
-                        app !== "profile" ?
+                        appTitle.includes("\n Details") ?
                             <li className="nav-item">
-                                <Link href={ `/apps/${app}` } className={ router.pathname === `/apps/${app}` ? "nav-link active" : "nav-link link-body-emphasis" } aria-current="page">
+                                <Link href={ `/apps/users` } className={ router.pathname === `/apps/users` ? "nav-link active" : "nav-link link-body-emphasis" } aria-current="page">
                                     <i className='bi pe-none me-2 fa-solid fa-chart-simple' />
                                     Dashboard
                                 </Link>
-                            </li>
-                            : <></>
+                            </li> :
+                            app !== "profile" ?
+                                <li className="nav-item">
+                                    <Link href={ `/apps/${app}` } className={ router.pathname === `/apps/${app}` ? "nav-link active" : "nav-link link-body-emphasis" } aria-current="page">
+                                        <i className='bi pe-none me-2 fa-solid fa-chart-simple' />
+                                        Dashboard
+                                    </Link>
+                                </li>
+                                : <></>
                     }
                     {
                         appTitle.includes("\n Details") ?

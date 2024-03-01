@@ -2,7 +2,7 @@ import { API_URL } from '../../../../config'
 import axios from 'axios'
 import cookie from 'cookie'
 
-export default async (req, res ) => {
+export default async (req, res) => {
     if (req.method === "GET") {
         const cookies = cookie.parse(req.headers.cookie ?? '')
 
@@ -14,15 +14,15 @@ export default async (req, res ) => {
             })
         }
 
-        
+
         const config = {
             headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         }
 
-        const body = JSON.stringify({'refresh': refresh})
+        const body = JSON.stringify({ 'refresh': refresh })
 
         try {
             const apiResponse = await axios.post(
@@ -32,16 +32,16 @@ export default async (req, res ) => {
             )
             if (apiResponse?.status === 200) {
                 res.setHeader(
-                    'Set-Cookie', 
+                    'Set-Cookie',
                     [
                         cookie.serialize(
-                            'access' , apiResponse?.data?.access, {
-                                httpOnly: true,
-                                secure: process.env.NEXT_ENV !== "development",
-                                maxAge: 60 * 60 * 8,
-                                sameSite: 'strict',
-                                path: '/api/'
-                            }
+                            'access', apiResponse?.data?.access, {
+                            httpOnly: true,
+                            secure: process.env.NEXT_ENV !== "development",
+                            maxAge: 60 * 60 * 8,
+                            sameSite: 'strict',
+                            path: '/api/'
+                        }
                         )
                     ]
                 )
@@ -49,21 +49,21 @@ export default async (req, res ) => {
                 return res.status(200).json({
                     user: apiResponse?.data?.user
                 })
-            }else {
+            } else {
                 return res.status(apiResponse?.status).json({
                     error: "Failed to authenticate"
                 })
             }
         } catch (error) {
-            return res.status(500).json({
+            return res.status(error.response.status).json({
                 error: "Something went wrong"
             })
-            
+
         }
     } else {
         res.setHeader('Allow', ['POST'])
         return res.status(405).json({
-            'error' : `Method ${req.method} not allowed.`
+            'error': `Method ${req.method} not allowed.`
         })
     }
 }

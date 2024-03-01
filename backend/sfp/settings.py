@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     'notifications',
     'logs',
     'tasks',
+    'reports',
 ]
 
 MIDDLEWARE = [
