@@ -449,8 +449,8 @@ class user_comission(models.Model):
 import datetime
 # Create your models here.
 class Form(models.Model):   
-    advisorId = models.IntegerField()
-    formId = models.IntegerField(default=1)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     # form_type = models.IntegerField(default=1)
     clientName = models.TextField( default="")
     clientIdNumber = models.TextField( default="", blank=True)
@@ -475,7 +475,7 @@ class Form(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class Fiduciary(models.Model):   
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     # form_type = models.IntegerField(default=1)
     # clientIdNumber = models.TextField( default="", blank=True)
@@ -491,7 +491,7 @@ class Fiduciary(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class InvestmentPlanning(models.Model):   
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     # form_type = models.IntegerField(default=1)
     # clientIdNumber = models.TextField( default="", blank=True)
@@ -525,7 +525,7 @@ class InvestmentPlanning(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class AssuranceInvestment(models.Model):   
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     # form_type = models.IntegerField(default=1)
     # clientIdNumber = models.TextField( default="", blank=True)
@@ -573,7 +573,7 @@ class AssuranceInvestment(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class RiskPlanning(models.Model):   
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     # form_type = models.IntegerField(default=1)
     # clientIdNumber = models.TextField( default="", blank=True)
@@ -672,7 +672,7 @@ class RiskPlanning(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class AssuranceRisk(models.Model):   
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     # form_type = models.IntegerField(default=1)
     # clientIdNumber = models.TextField( default="", blank=True)
@@ -846,7 +846,7 @@ class AssuranceRisk(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class EmployeeBenefits(models.Model):   
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     # form_type = models.IntegerField(default=1)
     # clientIdNumber = models.TextField( default="", blank=True)
@@ -1051,7 +1051,7 @@ class EmployeeBenefits(models.Model):
 
 
 class ShortTermInsuranceCommerical(models.Model):   
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     # form_type = models.IntegerField(default=1)
     # clientIdNumber = models.TextField( default="", blank=True)
@@ -2198,7 +2198,7 @@ class ShortTermInsuranceCommerical(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class ShortTermInsurancePersonal(models.Model):   
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     # form_type = models.IntegerField(default=1)
     # clientIdNumber = models.TextField( default="", blank=True)
@@ -3016,7 +3016,7 @@ class ShortTermInsurancePersonal(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class Medical(models.Model):
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     
     MSA_ClientName = models.TextField( default="", blank=True)
@@ -3110,7 +3110,7 @@ class Medical(models.Model):
 
 
 class GapCover(models.Model):   
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     formId = models.IntegerField()
     # form_type = models.IntegerField(default=1)
     # clientIdNumber = models.TextField( default="", blank=True)
@@ -3194,7 +3194,7 @@ class GapCover(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class RiskFactors(models.Model):
-    advisorId = models.IntegerField()
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     RF_Overall_Risk = models.CharField(max_length=250, default="", blank=True)
     RF_BU_Risk = models.CharField(max_length=250, default="", blank=True)
     RF_Date = models.DateField()
@@ -3258,8 +3258,8 @@ class RiskFactors(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class RF_LinkedParty(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     RF_LP_Adjust_Risk = models.CharField(max_length=250, default="", blank=True) 
     RF_LP_Name = models.CharField(max_length=250, default="", blank=True)
     RF_LP_Client_Relationship = models.IntegerField(default=0)
@@ -3275,8 +3275,8 @@ class RF_LinkedParty(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class RP_ProductTaken(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     Product_Taken = models.TextField( default="", blank=True)   
     Product_Provider = models.TextField( default="", blank=True)    
     Policy_Number = models.TextField( default="", blank=True)    
@@ -3324,8 +3324,8 @@ class RP_ProductTaken(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class RP_ProductTaken_BenDesc(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     productTakenId = models.IntegerField(default=0)
 
     BenDesc = models.TextField( default="", blank=True)
@@ -3335,8 +3335,8 @@ class RP_ProductTaken_BenDesc(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class IP_ProductTaken(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     ProductTaken = models.IntegerField(default=1)    
     ProductProvider = models.TextField( default="", blank=True)    
     PolicyNumber = models.TextField( default="", blank=True)    
@@ -3411,8 +3411,8 @@ class IP_ProductTaken(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class AR_ProductTaken(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     ProductTaken = models.TextField( default="", blank=True)  
     ProductProvider = models.TextField( default="", blank=True)    
@@ -3455,8 +3455,8 @@ class AR_ProductTaken(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class AI_ProductTaken(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     Pr_Taken = models.IntegerField(default=1)    
     Pr_Provider = models.TextField( default="", blank=True)    
@@ -3529,8 +3529,8 @@ class AI_ProductTaken(models.Model):
 
 
 class EB_Cover(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     BusB_CoverType = models.IntegerField(default=0)
     BusB_Cover = models.IntegerField(default=0)
@@ -3541,8 +3541,8 @@ class EB_Cover(models.Model):
 
 
 class Risk_BenDesc(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     BenDesc = models.TextField( default="", blank=True)
     BenDesc_CoverAmount = models.TextField( default="", blank=True)
@@ -3551,8 +3551,8 @@ class Risk_BenDesc(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Loss(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     General_TypeOfLoss = models.TextField( default="", blank=True)
     General_LossYear = models.TextField( default="", blank=True)
@@ -3563,8 +3563,8 @@ class STIC_Loss(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Loss(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     General_TypeOfLoss = models.TextField( default="", blank=True)
     General_LossYear = models.TextField( default="", blank=True)
@@ -3575,8 +3575,8 @@ class STIP_Loss(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_Fire(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     Fire_Limit = models.TextField( default="", blank=True)
     Fire_ItemNumber = models.TextField( default="", blank=True)
@@ -3603,8 +3603,8 @@ class STIC_Sec_Fire(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_2(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     BuildCombined_AddComments = models.TextField( default="", blank=True)
     BuildCombined_Limit = models.TextField( default="", blank=True)
@@ -3625,8 +3625,8 @@ class STIC_Sec_2(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_3(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     OC_AddComments = models.TextField( default="", blank=True)
     OC_Limit = models.TextField( default="", blank=True)
@@ -3653,8 +3653,8 @@ class STIC_Sec_3(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_4(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     BusInt_AddComments = models.TextField( default="", blank=True)
     BusInt_Limit = models.TextField( default="", blank=True)
@@ -3742,8 +3742,8 @@ class STIC_Sec_4(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_5(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     Sec5_AddComments = models.TextField( default="", blank=True)
     Sec5_Limit = models.TextField( default="", blank=True)
@@ -3764,8 +3764,8 @@ class STIC_Sec_5(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_6(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     Sec6_AddComments = models.TextField( default="", blank=True)
     Sec6_Limit = models.TextField( default="", blank=True)
@@ -3784,8 +3784,8 @@ class STIC_Sec_6(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_7(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     Sec7_AddComments = models.TextField( default="", blank=True)
     Sec7_Limit = models.TextField( default="", blank=True)
@@ -3817,8 +3817,8 @@ class STIC_Sec_7(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_8(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     Sec8_AddComments = models.TextField( default="", blank=True)
     Sec8_Limit = models.TextField( default="", blank=True)
@@ -3836,8 +3836,8 @@ class STIC_Sec_8(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_9(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     Sec9_AddComments = models.TextField( default="", blank=True)
     Sec9_Limit = models.TextField( default="", blank=True)
@@ -3875,8 +3875,8 @@ class STIC_Sec_9(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_10(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     # Section 10
     Sec10_AddComments = models.TextField( default="", blank=True)
@@ -3910,8 +3910,8 @@ class STIC_Sec_10(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_11(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     
     # Section 11
@@ -3937,8 +3937,8 @@ class STIC_Sec_11(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_12(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     # Section 12
     Sec12_AddComments = models.TextField( default="", blank=True)
@@ -3964,8 +3964,8 @@ class STIC_Sec_12(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_13(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     # Section 13
     Sec13_AddComments = models.TextField( default="", blank=True)
@@ -4012,8 +4012,8 @@ class STIC_Sec_13(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_14(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)   
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)   
 
     # Section 14
     Sec14_AddComments = models.TextField( default="", blank=True)
@@ -4068,8 +4068,8 @@ class STIC_Sec_14(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_15(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     # Section 15
     Sec15_AddComments = models.TextField( default="", blank=True)
@@ -4090,8 +4090,8 @@ class STIC_Sec_15(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_16(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     # Section 16
     Sec16_AddComments = models.TextField( default="", blank=True)
@@ -4125,8 +4125,8 @@ class STIC_Sec_16(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_17(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     # Section 17
     Sec17_AddComments = models.TextField( default="", blank=True)
@@ -4178,8 +4178,8 @@ class STIC_Sec_17(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_18(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     # Section 18
     Sec18_AddComments = models.TextField( default="", blank=True)
@@ -4252,8 +4252,8 @@ class STIC_Sec_18(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_19(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     # Section 19
     Sec19_AddComments = models.TextField( default="", blank=True)
@@ -4291,8 +4291,8 @@ class STIC_Sec_19(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_20(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     # Section 20
     Sec20_AddComments = models.TextField( default="", blank=True)
@@ -4317,8 +4317,8 @@ class STIC_Sec_20(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIC_Sec_21(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     # Section 21
     Sec21_AddComments = models.TextField( default="", blank=True)
@@ -4343,8 +4343,8 @@ class STIC_Sec_21(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Sec_HC(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     HC_AddComments = models.TextField( default="", blank=True)
     HC_ResidentialArea = models.TextField( default="", blank=True)
@@ -4377,8 +4377,8 @@ class STIP_Sec_HC(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Sec_Build(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     Build_AddComments = models.TextField( default="", blank=True)
     Build_ResidentialArea = models.TextField( default="", blank=True)
@@ -4401,8 +4401,8 @@ class STIP_Sec_Build(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Sec_AddProp(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     AddProp_AddComments = models.TextField( default="", blank=True)
     AddProp_ResidentialArea = models.TextField( default="", blank=True)
@@ -4425,8 +4425,8 @@ class STIP_Sec_AddProp(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Sec_Vehicle(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     Vehicle_AddComments = models.TextField( default="", blank=True)
     Vehicle_Owner = models.TextField( default="", blank=True)
@@ -4488,8 +4488,8 @@ class STIP_Sec_Vehicle(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Sec_MotorC(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     MotorC_AddComments = models.TextField( default="", blank=True)
     MotorC_RegOwner = models.TextField( default="", blank=True)
@@ -4514,8 +4514,8 @@ class STIP_Sec_MotorC(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Sec_Trailer(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     Trailer_AddComments = models.TextField( default="", blank=True)
     Trailer_RegOwner = models.TextField( default="", blank=True)
@@ -4533,8 +4533,8 @@ class STIP_Sec_Trailer(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Sec_WaterC(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     WaterC_AddComments = models.TextField( default="", blank=True)
     WaterC_RegOwner = models.TextField( default="", blank=True)
@@ -4556,8 +4556,8 @@ class STIP_Sec_WaterC(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Sec_PersonalLL(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     PersonalLL_AddComments = models.IntegerField(default=1)
     PersonalLL_IndemnityLimit = models.IntegerField(default=1)
@@ -4571,8 +4571,8 @@ class STIP_Sec_PersonalLL(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class STIP_Sec_LegalA(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     LegalA_AddComments = models.IntegerField(default=1)
     LegalA_IndemnityLimit = models.IntegerField(default=1)
@@ -4586,8 +4586,8 @@ class STIP_Sec_LegalA(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
 class Risk_DC_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     DC_Other = models.TextField( default="", blank=True)    
     DC_OtherTotalNeed = models.TextField( default="", blank=True)    
@@ -4596,8 +4596,8 @@ class Risk_DC_Others(models.Model):
     DC_OtherInvestments = models.TextField( default="", blank=True)    
 
 class Risk_DiC_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     DiC_Other = models.TextField( default="", blank=True)    
     DiC_OtherTotalNeed = models.TextField( default="", blank=True)    
@@ -4606,8 +4606,8 @@ class Risk_DiC_Others(models.Model):
     DiC_OtherInvestments = models.TextField( default="", blank=True)    
 
 class Risk_DrC_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     DrC_Other = models.TextField( default="", blank=True)    
     DrC_OtherTotalNeed = models.TextField( default="", blank=True)    
@@ -4616,8 +4616,8 @@ class Risk_DrC_Others(models.Model):
     DrC_OtherInvestments = models.TextField( default="", blank=True)    
 
 class AR_BnS_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     BnS_Other = models.TextField( default="", blank=True)    
     BnS_OtherTotalNeed = models.TextField( default="", blank=True)    
@@ -4626,8 +4626,8 @@ class AR_BnS_Others(models.Model):
     BnS_OtherInvestments = models.TextField( default="", blank=True)  
 
 class AR_KeyP_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     KeyP_Other = models.TextField( default="", blank=True)    
     KeyP_OtherTotalNeed = models.TextField( default="", blank=True)    
@@ -4636,8 +4636,8 @@ class AR_KeyP_Others(models.Model):
     KeyP_OtherInvestments = models.TextField( default="", blank=True)  
 
 class AR_SureNLia_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     SureNLia_Other = models.TextField( default="", blank=True)    
     SureNLia_OtherTotalNeed = models.TextField( default="", blank=True)    
@@ -4646,8 +4646,8 @@ class AR_SureNLia_Others(models.Model):
     SureNLia_OtherInvestments = models.TextField( default="", blank=True)    
 
 class AR_BusOvProt_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
 
     BusOvProt_Other = models.TextField( default="", blank=True)    
     BusOvProt_OtherTotalNeed = models.TextField( default="", blank=True)    
@@ -4656,8 +4656,8 @@ class AR_BusOvProt_Others(models.Model):
     BusOvProt_OtherInvestments = models.TextField( default="", blank=True)      
 
 class AR_CLARedm_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     CLARedm_Other = models.TextField( default="", blank=True)    
     CLARedm_OtherTotalNeed = models.TextField( default="", blank=True)    
@@ -4666,8 +4666,8 @@ class AR_CLARedm_Others(models.Model):
     CLARedm_OtherInvestments = models.TextField( default="", blank=True)     
 
 class AR_DLARedm_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     DLARedm_Other = models.TextField( default="", blank=True)    
     DLARedm_OtherTotalNeed = models.TextField( default="", blank=True)    
@@ -4677,8 +4677,8 @@ class AR_DLARedm_Others(models.Model):
 
 
 class AI_Others(models.Model):
-    advisorId = models.IntegerField(default=0)
-    formId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
+    formId = models.ForeignKey('data.Disclosures', on_delete=models.SET_NULL, null=True)
     
     AI_Other = models.TextField( default="", blank=True)    
     AI_Other_TotalNeed = models.TextField( default="", blank=True)    
@@ -4741,7 +4741,7 @@ class RF_Scores(models.Model):
 
 
 class Disclosures(models.Model):
-    advisorId = models.IntegerField(default=0)
+    advisorId = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True)
     
     existingClient = models.IntegerField(default=0)  
 

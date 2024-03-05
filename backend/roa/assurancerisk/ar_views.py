@@ -17,7 +17,7 @@ class AssuranceRiskAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 ar_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : pk,
                 }
                 ar_serializer = AssuranceRiskSerializers(data=ar_data)
@@ -89,11 +89,11 @@ class AssuranceRiskAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippet = self.get_object(pk)
             rpData = request.data['assuranceRisk']
-            rpData['advisorId'] = formData.advisorId            
+            rpData['advisorId'] = formData.advisorId.pk            
             serializer = AssuranceRiskSerializers(snippet, data=rpData)
             if serializer.is_valid():
                 serializer.save()

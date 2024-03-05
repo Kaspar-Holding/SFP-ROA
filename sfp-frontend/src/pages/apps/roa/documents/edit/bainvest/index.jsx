@@ -14,6 +14,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+import Alert from '../../../../../../components/Alert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const BAInvestment = () => {
@@ -45,6 +46,10 @@ const BAInvestment = () => {
         },
 
     };
+
+    const [SuccessMessage, setSuccessMessage] = useState("")
+    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
+
 
     const formats = [
         'header', 'bold', 'italic', 'underline', 'strike',
@@ -293,17 +298,22 @@ const BAInvestment = () => {
                 config
             ).then((response) => {
 
-                Swal.fire({
-                    type: 'success',
-                    title: 'Success',
-                    text: 'Assurance Form Updated Successfully.',
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    backdrop: "None",
-                    color: "#fff",
-                    background: "#00788B",
-                    timer: 5000
-                })
+                // Swal.fire({
+                //     type: 'success',
+                //     title: 'Success',
+                //     text: 'Assurance Form Updated Successfully.',
+                //     position: 'bottom-end',
+                //     showConfirmButton: false,
+                //     backdrop: "None",
+                //     color: "#fff",
+                //     background: "#00788B",
+                //     timer: 5000
+                // })
+                setSuccessMessage("Assurance investment is successfully updated")
+                setSuccessMessageVisibility(true)
+                setTimeout(() => {
+                    setSuccessMessageVisibility(false)
+                }, 5000)
             })
 
         } catch (error) {
@@ -709,19 +719,25 @@ const BAInvestment = () => {
     return (
         <div>
             <Layout
-                title={ "Edit ROA Document" }
+                title={ "Edit BA Risk Document" }
                 content={ "Edit ROA Document" }
             >
                 <EditROALayout
-                    appTitle={ 'Edit ROA Document' }
-                    pageTitle={ 'Edit ROA Document' }
-                    appName={ 'ROA' }
+                    appTitle={ 'Edit BA Risk Document' }
+                    pageTitle={ 'Edit BA Risk Document' }
+                    appName={ 'BA Risk' }
                     app={ 'roa' }
                 >
                     <div className='roa-edit-card'>
                         <div className='inital-card-header text-center'>
                             <b>Part II: Investment & Savings</b>
                         </div>
+                        {
+                            SuccessMessageVisibility ?
+                                <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
                         <br />
                         <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
                             <p><b>Section B</b></p>

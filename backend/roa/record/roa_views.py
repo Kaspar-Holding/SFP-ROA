@@ -17,7 +17,7 @@ class FormAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 rp_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : formId,
                 }
                 roa_serializer = FormSerializers(data=rp_data)
@@ -53,7 +53,7 @@ class FormAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippets = self.get_object(pk)
             roaData = request.data['roa_data']      

@@ -17,7 +17,7 @@ class ShortTermInsurancePersonalAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 ai_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : pk,
                 }
                 ai_serializer = ShortTermInsurancePersonalSerializers(data=ai_data)
@@ -115,11 +115,11 @@ class ShortTermInsurancePersonalAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippets = self.get_object(pk)
             STP_Data = request.data['st_personal']
-            STP_Data['advisorId'] = formData.advisorId            
+            STP_Data['advisorId'] = formData.advisorId.pk            
             serializer = ShortTermInsurancePersonalSerializers(snippets, data=STP_Data)
             if serializer.is_valid():
                 serializer.save()

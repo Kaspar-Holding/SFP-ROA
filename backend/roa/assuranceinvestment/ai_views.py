@@ -17,7 +17,7 @@ class AssuranceInvestmentAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 ai_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : pk,
                 }
                 ai_serializer = AssuranceInvestmentSerializers(data=ai_data)
@@ -64,16 +64,16 @@ class AssuranceInvestmentAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippets = self.get_object(pk)
             aiData = request.data['assuranceInvestment']
-            aiData['advisorId'] = formData.advisorId            
+            aiData['advisorId'] = formData.advisorId.pk            
             serializer = AssuranceInvestmentSerializers(snippets, data=aiData, partial=True)
             if serializer.is_valid():
                 serializer.save()
             else:
-                print(serializer.errors)
+                print(serializer.errors, "line 76")
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             productTakenData = request.data['productTaken']
             AI_ProductTaken.objects.filter(formId=pk).delete()
@@ -81,7 +81,7 @@ class AssuranceInvestmentAPIs(APIView):
             if pt_searializer.is_valid():
                 pt_searializer.save()
             else:
-                print(pt_searializer.errors)
+                print(pt_searializer.errors, "line 84")
                 return Response(pt_searializer.errors, status=status.HTTP_400_BAD_REQUEST)
             ai_otherData = request.data['ai_other']
             AI_Others.objects.filter(formId=pk).delete()
@@ -89,7 +89,7 @@ class AssuranceInvestmentAPIs(APIView):
             if ai_other_searializer.is_valid():
                 ai_other_searializer.save()
             else:
-                print(ai_other_searializer.errors)
+                print(ai_other_searializer.errors, "line 92")
                 return Response(ai_other_searializer.errors, status=status.HTTP_400_BAD_REQUEST)       
             return Response(serializer.data, 200)
 

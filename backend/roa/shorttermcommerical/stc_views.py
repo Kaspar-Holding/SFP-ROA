@@ -17,7 +17,7 @@ class ShortTermInsuranceCommericalAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 ai_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : pk,
                 }
                 ai_serializer = ShortTermInsuranceCommericalSerializers(data=ai_data)
@@ -166,11 +166,11 @@ class ShortTermInsuranceCommericalAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippets = self.get_object(pk)
             stic_data = request.data['st_commerical']
-            stic_data['advisorId'] = formData.advisorId
+            stic_data['advisorId'] = formData.advisorId.pk
             serializer = ShortTermInsuranceCommericalSerializers(snippets, data=stic_data)
             if serializer.is_valid():
                 serializer.save()

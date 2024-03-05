@@ -14,11 +14,15 @@ import { Editor } from '@tinymce/tinymce-react'
 import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+import Alert from '../../../../../../components/Alert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const STCommercial = () => {
 
     // Quill JS
+
+    const [SuccessMessage, setSuccessMessage] = useState("")
+    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
 
     const modules = {
         toolbar: [
@@ -1334,17 +1338,22 @@ const STCommercial = () => {
                 config
             ).then((response) => {
 
-                Swal.fire({
-                    type: 'success',
-                    title: 'Success',
-                    text: 'Risk Planning Form Updated Successfully.',
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    backdrop: "None",
-                    color: "#fff",
-                    background: "#00788B",
-                    timer: 5000
-                })
+                // Swal.fire({
+                //     type: 'success',
+                //     title: 'Success',
+                //     text: 'Risk Planning Form Updated Successfully.',
+                //     position: 'bottom-end',
+                //     showConfirmButton: false,
+                //     backdrop: "None",
+                //     color: "#fff",
+                //     background: "#00788B",
+                //     timer: 5000
+                // })
+                setSuccessMessage("Short Term Commercial form is successfully updated")
+                setSuccessMessageVisibility(true)
+                setTimeout(() => {
+                    setSuccessMessageVisibility(false)
+                }, 5000)
             })
 
         } catch (error) {
@@ -2737,6 +2746,12 @@ const STCommercial = () => {
                         <div className='inital-card-header text-center'>
                             <b>Short-Term Insurance: Commercial</b>
                         </div>
+                        {
+                            SuccessMessageVisibility ?
+                                <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
                         <br />
                         <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
                             {/* Pre Section A */ }

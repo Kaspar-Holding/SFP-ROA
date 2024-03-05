@@ -14,11 +14,15 @@ import { Editor } from '@tinymce/tinymce-react'
 import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+import Alert from '../../../../../../components/Alert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const BARisk = () => {
 
     // Quill JS
+
+    const [SuccessMessage, setSuccessMessage] = useState("")
+    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
 
     const modules = {
         toolbar: [
@@ -538,17 +542,22 @@ const BARisk = () => {
                 config
             ).then((response) => {
 
-                Swal.fire({
-                    type: 'success',
-                    title: 'Success',
-                    text: 'Assurance Form Updated Successfully.',
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    backdrop: "None",
-                    color: "#fff",
-                    background: "#00788B",
-                    timer: 5000
-                })
+                // Swal.fire({
+                //     type: 'success',
+                //     title: 'Success',
+                //     text: 'Assurance Form Updated Successfully.',
+                //     position: 'bottom-end',
+                //     showConfirmButton: false,
+                //     backdrop: "None",
+                //     color: "#fff",
+                //     background: "#00788B",
+                //     timer: 5000
+                // })
+                setSuccessMessage("Assurance risk form is successfully updated")
+                setSuccessMessageVisibility(true)
+                setTimeout(() => {
+                    setSuccessMessageVisibility(false)
+                }, 5000)
             })
 
         } catch (error) {
@@ -822,6 +831,12 @@ const BARisk = () => {
                         <div className='inital-card-header text-center'>
                             <b>Business Assurance</b>
                         </div>
+                        {
+                            SuccessMessageVisibility ?
+                                <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
                         <br />
                         <form className='inital-card-header mx-5 roa-label' onSubmit={ e => onSubmit(e) }>
                             <div className='row'>

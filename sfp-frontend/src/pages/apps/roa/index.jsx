@@ -9,6 +9,8 @@ import axios from 'axios'
 import Filters from './Filters'
 import Moment from 'moment'
 import dynamic from 'next/dynamic'
+import CompliancePagination from '../../../modules/CompliancePagination'
+import ROAPagination from '../../../modules/ROAPagination'
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
@@ -53,17 +55,17 @@ const ROA = () => {
     const onPageSizeChange = (e, value) => {
         e.preventDefault()
         setPageSize(value)
-        loadReviews(1, value, Sortby, SortDirection, SearchQuery, true)
+        loadForms(1, value, Sortby, SortDirection, SearchQuery, true)
     }
     const onSortChange = (e, value) => {
         e.preventDefault()
         setSortby(value)
-        loadReviews(1, PageSize, value, SortDirection, SearchQuery, true)
+        loadForms(1, PageSize, value, SortDirection, SearchQuery, true)
     }
     const onSortDirectionChange = (e, value) => {
         e.preventDefault()
         setSortDirection(value)
-        loadReviews(1, PageSize, Sortby, value, SearchQuery, true)
+        loadForms(1, PageSize, Sortby, value, SearchQuery, true)
     }
 
     const config = {
@@ -74,6 +76,7 @@ const ROA = () => {
     }
 
     const loadForms = async (pNumber, pSize, sBy, sDirection, searchQuery, load) => {
+        setCurrentPage(pNumber)
         load ? setLoaded(true) : ""
         try {
             const Body = JSON.stringify({
@@ -424,6 +427,11 @@ const ROA = () => {
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Policy Number</th>
+                                                    {
+                                                        user?.is_superuser ?
+                                                            <th scope="col">Advisor</th>
+                                                            : <></>
+                                                    }
                                                     <th scope="col">Client Name</th>
                                                     <th scope="col">Client ID Number</th>
                                                     <th scope="col">Client Phone</th>
@@ -446,6 +454,13 @@ const ROA = () => {
                                                                                 form?.policy_number
                                                                             }
                                                                         </td>
+                                                                        {
+                                                                            user?.is_superuser ?
+                                                                                <td>
+                                                                                    { form?.advisor }
+                                                                                </td>
+                                                                                : <></>
+                                                                        }
                                                                         <td>
                                                                             {
                                                                                 form?.client_name
@@ -537,21 +552,22 @@ const ROA = () => {
                                     </div>
                                     <br />
                                     <div className='d-flex justify-content-center'>
-                                        {/* <CompliancePagination totalRecords={TotalRecords} pageLimit={PageSize} paginationSearchQuery={SearchQuery} paginationOrderBy={Sortby} paginationOrderDirection={SortDirection} onPageChanged={loadReviews} /> */ }
-                                        {/* {
-                                    TotalRecords !== 0 && TotalPages != 1 ?
-                                    <CompliancePagination 
-                                        currentPage={currentPage}
-                                        setPage={setCurrentPage}
-                                        totalPages={TotalPages}
-                                        pageSize={PageSize}
-                                        sBy={Sortby}
-                                        sDirection={SortDirection}
-                                        onPageChange={loadPaginatedData}
-                                    />
-                                    :
-                                    <></>
-                                } */}
+                                        {/* <CompliancePagination totalRecords={TotalRecords} pageLimit={PageSize} paginationSearchQuery={SearchQuery} paginationOrderBy={Sortby} paginationOrderDirection={SortDirection} onPageChanged={loadForms} /> */ }
+                                        {
+                                            TotalRecords !== 0 && TotalPages != 1 ?
+                                                <ROAPagination
+                                                    currentPage={ currentPage }
+                                                    setPage={ setCurrentPage }
+                                                    totalPages={ TotalPages }
+                                                    pageSize={ PageSize }
+                                                    sBy={ Sortby }
+                                                    sDirection={ SortDirection }
+                                                    searchQuery={ SearchQuery }
+                                                    onPageChange={ loadForms }
+                                                />
+                                                :
+                                                <></>
+                                        }
 
                                     </div>
 

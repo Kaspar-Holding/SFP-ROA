@@ -21,6 +21,7 @@ import EditROALayout from '../../../../../../hocs/EditROALayout'
 import Layout from '../../../../../../hocs/Layout'
 import { Editor } from '@tinymce/tinymce-react'
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+import Alert from '../../../../../../components/Alert';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const EditROA = () => {
@@ -91,6 +92,9 @@ const EditROA = () => {
     })
     // console.log(FormData)
 
+    const [SuccessMessage, setSuccessMessage] = useState("")
+    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
+
     // console.log(localStorage.getItem('access'))
     const emailValidation = () => {
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -100,9 +104,9 @@ const EditROA = () => {
                 message: "Email is not valid, Please enter a valid email",
                 errors: ""
             })
-            setSubmissionErrorVisibilty("block")
+            setSubmissionErrorVisibilty(true)
             setTimeout(() => {
-                setSubmissionErrorVisibilty("none")
+                setSubmissionErrorVisibilty(false)
             }, 5000)
             return false
         }
@@ -129,22 +133,27 @@ const EditROA = () => {
         try {
             const response = await axios.post(`/api/roa/form/record_of_advice/update/`, Body, config)
 
-            Swal.fire({
-                type: 'success',
-                title: 'Success',
-                text: `${response?.data?.success}`,
-                position: 'bottom-end',
-                showConfirmButton: false,
-                backdrop: "None",
-                color: "#fff",
-                background: "#00788B",
-                timer: 5000
-            })
+            // Swal.fire({
+            //     type: 'success',
+            //     title: 'Success',
+            //     text: `${response?.data?.success}`,
+            //     position: 'bottom-end',
+            //     showConfirmButton: false,
+            //     backdrop: "None",
+            //     color: "#fff",
+            //     background: "#00788B",
+            //     timer: 5000
+            // })
+            setSuccessMessage("Record of Advice is successfully updated")
+            setSuccessMessageVisibility(true)
+            setTimeout(() => {
+                setSuccessMessageVisibility(false)
+            }, 5000)
 
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             let errors = error?.response?.data?.error?.errors
-            // console.log(error?.response?.data)
+            console.log(error?.response)
             Swal.fire({
                 position: "bottom-end",
                 type: "success",
@@ -346,6 +355,12 @@ const EditROA = () => {
                         <div className='inital-card-header mx-5 text-center'>
                             <b>Record of Advice</b>
                         </div>
+                        {
+                            SuccessMessageVisibility ?
+                                <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
                         <div className=''>
                             <form onSubmit={ e => onSubmit(e) }>
                                 <div className={ 'inital-card-header mx-5' }>
@@ -364,7 +379,7 @@ const EditROA = () => {
                                                 </div>
                                                 <div className="col-lg-12 mb-3">
                                                     <label className="form-label compliance-inital-card-text">Client Address</label>
-                                                    <input spellCheck="true" required onFieldBlur={ (e) => { onFieldBlur(e) } } id="clientAddress" name="clientAddress" value={ FormData?.clientAddress } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Address" aria-describedby="" />
+                                                    <input spellCheck="true" required onBlur={ (e) => { onFieldBlur(e) } } id="clientAddress" name="clientAddress" value={ FormData?.clientAddress } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Address" aria-describedby="" />
                                                 </div>
                                                 <div className="col-lg-6 mb-3">
                                                     <label className="form-label compliance-inital-card-text">Client Email</label>

@@ -431,6 +431,7 @@ const AdvisorsInsights = () => {
 
     // Filter Data
     const [Regions, setRegions] = useState([])
+    const [InvestmentPositionData, setInvestmentPositionData] = useState([])
     const [SelectedRegions, setSelectedRegions] = useState("all")
     const [SelectedAdvisors, setSelectedAdvisors] = useState("all")
     const [BusinessType, setBusinessType] = useState("all")
@@ -444,8 +445,9 @@ const AdvisorsInsights = () => {
                 Body,
                 config
             )
-
+            setInvestmentPositionData(response?.data?.data?.investment_position_data)
             setKPIs(response?.data?.data)
+
             setAdvisorsTrend(response?.data?.data?.roa_trend)
             setRegionsData(response?.data?.data?.region_wise_data)
             setAdvisorsData(response?.data?.data?.advisor_wise_data)
@@ -723,14 +725,14 @@ const AdvisorsInsights = () => {
                                     {
                                         user?.userType == 6 ?
                                             <>
-                                                <div className='col'>
+                                                {/* <div className='col'>
                                                     <div className="card text-center">
                                                         <div className="card-body">
                                                             <h5 className="scoreCard">{ numberFormatter('en-ZA', 0).format(KPIs?.roa_forms_position_per_region) }</h5>
                                                             <span className='scoreCard-title'>Position in Region <br />(Forms)</span>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                                 <div className='col'>
                                                     <div className="card text-center">
                                                         <div className="card-body">
@@ -759,6 +761,37 @@ const AdvisorsInsights = () => {
                                             (typeof window !== 'undefined') && <Chart options={ roaOptions([AdvisorsTrend].map(x => x.map(a => (a[0]))).flat(2), "ROA Form Trend") } series={ roaSeries("Forms", [AdvisorsTrend].map(x => x.map(a => (a[1]))).flat(2)) } type="line" height={ 350 } />
                                         }
                                     </div>
+                                    {
+                                        user?.userType == 6 ?
+                                            <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
+                                                <table className="table mx-1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Position</th>
+                                                            <th scope="col">Advisor</th>
+                                                            <th scope="col">Investment</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {
+                                                            InvestmentPositionData.map(
+                                                                (row, key) => {
+                                                                    return (
+                                                                        <tr key={ key }>
+                                                                            <th scope="row">{ row?.index }</th>
+                                                                            <td>{ row?.advisor_name }</td>
+                                                                            <td>{ currencyFormatter('en-ZA', 'ZAR').format(row?.total_investment) }</td>
+                                                                        </tr>
+                                                                    )
+                                                                }
+                                                            )
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            : <></>
+                                    }
                                 </div>
                                 <br />
                                 <div className='row'>

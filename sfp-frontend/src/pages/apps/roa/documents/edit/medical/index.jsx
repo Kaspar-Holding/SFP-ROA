@@ -14,11 +14,15 @@ import { Editor } from '@tinymce/tinymce-react'
 import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+import Alert from '../../../../../../components/Alert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const Medical = () => {
 
     // Quill JS
+
+    const [SuccessMessage, setSuccessMessage] = useState("")
+    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
 
     const modules = {
         toolbar: [
@@ -211,17 +215,22 @@ const Medical = () => {
                 config
             ).then((response) => {
 
-                Swal.fire({
-                    type: 'success',
-                    title: 'Success',
-                    text: 'Assurance Form Updated Successfully.',
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    backdrop: "None",
-                    color: "#fff",
-                    background: "#00788B",
-                    timer: 5000
-                })
+                // Swal.fire({
+                //     type: 'success',
+                //     title: 'Success',
+                //     text: 'Assurance Form Updated Successfully.',
+                //     position: 'bottom-end',
+                //     showConfirmButton: false,
+                //     backdrop: "None",
+                //     color: "#fff",
+                //     background: "#00788B",
+                //     timer: 5000
+                // })
+                setSuccessMessage("Medical form is successfully updated")
+                setSuccessMessageVisibility(true)
+                setTimeout(() => {
+                    setSuccessMessageVisibility(false)
+                }, 5000)
             })
 
         } catch (error) {
@@ -267,6 +276,12 @@ const Medical = () => {
                         <div className='inital-card-header text-center'>
                             <b>Medical</b>
                         </div>
+                        {
+                            SuccessMessageVisibility ?
+                                <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
                         <br />
                         <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
                             <div className="row roa-label">
@@ -277,7 +292,7 @@ const Medical = () => {
                                             <label className="col-form-label"><b>Client name:</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="MSA_ClientName" name='MSA_ClientName' value={ FormData['MSA_ClientName'] } onChange={ (e) => { onChange(e) } } className="form-control" placeholder="Client Name" aria-describedby="" />
+                                            <input disabled spellCheck="true" id="MSA_ClientName" name='MSA_ClientName' value={ FormData['MSA_ClientName'] } onChange={ (e) => { onChange(e) } } className="form-control" placeholder="Client Name" aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>
@@ -289,7 +304,7 @@ const Medical = () => {
                                             <label className="col-form-label"><b>ID Number:</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="MSA_ClientIdNumber" name='MSA_ClientIdNumber' value={ FormData['MSA_ClientIdNumber'] } onChange={ (e) => { onChange(e) } } className="form-control" placeholder="ID# of client" aria-describedby="" />
+                                            <input disabled spellCheck="true" id="MSA_ClientIdNumber" name='MSA_ClientIdNumber' value={ FormData['MSA_ClientIdNumber'] } onChange={ (e) => { onChange(e) } } className="form-control" placeholder="ID# of client" aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>
@@ -313,7 +328,7 @@ const Medical = () => {
                                             <label className="col-form-label"><b>Email:</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="MSA_ClientEmail" name='MSA_ClientEmail' value={ FormData['MSA_ClientEmail'] } onChange={ (e) => { onChange(e) } } className="form-control" placeholder="Email Address" aria-describedby="" />
+                                            <input disabled spellCheck="true" id="MSA_ClientEmail" name='MSA_ClientEmail' value={ FormData['MSA_ClientEmail'] } onChange={ (e) => { onChange(e) } } className="form-control" placeholder="Email Address" aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>
@@ -337,7 +352,7 @@ const Medical = () => {
                                             <label className="col-form-label"><b>Financial advisor:</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input disabled spellCheck="true" value={ `${user?.first_name} ${user?.last_name && user?.last_name != 'nan' ? user?.last_name : ""}` } className="form-control" placeholder="Primary intermediary's name" aria-describedby="" />
+                                            <input disabled spellCheck="true" value={ `${user?.full_name}` } className="form-control" placeholder="Primary intermediary's name" aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>

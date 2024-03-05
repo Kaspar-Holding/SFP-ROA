@@ -17,7 +17,7 @@ class MedicalAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 rp_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : pk,
                 }
                 rp_serializer = MedicalSerializers(data=rp_data)
@@ -55,11 +55,11 @@ class MedicalAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippet = self.get_object(pk)
             medicalData = request.data['medical']
-            medicalData['advisorId'] = formData.advisorId            
+            medicalData['advisorId'] = formData.advisorId.pk            
             serializer = MedicalSerializers(snippet, data=medicalData)
             if serializer.is_valid():
                 serializer.save()

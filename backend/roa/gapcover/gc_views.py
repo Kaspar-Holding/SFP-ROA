@@ -17,7 +17,7 @@ class GapCoverAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 rp_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : pk,
                 }
                 rp_serializer = GapCoverSerializers(data=rp_data)
@@ -55,11 +55,11 @@ class GapCoverAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippet = self.get_object(pk)
             gapcoverData = request.data['gapcover']
-            gapcoverData['advisorId'] = formData.advisorId            
+            gapcoverData['advisorId'] = formData.advisorId.pk            
             serializer = GapCoverSerializers(snippet, data=gapcoverData)
             if serializer.is_valid():
                 serializer.save()

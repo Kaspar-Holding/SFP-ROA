@@ -12,10 +12,14 @@ import Loader from '../../../../../../hocs/Loader'
 import EditROALayout from '../../../../../../hocs/EditROALayout'
 import { Editor } from '@tinymce/tinymce-react'
 import dynamic from "next/dynamic";
+import Alert from '../../../../../../components/Alert'
 
 
 const Fiduciary = () => {
 
+
+    const [SuccessMessage, setSuccessMessage] = useState("")
+    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
 
 
     const router = useRouter()
@@ -97,17 +101,22 @@ const Fiduciary = () => {
                 config
             ).then((response) => {
 
-                Swal.fire({
-                    type: 'success',
-                    title: 'Success',
-                    text: 'Assurance Form Updated Successfully.',
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    backdrop: "None",
-                    color: "#fff",
-                    background: "#00788B",
-                    timer: 5000
-                })
+                // Swal.fire({
+                //     type: 'success',
+                //     title: 'Success',
+                //     text: 'Assurance Form Updated Successfully.',
+                //     position: 'bottom-end',
+                //     showConfirmButton: false,
+                //     backdrop: "None",
+                //     color: "#fff",
+                //     background: "#00788B",
+                //     timer: 5000
+                // })
+                setSuccessMessage("Fiduciary form is successfully updated")
+                setSuccessMessageVisibility(true)
+                setTimeout(() => {
+                    setSuccessMessageVisibility(false)
+                }, 5000)
             })
 
         } catch (error) {
@@ -143,6 +152,12 @@ const Fiduciary = () => {
                             <b>Fiduciary</b>
                         </div>
                         <br />
+                        {
+                            SuccessMessageVisibility ?
+                                <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
                         <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
 
                             <div style={ { fontSize: '14px' } } align="left">

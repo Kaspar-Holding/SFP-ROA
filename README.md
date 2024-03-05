@@ -14,6 +14,15 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 05 March 2024:
+- ROA
+1. Swal is replaced for ROA with Web ROA one.
+- Insights
+1. Position Table
+- ROA Model
+1. Advisor and Form IDs are converted to Foreign Keys.
+- Deployment on Staging and Production 
+
 ### 01 March 2024:
 - Reports
 1. App is introduced to add the functionality to export the insights

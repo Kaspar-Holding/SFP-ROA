@@ -17,7 +17,7 @@ class InvestmentPlanningAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 ip_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : pk,
                 }
                 ip_serializer = InvestmentPlanningSerializers(data=ip_data)
@@ -60,11 +60,11 @@ class InvestmentPlanningAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippet = self.get_object(pk)
             ipData = request.data['investmentPlanning']
-            ipData['advisorId'] = formData.advisorId            
+            ipData['advisorId'] = formData.advisorId.pk            
             serializer = InvestmentPlanningSerializers(snippet, data=ipData)
             if serializer.is_valid():
                 serializer.save()

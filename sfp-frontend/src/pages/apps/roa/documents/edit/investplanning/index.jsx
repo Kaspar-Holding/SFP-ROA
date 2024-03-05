@@ -14,11 +14,15 @@ import { Editor } from '@tinymce/tinymce-react'
 import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+import Alert from '../../../../../../components/Alert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const InvestPlanning = () => {
 
     // Quill JS
+
+    const [SuccessMessage, setSuccessMessage] = useState("")
+    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
 
     const modules = {
         toolbar: [
@@ -254,17 +258,22 @@ const InvestPlanning = () => {
                 config
             ).then((response) => {
 
-                Swal.fire({
-                    type: 'success',
-                    title: 'Success',
-                    text: 'Investment Planning Form Updated Successfully.',
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    backdrop: "None",
-                    color: "#fff",
-                    background: "#00788B",
-                    timer: 5000
-                })
+                // Swal.fire({
+                //     type: 'success',
+                //     title: 'Success',
+                //     text: 'Investment Planning Form Updated Successfully.',
+                //     position: 'bottom-end',
+                //     showConfirmButton: false,
+                //     backdrop: "None",
+                //     color: "#fff",
+                //     background: "#00788B",
+                //     timer: 5000
+                // })
+                setSuccessMessage("Invesment Planning form is successfully updated")
+                setSuccessMessageVisibility(true)
+                setTimeout(() => {
+                    setSuccessMessageVisibility(false)
+                }, 5000)
             })
 
         } catch (error) {
@@ -402,6 +411,12 @@ const InvestPlanning = () => {
                         <div className='inital-card-header text-center'>
                             <b>Investment and Savings</b>
                         </div>
+                        {
+                            SuccessMessageVisibility ?
+                                <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
                         <div className='inital-card-header mx-5'>
                             <form onSubmit={ e => onSubmit(e) }>
                                 <b className='roa-font'>Source of Funds</b>

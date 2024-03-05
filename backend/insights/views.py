@@ -1990,10 +1990,14 @@ class advisorInsights(APIView):
                             investment_position_data.append({
                                 "advisor" : advisor.user.pk,
                                 "advisor_name" : advisor.Full_Name,
-                                "total_investment" : lump_sum + recurring
+                                "total_investment" : lump_sum + recurring,
+                                "status" : False
                             })
                 roa_position_data = sorted(roa_position_data, key=lambda d: d['total_forms'], reverse=True)
-                investment_position_data = sorted(investment_position_data, key=lambda d: d['total_investment'], reverse=True)                
+                investment_position_data = sorted(investment_position_data, key=lambda d: d['total_investment'], reverse=True)  
+                for i in range(len(investment_position_data)):
+                    investment_position_data[i]['index'] = i+1   
+                advisor_investment_position_data = investment_position_data[:5]            
                 for i in range(len(roa_position_data)):
                     if roa_position_data[i]['advisor'] == user.pk:
                         roa_forms_position_per_region = i+1
@@ -2002,6 +2006,9 @@ class advisorInsights(APIView):
                 for i in range(len(investment_position_data)):
                     if investment_position_data[i]['advisor'] == user.pk:
                         investment_position_per_region = i+1
+                        hmm_data = investment_position_data[i]
+                        hmm_data['status'] = True
+                        advisor_investment_position_data.append(hmm_data)
                         break
                     
 
@@ -2028,8 +2035,8 @@ class advisorInsights(APIView):
             advisorsData['region_wise_data'] = region_data
             advisorsData['roa_forms_position_per_region'] = roa_forms_position_per_region
             advisorsData['investment_position_per_region'] = investment_position_per_region
+            advisorsData['investment_position_data'] = advisor_investment_position_data
             advisorsData['first_approved_position_per_region'] = first_approved_position_per_region
-            print(advisors)
             advisor_wise_data = []
             for advisor in advisors:
                 forms = roa_data.filter(advisorId=advisor.user.pk)

@@ -14,11 +14,15 @@ import { Editor } from '@tinymce/tinymce-react'
 import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+import Alert from '../../../../../../components/Alert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const GapCover = () => {
 
     // Quill JS
+
+    const [SuccessMessage, setSuccessMessage] = useState("")
+    const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
 
     const modules = {
         toolbar: [
@@ -201,17 +205,22 @@ const GapCover = () => {
                 config
             ).then((response) => {
 
-                Swal.fire({
-                    type: 'success',
-                    title: 'Success',
-                    text: 'Assurance Form Updated Successfully.',
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    backdrop: "None",
-                    color: "#fff",
-                    background: "#00788B",
-                    timer: 5000
-                })
+                // Swal.fire({
+                //     type: 'success',
+                //     title: 'Success',
+                //     text: 'Assurance Form Updated Successfully.',
+                //     position: 'bottom-end',
+                //     showConfirmButton: false,
+                //     backdrop: "None",
+                //     color: "#fff",
+                //     background: "#00788B",
+                //     timer: 5000
+                // })
+                setSuccessMessage("Gap Cover form is successfully updated")
+                setSuccessMessageVisibility(true)
+                setTimeout(() => {
+                    setSuccessMessageVisibility(false)
+                }, 5000)
             })
 
         } catch (error) {
@@ -256,6 +265,12 @@ const GapCover = () => {
                         <div className='inital-card-header text-center'>
                             <b>Gap Cover</b>
                         </div>
+                        {
+                            SuccessMessageVisibility ?
+                                <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
                         <br />
                         <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
                             <div className="row roa-label">
@@ -266,7 +281,7 @@ const GapCover = () => {
                                             <label className="col-form-label"><b>Client Name:</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="GP_ClientName" onChange={ (e) => { onChange(e) } } value={ FormData['GP_ClientName'] } name="GP_ClientName" className="form-control" placeholder="Client Name" aria-describedby="" />
+                                            <input disabled spellCheck="true" id="GP_ClientName" onChange={ (e) => { onChange(e) } } value={ FormData['GP_ClientName'] } name="GP_ClientName" className="form-control" placeholder="Client Name" aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>
@@ -277,7 +292,7 @@ const GapCover = () => {
                                             <label htmlFor="id_number" className="col-form-label"><b>ID number:</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="GP_ClientIdNumber" onChange={ (e) => { onChange(e) } } value={ FormData['GP_ClientIdNumber'] } name="GP_ClientIdNumber" className="form-control" placeholder="ID number" aria-describedby="" />
+                                            <input disabled spellCheck="true" id="GP_ClientIdNumber" onChange={ (e) => { onChange(e) } } value={ FormData['GP_ClientIdNumber'] } name="GP_ClientIdNumber" className="form-control" placeholder="ID number" aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>
@@ -300,7 +315,7 @@ const GapCover = () => {
                                             <label htmlFor="email" className="col-form-label"><b>Email:</b></label>
                                         </div>
                                         <div className="col-6">
-                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="GP_ClientEmail" onChange={ (e) => { onChange(e) } } value={ FormData['GP_ClientEmail'] } name="GP_ClientEmail" className="form-control" placeholder="Email" aria-describedby="" />
+                                            <input disabled onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="GP_ClientEmail" onChange={ (e) => { onChange(e) } } value={ FormData['GP_ClientEmail'] } name="GP_ClientEmail" className="form-control" placeholder="Email" aria-describedby="" />
                                         </div>
                                     </div>
                                 </div>

@@ -17,7 +17,7 @@ class RiskPlanningAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 rp_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : pk,
                 }
                 rp_serializer = RiskPlanningSerializers(data=rp_data)
@@ -74,11 +74,11 @@ class RiskPlanningAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippet = self.get_object(pk)
             rpData = request.data['riskPlanning']
-            rpData['advisorId'] = formData.advisorId            
+            rpData['advisorId'] = formData.advisorId.pk            
             serializer = RiskPlanningSerializers(snippet, data=rpData)
             if serializer.is_valid():
                 serializer.save()

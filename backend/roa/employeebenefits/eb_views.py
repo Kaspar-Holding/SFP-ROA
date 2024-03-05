@@ -17,7 +17,7 @@ class EmployeeBenefitsAPIs(APIView):
             if formData.exists():
                 formData = formData.first()
                 ai_data = {
-                    "advisorId" : formData.advisorId,
+                    "advisorId" : formData.advisorId.pk,
                     "formId" : pk,
                 }
                 ai_serializer = EmployeeBenefitsSerializers(data=ai_data)
@@ -60,11 +60,11 @@ class EmployeeBenefitsAPIs(APIView):
         formData = Disclosures.objects.filter(id=pk)
         if formData.exists():
             formData = formData.first()
-            if request.user.pk != formData.advisorId:
+            if request.user.pk != formData.advisorId.pk:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             snippets = self.get_object(pk)
             aiData = request.data['employeeBenefits']
-            aiData['advisorId'] = formData.advisorId            
+            aiData['advisorId'] = formData.advisorId.pk            
             serializer = EmployeeBenefitsSerializers(snippets, data=aiData)
             if serializer.is_valid():
                 serializer.save()
