@@ -1043,11 +1043,34 @@ class CreateUserAPI(APIView):
         data['admin_id'] = request.user.pk
         serializer = UserCreateSerializer(data=data)
         if serializer.is_valid():
-            serializer.create(serializer.validated_data)
+            user = serializer.create(serializer.validated_data)
+            data = {
+                "user":user.pk,
+                "bac":None,
+                "categorisation":None,
+                "region":None,
+            }
+            serializer = user_profile_Serializer(data=data, partial=True)
+            if serializer.is_valid():
+                serializer.create(serializer.validated_data)
         else:
             print(serializer.errors)
             return Response({"errors":serializer.errors}, 401)
         return Response({"message": "User Created Successfully"}, 201)
+    
+class UpdateUserPasswordAPI(APIView):
+
+    def post(self, request, pk):
+        if not request.user.is_superuser:
+            return Response(401)
+        user = UserAccount.objects.filter(id=utils.decode_uid(pk))
+        if user.exists():
+            user = user.first()
+            user.set_password(request.data['password'])
+            user.save()
+            return Response({"message": "Password Updated Successfully"}, 200)
+        else:
+            return Response(404)
 
 from django.conf import settings
 from djoser.compat import get_user_email

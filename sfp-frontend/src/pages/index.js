@@ -176,7 +176,7 @@ const AppPage = () => {
                                             <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
                                                 <div className="card-body">
                                                     <br />
-                                                    <h5 className="card-title text-center"><i className="fa-solid fa-c"></i><i className="fa-solid fa-f"></i><i className="fa-solid fa-p"></i></h5>
+                                                    <h5 className="card-title text-center"><i className="fa-solid fa-s"></i><i className="fa-solid fa-f"></i><i className="fa-solid fa-p"></i></h5>
                                                     <br />
                                                     <p className="card-text text-center">
                                                         <a href="https://sanport.sanlam.co.za/sfpelearning/" className="appLabel">SFP Portal</a>

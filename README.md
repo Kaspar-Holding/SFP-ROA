@@ -14,6 +14,11 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 07 March 2024:
+- Users
+1. Added functionality to reset user passwords.
+- Deployment on Staging and Production 
+
 ### 05 March 2024:
 - ROA
 1. Swal is replaced for ROA with Web ROA one.

@@ -658,7 +658,7 @@ const SanlamInsights = () => {
                                 <div className='row'>
                                     <div className='col-lg-12 col-md-6 col-sm-12 bg-white py-2'>
                                         {
-                                            Trend.length == 0 ? <></> : (typeof window !== 'undefined') && <Chart options={ totalSanlamOptions([Trend].map(x => x.map(a => (a[0]))).flat(2), "Sanlam Cases", "Non Sanlam Cases") } series={ totalSanlamSeries("Sanlam Cases", [Trend].map(x => x.map(a => (a[1]))).flat(2), "bar", "Non Sanlam Cases", [Trend].map(x => x.map(a => (a[2]))).flat(2), "bar") } type="line" height={ 350 } />
+                                            Trend.length == 0 ? <></> : (typeof window !== 'undefined') && <Chart options={ totalSanlamOptions([Trend].map(x => x.map(a => (a[0]))).flat(2), "Sanlam Cases", "Non Sanlam Cases") } series={ totalSanlamSeries("Sanlam Cases", [Trend].map(x => x.map(a => (a[1]))).flat(2), "line", "Non Sanlam Cases", [Trend].map(x => x.map(a => (a[2]))).flat(2), "line") } type="line" height={ 350 } />
                                         }
                                     </div>
                                 </div>

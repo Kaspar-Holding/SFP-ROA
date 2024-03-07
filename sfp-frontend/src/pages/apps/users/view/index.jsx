@@ -94,6 +94,42 @@ const UsersList = () => {
         }
 
     }
+
+    const updateUserPassword = async (uId, data) => {
+        try {
+            const Body = JSON.stringify({
+                uId,
+                data
+            })
+            const response = await axios.post(
+                '/api/users/update_password',
+                Body,
+                config
+            )
+            Swal.fire({
+                position: "bottom-end",
+                type: "success",
+                title: "Success",
+                html: `User Password Successfully`,
+                showConfirmButton: !1,
+                timer: 5000,
+            })
+
+        } catch (error) {
+            Swal.fire({
+                position: "bottom-end",
+                type: "error",
+                title: "Error",
+                html: `${error?.response?.data?.error}`,
+                showConfirmButton: !1,
+                timer: 5000,
+                confirmButtonClass: "btn btn-primary",
+                buttonsStyling: !1,
+            })
+
+        }
+
+    }
     const onDetailsChange = (e) => {
         setUserDetails({
             ...UserDetails,
@@ -120,6 +156,47 @@ const UsersList = () => {
     useEffect(() => {
         loadUsers(uId, true)
     }, [])
+
+
+    const [PasswordForm, setPasswordForm] = useState({
+        password: ""
+    })
+    const [ShowPassword, setShowPassword] = useState(true)
+
+    const generateStrongPassword = (e, length) => {
+        var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+";
+        var password = "";
+        for (var i = 0; i < length; i++) {
+            var randomIndex = Math.floor(Math.random() * charset.length);
+            password += charset[randomIndex];
+        }
+        setPasswordForm({ ...PasswordForm, ['password']: password })
+        setShowPassword(false)
+        copyToClipboard(password)
+        Swal.fire({
+            position: "bottom-end",
+            type: "error",
+            title: "Success",
+            html: `Password is generated and copied to clipboard`,
+            showConfirmButton: !1,
+            timer: 5000,
+            confirmButtonClass: "btn btn-primary",
+            buttonsStyling: !1,
+        })
+    }
+    function copyToClipboard(text) {
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+    }
+
+    const onPasswordUpdateClick = (e) => {
+        e.preventDefault()
+        updateUserPassword(uId, PasswordForm)
+    }
     return (
         <Layout
             title={ "User Details" }
@@ -175,6 +252,15 @@ const UsersList = () => {
                                                 </select>
                                             </div>
                                             <hr /> */}
+                                            <div className="mb-3">
+                                                <label htmlFor="exampleInputPassword1" className="form-label">Update Password</label>
+                                                <div className="input-group">
+                                                    <input type={ ShowPassword ? "password" : "text" } minLength={ 8 } className="form-control" onChange={ e => onChange(e) } value={ PasswordForm['password'] } name="password" id="exampleInputPassword1" required />
+                                                    <button class="input-group-text" onClick={ (e) => { setShowPassword(!ShowPassword) } } type="button"><i class="fa-solid fa-eye"></i></button>
+                                                    <button class="input-group-text" onClick={ (e) => { generateStrongPassword(e, 12) } } type="button"><i class="fa-solid fa-check-to-slot"></i> Generate Password</button>
+                                                    <button class="input-group-text" onClick={ (e) => { onPasswordUpdateClick(e) } } type="button"><i class="fa-solid fa-check"></i> Update</button>
+                                                </div>
+                                            </div>
                                             <div className='col-lg-12 text-center'>
                                                 <h1 className='app-dashboard-header'>{ UserDetails?.full_name } Profile</h1>
                                             </div>
