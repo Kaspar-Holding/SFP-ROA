@@ -79,7 +79,7 @@ const ResetPasswordPage = () => {
             >
                 {
                     loading ?
-                        <Loader />
+                        <Loader color='sfp-color' />
                         :
                         <div className='updated-body'>
                             <form onSubmit={ e => onFormSubmit(e) } className="updated-form position-absolute top-35 start-50 translate-middle">

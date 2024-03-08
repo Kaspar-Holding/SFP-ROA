@@ -509,9 +509,6 @@ const EditROA = () => {
                                             <br />
                                             <br />
                                             <div className='row'>
-                                                <div className='roa-font'>
-                                                    <b>1. Compulsory Disclosures</b>
-                                                </div>
                                                 <div className="col-6 roa-label">
                                                     <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client has provided authority to access information.</label>
                                                 </div>

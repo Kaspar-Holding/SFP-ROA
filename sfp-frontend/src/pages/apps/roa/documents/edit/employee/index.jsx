@@ -469,7 +469,7 @@ const EmployeeBenefits = () => {
                                                 <label className="col-form-label roa-label"><b>Client Name:</b></label>
                                             </div>
                                             <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="EB_ClientName" name='EB_ClientName' value={ FormData['EB_ClientName'] } onChange={ (e) => { onChange(e) } } className="form-control roa-label" placeholder="Client Name" aria-describedby="" />
+                                                <input disabled spellCheck="true" id="EB_ClientName" name='EB_ClientName' value={ FormData['EB_ClientName'] } onChange={ (e) => { onChange(e) } } className="form-control roa-label" placeholder="Client Name" aria-describedby="" />
                                             </div>
                                         </div>
                                     </div>
@@ -480,7 +480,7 @@ const EmployeeBenefits = () => {
                                                 <label htmlFor="id_number" className="col-form-label roa-label"><b>ID number:</b></label>
                                             </div>
                                             <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="EB_ClientIdNumber" name='EB_ClientIdNumber' value={ FormData['EB_ClientIdNumber'] } onChange={ (e) => { onChange(e) } } className="form-control roa-label" placeholder="ID # of client" aria-describedby="" />
+                                                <input disabled spellCheck="true" id="EB_ClientIdNumber" name='EB_ClientIdNumber' value={ FormData['EB_ClientIdNumber'] } onChange={ (e) => { onChange(e) } } className="form-control roa-label" placeholder="ID # of client" aria-describedby="" />
                                             </div>
                                         </div>
                                     </div>
@@ -527,7 +527,7 @@ const EmployeeBenefits = () => {
                                                 <label htmlFor="advisor" className="col-form-label roa-label"><b>Email:</b></label>
                                             </div>
                                             <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" type="email" id="EB_ClientEmail" name='EB_ClientEmail' value={ FormData['EB_ClientEmail'] } onChange={ (e) => { onChange(e) } } className="form-control roa-label" placeholder="Email" aria-describedby="" />
+                                                <input disabled spellCheck="true" type="email" id="EB_ClientEmail" name='EB_ClientEmail' value={ FormData['EB_ClientEmail'] } onChange={ (e) => { onChange(e) } } className="form-control roa-label" placeholder="Email" aria-describedby="" />
                                             </div>
                                         </div>
                                     </div>
@@ -550,7 +550,7 @@ const EmployeeBenefits = () => {
                                                 <label htmlFor="advisor" className="col-form-label roa-label"><b>Financial Advisor:</b></label>
                                             </div>
                                             <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } value={ user?.full_name } className="form-control roa-label" placeholder="Primary Intermediary’s name" aria-describedby="" />
+                                                <input disabled value={ user?.full_name } className="form-control roa-label" placeholder="Primary Intermediary’s name" aria-describedby="" />
                                             </div>
                                         </div>
                                     </div>

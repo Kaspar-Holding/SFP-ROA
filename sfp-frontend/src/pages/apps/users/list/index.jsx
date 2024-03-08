@@ -154,7 +154,10 @@ const UsersList = () => {
             >
                 {
                     Loaded ?
-                        <Loader />
+                        user?.email?.includes('sfp') || user?.email?.includes('succession') ? <Loader color='sfp-color' />
+                            : user?.email?.includes('fs4p') ? <Loader color='fs4p-color' />
+                                : user?.email?.includes('sanlam') ? <Loader color='sfp-sanlam' />
+                                    : <Loader color='sfp-color' />
                         :
                         <div className='col-lg-9'>
                             <div className='row'>

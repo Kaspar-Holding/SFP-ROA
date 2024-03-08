@@ -313,7 +313,10 @@ const ComplianceList = () => {
             >
                 {
                     Loaded ?
-                        <Loader />
+                        user?.email?.includes('sfp') || user?.email?.includes('succession') ? <Loader color='sfp-color' />
+                            : user?.email?.includes('fs4p') ? <Loader color='fs4p-color' />
+                                : user?.email?.includes('sanlam') ? <Loader color='sfp-sanlam' />
+                                    : <Loader color='sfp-color' />
                         :
                         <div className='col-lg-9'>
                             <div className='row'>
@@ -337,7 +340,12 @@ const ComplianceList = () => {
                                             {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */ }
                                             <div className='row'>
                                                 <div className="col-3 dropdown mx-1">
-                                                    <button className="btn btn-sm btn-sfp btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <button className={
+                                                        user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary dropdown-toggle'
+                                                            : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary dropdown-toggle'
+                                                                : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary dropdown-toggle'
+                                                                    : 'btn btn-sm btn-sfp btn-secondary dropdown-toggle'
+                                                    } type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         Page Size
                                                     </button>
                                                     <ul className="dropdown-menu">
@@ -349,7 +357,12 @@ const ComplianceList = () => {
                                                     </ul>
                                                 </div>
                                                 <div className="col-3 dropdown">
-                                                    <button className="btn btn-sm btn-sfp btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <button className={
+                                                        user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary dropdown-toggle'
+                                                            : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary dropdown-toggle'
+                                                                : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary dropdown-toggle'
+                                                                    : 'btn btn-sm btn-sfp btn-secondary dropdown-toggle'
+                                                    } type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         Sort by
                                                     </button>
                                                     <ul className="dropdown-menu">

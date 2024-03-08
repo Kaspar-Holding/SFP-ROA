@@ -1046,6 +1046,7 @@ class CreateUserAPI(APIView):
             user = serializer.create(serializer.validated_data)
             data = {
                 "user":user.pk,
+                "Full_Name":user.first_name + " " + user.last_name,
                 "bac":None,
                 "categorisation":None,
                 "region":None,

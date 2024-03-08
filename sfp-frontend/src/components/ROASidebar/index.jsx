@@ -263,7 +263,7 @@ const ROASidebar = ({ appTitle }) => {
 
                             <br />
                             <div className="container sidebar-footer">
-                                <div className="d-grid gap-2">
+                                <div className="py-1 d-grid gap-2">
                                     <button
                                         type="button"
                                         onClick={
@@ -276,7 +276,11 @@ const ROASidebar = ({ appTitle }) => {
                                         }
                                         className={
                                             router.pathname === `/apps/roa/documents/edit` ?
-                                                "btn btn-sm btn-primary w-100 btn-sfp" :
+                                                user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-primary w-100 btn-sfp w-100'
+                                                    : user?.email?.includes('fs4p') ? 'btn btn-sm btn-primary w-100 btn-fs4p w-100'
+                                                        : user?.email?.includes('sanlam') ? 'btn btn-sm btn-primary w-100 btn-sanlam w-100' :
+                                                            "btn btn-sm btn-outline-primary btn-outline-sfp w-100"
+                                                :
                                                 "btn btn-sm btn-outline-primary btn-outline-sfp w-100"
                                         }>
                                         {
@@ -287,11 +291,11 @@ const ROASidebar = ({ appTitle }) => {
                                         }
                                     </button>
                                 </div>
-                            </div><br />
+                            </div>
                             {
                                 FormData?.status == 1 ?
-                                    <div>
-                                        <div className="container sidebar-footer">
+                                    <div className='row'>
+                                        <div className="py-1 container sidebar-footer">
                                             <div className="d-grid gap-2">
                                                 <button onClick={ (e) => { updateFormStatus(e) } } className="btn btn-primary" type="button">
                                                     <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
@@ -299,20 +303,27 @@ const ROASidebar = ({ appTitle }) => {
                                                 </button>
                                             </div>
                                         </div>
-                                        <br />
-                                        <div className="container sidebar-footer">
+                                        <div className="py-1 container sidebar-footer">
                                             <div className="d-grid gap-2">
-                                                <button onClick={ (e) => { downloadDisclosureForm(e) } } className="btn btn-primary btn-sfp" type="button">
+                                                <button onClick={ (e) => { downloadDisclosureForm(e) } } className={
+                                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-primary btn-sfp'
+                                                        : user?.email?.includes('fs4p') ? 'btn btn-primary btn-fs4p'
+                                                            : user?.email?.includes('sanlam') ? 'btn btn-primary btn-sanlam'
+                                                                : 'btn btn-primary btn-sfp'
+                                                } type="button">
                                                     <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
                                                     Disclosure Document PDF
                                                 </button>
                                             </div>
                                         </div>
-
-                                        <br />
-                                        <div className="container sidebar-footer">
+                                        <div className="py-1 container sidebar-footer">
                                             <div className="d-grid gap-2">
-                                                <button onClick={ (e) => { downloadClient(e) } } className="btn btn-primary btn-sfp" type="button">
+                                                <button onClick={ (e) => { downloadClient(e) } } className={
+                                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-primary btn-sfp'
+                                                        : user?.email?.includes('fs4p') ? 'btn btn-primary btn-fs4p'
+                                                            : user?.email?.includes('sanlam') ? 'btn btn-primary btn-sanlam'
+                                                                : 'btn btn-primary btn-sfp'
+                                                } type="button">
                                                     <i className='bi pe-none me-2 fa-solid fa-clipboard'></i>
                                                     Print for Client
                                                 </button>
@@ -344,7 +355,12 @@ const ROASidebar = ({ appTitle }) => {
                     <div className='d-flex align-items-end flex-column px-auto'>
                         <div className="container sidebar-footer">
                             <div className="d-grid gap-2">
-                                <button onClick={ (e) => { logOutBtn(e) } } className="btn btn-primary btn-sfp" type="button">
+                                <button onClick={ (e) => { logOutBtn(e) } } className={
+                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-primary btn-sfp'
+                                        : user?.email?.includes('fs4p') ? 'btn btn-primary btn-fs4p'
+                                            : user?.email?.includes('sanlam') ? 'btn btn-primary btn-sanlam'
+                                                : 'btn btn-primary btn-sfp'
+                                } type="button">
                                     <i className='bi pe-none me-2 fa-solid fa-arrow-right-from-bracket'></i>
                                     Logout
                                 </button>

@@ -1,7 +1,7 @@
 import React from 'react'
-const Loader = () => {
+const Loader = ({ color }) => {
   return (
-    <div className="lds_ring"><div></div><div></div><div></div><div></div></div>
+    <div className={ color ? `lds_ring ${color}` : "lds_ring color-sfp" }><div></div><div></div><div></div><div></div></div>
   )
 }
 

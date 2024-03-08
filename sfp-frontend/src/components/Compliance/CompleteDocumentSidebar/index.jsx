@@ -253,7 +253,12 @@ const CompleteDocumentSidebar = ({ appTitle }) => {
                     <div className='d-flex align-items-end flex-column px-auto'>
                         <div className="container sidebar-footer">
                             <div className="d-grid gap-2">
-                                <button onClick={ (e) => { logOutBtn(e) } } className="btn btn-primary btn-sfp" type="button">
+                                <button onClick={ (e) => { logOutBtn(e) } } className={
+                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-primary btn-sfp'
+                                        : user?.email?.includes('fs4p') ? 'btn btn-primary btn-fs4p'
+                                            : user?.email?.includes('sanlam') ? 'btn btn-primary btn-sanlam'
+                                                : 'btn btn-primary btn-sfp'
+                                } type="button">
                                     <i className='bi pe-none me-2 fa-solid fa-arrow-right-from-bracket'></i>
                                     Logout
                                 </button>

@@ -389,7 +389,12 @@ const Navbar = () => {
                         </ul>
                         <div className="nav-item dropdown nav-item-box">
                             <a href="#" className="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span className="badge rounded-pill">{ UnreadNotificationsCount }</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span className={
+                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? "badge rounded-pill"
+                                        : user?.email?.includes('fs4p') ? "badge bg-fs4p rounded-pill"
+                                            : user?.email?.includes('sanlam') ? "badge bg-sanlam rounded-pill"
+                                                : "badge rounded-pill"
+                                }>{ UnreadNotificationsCount }</span>
                             </a>
                             <div className="dropdown-menu notifications">
                                 <div className="topnav-dropdown-header">

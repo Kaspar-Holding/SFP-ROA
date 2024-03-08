@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import Moment from 'moment'
+import { useSelector } from 'react-redux'
 
 const Filters = (props) => {
     const storeId = props.storeId
@@ -12,6 +13,7 @@ const Filters = (props) => {
     const CustomFilterType = props.CustomFilterType
     const Regions = props.Regions
     const advisors = props.advisors
+    const user = useSelector(state => state.auth.user)
 
     const OnMonthChange = async (e) => {
         localStorage.setItem(`month-dashboard-${storeId}`, e.target.value)
@@ -282,7 +284,12 @@ const Filters = (props) => {
                         'col'
                 }>
                     <label className='filter-label'>Export</label>
-                    <button type="button" onClick={ (e) => { props.exportReportButtonClick(e) } } class="btn btn-primary w-100 btn-sfp">Export</button>
+                    <button type="button" onClick={ (e) => { props.exportReportButtonClick(e) } } className={
+                        user?.email?.includes('sfp') || user?.email?.includes('succession') ? "btn btn-primary w-100 btn-sfp"
+                            : user?.email?.includes('fs4p') ? "btn btn-primary w-100 btn-fs4p"
+                                : user?.email?.includes('sanlam') ? "btn btn-primary w-100 btn-sanlam"
+                                    : "btn btn-primary w-100 btn-sfp"
+                    }>Export</button>
                 </div>
 
             </div>

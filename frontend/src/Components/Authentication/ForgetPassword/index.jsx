@@ -1,30 +1,30 @@
 import React, { useState } from 'react'
 import '../Style/signIn.css'
-import {connect} from 'react-redux'
-import {LoginUser} from '../../../Actions/Auth'
+import { connect } from 'react-redux'
+import { LoginUser } from '../../../Actions/Auth'
 import Loader from '../../Loader/Loader'
 import sfpLogo from './sfp-logo.png'
 import axios from 'axios'
 import { NavLink, Navigate } from 'react-router-dom'
-import {resetPassword} from '../../../Actions/Auth'
+import { resetPassword } from '../../../Actions/Auth'
 import Swal from 'sweetalert2'
 
-const ForgetPassword = ({resetPassword, isAuthenticated}) => {
-  
+const ForgetPassword = ({ resetPassword, isAuthenticated }) => {
+
     const [LoadingVisibility, setLoadingVisibility] = useState("none")
     const [dataVisibility, setDataVisibility] = useState("block")
     const [RequestSent, setRequestSent] = useState(false)
     const [FormData, setFormData] = useState({
         email: ""
     })
-    
-    const {email} = FormData
-  
-    const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value})
+
+    const { email } = FormData
+
+    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
     const [ResponseStatus, setResponseStatus] = useState(401)
-    const emailValidation = () =>{
+    const emailValidation = () => {
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if (regex.test(FormData['email']) === false){
+        if (regex.test(FormData['email']) === false) {
             Swal.fire({
                 position: "bottom-end",
                 type: "error",
@@ -39,14 +39,14 @@ const ForgetPassword = ({resetPassword, isAuthenticated}) => {
         }
         return true
     }
-    
-    const onSubmit = async(e) => {
+
+    const onSubmit = async (e) => {
         e.preventDefault()
-        if (emailValidation()){
+        if (emailValidation()) {
             setLoadingVisibility("block")
             setDataVisibility("none")
             const response = await resetPassword(FormData)
-            if (response.status === 204){
+            if (response.status === 204) {
                 Swal.fire({
                     position: "bottom-end",
                     type: "error",
@@ -59,7 +59,7 @@ const ForgetPassword = ({resetPassword, isAuthenticated}) => {
                 })
                 setRequestSent(true)
             } else {
-            
+
                 if (response.data) {
                     Swal.fire({
                         position: "bottom-end",
@@ -73,52 +73,55 @@ const ForgetPassword = ({resetPassword, isAuthenticated}) => {
                     })
 
                 }
-        
+
             }
-            
+
             setLoadingVisibility("none")
             setDataVisibility("block")
         }
-      
-      // setResponse(LoginUser(FormData))
-      // console.log(response)
-      // window.location.reload();
+
+        // setResponse(LoginUser(FormData))
+        // console.log(response)
+        // window.location.reload();
     }
     if (RequestSent) {
-      return <Navigate to='/signin' />
+        return <Navigate to='/signin' />
     }
-    
-    if (isAuthenticated === true){
-      return <Navigate to='/' />
+
+    if (isAuthenticated === true) {
+        return <Navigate to='/' />
     }
     return (
-        <div className=""> 
-            <div style={{display: LoadingVisibility}}>
-                <Loader />
-            </div> 
-            <div style={{display: dataVisibility}} >
-                <form onSubmit={e => onSubmit(e)} className="updated-form position-absolute top-35 start-50 translate-middle">
+        <div className="">
+            <div style={ { display: LoadingVisibility } }>
+                user?.email?.includes('sfp') || user?.email?.includes('succession') ? <Loader color='sfp-color' />
+                : user?.email?.includes('fs4p') ? <Loader color='fs4p-color' />
+                : user?.email?.includes('sanlam') ? <Loader color='sfp-sanlam' />
+                : <Loader color='sfp-color' />
+            </div>
+            <div style={ { display: dataVisibility } } >
+                <form onSubmit={ e => onSubmit(e) } className="updated-form position-absolute top-35 start-50 translate-middle">
                     <div className="card rounded-5">
                         <div className="card-body">
                             <h5 className="card-title text-center updated-header">Request Password Reset</h5>
                             <p className="card-text updated-subtitle">Enter your email for password reset.</p>
-                            <br/>
+                            <br />
                             <div className="mb-3">
                                 <label for="exampleFormControlInput1" className="form-label updated-email">Email</label>
-                                <input name="email" value={email} onChange={(e)=>{onChange(e)}} type="email" className="form-control text-bg-light form-control-md" id="exampleFormControlInput1" placeholder="name@sfp.co.za" />
+                                <input name="email" value={ email } onChange={ (e) => { onChange(e) } } type="email" className="form-control text-bg-light form-control-md" id="exampleFormControlInput1" placeholder="name@sfp.co.za" />
                             </div>
                             <NavLink to="/signin">
                                 <p className="card-text updated-text">Login ?
                                 </p>
                             </NavLink>
-                            <br/>
+                            <br />
                             <div className="d-grid gap-2">
                                 <button className="btn btn-primary btn-sfp" type="submit">Reset Password</button>
                             </div>
                         </div>
                     </div>
                 </form>
-            </div>   
+            </div>
         </div>
     )
 }
@@ -126,5 +129,5 @@ const ForgetPassword = ({resetPassword, isAuthenticated}) => {
 const mapStateToProps = state => ({
     isAuthenticated: state.Auth.isAuthenticated
 })
-  
-export default connect(mapStateToProps, {resetPassword})(ForgetPassword)
+
+export default connect(mapStateToProps, { resetPassword })(ForgetPassword)

@@ -14,6 +14,17 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 08 March 2024:
+- Insights
+1. Advisor based dashboard was designed.
+- Theme
+1. Theme regarding FS4P and Sanlam were catered.
+- ROA
+1. Sidebar overlapping bug resolved.
+- Users
+1. Not updating Admin users bug resolved.
+- Deployment on Staging and Production 
+
 ### 07 March 2024:
 - Users
 1. Added functionality to reset user passwords.

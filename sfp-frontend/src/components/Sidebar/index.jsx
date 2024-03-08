@@ -112,7 +112,14 @@ const SideBar = ({ appTitle, app }) => {
                 {
                     app !== "users" && app !== "profile" && app !== "notifications" && !appTitle.includes("\n Details") ?
                         <div className="d-grid gap-2">
-                            <Link href={ `/apps/${app}/documents/create` } className="btn btn-primary btn-sfp" >
+                            <Link href={ `/apps/${app}/documents/create` }
+                                className={
+                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-primary btn-sfp'
+                                        : user?.email?.includes('fs4p') ? 'btn btn-primary btn-fs4p'
+                                            : user?.email?.includes('sanlam') ? 'btn btn-primary btn-sanlam'
+                                                : 'btn btn-primary btn-sfp'
+                                }
+                            >
                                 <i className='bi pe-none me-2 fa-solid fa-file'></i>
                                 Create new Document
                             </Link>
@@ -123,7 +130,12 @@ const SideBar = ({ appTitle, app }) => {
                 {
                     app == "users" ?
                         <div className="d-grid gap-2">
-                            <Link href={ `/apps/${app}/create` } className="btn btn-primary btn-sfp" >
+                            <Link href={ `/apps/${app}/create` } className={
+                                user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-primary btn-sfp'
+                                    : user?.email?.includes('fs4p') ? 'btn btn-primary btn-fs4p'
+                                        : user?.email?.includes('sanlam') ? 'btn btn-primary btn-sanlam'
+                                            : 'btn btn-primary btn-sfp'
+                            } >
                                 <i className='bi pe-none me-2 fa-solid fa-file'></i>
                                 Create new User
                             </Link>
@@ -134,7 +146,12 @@ const SideBar = ({ appTitle, app }) => {
                 {
                     app === "notifications" && user?.is_superuser ?
                         <div className="d-grid gap-2">
-                            <Link href={ `/apps/${app}/create` } className="btn btn-primary btn-sfp" >
+                            <Link href={ `/apps/${app}/create` } className={
+                                user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-primary btn-sfp'
+                                    : user?.email?.includes('fs4p') ? 'btn btn-primary btn-fs4p'
+                                        : user?.email?.includes('sanlam') ? 'btn btn-primary btn-sanlam'
+                                            : 'btn btn-primary btn-sfp'
+                            } >
                                 <i className='bi pe-none me-2 fa-solid fa-bell'></i>
                                 Generate New Notification
                             </Link>
@@ -228,6 +245,12 @@ const SideBar = ({ appTitle, app }) => {
                                         <Link href={ `/apps/${app}/regions` } className={ router.pathname === `/apps/${app}/regions` ? "nav-link active" : "nav-link link-body-emphasis" }>
                                             <i className='bi pe-none me-2 fa-solid fa-user-tag' />
                                             Regions
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={ `/apps/${app}/export` } className={ router.pathname === `/apps/${app}/export` ? "nav-link active" : "nav-link link-body-emphasis" }>
+                                            <i className='bi pe-none me-2 fa-solid fa-file-export' />
+                                            Export Users
                                         </Link>
                                     </li>
                                     <li>
@@ -340,19 +363,27 @@ const SideBar = ({ appTitle, app }) => {
                             </>
                             : <></>
                     }
-                    <li>
+                    {/* <li>
                         <Link href="/" className={ router.pathname === `/apps/` ? "nav-link active" : "nav-link link-body-emphasis" }>
                             <i className='bi pe-none me-2 fa-solid fa-boxes-stacked' />
                             Other Applications
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
                 <hr />
 
                 <div className='d-flex align-items-end flex-column px-auto'>
                     <div className="container sidebar-footer">
                         <div className="d-grid gap-2">
-                            <button onClick={ (e) => { logOutBtn(e) } } className="btn btn-primary btn-sfp" type="button">
+                            <button onClick={ (e) => { logOutBtn(e) } }
+                                className={
+                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-primary btn-sfp'
+                                        : user?.email?.includes('fs4p') ? 'btn btn-primary btn-fs4p'
+                                            : user?.email?.includes('sanlam') ? 'btn btn-primary btn-sanlam'
+                                                : 'btn btn-primary btn-sfp'
+                                }
+                                type="button"
+                            >
                                 <i className='bi pe-none me-2 fa-solid fa-arrow-right-from-bracket'></i>
                                 Logout
                             </button>

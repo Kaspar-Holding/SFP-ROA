@@ -55,25 +55,41 @@ const AppPage = () => {
                         <div className='container'>
 
                             <div className='position-relative'>
-                                <div className="position-absolute top-0 end-0 dateTime">
+                                <div
+                                    className={
+                                        user?.email?.includes('sfp') || user?.email?.includes('succession') ? "position-absolute top-0 end-0 dateTime sfp-color"
+                                            : user?.email?.includes('fs4p') ? "position-absolute top-0 end-0 dateTime fs4p-color"
+                                                : user?.email?.includes('sanlam') ? "position-absolute top-0 end-0 dateTime sanlam-color"
+                                                    : "position-absolute top-0 end-0 dateTime sfp-color"
+                                    }
+                                >
                                     { CurrentDate }
                                 </div>
                             </div>
                             <br />
-                            <h5 className="card-title text-center updated-header">Welcome { user ? user.full_name : "User" }</h5>
+                            <h5
+                                className={
+                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? "card-title text-center updated-header"
+                                        : user?.email?.includes('fs4p') ? "card-title text-center updated-fs4p"
+                                            : user?.email?.includes('sanlam') ? "card-title text-center updated-sanlam"
+                                                : "card-title text-center updated-header"
+                                }
+                            >
+                                Welcome { user ? user.full_name : "User" }
+                            </h5>
                             <p className="card-text updated-subtitle">Select an App to start your work.</p>
                             <br />
                             <div class="container text-center">
                                 <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
                                     <div class="col">
-                                        <Link href="/apps/insights" style={ { textDecoration: "none" } }>
+                                        <Link href={ user?.userType != 6 ? "/apps/insights" : "/apps/insights/advisor" } style={ { textDecoration: "none" } }>
                                             <div className="card appCard bg-body-light border-0 shadow app p-1 mb-1 bg-body-light rounded-4">
                                                 <div className="card-body">
                                                     <br />
                                                     <h5 className="card-title text-center"><i className="fa-solid fa-chart-simple"></i></h5>
                                                     <br />
                                                     <p className="card-text text-center">
-                                                        <Link href="/apps/insights" className="appLabel">Insights</Link>
+                                                        <Link href={ user?.userType != 6 ? "/apps/insights" : "/apps/insights/advisor" } className="appLabel">Insights</Link>
                                                     </p>
                                                 </div>
                                             </div>

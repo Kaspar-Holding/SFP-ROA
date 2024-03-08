@@ -661,7 +661,10 @@ const GatekeepingInsights = () => {
                     />
                     {
                         Loaded ?
-                            <Loader />
+                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? <Loader color='sfp-color' />
+                                : user?.email?.includes('fs4p') ? <Loader color='fs4p-color' />
+                                    : user?.email?.includes('sanlam') ? <Loader color='sfp-sanlam' />
+                                        : <Loader color='sfp-color' />
                             :
                             <>
                                 <div className='row row-cols-4'>
@@ -700,17 +703,18 @@ const GatekeepingInsights = () => {
                                 </div>
                                 <hr />
                                 <div className='row'>
-                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
+                                    <div className='col-lg-6 col-md-6 col-sm-12 bg-white py-2'>
                                         {
                                             (typeof window !== 'undefined') && <Chart options={ pieChartOptions("Type of Business", [GatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2)) } series={ [GatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2) } type="pie" width={ '100%' } />
                                         }
                                     </div>
-                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white py-2'>
+                                    <div className='col-lg-6 col-md-6 col-sm-12 bg-white py-2'>
                                         {
                                             (typeof window !== 'undefined') && <Chart options={ pieChartOptions("Reason for Rejection", [RejectionGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2)) } series={ [RejectionGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2) } type="pie" width={ '100%' } />
                                         }
                                     </div>
-                                    <div className='col-lg-4 col-md-6 col-sm-12 bg-white'>
+                                    <hr />
+                                    <div className='col-lg-12 col-md-6 col-sm-12 bg-white'>
                                         {
                                             (typeof window !== 'undefined') && <Chart options={ totalGatekeepingOptions([DatewiseGatekeepingTrend].map(x => x.map(a => (a[0]))).flat(2), "Gatekeeping Approval", "Reviews", "Percentage Approved at 1st Review") } series={ totalGatekeepingSeries("Reviews", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[1]))).flat(2), "bar", "First Approval", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[2]))).flat(2), "bar", "First Approval Percentage", [DatewiseGatekeepingTrend].map(x => x.map(a => (a[3]))).flat(2), "bar") } type="bar" height={ 350 } />
                                         }
