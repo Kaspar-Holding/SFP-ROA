@@ -1964,7 +1964,7 @@ class advisorInsights(APIView):
                 advisorRegion = user_profile.objects.get(user=user.pk).region
                 available_regions = available_regions.filter(id=advisorRegion.pk)
                 advisors = advisors.filter(user__pk=user.pk)
-
+            advisor_investment_position_data = []
             if user.userType == 6:
                 position_regions = regions.objects.all()
                 if region != "all":
