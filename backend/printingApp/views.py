@@ -547,7 +547,7 @@ def wkhtmltopdfapi(request):
                     data['roa_status'] = False
                 else:
                     data['roa_status'] = True
-                    advisor = UserAccount.objects.filter(id=data['RoA']['advisorId']).values('first_name','last_name').first()
+                    advisor = UserAccount.objects.filter(id=data['RoA']['advisorId_id']).values('first_name','last_name').first()
                     data['RoA']['clientAdvisor'] = advisor['first_name'] + ' ' + advisor['last_name']
                     data['RoA']['clientDateOfBirth'] = (data['RoA']['clientDateOfBirth']).strftime('%d %b %Y')
             else:
@@ -2514,7 +2514,7 @@ def wkhtmltopdfapi(request):
                         data['STIP']['STIP_Sec_LegalA_Data'] = STIP_Sec_LegalA.objects.filter(formId=data['id']).values()
             else:
                 data['STIP_status'] = False
-        data['advisor'] = UserAccount.objects.filter(id=request.data['advisorId']).values('first_name', 'last_name', 'email', 'is_superuser').first()
+        data['advisor'] = UserAccount.objects.filter(id=request.data['advisorId_id']).values('first_name', 'last_name', 'email', 'is_superuser').first()
         data['company'] = ""
         if 'sfp' in data['advisor']['email'] or 'succession' in data['advisor']['email']:
             data['company'] = "SFP"
@@ -2581,8 +2581,8 @@ class disclosuresPDF(APIView):
                 "subcode" : product.product_provider.subcode,
             })
         data['products'] = disclosureProducts
-        data['user'] = UserAccount.objects.filter(id=data['advisorId']).values('first_name', 'last_name', 'email').first()
-        user_profile_data = user_profile.objects.filter(user=data['advisorId'])
+        data['user'] = UserAccount.objects.filter(id=data['advisorId_id']).values('first_name', 'last_name', 'email').first()
+        user_profile_data = user_profile.objects.filter(user=data['advisorId_id'])
         if user_profile_data.exists():
             user_profile_data = user_profile_data.values().first()
             data['user']['full_name'] = user_profile_data['Full_Name']
@@ -3079,7 +3079,7 @@ class printROA(APIView):
 
                 data['val2n']=val1+val2+val3+val4+val5+val6+val7+val8
                 data['val3n']=val6+val7+val8+val9+val10+val11
-                data['RF_Scores'] = RF_Scores.objects.filter(form=data['id'], advisorId=data['advisorId']).values().first()
+                data['RF_Scores'] = RF_Scores.objects.filter(form=data['id'], advisorId=data['advisorId_id']).values().first()
                 CountryList =["", "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Aukland Islands", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bonaire (Sint Eustatius aand Saba)", "Bosnia and Herzegovina", "Botswana", "Bouvet Islands", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo (Democratic Republic)", "Congo (Republic)", "Cook Islands", "Costa Rica", "Côte D'Ivoire (Ivory Coast)", "Croatia", "Cuba", "Curacao", "Cyprus", "Czechia (Czech Republic)", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "eSwatini (Previously Swaziland)", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Holy See", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea ((North) Democratic People's Republic)", "Korea ((South) Republic)", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia (Former Yugoslavia)", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia (Federal States)", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norfolk Island", "Northern Mariana Islands", "Norway", "Nuie", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcaim", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Barthelemy", "Saint Helena, Ascension and Tristan da Cunha", "Saint Kitts and Nevis", "Saint Lucia", "Saint Martin (French part)", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten (Dutch Part)", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States Minor Outlying Islands", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (US)", "Wallis and Futuna", "West Bank and Gaza (Palestine)", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"]
                 Industry = ['','Administrative and support services','Adult Entertainment','Agriculture,forestry and fishing','Arts,Entertainment and Recreation','Broadcasting and Entertainment','Chemical engineering/manufacturing',
                 'Community and social activities','Construction and civil engineering','Consumer goods:wholesale and retail','Education','Electricity,solar,water,gas','Entrepreneurship','Estate living and family trusts','Extractive services,mining and quarrying','Financial and insurance','Gambling','Government services,armed and state owned enterprise','Health care and medical','Information technology,communication and telecom','Legal practitioner','Manufacturing','Motor wholesale,retail trade and repair','Non profit organization','Non government organization(NGO)','other','PFMA schedule 1','PFMA schedule 2','PFMA schedule 3A','Professional sport','Real estate and property services','Shell Banking','Transport storage,courier and freight','Travel,tourism and accomodation','Virtual currencies']
@@ -3221,7 +3221,7 @@ class printROA(APIView):
                 data['val4n'] = val4n 
             else:
                 if Form.objects.filter(formId = pk).exists():            
-                    data['RoA'] = Form.objects.filter(formId = pk, advisorId=data['advisorId']).values().first()
+                    data['RoA'] = Form.objects.filter(formId = pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         # data['RoA']['clientEmail'] == "" and 
                         data['RoA']['clientAddress'] == "" and 
@@ -3237,7 +3237,7 @@ class printROA(APIView):
                         data['roa_status'] = False
                     else:
                         data['roa_status'] = True
-                        advisor = UserAccount.objects.filter(id=data['RoA']['advisorId']).values('first_name','last_name').first()
+                        advisor = UserAccount.objects.filter(id=data['RoA']['advisorId_id']).values('first_name','last_name').first()
                         data['RoA']['clientAdvisor'] = advisor['first_name'] + ' ' + advisor['last_name']
                         data['RoA']['clientDateOfBirth'] = (data['RoA']['clientDateOfBirth']).strftime('%d %b %Y')
                 else:
@@ -3252,7 +3252,7 @@ class printROA(APIView):
                 Product_Taken = ["","Endowment","RA","TSFA","Unit Trust","Life Annuity","Living Annuity","Other"]
 
                 if RiskPlanning.objects.filter(formId = pk).exists():
-                    data['RP'] = RiskPlanning.objects.filter(formId = pk, advisorId=data['advisorId']).values().first()
+                    data['RP'] = RiskPlanning.objects.filter(formId = pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         data['RP']['RP_DC_LumpSumExistingProvisions'] == "" and
                         data['RP']['RP_DC_LumpSumExistingShortfallSurplus'] == "" and
@@ -3343,7 +3343,7 @@ class printROA(APIView):
                 else:
                     data['rp_status'] = False
                 if InvestmentPlanning.objects.filter(formId=pk).exists():
-                    data['IP'] = InvestmentPlanning.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
+                    data['IP'] = InvestmentPlanning.objects.filter(formId=pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         data['IP']['IP_SourceOfIncome'] == 1 and
                         data['IP']['IP_OtherSourceOfIncome'] == "" and
@@ -3385,7 +3385,7 @@ class printROA(APIView):
                     data['ip_status'] = False
                 
                 if AssuranceRisk.objects.filter(formId=pk).exists():
-                    data['BA_Risk'] = AssuranceRisk.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
+                    data['BA_Risk'] = AssuranceRisk.objects.filter(formId=pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         data['BA_Risk']['AR_BusinessTradeName'] == "" and   
                         data['BA_Risk']['AR_BusinessRegisteredName'] == "" and   
@@ -3537,7 +3537,7 @@ class printROA(APIView):
                 RiskProfile = ["" , "Ultra Conservative", "Conservative", "Cautious", "Moderate"] 
                 SourceOfFunds = ["", "Salary", "Savings", "Inheritence", "Resignation", "Retirement", "Other", ]
                 if AssuranceInvestment.objects.filter(formId=pk).exists():
-                    data['BA_Investment'] = AssuranceInvestment.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
+                    data['BA_Investment'] = AssuranceInvestment.objects.filter(formId=pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         data['BA_Investment']['AI_Term'] == "" and    
                         data['BA_Investment']['AI_TermDetails'] == "" and    
@@ -3588,7 +3588,7 @@ class printROA(APIView):
                 else:
                     data['BA_Investment_status'] = False
                 if EmployeeBenefits.objects.filter(formId=pk).exists():
-                    data['EB'] = EmployeeBenefits.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
+                    data['EB'] = EmployeeBenefits.objects.filter(formId=pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         # data['EB']['EB_ClientAddress'] == "" and
                         # data['EB']['EB_ClientPhoneNumber'] == "" and
@@ -3773,7 +3773,7 @@ class printROA(APIView):
                 else:
                     data['EB_status'] = False
                 if Fiduciary.objects.filter(formId=pk).exists():
-                    data['Fiduciary'] = Fiduciary.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
+                    data['Fiduciary'] = Fiduciary.objects.filter(formId=pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         data['Fiduciary']['fiduciaryWillInPlace'] == 0 and
                         data['Fiduciary']['fiduciaryWillUpdationDate'] == "" and
@@ -3789,7 +3789,7 @@ class printROA(APIView):
                 else:
                     data['Fiduciary_status'] = False
                 if Medical.objects.filter(formId=pk).exists():
-                    data['MD'] = Medical.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
+                    data['MD'] = Medical.objects.filter(formId=pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         data['MD']['MSA_ClientDate'] == "" and
                         data['MD']['MSA_Name'] == "" and
@@ -3873,7 +3873,7 @@ class printROA(APIView):
                 else:
                     data['MD_status'] = False
                 if GapCover.objects.filter(formId=pk).exists():
-                    data['GP'] = GapCover.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
+                    data['GP'] = GapCover.objects.filter(formId=pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         data['GP']['GP_ClientMedicalAidName'] == "" and
                         data['GP']['GP_ClientInceptionDate'] == "" and
@@ -3948,7 +3948,7 @@ class printROA(APIView):
                     data['GP_status'] = False
                 
                 if ShortTermInsuranceCommerical.objects.filter(formId=pk).exists():
-                    data['STIC'] = ShortTermInsuranceCommerical.objects.filter(formId=pk, advisorId=data['advisorId']).values().first()
+                    data['STIC'] = ShortTermInsuranceCommerical.objects.filter(formId=pk, advisorId=data['advisorId_id']).values().first()
                     stic_status1 = False
                     stic_status2 = False
                     stic_status3 = False
@@ -4904,7 +4904,7 @@ class printROA(APIView):
                             data['STIP']['STIP_Sec_LegalA_Data'] = STIP_Sec_LegalA.objects.filter(formId=pk).values()
                 else:
                     data['STIP_status'] = False
-            data['advisor'] = UserAccount.objects.filter(id=data['advisorId']).values('first_name', 'last_name', 'email', 'is_superuser').first()
+            data['advisor'] = UserAccount.objects.filter(id=data['advisorId_id']).values('first_name', 'last_name', 'email', 'is_superuser').first()
             data['company'] = ""
             if 'sfp' in data['advisor']['email'] or 'succession' in data['advisor']['email']:
                 data['company'] = "SFP"
