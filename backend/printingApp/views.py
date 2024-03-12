@@ -3342,7 +3342,7 @@ class printROA(APIView):
                                 row['Product_OngoingFeesFrequency1'] = PremiumFrequency[int(row['Product_OngoingFeesFrequency1'])]
                 else:
                     data['rp_status'] = False
-                if InvestmentPlanning.objects.filter(formId=pk).exists():
+                if InvestmentPlanning.objects.filter(formId=pk, advisorId=data['advisorId_id']).exists():
                     data['IP'] = InvestmentPlanning.objects.filter(formId=pk, advisorId=data['advisorId_id']).values().first()
                     if (
                         data['IP']['IP_SourceOfIncome'] == 1 and
