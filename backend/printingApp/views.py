@@ -2604,9 +2604,9 @@ class disclosuresPDF(APIView):
             else:
                 data['user']['address'] += user_profile_data['Address_Physical_3'] + ", "
             if user_profile_data['Address_Postal_Postal_Code'] != "nan" :
-                data['user']['address'] += f"{int(float(user_profile_data['Address_Postal_Postal_Code'])):04}"
+                data['user']['address'] += f"{int(float(user_profile_data['Address_Postal_Postal_Code'])):04}" if user_profile_data['Address_Postal_Postal_Code'] != "" else ""
             else:
-                data['user']['address'] += f"{int(float(user_profile_data['Address_Physical_Postal_Code'])):04}"
+                data['user']['address'] += f"{int(float(user_profile_data['Address_Physical_Postal_Code'])):04}" if user_profile_data['Address_Physical_Postal_Code'] != "" else ""
 
             data['user']['LTI_SC_A'] = True if user_profile_data['Category1_1_Registration_Status'] == "Accredited" or user_profile_data['Category1_1_Registration_Status'] == "Under Supervision" else False
             data['user']['LTI_SC_A_Supervisor'] = True if user_profile_data['Category1_1_Supervisor'] != "nan" else False
