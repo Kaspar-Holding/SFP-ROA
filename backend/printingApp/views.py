@@ -2744,7 +2744,10 @@ def test(request):
 
 class printROA(APIView):
     def post(self, request, pk):
-        data = Disclosures.objects.filter(id=pk)
+        if request.user.is_superuser:
+            data = Disclosures.objects.filter(id=pk)
+        else:
+            data = Disclosures.objects.filter(id=pk, advisorId=request.user.pk)
         if data.exists():
             data = data.values().first()
             data['dra_status'] = False
