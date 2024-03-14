@@ -458,7 +458,7 @@ class Form(models.Model):
     clientPhoneNumber = models.TextField( default="", blank=True)
     clientEmail = models.TextField( default="", blank=True)
     # client_financial_advisor = advisor_id
-    clientDateOfBirth = models.DateField(default="",null=True, blank=True)
+    clientDateOfBirth = models.DateField(null=True, blank=True)
     clientLetterOfIntroduction = models.IntegerField(default=0)
     clientLetterOfIntroductionReason = models.TextField( default="", blank=True)
     clientLetterOfIntroductionAccess = models.IntegerField(default=0)
