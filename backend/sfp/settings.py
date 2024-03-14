@@ -40,7 +40,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(env('DJANGO_DEBUG'))
 
 ALLOWED_HOSTS=['*']
 
@@ -137,6 +137,10 @@ DATABASES = {
         'PASSWORD' : env('DJANGO_DATABASE_PASSWORD'),
         'HOST' : env('DJANGO_DATABASE_HOST'),
         'PORT' : env('DJANGO_DATABASE_PORT')
+    },
+    'failcase_db': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'failcase_db.sqlite3',
     }
 }
 
@@ -158,8 +162,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-# WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
+if DEBUG:
+    WKHTMLTOPDF_CMD = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
 WKHTMLTOPDF_CMD_OPTIONS = {
     'quiet': True, 'enable-local-file-access': True, 'disable-javascript' : True
 }

@@ -356,11 +356,11 @@ const ROA = () => {
                                 </div>
                                 <div className='col-lg-12 app-dashboard-records'>
                                     <div className='row'>
-                                        <div className='col-lg-3'>
+                                        <div className='col-lg-2'>
                                             <h1 className='app-dashboard-header'>Recent Cases</h1>
 
                                         </div>
-                                        <div className='col-lg-4'>
+                                        <div className='col-lg-5'>
                                             <div className="input-group mb-3">
                                                 <span className="input-group-text" id="basic-addon1">
                                                     <i className='fa-solid fa-search' />
@@ -368,16 +368,16 @@ const ROA = () => {
                                                 <input type="text" className="form-control" value={ SearchQuery } onChange={ (e) => { onSearchQueryChange(e) } } placeholder="Search Policy Number / Client Name / ID" />
                                             </div>
                                         </div>
-                                        <div className='col-lg-1'>
+                                        <div className='col-lg-2'>
                                         </div>
-                                        <div className='col-lg-4'>
+                                        <div className='col-lg-3'>
                                             {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */ }
-                                            <div className='row'>
-                                                <div className="col-3 dropdown mx-1">
-                                                    <button className={ user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary'
-                                                        : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary'
-                                                            : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary'
-                                                                : 'btn btn-sm btn-sfp btn-secondary' } type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <div className='btn-group' role="group">
+                                                <div className="btn-group dropdown mx-0" role="group">
+                                                    <button className={ user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary dropdown-toggle'
+                                                        : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary dropdown-toggle'
+                                                            : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary dropdown-toggle'
+                                                                : 'btn btn-sm btn-sfp btn-secondary dropdown-toggle' } type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         Page Size
                                                     </button>
                                                     <ul className="dropdown-menu">
@@ -388,11 +388,11 @@ const ROA = () => {
                                                         <li><a className={ PageSize == 100 ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onPageSizeChange(e, "100") } } href="#">100</a></li>
                                                     </ul>
                                                 </div>
-                                                <div className="col-3 dropdown">
-                                                    <button className={ user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary'
-                                                        : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary'
-                                                            : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary'
-                                                                : 'btn btn-sm btn-sfp btn-secondary' } type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <div className="btn-group dropdown" role="group">
+                                                    <button className={ user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary dropdown-toggle'
+                                                        : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary dropdown-toggle'
+                                                            : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary dropdown-toggle'
+                                                                : 'btn btn-sm btn-sfp btn-secondary dropdown-toggle' } type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         Sort by
                                                     </button>
                                                     <ul className="dropdown-menu">
@@ -400,44 +400,40 @@ const ROA = () => {
                                                         <li><a className={ Sortby === "created_at" ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onSortChange(e, "created_at") } } href="#">Creation Time</a></li>
                                                     </ul>
                                                 </div>
-                                                <div className='col-1'>
-                                                    <button
-                                                        onClick={ (e) => { onSortDirectionChange(e, "up") } }
-                                                        className={
-                                                            SortDirection === "up" ?
-                                                                user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary'
-                                                                    : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary'
-                                                                        : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary'
-                                                                            : 'btn btn-sm btn-sfp btn-secondary'
-                                                                :
-                                                                user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary'
-                                                                    : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary'
-                                                                        : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary'
-                                                                            : 'btn btn-sm btn-sfp btn-secondary'
-                                                        }
-                                                    >
-                                                        <i className="fa-solid fa-arrow-up-wide-short"></i>
-                                                    </button>
-                                                </div>
-                                                <div className='col-1'>
-                                                    <button
-                                                        onClick={ (e) => { onSortDirectionChange(e, "down") } }
-                                                        className={
-                                                            SortDirection === "down" ?
-                                                                user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary'
-                                                                    : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary'
-                                                                        : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary'
-                                                                            : 'btn btn-sm btn-sfp btn-secondary'
-                                                                :
-                                                                user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary'
-                                                                    : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary'
-                                                                        : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary'
-                                                                            : 'btn btn-sm btn-sfp btn-secondary'
-                                                        }
-                                                    >
-                                                        <i className="fa-solid fa-arrow-down-wide-short"></i>
-                                                    </button>
-                                                </div>
+                                                <button
+                                                    onClick={ (e) => { onSortDirectionChange(e, "up") } }
+                                                    className={
+                                                        SortDirection === "up" ?
+                                                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary'
+                                                                : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary'
+                                                                    : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary'
+                                                                        : 'btn btn-sm btn-sfp btn-secondary'
+                                                            :
+                                                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-outline-secondary'
+                                                                : user?.email?.includes('fs4p') ? 'btn btn-sm btn-outline-secondary'
+                                                                    : user?.email?.includes('sanlam') ? 'btn btn-sm btn-outline-secondary'
+                                                                        : 'btn btn-sm btn-outline-secondary'
+                                                    }
+                                                >
+                                                    <i className="fa-solid fa-arrow-up-wide-short"></i>
+                                                </button>
+                                                <button
+                                                    onClick={ (e) => { onSortDirectionChange(e, "down") } }
+                                                    className={
+                                                        SortDirection === "down" ?
+                                                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary'
+                                                                : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary'
+                                                                    : user?.email?.includes('sanlam') ? 'btn btn-sm btn-sanlam btn-secondary'
+                                                                        : 'btn btn-sm btn-sfp btn-secondary'
+                                                            :
+                                                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-outline-secondary'
+                                                                : user?.email?.includes('fs4p') ? 'btn btn-sm btn-outline-secondary'
+                                                                    : user?.email?.includes('sanlam') ? 'btn btn-sm btn-outline-secondary'
+                                                                        : 'btn btn-sm btn-outline-secondary'
+                                                    }
+                                                >
+                                                    <i className="fa-solid fa-arrow-down-wide-short"></i>
+                                                </button>
                                             </div>
                                         </div>
 
@@ -447,17 +443,17 @@ const ROA = () => {
                                             <thead className='tableHead'>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Policy Number</th>
+                                                    <th scope="col">Policy #</th>
                                                     {
                                                         user?.is_superuser ?
                                                             <th scope="col">Advisor</th>
                                                             : <></>
                                                     }
                                                     <th scope="col">Client Name</th>
-                                                    <th scope="col">Client ID Number</th>
-                                                    <th scope="col">Client Phone</th>
-                                                    <th scope="col">Client Email</th>
-                                                    <th scope="col">Updated At</th>
+                                                    <th scope="col">C. ID Number</th>
+                                                    <th scope="col">C. Phone</th>
+                                                    <th scope="col">C. Email</th>
+                                                    <th scope="col">Updated</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
@@ -515,24 +511,42 @@ const ROA = () => {
                                                                         </td>
                                                                         <td>
                                                                             <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                                                { console.log(form) }
                                                                                 {
 
                                                                                     user?.is_superuser ?
-                                                                                        <button
-                                                                                            type="button"
-                                                                                            className={
-                                                                                                "btn btn-sm btn-success"
-                                                                                            }
-                                                                                            onClick={ () => {
-                                                                                                router.push({
-                                                                                                    pathname: "/apps/roa/documents/edit",
-                                                                                                    query: { fId: form?.id }
-                                                                                                })
-                                                                                            } }
-                                                                                        >
-                                                                                            <i className="fa-solid fa-eye"></i>
-                                                                                            View
-                                                                                        </button>
+                                                                                        user?.id === form.advisorId_id ?
+                                                                                            <button
+                                                                                                type="button"
+                                                                                                className={
+                                                                                                    "btn btn-sm btn-primary"
+                                                                                                }
+                                                                                                onClick={ () => {
+                                                                                                    router.push({
+                                                                                                        pathname: "/apps/roa/documents/edit",
+                                                                                                        query: { fId: form?.id }
+                                                                                                    })
+                                                                                                } }
+                                                                                            >
+                                                                                                <i className="fa-solid fa-eye"></i>
+                                                                                                Edit
+                                                                                            </button>
+                                                                                            :
+                                                                                            <button
+                                                                                                type="button"
+                                                                                                className={
+                                                                                                    "btn btn-sm btn-success"
+                                                                                                }
+                                                                                                onClick={ () => {
+                                                                                                    router.push({
+                                                                                                        pathname: "/apps/roa/documents/view",
+                                                                                                        query: { fId: form?.id }
+                                                                                                    })
+                                                                                                } }
+                                                                                            >
+                                                                                                <i className="fa-solid fa-eye"></i>
+                                                                                                View
+                                                                                            </button>
                                                                                         :
                                                                                         <button
                                                                                             type="button"

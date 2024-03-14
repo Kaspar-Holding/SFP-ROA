@@ -44,4 +44,5 @@ urlpatterns = [
     path('form/medical/<int:pk>/', medical_views.MedicalAPIs.as_view()),
     path('form/gapcover/', gc_views.GapCoverAPIs.as_view()),
     path('form/gapcover/<int:pk>/', gc_views.GapCoverAPIs.as_view()),
+    path('form/profile/<int:pk>/', views.FormAdvisorProfile.as_view()),
 ]

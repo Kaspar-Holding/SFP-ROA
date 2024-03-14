@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import Alert from '../../../../../../components/Alert'
+import DangerAlert from '../../../../../../components/DangerAlert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const STPersonal = () => {
@@ -23,6 +24,8 @@ const STPersonal = () => {
 
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
+    const [ErrorVisibility, setErrorVisibility] = useState(false)
+    const [ErrorMessage, setErrorMessage] = useState("")
 
     const modules = {
         toolbar: [
@@ -1082,7 +1085,11 @@ const STPersonal = () => {
             })
 
         } catch (error) {
-
+            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
+            setErrorVisibility(true)
+            setTimeout(() => {
+                setErrorVisibility(false)
+            }, 5000)
         }
         setLoaded(false)
     }
@@ -1634,6 +1641,11 @@ const STPersonal = () => {
                         {
                             SuccessMessageVisibility ?
                                 <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }{
+                            ErrorVisibility ?
+                                <DangerAlert SuccessMessage={ ErrorMessage } />
                                 :
                                 <></>
                         }
@@ -7348,7 +7360,7 @@ const STPersonal = () => {
                                                                         <div className="col-6" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                             <div className="form-check">
                                                                                 <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" type="checkbox" checked={ FormData["STIP_Vehicle_SM1"] == 1 ? true : false } name="STIP_Vehicle_SM1" onChange={ (e) => { FormData["STIP_Vehicle_SM1"] == 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                                                <label className="form-check-label" for="flexCheckDefault">
+                                                                                <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                     Immobilizer
                                                                                 </label>
                                                                             </div>
@@ -7357,7 +7369,7 @@ const STPersonal = () => {
                                                                         <div className="col-6" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                             <div className="form-check">
                                                                                 <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" type="checkbox" checked={ FormData["STIP_Vehicle_SM2"] == 1 ? true : false } name="STIP_Vehicle_SM2" onChange={ (e) => { FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                                                <label className="form-check-label" for="flexCheckDefault">
+                                                                                <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                     Gear lock
                                                                                 </label>
                                                                             </div>
@@ -7376,7 +7388,7 @@ const STPersonal = () => {
                                                                     <td scope="col" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                         <div className="form-check">
                                                                             {/* <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */ }
-                                                                            <label className="form-check-label" for="flexCheckDefault">
+                                                                            <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                 {/* Tracking device   */ }
                                                                             </label>
                                                                         </div>
@@ -7385,7 +7397,7 @@ const STPersonal = () => {
                                                                     <td scope="col" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                         <div className="form-check">
                                                                             {/* <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={FormData["STIP_Vehicle_SM2"] == 1 ? true : false} name="STIP_Vehicle_SM2" onChange={(e)=>{FormData["STIP_Vehicle_SM2"] == 1 ? setFormData({...FormData, [e.target.name]: 0}) : setFormData({...FormData, [e.target.name]: 1})}}/> */ }
-                                                                            <label className="form-check-label" for="flexCheckDefault">
+                                                                            <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                 {/* Data dot */ }
                                                                             </label>
                                                                         </div>
@@ -7404,7 +7416,7 @@ const STPersonal = () => {
                                                                         <div className="col-6" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                             <div className="form-check">
                                                                                 <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" type="checkbox" checked={ FormData["STIP_Vehicle_SM3"] == 1 ? true : false } name="STIP_Vehicle_SM3" onChange={ (e) => { FormData["STIP_Vehicle_SM3"] == 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                                                <label className="form-check-label" for="flexCheckDefault">
+                                                                                <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                     Tracking device
                                                                                 </label>
                                                                             </div>
@@ -7413,7 +7425,7 @@ const STPersonal = () => {
                                                                         <div className="col-6" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                             <div className="form-check">
                                                                                 <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" type="checkbox" checked={ FormData["STIP_Vehicle_SM4"] == 1 ? true : false } name="STIP_Vehicle_SM4" onChange={ (e) => { FormData["STIP_Vehicle_SM4"] == 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                                                <label className="form-check-label" for="flexCheckDefault">
+                                                                                <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                     Data dot
                                                                                 </label>
                                                                             </div>
@@ -8135,7 +8147,7 @@ const STPersonal = () => {
                                                                                             <div className="col-6" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                                                 <div className="form-check">
                                                                                                     <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" type="checkbox" checked={ key["Vehicle_SM1"] == 1 ? true : false } name="Vehicle_SM1" onChange={ (e) => { key["Vehicle_SM1"] == 1 ? on_Section_Vehicle_Value_Change("Vehicle_SM1", i, 0) : on_Section_Vehicle_Value_Change("Vehicle_SM2", i, 1) } } />
-                                                                                                    <label className="form-check-label" for="flexCheckDefault">
+                                                                                                    <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                                         Immobilizer
                                                                                                     </label>
                                                                                                 </div>
@@ -8144,7 +8156,7 @@ const STPersonal = () => {
                                                                                             <div className="col-6" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                                                 <div className="form-check">
                                                                                                     <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" type="checkbox" checked={ key["Vehicle_SM2"] == 1 ? true : false } name="Vehicle_SM2" onChange={ (e) => { key["Vehicle_SM2"] == 1 ? on_Section_Vehicle_Value_Change("Vehicle_SM2", i, 0) : on_Section_Vehicle_Value_Change("Vehicle_SM2", i, 1) } } />
-                                                                                                    <label className="form-check-label" for="flexCheckDefault">
+                                                                                                    <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                                         Gear lock
                                                                                                     </label>
                                                                                                 </div>
@@ -8163,7 +8175,7 @@ const STPersonal = () => {
                                                                                         <td scope="col" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                                             <div className="form-check">
                                                                                                 {/* <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={key["Vehicle_SM2"] == 1 ? true : false} name="Vehicle_SM2" onChange={(e)=>{key["Vehicle_SM2"] == 1 ? on_Section_Vehicle_Value_Change("Vehicle_SM2", i, 0) : on_Section_Vehicle_Value_Change("Vehicle_SM2", i, 1)}}/> */ }
-                                                                                                <label className="form-check-label" for="flexCheckDefault">
+                                                                                                <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                                     {/* Tracking device   */ }
                                                                                                 </label>
                                                                                             </div>
@@ -8172,7 +8184,7 @@ const STPersonal = () => {
                                                                                         <td scope="col" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                                             <div className="form-check">
                                                                                                 {/* <input onMouseLeave={(e)=>{onFieldBlur(e)}} className="form-check-input" type="checkbox" checked={key["Vehicle_SM2"] == 1 ? true : false} name="Vehicle_SM2" onChange={(e)=>{key["Vehicle_SM2"] == 1 ? on_Section_Vehicle_Value_Change("Vehicle_SM2", i, 0) : on_Section_Vehicle_Value_Change("Vehicle_SM2", i, 1)}}/> */ }
-                                                                                                <label className="form-check-label" for="flexCheckDefault">
+                                                                                                <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                                     {/* Data dot */ }
                                                                                                 </label>
                                                                                             </div>
@@ -8191,7 +8203,7 @@ const STPersonal = () => {
                                                                                             <div className="col-6" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                                                 <div className="form-check">
                                                                                                     <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" type="checkbox" checked={ key["Vehicle_SM3"] == 1 ? true : false } name="Vehicle_SM3" onChange={ (e) => { key["Vehicle_SM3"] == 1 ? on_Section_Vehicle_Value_Change("Vehicle_SM3", i, 0) : on_Section_Vehicle_Value_Change("Vehicle_SM3", i, 1) } } />
-                                                                                                    <label className="form-check-label" for="flexCheckDefault">
+                                                                                                    <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                                         Tracking device
                                                                                                     </label>
                                                                                                 </div>
@@ -8200,7 +8212,7 @@ const STPersonal = () => {
                                                                                             <div className="col-6" style={ { fontSize: '16px', fontFamily: 'Arial Narrow' } } align="left">
                                                                                                 <div className="form-check">
                                                                                                     <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" type="checkbox" checked={ key["Vehicle_SM4"] == 1 ? true : false } name="Vehicle_SM4" onChange={ (e) => { key["Vehicle_SM4"] == 1 ? on_Section_Vehicle_Value_Change("Vehicle_SM4", i, 0) : on_Section_Vehicle_Value_Change("Vehicle_SM4", i, 1) } } />
-                                                                                                    <label className="form-check-label" for="flexCheckDefault">
+                                                                                                    <label className="form-check-label" htmlFor="flexCheckDefault">
                                                                                                         Data dot
                                                                                                     </label>
                                                                                                 </div>

@@ -199,24 +199,24 @@ const CreateDocument = () => {
                                         </div>
                                         <div className='col-lg-8 col-md-6 col-sm-12'>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Notification Title</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Notification Title</label>
                                                 <input required onChange={ (e) => { onChange(e) } } type="text" value={ NotificationData?.title } name="title" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Type</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Type</label>
                                                 {
                                                     <Select options={ NotificationTypes } onChange={ (e) => { onSelectChange(e) } } className="searchSelect" placeholder="Search the Type" />
                                                 }
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Users</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Users</label>
                                                 {
                                                     <Select options={ UserTypes } onChange={ (e) => { onSelectChange(e) } } className="searchSelect" placeholder="Search the User Type" />
                                                 }
                                             </div>
 
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Message</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Message</label>
                                                 <ReactQuill
                                                     theme="snow" // Specify the theme ('snow' or 'bubble')
                                                     value={ NotificationData?.message }

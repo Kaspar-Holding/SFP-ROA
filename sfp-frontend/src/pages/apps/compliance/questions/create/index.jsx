@@ -110,11 +110,11 @@ const CreateDocument = () => {
                                     </div>
                                     <div className='col-lg-8 col-md-6 col-sm-12'>
                                         <div className="mb-3">
-                                            <label for="basic-url" className="form-label compliance-inital-card-text">Question?</label>
+                                            <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Question?</label>
                                             <input required onChange={ (e) => { onChange(e) } } type="text" value={ QuestionData?.question } name="question" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         </div>
                                         <div className="mb-3">
-                                            <label for="basic-url" className="form-label compliance-inital-card-text">Score?</label>
+                                            <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Score?</label>
                                             <input required onChange={ (e) => { onChange(e) } } type="text" value={ QuestionData?.max_score } name="max_score" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                         </div>
                                     </div>

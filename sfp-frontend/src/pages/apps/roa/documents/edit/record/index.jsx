@@ -22,6 +22,7 @@ import Layout from '../../../../../../hocs/Layout'
 import { Editor } from '@tinymce/tinymce-react'
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import Alert from '../../../../../../components/Alert';
+import DangerAlert from '../../../../../../components/DangerAlert';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const EditROA = () => {
@@ -94,6 +95,8 @@ const EditROA = () => {
 
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
+    const [ErrorVisibility, setErrorVisibility] = useState(false)
+    const [ErrorMessage, setErrorMessage] = useState("")
 
     // console.log(localStorage.getItem('access'))
     const emailValidation = () => {
@@ -153,20 +156,25 @@ const EditROA = () => {
             // setSubmissionMessageVisibility("block")
         } catch (error) {
             let errors = error?.response?.data?.error?.errors
+            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
+            setErrorVisibility(true)
+            setTimeout(() => {
+                setErrorVisibility(false)
+            }, 5000)
             console.log(error?.response)
-            Swal.fire({
-                position: "bottom-end",
-                type: "success",
-                title: "Error",
-                html: error?.response?.data,
-                showConfirmButton: !1,
-                timer: 5000,
-                confirmButtonClass: "btn btn-primary",
-                backdrop: "None",
-                color: "#fff",
-                background: "#00788B",
-                buttonsStyling: !1,
-            })
+            // Swal.fire({
+            //     position: "bottom-end",
+            //     type: "success",
+            //     title: "Error",
+            //     html: error?.response?.data,
+            //     showConfirmButton: !1,
+            //     timer: 5000,
+            //     confirmButtonClass: "btn btn-primary",
+            //     backdrop: "None",
+            //     color: "#fff",
+            //     background: "#00788B",
+            //     buttonsStyling: !1,
+            // })
         }
     }
 
@@ -361,6 +369,12 @@ const EditROA = () => {
                                 :
                                 <></>
                         }
+                        {
+                            ErrorVisibility ?
+                                <DangerAlert SuccessMessage={ ErrorMessage } />
+                                :
+                                <></>
+                        }
                         <div className=''>
                             <form onSubmit={ e => onSubmit(e) }>
                                 <div className={ 'inital-card-header mx-5' }>
@@ -506,6 +520,7 @@ const EditROA = () => {
                                                 /> */}
                                                 <br />
                                             </div>
+                                            <br />
                                             <br />
                                             <br />
                                             <div className='row'>

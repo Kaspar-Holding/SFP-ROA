@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import Alert from '../../../../../../components/Alert'
+import DangerAlert from '../../../../../../components/DangerAlert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const GapCover = () => {
@@ -23,6 +24,8 @@ const GapCover = () => {
 
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
+    const [ErrorVisibility, setErrorVisibility] = useState(false)
+    const [ErrorMessage, setErrorMessage] = useState("")
 
     const modules = {
         toolbar: [
@@ -224,7 +227,11 @@ const GapCover = () => {
             })
 
         } catch (error) {
-
+            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
+            setErrorVisibility(true)
+            setTimeout(() => {
+                setErrorVisibility(false)
+            }, 5000)
         }
         setLoaded(false)
     }
@@ -268,6 +275,12 @@ const GapCover = () => {
                         {
                             SuccessMessageVisibility ?
                                 <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
+                        {
+                            ErrorVisibility ?
+                                <DangerAlert SuccessMessage={ ErrorMessage } />
                                 :
                                 <></>
                         }
@@ -435,7 +448,7 @@ const GapCover = () => {
                                                     <input onMouseLeave={ (e) => { onFieldBlur(e) } } className='form-check-input' type="radio" id="GP_MedicalDependent" onChange={ (e) => { onChange(e) } } checked={ FormData['GP_MedicalDependent'] == 1 ? true : false } name="GP_MedicalDependent" value="1" />
                                                 </div>
                                                 <div className='col-3'>
-                                                    <label for="yes9">Yes</label>
+                                                    <label htmlFor="yes9">Yes</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -445,7 +458,7 @@ const GapCover = () => {
                                                     <input onMouseLeave={ (e) => { onFieldBlur(e) } } className='form-check-input' type="radio" id="GP_MedicalDependent" onChange={ (e) => { onChange(e) } } checked={ FormData['GP_MedicalDependent'] == 0 ? true : false } name="GP_MedicalDependent" value="0" />
                                                 </div>
                                                 <div className='col-3'>
-                                                    <label for="no9">No</label>
+                                                    <label htmlFor="no9">No</label>
                                                 </div>
                                             </div>
                                         </div>

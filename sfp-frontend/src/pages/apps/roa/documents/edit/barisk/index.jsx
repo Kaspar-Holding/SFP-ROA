@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import Alert from '../../../../../../components/Alert'
+import DangerAlert from '../../../../../../components/DangerAlert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const BARisk = () => {
@@ -23,6 +24,8 @@ const BARisk = () => {
 
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
+    const [ErrorVisibility, setErrorVisibility] = useState(false)
+    const [ErrorMessage, setErrorMessage] = useState("")
 
     const modules = {
         toolbar: [
@@ -561,6 +564,11 @@ const BARisk = () => {
             })
 
         } catch (error) {
+            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
+            setErrorVisibility(true)
+            setTimeout(() => {
+                setErrorVisibility(false)
+            }, 5000)
 
         }
         setLoaded(false)
@@ -834,6 +842,12 @@ const BARisk = () => {
                         {
                             SuccessMessageVisibility ?
                                 <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
+                        {
+                            ErrorVisibility ?
+                                <DangerAlert SuccessMessage={ ErrorMessage } />
                                 :
                                 <></>
                         }
@@ -1350,7 +1364,7 @@ const BARisk = () => {
                                     <div className='col-lg-3 col-md-6 col-sm-12'>
                                         <div className="form-check">
                                             <input className='form-check-input' type="checkbox" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["AR_BusA_BnS"] } name="AR_BusA_BnS" onChange={ (e) => { FormData["AR_BusA_BnS"] === true ? setFormData({ ...FormData, [e.target.name]: false }) : setFormData({ ...FormData, [e.target.name]: true }) } } />
-                                            <label className="form-check-label roa-label" for="flexCheckDefault">
+                                            <label className="form-check-label roa-label" htmlFor="flexCheckDefault">
                                                 Funding of Buy-and-Sell Agreement
                                             </label>
                                         </div>
@@ -1358,7 +1372,7 @@ const BARisk = () => {
                                     <div className='col-lg-3 col-md-6 col-sm-12'>
                                         <div className="form-check">
                                             <input className='form-check-input' type="checkbox" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["AR_BusA_KeyP_Insurance"] } name="AR_BusA_KeyP_Insurance" onChange={ (e) => { FormData["AR_BusA_KeyP_Insurance"] === true ? setFormData({ ...FormData, [e.target.name]: false }) : setFormData({ ...FormData, [e.target.name]: true }) } } />
-                                            <label className="form-check-label roa-label" for="flexCheckDefault">
+                                            <label className="form-check-label roa-label" htmlFor="flexCheckDefault">
                                                 Key Person Insurance
                                             </label>
                                         </div>
@@ -1366,7 +1380,7 @@ const BARisk = () => {
                                     <div className='col-lg-3 col-md-6 col-sm-12'>
                                         <div className="form-check">
                                             <input className='form-check-input' type="checkbox" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["AR_BusA_ContingentLiability"] } name="AR_BusA_ContingentLiability" onChange={ (e) => { FormData["AR_BusA_ContingentLiability"] === true ? setFormData({ ...FormData, [e.target.name]: false }) : setFormData({ ...FormData, [e.target.name]: true }) } } />
-                                            <label className="form-check-label roa-label" for="flexCheckDefault">
+                                            <label className="form-check-label roa-label" htmlFor="flexCheckDefault">
                                                 Contingent liability
                                             </label>
                                         </div>
@@ -1374,7 +1388,7 @@ const BARisk = () => {
                                     <div className='col-lg-3 col-md-6 col-sm-12'>
                                         <div className="form-check">
                                             <input className='form-check-input' type="checkbox" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["AR_BusA_BusOvProt"] } name="AR_BusA_BusOvProt" onChange={ (e) => { FormData["AR_BusA_BusOvProt"] === true ? setFormData({ ...FormData, [e.target.name]: false }) : setFormData({ ...FormData, [e.target.name]: true }) } } />
-                                            <label className="form-check-label roa-label" for="flexCheckDefault">
+                                            <label className="form-check-label roa-label" htmlFor="flexCheckDefault">
                                                 Business Overheads Protection
                                             </label>
                                         </div>
@@ -1382,7 +1396,7 @@ const BARisk = () => {
                                     <div className='col-lg-3 col-md-6 col-sm-12'>
                                         <div className="form-check">
                                             <input className='form-check-input' type="checkbox" onMouseLeave={ (e) => { onFieldBlur(e) } } id="vehicle1" checked={ FormData["AR_BusA_CLARedm"] } name="AR_BusA_CLARedm" onChange={ (e) => { FormData["AR_BusA_CLARedm"] === true ? setFormData({ ...FormData, [e.target.name]: false }) : setFormData({ ...FormData, [e.target.name]: true }) } } />
-                                            <label className="form-check-label roa-label" for="flexCheckDefault">
+                                            <label className="form-check-label roa-label" htmlFor="flexCheckDefault">
                                                 Credit Loan Account Redemption
                                             </label>
                                         </div>
@@ -1390,7 +1404,7 @@ const BARisk = () => {
                                     <div className='col-lg-3 col-md-6 col-sm-12'>
                                         <div className="form-check">
                                             <input className='form-check-input' type="checkbox" onMouseLeave={ (e) => { onFieldBlur(e) } } id="vehicle1" checked={ FormData["AR_BusA_DebitLoanRedemption"] } name="AR_BusA_DebitLoanRedemption" onChange={ (e) => { FormData["AR_BusA_DebitLoanRedemption"] === true ? setFormData({ ...FormData, [e.target.name]: false }) : setFormData({ ...FormData, [e.target.name]: true }) } } />
-                                            <label className="form-check-label roa-label" for="flexCheckDefault">
+                                            <label className="form-check-label roa-label" htmlFor="flexCheckDefault">
                                                 Debit Loan Redemption
                                             </label>
                                         </div>
@@ -1398,7 +1412,7 @@ const BARisk = () => {
                                     <div className='col-lg-3 col-md-6 col-sm-12'>
                                         <div className="form-check">
                                             <input className='form-check-input' type="checkbox" onMouseLeave={ (e) => { onFieldBlur(e) } } id="vehicle1" checked={ FormData["AR_BusA_FundingOfFutureExpenses"] } name="AR_BusA_FundingOfFutureExpenses" onChange={ (e) => { FormData["AR_BusA_FundingOfFutureExpenses"] === true ? setFormData({ ...FormData, [e.target.name]: false }) : setFormData({ ...FormData, [e.target.name]: true }) } } />
-                                            <label className="form-check-label roa-label" for="flexCheckDefault">
+                                            <label className="form-check-label roa-label" htmlFor="flexCheckDefault">
                                                 Funding of Future Expenses
                                             </label>
                                         </div>
@@ -1406,7 +1420,7 @@ const BARisk = () => {
                                     <div className='col-lg-3 col-md-6 col-sm-12'>
                                         <div className="form-check">
                                             <input className='form-check-input' type="checkbox" onMouseLeave={ (e) => { onFieldBlur(e) } } id="vehicle1" checked={ FormData["AR_BusA_FundingOfDeferredGratuities"] } name="AR_BusA_FundingOfDeferredGratuities" onChange={ (e) => { FormData["AR_BusA_FundingOfDeferredGratuities"] === true ? setFormData({ ...FormData, [e.target.name]: false }) : setFormData({ ...FormData, [e.target.name]: true }) } } />
-                                            <label className="form-check-label roa-label" for="flexCheckDefault">
+                                            <label className="form-check-label roa-label" htmlFor="flexCheckDefault">
                                                 Funding of Deferred Gratuities
                                             </label>
                                         </div>

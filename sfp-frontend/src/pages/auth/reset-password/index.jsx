@@ -89,7 +89,7 @@ const ResetPasswordPage = () => {
                                         <p className="card-text updated-subtitle">Enter your email for password reset.</p>
                                         <br />
                                         <div className="mb-3">
-                                            <label for="exampleFormControlInput1" className="form-label updated-email">Email</label>
+                                            <label htmlFor="exampleFormControlInput1" className="form-label updated-email">Email</label>
                                             <input name="email" value={ email } onChange={ (e) => { onInputUpdate(e) } } type="email" className="form-control text-bg-light form-control-md" id="exampleFormControlInput1" placeholder="name@sfp.co.za" />
                                         </div>
                                         <Link href="/auth/login">

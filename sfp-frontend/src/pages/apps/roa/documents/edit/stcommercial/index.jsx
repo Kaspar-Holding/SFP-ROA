@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import Alert from '../../../../../../components/Alert'
+import DangerAlert from '../../../../../../components/DangerAlert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const STCommercial = () => {
@@ -23,6 +24,8 @@ const STCommercial = () => {
 
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
+    const [ErrorVisibility, setErrorVisibility] = useState(false)
+    const [ErrorMessage, setErrorMessage] = useState("")
 
     const modules = {
         toolbar: [
@@ -1357,7 +1360,11 @@ const STCommercial = () => {
             })
 
         } catch (error) {
-
+            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
+            setErrorVisibility(true)
+            setTimeout(() => {
+                setErrorVisibility(false)
+            }, 5000)
         }
         setLoaded(false)
     }
@@ -2751,6 +2758,11 @@ const STCommercial = () => {
                                 <Alert SuccessMessage={ SuccessMessage } />
                                 :
                                 <></>
+                        }{
+                            ErrorVisibility ?
+                                <DangerAlert SuccessMessage={ ErrorMessage } />
+                                :
+                                <></>
                         }
                         <br />
                         <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
@@ -2828,7 +2840,7 @@ const STCommercial = () => {
                                                 </div>
                                                 <div className="col-6">
                                                     <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_Payment_Method_Annual"] === 1 ? true : false } name="STIC_Payment_Method_Annual" onChange={ (e) => { FormData["STIC_Payment_Method_Annual"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                    <label for="vehicle1">Yes</label><br />
+                                                    <label htmlFor="vehicle1">Yes</label><br />
                                                 </div>
                                             </div>
                                         </div>
@@ -2840,7 +2852,7 @@ const STCommercial = () => {
                                                 </div>
                                                 <div className="col-6">
                                                     <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_Payment_Method_Monthly"] === 1 ? true : false } name="STIC_Payment_Method_Monthly" onChange={ (e) => { FormData["STIC_Payment_Method_Monthly"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                    <label for="vehicle1">Yes</label><br />
+                                                    <label htmlFor="vehicle1">Yes</label><br />
                                                 </div>
                                             </div>
                                         </div>
@@ -2852,7 +2864,7 @@ const STCommercial = () => {
                                                 </div>
                                                 <div className="col-6">
                                                     <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_Sasria_Annual"] === 1 ? true : false } name="STIC_Sasria_Annual" onChange={ (e) => { FormData["STIC_Sasria_Annual"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                    <label for="vehicle2">Yes</label><br />
+                                                    <label htmlFor="vehicle2">Yes</label><br />
                                                 </div>
                                             </div>
                                         </div>
@@ -2864,7 +2876,7 @@ const STCommercial = () => {
                                                 </div>
                                                 <div className="col-6">
                                                     <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_Sasria_Monthly"] === 1 ? true : false } name="STIC_Sasria_Monthly" onChange={ (e) => { FormData["STIC_Sasria_Monthly"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                    <label for="vehicle3">Yes</label><br />
+                                                    <label htmlFor="vehicle3">Yes</label><br />
                                                 </div>
                                             </div>
                                         </div>
@@ -3052,7 +3064,7 @@ const STCommercial = () => {
                                                         </div>
                                                         <div className="col-4">
                                                             <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_Lower_Premium"] === 1 ? true : false } name="STIC_Lower_Premium" onChange={ (e) => { FormData["STIC_Lower_Premium"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                            <label for="vehicle3">Yes</label><br />
+                                                            <label htmlFor="vehicle3">Yes</label><br />
                                                         </div>
                                                     </div>
 
@@ -3062,7 +3074,7 @@ const STCommercial = () => {
                                                         </div>
                                                         <div className="col-4">
                                                             <input type="checkbox" className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData["STIC_Higher_Premium"] === 1 ? true : false } name="STIC_Higher_Premium" onChange={ (e) => { FormData["STIC_Higher_Premium"] === 1 ? setFormData({ ...FormData, [e.target.name]: 0 }) : setFormData({ ...FormData, [e.target.name]: 1 }) } } />
-                                                            <label for="vehicle3">Yes</label><br />
+                                                            <label htmlFor="vehicle3">Yes</label><br />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -19740,7 +19752,7 @@ const STCommercial = () => {
                                                     <tr>
                                                         <td style={ { fontSize: '14px', } } align="left">Business Limitation:</td>
                                                         <td>
-                                                            {/* <label for="cssss">No</label> */ }
+                                                            {/* <label htmlFor="cssss">No</label> */ }
                                                             <div className="row col-6 align-items-center">
                                                                 <div className="col-3">
                                                                     <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" checked={ FormData["STIC_Sec17_10"] == 1 ? true : false } onChange={ (e) => { onChange(e) } } type="radio" value="1" id="STIC_Sec17_10" name="STIC_Sec17_10" />
@@ -20302,7 +20314,7 @@ const STCommercial = () => {
                                                                         <tr>
                                                                             <td style={ { fontSize: '14px', } } align="left">Business Limitation:</td>
                                                                             <td>
-                                                                                {/* <label for="cssss">No</label> */ }
+                                                                                {/* <label htmlFor="cssss">No</label> */ }
                                                                                 <div className="row col-6 align-items-center">
                                                                                     <div className="col-3">
                                                                                         <input onMouseLeave={ (e) => { onFieldBlur(e) } } className="form-check-input" checked={ key["Sec17_10"] == 1 ? true : false } onChange={ (e) => { on_Section_17_Change(e, i) } } type="radio" value="1" id="Sec17_10" name="Sec17_10" />

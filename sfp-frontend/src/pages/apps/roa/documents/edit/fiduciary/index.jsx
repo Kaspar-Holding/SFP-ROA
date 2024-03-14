@@ -13,6 +13,7 @@ import EditROALayout from '../../../../../../hocs/EditROALayout'
 import { Editor } from '@tinymce/tinymce-react'
 import dynamic from "next/dynamic";
 import Alert from '../../../../../../components/Alert'
+import DangerAlert from '../../../../../../components/DangerAlert'
 
 
 const Fiduciary = () => {
@@ -20,6 +21,8 @@ const Fiduciary = () => {
 
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
+    const [ErrorVisibility, setErrorVisibility] = useState(false)
+    const [ErrorMessage, setErrorMessage] = useState("")
 
 
     const router = useRouter()
@@ -120,7 +123,11 @@ const Fiduciary = () => {
             })
 
         } catch (error) {
-
+            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
+            setErrorVisibility(true)
+            setTimeout(() => {
+                setErrorVisibility(false)
+            }, 5000)
         }
         setLoaded(false)
     }
@@ -155,6 +162,12 @@ const Fiduciary = () => {
                         {
                             SuccessMessageVisibility ?
                                 <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }
+                        {
+                            ErrorVisibility ?
+                                <DangerAlert SuccessMessage={ ErrorMessage } />
                                 :
                                 <></>
                         }

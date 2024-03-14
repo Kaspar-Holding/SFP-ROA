@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import {Navigate, NavLink, useLocation} from 'react-router-dom'
+import { Navigate, NavLink, useLocation } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 const CreateNewComplianceDocument = () => {
@@ -12,16 +12,16 @@ const CreateNewComplianceDocument = () => {
 
     const config = {
         headers: {
-            'Content-Type' : 'application/json',
-            'Authorization' : `JWT ${localStorage.getItem('access')}`,
-            'Accept' : 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
         }
     }
 
     const onChange = (e) => {
         setDocumentInitalData({
             ...DocumentInitalData,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -29,8 +29,8 @@ const CreateNewComplianceDocument = () => {
         e.preventDefault()
         completeInitialDetails(DocumentInitalData?.id)
     }
-    
-    const completeInitialDetails = async(id) => {
+
+    const completeInitialDetails = async (id) => {
         const Body = JSON.stringify(DocumentInitalData)
 
         try {
@@ -52,14 +52,14 @@ const CreateNewComplianceDocument = () => {
             })
 
             return (
-                <Navigate 
-                    type="button" 
-                    to={{pathname:"/complete-compliance-document"}} 
+                <Navigate
+                    type="button"
+                    to={ { pathname: "/complete-compliance-document" } }
                     state={
                         {
                             data: DocumentInitalData
                         }
-                    } 
+                    }
                 />
             )
 
@@ -78,11 +78,11 @@ const CreateNewComplianceDocument = () => {
     }
 
     useEffect(() => {
-        if(state['data']){
+        if (state['data']) {
             setDocumentInitalData(state['data'])
         }
     }, [])
-    
+
 
     return (
         <div className='compliance-inital-card'>
@@ -92,35 +92,35 @@ const CreateNewComplianceDocument = () => {
                 </div>
             </div>
             <div className='compliance-inital-content'>
-                <form onSubmit={(e)=>{completeInitialDetailsBtn(e)}}>
+                <form onSubmit={ (e) => { completeInitialDetailsBtn(e) } }>
                     <div className='row'>
-                        <div className='col-lg-2'>   
-                        </div>                     
-                        <div className='col-lg-4 col-md-6 col-sm-12'>                        
+                        <div className='col-lg-2'>
+                        </div>
+                        <div className='col-lg-4 col-md-6 col-sm-12'>
                             <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Client Name</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.clientName} name="clientName" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Client Name</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.clientName } name="clientName" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                             </div>
                             <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Advisor</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.advisor} name="advisor" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Advisor</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.advisor } name="advisor" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                             </div>
                             <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Business Unit</label>
-                                <select className="form-select" name="businessUnit" value={DocumentInitalData?.businessUnit} aria-label="Default select example">
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Business Unit</label>
+                                <select className="form-select" name="businessUnit" value={ DocumentInitalData?.businessUnit } aria-label="Default select example">
                                     <option value="1">SFP</option>
                                     <option value="2">FS4P</option>
                                     <option value="3">AFP</option>
-                                </select>                                
+                                </select>
                             </div>
                             <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Region</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.region} name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Region</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.region } name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                             </div>
                             <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">BAC</label>
-                                <select className="form-select" name="BAC" value={DocumentInitalData?.BAC} aria-label="Default select example">
-                                    <option value={0}>Select Business Type</option>
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">BAC</label>
+                                <select className="form-select" name="BAC" value={ DocumentInitalData?.BAC } aria-label="Default select example">
+                                    <option value={ 0 }>Select Business Type</option>
                                     <option value="1">Elrike</option>
                                     <option value="2">Prajay</option>
                                     <option value="3">Ruallen</option>
@@ -148,48 +148,48 @@ const CreateNewComplianceDocument = () => {
                                     <option value="25">EB*</option>
                                     <option value="26">St John</option>
                                 </select>
-                                
+
                             </div>
                             <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">ID Number</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.IdNumber} name="IdNumber" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
-                            </div>
-                        </div>
-                        <div className='col-lg-4 col-md-6 col-sm-12'>                     
-                            <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Categorisation</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.categorisation} name="categorisation" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
-                            </div>
-                            <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Advisor Email</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="email" value={DocumentInitalData?.advisorEmail} name="advisorEmail" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
-                            </div>
-                            <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.supervisor} name="supervisor" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
-                            </div>
-                            <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Policy Number</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.policy_number} name="policy_number" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
-                            </div>
-                            <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Supplier</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.supplier} name="supplier" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
-                            </div>
-                            <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Product</label>
-                                <input required onChange={(e)=>{onChange(e)}} type="text" value={DocumentInitalData?.product} name="product" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">ID Number</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.IdNumber } name="IdNumber" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                             </div>
                         </div>
-                        <div className='col-lg-2'>   
-                        </div>         
-                        <div className='col-lg-2'>   
-                        </div>         
-                        <div className='col-lg-8 col-md-12 col-sm-12'> 
+                        <div className='col-lg-4 col-md-6 col-sm-12'>
                             <div className="mb-3">
-                                <label for="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
-                                <select className="form-select" name="product" value={DocumentInitalData?.businessType} aria-label="Default select example">
-                                    <option value={0}>Select Business Type</option>
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Categorisation</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.categorisation } name="categorisation" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Advisor Email</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="email" value={ DocumentInitalData?.advisorEmail } name="advisorEmail" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.supervisor } name="supervisor" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Policy Number</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.policy_number } name="policy_number" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Supplier</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.supplier } name="supplier" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Product</label>
+                                <input required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.product } name="product" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
+                            </div>
+                        </div>
+                        <div className='col-lg-2'>
+                        </div>
+                        <div className='col-lg-2'>
+                        </div>
+                        <div className='col-lg-8 col-md-12 col-sm-12'>
+                            <div className="mb-3">
+                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
+                                <select className="form-select" name="product" value={ DocumentInitalData?.businessType } aria-label="Default select example">
+                                    <option value={ 0 }>Select Business Type</option>
                                     <option value="1">Business Assurance</option>
                                     <option value="2">Comm release</option>
                                     <option value="3">Employee Benefits</option>
@@ -207,9 +207,9 @@ const CreateNewComplianceDocument = () => {
                                     <option value="15">Short Term Personal</option>
                                 </select>
                             </div>
-                        </div>         
-                        <div className='col-lg-2'>   
-                        </div>         
+                        </div>
+                        <div className='col-lg-2'>
+                        </div>
                     </div>
                     <div className="d-grid col-4 mx-auto">
                         <button className="btn btn-primary compliance-inital-card-button-text" type="submit">Continue</button>

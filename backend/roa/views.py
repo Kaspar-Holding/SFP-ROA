@@ -141,10 +141,10 @@ class FormAPIs(APIView):
     def post(self, request, format=None):
         disclosuresData = request.data['data']
         disclosuresData['advisorId'] = request.user.pk
-        if Disclosures.objects.filter(client_id_number=disclosuresData['client_id_number']).exists():
-            return Response({"message": f"Form with Client ID {disclosuresData['client_id_number']} Already Exists","code":400},400)
-        if Disclosures.objects.filter(client_email=disclosuresData['client_email']).exists():
-            return Response({"message": f"Form with Client Email {disclosuresData['client_email']} Already Exists","code":400},400)
+        # if Disclosures.objects.filter(client_id_number=disclosuresData['client_id_number']).exists():
+        #     return Response({"message": f"Form with Client ID {disclosuresData['client_id_number']} Already Exists","code":400},400)
+        # if Disclosures.objects.filter(client_email=disclosuresData['client_email']).exists():
+        #     return Response({"message": f"Form with Client Email {disclosuresData['client_email']} Already Exists","code":400},400)
         serializer = Disclosures_Serializer(data=disclosuresData)
         if serializer.is_valid():
             data = serializer.create(serializer.validated_data)
@@ -1101,3 +1101,115 @@ class advisorDisclosureProducts(APIView):
                 "status" : True
             })
         return Response(products_data, 200)
+    
+
+class FormAdvisorProfile(APIView):
+    def get(self, request, pk):
+        form = Disclosures.objects.filter(id=pk)
+        if not form.exists():
+            return Response(404)
+        form = form.first()
+
+        userData = UserAccount.objects.filter(id=form.advisorId.pk).values('email', 'first_name', 'last_name').first()
+
+        user_profile_data = user_profile.objects.filter(user=form.advisorId)
+        if user_profile_data.exists():
+            user_profile_data = user_profile_data.values().first()
+            userData['full_name'] = user_profile_data['Full_Name']
+            userData['contact_cell'] = user_profile_data['Contact_Cell']
+            userData['qualification'] = ""
+            if user_profile_data['Qualification_Name'] != "nan" or user_profile_data['Qualification_Name'] != "" :
+                userData['qualification'] = user_profile_data['Qualification_Name']
+            userData['address'] = ""
+            if user_profile_data['Address_Postal_1'] != "nan" :
+                userData['address'] += user_profile_data['Address_Postal_1'] + ", "
+            else:
+                userData['address'] += user_profile_data['Address_Physical_1'] + ", "
+            if user_profile_data['Address_Postal_2'] != "nan" :
+                userData['address'] += user_profile_data['Address_Postal_2'] + ", "
+            else:
+                userData['address'] += user_profile_data['Address_Physical_2'] + ", "
+            if user_profile_data['Address_Postal_3'] != "nan" :
+                userData['address'] += user_profile_data['Address_Postal_3'] + ", "
+            else:
+                userData['address'] += user_profile_data['Address_Physical_3'] + ", "
+            if user_profile_data['Address_Postal_Postal_Code'] != "nan" :
+                userData['address'] += f"{int(float(user_profile_data['Address_Postal_Postal_Code'])):04}" if user_profile_data['Address_Postal_Postal_Code'] != "" else ""
+            else:
+                userData['address'] += f"{int(float(user_profile_data['Address_Physical_Postal_Code'])):04}" if user_profile_data['Address_Physical_Postal_Code'] != "" else ""
+
+            userData['LTI_SC_A'] = True if user_profile_data['Category1_1_Registration_Status'] == "Accredited" or user_profile_data['Category1_1_Registration_Status'] == "Under Supervision" else False
+            userData['LTI_SC_A_Supervisor'] = True if user_profile_data['Category1_1_Supervisor'] != "nan" else False
+            
+            userData['Pension_funds'] = True if user_profile_data['Category1_7_Registration_Status'] == "Accredited" or user_profile_data['Category1_7_Registration_Status'] == "Under Supervision" else False
+            userData['Pension_funds_Supervisor'] = True if user_profile_data['Category1_7_Supervisor'] != "nan" else False
+            
+            userData['RPension_funds'] = True if user_profile_data['Category1_5_Registration_Status'] == "Accredited" or user_profile_data['Category1_5_Registration_Status'] == "Under Supervision" else False
+            userData['RPension_funds_Supervisor'] = True if user_profile_data['Category1_5_Supervisor'] != "nan" else False
+            
+            userData['LTI_SC_B1'] = True if user_profile_data['Category1_3_Registration_Status'] == "Accredited" or user_profile_data['Category1_3_Registration_Status'] == "Under Supervision" else False
+            userData['LTI_SC_B1_Supervisor'] = True if user_profile_data['Category1_3_Supervisor'] != "nan" else False
+            
+            userData['LTI_SC_B1A'] = True if user_profile_data['Category1_22_Registration_Status'] == "Accredited" or user_profile_data['Category1_22_Registration_Status'] == "Under Supervision" else False
+            userData['LTI_SC_B1A_Supervisor'] = True if user_profile_data['Category1_22_Supervisor'] != "nan" else False
+            
+            userData['LTI_SC_B2'] = True if user_profile_data['Category1_20_Registration_Status'] == "Accredited" or user_profile_data['Category1_20_Registration_Status'] == "Under Supervision" else False
+            userData['LTI_SC_B2_Supervisor'] = True if user_profile_data['Category1_20_Supervisor'] != "nan" else False
+            
+            userData['LTI_SC_B2A'] = True if user_profile_data['Category1_21_Registration_Status'] == "Accredited" or user_profile_data['Category1_21_Registration_Status'] == "Under Supervision" else False
+            userData['LTI_SC_B2A_Supervisor'] = True if user_profile_data['Category1_21_Supervisor'] != "nan" else False
+            
+            userData['LTI_SC_C'] = True if user_profile_data['Category1_4_Registration_Status'] == "Accredited" or user_profile_data['Category1_4_Registration_Status'] == "Under Supervision" else False
+            userData['LTI_SC_C_Supervisor'] = True if user_profile_data['Category1_4_Supervisor'] != "nan" else False
+            
+            userData['LTI_Deposits'] = True if user_profile_data['Category1_17_Registration_Status'] == "Accredited" or user_profile_data['Category1_17_Registration_Status'] == "Under Supervision" else False
+            userData['LTI_Deposits_Supervisor'] = True if user_profile_data['Category1_17_Supervisor'] != "nan" else False
+            
+            userData['STI_Deposits'] = True if user_profile_data['Category1_18_Registration_Status'] == "Accredited" or user_profile_data['Category1_18_Registration_Status'] == "Under Supervision" else False
+            userData['STI_Deposits_Supervisor'] = True if user_profile_data['Category1_18_Supervisor'] != "nan" else False
+            
+            userData['STI_PL'] = True if user_profile_data['Category1_2_Registration_Status'] == "Accredited" or user_profile_data['Category1_2_Registration_Status'] == "Under Supervision" else False
+            userData['STI_PL_Supervisor'] = True if user_profile_data['Category1_2_Supervisor'] != "nan" else False
+            
+            userData['STI_PL_A'] = True if user_profile_data['Category1_23_Registration_Status'] == "Accredited" or user_profile_data['Category1_23_Registration_Status'] == "Under Supervision" else False
+            userData['STI_PL_A_Supervisor'] = True if user_profile_data['Category1_23_Supervisor'] != "nan" else False
+            
+            userData['STI_CL'] = True if user_profile_data['Category1_6_Registration_Status'] == "Accredited" or user_profile_data['Category1_6_Registration_Status'] == "Under Supervision" else False
+            userData['STI_CL_Supervisor'] = True if user_profile_data['Category1_6_Supervisor'] != "nan" else False
+            
+            userData['CIC'] = True if user_profile_data['Category1_14_Registration_Status'] == "Accredited" or user_profile_data['Category1_14_Registration_Status'] == "Under Supervision" else False
+            userData['CIC_Supervisor'] = True if user_profile_data['Category1_14_Supervisor'] != "nan" else False
+            
+            userData['HSB'] = True if user_profile_data['Category1_16_Registration_Status'] == "Accredited" or user_profile_data['Category1_16_Registration_Status'] == "Under Supervision" else False
+            userData['HSB_Supervisor'] = True if user_profile_data['Category1_16_Supervisor'] != "nan" else False
+            
+            userData['Shares'] = True if user_profile_data['Category1_8_Registration_Status'] == "Accredited" or user_profile_data['Category1_8_Registration_Status'] == "Under Supervision" else False
+            userData['Shares_Supervisor'] = True if user_profile_data['Category1_8_Supervisor'] != "nan" else False
+            
+            userData['Bonds'] = True if user_profile_data['Category1_12_Registration_Status'] == "Accredited" or user_profile_data['Category1_12_Registration_Status'] == "Under Supervision" else False
+            userData['Bonds_Supervisor'] = True if user_profile_data['Category1_12_Supervisor'] != "nan" else False
+            
+            userData['Money_market'] = True if user_profile_data['Category1_9_Registration_Status'] == "Accredited" or user_profile_data['Category1_9_Registration_Status'] == "Under Supervision" else False
+            userData['Money_market_Supervisor'] = True if user_profile_data['Category1_9_Supervisor'] != "nan" else False
+            
+            userData['Debentures'] = True if user_profile_data['Category1_10_Registration_Status'] == "Accredited" or user_profile_data['Category1_10_Registration_Status'] == "Under Supervision" else False
+            userData['Debentures_Supervisor'] = True if user_profile_data['Category1_10_Supervisor'] != "nan" else False
+            
+            userData['Warrants'] = True if user_profile_data['Category1_11_Registration_Status'] == "Accredited" or user_profile_data['Category1_11_Registration_Status'] == "Under Supervision" else False
+            userData['Warrants_Supervisor'] = True if user_profile_data['Category1_11_Supervisor'] != "nan" else False
+            # Get the current date and time in the 'Africa/Johannesburg' timezone
+            now = datetime.now(pytz.timezone('Africa/Johannesburg'))
+            # Get the appointment date from the user_profile_data dictionary
+            userData['inservice'] = (user_profile_data['Appointment_Date'])
+            appointment_date = (user_profile_data['Appointment_Date'])
+            experience = now.year - appointment_date.year
+            experience = experience if experience != 0 else 1
+            dofa = user_profile_data['DOFA']
+            industry_experience = now.year - dofa.year
+            industry_experience = industry_experience if industry_experience != 0 else 1
+
+            # Calculate the difference in years
+            userData['experience'] = experience
+            userData['industry_experience'] = industry_experience
+            
+        return Response({"profile" : userData}, 200)

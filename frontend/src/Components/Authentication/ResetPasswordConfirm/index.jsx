@@ -126,11 +126,11 @@ const ResetPasswordConfirm = ({ resetPasswordConfirm, isAuthenticated }) => {
                             <p className="card-text updated-subtitle">Enter new password.</p>
                             <br />
                             <div className="mb-3">
-                                <label for="exampleFormControlInput1" className="form-label updated-email">New Password</label>
+                                <label htmlFor="exampleFormControlInput1" className="form-label updated-email">New Password</label>
                                 <input name="new_password" value={ new_password } onChange={ (e) => { onChange(e) } } type="password" className="form-control text-bg-light form-control-md" placeholder="New Password" />
                             </div>
                             <div className="mb-3">
-                                <label for="exampleFormControlInput1" className="form-label updated-email">Confirm New Password</label>
+                                <label htmlFor="exampleFormControlInput1" className="form-label updated-email">Confirm New Password</label>
                                 <input name="re_new_password" value={ re_new_password } onChange={ (e) => { onChange(e) } } type="password" className="form-control text-bg-light form-control-md" placeholder="Confirm New Password" />
                             </div>
                             <NavLink to="/signin">

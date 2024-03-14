@@ -338,8 +338,8 @@ const ComplianceList = () => {
                                         </div>
                                         <div className='col-lg-4'>
                                             {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */ }
-                                            <div className='row'>
-                                                <div className="col-3 dropdown mx-1">
+                                            <div className='btn-group'>
+                                                <div className="btn-group dropdown mx-1">
                                                     <button className={
                                                         user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary dropdown-toggle'
                                                             : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary dropdown-toggle'
@@ -356,7 +356,7 @@ const ComplianceList = () => {
                                                         <li><a className={ PageSize == 100 ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onPageSizeChange(e, "100") } } href="#">100</a></li>
                                                     </ul>
                                                 </div>
-                                                <div className="col-3 dropdown">
+                                                <div className="btn-group dropdown">
                                                     <button className={
                                                         user?.email?.includes('sfp') || user?.email?.includes('succession') ? 'btn btn-sm btn-sfp btn-secondary dropdown-toggle'
                                                             : user?.email?.includes('fs4p') ? 'btn btn-sm btn-fs4p btn-secondary dropdown-toggle'
@@ -370,7 +370,7 @@ const ComplianceList = () => {
                                                         <li><a className={ Sortby === "created_at" ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onSortChange(e, "created_at") } } href="#">Creation Time</a></li>
                                                     </ul>
                                                 </div>
-                                                <div className='col-1'>
+                                                <div className='btn-group'>
                                                     <button
                                                         onClick={ (e) => { onSortDirectionChange(e, "up") } }
                                                         className={
@@ -383,7 +383,7 @@ const ComplianceList = () => {
                                                         <i className="fa-solid fa-arrow-up-wide-short"></i>
                                                     </button>
                                                 </div>
-                                                <div className='col-1'>
+                                                <div className='btn-group'>
                                                     <button
                                                         onClick={ (e) => { onSortDirectionChange(e, "down") } }
                                                         className={

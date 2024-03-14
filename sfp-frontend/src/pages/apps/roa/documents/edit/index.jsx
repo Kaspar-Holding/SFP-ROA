@@ -566,7 +566,7 @@ const EditROA = () => {
                                                     <tr>
                                                         <td colSpan={ 3 }>
                                                             <p className='roa-label text-center'>
-                                                                Qualtification:
+                                                                Qualification:
                                                             </p>
                                                         </td>
                                                         <td colSpan={ 9 }>
@@ -1437,7 +1437,7 @@ const EditROA = () => {
                                                                 </div>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptNo">
+                                                                        <label className="form-check-label roa-font" htmlFor="receiptNo">
                                                                             No
                                                                         </label>
                                                                         <input required className="form-check-input" checked={ FormData?.letter_of_introduction === 0 ? true : false } onChange={ (e) => { onChange(e) } } type="radio" value={ 0 } name="letter_of_introduction" />
@@ -1468,7 +1468,7 @@ const EditROA = () => {
                                                                 </div>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptNo">
+                                                                        <label className="form-check-label roa-font" htmlFor="receiptNo">
                                                                             No
                                                                         </label>
                                                                         <input className="form-check-input" type="radio" value="0" onChange={ (e) => { onChange(e) } } checked={ FormData?.popi === 0 ? true : false } name="popi" />
@@ -1499,7 +1499,7 @@ const EditROA = () => {
                                                                 </div>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptNo">
+                                                                        <label className="form-check-label roa-font" htmlFor="receiptNo">
                                                                             No
                                                                         </label>
                                                                         <input className="form-check-input" type="radio" value="0" onChange={ (e) => { onChange(e) } } checked={ FormData?.pi_processing === 0 ? true : false } name="pi_processing" />
@@ -1530,7 +1530,7 @@ const EditROA = () => {
                                                                 </div>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptNo">
+                                                                        <label className="form-check-label roa-font" htmlFor="receiptNo">
                                                                             No
                                                                         </label>
                                                                         <input className="form-check-input" type="radio" value="0" onChange={ (e) => { onChange(e) } } checked={ FormData?.marketing_purposes === 0 ? true : false } name="marketing_purposes" />
@@ -1561,7 +1561,7 @@ const EditROA = () => {
                                                                 </div>
                                                                 <div className='col-6'>
                                                                     <div className="form-check">
-                                                                        <label className="form-check-label roa-font" for="receiptNo">
+                                                                        <label className="form-check-label roa-font" htmlFor="receiptNo">
                                                                             No
                                                                         </label>
                                                                         <input className="form-check-input" type="radio" value="0" onChange={ (e) => { onChange(e) } } checked={ FormData?.pi_retained === 0 ? true : false } name="pi_retained" />
@@ -1579,7 +1579,7 @@ const EditROA = () => {
                                                         <td colSpan={ 5 }>
                                                             <div className="row g-3 align-items-center">
                                                                 <div className="col-3 roa-font">
-                                                                    <label for="client_date" className="col-form-label">Date</label>
+                                                                    <label htmlFor="client_date" className="col-form-label">Date</label>
                                                                 </div>
                                                                 <div className="col-9">
                                                                     <input type="date" id="client_date" name="client_date" value={ FormData?.client_date } onChange={ (e) => { onChange(e) } } className="form-control" aria-describedby="passwordHelpInline" />
@@ -1614,7 +1614,7 @@ const EditROA = () => {
                                                                 <div className='col-1'>
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="radio" value="1" checked={ FormData?.provider_for === 1 ? true : false } name="provider_for" />
-                                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                                        <label class="form-check-label" htmlFor="flexCheckDefault">
                                                                             STI
                                                                         </label>
                                                                     </div>
@@ -1625,7 +1625,7 @@ const EditROA = () => {
                                                                 <div className='col-3'>
                                                                     <div class="form-check">
                                                                         <input class="form-check-input" type="radio" value="0" checked={ FormData?.provider_for === 0 ? true : false } name="provider_for" />
-                                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                                        <label class="form-check-label" htmlFor="flexCheckDefault">
                                                                             Health Insurance
                                                                         </label>
                                                                     </div>

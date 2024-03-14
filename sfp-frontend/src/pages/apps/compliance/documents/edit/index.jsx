@@ -207,16 +207,16 @@ const EditDocument = () => {
                                         </div>
                                         <div className='col-lg-4 col-md-6 col-sm-12'>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Client Name</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Client Name</label>
                                                 <input required onChange={ (e) => { DocumentInitalData?.referred ? "" : onChange(e) } } type="text" value={ DocumentInitalData?.clientName } name="clientName" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Advisor</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Advisor</label>
                                                 <input style={ DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" || DocumentInitalData?.flag === "Green" ? { backgroundColor: DocumentInitalData?.flag, color: 'white' } : { backgroundColor: DocumentInitalData?.flag } : { backgroundColor: "white" } } disabled onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.advisor_name } name="advisor" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                                 {/* <Select defaultInputValue={options[DocumentInitalData?.advisor]} options={options} onChange={(e)=>{onSelectChange(e)}} className="searchSelect" placeholder="Search the advisor"/> */ }
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Business Unit</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Business Unit</label>
                                                 {/* <Select options={businessUnit} onChange={(e)=>{onSelectChange(e)}} className="searchSelect" placeholder="Business Unit"/> */ }
                                                 <select style={ DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" || DocumentInitalData?.flag === "Green" ? { backgroundColor: DocumentInitalData?.flag, color: 'white' } : { backgroundColor: DocumentInitalData?.flag } : { backgroundColor: "white" } } disabled className="form-select" name="businessUnit" value={ DocumentInitalData?.businessUnit } aria-label="Default select example">
                                                     <option value="1">SFP</option>
@@ -225,43 +225,43 @@ const EditDocument = () => {
                                                 </select>
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Region</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Region</label>
                                                 <input style={ DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" || DocumentInitalData?.flag === "Green" ? { backgroundColor: DocumentInitalData?.flag, color: 'white' } : { backgroundColor: DocumentInitalData?.flag } : { backgroundColor: "white" } } disabled required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.region } name="region" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">BAC</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">BAC</label>
                                                 <input style={ DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" || DocumentInitalData?.flag === "Green" ? { backgroundColor: DocumentInitalData?.flag, color: 'white' } : { backgroundColor: DocumentInitalData?.flag } : { backgroundColor: "white" } } disabled onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.bac_name } name="bac_name" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
 
 
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">ID Number</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">ID Number</label>
                                                 <input style={ DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" || DocumentInitalData?.flag === "Green" ? { backgroundColor: DocumentInitalData?.flag, color: 'white' } : { backgroundColor: DocumentInitalData?.flag } : { backgroundColor: "white" } } disabled required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.IdNumber } name="IdNumber" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                         </div>
                                         <div className='col-lg-4 col-md-6 col-sm-12'>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Categorisation</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Categorisation</label>
                                                 <input style={ DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" || DocumentInitalData?.flag === "Green" ? { backgroundColor: DocumentInitalData?.flag, color: 'white' } : { backgroundColor: DocumentInitalData?.flag } : { backgroundColor: "white" } } required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.categorisation } name="categorisation" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Advisor Email</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Advisor Email</label>
                                                 <input disabled onChange={ (e) => { DocumentInitalData?.referred ? "" : onChange(e) } } style={ DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" || DocumentInitalData?.flag === "Green" ? { backgroundColor: DocumentInitalData?.flag, color: 'white' } : { backgroundColor: DocumentInitalData?.flag } : { backgroundColor: "white" } } type="email" value={ DocumentInitalData?.advisorEmail } name="advisorEmail" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Supervision</label>
                                                 <input style={ DocumentInitalData?.flag !== "" ? DocumentInitalData?.flag === "Purple" || DocumentInitalData?.flag === "Green" ? { backgroundColor: DocumentInitalData?.flag, color: 'white' } : { backgroundColor: DocumentInitalData?.flag } : { backgroundColor: "white" } } disabled required onChange={ (e) => { onChange(e) } } type="text" value={ DocumentInitalData?.supervisor } name="supervisor" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Policy Number</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Policy Number</label>
                                                 <input required onChange={ (e) => { DocumentInitalData?.referred ? "" : onChange(e) } } type="text" value={ DocumentInitalData?.policy_number } name="policy_number" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Supplier</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Supplier</label>
                                                 <input required onChange={ (e) => { DocumentInitalData?.referred ? "" : onChange(e) } } type="text" value={ DocumentInitalData?.supplier } name="supplier" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                             <div className="mb-3">
-                                                <label for="basic-url" className="form-label compliance-inital-card-text">Product</label>
+                                                <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Product</label>
                                                 <input required onChange={ (e) => { DocumentInitalData?.referred ? "" : onChange(e) } } type="text" value={ DocumentInitalData?.product } name="product" className="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" />
                                             </div>
                                         </div>
@@ -274,7 +274,7 @@ const EditDocument = () => {
                                                 <>
                                                     <div className='col-lg-4 col-md-12 col-sm-12'>
                                                         <div className="mb-3">
-                                                            <label for="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
+                                                            <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
                                                             <select required className="form-select" name="businessType" value={ DocumentInitalData?.businessType } onChange={ (e) => { DocumentInitalData?.referred ? "" : onChange(e) } } aria-label="Default select example">
                                                                 <option value={ 0 }>Select Business Type</option>
                                                                 <option value="1">Business Assurance</option>
@@ -311,7 +311,7 @@ const EditDocument = () => {
                                                             <div className='col-lg-6'>
                                                                 <div className="form-check">
                                                                     <input className="form-check-input" type="radio" onChange={ (e) => { DocumentInitalData?.referred ? "" : onChange(e) } } value={ 1 } checked={ DocumentInitalData?.starting_point == Number("1") ? true : false } name="starting_point" id="starting_point" />
-                                                                    <label className="form-check-label" for="fica">
+                                                                    <label className="form-check-label" htmlFor="fica">
                                                                         ARC
                                                                     </label>
                                                                 </div>
@@ -319,7 +319,7 @@ const EditDocument = () => {
                                                             <div className='col-lg-6'>
                                                                 <div className="form-check">
                                                                     <input className="form-check-input" type="radio" onChange={ (e) => { DocumentInitalData?.referred ? "" : onChange(e) } } value={ 2 } checked={ DocumentInitalData?.starting_point == Number("2") ? true : false } name="starting_point" id="starting_point" />
-                                                                    <label className="form-check-label" for="fica">
+                                                                    <label className="form-check-label" htmlFor="fica">
                                                                         Gatekeeper
                                                                     </label>
                                                                 </div>
@@ -330,7 +330,7 @@ const EditDocument = () => {
                                                 :
                                                 <div className='col-lg-8 col-md-12 col-sm-12'>
                                                     <div className="mb-3">
-                                                        <label for="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
+                                                        <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Type of Business</label>
                                                         <select required className="form-select" name="businessType" value={ DocumentInitalData?.businessType } onChange={ (e) => { "" } } aria-label="Default select example">
                                                             <option value={ 0 }>Select Business Type</option>
                                                             <option value="1">Business Assurance</option>
@@ -369,7 +369,7 @@ const EditDocument = () => {
                                             <div className='row'>
                                                 <div className='col-lg-4'>
                                                     <div className="mb-3">
-                                                        <label for="basic-url" className="form-label compliance-inital-card-text">Lump Sum</label>
+                                                        <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Lump Sum</label>
                                                         <div className="input-group mb-3">
                                                             <span class="input-group-text" id="basic-addon1">R</span>
                                                             <input
@@ -387,7 +387,7 @@ const EditDocument = () => {
                                                 </div>
                                                 <div className='col-lg-4'>
                                                     <div className="mb-3">
-                                                        <label for="basic-url" className="form-label compliance-inital-card-text">Monthly Premium</label>
+                                                        <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Monthly Premium</label>
                                                         <div className="input-group mb-3">
                                                             <span class="input-group-text" id="basic-addon2">R</span>
                                                             <input
@@ -405,7 +405,7 @@ const EditDocument = () => {
                                                 </div>
                                                 <div className='col-lg-4'>
                                                     <div className="mb-3">
-                                                        <label for="basic-url" className="form-label compliance-inital-card-text">Commission</label>
+                                                        <label htmlFor="basic-url" className="form-label compliance-inital-card-text">Commission</label>
                                                         <div className="input-group mb-3">
                                                             <span class="input-group-text" id="basic-addon3">R</span>
                                                             <input

@@ -90,11 +90,11 @@ const LoginPage = () => {
                                         <p className="card-text updated-subtitle">Enter your details to get sign in to your account.</p>
                                         <br />
                                         <div className="mb-3">
-                                            <label for="exampleFormControlInput1" className="form-label updated-email">Email</label>
+                                            <label htmlFor="exampleFormControlInput1" className="form-label updated-email">Email</label>
                                             <input name="email" value={ email } onChange={ (e) => { onInputUpdate(e) } } type="email" className="form-control text-bg-light form-control-md" id="exampleFormControlInput1" placeholder="name@sfp.co.za" />
                                         </div>
                                         <div className="mb-3">
-                                            <label for="exampleFormControlInput2" className="form-label updated-email">Password</label>
+                                            <label htmlFor="exampleFormControlInput2" className="form-label updated-email">Password</label>
                                             <input name="password" value={ password } onChange={ (e) => { onInputUpdate(e) } } type="password" className="form-control text-bg-light form-control-md" id="exampleFormControlInput2" placeholder="Password" />
                                         </div>
                                         <Link href="/auth/reset-password">

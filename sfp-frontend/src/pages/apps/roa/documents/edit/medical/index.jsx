@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import Alert from '../../../../../../components/Alert'
+import DangerAlert from '../../../../../../components/DangerAlert'
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const Medical = () => {
@@ -23,6 +24,8 @@ const Medical = () => {
 
     const [SuccessMessage, setSuccessMessage] = useState("")
     const [SuccessMessageVisibility, setSuccessMessageVisibility] = useState(false)
+    const [ErrorVisibility, setErrorVisibility] = useState(false)
+    const [ErrorMessage, setErrorMessage] = useState("")
 
     const modules = {
         toolbar: [
@@ -234,7 +237,11 @@ const Medical = () => {
             })
 
         } catch (error) {
-
+            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
+            setErrorVisibility(true)
+            setTimeout(() => {
+                setErrorVisibility(false)
+            }, 5000)
         }
         setLoaded(false)
     }
@@ -279,6 +286,11 @@ const Medical = () => {
                         {
                             SuccessMessageVisibility ?
                                 <Alert SuccessMessage={ SuccessMessage } />
+                                :
+                                <></>
+                        }{
+                            ErrorVisibility ?
+                                <DangerAlert SuccessMessage={ ErrorMessage } />
                                 :
                                 <></>
                         }

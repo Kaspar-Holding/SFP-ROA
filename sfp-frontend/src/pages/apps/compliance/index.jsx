@@ -447,8 +447,8 @@ const Compliance = () => {
                                         </div>
                                         <div className='col-lg-4'>
                                             {/* <p className='app-dashboard-subheader'>Compliance KPIs in last 15 days</p> */ }
-                                            <div className='row'>
-                                                <div className="col-3 dropdown mx-1">
+                                            <div className='btn-group' role="group">
+                                                <div className="btn-group dropdown mx-1" role="group">
                                                     <button className="btn btn-sm btn-sfp btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         Page Size
                                                     </button>
@@ -460,7 +460,7 @@ const Compliance = () => {
                                                         <li><a className={ PageSize == 100 ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onPageSizeChange(e, "100") } } href="#">100</a></li>
                                                     </ul>
                                                 </div>
-                                                <div className="col-3 dropdown">
+                                                <div className="btn-group dropdown" role="group">
                                                     <button className="btn btn-sm btn-sfp btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         Sort by
                                                     </button>
@@ -469,32 +469,29 @@ const Compliance = () => {
                                                         <li><a className={ Sortby === "created_at" ? "dropdown-item active" : "dropdown-item" } onClick={ (e) => { onSortChange(e, "created_at") } } href="#">Creation Time</a></li>
                                                     </ul>
                                                 </div>
-                                                <div className='col-1'>
-                                                    <button
-                                                        onClick={ (e) => { onSortDirectionChange(e, "up") } }
-                                                        className={
-                                                            SortDirection === "up" ?
-                                                                'btn btn-sm btn-sfp btn-secondary'
-                                                                :
-                                                                'btn btn-sm btn-outline-secondary'
-                                                        }
-                                                    >
-                                                        <i className="fa-solid fa-arrow-up-wide-short"></i>
-                                                    </button>
-                                                </div>
-                                                <div className='col-1'>
-                                                    <button
-                                                        onClick={ (e) => { onSortDirectionChange(e, "down") } }
-                                                        className={
-                                                            SortDirection === "down" ?
-                                                                'btn btn-sm btn-sfp btn-secondary'
-                                                                :
-                                                                'btn btn-sm btn-outline-secondary'
-                                                        }
-                                                    >
-                                                        <i className="fa-solid fa-arrow-down-wide-short"></i>
-                                                    </button>
-                                                </div>
+                                                <button
+                                                    onClick={ (e) => { onSortDirectionChange(e, "up") } }
+                                                    className={
+                                                        SortDirection === "up" ?
+                                                            'btn btn-sm btn-sfp btn-secondary'
+                                                            :
+                                                            'btn btn-sm btn-outline-secondary'
+                                                    }
+                                                >
+                                                    <i className="fa-solid fa-arrow-up-wide-short"></i>
+                                                </button>
+                                                <button
+                                                    onClick={ (e) => { onSortDirectionChange(e, "down") } }
+                                                    className={
+                                                        SortDirection === "down" ?
+                                                            'btn btn-sm btn-sfp btn-secondary'
+                                                            :
+                                                            'btn btn-sm btn-outline-secondary'
+                                                    }
+                                                >
+                                                    <i className="fa-solid fa-arrow-down-wide-short"></i>
+                                                </button>
+
                                             </div>
                                         </div>
 

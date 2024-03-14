@@ -14,6 +14,16 @@ Deployed using Nginx and Gunicorn
 
 ## Updates
 
+### 14 March 2024:
+- Users
+1. Removed old fields from user_profile.
+- ROA
+1. clientDateOfBirth field updated.
+2. Added Alert in case of failure.
+- PDF
+1. Disclosures Total Categories Rows updated.
+- Deployment on Staging and Production 
+
 ### 08 March 2024:
 - Insights
 1. Advisor based dashboard was designed.

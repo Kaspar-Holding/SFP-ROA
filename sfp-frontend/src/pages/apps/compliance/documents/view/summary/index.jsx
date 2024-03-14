@@ -369,7 +369,7 @@ const SummaryDocument = () => {
                                                     `
                                                     } 
                                                 placeholder="Leave a comment here" id="summaryComment" style={{height: "300px"}}></textarea>
-                                            <label for="summaryComment">Email Response</label>
+                                            <label htmlFor="summaryComment">Email Response</label>
                                         </div> */}
                                         </div>
                                     </div>
