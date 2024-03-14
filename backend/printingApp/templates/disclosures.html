@@ -178,596 +178,598 @@
                 {{user.qualification}}
             </td>
         </tr>
-        <tr>
-            <td rowspan="12" style='width: 10%; border: 1px solid black; text-align:center;'>
-                Category of Business Intermediary is licenced to sell 
-                (reference: SUB-CATEGORY = SC)
-            </td>
-        </tr>
-        <tr>
-            <td colspan="5" style='width: 20%; border: 1px solid black; text-align:center;'>
-                <b class="disclosure-color">Category</b>
-            </td>
-            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
-                <b class="disclosure-color">Advice</b>
-            </td>
-            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
-                <b class="disclosure-color">Intermediary</b>
-            </td>
-            <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
-                <b class="disclosure-color">Supervision</b>
-            </td>
-        </tr>
-        {% if user.LTI_SC_A  %}
+        {% if has_categories %}
             <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Long-Term insurance SC A
-                    </span>
+                <td rowspan="{{total_categories}}" style='width: 10%; border: 1px solid black; text-align:center;'>
+                    Category of Business Intermediary is licenced to sell 
+                    (reference: SUB-CATEGORY = SC)
                 </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
+            </tr>
+            <tr>
+                <td colspan="5" style='width: 20%; border: 1px solid black; text-align:center;'>
+                    <b class="disclosure-color">Category</b>
                 </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
+                <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                    <b class="disclosure-color">Advice</b>
                 </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.LTI_SC_A_Supervision %}
+                <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                    <b class="disclosure-color">Intermediary</b>
+                </td>
+                <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
+                    <b class="disclosure-color">Supervision</b>
+                </td>
+            </tr>
+            {% if user.LTI_SC_A  %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Long-Term insurance SC A
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
                         <div class="column4" style="  margin-left: 50%;text-align:center;">
                             <input type="checkbox" checked />
                         </div>
-                    {% else %}
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
                         <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
+                            <input type="checkbox" checked />
                         </div>
-                    {% endif %}
-                </td>
-            </tr>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.LTI_SC_A_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.Pension_funds  %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Pension Fund (excl. Retail)
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.Pension_funds_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.LTI_SC_B1  %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Long-Term insurance SC B1
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.LTI_SC_B1_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.Shares  %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Shares
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.Shares_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}        
+            {% if user.LTI_SC_B2  %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Long-Term insurance SC B2
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.LTI_SC_B2_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.Money_market %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Money Market Instruments 
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.Money_market_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.Debentures %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Debentures & Securitised Debt
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.Debentures_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.LTI_SC_B1A %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Long-Term insurance SC B1-A
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.LTI_SC_B1A_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.Warrants %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Warrants, Certificates & other instruments
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.Warrants_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.LTI_SC_C %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Long-Term insurance SC C
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.LTI_SC_C_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.Bonds %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Bonds
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.Bonds_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.STI_PL %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Short Term Insurance Personal Lines 
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.STI_PL_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.CIC %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Collective Investment Schemes 
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.CIC_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.STI_CL %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Short Term Insurance Commercial Lines 
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.STI_CL_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.HSB %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Health Service Benefits 
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.HSB_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}        
+            {% if user.STI_PL_A %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Short Term Insurance Personal Lines A1
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.STI_PL_A_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.LTI_Deposits %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Long-Term deposits  
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.LTI_Deposits_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.RPension_funds %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                        Retail Pension Benefits  
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.RPension_funds_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if user.STI_Deposits %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Short-Term deposits  
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.STI_Deposits_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %} 
         {% endif %}
-        {% if user.Pension_funds  %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Pension Fund (excl. Retail)
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.Pension_funds_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.LTI_SC_B1  %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Long-Term insurance SC B1
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.LTI_SC_B1_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.Shares  %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Shares
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.Shares_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}        
-        {% if user.LTI_SC_B2  %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Long-Term insurance SC B2
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.LTI_SC_B2_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.Money_market %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Money Market Instruments 
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.Money_market_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.Debentures %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Debentures & Securitised Debt
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.Debentures_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.LTI_SC_B1A %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Long-Term insurance SC B1-A
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.LTI_SC_B1A_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.Warrants %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Warrants, Certificates & other instruments
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.Warrants_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.LTI_SC_C %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Long-Term insurance SC C
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.LTI_SC_C_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.Bonds %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Bonds
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.Bonds_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.STI_PL %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Short Term Insurance Personal Lines 
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.STI_PL_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.CIC %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Collective Investment Schemes 
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.CIC_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.STI_CL %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Short Term Insurance Commercial Lines 
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.STI_CL_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.HSB %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Health Service Benefits 
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.HSB_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}        
-        {% if user.STI_PL_A %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Short Term Insurance Personal Lines A1
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.STI_PL_A_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.LTI_Deposits %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Long-Term deposits  
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.LTI_Deposits_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.RPension_funds %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                    Retail Pension Benefits  
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.RPension_funds_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %}
-        {% if user.STI_Deposits %}
-            <tr>
-                <td colspan="5" style='border: 1px solid black; text-align:center;'>
-                    <span class="disclosure-color">
-                        Short-Term deposits  
-                    </span>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    <div class="column4" style="  margin-left: 50%;text-align:center;">
-                        <input type="checkbox" checked />
-                    </div>
-                </td>
-                <td colspan="1" style='border: 1px solid black; text-align:center;'>
-                    {% if user.STI_Deposits_Supervision %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" checked />
-                        </div>
-                    {% else %}
-                        <div class="column4" style="  margin-left: 50%;text-align:center;">
-                            <input type="checkbox" />
-                        </div>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endif %} 
         <tr>
             <td colspan="1" style='width: 10%; border: 1px solid black; text-align:center;'>
                 Remuneration:

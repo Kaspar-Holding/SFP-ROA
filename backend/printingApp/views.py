@@ -2667,6 +2667,48 @@ class disclosuresPDF(APIView):
             
             data['user']['Warrants'] = True if user_profile_data['Category1_11_Registration_Status'] == "Accredited" or user_profile_data['Category1_11_Registration_Status'] == "Under Supervision" else False
             data['user']['Warrants_Supervisor'] = True if user_profile_data['Category1_11_Supervisor'] != "nan" else False
+            
+            total_categories = 0
+            if data['user']['LTI_SC_A']:
+                total_categories += 1
+            if data['user']['Pension_funds']:
+                total_categories += 1
+            if data['user']['LTI_SC_B1']:
+                total_categories += 1
+            if data['user']['Shares']:
+                total_categories += 1
+            if data['user']['LTI_SC_B2']:
+                total_categories += 1
+            if data['user']['Money_market']:
+                total_categories += 1
+            if data['user']['Debentures']:
+                total_categories += 1
+            if data['user']['LTI_SC_B1A']:
+                total_categories += 1
+            if data['user']['Warrants']:
+                total_categories += 1
+            if data['user']['LTI_SC_C']:
+                total_categories += 1
+            if data['user']['Bonds']:
+                total_categories += 1
+            if data['user']['STI_PL']:
+                total_categories += 1
+            if data['user']['CIC']:
+                total_categories += 1
+            if data['user']['STI_CL']:
+                total_categories += 1
+            if data['user']['HSB']:
+                total_categories += 1
+            if data['user']['STI_PL_A']:
+                total_categories += 1
+            if data['user']['LTI_Deposits']:
+                total_categories += 1
+            if data['user']['RPension_funds']:
+                total_categories += 1
+            if data['user']['STI_Deposits']:
+                total_categories += 1
+            data['total_categories'] = total_categories
+            data['has_categories'] = True if total_categories > 0 else False 
             # Get the current date and time in the 'Africa/Johannesburg' timezone
             now = datetime.now(pytz.timezone('Africa/Johannesburg'))
             # Get the appointment date from the user_profile_data dictionary
