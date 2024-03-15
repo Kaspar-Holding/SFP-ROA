@@ -68,9 +68,9 @@ const ROASidebar = ({ appTitle }) => {
                 config
             )
 
-            router.push({ pathname: '/apps/pdf', query: { pdf: response?.data?.data?.file } })
-            // const url = `${API_URL}/${response?.data?.data?.file}`
-            // window.open(url, '_blank').focus()
+            // router.push({ pathname: '/apps/pdf', query: { pdf: response?.data?.data?.file } })
+            const url = `${API_URL}/${response?.data?.data?.file}`
+            window.open(url, '_blank').focus()
 
 
         } catch (error) {
