@@ -918,12 +918,12 @@ class UserRole(APIView):
                 user_type = "Advisor"
                 data['is_superuser'] = False
                 user.update(is_superuser=False, userType=data['userType'])
-            serializer = UserAccountsSerializers(instance=old, data=data, partial=True)
-            if serializer.is_valid():
-                serializer.save()
-                return Response({"message": f"{old.email} updated to {user_type}"})
-            else:
-                return Response({"errors" : serializer.errors}, 400)
+            return Response({"message": f"{old.email} updated to {user_type}"})
+            # serializer = UserAccountsSerializers(instance=old, data=data, partial=True)
+            # if serializer.is_valid():
+            #     serializer.save()
+            # else:
+            #     return Response({"errors" : serializer.errors}, 400)
         else:
             return Response({"message" : "User not found"}, 400)
     
