@@ -250,7 +250,7 @@ class BulkUserUpload(APIView):
                     #             {k: None}
                     user_profile_data = {k: parser(v) if ('Date' in k or 'DOFA' in k) else v for k, v in user_profile_data.items()}
                     user_profile_data = {k: parser(v) if ('Modified_On' in k or 'Created_On' in k) else v for k, v in user_profile_data.items()}
-                    user = UserAccount.objects.filter(email__iexact=email)
+                    user = UserAccount.objects.filter(Full_Name=full_name)
                     if "Email" not in user_profile_data:
                         continue
                     if "BAC_email" in user_profile_data:
