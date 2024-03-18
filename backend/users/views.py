@@ -502,7 +502,7 @@ class BulkUserUpload(APIView):
                             "account" : request.user.pk,
                             "log" : log_id,
                             "log_type" : 2,
-                            "log_description" : f"User {full_name} ({email}) found in database.",
+                            "log_description" : f"User {full_name} found in database.",
                         } 
                         log_content_serializer = LogContentSerializer(data=logContent)
                         if log_content_serializer.is_valid():
