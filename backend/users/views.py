@@ -228,14 +228,13 @@ class BulkUserUpload(APIView):
                 for i in range(len(users_profile_df)):
                     user_profile_data = users_profile_df.iloc[i].to_dict()
                     full_name = user_profile_data['Full_Name']
-                    # email = user_profile_data['Email'] if "/" not in user_profile_data['Email'] else str(user_profile_data['Email']).split("/")[0].strip()
-                    # email = str(email).replace(',','.')
-                    email = ""
+                    email = user_profile_data['Email'] if "/" not in user_profile_data['Email'] else str(user_profile_data['Email']).split("/")[0].strip()
+                    email = str(email).replace(',','.')
                     logContent = {
                         "account" : request.user.pk,
                         "log" : log_id,
                         "log_type" : 1,
-                        "log_description" : f"Updating User {full_name}.",
+                        "log_description" : f"Updating User {full_name} ({email}).",
                     } 
                     log_content_serializer = LogContentSerializer(data=logContent)
                     if log_content_serializer.is_valid():
@@ -251,10 +250,9 @@ class BulkUserUpload(APIView):
                     #             {k: None}
                     user_profile_data = {k: parser(v) if ('Date' in k or 'DOFA' in k) else v for k, v in user_profile_data.items()}
                     user_profile_data = {k: parser(v) if ('Modified_On' in k or 'Created_On' in k) else v for k, v in user_profile_data.items()}
-                    user = user_profile.objects.filter(Full_Name=full_name)
-                    user = UserAccount.objects.filter(id=user.first().pk)
-                    # if "Email" not in user_profile_data:
-                    #     continue
+                    user = UserAccount.objects.filter(email__iexact=email)
+                    if "Email" not in user_profile_data:
+                        continue
                     if "BAC_email" in user_profile_data:
                         bac_email = str(user_profile_data['BAC_email']).strip()
                         bac = UserAccount.objects.filter(email__iexact=bac_email)
@@ -356,54 +354,54 @@ class BulkUserUpload(APIView):
                                             print(log_content_serializer.errors)
                                     else:
                                         print(serializer.errors)
-                            # else:
-                            #     password = ''.join(secrets.choice(ALPHABET) for i in range(10))
-                            #     new_user_data = {
-                            #         "email" : email,
-                            #         "first_name" : user_profile_data['Manager'],
-                            #         "last_name" : "",
-                            #         "password" : password,
-                            #         "is_active" : 1,
-                            #         "userType" : 3,
-                            #     }
-                            #     new_user_serializer = UserAccountsSerializers(data=new_user_data)
-                            #     if new_user_serializer.is_valid():
-                            #         new_user = new_user_serializer.create(new_user_serializer.validated_data)
-                            #         new_user = UserAccount.objects.get(id=new_user.pk)
-                            #         new_user.set_password(new_user_data['password'])
-                            #         new_users.append(new_user_data)
-                            #         logContent = {
-                            #             "account" : request.user.pk,
-                            #             "log" : log_id,
-                            #             "log_type" : 6,
-                            #             "log_description" : f"Manager didn't exist, record was created.",
-                            #         } 
-                            #         log_content_serializer = LogContentSerializer(data=logContent)
-                            #         if log_content_serializer.is_valid():
-                            #             log_content_serializer.create(log_content_serializer.validated_data)
-                            #         else:
-                            #             print(log_content_serializer.errors)
-                            #         regional_manager_data = {
-                            #             "region" : region_data.pk,
-                            #             "manager": new_user.pk,
-                            #             "status" : 1
-                            #         }
-                            #         serializer = region_manager_Serializer(data=regional_manager_data)
-                            #         if serializer.is_valid():
-                            #             serializer.create(serializer.validated_data)
-                            #             logContent = {
-                            #                 "account" : request.user.pk,
-                            #                 "log" : log_id,
-                            #                 "log_type" : 6,
-                            #                 "log_description" : f"Region {region} manager didn't exist and added into database.",
-                            #             } 
-                            #             log_content_serializer = LogContentSerializer(data=logContent)
-                            #             if log_content_serializer.is_valid():
-                            #                 log_content_serializer.create(log_content_serializer.validated_data)
-                            #             else:
-                            #                 print(log_content_serializer.errors)
-                            #         else:
-                            #             print(serializer.errors)
+                            else:
+                                password = ''.join(secrets.choice(ALPHABET) for i in range(10))
+                                new_user_data = {
+                                    "email" : email,
+                                    "first_name" : user_profile_data['Manager'],
+                                    "last_name" : "",
+                                    "password" : password,
+                                    "is_active" : 1,
+                                    "userType" : 3,
+                                }
+                                new_user_serializer = UserAccountsSerializers(data=new_user_data)
+                                if new_user_serializer.is_valid():
+                                    new_user = new_user_serializer.create(new_user_serializer.validated_data)
+                                    new_user = UserAccount.objects.get(id=new_user.pk)
+                                    new_user.set_password(new_user_data['password'])
+                                    new_users.append(new_user_data)
+                                    logContent = {
+                                        "account" : request.user.pk,
+                                        "log" : log_id,
+                                        "log_type" : 6,
+                                        "log_description" : f"Manager didn't exist, record was created.",
+                                    } 
+                                    log_content_serializer = LogContentSerializer(data=logContent)
+                                    if log_content_serializer.is_valid():
+                                        log_content_serializer.create(log_content_serializer.validated_data)
+                                    else:
+                                        print(log_content_serializer.errors)
+                                    regional_manager_data = {
+                                        "region" : region_data.pk,
+                                        "manager": new_user.pk,
+                                        "status" : 1
+                                    }
+                                    serializer = region_manager_Serializer(data=regional_manager_data)
+                                    if serializer.is_valid():
+                                        serializer.create(serializer.validated_data)
+                                        logContent = {
+                                            "account" : request.user.pk,
+                                            "log" : log_id,
+                                            "log_type" : 6,
+                                            "log_description" : f"Region {region} manager didn't exist and added into database.",
+                                        } 
+                                        log_content_serializer = LogContentSerializer(data=logContent)
+                                        if log_content_serializer.is_valid():
+                                            log_content_serializer.create(log_content_serializer.validated_data)
+                                        else:
+                                            print(log_content_serializer.errors)
+                                    else:
+                                        print(serializer.errors)
                         else:
                             data = {
                                 "region" : region
@@ -502,7 +500,7 @@ class BulkUserUpload(APIView):
                             "account" : request.user.pk,
                             "log" : log_id,
                             "log_type" : 2,
-                            "log_description" : f"User {full_name} found in database.",
+                            "log_description" : f"User {full_name} ({email}) found in database.",
                         } 
                         log_content_serializer = LogContentSerializer(data=logContent)
                         if log_content_serializer.is_valid():
@@ -663,7 +661,7 @@ class BulkUserUpload(APIView):
                             else:
                                 print(user_profile_serializer.errors)
                         not_existing += 1
-                        # not_existing_users.append(user_profile_data['Email'])
+                        not_existing_users.append(user_profile_data['Email'])
                     total += 1
                     kpis = {"total": total,"updated":updated, "created": created, "not_existing" : not_existing, "logs": {
                         "create_log": create_log,
