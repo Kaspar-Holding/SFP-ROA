@@ -663,7 +663,7 @@ class BulkUserUpload(APIView):
                             else:
                                 print(user_profile_serializer.errors)
                         not_existing += 1
-                        not_existing_users.append(user_profile_data['Email'])
+                        # not_existing_users.append(user_profile_data['Email'])
                     total += 1
                     kpis = {"total": total,"updated":updated, "created": created, "not_existing" : not_existing, "logs": {
                         "create_log": create_log,
