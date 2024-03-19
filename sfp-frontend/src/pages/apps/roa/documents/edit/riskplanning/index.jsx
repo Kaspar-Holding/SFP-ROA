@@ -1152,7 +1152,7 @@ const RiskPlanning = () => {
                                                                     Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
                                                                 </li>
                                                                 <li>
-                                                                    Record the client's instructions, deviations and implications thereof.
+                                                                    Record the client{ `'` }s instructions, deviations and implications thereof.
                                                                 </li>
 
                                                             </ul>
@@ -1191,7 +1191,7 @@ const RiskPlanning = () => {
                                                                     Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
                                                                 </li>
                                                                 <li>
-                                                                    Record the client's instructions, deviations and implications thereof.
+                                                                    Record the client{ `'` }s instructions, deviations and implications thereof.
                                                                 </li>
 
                                                             </ul>
@@ -1228,7 +1228,7 @@ const RiskPlanning = () => {
                                                                     Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
                                                                 </li>
                                                                 <li>
-                                                                    Record the client's instructions, deviations and implications thereof.
+                                                                    Record the client{ `'` }s instructions, deviations and implications thereof.
                                                                 </li>
 
                                                             </ul>
