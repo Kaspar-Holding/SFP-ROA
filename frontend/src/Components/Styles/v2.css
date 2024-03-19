@@ -1,6 +1,7 @@
 body {
     margin: 0;
 }
+
 .updated-body {
     background: #023E47;
     height: 100vh;
@@ -37,7 +38,7 @@ body {
     background-color: #F5F5F5;
 }
 
-.updated-header { 
+.updated-header {
     font-family: "Open Sans";
     font-size: 24px;
     font-weight: 700;
@@ -46,7 +47,7 @@ body {
     text-align: left;
 }
 
-.updated-subtitle { 
+.updated-subtitle {
     font-family: "Open Sans";
     font-size: 16px;
     font-weight: 400;
@@ -55,7 +56,7 @@ body {
     text-align: center;
 }
 
-.updated-text { 
+.updated-text {
     font-family: "Open Sans";
     font-size: 16px;
     font-weight: 600;
@@ -68,13 +69,13 @@ body {
     text-decoration: none;
 }
 
-.updated-email { 
+.updated-email {
     font-family: "Open Sans";
     font-size: 16px;
     font-weight: 700;
     line-height: 16px;
     letter-spacing: 0em;
-    text-align: left;    
+    text-align: left;
 }
 
 .updated-form .btn-primary {
@@ -105,7 +106,7 @@ body {
     color: #ffffff;
 }
 
-.updated-dashboard .app{
+.updated-dashboard .app {
     margin-right: 2%;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -113,7 +114,7 @@ body {
     width: 20%;
 }
 
-.updated-dashboard a{
+.updated-dashboard a {
     text-decoration: none;
     color: black;
     text-align: center;
@@ -136,18 +137,21 @@ body {
         width: 90%;
         top: 50%;
     }
+
     .updated-form .card {
         padding: 0%;
     }
+
     .updated-dashboard {
         width: 90%;
         top: 50%;
     }
+
     .updated-dashboard .card {
         padding: 0%;
     }
-    
-    .updated-dashboard .app{
+
+    .updated-dashboard .app {
         margin-right: 2%;
         margin-top: 2%;
         margin-bottom: 2%;

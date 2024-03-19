@@ -3161,7 +3161,7 @@ class loadgatekeepers(APIView):
                     id_number = ""
                     if profile.exists():
                         profile = user_profile.objects.filter(user=gatekeeper['id']).values().first()
-                        id_number = profile['id_number']
+                        id_number = profile['ID_Number']
                     data.append({
                         "value" : gatekeeper['id'],
                         "label" : f"{gatekeeper['first_name']} {gatekeeper['last_name']} ({id_number})",

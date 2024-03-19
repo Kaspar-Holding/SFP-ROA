@@ -1656,7 +1656,6 @@ header {
 
 .sfp-online-slider {
     background-color: #ffffff;
-    height: 7.5vh;
 }
 
 /* Notifications */
@@ -1895,4 +1894,14 @@ li.notification-message {
 #advisorDashboard {
     height: 100%;
     overflow-y: auto;
+}
+
+#background_info_instructions1 {
+    background-color: gray;
+    color: white;
+    border-radius: 5px;
+    border-color: gray;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 1%;
 }

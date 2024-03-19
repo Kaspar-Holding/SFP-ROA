@@ -62,7 +62,11 @@ class commissionInsights(APIView):
             date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
             reviewsData = reviewsData.filter(updated_at__range=date_range)
         if region != "all":
-            reviewsData = reviewsData.filter(region=region)
+            advisor_ids = user_profile.objects.filter(region__region=region)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if advisor != "all":
             reviewsData = reviewsData.filter(advisor=int(advisor))
         if businessType != "all":
@@ -360,8 +364,12 @@ class investmentInsights(APIView):
         if filterType == 4:
             date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
             reviewsData = reviewsData.filter(updated_at__range=date_range)
-        if region != "all":
-            reviewsData = reviewsData.filter(region=region)
+        if region != "all":            
+            advisor_ids = user_profile.objects.filter(region__region=region)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if advisor != "all":
             reviewsData = reviewsData.filter(advisor=int(advisor))
         if businessType != "all":
@@ -676,7 +684,11 @@ class monitoringInsights(APIView):
             date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
             reviewsData = reviewsData.filter(updated_at__range=date_range)
         if region != "all":
-            reviewsData = reviewsData.filter(region=region)
+            advisor_ids = user_profile.objects.filter(region__region=region)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if advisor != "all":
             reviewsData = reviewsData.filter(advisor=int(advisor))
 
@@ -1181,7 +1193,11 @@ class gatekeeperInsights(APIView):
             date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
             reviewsData = reviewsData.filter(updated_at__range=date_range)
         if region != "all":
-            reviewsData = reviewsData.filter(region=region)
+            advisor_ids = user_profile.objects.filter(region__region=region)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if gatekeeper != "all":
             reviewsData = reviewsData.filter(user=int(gatekeeper))
         if businessType != "all":
@@ -1628,7 +1644,11 @@ class sanlamInsights(APIView):
             date_range = (datetime.strptime(fromdate, '%Y-%m-%d') , datetime.strptime(todate, '%Y-%m-%d') + timedelta(days=1))
             reviewsData = reviewsData.filter(updated_at__range=date_range)
         if region != "all":
-            reviewsData = reviewsData.filter(region=region)
+            advisor_ids = user_profile.objects.filter(region__region=region)
+            if advisor_ids.exists():
+                advisor_ids = list(advisor_ids.values_list('user',flat=True))
+                reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if businessType != "all":
             reviewsData = reviewsData.filter(businessType=int(businessType))
         sanlam_product_Supplier = ['Sanlam', 'Santam', 'SHA', 'Glacier']

@@ -180,100 +180,101 @@ const EditROA = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        if (FormData?.clientName === "" || FormData?.clientIdNumber === "" || FormData?.clientEmail === "" || FormData?.clientPhoneNumber === "") {
-            if (FormData?.clientName === "" && FormData?.clientIdNumber === "" && FormData?.clientEmail === "" && FormData?.clientPhoneNumber === "") {
-                Swal.fire({
-                    position: "bottom-end",
-                    type: "success",
-                    title: "Error",
-                    html: "Please fill all the fields in initial information section",
-                    showConfirmButton: !1,
-                    timer: 5000,
-                    confirmButtonClass: "btn btn-primary",
-                    buttonsStyling: !1,
-                })
-                if (step != 0) {
-                    setStep(0)
-                }
-            } else {
-                if (FormData?.clientName === "") {
-                    Swal.fire({
-                        position: "bottom-end",
-                        type: "success",
-                        title: "Error",
-                        html: "Please fill client name field in initial information section",
-                        showConfirmButton: !1,
-                        timer: 5000,
-                        confirmButtonClass: "btn btn-primary",
-                        buttonsStyling: !1,
-                    })
-                    if (step != 0) {
-                        setStep(0)
-                    }
-                } if (FormData?.clientIdNumber === "") {
-                    Swal.fire({
-                        position: "bottom-end",
-                        type: "success",
-                        title: "Error",
-                        html: "Please fill client id number field in initial information section",
-                        showConfirmButton: !1,
-                        timer: 5000,
-                        confirmButtonClass: "btn btn-primary",
-                        buttonsStyling: !1,
-                    })
-                    if (step != 0) {
-                        setStep(0)
-                    }
-                } if (FormData?.clientEmail === "") {
-                    Swal.fire({
-                        position: "bottom-end",
-                        type: "success",
-                        title: "Error",
-                        html: "Please fill client email field in initial information section",
-                        showConfirmButton: !1,
-                        timer: 5000,
-                        confirmButtonClass: "btn btn-primary",
-                        buttonsStyling: !1,
-                    })
-                    if (step != 0) {
-                        setStep(0)
-                    }
-                } if (FormData?.clientPhoneNumber === "") {
-                    Swal.fire({
-                        position: "bottom-end",
-                        type: "success",
-                        title: "Error",
-                        html: "Please fill client phone number field in initial information section",
-                        showConfirmButton: !1,
-                        timer: 5000,
-                        confirmButtonClass: "btn btn-primary",
-                        buttonsStyling: !1,
-                    })
-                }
-            }
+        // if (FormData?.clientName === "" || FormData?.clientIdNumber === "" || FormData?.clientEmail === "" || FormData?.clientPhoneNumber === "") {
+        //     if (FormData?.clientName === "" && FormData?.clientIdNumber === "" && FormData?.clientEmail === "" && FormData?.clientPhoneNumber === "") {
+        //         Swal.fire({
+        //             position: "bottom-end",
+        //             type: "success",
+        //             title: "Error",
+        //             html: "Please fill all the fields in initial information section",
+        //             showConfirmButton: !1,
+        //             timer: 5000,
+        //             confirmButtonClass: "btn btn-primary",
+        //             buttonsStyling: !1,
+        //         })
+        //         if (step != 0) {
+        //             setStep(0)
+        //         }
+        //     } else {
+        //         if (FormData?.clientName === "") {
+        //             Swal.fire({
+        //                 position: "bottom-end",
+        //                 type: "success",
+        //                 title: "Error",
+        //                 html: "Please fill client name field in initial information section",
+        //                 showConfirmButton: !1,
+        //                 timer: 5000,
+        //                 confirmButtonClass: "btn btn-primary",
+        //                 buttonsStyling: !1,
+        //             })
+        //             if (step != 0) {
+        //                 setStep(0)
+        //             }
+        //         } if (FormData?.clientIdNumber === "") {
+        //             Swal.fire({
+        //                 position: "bottom-end",
+        //                 type: "success",
+        //                 title: "Error",
+        //                 html: "Please fill client id number field in initial information section",
+        //                 showConfirmButton: !1,
+        //                 timer: 5000,
+        //                 confirmButtonClass: "btn btn-primary",
+        //                 buttonsStyling: !1,
+        //             })
+        //             if (step != 0) {
+        //                 setStep(0)
+        //             }
+        //         } if (FormData?.clientEmail === "") {
+        //             Swal.fire({
+        //                 position: "bottom-end",
+        //                 type: "success",
+        //                 title: "Error",
+        //                 html: "Please fill client email field in initial information section",
+        //                 showConfirmButton: !1,
+        //                 timer: 5000,
+        //                 confirmButtonClass: "btn btn-primary",
+        //                 buttonsStyling: !1,
+        //             })
+        //             if (step != 0) {
+        //                 setStep(0)
+        //             }
+        //         } if (FormData?.clientPhoneNumber === "") {
+        //             Swal.fire({
+        //                 position: "bottom-end",
+        //                 type: "success",
+        //                 title: "Error",
+        //                 html: "Please fill client phone number field in initial information section",
+        //                 showConfirmButton: !1,
+        //                 timer: 5000,
+        //                 confirmButtonClass: "btn btn-primary",
+        //                 buttonsStyling: !1,
+        //             })
+        //         }
+        //     }
 
-        } else {
+        // } else {
 
-            if (emailValidation()) {
-                FormStatus == 0 ? updateROAForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+        //     if (emailValidation()) {
+        //         FormStatus == 0 ? updateROAForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
-            } else {
-                if (step != 0) {
-                    setStep(0)
-                }
-                Swal.fire({
-                    position: "bottom-end",
-                    type: "success",
-                    title: "Error",
-                    html: "Please fill correct email field in initial information section",
-                    showConfirmButton: !1,
-                    timer: 5000,
-                    confirmButtonClass: "btn btn-primary",
-                    buttonsStyling: !1,
-                })
+        //     } else {
+        //         if (step != 0) {
+        //             setStep(0)
+        //         }
+        //         Swal.fire({
+        //             position: "bottom-end",
+        //             type: "success",
+        //             title: "Error",
+        //             html: "Please fill correct email field in initial information section",
+        //             showConfirmButton: !1,
+        //             timer: 5000,
+        //             confirmButtonClass: "btn btn-primary",
+        //             buttonsStyling: !1,
+        //         })
 
-            }
-        }
+        //     }
+        // }
+        updateROAForm(FormData)
     }
 
     const [FormStatus, setFormStatus] = useState(0)

@@ -12,7 +12,18 @@ Deployed using Nginx and Gunicorn
 
 
 
-## Updates
+## Changelog
+
+### 19 March 2024:
+- ROA
+1. Bugs resolved.
+2. Missing Guidance notes were added
+3. Guidance notes style changed.
+- Insights
+1. Region is now reflecting number of compliance advisors.
+- Users
+1. KZN and duplicated region combined.
+- Deployment on Production 
 
 ### 14 March 2024:
 - Users

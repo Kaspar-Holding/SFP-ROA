@@ -419,6 +419,11 @@ const RiskPlanning = () => {
     }
 
 
+    const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
+    const [backgroundInfoVisibility2, setbackgroundInfoVisibility2] = useState(false)
+    const [backgroundInfoVisibility3, setbackgroundInfoVisibility3] = useState(false)
+    const [backgroundInfoVisibility21, setbackgroundInfoVisibility21] = useState(false)
+    const [backgroundInfoVisibility31, setbackgroundInfoVisibility31] = useState(false)
     const [backgroundInfoVisibility7, setbackgroundInfoVisibility7] = useState(false)
     const [backgroundInfoVisibility8, setbackgroundInfoVisibility8] = useState(false)
     const [backgroundInfoVisibility9, setbackgroundInfoVisibility9] = useState(false)
@@ -426,6 +431,9 @@ const RiskPlanning = () => {
     const [backgroundInfoVisibility11, setbackgroundInfoVisibility11] = useState(false)
     const [backgroundInfoVisibility12, setbackgroundInfoVisibility12] = useState(false)
 
+    function backgroundInfo_onFocus1() {
+        setbackgroundInfoVisibility1(true)
+    }
     function backgroundInfo_onFocus7() {
         setbackgroundInfoVisibility7(true)
     }
@@ -1134,8 +1142,26 @@ const RiskPlanning = () => {
                                             <p className="roa-label"><u>Life Cover:</u></p>
                                             <p className="roa-label">Policies payable to the estate will attract executors’ fees at a maximum of 3.5% + VAT. Where there is a beneficiary the executors fees will not be levied. Executors’ fees are applicable to all assets in the estate of a client and the exemption only applies to policies with beneficiaries. </p>
                                             <p className="roa-label">Death benefits will not be paid where the life insured commits suicide within 2 years of commencement or reinstatement of the cover.</p>
+                                            {
+                                                backgroundInfoVisibility1 ?
+                                                    <>
+                                                        <div id="background_info_instructions1" className="hidden_class">
+                                                            {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                            <ul>
+                                                                <li>
+                                                                    Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
+                                                                </li>
+                                                                <li>
+                                                                    Record the client's instructions, deviations and implications thereof.
+                                                                </li>
 
-                                            <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            </ul>
+
+                                                        </div>
+                                                    </> :
+                                                    null
+                                            }
+                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility1(true)) } onBlur={ () => (setbackgroundInfoVisibility1(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
                                                 <ReactQuill
                                                     theme="snow" // Specify the theme ('snow' or 'bubble')
                                                     value={ FormData?.RP_LC_FinancialSolutions }
@@ -1155,8 +1181,26 @@ const RiskPlanning = () => {
                                             <br />
                                             <hr />
                                             <p className="roa-font"><u>Disability Cover:</u></p>
+                                            {
+                                                backgroundInfoVisibility2 ?
+                                                    <>
+                                                        <div id="background_info_instructions1" className="hidden_class">
+                                                            {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                            <ul>
+                                                                <li>
+                                                                    Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
+                                                                </li>
+                                                                <li>
+                                                                    Record the client's instructions, deviations and implications thereof.
+                                                                </li>
 
-                                            <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            </ul>
+
+                                                        </div>
+                                                    </> :
+                                                    null
+                                            }
+                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility2(true)) } onBlur={ () => (setbackgroundInfoVisibility2(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
                                                 <ReactQuill
                                                     theme="snow" // Specify the theme ('snow' or 'bubble')
                                                     value={ FormData?.RP_DiC_FinancialSolutions }
@@ -1174,7 +1218,26 @@ const RiskPlanning = () => {
                                             <br />
                                             <hr />
                                             <p className="roa-font"><u>Dread Disease Cover:</u></p>
-                                            <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                            {
+                                                backgroundInfoVisibility3 ?
+                                                    <>
+                                                        <div id="background_info_instructions1" className="hidden_class">
+                                                            {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                            <ul>
+                                                                <li>
+                                                                    Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
+                                                                </li>
+                                                                <li>
+                                                                    Record the client's instructions, deviations and implications thereof.
+                                                                </li>
+
+                                                            </ul>
+
+                                                        </div>
+                                                    </> :
+                                                    null
+                                            }
+                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility3(true)) } onBlur={ () => (setbackgroundInfoVisibility3(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
                                                 <ReactQuill
                                                     theme="snow" // Specify the theme ('snow' or 'bubble')
                                                     value={ FormData?.RP_DrC_FinancialSolutions }
@@ -1204,9 +1267,15 @@ const RiskPlanning = () => {
                                                         : user?.email.includes('sanlam') ? "text-start sanlam-text"
                                                             : "fw-bold"
                                             } ><b>Alternative Solutions Considered:</b></span>
-                                            <p className="roa-label">1. Identify the type of product or product provider which was considered but not selected and motivate.</p>
+                                            {
+                                                backgroundInfoVisibility1 ?
+                                                    <div id="background_info_instructions1">
+                                                        <p className="roa-label">1. Identify the type of product or product provider which was considered but not selected and motivate.</p>
+                                                    </div>
+                                                    : <></>
+                                            }
 
-                                            <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility1(true)) } onBlur={ () => (setbackgroundInfoVisibility1(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
                                                 <ReactQuill
                                                     theme="snow" // Specify the theme ('snow' or 'bubble')
                                                     value={ FormData?.RP_AltS_1 }
@@ -1224,12 +1293,18 @@ const RiskPlanning = () => {
                                             <br />
                                             <br />
                                             <hr />
-                                            <p className="roa-label">2. Identify the type of product or product provider which was considered but not selected and motivate.</p>
+                                            {
+                                                backgroundInfoVisibility21 ?
+                                                    <div id="background_info_instructions1">
+                                                        <p className="roa-label">2. Identify the type of product or product provider which was considered but not selected and motivate.</p>
+                                                    </div>
+                                                    : <></>
+                                            }
 
-                                            <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility21(true)) } onBlur={ () => (setbackgroundInfoVisibility21(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
                                                 <ReactQuill
                                                     theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                    value={ FormData?.RP_AltS_1 }
+                                                    value={ FormData?.RP_AltS_2 }
                                                     onChange={ (value) => { setFormData({ ...FormData, ['RP_AltS_2']: value }) } }
                                                     modules={ modules }
                                                     formats={ formats }
@@ -1244,9 +1319,15 @@ const RiskPlanning = () => {
                                             <br />
                                             <br />
                                             <hr />
-                                            <p className="roa-label">3. Identify the type of product or product provider which was considered but not selected and motivate.</p>
+                                            {
+                                                backgroundInfoVisibility31 ?
+                                                    <div id="background_info_instructions1">
+                                                        <p className="roa-label">3. Identify the type of product or product provider which was considered but not selected and motivate.</p>
+                                                    </div>
+                                                    : <></>
+                                            }
 
-                                            <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility31(true)) } onBlur={ () => (setbackgroundInfoVisibility31(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
                                                 <ReactQuill
                                                     theme="snow" // Specify the theme ('snow' or 'bubble')
                                                     value={ FormData?.RP_AltS_3 }
@@ -1382,7 +1463,7 @@ const RiskPlanning = () => {
                                                                                         </div>
                                                                                         <div className='col-6'>
                                                                                             <select onBlur={ (e) => { onFieldBlur(e) } } className="text-start form-select" id="Product_PremiumFrequency" name='Product_PremiumFrequency' value={ row?.Product_PremiumFrequency } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-label="Default select example">
-                                                                                                <option value="0" selected>Frequeny</option>
+                                                                                                <option value="0" selected>Frequency</option>
                                                                                                 <option value="1">Monthly</option>
                                                                                                 <option value="2">Quarterly</option>
                                                                                                 <option value="3">Annually</option>
