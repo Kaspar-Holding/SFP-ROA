@@ -44,6 +44,8 @@ class commissionInsights(APIView):
                     if advisor_ids.exists():
                         advisor_ids = list(advisor_ids.values_list('user',flat=True))
                         reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    else:
+                        advisor_ids = []
                     reviewsData = reviewsData.filter(advisor__in=advisor_ids)
             if user.userType == 5:
                 advisor_ids = user_profile.objects.filter(bac=user.pk)
@@ -66,6 +68,8 @@ class commissionInsights(APIView):
             if advisor_ids.exists():
                 advisor_ids = list(advisor_ids.values_list('user',flat=True))
                 reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            else:
+                advisor_ids = []
             reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if advisor != "all":
             reviewsData = reviewsData.filter(advisor=int(advisor))
@@ -347,6 +351,8 @@ class investmentInsights(APIView):
                     if advisor_ids.exists():
                         advisor_ids = list(advisor_ids.values_list('user',flat=True))
                         reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    else:
+                        advisor_ids = []
                     reviewsData = reviewsData.filter(advisor__in=advisor_ids)
             if user.userType == 5:
                 advisor_ids = user_profile.objects.filter(bac=user.pk)
@@ -369,6 +375,8 @@ class investmentInsights(APIView):
             if advisor_ids.exists():
                 advisor_ids = list(advisor_ids.values_list('user',flat=True))
                 reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            else:
+                advisor_ids = []
             reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if advisor != "all":
             reviewsData = reviewsData.filter(advisor=int(advisor))
@@ -666,6 +674,8 @@ class monitoringInsights(APIView):
                     if advisor_ids.exists():
                         advisor_ids = list(advisor_ids.values_list('user',flat=True))
                         reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    else:
+                        advisor_ids = []
                     reviewsData = reviewsData.filter(advisor__in=advisor_ids)
             if user.userType == 5:
                 advisor_ids = user_profile.objects.filter(bac=user.pk)
@@ -688,6 +698,8 @@ class monitoringInsights(APIView):
             if advisor_ids.exists():
                 advisor_ids = list(advisor_ids.values_list('user',flat=True))
                 reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            else:
+                advisor_ids = []
             reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if advisor != "all":
             reviewsData = reviewsData.filter(advisor=int(advisor))
@@ -1175,6 +1187,8 @@ class gatekeeperInsights(APIView):
                     if advisor_ids.exists():
                         advisor_ids = list(advisor_ids.values_list('user',flat=True))
                         reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    else:
+                        advisor_ids = []
                     reviewsData = reviewsData.filter(advisor__in=advisor_ids)
             if user.userType == 5:
                 advisor_ids = user_profile.objects.filter(bac=user.pk)
@@ -1197,6 +1211,8 @@ class gatekeeperInsights(APIView):
             if advisor_ids.exists():
                 advisor_ids = list(advisor_ids.values_list('user',flat=True))
                 reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            else:
+                advisor_ids = []
             reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if gatekeeper != "all":
             reviewsData = reviewsData.filter(user=int(gatekeeper))
@@ -1626,6 +1642,8 @@ class sanlamInsights(APIView):
                     if advisor_ids.exists():
                         advisor_ids = list(advisor_ids.values_list('user',flat=True))
                         reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+                    else:
+                        advisor_ids = []
                     reviewsData = reviewsData.filter(advisor__in=advisor_ids)
             if user.userType == 5:
                 advisor_ids = user_profile.objects.filter(bac=user.pk)
@@ -1648,6 +1666,8 @@ class sanlamInsights(APIView):
             if advisor_ids.exists():
                 advisor_ids = list(advisor_ids.values_list('user',flat=True))
                 reviewsData = reviewsData.filter(advisor__in=advisor_ids)
+            else:
+                advisor_ids = []
             reviewsData = reviewsData.filter(advisor__in=advisor_ids)
         if businessType != "all":
             reviewsData = reviewsData.filter(businessType=int(businessType))
@@ -1832,6 +1852,8 @@ class advisorInsights(APIView):
                         if advisor_ids.exists():
                             advisor_ids = list(advisor_ids.values_list('user',flat=True))
                             compliance_data = compliance_data.filter(advisor__in=advisor_ids)
+                        else:
+                            advisor_ids = []
                         compliance_data = compliance_data.filter(advisor__in=advisor_ids)
                 if user.userType == 5:
                     advisor_ids = user_profile.objects.filter(bac=user.pk)
@@ -2104,9 +2126,9 @@ class loadAdvisors(APIView):
                         "name" : "advisor",
                         "id" : advisor.user.pk,
                     })
-                return Response({
-                    "advisors" : data
-                })
+            return Response({
+                "advisors" : data
+            })
         else:
             advisors = UserAccount.objects.filter(id=user.pk).order_by('first_name')
             if advisors.exists():
