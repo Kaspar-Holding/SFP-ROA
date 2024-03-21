@@ -20,14 +20,14 @@ export default async (req, res) => {
         })
         try {
             await axios.post(
-                `${API_URL}/auth/users/reset_password/`,
+                `${API_URL}/api/email/password/reset/`,
                 Body,
                 config
             )
 
 
             return res.status(200).json({
-                success: "Email was sent"
+                success: 'Email sent if user exists.'
             })
 
         } catch (error) {

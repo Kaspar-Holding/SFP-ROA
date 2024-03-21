@@ -117,7 +117,7 @@ const EditROA = () => {
     }
 
     const onChange = e => {
-        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : <></> //Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
     // API Config
@@ -255,7 +255,7 @@ const EditROA = () => {
         // } else {
 
         //     if (emailValidation()) {
-        //         FormStatus == 0 ? updateROAForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+        //         FormStatus == 0 ? updateROAForm() : <></> //Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
         //     } else {
         //         if (step != 0) {
@@ -301,9 +301,11 @@ const EditROA = () => {
     }
 
     const onFieldBlur = (e) => {
-        setTimeout(() => {
-            updateROAForm(FormData);
-        }, 1000); // Wait for 1 second
+        FormStatus == 0 ?
+            setTimeout(() => {
+                updateROAForm(FormData);
+            }, 1000) // Wait for 1 second
+            : <></>
     }
 
     // Some extra stuff

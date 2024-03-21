@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from data.models import Disclosures, AssuranceInvestment, AI_ProductTaken, AI_Others
 from data.serializers import AssuranceInvestmentSerializers, AI_ProductTakenSerializer, AI_Others_Serializer
+from roa.models import ai_backup
+from roa.serializers import ai_backup_Serializer
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -74,6 +76,14 @@ class AssuranceInvestmentAPIs(APIView):
                 serializer.save()
             else:
                 print(serializer.errors, "line 76")
+                
+                backup_data = {}
+                backup_data['user'] = request.user.pk
+                backup_data['ai'] = snippets.pk
+                backup_data['data'] = request.data['assuranceInvestment']
+                backup_serializer = ai_backup_Serializer(data=backup_data)
+                if backup_serializer.is_valid():
+                    backup_serializer.save()
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             productTakenData = request.data['productTaken']
             AI_ProductTaken.objects.filter(formId=pk).delete()
@@ -81,6 +91,14 @@ class AssuranceInvestmentAPIs(APIView):
             if pt_searializer.is_valid():
                 pt_searializer.save()
             else:
+                backup_data = {}
+                backup_data['user'] = request.user.pk
+                backup_data['ai'] = snippets.pk
+                backup_data['data'] = request.data['productTaken']
+                backup_data['backup_type'] = 'Products Taken'
+                backup_serializer = ai_backup_Serializer(data=backup_data)
+                if backup_serializer.is_valid():
+                    backup_serializer.save()
                 print(pt_searializer.errors, "line 84")
                 return Response(pt_searializer.errors, status=status.HTTP_400_BAD_REQUEST)
             ai_otherData = request.data['ai_other']
@@ -90,6 +108,13 @@ class AssuranceInvestmentAPIs(APIView):
                 ai_other_searializer.save()
             else:
                 print(ai_other_searializer.errors, "line 92")
+                backup_data['user'] = request.user.pk
+                backup_data['ai'] = snippets.pk
+                backup_data['data'] = request.data['ai_other']
+                backup_data['backup_type'] = 'AI Other'
+                backup_serializer = ai_backup_Serializer(data=backup_data)
+                if backup_serializer.is_valid():
+                    backup_serializer.save()
                 return Response(ai_other_searializer.errors, status=status.HTTP_400_BAD_REQUEST)       
             return Response(serializer.data, 200)
 

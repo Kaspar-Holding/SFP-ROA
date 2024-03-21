@@ -47,7 +47,7 @@ export const resetPasswordConfirm = (uid, token, new_password, re_new_password) 
     try {
         const apiResponse = await axios.post('/api/account/password/confirm', Body, config)
 
-        if (apiResponse.status === 200) {
+        if (apiResponse.status === 204) {
             dispatch({
                 type: PASSWORD_RESET_CONFIRM_SUCCESS
             })

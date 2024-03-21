@@ -4,35 +4,46 @@ import Head from 'next/head'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-const Layout = ({title, content, children}) => {
+const Layout = ({ title, content, children }) => {
     const dispatch = useDispatch()
-    
+
     useEffect(() => {
         if (dispatch && dispatch != null && dispatch != undefined) {
             dispatch(
                 verifyUser()
             )
-        }    
+        }
     }, [dispatch])
-    
+
     return (
         <>
             <Head>
                 <title>
-                    {title} - Succession Finance Planning
+                    { title } - Succession Finance Planning
                 </title>
-                <meta name='description' content={content} />
+                <meta name='description' content={ content } />
+
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPJVL4QCY9"></script>
+                <script dangerouslySetInnerHTML={ {
+                    __html: `window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+    
+                    gtag('config', 'G-KPJVL4QCY9');`
+
+                } }>
+                </script>
             </Head>
-            {/* <Navbar /> */}
+            {/* <Navbar /> */ }
             <div className=''>
-                {children}
+                { children }
             </div>
         </>
     )
 }
 
 Layout.defaultProps = {
-    title : "KCS",
+    title: "KCS",
     content: "Boilerplate for HTTPOnly Auth"
 }
 

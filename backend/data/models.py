@@ -4,7 +4,7 @@ from datetime import datetime
 import pytz
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils import timezone
-
+import uuid
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, password=None,is_superuser=False, admin_id=None, **extra_fields):
         if not email:

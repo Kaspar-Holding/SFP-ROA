@@ -133,7 +133,7 @@ def wkhtmltopdfapi(request):
             ):
                 val3=9
             if(
-                int(data['RF_CountryOfResidence']) == 5 or int(data['RF_CountryOfResidence']) == 7 or int(data['RF_CountryOfResidence']) == 9 or int(data['RF_CountryOfResidence']) == 12 or int(data['RF_CountryOfResidence']) == 25 or int(data['RF_CountryOfResidence']) == 34 or int(data['RF_CountryOfResidence']) == 35 or int(data['RF_CountryOfResidence']) == 61 or int(data['RF_CountryOfResidence']) == 76 or int(data['RF_CountryOfResidence']) == 84or int(data['RF_CountryOfResidence']) == 88
+                int(data['RF_CountryOfResidence']) == 5 or int(data['RF_CountryOfResidence']) == 7 or int(data['RF_CountryOfResidence']) == 9 or int(data['RF_CountryOfResidence']) == 12 or int(data['RF_CountryOfResidence']) == 25 or int(data['RF_CountryOfResidence']) == 34 or int(data['RF_CountryOfResidence']) == 35 or int(data['RF_CountryOfResidence']) == 61 or int(data['RF_CountryOfResidence']) == 76 or int(data['RF_CountryOfResidence']) == 84 or int(data['RF_CountryOfResidence']) == 88
                 or int(data['RF_CountryOfResidence']) == 114 or int(data['RF_CountryOfResidence']) == 130 or int(data['RF_CountryOfResidence']) == 132 or int(data['RF_CountryOfResidence']) == 142 or int(data['RF_CountryOfResidence']) == 149 or int(data['RF_CountryOfResidence']) == 159 or int(data['RF_CountryOfResidence']) == 161 
                 or int(data['RF_CountryOfResidence']) == 167 or int(data['RF_CountryOfResidence']) == 194 or int(data['RF_CountryOfResidence']) == 215 or int(data['RF_CountryOfResidence']) == 216
             ):
@@ -172,7 +172,7 @@ def wkhtmltopdfapi(request):
             ):
                 val4=9
             if(
-                int(data['RF_Nationality']) == 5 or int(data['RF_Nationality']) == 7 or int(data['RF_Nationality']) == 9 or int(data['RF_Nationality']) == 12 or int(data['RF_Nationality']) == 25 or int(data['RF_Nationality']) == 34 or int(data['RF_Nationality']) == 35 or int(data['RF_Nationality']) == 61 or int(data['RF_Nationality']) == 76 or int(data['RF_Nationality']) == 84or int(data['RF_Nationality']) == 88
+                int(data['RF_Nationality']) == 5 or int(data['RF_Nationality']) == 7 or int(data['RF_Nationality']) == 9 or int(data['RF_Nationality']) == 12 or int(data['RF_Nationality']) == 25 or int(data['RF_Nationality']) == 34 or int(data['RF_Nationality']) == 35 or int(data['RF_Nationality']) == 61 or int(data['RF_Nationality']) == 76 or int(data['RF_Nationality']) == 84 or int(data['RF_Nationality']) == 88
                 or int(data['RF_Nationality']) == 114 or int(data['RF_Nationality']) == 130 or int(data['RF_Nationality']) == 132 or int(data['RF_Nationality']) == 142 or int(data['RF_Nationality']) == 149 or int(data['RF_Nationality']) == 159 or int(data['RF_Nationality']) == 161 
                 or int(data['RF_Nationality']) == 167 or int(data['RF_Nationality']) == 194 or int(data['RF_Nationality']) == 215 or int(data['RF_Nationality']) == 216
             ):
@@ -209,7 +209,7 @@ def wkhtmltopdfapi(request):
                 val5=9
                                     
 
-            if(int(data['RF_CountryOfTax']) == 5 or int(data['RF_CountryOfTax']) == 7 or int(data['RF_CountryOfTax']) == 9 or int(data['RF_CountryOfTax']) == 12 or int(data['RF_CountryOfTax']) == 25 or int(data['RF_CountryOfTax']) == 34 or int(data['RF_CountryOfTax']) == 35 or int(data['RF_CountryOfTax']) == 61 or int(data['RF_CountryOfTax']) == 76 or int(data['RF_CountryOfTax']) == 84or int(data['RF_CountryOfTax']) == 88
+            if(int(data['RF_CountryOfTax']) == 5 or int(data['RF_CountryOfTax']) == 7 or int(data['RF_CountryOfTax']) == 9 or int(data['RF_CountryOfTax']) == 12 or int(data['RF_CountryOfTax']) == 25 or int(data['RF_CountryOfTax']) == 34 or int(data['RF_CountryOfTax']) == 35 or int(data['RF_CountryOfTax']) == 61 or int(data['RF_CountryOfTax']) == 76 or int(data['RF_CountryOfTax']) == 84 or int(data['RF_CountryOfTax']) == 88
                 
                 or int(data['RF_CountryOfTax']) == 114 or int(data['RF_CountryOfTax']) == 130 or int(data['RF_CountryOfTax']) == 132 or int(data['RF_CountryOfTax']) == 142 or int(data['RF_CountryOfTax']) == 149 or int(data['RF_CountryOfTax']) == 159 or int(data['RF_CountryOfTax']) == 161 
                 or int(data['RF_CountryOfTax']) == 167 or int(data['RF_CountryOfTax']) == 194 or int(data['RF_CountryOfTax']) == 215 or int(data['RF_CountryOfTax']) == 216):
@@ -346,7 +346,7 @@ def wkhtmltopdfapi(request):
                 val10=9
 
 
-            if(int(data['RF_CountryOfResidence']) == 5 or int(data['RF_CountryOfResidence']) == 7 or int(data['RF_CountryOfResidence']) == 9 or int(data['RF_CountryOfResidence']) == 12 or int(data['RF_CountryOfResidence']) == 25 or int(data['RF_CountryOfResidence']) == 34 or int(data['RF_CountryOfResidence']) == 35 or int(data['RF_CountryOfResidence']) == 61 or int(data['RF_CountryOfResidence']) == 76 or int(data['RF_CountryOfResidence']) == 84or int(data['RF_CountryOfResidence']) == 88
+            if(int(data['RF_CountryOfResidence']) == 5 or int(data['RF_CountryOfResidence']) == 7 or int(data['RF_CountryOfResidence']) == 9 or int(data['RF_CountryOfResidence']) == 12 or int(data['RF_CountryOfResidence']) == 25 or int(data['RF_CountryOfResidence']) == 34 or int(data['RF_CountryOfResidence']) == 35 or int(data['RF_CountryOfResidence']) == 61 or int(data['RF_CountryOfResidence']) == 76 or int(data['RF_CountryOfResidence']) == 84 or int(data['RF_CountryOfResidence']) == 88
                 
                 or int(data['RF_CountryOfResidence']) == 114 or int(data['RF_CountryOfResidence']) == 130 or int(data['RF_CountryOfResidence']) == 132 or int(data['RF_CountryOfResidence']) == 142 or int(data['RF_CountryOfResidence']) == 149 or int(data['RF_CountryOfResidence']) == 159 or int(data['RF_CountryOfResidence']) == 161 
                 or int(data['RF_CountryOfResidence']) == 167 or int(data['RF_CountryOfResidence']) == 194 or int(data['RF_CountryOfResidence']) == 215 or int(data['RF_CountryOfResidence']) == 216):
@@ -2868,7 +2868,7 @@ class printROA(APIView):
                 ):
                     val3=9
                 if(
-                    int(data['RF_CountryOfResidence']) == 5 or int(data['RF_CountryOfResidence']) == 7 or int(data['RF_CountryOfResidence']) == 9 or int(data['RF_CountryOfResidence']) == 12 or int(data['RF_CountryOfResidence']) == 25 or int(data['RF_CountryOfResidence']) == 34 or int(data['RF_CountryOfResidence']) == 35 or int(data['RF_CountryOfResidence']) == 61 or int(data['RF_CountryOfResidence']) == 76 or int(data['RF_CountryOfResidence']) == 84or int(data['RF_CountryOfResidence']) == 88
+                    int(data['RF_CountryOfResidence']) == 5 or int(data['RF_CountryOfResidence']) == 7 or int(data['RF_CountryOfResidence']) == 9 or int(data['RF_CountryOfResidence']) == 12 or int(data['RF_CountryOfResidence']) == 25 or int(data['RF_CountryOfResidence']) == 34 or int(data['RF_CountryOfResidence']) == 35 or int(data['RF_CountryOfResidence']) == 61 or int(data['RF_CountryOfResidence']) == 76 or int(data['RF_CountryOfResidence']) == 84 or int(data['RF_CountryOfResidence']) == 88
                     or int(data['RF_CountryOfResidence']) == 114 or int(data['RF_CountryOfResidence']) == 130 or int(data['RF_CountryOfResidence']) == 132 or int(data['RF_CountryOfResidence']) == 142 or int(data['RF_CountryOfResidence']) == 149 or int(data['RF_CountryOfResidence']) == 159 or int(data['RF_CountryOfResidence']) == 161 
                     or int(data['RF_CountryOfResidence']) == 167 or int(data['RF_CountryOfResidence']) == 194 or int(data['RF_CountryOfResidence']) == 215 or int(data['RF_CountryOfResidence']) == 216
                 ):
@@ -2907,7 +2907,7 @@ class printROA(APIView):
                 ):
                     val4=9
                 if(
-                    int(data['RF_Nationality']) == 5 or int(data['RF_Nationality']) == 7 or int(data['RF_Nationality']) == 9 or int(data['RF_Nationality']) == 12 or int(data['RF_Nationality']) == 25 or int(data['RF_Nationality']) == 34 or int(data['RF_Nationality']) == 35 or int(data['RF_Nationality']) == 61 or int(data['RF_Nationality']) == 76 or int(data['RF_Nationality']) == 84or int(data['RF_Nationality']) == 88
+                    int(data['RF_Nationality']) == 5 or int(data['RF_Nationality']) == 7 or int(data['RF_Nationality']) == 9 or int(data['RF_Nationality']) == 12 or int(data['RF_Nationality']) == 25 or int(data['RF_Nationality']) == 34 or int(data['RF_Nationality']) == 35 or int(data['RF_Nationality']) == 61 or int(data['RF_Nationality']) == 76 or int(data['RF_Nationality']) == 84 or int(data['RF_Nationality']) == 88
                     or int(data['RF_Nationality']) == 114 or int(data['RF_Nationality']) == 130 or int(data['RF_Nationality']) == 132 or int(data['RF_Nationality']) == 142 or int(data['RF_Nationality']) == 149 or int(data['RF_Nationality']) == 159 or int(data['RF_Nationality']) == 161 
                     or int(data['RF_Nationality']) == 167 or int(data['RF_Nationality']) == 194 or int(data['RF_Nationality']) == 215 or int(data['RF_Nationality']) == 216
                 ):
@@ -2944,7 +2944,7 @@ class printROA(APIView):
                     val5=9
                                         
 
-                if(int(data['RF_CountryOfTax']) == 5 or int(data['RF_CountryOfTax']) == 7 or int(data['RF_CountryOfTax']) == 9 or int(data['RF_CountryOfTax']) == 12 or int(data['RF_CountryOfTax']) == 25 or int(data['RF_CountryOfTax']) == 34 or int(data['RF_CountryOfTax']) == 35 or int(data['RF_CountryOfTax']) == 61 or int(data['RF_CountryOfTax']) == 76 or int(data['RF_CountryOfTax']) == 84or int(data['RF_CountryOfTax']) == 88
+                if(int(data['RF_CountryOfTax']) == 5 or int(data['RF_CountryOfTax']) == 7 or int(data['RF_CountryOfTax']) == 9 or int(data['RF_CountryOfTax']) == 12 or int(data['RF_CountryOfTax']) == 25 or int(data['RF_CountryOfTax']) == 34 or int(data['RF_CountryOfTax']) == 35 or int(data['RF_CountryOfTax']) == 61 or int(data['RF_CountryOfTax']) == 76 or int(data['RF_CountryOfTax']) == 84 or int(data['RF_CountryOfTax']) == 88
                     
                     or int(data['RF_CountryOfTax']) == 114 or int(data['RF_CountryOfTax']) == 130 or int(data['RF_CountryOfTax']) == 132 or int(data['RF_CountryOfTax']) == 142 or int(data['RF_CountryOfTax']) == 149 or int(data['RF_CountryOfTax']) == 159 or int(data['RF_CountryOfTax']) == 161 
                     or int(data['RF_CountryOfTax']) == 167 or int(data['RF_CountryOfTax']) == 194 or int(data['RF_CountryOfTax']) == 215 or int(data['RF_CountryOfTax']) == 216):
@@ -3081,7 +3081,7 @@ class printROA(APIView):
                     val10=9
 
 
-                if(int(data['RF_CountryOfResidence']) == 5 or int(data['RF_CountryOfResidence']) == 7 or int(data['RF_CountryOfResidence']) == 9 or int(data['RF_CountryOfResidence']) == 12 or int(data['RF_CountryOfResidence']) == 25 or int(data['RF_CountryOfResidence']) == 34 or int(data['RF_CountryOfResidence']) == 35 or int(data['RF_CountryOfResidence']) == 61 or int(data['RF_CountryOfResidence']) == 76 or int(data['RF_CountryOfResidence']) == 84or int(data['RF_CountryOfResidence']) == 88
+                if(int(data['RF_CountryOfResidence']) == 5 or int(data['RF_CountryOfResidence']) == 7 or int(data['RF_CountryOfResidence']) == 9 or int(data['RF_CountryOfResidence']) == 12 or int(data['RF_CountryOfResidence']) == 25 or int(data['RF_CountryOfResidence']) == 34 or int(data['RF_CountryOfResidence']) == 35 or int(data['RF_CountryOfResidence']) == 61 or int(data['RF_CountryOfResidence']) == 76 or int(data['RF_CountryOfResidence']) == 84 or int(data['RF_CountryOfResidence']) == 88
                     
                     or int(data['RF_CountryOfResidence']) == 114 or int(data['RF_CountryOfResidence']) == 130 or int(data['RF_CountryOfResidence']) == 132 or int(data['RF_CountryOfResidence']) == 142 or int(data['RF_CountryOfResidence']) == 149 or int(data['RF_CountryOfResidence']) == 159 or int(data['RF_CountryOfResidence']) == 161 
                     or int(data['RF_CountryOfResidence']) == 167 or int(data['RF_CountryOfResidence']) == 194 or int(data['RF_CountryOfResidence']) == 215 or int(data['RF_CountryOfResidence']) == 216):

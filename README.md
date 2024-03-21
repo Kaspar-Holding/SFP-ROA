@@ -14,6 +14,13 @@ Deployed using Nginx and Gunicorn
 
 ## Changelog
 
+### 21 March 2024:
+- ROA
+1. Removed Sweetalert in case of completed form.
+- Users
+1. Reset Password email working now.
+- Deployment on Production 
+
 ### 19 March 2024:
 - ROA
 1. Bugs resolved.

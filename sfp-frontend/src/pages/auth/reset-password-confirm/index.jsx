@@ -89,7 +89,7 @@ const ResetPasswordConfirmPage = () => {
         if (uid && token) {
             validate()
         }
-    }, [uid, token, validate])
+    }, [uid, token])
 
 
     if (typeof window != 'undefined' && isAuthenticated) {

@@ -9,6 +9,7 @@ from datetime import datetime
 import uuid
 from djoser import utils
 import pytz
+from tasks.tasks import sendResetPasswordEmail
 # Create your views here.
 
 def alertPDF(request, formId):
@@ -605,6 +606,17 @@ class PasswordResetEmail(BaseEmailMessage):
         context["url"] = settings.PASSWORD_RESET_CONFIRM_URL.format(**context)
         return context
 
+class PasswordResetRequest(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def post(self, request):
+        if 'email' not in request.data:
+            return Response(400)
+        
+        email = request.data['email']
+        sendResetPasswordEmail.delay(email)
+        return Response({"message" : "Email sent if user exists."})
 
 class PasswordChangedConfirmationEmail(BaseEmailMessage):
     template_name = "djoserEmails/password_changed_confirmation.html"

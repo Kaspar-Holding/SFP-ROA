@@ -72,7 +72,7 @@ const GapCover = () => {
 
 
     const onChange = e => {
-        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : <></> //Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
     // API Config
@@ -238,7 +238,7 @@ const GapCover = () => {
 
 
     const onFieldBlur = (e) => {
-        FormStatus == 0 ? updateForm() : Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+        FormStatus == 0 ? updateForm() : <></> //Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
     const [backgroundInfoVisibility, setbackgroundInfoVisibility] = useState(false)

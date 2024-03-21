@@ -2200,3 +2200,36 @@ def commission_report(userId, requestedData):
         serializer.create(serializer.validated_data)
     else:
         logger.info(serializer.errors)
+
+from django.template.loader import get_template
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.contrib.auth.tokens import default_token_generator
+from djoser import utils
+
+@shared_task
+def sendResetPasswordEmail(email):
+    user = UserAccount.objects.filter(email=email)
+    if user.exists():
+        from_email = 'SFP Support <support@sfponline.co.za>'
+        user = user.first()
+        data = {}
+        data['protocol'] = 'https'
+        data["site"] = "SFP Online"
+        user_data = user_profile.objects.filter(user=user.pk)
+        if user_data.exists():
+            data["user_name"] = user_data.first().Full_Name
+        else:
+            data["user_name"] = user.first_name + " " + user.last_name
+        data["URL"] = env('FRONTEND_URL') +"/auth/reset-password-confirm"
+        data["uid"] = utils.encode_uid(user.pk)
+        data["token"] = default_token_generator.make_token(user)
+        template = get_template('password_reset.html').render(context=data)
+        # print("Hi "+user[0]['email'])
+        msg = EmailMultiAlternatives(
+            'Password Reset Request',
+            None, # This is the text context, just send None or Send a string message
+            from_email,
+            [email],
+        )
+        msg.attach_alternative(template, "text/html")
+        msg.send(fail_silently=False)
