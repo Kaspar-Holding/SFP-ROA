@@ -959,7 +959,7 @@ const EmployeeBenefits = () => {
                             {
                                 backgroundInfoVisibility1 ?
                                     <>
-                                        <div id="background_info_instructions1" className="hidden_class">
+                                        <div id="background_info_instructions10" className="hidden_class">
                                             {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                             <ul>
                                                 <li>
@@ -2001,7 +2001,7 @@ const EmployeeBenefits = () => {
                             {
                                 backgroundInfoVisibility2 ?
                                     <>
-                                        <div id="background_info_instructions2" className="hidden_class">
+                                        <div id="background_info_instructions10" className="hidden_class">
                                             {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                             <ul>
                                                 <li>
@@ -2074,7 +2074,7 @@ Record the client's instructions, deviations and implications thereof.
                             {
                                 backgroundInfoVisibility4 ?
                                     <>
-                                        <div id="background_info_instructions4" className="hidden_class">
+                                        <div id="background_info_instructions10" className="hidden_class">
                                             {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                             <ul>
                                                 <li>
@@ -2147,7 +2147,7 @@ Record the client's instructions, deviations and implications thereof.
                             {
                                 backgroundInfoVisibility3 ?
                                     <>
-                                        <div id="background_info_instructions3" className="hidden_class">
+                                        <div id="background_info_instructions10" className="hidden_class">
                                             {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                             <ul>
                                                 <li>
@@ -2222,7 +2222,7 @@ Record the client's instructions, deviations and implications thereof.
                             {
                                 backgroundInfoVisibility5 ?
                                     <>
-                                        <div id="background_info_instructions5" className="hidden_class">
+                                        <div id="background_info_instructions10" className="hidden_class">
                                             <ul>
                                                 <li>
                                                     Summary of recommendations to address your identified needs.

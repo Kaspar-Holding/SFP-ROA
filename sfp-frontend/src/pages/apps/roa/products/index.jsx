@@ -141,10 +141,18 @@ const ROAProducts = () => {
                 <div className='col-lg-9 bulkupdate'>
                     <div className='users-edit-card '>
                         <div className='inital-card-header text-center'>
+                            <b>Single Product Update</b>
+                        </div>
+                        <hr />
+                        <div className='text-center'>
+                            <button className='btn btn-primary' type='button' onClick={ (e) => { router.push('/apps/roa/products/edit') } }>Edit Advisor Product(s)</button>
+                        </div>
+
+                        <hr />
+                        <div className='inital-card-header text-center'>
                             <b>Bulk Product Update</b>
                         </div>
                         <hr />
-
                         <form onSubmit={ handleSubmit } className='container text-center'>
                             <div className='form-group'>
                                 <input disabled={ Columns?.length > 0 } className='form-control form-control-lg' type='file' accept='.xls' id='file' name='file' onChange={ handleFileChange } />

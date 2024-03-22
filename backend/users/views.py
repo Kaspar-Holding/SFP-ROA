@@ -135,10 +135,10 @@ def getUserProfileInfo(request):
         # Get the appointment date from the user_profile_data dictionary
         userData['inservice'] = (user_profile_data['Appointment_Date'])
         appointment_date = (user_profile_data['Appointment_Date'])
-        experience = now.year - appointment_date.year
+        experience = now.year - appointment_date.year if appointment_date else 0
         experience = experience if experience != 0 else 1
         dofa = user_profile_data['DOFA']
-        industry_experience = now.year - dofa.year
+        industry_experience = now.year - dofa.year if dofa else 0
         industry_experience = industry_experience if industry_experience != 0 else 1
 
         # Calculate the difference in years
@@ -874,6 +874,8 @@ class UserDetail(APIView):
                     return Response({"message" : serializer.errors}, 400) 
             old_user_profile = user_profile.objects.filter(user=utils.decode_uid(pk))
             if old_user_profile.exists():
+                if data['region'] == "0":
+                    data['region'] = None
                 old_user_profile = old_user_profile.first()
                 user_profile_serializer = user_profile_Serializer(instance=old_user_profile, data=data, partial=True)
                 if user_profile_serializer.is_valid():

@@ -726,7 +726,7 @@ const BAInvestment = () => {
                                 {
                                     backgroundInfoVisibility14 ?
                                         <>
-                                            <div id="background_info_instructions14" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul className='roa-label'>
                                                     <li>Indicate the duration for which the client intends to maintain investment to meet his/her goals. Explain.<br />
@@ -810,7 +810,7 @@ const BAInvestment = () => {
                                 {
                                     backgroundInfoVisibility15 ?
                                         <>
-                                            <div id="background_info_instructions15" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul className='roa-label'>
                                                     <li>Notes<br />
@@ -864,7 +864,7 @@ const BAInvestment = () => {
                                 {
                                     backgroundInfoVisibility16 ?
                                         <>
-                                            <div id="background_info_instructions16" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul className='roa-label'>
                                                     <li>Notes on discussion with client concerning the investment strategy.<br />
@@ -916,7 +916,7 @@ const BAInvestment = () => {
                                 {
                                     backgroundInfoVisibility17 ?
                                         <>
-                                            <div id="background_info_instructions17" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul className='roa-label'>
                                                     <li>Notes on discussion with client concerning return expectations.<br />
@@ -968,7 +968,7 @@ const BAInvestment = () => {
                                 {
                                     backgroundInfoVisibility18 ?
                                         <>
-                                            <div id="background_info_instructions18" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul className='roa-label'>
                                                     <li>Notes on the client risk profile..<br />
@@ -1198,7 +1198,7 @@ const BAInvestment = () => {
                                 {
                                     backgroundInfoVisibility19 ?
                                         <>
-                                            <div id="background_info_instructions19" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul className='roa-label'>
                                                     <li>Discuss the outcome of the FNA:<br />
@@ -1244,7 +1244,7 @@ const BAInvestment = () => {
                                 {
                                     backgroundInfoVisibility20 ?
                                         <>
-                                            <div id="background_info_instructions20" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul className='roa-label'>
                                                     <li>1. Identify the type of product or product provider which was considered but not selected and motivate.
@@ -1280,7 +1280,7 @@ const BAInvestment = () => {
                                 {
                                     backgroundInfoVisibility21 ?
                                         <>
-                                            <div id="background_info_instructions21" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul className='roa-label'>
                                                     <li>2. Identify the type of product or product provider which was considered but not selected and motivate.
@@ -1316,7 +1316,7 @@ const BAInvestment = () => {
                                 {
                                     backgroundInfoVisibility22 ?
                                         <>
-                                            <div id="background_info_instructions22" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul className='roa-label'>
                                                     <li>3. Identify the type of product or product provider which was considered but not selected and motivate.
@@ -1593,7 +1593,7 @@ const BAInvestment = () => {
                                                     {
                                                         backgroundInfoVisibility23 ?
                                                             <>
-                                                                <div id="background_info_instructions23" className="hidden_class">
+                                                                <div id="background_info_instructions10" className="hidden_class">
                                                                     {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                     <ul className='roa-label'>
                                                                         <li>
@@ -1944,7 +1944,7 @@ const BAInvestment = () => {
                                                     {
                                                         backgroundInfoVisibility24 ?
                                                             <>
-                                                                <div id="background_info_instructions24" className="hidden_class">
+                                                                <div id="background_info_instructions10" className="hidden_class">
                                                                     {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                     <ul className='roa-label'>
                                                                         <li>
@@ -2220,7 +2220,7 @@ const BAInvestment = () => {
                                                                                 {
                                                                                     backgroundInfoVisibility8 ?
                                                                                         <>
-                                                                                            <div id="background_info_instructions8" className="hidden_class">
+                                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                                                 <ul className='roa-label'>
                                                                                                     <li>
@@ -2255,7 +2255,7 @@ const BAInvestment = () => {
                                                                                 {
                                                                                     backgroundInfoVisibility9 ?
                                                                                         <>
-                                                                                            <div id="background_info_instructions9" className="hidden_class">
+                                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                                                 <ul className='roa-label'>
                                                                                                     <li>
@@ -2333,7 +2333,7 @@ const BAInvestment = () => {
                                                                                 {
                                                                                     backgroundInfoVisibility11 ?
                                                                                         <>
-                                                                                            <div id="background_info_instructions11" className="hidden_class">
+                                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                                                 <ul className='roa-label'>
                                                                                                     <li>
@@ -2370,7 +2370,7 @@ const BAInvestment = () => {
                                                                                 {
                                                                                     backgroundInfoVisibility12 ?
                                                                                         <>
-                                                                                            <div id="background_info_instructions12" className="hidden_class">
+                                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                                                 <ul className='roa-label'>
                                                                                                     <li>

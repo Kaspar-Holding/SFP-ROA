@@ -349,7 +349,7 @@ const UsersList = () => {
                                                     <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className='tableContent'>{ console.log(Users[1]) }
+                                            <tbody className='tableContent'>
                                                 {
                                                     Users?.map((user, index) => {
                                                         return (

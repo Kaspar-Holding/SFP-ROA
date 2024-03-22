@@ -1324,7 +1324,7 @@ const BARisk = () => {
                                 {
                                     backgroundInfoVisibility1 ?
                                         <>
-                                            <div id="background_info_instructions1" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -2669,7 +2669,7 @@ const BARisk = () => {
                                 {
                                     backgroundInfoVisibility3 ?
                                         <>
-                                            <div id="background_info_instructions3" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -2710,7 +2710,7 @@ const BARisk = () => {
                                 {
                                     backgroundInfoVisibility4 ?
                                         <>
-                                            <div id="background_info_instructions4" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -2759,7 +2759,7 @@ const BARisk = () => {
                                 {
                                     backgroundInfoVisibility5 ?
                                         <>
-                                            <div id="background_info_instructions5" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -2794,7 +2794,7 @@ const BARisk = () => {
                                 {
                                     backgroundInfoVisibility6 ?
                                         <>
-                                            <div id="background_info_instructions6" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -2830,7 +2830,7 @@ const BARisk = () => {
                                 {
                                     backgroundInfoVisibility7 ?
                                         <>
-                                            <div id="background_info_instructions7" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -3167,7 +3167,7 @@ const BARisk = () => {
                                                             {
                                                                 backgroundInfoVisibility8 ?
                                                                     <>
-                                                                        <div id="background_info_instructions8" className="hidden_class">
+                                                                        <div id="background_info_instructions10" className="hidden_class">
                                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                             <ul>
                                                                                 <li>
@@ -3205,7 +3205,7 @@ const BARisk = () => {
                                                             {
                                                                 backgroundInfoVisibility9 ?
                                                                     <>
-                                                                        <div id="background_info_instructions9" className="hidden_class">
+                                                                        <div id="background_info_instructions10" className="hidden_class">
                                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                             <ul>
                                                                                 <li>
@@ -3242,7 +3242,7 @@ const BARisk = () => {
                                                             {
                                                                 backgroundInfoVisibility10 ?
                                                                     <>
-                                                                        <div id="background_info_instructions9" className="hidden_class">
+                                                                        <div id="background_info_instructions10" className="hidden_class">
                                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                             <ul>
                                                                                 <li>
@@ -3284,7 +3284,7 @@ const BARisk = () => {
                                                             {
                                                                 backgroundInfoVisibility11 ?
                                                                     <>
-                                                                        <div id="background_info_instructions11" className="hidden_class">
+                                                                        <div id="background_info_instructions10" className="hidden_class">
                                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                             <ul>
                                                                                 <li>
@@ -3325,7 +3325,7 @@ const BARisk = () => {
                                                             {
                                                                 backgroundInfoVisibility12 ?
                                                                     <>
-                                                                        <div id="background_info_instructions12" className="hidden_class">
+                                                                        <div id="background_info_instructions10" className="hidden_class">
                                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                             <ul>
                                                                                 <li>
@@ -3363,7 +3363,7 @@ const BARisk = () => {
                                                             {
                                                                 backgroundInfoVisibility13 ?
                                                                     <>
-                                                                        <div id="background_info_instructions13" className="hidden_class">
+                                                                        <div id="background_info_instructions10" className="hidden_class">
                                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                             <ul>
                                                                                 <li>Discuss the following information which has been explained to client:<br />

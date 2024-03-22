@@ -295,6 +295,8 @@ const InvestPlanning = () => {
 
     }
 
+
+
     const [SicaVisibility, setSicaVisibility] = useState(false)
     const [backgroundInfoVisibility, setbackgroundInfoVisibility] = useState(false)
     const [backgroundInfoVisibility1, setbackgroundInfoVisibility1] = useState(false)
@@ -397,6 +399,12 @@ const InvestPlanning = () => {
     }
     function backgroundInfo_onBlur15() {
         setbackgroundInfoVisibility15(false)
+    }
+
+    const on_ProductTaken_CheckBox_Change = (e, i, value) => {
+        let newProductTaken = [...ProductTaken]
+        newProductTaken[i][e.target.name] = value
+        setProductTaken(newProductTaken)
     }
     useEffect(() => {
         LoadData(formId)
@@ -517,12 +525,13 @@ const InvestPlanning = () => {
                                     </div>
                                 </div>
                                 <br />
+                                <br />
 
 
                                 {
                                     backgroundInfoVisibility11 ?
                                         <>
-                                            <div id="background_info_instructions11" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -587,10 +596,11 @@ const InvestPlanning = () => {
 
                                     </div>
                                 </div>
+                                <br />
                                 {
                                     backgroundInfoVisibility12 ?
                                         <>
-                                            <div id="background_info_instructions11" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -654,10 +664,11 @@ const InvestPlanning = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <br />
                                 {
                                     backgroundInfoVisibility13 ?
                                         <>
-                                            <div id="background_info_instructions11" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -722,10 +733,11 @@ const InvestPlanning = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <br />
                                 {
                                     backgroundInfoVisibility14 ?
                                         <>
-                                            <div id="background_info_instructions11" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -788,10 +800,11 @@ const InvestPlanning = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <br />
                                 {
                                     backgroundInfoVisibility15 ?
                                         <>
-                                            <div id="background_info_instructions15" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -846,7 +859,7 @@ const InvestPlanning = () => {
                                 {
                                     backgroundInfoVisibility1 ?
                                         <>
-                                            <div id="background_info_instructions1" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -899,7 +912,7 @@ const InvestPlanning = () => {
                                 {
                                     backgroundInfoVisibility2 ?
                                         <>
-                                            <div id="background_info_instructions2" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -955,7 +968,7 @@ const InvestPlanning = () => {
                                 {
                                     backgroundInfoVisibility3 ?
                                         <>
-                                            <div id="background_info_instructions3" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -1004,7 +1017,7 @@ const InvestPlanning = () => {
                                 {
                                     backgroundInfoVisibility ?
                                         <>
-                                            <div id="background_info_instructions" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -1055,7 +1068,7 @@ const InvestPlanning = () => {
                                 {
                                     backgroundInfoVisibility4 ?
                                         <>
-                                            <div id="background_info_instructions4" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -1092,7 +1105,7 @@ const InvestPlanning = () => {
                                 {
                                     backgroundInfoVisibility5 ?
                                         <>
-                                            <div id="background_info_instructions5" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -1127,7 +1140,7 @@ const InvestPlanning = () => {
                                 {
                                     backgroundInfoVisibility6 ?
                                         <>
-                                            <div id="background_info_instructions6" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                 <ul>
                                                     <li>
@@ -1246,7 +1259,7 @@ const InvestPlanning = () => {
                                                                     <td className="roa-font" align="start">Product Provider:</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductProvider' value={ key.ProductProvider } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductProvider' value={ key.ProductProvider } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td></td>
@@ -1254,7 +1267,7 @@ const InvestPlanning = () => {
                                                                     <td className="roa-font" align="start">Policy No:</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='PolicyNumber' required value={ key.PolicyNumber } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='PolicyNumber' required value={ key.PolicyNumber } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
 
@@ -1267,7 +1280,7 @@ const InvestPlanning = () => {
                                                                     <td className="roa-font" align="start">Product Name:</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductName' value={ key.ProductName } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductName' value={ key.ProductName } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td></td>
@@ -1277,7 +1290,7 @@ const InvestPlanning = () => {
                                                                         <div className='row'>
                                                                             <div className='col-6'>
                                                                                 <div className="form-group">
-                                                                                    <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductPremium' value={ key.ProductPremium } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                                    <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductPremium' value={ key.ProductPremium } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                                 </div>
                                                                             </div>
                                                                             <div className='col-6'>
@@ -1301,7 +1314,7 @@ const InvestPlanning = () => {
                                                                     <td className="roa-font" align="start">Escalation:</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductEscalation' value={ key.ProductEscalation } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductEscalation' value={ key.ProductEscalation } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td></td>
@@ -1309,7 +1322,7 @@ const InvestPlanning = () => {
                                                                     <td className="roa-font" align="start">Total estimated annual <br />cost (EAC)</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ProductEAC' value={ key.ProductEAC } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='ProductEAC' value={ key.ProductEAC } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td></td>
@@ -1320,7 +1333,7 @@ const InvestPlanning = () => {
                                                                     <td className="roa-font" align="start">Contracting Party</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductContractingParty' value={ key.ProductContractingParty } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductContractingParty' value={ key.ProductContractingParty } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td></td>
@@ -1328,7 +1341,7 @@ const InvestPlanning = () => {
                                                                     <td className="roa-font" align="start">Life/Lives assured</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductLivesAssured' value={ key.ProductLivesAssured } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductLivesAssured' value={ key.ProductLivesAssured } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td></td>
@@ -1339,14 +1352,14 @@ const InvestPlanning = () => {
                                                                     <td className="roa-font" align="start">Premium Layer</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductPremiumLayer' value={ key.ProductPremiumLayer } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductPremiumLayer' value={ key.ProductPremiumLayer } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td></td>
                                                                     <td className="roa-font" align="start">Beneficiary / nominee</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductBeneficiary' value={ key.ProductBeneficiary } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" name='ProductBeneficiary' value={ key.ProductBeneficiary } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td></td>
@@ -1357,26 +1370,26 @@ const InvestPlanning = () => {
                                                                     <td className="roa-font" align="start">Initial Commission</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_IniC' value={ key.Product_IniC } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_IniC' value={ key.Product_IniC } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div className="input-group">
                                                                             <span className="input-group-text">%</span>
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_IniC_Percentage' value={ key.Product_IniC_Percentage } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_IniC_Percentage' value={ key.Product_IniC_Percentage } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td className="roa-font" align="start">Ongoing Commission</td>
                                                                     <td>
                                                                         <div className="form-group">
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_OnC' value={ key.Product_OnC } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_OnC' value={ key.Product_OnC } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                     <td>
 
                                                                         <div className="input-group">
                                                                             <span className="input-group-text">%</span>
-                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_OnC_Percentage' value={ key.Product_OnC_Percentage } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" style={ { width: '120px' } } />
+                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } type="number" onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='Product_OnC_Percentage' value={ key.Product_OnC_Percentage } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -1453,7 +1466,7 @@ const InvestPlanning = () => {
                                                     {
                                                         backgroundInfoVisibility7 ?
                                                             <>
-                                                                <div id="background_info_instructions7" className="hidden_class">
+                                                                <div id="background_info_instructions10" className="hidden_class">
                                                                     {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                     <ul>
                                                                         <li>
@@ -1494,17 +1507,15 @@ const InvestPlanning = () => {
                                                                 illustrating the alignment of the risk profile of the constructed portfolio and that of the investor,
 
                                                                 motivating the constructed portfolio with reference to the following aspects:
-
                                                                 correlation;
-
                                                                 drawdown;
-
                                                                 portfolio return;
-
                                                                 meeting the investment objectives of the clients `}
                                                         />
                                                     </div>
 
+                                                    <br />
+                                                    <br />
                                                     <br />
                                                     <br />
                                                     <br />
@@ -1771,7 +1782,7 @@ const InvestPlanning = () => {
                                                     {
                                                         backgroundInfoVisibility8 ?
                                                             <>
-                                                                <div id="background_info_instructions8" className="hidden_class">
+                                                                <div id="background_info_instructions10" className="hidden_class">
                                                                     {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                     <ul>
                                                                         <li>
@@ -2046,7 +2057,7 @@ const InvestPlanning = () => {
                                                                                 {
                                                                                     backgroundInfoVisibility8 ?
                                                                                         <>
-                                                                                            <div id="background_info_instructions8" className="hidden_class">
+                                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                                                 <ul>
                                                                                                     <li>
@@ -2082,7 +2093,7 @@ const InvestPlanning = () => {
                                                                                 {
                                                                                     backgroundInfoVisibility9 ?
                                                                                         <>
-                                                                                            <div id="background_info_instructions9" className="hidden_class">
+                                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                                                 <ul>
                                                                                                     <li>
@@ -2100,7 +2111,7 @@ const InvestPlanning = () => {
                                                                                     <ReactQuill
                                                                                         theme="snow" // Specify the theme ('snow' or 'bubble')
                                                                                         value={ key?.STIC_Fire_AddComments }
-                                                                                        onChange={ (value) => { on_ProductTaken_Value_Change("ItP_ProductDetails", i, value) } }
+                                                                                        onChange={ (value) => { on_ProductTaken_Value_Change("STIC_Fire_AddComments", i, value) } }
                                                                                         onFocus={ (e) => { backgroundInfo_onFocus9() } }
                                                                                         onBlur={ (e) => { backgroundInfo_onBlur9() } }
                                                                                         modules={ modules }
@@ -2161,7 +2172,7 @@ const InvestPlanning = () => {
                                                                                 {
                                                                                     backgroundInfoVisibility11 ?
                                                                                         <>
-                                                                                            <div id="background_info_instructions11" className="hidden_class">
+                                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                                                 <ul>
                                                                                                     <li>
@@ -2199,7 +2210,7 @@ const InvestPlanning = () => {
                                                                                 {
                                                                                     backgroundInfoVisibility12 ?
                                                                                         <>
-                                                                                            <div id="background_info_instructions12" className="hidden_class">
+                                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                                 {/* <p className="roa-font">Discuss the outcome of the FNA</p><br /> */ }
                                                                                                 <ul>
                                                                                                     <li>

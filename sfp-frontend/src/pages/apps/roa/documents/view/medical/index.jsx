@@ -556,7 +556,7 @@ const Medical = () => {
                                 {
                                     backgroundInfoVisibility ?
                                         <>
-                                            <div id="background_info_instructions" className="hidden_class">
+                                            <div id="background_info_instructions10" className="hidden_class">
                                                 <p>Provide a detailed description of the client’s:</p><br />
                                                 <ul>
                                                     <li>

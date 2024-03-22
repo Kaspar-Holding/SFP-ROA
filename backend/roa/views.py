@@ -295,7 +295,7 @@ class FormAPIs(APIView):
 
     def put(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        serializer = Disclosures_Serializer(snippet, data=request.data)
+        serializer = Disclosures_Serializer(snippet, data=request.data['data'])
         if serializer.is_valid():
             serializer.save()
             DisclosuresProducts.objects.filter(formId=pk).delete()
@@ -1087,6 +1087,83 @@ class BulkProductUpdate_v2(APIView):
             return Response({"message": "Product excel file added to queue"})
 
     
+
+class advisorProducts(APIView):
+
+    def get(self, request, pk):
+        if request.user.is_superuser:
+            disclosureProducts = DisclosuresAdvisorSubCodes.objects.filter(~Q(product=None), user=pk)
+            products_data = []
+            for product in disclosureProducts:
+                products_data.append({
+                    "id" : product.pk,
+                    "product_id" : product.product.pk,
+                    "product" : product.product.product,
+                    "subcode" : product.subcode,
+                    "status" : True
+                })
+            return Response(products_data, 200)
+        return Response(400)
+    def post(self, request, pk):
+        product = DisclosuresProductProviders.objects.filter(product=request.data['product'])
+        if product.exists():
+            product = product.first()
+            advisor_product = DisclosuresAdvisorSubCodes.objects.filter(product=product.pk, user=pk)
+            if advisor_product.exists():     
+                advisor_product = advisor_product.first()   
+                data = {
+                    "subcode" : request.data['subcode'],
+                }
+                serializer = DisclosuresAdvisorSubCodes_Serializer(instance=advisor_product,data=data, partial=True)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(200)
+                else:
+                    print(serializer.errors)
+                    return Response(400)
+            else:
+                data = {
+                    "product" : product.pk,
+                    "user" : pk,
+                    "subcode" : request.data['subcode'],
+                }
+                serializer = DisclosuresAdvisorSubCodes_Serializer(data=data)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(200)
+                else:
+                    print(serializer.errors)
+                    return Response(400)
+        else:
+            data = {
+                "product" : request.data['product']
+            }
+            serializer = DisclosuresProductProviders_Serializer(data=data)
+            if serializer.is_valid():
+                product = serializer.save()
+                data = {
+                    "product" : product.pk,
+                    "user" : pk,
+                    "subcode" : request.data['subcode'],
+                }
+                serializer = DisclosuresAdvisorSubCodes_Serializer(data=data)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(200)
+                else:
+                    print(serializer.errors)
+                    return Response(400)
+            else:
+                print(serializer.errors)
+                return Response(400)
+    def put(self, request, pk):
+        product = DisclosuresAdvisorSubCodes.objects.filter(id=request.data['product_id'], user=pk)
+        if product.exists():
+            product.delete()
+            return Response(200)
+        else:
+            return Response(404)
+
 
 class advisorDisclosureProducts(APIView):
 

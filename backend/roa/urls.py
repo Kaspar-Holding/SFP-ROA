@@ -18,6 +18,7 @@ urlpatterns = [
     path('bulk/products/update/v2/', views.BulkProductUpdate_v2.as_view()),
     path('formList/', views.FormListAPIs.as_view()),
     path('form/kpis-and-trends/', views.roaKPISnTrends.as_view()),
+    path('advisor/products/<int:pk>/', views.advisorProducts.as_view()),
     path('form/', views.FormAPIs.as_view()),
     path('form/<int:pk>/', views.FormAPIs.as_view()),
     path('form/disclosure/products/', views.advisorDisclosureProducts.as_view()),

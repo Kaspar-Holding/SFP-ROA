@@ -1613,7 +1613,7 @@ const EditROA = () => {
                                                                 </div>
                                                                 <div className='col-1'>
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" value="1" checked={ FormData?.provider_for === 1 ? true : false } name="provider_for" />
+                                                                        <input class="form-check-input" type="radio" value="1" checked={ FormData?.provider_for == 1 ? true : false } onChange={ (e) => { onChange(e) } } name="provider_for" />
                                                                         <label class="form-check-label" htmlFor="flexCheckDefault">
                                                                             STI
                                                                         </label>
@@ -1624,14 +1624,25 @@ const EditROA = () => {
                                                                 </div>
                                                                 <div className='col-3'>
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" value="0" checked={ FormData?.provider_for === 0 ? true : false } name="provider_for" />
+                                                                        <input class="form-check-input" type="radio" value="0" checked={ FormData?.provider_for == 0 ? true : false } onChange={ (e) => { onChange(e) } } name="provider_for" />
                                                                         <label class="form-check-label" htmlFor="flexCheckDefault">
                                                                             Health Insurance
                                                                         </label>
                                                                     </div>
                                                                 </div>
-                                                                <div className='col-3'>
-                                                                    <input required type="text" class="form-control" id="policy_number" name="policy_number" value={ FormData?.policy_number } onChange={ (e) => { onChange(e) } } placeholder="Policy #" />
+                                                                <div className='col-1'>
+                                                                    or
+                                                                </div>
+                                                                <div className='col-1'>{ console.log(FormData?.provider_for) }
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" value="2" checked={ FormData?.provider_for == 2 ? true : false } onChange={ (e) => { onChange(e) } } name="provider_for" />
+                                                                        <label class="form-check-label" htmlFor="flexCheckDefault">
+                                                                            N/A
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className='col-2'>
+                                                                    <input type="text" class="form-control" id="policy_number" name="policy_number" value={ FormData?.policy_number } onChange={ (e) => { onChange(e) } } placeholder="Policy #" />
                                                                 </div>
 
                                                             </div>

@@ -14,6 +14,18 @@ Deployed using Nginx and Gunicorn
 
 ## Changelog
 
+### 22 March 2024:
+- Setting
+1. Debug set to False.
+- ROA
+1. Added individual user disclosure products addition and deletion.
+2. Resolved the bugs shared by Lambert.
+3. Add N/A in Disclosures
+4. Made Policy Number as optional
+- Users
+1. Profile DOFA and Appointment failsafe enabled
+- Deployment on Production and Staging
+
 ### 21 March 2024:
 - ROA
 1. Removed Sweetalert in case of completed form.

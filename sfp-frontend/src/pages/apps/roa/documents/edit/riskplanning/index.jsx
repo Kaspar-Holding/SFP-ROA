@@ -1145,7 +1145,7 @@ const RiskPlanning = () => {
                                             {
                                                 backgroundInfoVisibility1 ?
                                                     <>
-                                                        <div id="background_info_instructions1" className="hidden_class">
+                                                        <div id="background_info_instructions10" className="hidden_class">
                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                             <ul>
                                                                 <li>
@@ -1184,7 +1184,7 @@ const RiskPlanning = () => {
                                             {
                                                 backgroundInfoVisibility2 ?
                                                     <>
-                                                        <div id="background_info_instructions1" className="hidden_class">
+                                                        <div id="background_info_instructions10" className="hidden_class">
                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                             <ul>
                                                                 <li>
@@ -1221,7 +1221,7 @@ const RiskPlanning = () => {
                                             {
                                                 backgroundInfoVisibility3 ?
                                                     <>
-                                                        <div id="background_info_instructions1" className="hidden_class">
+                                                        <div id="background_info_instructions10" className="hidden_class">
                                                             {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                             <ul>
                                                                 <li>
@@ -1269,7 +1269,7 @@ const RiskPlanning = () => {
                                             } ><b>Alternative Solutions Considered:</b></span>
                                             {
                                                 backgroundInfoVisibility1 ?
-                                                    <div id="background_info_instructions1">
+                                                    <div id="background_info_instructions10">
                                                         <p className="roa-label">1. Identify the type of product or product provider which was considered but not selected and motivate.</p>
                                                     </div>
                                                     : <></>
@@ -1295,7 +1295,7 @@ const RiskPlanning = () => {
                                             <hr />
                                             {
                                                 backgroundInfoVisibility21 ?
-                                                    <div id="background_info_instructions1">
+                                                    <div id="background_info_instructions10">
                                                         <p className="roa-label">2. Identify the type of product or product provider which was considered but not selected and motivate.</p>
                                                     </div>
                                                     : <></>
@@ -1321,7 +1321,7 @@ const RiskPlanning = () => {
                                             <hr />
                                             {
                                                 backgroundInfoVisibility31 ?
-                                                    <div id="background_info_instructions1">
+                                                    <div id="background_info_instructions10">
                                                         <p className="roa-label">3. Identify the type of product or product provider which was considered but not selected and motivate.</p>
                                                     </div>
                                                     : <></>
@@ -1784,7 +1784,7 @@ const RiskPlanning = () => {
                                                                 {
                                                                     backgroundInfoVisibility7 ?
                                                                         <>
-                                                                            <div id="background_info_instructions7" className="hidden_class">
+                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                                 <ul>
                                                                                     <li>
@@ -1822,7 +1822,7 @@ const RiskPlanning = () => {
                                                                 {
                                                                     backgroundInfoVisibility8 ?
                                                                         <>
-                                                                            <div id="background_info_instructions8" className="hidden_class">
+                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                                 <ul>
                                                                                     <li>
@@ -1856,7 +1856,7 @@ const RiskPlanning = () => {
                                                                 {
                                                                     backgroundInfoVisibility9 ?
                                                                         <>
-                                                                            <div id="background_info_instructions9" className="hidden_class">
+                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                                 <ul>
                                                                                     <li>
@@ -1929,7 +1929,7 @@ const RiskPlanning = () => {
                                                                 {
                                                                     backgroundInfoVisibility11 ?
                                                                         <>
-                                                                            <div id="background_info_instructions11" className="hidden_class">
+                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                                 <ul>
                                                                                     <li>
@@ -1964,7 +1964,7 @@ const RiskPlanning = () => {
                                                                 {
                                                                     backgroundInfoVisibility12 ?
                                                                         <>
-                                                                            <div id="background_info_instructions12" className="hidden_class">
+                                                                            <div id="background_info_instructions10" className="hidden_class">
                                                                                 {/* <p>Discuss the outcome of the FNA</p><br /> */ }
                                                                                 <ul>
                                                                                     <li>
