@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import cookie from 'cookie'
-import { API_URL } from '../../../../../../config'
+import { API_URL } from '../../../../../config'
 
 export default async (req, res) => {
     if (req.method == "POST") {
