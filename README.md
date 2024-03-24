@@ -14,9 +14,20 @@ Deployed using Nginx and Gunicorn
 
 ## Changelog
 
+### 24 March 2024:
+- ROA
+1. Minor bug fixes.
+2. Disclosures Yes/No not working on Edit page.
+3. Added floating save button
+4. ROA resolved Texteditor bold font bug.
+- Users
+1. Catered auto sign out if user signs out with a message.
+- Deployment on Production and Staging
+
 ### 22 March 2024:
 - Setting
 1. Debug set to False.
+2. Reset Password email working now
 - ROA
 1. Added individual user disclosure products addition and deletion.
 2. Resolved the bugs shared by Lambert.

@@ -909,7 +909,7 @@ const BARisk = () => {
                                         {
                                             letterOfIntroductionVisibility ?
                                                 <>
-                                                    <div className="hidden_class">
+                                                    <div id="background_info_instructions10">
                                                         <p>If no, motivate</p>
                                                     </div>
                                                 </> :

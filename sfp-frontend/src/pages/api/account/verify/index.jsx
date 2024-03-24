@@ -40,6 +40,7 @@ export default async (req, res) => {
                 })
             }
         } catch (error) {
+            console.log(error.response)
             return res.status(error.response.status).json({
                 error: "Something went wrong"
             })

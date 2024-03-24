@@ -503,1520 +503,1557 @@ const RiskPlanning = () => {
                                 <></>
                         }
                         <div className=''>
-                            <form onSubmit={ e => onSubmit(e) }>
-                                <div className={ 'inital-card-header mx-5' }>
-                                    <div className='row'>
-                                        <b>Financial Needs Analysis Summary</b>
-                                        <div className='row'>
-                                            <div className='col'>
-                                                <b className='roa-font'>Financial Planning Need/Objective</b>
-                                            </div>
-                                            <div className='col'>
-                                                <b className='roa-font'>Total need identified</b>
-                                            </div>
-                                            <div className='col'>
-                                                <b className='roa-font'>Existing provisions</b>
-                                            </div>
-                                            <div className='col'>
-                                                <b className='roa-font'>Shortfall/ Surplus</b>
-                                            </div>
-                                            <div className='col'>
-                                                <b className='roa-font'>Cover taken up now</b>
-                                            </div>
-                                        </div>
-                                        {/* Death Cover */ }
-                                        <div className='col-lg-12'>
-                                            <div className='row'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Death Cover:</b>
-                                                </div>
-                                            </div>
-                                            <div className='row my-2'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Death Cover:Lump sum</b>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumTotalNeed' value={ FormData?.RP_DC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumExistingProvisions' value={ FormData?.RP_DC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DC_LumpSumTotalNeed - FormData?.RP_DC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumInvestments' value={ FormData?.RP_DC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className='row my-2'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Death Cover: Income (p.m.)</b>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeTotalNeed' value={ FormData?.RP_DC_IncomeTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeExistingProvisions' value={ FormData?.RP_DC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeExistingShortfallSurplus' value={ FormData?.RP_DC_IncomeTotalNeed - FormData?.RP_DC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeInvestments' value={ FormData?.RP_DC_IncomeInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className='row my-2'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Funeral Benefit (p.m.)</b>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_TotalNeed' value={ FormData?.RP_DC_FB_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_ExistingProvisions' value={ FormData?.RP_DC_FB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_ExistingShortfallSurplus' value={ FormData?.RP_DC_FB_TotalNeed - FormData?.RP_DC_FB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_Investments' value={ FormData?.RP_DC_FB_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/* Add Other Death Cover */ }
-                                            {
-                                                Risk_DC_Data.length === 0 ?
-                                                    <div className="row">
-                                                        <div className='col'>
-                                                            <button className={
-                                                                user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
-                                                                    : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
-                                                                        : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
-                                                                            : "btn btn-primary sfp "
-                                                            } type='button' onClick={ (e) => { AddNewRisk_DC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Death Cover</button>
+                            {
+                                Loaded ?
+                                    <Loader />
+                                    :
+                                    <form onSubmit={ e => onSubmit(e) }>
+                                        <div
+                                                        className={
+                                                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? "container-sfp"
+                                                                : user?.email?.includes('fs4p') ? "container-fs4p"
+                                                                    : user?.email?.includes('sanlam') ? "container-sanlam"
+                                                                        : "container-sfp"
+                                                        }
+                                                    >
+                                                        <div
+                                                            className={ "icon1 update" }
+                                                        >
+                                                            <div
+                                                                className={
+                                                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? "tooltip-sfp"
+                                                                        : user?.email?.includes('fs4p') ? "tooltip-fs4p"
+                                                                            : user?.email?.includes('sanlam') ? "tooltip-sanlam"
+                                                                                : "tooltip-sfp"
+                                                                }
+                                                            >
+                                                                Update
+                                                            </div>
+                                                            <span>
+                                                                <button
+                                                                    type="submit"
+                                                                    className="updateRiskFormBTN"
+                                                                    style={ { border: "none", backgroundColor: "transparent" } }
+                                                                >
+                                                                    <i className="fa-solid fa-check" />
+                                                                </button>
+                                                            </span>
                                                         </div>
                                                     </div>
-                                                    : <></>
-                                            }
-                                            {
-                                                Risk_DC_Data.length > 0 ?
-                                                    Risk_DC_Data.map((row, key) => {
-                                                        return (
-                                                            <div key={ key }>
-                                                                <div className='row'>
-                                                                    <div className='col'>
-                                                                        {
-                                                                            Risk_DC_Data.length === key + 1 ?
-                                                                                <button className={
-                                                                                    user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
-                                                                                        : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
-                                                                                            : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
-                                                                                                : "btn btn-primary sfp "
-                                                                                } type='button' onClick={ (e) => { AddNewRisk_DC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Death Cover</button>
-                                                                                : <></>
-                                                                        }
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <button className={
-                                                                            user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
-                                                                                : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
-                                                                                    : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
-                                                                                        : "btn btn-primary sfp "
-                                                                        } type='button' onClick={ (e) => { RemoveNewRisk_DC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faMinus } /> Remove Other Death Cover</button>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='row my-2'>
-                                                                    {/* <div className='col'>
-                                                                        <b className='roa-font'>Death Cover: Other</b>
-                                                                    </div> */}
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <textarea type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_Other' value={ row?.DC_Other } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='Enter the Name' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherTotalNeed' value={ row?.DC_OtherTotalNeed } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherExistingProvisions' value={ row?.DC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherExistingShortfallSurplus' value={ row?.DC_OtherTotalNeed - row?.DC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherInvestments' value={ row?.DC_OtherInvestments } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
+                                        <div className={ 'inital-card-header mx-5' }>
+                                            <div className='row'>
+                                                <b>Financial Needs Analysis Summary</b>
+                                                <div className='row'>
+                                                    <div className='col'>
+                                                        <b className='roa-font'>Financial Planning Need/Objective</b>
+                                                    </div>
+                                                    <div className='col'>
+                                                        <b className='roa-font'>Total need identified</b>
+                                                    </div>
+                                                    <div className='col'>
+                                                        <b className='roa-font'>Existing provisions</b>
+                                                    </div>
+                                                    <div className='col'>
+                                                        <b className='roa-font'>Shortfall/ Surplus</b>
+                                                    </div>
+                                                    <div className='col'>
+                                                        <b className='roa-font'>Cover taken up now</b>
+                                                    </div>
+                                                </div>
+                                                {/* Death Cover */ }
+                                                <div className='col-lg-12'>
+                                                    <div className='row'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Death Cover:</b>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row my-2'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Death Cover:Lump sum</b>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumTotalNeed' value={ FormData?.RP_DC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumExistingProvisions' value={ FormData?.RP_DC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DC_LumpSumTotalNeed - FormData?.RP_DC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_LumpSumInvestments' value={ FormData?.RP_DC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row my-2'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Death Cover: Income (p.m.)</b>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeTotalNeed' value={ FormData?.RP_DC_IncomeTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeExistingProvisions' value={ FormData?.RP_DC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeExistingShortfallSurplus' value={ FormData?.RP_DC_IncomeTotalNeed - FormData?.RP_DC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_IncomeInvestments' value={ FormData?.RP_DC_IncomeInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row my-2'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Funeral Benefit (p.m.)</b>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_TotalNeed' value={ FormData?.RP_DC_FB_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_ExistingProvisions' value={ FormData?.RP_DC_FB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_ExistingShortfallSurplus' value={ FormData?.RP_DC_FB_TotalNeed - FormData?.RP_DC_FB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DC_FB_Investments' value={ FormData?.RP_DC_FB_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {/* Add Other Death Cover */ }
+                                                    {
+                                                        Risk_DC_Data.length === 0 ?
+                                                            <div className="row">
+                                                                <div className='col'>
+                                                                    <button className={
+                                                                        user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
+                                                                            : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
+                                                                                : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
+                                                                                    : "btn btn-primary sfp "
+                                                                    } type='button' onClick={ (e) => { AddNewRisk_DC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Death Cover</button>
                                                                 </div>
                                                             </div>
-                                                        )
-                                                    })
-                                                    : <></>
-                                            }
-                                            <p className='roa-label my-2'><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
-                                            <div className='row'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Comments:</b>
-                                                </div>
-                                                <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                    <ReactQuill
-                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                        value={ FormData?.RP_DC_Comments }
-                                                        onChange={ (value) => { setFormData({ ...FormData, ['RP_DC_Comments']: value }) } }
-                                                        modules={ modules }
-                                                        formats={ formats }
-                                                        style={ {
-                                                            height: '300px', // Set the desired height here
-                                                        } }
-                                                    />
-                                                </div>
-                                            </div>
-                                            <br />
-                                            <br />
-                                        </div>
-                                        <br />
-                                        <br />
-                                        <hr />
-                                        {/* Disability Cover */ }
-                                        <div className='col-lg-12'>
-                                            <div className='row'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Disability Cover:</b>
-                                                </div>
-                                            </div>
-                                            <div className='row my-2'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Lump Sum</b>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumTotalNeed' value={ FormData?.RP_DiC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumExistingProvisions' value={ FormData?.RP_DiC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DiC_LumpSumTotalNeed - FormData?.RP_DiC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumInvestments' value={ FormData?.RP_DiC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className='row my-2'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Permanent Income (p.m.)</b>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_TotalNeed' value={ FormData?.RP_DiC_PI_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_ExistingProvisions' value={ FormData?.RP_DiC_PI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_ExistingShortfallSurplus' value={ FormData?.RP_DiC_PI_TotalNeed - FormData?.RP_DiC_PI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_Investments' value={ FormData?.RP_DiC_PI_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className='row my-2'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Temporary Income (p.m.)</b>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_TotalNeed' value={ FormData?.RP_DiC_TI_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_ExistingProvisions' value={ FormData?.RP_DiC_TI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_ExistingShortfallSurplus' value={ FormData?.RP_DiC_TI_TotalNeed - FormData?.RP_DiC_TI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_Investments' value={ FormData?.RP_DiC_TI_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className='row my-2'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Sickness Benefit</b>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_TotalNeed' value={ FormData?.RP_DiC_SiB_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_ExistingProvisions' value={ FormData?.RP_DiC_SiB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_ExistingShortfallSurplus' value={ FormData?.RP_DiC_SiB_TotalNeed - FormData?.RP_DiC_SiB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_Investments' value={ FormData?.RP_DiC_SiB_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/* Add Other Disease Cover */ }
-                                            {
-                                                Risk_DiC_Data.length === 0 ?
-                                                    <div className="row">
-                                                        <div className='col'>
-                                                            <button className={
-                                                                user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
-                                                                    : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
-                                                                        : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
-                                                                            : "btn btn-primary sfp "
-                                                            } type='button' onClick={ (e) => { AddNewRisk_DiC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Disability Cover</button>
-                                                        </div>
-                                                    </div>
-                                                    : <></>
-                                            }
-                                            {
-                                                Risk_DiC_Data.length > 0 ?
-                                                    Risk_DiC_Data.map((row, key) => {
-                                                        return (
-                                                            <div key={ key }>
-                                                                <div className='row'>
-                                                                    <div className='col'>
-                                                                        {
-                                                                            Risk_DiC_Data.length === key + 1 ?
+                                                            : <></>
+                                                    }
+                                                    {
+                                                        Risk_DC_Data.length > 0 ?
+                                                            Risk_DC_Data.map((row, key) => {
+                                                                return (
+                                                                    <div key={ key }>
+                                                                        <div className='row'>
+                                                                            <div className='col'>
+                                                                                {
+                                                                                    Risk_DC_Data.length === key + 1 ?
+                                                                                        <button className={
+                                                                                            user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
+                                                                                                : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
+                                                                                                    : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
+                                                                                                        : "btn btn-primary sfp "
+                                                                                        } type='button' onClick={ (e) => { AddNewRisk_DC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Death Cover</button>
+                                                                                        : <></>
+                                                                                }
+                                                                            </div>
+                                                                            <div className='col'>
                                                                                 <button className={
                                                                                     user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
                                                                                         : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
                                                                                             : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
                                                                                                 : "btn btn-primary sfp "
-                                                                                } type='button' onClick={ (e) => { AddNewRisk_DiC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Disability Cover</button>
-                                                                                : <></>
-                                                                        }
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <button className={
-                                                                            user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
-                                                                                : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
-                                                                                    : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
-                                                                                        : "btn btn-primary sfp "
-                                                                        } type='button' onClick={ (e) => { RemoveNewRisk_DiC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faMinus } /> Remove Other Disability Cover</button>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='row my-2'>
-                                                                    {/* <div className='col'>
+                                                                                } type='button' onClick={ (e) => { RemoveNewRisk_DC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faMinus } /> Remove Other Death Cover</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className='row my-2'>
+                                                                            {/* <div className='col'>
                                                                         <b className='roa-font'>Death Cover: Other</b>
                                                                     </div> */}
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <textarea type="text" className="form-control roa-font" name='DC_Other' value={ row?.DC_Other } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='Enter the Name' aria-label="" />
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <textarea type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_Other' value={ row?.DC_Other } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='Enter the Name' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherTotalNeed' value={ row?.DC_OtherTotalNeed } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherExistingProvisions' value={ row?.DC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherExistingShortfallSurplus' value={ row?.DC_OtherTotalNeed - row?.DC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DC_OtherInvestments' value={ row?.DC_OtherInvestments } onChange={ (e) => { on_Risk_DC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DiC_OtherTotalNeed' value={ row?.DiC_OtherTotalNeed } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DiC_OtherExistingProvisions' value={ row?.DiC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DiC_OtherExistingShortfallSurplus' value={ row?.DiC_OtherTotalNeed - row?.DiC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DiC_OtherInvestments' value={ row?.DiC_OtherInvestments } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        )
-                                                    })
-                                                    : <></>
-                                            }
-                                            <p className='roa-label my-2'><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
-                                            <div className='row'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Comments:</b>
-                                                </div>
-                                                <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                    <ReactQuill
-                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                        value={ FormData?.RP_DiC_Comments }
-                                                        onChange={ (value) => { setFormData({ ...FormData, ['RP_DiC_Comments']: value }) } }
-                                                        modules={ modules }
-                                                        formats={ formats }
-                                                        style={ {
-                                                            height: '300px', // Set the desired height here
-                                                        } }
-                                                    />
-                                                </div>
-                                                <br />
-                                                <br />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <hr />
-
-
-                                        </div>
-                                        {/* Dread Disease Cover */ }
-                                        <div className='col-lg-12'>
-                                            <div className='row'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Dread Disease Cover:</b>
-                                                </div>
-                                            </div>
-                                            <div className='row my-2'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Lump Sum</b>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumTotalNeed' value={ FormData?.RP_DrC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumExistingProvisions' value={ FormData?.RP_DrC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DrC_LumpSumTotalNeed - FormData?.RP_DrC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumInvestments' value={ FormData?.RP_DrC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className='row my-2'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Income (p.m.)</b>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeTotalNeed' value={ FormData?.RP_DrC_IncomeTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeExistingProvisions' value={ FormData?.RP_DrC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeExistingShortfallSurplus' value={ FormData?.RP_DrC_IncomeTotalNeed - FormData?.RP_DrC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                                <div className='col'>
-                                                    <div className="input-group roa-font">
-                                                        <span className="input-group-text">R</span>
-                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeInvestments' value={ FormData?.RP_DrC_IncomeInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/* Add Other Dread Disease Cover */ }
-                                            {
-                                                Risk_DrC_Data.length === 0 ?
-                                                    <div className="row">
+                                                                )
+                                                            })
+                                                            : <></>
+                                                    }
+                                                    <p className='roa-label my-2'><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+                                                    <div className='row'>
                                                         <div className='col'>
-                                                            <button className={
-                                                                user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
-                                                                    : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
-                                                                        : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
-                                                                            : "btn btn-primary sfp "
-                                                            } type='button' onClick={ (e) => { AddNewRisk_DrC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Dread Disease Cover</button>
+                                                            <b className='roa-font'>Comments:</b>
+                                                        </div>
+                                                        <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            <ReactQuill
+                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                value={ FormData?.RP_DC_Comments }
+                                                                onChange={ (value) => { setFormData({ ...FormData, ['RP_DC_Comments']: value }) } }
+                                                                modules={ modules }
+                                                                formats={ formats }
+                                                                style={ {
+                                                                    height: '300px', // Set the desired height here
+                                                                } }
+                                                            />
                                                         </div>
                                                     </div>
-                                                    : <></>
-                                            }
-                                            {
-                                                Risk_DrC_Data.length > 0 ?
-                                                    Risk_DrC_Data.map((row, key) => {
-                                                        return (
-                                                            <div key={ key }>
-                                                                <div className='row'>
-                                                                    <div className='col'>
-                                                                        {
-                                                                            Risk_DrC_Data.length === key + 1 ?
+                                                    <br />
+                                                    <br />
+                                                </div>
+                                                <br />
+                                                <br />
+                                                <hr />
+                                                {/* Disability Cover */ }
+                                                <div className='col-lg-12'>
+                                                    <div className='row'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Disability Cover:</b>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row my-2'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Lump Sum</b>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumTotalNeed' value={ FormData?.RP_DiC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumExistingProvisions' value={ FormData?.RP_DiC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DiC_LumpSumTotalNeed - FormData?.RP_DiC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_LumpSumInvestments' value={ FormData?.RP_DiC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row my-2'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Permanent Income (p.m.)</b>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_TotalNeed' value={ FormData?.RP_DiC_PI_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_ExistingProvisions' value={ FormData?.RP_DiC_PI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_ExistingShortfallSurplus' value={ FormData?.RP_DiC_PI_TotalNeed - FormData?.RP_DiC_PI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_PI_Investments' value={ FormData?.RP_DiC_PI_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row my-2'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Temporary Income (p.m.)</b>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_TotalNeed' value={ FormData?.RP_DiC_TI_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_ExistingProvisions' value={ FormData?.RP_DiC_TI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_ExistingShortfallSurplus' value={ FormData?.RP_DiC_TI_TotalNeed - FormData?.RP_DiC_TI_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_TI_Investments' value={ FormData?.RP_DiC_TI_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row my-2'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Sickness Benefit</b>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_TotalNeed' value={ FormData?.RP_DiC_SiB_TotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_ExistingProvisions' value={ FormData?.RP_DiC_SiB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_ExistingShortfallSurplus' value={ FormData?.RP_DiC_SiB_TotalNeed - FormData?.RP_DiC_SiB_ExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DiC_SiB_Investments' value={ FormData?.RP_DiC_SiB_Investments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {/* Add Other Disease Cover */ }
+                                                    {
+                                                        Risk_DiC_Data.length === 0 ?
+                                                            <div className="row">
+                                                                <div className='col'>
+                                                                    <button className={
+                                                                        user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
+                                                                            : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
+                                                                                : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
+                                                                                    : "btn btn-primary sfp "
+                                                                    } type='button' onClick={ (e) => { AddNewRisk_DiC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Disability Cover</button>
+                                                                </div>
+                                                            </div>
+                                                            : <></>
+                                                    }
+                                                    {
+                                                        Risk_DiC_Data.length > 0 ?
+                                                            Risk_DiC_Data.map((row, key) => {
+                                                                return (
+                                                                    <div key={ key }>
+                                                                        <div className='row'>
+                                                                            <div className='col'>
+                                                                                {
+                                                                                    Risk_DiC_Data.length === key + 1 ?
+                                                                                        <button className={
+                                                                                            user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
+                                                                                                : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
+                                                                                                    : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
+                                                                                                        : "btn btn-primary sfp "
+                                                                                        } type='button' onClick={ (e) => { AddNewRisk_DiC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Disability Cover</button>
+                                                                                        : <></>
+                                                                                }
+                                                                            </div>
+                                                                            <div className='col'>
                                                                                 <button className={
                                                                                     user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
                                                                                         : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
                                                                                             : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
                                                                                                 : "btn btn-primary sfp "
-                                                                                } type='button' onClick={ (e) => { AddNewRisk_DrC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Dread Disease Cover</button>
-                                                                                : <></>
-                                                                        }
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <button className={
-                                                                            user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
-                                                                                : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
-                                                                                    : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
-                                                                                        : "btn btn-primary sfp "
-                                                                        } type='button' onClick={ (e) => { RemoveNewRisk_DrC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faMinus } /> Remove Other Dread Disease Cover</button>
-                                                                    </div>
-                                                                </div>
-                                                                <div className='row my-2'>
-                                                                    {/* <div className='col'>
+                                                                                } type='button' onClick={ (e) => { RemoveNewRisk_DiC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faMinus } /> Remove Other Disability Cover</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className='row my-2'>
+                                                                            {/* <div className='col'>
                                                                         <b className='roa-font'>Death Cover: Other</b>
                                                                     </div> */}
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <textarea type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_Other' value={ row?.DrC_Other } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='Enter the Name' aria-label="" />
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <textarea type="text" className="form-control roa-font" name='DC_Other' value={ row?.DC_Other } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='Enter the Name' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DiC_OtherTotalNeed' value={ row?.DiC_OtherTotalNeed } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DiC_OtherExistingProvisions' value={ row?.DiC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DiC_OtherExistingShortfallSurplus' value={ row?.DiC_OtherTotalNeed - row?.DiC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DiC_OtherInvestments' value={ row?.DiC_OtherInvestments } onChange={ (e) => { on_Risk_DiC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_OtherTotalNeed' value={ row?.DrC_OtherTotalNeed } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_OtherExistingProvisions' value={ row?.DrC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_OtherExistingShortfallSurplus' value={ row?.DrC_OtherTotalNeed - row?.DrC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='col'>
-                                                                        <div className="input-group roa-font">
-                                                                            <span className="input-group-text">R</span>
-                                                                            <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DrC_OtherInvestments' value={ row?.DrC_OtherInvestments } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
-                                                                        </div>
-                                                                    </div>
+                                                                )
+                                                            })
+                                                            : <></>
+                                                    }
+                                                    <p className='roa-label my-2'><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+                                                    <div className='row'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Comments:</b>
+                                                        </div>
+                                                        <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            <ReactQuill
+                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                value={ FormData?.RP_DiC_Comments }
+                                                                onChange={ (value) => { setFormData({ ...FormData, ['RP_DiC_Comments']: value }) } }
+                                                                modules={ modules }
+                                                                formats={ formats }
+                                                                style={ {
+                                                                    height: '300px', // Set the desired height here
+                                                                } }
+                                                            />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <hr />
+
+
+                                                </div>
+                                                {/* Dread Disease Cover */ }
+                                                <div className='col-lg-12'>
+                                                    <div className='row'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Dread Disease Cover:</b>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row my-2'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Lump Sum</b>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumTotalNeed' value={ FormData?.RP_DrC_LumpSumTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumExistingProvisions' value={ FormData?.RP_DrC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumExistingShortfallSurplus' value={ FormData?.RP_DrC_LumpSumTotalNeed - FormData?.RP_DrC_LumpSumExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_LumpSumInvestments' value={ FormData?.RP_DrC_LumpSumInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row my-2'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Income (p.m.)</b>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeTotalNeed' value={ FormData?.RP_DrC_IncomeTotalNeed } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeExistingProvisions' value={ FormData?.RP_DrC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeExistingShortfallSurplus' value={ FormData?.RP_DrC_IncomeTotalNeed - FormData?.RP_DrC_IncomeExistingProvisions } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                        <div className='col'>
+                                                            <div className="input-group roa-font">
+                                                                <span className="input-group-text">R</span>
+                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" name='RP_DrC_IncomeInvestments' value={ FormData?.RP_DrC_IncomeInvestments } onChange={ (e) => { onChange(e) } } placeholder='0.00' aria-label="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {/* Add Other Dread Disease Cover */ }
+                                                    {
+                                                        Risk_DrC_Data.length === 0 ?
+                                                            <div className="row">
+                                                                <div className='col'>
+                                                                    <button className={
+                                                                        user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
+                                                                            : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
+                                                                                : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
+                                                                                    : "btn btn-primary sfp "
+                                                                    } type='button' onClick={ (e) => { AddNewRisk_DrC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Dread Disease Cover</button>
                                                                 </div>
                                                             </div>
-                                                        )
-                                                    })
-                                                    : <></>
-                                            }
-                                            <p className='roa-label my-2'><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
-                                            <div className='row'>
-                                                <div className='col'>
-                                                    <b className='roa-font'>Comments:</b>
-                                                </div>
-
-                                                <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                    <ReactQuill
-                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                        value={ FormData?.RP_DrC_Comments }
-                                                        onChange={ (value) => { setFormData({ ...FormData, ['RP_DrC_Comments']: value }) } }
-                                                        modules={ modules }
-                                                        formats={ formats }
-                                                        style={ {
-                                                            height: '300px', // Set the desired height here
-                                                        } }
-                                                    />
-                                                </div>
-                                                <br />
-                                                <br />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <hr />
-
-                                        </div>
-                                        {/* Section C */ }
-                                        <div className='col-lg-12'>
-                                            <div className='text-center'>
-                                                <b>Section C</b>
-                                            </div>
-                                            <span className={
-                                                user?.email.includes('sfp') || user?.email.includes('succession') ? "text-start sfp-text"
-                                                    : user?.email.includes('fs4p') ? "text-start fs4p-text"
-                                                        : user?.email.includes('sanlam') ? "text-start sanlam-text"
-                                                            : "fw-bold"
-                                            } ><b>Financial Solutions:</b></span>
-                                            <p className="roa-label">Summary of recommendations to address your identified needs.</p>
-                                            <p className="roa-label"> No cash values are payable/accessible unless a specified event has occurred, i.e., the life event for which cover is taken; in which case the proceeds are payable tax-free. The premiums are not tax-deductible according to current legislation and loans against the policy are not permitted.</p>
-                                            <p className="roa-label">Should the policy have an accelerator benefit attached, it means that upon a claim of that benefit the life cover amount will reduce by the claim amount. Standalone benefits are independent of the life cover, and you may claim without affecting the life cover amounts.</p>
-                                            <p className="roa-label"><u>Life Cover:</u></p>
-                                            <p className="roa-label">Policies payable to the estate will attract executors’ fees at a maximum of 3.5% + VAT. Where there is a beneficiary the executors fees will not be levied. Executors’ fees are applicable to all assets in the estate of a client and the exemption only applies to policies with beneficiaries. </p>
-                                            <p className="roa-label">Death benefits will not be paid where the life insured commits suicide within 2 years of commencement or reinstatement of the cover.</p>
-                                            {
-                                                backgroundInfoVisibility1 ?
-                                                    <>
-                                                        <div id="background_info_instructions10" className="hidden_class">
-                                                            {/* <p>Discuss the outcome of the FNA</p><br /> */ }
-                                                            <ul>
-                                                                <li>
-                                                                    Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
-                                                                </li>
-                                                                <li>
-                                                                    Record the client{ `'` }s instructions, deviations and implications thereof.
-                                                                </li>
-
-                                                            </ul>
-
-                                                        </div>
-                                                    </> :
-                                                    null
-                                            }
-                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility1(true)) } onBlur={ () => (setbackgroundInfoVisibility1(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                <ReactQuill
-                                                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                    value={ FormData?.RP_LC_FinancialSolutions }
-                                                    onChange={ (value) => { setFormData({ ...FormData, ['RP_LC_FinancialSolutions']: value }) } }
-                                                    modules={ modules }
-                                                    formats={ formats }
-                                                    style={ {
-                                                        height: '300px', // Set the desired height here
-                                                    } }
-                                                    placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
-
-                                                />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <hr />
-                                            <p className="roa-font"><u>Disability Cover:</u></p>
-                                            {
-                                                backgroundInfoVisibility2 ?
-                                                    <>
-                                                        <div id="background_info_instructions10" className="hidden_class">
-                                                            {/* <p>Discuss the outcome of the FNA</p><br /> */ }
-                                                            <ul>
-                                                                <li>
-                                                                    Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
-                                                                </li>
-                                                                <li>
-                                                                    Record the client{ `'` }s instructions, deviations and implications thereof.
-                                                                </li>
-
-                                                            </ul>
-
-                                                        </div>
-                                                    </> :
-                                                    null
-                                            }
-                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility2(true)) } onBlur={ () => (setbackgroundInfoVisibility2(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                <ReactQuill
-                                                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                    value={ FormData?.RP_DiC_FinancialSolutions }
-                                                    onChange={ (value) => { setFormData({ ...FormData, ['RP_DiC_FinancialSolutions']: value }) } }
-                                                    modules={ modules }
-                                                    formats={ formats }
-                                                    style={ {
-                                                        height: '300px', // Set the desired height here
-                                                    } }
-                                                />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <hr />
-                                            <p className="roa-font"><u>Dread Disease Cover:</u></p>
-                                            {
-                                                backgroundInfoVisibility3 ?
-                                                    <>
-                                                        <div id="background_info_instructions10" className="hidden_class">
-                                                            {/* <p>Discuss the outcome of the FNA</p><br /> */ }
-                                                            <ul>
-                                                                <li>
-                                                                    Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
-                                                                </li>
-                                                                <li>
-                                                                    Record the client{ `'` }s instructions, deviations and implications thereof.
-                                                                </li>
-
-                                                            </ul>
-
-                                                        </div>
-                                                    </> :
-                                                    null
-                                            }
-                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility3(true)) } onBlur={ () => (setbackgroundInfoVisibility3(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                <ReactQuill
-                                                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                    value={ FormData?.RP_DrC_FinancialSolutions }
-                                                    onChange={ (value) => { setFormData({ ...FormData, ['RP_DrC_FinancialSolutions']: value }) } }
-                                                    modules={ modules }
-                                                    formats={ formats }
-                                                    style={ {
-                                                        height: '300px', // Set the desired height here
-                                                    } }
-                                                    placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
-                                                />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <hr />
-                                        </div>
-                                        {/* Section D */ }
-                                        <div className='col-lg-12'>
-                                            <div className='text-center'>
-                                                <b>Section D</b>
-                                            </div>
-                                            <span className={
-                                                user?.email.includes('sfp') || user?.email.includes('succession') ? "text-start sfp-text"
-                                                    : user?.email.includes('fs4p') ? "text-start fs4p-text"
-                                                        : user?.email.includes('sanlam') ? "text-start sanlam-text"
-                                                            : "fw-bold"
-                                            } ><b>Alternative Solutions Considered:</b></span>
-                                            {
-                                                backgroundInfoVisibility1 ?
-                                                    <div id="background_info_instructions10">
-                                                        <p className="roa-label">1. Identify the type of product or product provider which was considered but not selected and motivate.</p>
-                                                    </div>
-                                                    : <></>
-                                            }
-
-                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility1(true)) } onBlur={ () => (setbackgroundInfoVisibility1(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                <ReactQuill
-                                                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                    value={ FormData?.RP_AltS_1 }
-                                                    onChange={ (value) => { setFormData({ ...FormData, ['RP_AltS_1']: value }) } }
-                                                    modules={ modules }
-                                                    formats={ formats }
-                                                    style={ {
-                                                        height: '300px', // Set the desired height here
-                                                    } }
-                                                    placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
-                                                />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <hr />
-                                            {
-                                                backgroundInfoVisibility21 ?
-                                                    <div id="background_info_instructions10">
-                                                        <p className="roa-label">2. Identify the type of product or product provider which was considered but not selected and motivate.</p>
-                                                    </div>
-                                                    : <></>
-                                            }
-
-                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility21(true)) } onBlur={ () => (setbackgroundInfoVisibility21(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                <ReactQuill
-                                                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                    value={ FormData?.RP_AltS_2 }
-                                                    onChange={ (value) => { setFormData({ ...FormData, ['RP_AltS_2']: value }) } }
-                                                    modules={ modules }
-                                                    formats={ formats }
-                                                    style={ {
-                                                        height: '300px', // Set the desired height here
-                                                    } }
-                                                    placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
-                                                />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <hr />
-                                            {
-                                                backgroundInfoVisibility31 ?
-                                                    <div id="background_info_instructions10">
-                                                        <p className="roa-label">3. Identify the type of product or product provider which was considered but not selected and motivate.</p>
-                                                    </div>
-                                                    : <></>
-                                            }
-
-                                            <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility31(true)) } onBlur={ () => (setbackgroundInfoVisibility31(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                <ReactQuill
-                                                    theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                    value={ FormData?.RP_AltS_3 }
-                                                    onChange={ (value) => { setFormData({ ...FormData, ['RP_AltS_3']: value }) } }
-                                                    modules={ modules }
-                                                    formats={ formats }
-                                                    style={ {
-                                                        height: '300px', // Set the desired height here
-                                                    } }
-                                                    placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
-                                                />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <hr />
-                                        </div>
-
-                                        {/* Section D */ }
-                                        <div className='col-lg-12'>
-                                            <div className='text-center'>
-                                                <b>Section E</b>
-                                            </div>
-                                            {
-                                                ProductTaken.length === 0 ?
-                                                    <div className="row">
-                                                        <div className='col'>
-                                                            <button className={
-                                                                user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
-                                                                    : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
-                                                                        : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
-                                                                            : "btn btn-primary sfp "
-                                                            } type='button' onClick={ (e) => { AddNewProductTaken(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Product</button>
-                                                        </div>
-                                                    </div>
-                                                    : <></>
-                                            }
-                                            {
-                                                ProductTaken.length > 0 ?
-                                                    ProductTaken.map((row, i) => {
-                                                        return (
-                                                            <div key={ i }>
-                                                                <div className='row'>
-                                                                    <div className='col-4'>
-                                                                        <h6 className={
-                                                                            user?.email.includes('sfp') || user?.email.includes('succession') ? "text-start sfp-text"
-                                                                                : user?.email.includes('fs4p') ? "text-start fs4p-text"
-                                                                                    : user?.email.includes('sanlam') ? "text-start sanlam-text"
-                                                                                        : "fw-bold"
-                                                                        } ><b>Product Taken { i + 1 }</b></h6>
-                                                                    </div>
-                                                                    <div className="col-4">
-                                                                        {
-                                                                            ProductTaken.length === i + 1 ?
+                                                            : <></>
+                                                    }
+                                                    {
+                                                        Risk_DrC_Data.length > 0 ?
+                                                            Risk_DrC_Data.map((row, key) => {
+                                                                return (
+                                                                    <div key={ key }>
+                                                                        <div className='row'>
+                                                                            <div className='col'>
+                                                                                {
+                                                                                    Risk_DrC_Data.length === key + 1 ?
+                                                                                        <button className={
+                                                                                            user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
+                                                                                                : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
+                                                                                                    : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
+                                                                                                        : "btn btn-primary sfp "
+                                                                                        } type='button' onClick={ (e) => { AddNewRisk_DrC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Other Dread Disease Cover</button>
+                                                                                        : <></>
+                                                                                }
+                                                                            </div>
+                                                                            <div className='col'>
                                                                                 <button className={
                                                                                     user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
                                                                                         : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
                                                                                             : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
                                                                                                 : "btn btn-primary sfp "
-                                                                                } type='button' onClick={ (e) => { AddNewProductTaken(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Product</button>
-                                                                                : <></>
-                                                                        }
+                                                                                } type='button' onClick={ (e) => { RemoveNewRisk_DrC_Data(e) } }><FontAwesomeIcon width={ '15px' } icon={ faMinus } /> Remove Other Dread Disease Cover</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className='row my-2'>
+                                                                            {/* <div className='col'>
+                                                                        <b className='roa-font'>Death Cover: Other</b>
+                                                                    </div> */}
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <textarea type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_Other' value={ row?.DrC_Other } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='Enter the Name' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_OtherTotalNeed' value={ row?.DrC_OtherTotalNeed } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_OtherExistingProvisions' value={ row?.DrC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" onBlur={ (e) => { onFieldBlur(e) } } className="form-control roa-font" name='DrC_OtherExistingShortfallSurplus' value={ row?.DrC_OtherTotalNeed - row?.DrC_OtherExistingProvisions } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className='col'>
+                                                                                <div className="input-group roa-font">
+                                                                                    <span className="input-group-text">R</span>
+                                                                                    <input disabled={ key['DC_Other'] === "" } type="text" className="form-control roa-font" name='DrC_OtherInvestments' value={ row?.DrC_OtherInvestments } onChange={ (e) => { on_Risk_DrC_Data_Change(e, key) } } placeholder='' aria-label="" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div className="col-4">
-                                                                        <button className={
-                                                                            user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-danger sfp "
-                                                                                : user?.email.includes('fs4p') ? "btn btn-danger fs4p "
-                                                                                    : user?.email.includes('sanlam') ? "btn btn-danger sanlam "
-                                                                                        : "btn btn-danger sfp "
-                                                                        } type='button' onClick={ (e) => { RemoveNewProductTaken(e) } }><FontAwesomeIcon width={ '15px' } icon={ faMinus } /> Remove Product</button>
-                                                                    </div>
+                                                                )
+                                                            })
+                                                            : <></>
+                                                    }
+                                                    <p className='roa-label my-2'><b>Note:</b> Other Number fields will be disabled until the value of the first field is not entered.</p>
+                                                    <div className='row'>
+                                                        <div className='col'>
+                                                            <b className='roa-font'>Comments:</b>
+                                                        </div>
+
+                                                        <div className='col-12' onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            <ReactQuill
+                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                value={ FormData?.RP_DrC_Comments }
+                                                                onChange={ (value) => { setFormData({ ...FormData, ['RP_DrC_Comments']: value }) } }
+                                                                modules={ modules }
+                                                                formats={ formats }
+                                                                style={ {
+                                                                    height: '300px', // Set the desired height here
+                                                                } }
+                                                            />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <hr />
+
+                                                </div>
+                                                {/* Section C */ }
+                                                <div className='col-lg-12'>
+                                                    <div className='text-center'>
+                                                        <b>Section C</b>
+                                                    </div>
+                                                    <span className={
+                                                        user?.email.includes('sfp') || user?.email.includes('succession') ? "text-start sfp-text"
+                                                            : user?.email.includes('fs4p') ? "text-start fs4p-text"
+                                                                : user?.email.includes('sanlam') ? "text-start sanlam-text"
+                                                                    : "fw-bold"
+                                                    } ><b>Financial Solutions:</b></span>
+                                                    <p className="roa-label">Summary of recommendations to address your identified needs.</p>
+                                                    <p className="roa-label"> No cash values are payable/accessible unless a specified event has occurred, i.e., the life event for which cover is taken; in which case the proceeds are payable tax-free. The premiums are not tax-deductible according to current legislation and loans against the policy are not permitted.</p>
+                                                    <p className="roa-label">Should the policy have an accelerator benefit attached, it means that upon a claim of that benefit the life cover amount will reduce by the claim amount. Standalone benefits are independent of the life cover, and you may claim without affecting the life cover amounts.</p>
+                                                    <p className="roa-label"><u>Life Cover:</u></p>
+                                                    <p className="roa-label">Policies payable to the estate will attract executors’ fees at a maximum of 3.5% + VAT. Where there is a beneficiary the executors fees will not be levied. Executors’ fees are applicable to all assets in the estate of a client and the exemption only applies to policies with beneficiaries. </p>
+                                                    <p className="roa-label">Death benefits will not be paid where the life insured commits suicide within 2 years of commencement or reinstatement of the cover.</p>
+                                                    {
+                                                        backgroundInfoVisibility1 ?
+                                                            <>
+                                                                <div id="background_info_instructions10" className="hidden_class">
+                                                                    {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                                    <ul>
+                                                                        <li>
+                                                                            Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
+                                                                        </li>
+                                                                        <li>
+                                                                            Record the client{ `'` }s instructions, deviations and implications thereof.
+                                                                        </li>
+
+                                                                    </ul>
+
                                                                 </div>
-                                                                <p className="roa-label">Products accepted by you to meet your requirements. </p>
-                                                                <hr />
-                                                                <div className="container mt-3">
-                                                                    <table className="table">
+                                                            </> :
+                                                            null
+                                                    }
+                                                    <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility1(true)) } onBlur={ () => (setbackgroundInfoVisibility1(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                        <ReactQuill
+                                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                            value={ FormData?.RP_LC_FinancialSolutions }
+                                                            onChange={ (value) => { setFormData({ ...FormData, ['RP_LC_FinancialSolutions']: value }) } }
+                                                            modules={ modules }
+                                                            formats={ formats }
+                                                            style={ {
+                                                                height: '300px', // Set the desired height here
+                                                            } }
+                                                            placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
 
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td className="roa-font" align="start">Product:</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Taken" name='Product_Taken' value={ row?.Product_Taken } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                        />
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <hr />
+                                                    <p className="roa-font"><u>Disability Cover:</u></p>
+                                                    {
+                                                        backgroundInfoVisibility2 ?
+                                                            <>
+                                                                <div id="background_info_instructions10" className="hidden_class">
+                                                                    {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                                    <ul>
+                                                                        <li>
+                                                                            Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
+                                                                        </li>
+                                                                        <li>
+                                                                            Record the client{ `'` }s instructions, deviations and implications thereof.
+                                                                        </li>
 
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
+                                                                    </ul>
 
-                                                                                <td></td>
-
-                                                                                <td></td>
-
-                                                                                <td></td>
-                                                                            </tr>
-
-                                                                            <tr>
-                                                                                <td className="roa-font" align="start">Product Provider:</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Provider" name='Product_Provider' value={ row?.Product_Provider } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-
-                                                                                <td className="roa-font" align="start">Policy No:</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Policy_Number" name='Policy_Number' required value={ row?.Policy_Number } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-
-                                                                                <td></td>
-
-                                                                                <td></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td className="roa-font" align="start">Product Name:</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Name" name='Product_Name' value={ row?.Product_Name } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-
-                                                                                <td className="roa-font" align="start">Premium</td>
-                                                                                <td>
-                                                                                    <div className='row'>
-                                                                                        <div className='col-6'>
-                                                                                            <div className="form-group">
-                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Premium" name='Product_Premium' value={ row?.Product_Premium } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div className='col-6'>
-                                                                                            <select onBlur={ (e) => { onFieldBlur(e) } } className="text-start form-select" id="Product_PremiumFrequency" name='Product_PremiumFrequency' value={ row?.Product_PremiumFrequency } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-label="Default select example">
-                                                                                                <option value="0" selected>Frequency</option>
-                                                                                                <option value="1">Monthly</option>
-                                                                                                <option value="2">Quarterly</option>
-                                                                                                <option value="3">Annually</option>
-                                                                                                <option value="4">Once Off</option>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td className="roa-font" align="start">Premium Pattern:</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Pattern" name='Product_Pattern' value={ row?.Product_Pattern } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                </td>
-
-                                                                                <td className="roa-font" align="start">Escalation in<br />cover/premium</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Escalation" name='Product_Escalation' value={ row?.Product_Escalation } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-
-                                                                                <td></td>
-                                                                            </tr>
-
-                                                                            <tr>
-                                                                                <td className="roa-font" align="start">Contracting Party:</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_ContractingParty" name='Product_ContractingParty' value={ row?.Product_ContractingParty } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-
-                                                                                <td className="roa-font" align="start">Life/Lives<br />covered</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_LivesAssured" name='Product_LivesAssured' value={ row?.Product_LivesAssured } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
-
-                                                                            <tr>
-                                                                                <td className="roa-font" align="start">Beneficial/<br />Cessionary</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Beneficiary" name='Product_Beneficiary' value={ row?.Product_Beneficiary } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-
-                                                                                <td className="roa-font" align="start">Premium<br />payer(s)</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_PremiumPayer" name='Product_PremiumPayer' value={ row?.Product_PremiumPayer } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
-
-                                                                            <tr>
-                                                                                <td className="roa-font" align="start">1st year<br />commission</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_1stYearCommission" name='Product_1stYearCommission' value={ row?.Product_1stYearCommission } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-                                                                                <td className="roa-font" align="start">2nd year<br />commission</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_2ndYearCommission" name='Product_2ndYearCommission' value={ row?.Product_2ndYearCommission } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
-
-                                                                            <tr>
-                                                                                <td className="roa-font" align="start">Ongoing fees</td>
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_OngoingFees" name='Product_OngoingFees' value={ row?.Product_OngoingFees } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-                                                                                <td className="roa-font" align="start">Frequency</td>
-                                                                                <td>
-                                                                                    <div className='row'>
-                                                                                        <div className='col-6'>
-                                                                                            <div className="form-group">
-                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_OngoingFeesFrequency" name='Product_OngoingFeesFrequency' value={ row?.Product_OngoingFeesFrequency } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div className='col-6'>
-                                                                                            <select onBlur={ (e) => { onFieldBlur(e) } } className="text-start form-select" id="Product_OngoingFeesFrequency1" name='Product_OngoingFeesFrequency1' value={ row?.Product_OngoingFeesFrequency1 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-label="Default select example">
-                                                                                                <option value="0" selected>Frequeny</option>
-                                                                                                <option value="1">Monthly</option>
-                                                                                                <option value="2">Quarterly</option>
-                                                                                                <option value="3">Annually</option>
-                                                                                                <option value="4">Once Off</option>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
-
-
-
-                                                                            <tr>
-
-                                                                                <td className="roa-font" align="start">Total fees and commission</td>
-
-                                                                                {/* <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Frequency</td> */ }
-                                                                                <td>
-                                                                                    <div className="form-group">
-                                                                                        <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="TotalFees_n_Commissions" name='TotalFees_n_Commissions' value={ row?.TotalFees_n_Commissions } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
-
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-
-                                                                            </tr>
-
-
-                                                                            <tr>
-
-                                                                            </tr>
-
-
-                                                                        </tbody>
-                                                                    </table>
                                                                 </div>
+                                                            </> :
+                                                            null
+                                                    }
+                                                    <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility2(true)) } onBlur={ () => (setbackgroundInfoVisibility2(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                        <ReactQuill
+                                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                            value={ FormData?.RP_DiC_FinancialSolutions }
+                                                            onChange={ (value) => { setFormData({ ...FormData, ['RP_DiC_FinancialSolutions']: value }) } }
+                                                            modules={ modules }
+                                                            formats={ formats }
+                                                            style={ {
+                                                                height: '300px', // Set the desired height here
+                                                            } }
+                                                        />
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <hr />
+                                                    <p className="roa-font"><u>Dread Disease Cover:</u></p>
+                                                    {
+                                                        backgroundInfoVisibility3 ?
+                                                            <>
+                                                                <div id="background_info_instructions10" className="hidden_class">
+                                                                    {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                                    <ul>
+                                                                        <li>
+                                                                            Explain the reasons why life cover benefits were recommended to satisfy this need.<br />
+                                                                        </li>
+                                                                        <li>
+                                                                            Record the client{ `'` }s instructions, deviations and implications thereof.
+                                                                        </li>
 
-                                                                <div style={ { fontFamily: 'Arial Narrow', fontSize: '9' } }>
-                                                                    <div className="row">
-                                                                        <div className="col-8" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-8">
-                                                                                    <label className="roa-font"><b>Benefit description: life cover, disability etc</b></label>
-                                                                                </div>
+                                                                    </ul>
+
+                                                                </div>
+                                                            </> :
+                                                            null
+                                                    }
+                                                    <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility3(true)) } onBlur={ () => (setbackgroundInfoVisibility3(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                        <ReactQuill
+                                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                            value={ FormData?.RP_DrC_FinancialSolutions }
+                                                            onChange={ (value) => { setFormData({ ...FormData, ['RP_DrC_FinancialSolutions']: value }) } }
+                                                            modules={ modules }
+                                                            formats={ formats }
+                                                            style={ {
+                                                                height: '300px', // Set the desired height here
+                                                            } }
+                                                            placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
+                                                        />
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <hr />
+                                                </div>
+                                                {/* Section D */ }
+                                                <div className='col-lg-12'>
+                                                    <div className='text-center'>
+                                                        <b>Section D</b>
+                                                    </div>
+                                                    <span className={
+                                                        user?.email.includes('sfp') || user?.email.includes('succession') ? "text-start sfp-text"
+                                                            : user?.email.includes('fs4p') ? "text-start fs4p-text"
+                                                                : user?.email.includes('sanlam') ? "text-start sanlam-text"
+                                                                    : "fw-bold"
+                                                    } ><b>Alternative Solutions Considered:</b></span>
+                                                    {
+                                                        backgroundInfoVisibility1 ?
+                                                            <div id="background_info_instructions10">
+                                                                <p className="roa-label">1. Identify the type of product or product provider which was considered but not selected and motivate.</p>
+                                                            </div>
+                                                            : <></>
+                                                    }
+
+                                                    <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility1(true)) } onBlur={ () => (setbackgroundInfoVisibility1(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                        <ReactQuill
+                                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                            value={ FormData?.RP_AltS_1 }
+                                                            onChange={ (value) => { setFormData({ ...FormData, ['RP_AltS_1']: value }) } }
+                                                            modules={ modules }
+                                                            formats={ formats }
+                                                            style={ {
+                                                                height: '300px', // Set the desired height here
+                                                            } }
+                                                            placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
+                                                        />
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <hr />
+                                                    {
+                                                        backgroundInfoVisibility21 ?
+                                                            <div id="background_info_instructions10">
+                                                                <p className="roa-label">2. Identify the type of product or product provider which was considered but not selected and motivate.</p>
+                                                            </div>
+                                                            : <></>
+                                                    }
+
+                                                    <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility21(true)) } onBlur={ () => (setbackgroundInfoVisibility21(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                        <ReactQuill
+                                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                            value={ FormData?.RP_AltS_2 }
+                                                            onChange={ (value) => { setFormData({ ...FormData, ['RP_AltS_2']: value }) } }
+                                                            modules={ modules }
+                                                            formats={ formats }
+                                                            style={ {
+                                                                height: '300px', // Set the desired height here
+                                                            } }
+                                                            placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
+                                                        />
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <hr />
+                                                    {
+                                                        backgroundInfoVisibility31 ?
+                                                            <div id="background_info_instructions10">
+                                                                <p className="roa-label">3. Identify the type of product or product provider which was considered but not selected and motivate.</p>
+                                                            </div>
+                                                            : <></>
+                                                    }
+
+                                                    <div className='col-12' onFocus={ () => (setbackgroundInfoVisibility31(true)) } onBlur={ () => (setbackgroundInfoVisibility31(false)) } onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                        <ReactQuill
+                                                            theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                            value={ FormData?.RP_AltS_3 }
+                                                            onChange={ (value) => { setFormData({ ...FormData, ['RP_AltS_3']: value }) } }
+                                                            modules={ modules }
+                                                            formats={ formats }
+                                                            style={ {
+                                                                height: '300px', // Set the desired height here
+                                                            } }
+                                                            placeholder="Explain the reasons why life cover benefits were recommended to satisfy this need.\nRecord the client's instructions, deviations and implications thereof."
+                                                        />
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <hr />
+                                                </div>
+
+                                                {/* Section D */ }
+                                                <div className='col-lg-12'>
+                                                    <div className='text-center'>
+                                                        <b>Section E</b>
+                                                    </div>
+                                                    {
+                                                        ProductTaken.length === 0 ?
+                                                            <div className="row">
+                                                                <div className='col'>
+                                                                    <button className={
+                                                                        user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
+                                                                            : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
+                                                                                : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
+                                                                                    : "btn btn-primary sfp "
+                                                                    } type='button' onClick={ (e) => { AddNewProductTaken(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Product</button>
+                                                                </div>
+                                                            </div>
+                                                            : <></>
+                                                    }
+                                                    {
+                                                        ProductTaken.length > 0 ?
+                                                            ProductTaken.map((row, i) => {
+                                                                return (
+                                                                    <div key={ i }>
+                                                                        <div className='row'>
+                                                                            <div className='col-4'>
+                                                                                <h6 className={
+                                                                                    user?.email.includes('sfp') || user?.email.includes('succession') ? "text-start sfp-text"
+                                                                                        : user?.email.includes('fs4p') ? "text-start fs4p-text"
+                                                                                            : user?.email.includes('sanlam') ? "text-start sanlam-text"
+                                                                                                : "fw-bold"
+                                                                                } ><b>Product Taken { i + 1 }</b></h6>
+                                                                            </div>
+                                                                            <div className="col-4">
+                                                                                {
+                                                                                    ProductTaken.length === i + 1 ?
+                                                                                        <button className={
+                                                                                            user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-primary sfp "
+                                                                                                : user?.email.includes('fs4p') ? "btn btn-primary fs4p "
+                                                                                                    : user?.email.includes('sanlam') ? "btn btn-primary sanlam "
+                                                                                                        : "btn btn-primary sfp "
+                                                                                        } type='button' onClick={ (e) => { AddNewProductTaken(e) } }><FontAwesomeIcon width={ '15px' } icon={ faPlus } /> Add New Product</button>
+                                                                                        : <></>
+                                                                                }
+                                                                            </div>
+                                                                            <div className="col-4">
+                                                                                <button className={
+                                                                                    user?.email.includes('sfp') || user?.email.includes('succession') ? "btn btn-danger sfp "
+                                                                                        : user?.email.includes('fs4p') ? "btn btn-danger fs4p "
+                                                                                            : user?.email.includes('sanlam') ? "btn btn-danger sanlam "
+                                                                                                : "btn btn-danger sfp "
+                                                                                } type='button' onClick={ (e) => { RemoveNewProductTaken(e) } }><FontAwesomeIcon width={ '15px' } icon={ faMinus } /> Remove Product</button>
                                                                             </div>
                                                                         </div>
-
-                                                                        <div className="col-4" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-4">
-                                                                                    <label htmlFor="id_number" className="roa-font"><b>Cover amount</b></label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                        <div className="col-8" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_1" name='BenDesc_1' value={ row?.BenDesc_1 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div className="col-4" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <div className="input-group">
-                                                                                        <span className="input-group-text">R</span>
-                                                                                        <input disabled={ row?.BenDesc_1 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_1" name='BenDesc_CoverAmount_1' value={ row?.BenDesc_CoverAmount_1 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-
-
-                                                                        <div className="col-8" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_2" name='BenDesc_2' value={ row?.BenDesc_2 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div className="col-4" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <div className="input-group">
-                                                                                        <span className="input-group-text">R</span>
-                                                                                        <input disabled={ row?.BenDesc_2 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_2" name='BenDesc_CoverAmount_2' value={ row?.BenDesc_CoverAmount_2 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-
-
-                                                                        <div className="col-8" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_3" name='BenDesc_3' value={ row?.BenDesc_3 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div className="col-4" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <div className="input-group">
-                                                                                        <span className="input-group-text">R</span>
-                                                                                        <input disabled={ row?.BenDesc_3 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_3" name='BenDesc_CoverAmount_3' value={ row?.BenDesc_CoverAmount_3 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-
-
-                                                                        <div className="col-8" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_4" name='BenDesc_4' value={ row?.BenDesc_4 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div className="col-4" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <div className="input-group">
-                                                                                        <span className="input-group-text">R</span>
-                                                                                        <input disabled={ row?.BenDesc_4 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_4" name='BenDesc_CoverAmount_4' value={ row?.BenDesc_CoverAmount_4 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-
-
-                                                                        <div className="col-8" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_5" name='BenDesc_5' value={ row?.BenDesc_5 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div className="col-4" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <div className="input-group">
-                                                                                        <span className="input-group-text">R</span>
-                                                                                        <input disabled={ row?.BenDesc_5 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_5" name='BenDesc_CoverAmount_5' value={ row?.BenDesc_CoverAmount_5 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-
-
-                                                                        <div className="col-8" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_6" name='BenDesc_6' value={ row?.BenDesc_6 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div className="col-4" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <div className="input-group">
-                                                                                        <span className="input-group-text">R</span>
-                                                                                        <input disabled={ row?.BenDesc_6 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_6" name='BenDesc_CoverAmount_6' value={ row?.BenDesc_CoverAmount_6 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div className="col-8" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_7" name='BenDesc_7' value={ row?.BenDesc_7 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div className="col-4" style={ { paddingBottom: "0.5%" } }>
-                                                                            <div className="row g-3 align-items-center">
-                                                                                <div className="col-6">
-                                                                                    <div className="input-group">
-                                                                                        <span className="input-group-text">R</span>
-                                                                                        <input disabled={ row?.BenDesc_7 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_7" name='BenDesc_CoverAmount_7' value={ row?.BenDesc_CoverAmount_7 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-
+                                                                        <p className="roa-label">Products accepted by you to meet your requirements. </p>
                                                                         <hr />
-                                                                    </div>
-                                                                </div>
+                                                                        <div className="container mt-3">
+                                                                            <table className="table">
+
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td className="roa-font" align="start">Product:</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Taken" name='Product_Taken' value={ row?.Product_Taken } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+
+                                                                                        <td></td>
+
+                                                                                        <td></td>
+
+                                                                                        <td></td>
+                                                                                    </tr>
+
+                                                                                    <tr>
+                                                                                        <td className="roa-font" align="start">Product Provider:</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Provider" name='Product_Provider' value={ row?.Product_Provider } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+
+                                                                                        <td className="roa-font" align="start">Policy No:</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Policy_Number" name='Policy_Number' required value={ row?.Policy_Number } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+
+                                                                                        <td></td>
+
+                                                                                        <td></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td className="roa-font" align="start">Product Name:</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Name" name='Product_Name' value={ row?.Product_Name } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+
+                                                                                        <td className="roa-font" align="start">Premium</td>
+                                                                                        <td>
+                                                                                            <div className='row'>
+                                                                                                <div className='col-6'>
+                                                                                                    <div className="form-group">
+                                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Premium" name='Product_Premium' value={ row?.Product_Premium } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div className='col-6'>
+                                                                                                    <select onBlur={ (e) => { onFieldBlur(e) } } className="text-start form-select" id="Product_PremiumFrequency" name='Product_PremiumFrequency' value={ row?.Product_PremiumFrequency } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-label="Default select example">
+                                                                                                        <option value="0" selected>Frequency</option>
+                                                                                                        <option value="1">Monthly</option>
+                                                                                                        <option value="2">Quarterly</option>
+                                                                                                        <option value="3">Annually</option>
+                                                                                                        <option value="4">Once Off</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td className="roa-font" align="start">Premium Pattern:</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Pattern" name='Product_Pattern' value={ row?.Product_Pattern } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                        </td>
+
+                                                                                        <td className="roa-font" align="start">Escalation in<br />cover/premium</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Escalation" name='Product_Escalation' value={ row?.Product_Escalation } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+
+                                                                                        <td></td>
+                                                                                    </tr>
+
+                                                                                    <tr>
+                                                                                        <td className="roa-font" align="start">Contracting Party:</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_ContractingParty" name='Product_ContractingParty' value={ row?.Product_ContractingParty } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+
+                                                                                        <td className="roa-font" align="start">Life/Lives<br />covered</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_LivesAssured" name='Product_LivesAssured' value={ row?.Product_LivesAssured } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                    </tr>
+
+                                                                                    <tr>
+                                                                                        <td className="roa-font" align="start">Beneficial/<br />Cessionary</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_Beneficiary" name='Product_Beneficiary' value={ row?.Product_Beneficiary } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+
+                                                                                        <td className="roa-font" align="start">Premium<br />payer(s)</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_PremiumPayer" name='Product_PremiumPayer' value={ row?.Product_PremiumPayer } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                    </tr>
+
+                                                                                    <tr>
+                                                                                        <td className="roa-font" align="start">1st year<br />commission</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_1stYearCommission" name='Product_1stYearCommission' value={ row?.Product_1stYearCommission } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+                                                                                        <td className="roa-font" align="start">2nd year<br />commission</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_2ndYearCommission" name='Product_2ndYearCommission' value={ row?.Product_2ndYearCommission } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                    </tr>
+
+                                                                                    <tr>
+                                                                                        <td className="roa-font" align="start">Ongoing fees</td>
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="Product_OngoingFees" name='Product_OngoingFees' value={ row?.Product_OngoingFees } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+                                                                                        <td className="roa-font" align="start">Frequency</td>
+                                                                                        <td>
+                                                                                            <div className='row'>
+                                                                                                <div className='col-6'>
+                                                                                                    <div className="form-group">
+                                                                                                        <input onBlur={ (e) => { onFieldBlur(e) } } type="text" className="form-control" id="Product_OngoingFeesFrequency" name='Product_OngoingFeesFrequency' value={ row?.Product_OngoingFeesFrequency } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div className='col-6'>
+                                                                                                    <select onBlur={ (e) => { onFieldBlur(e) } } className="text-start form-select" id="Product_OngoingFeesFrequency1" name='Product_OngoingFeesFrequency1' value={ row?.Product_OngoingFeesFrequency1 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-label="Default select example">
+                                                                                                        <option value="0" selected>Frequeny</option>
+                                                                                                        <option value="1">Monthly</option>
+                                                                                                        <option value="2">Quarterly</option>
+                                                                                                        <option value="3">Annually</option>
+                                                                                                        <option value="4">Once Off</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                    </tr>
 
 
-                                                                <p className="roa-font">The following are reasons why the above-mentioned product best suits your needs and objectives</p>
 
-                                                                {
-                                                                    backgroundInfoVisibility7 ?
-                                                                        <>
-                                                                            <div id="background_info_instructions10" className="hidden_class">
-                                                                                {/* <p>Discuss the outcome of the FNA</p><br /> */ }
-                                                                                <ul>
-                                                                                    <li>
-                                                                                        Motivate why the chosen product was recommended to best suit your client’s needs.
+                                                                                    <tr>
 
-                                                                                    </li>
+                                                                                        <td className="roa-font" align="start">Total fees and commission</td>
 
-                                                                                </ul>
+                                                                                        {/* <td style={{ fontSize:'16px',fontFamily:'Arial Narrow'}} align="start">Frequency</td> */ }
+                                                                                        <td>
+                                                                                            <div className="form-group">
+                                                                                                <input type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="TotalFees_n_Commissions" name='TotalFees_n_Commissions' value={ row?.TotalFees_n_Commissions } onChange={ (e) => { on_ProductTaken_Change(e, i) } } aria-describedby="emailHelp" placeholder="" />
 
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+
+                                                                                    </tr>
+
+
+                                                                                    <tr>
+
+                                                                                    </tr>
+
+
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+
+                                                                        <div style={ { fontFamily: 'Arial Narrow', fontSize: '9' } }>
+                                                                            <div className="row">
+                                                                                <div className="col-8" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-8">
+                                                                                            <label className="roa-font"><b>Benefit description: life cover, disability etc</b></label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="col-4" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-4">
+                                                                                            <label htmlFor="id_number" className="roa-font"><b>Cover amount</b></label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                                <div className="col-8" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_1" name='BenDesc_1' value={ row?.BenDesc_1 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="col-4" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <div className="input-group">
+                                                                                                <span className="input-group-text">R</span>
+                                                                                                <input disabled={ row?.BenDesc_1 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_1" name='BenDesc_CoverAmount_1' value={ row?.BenDesc_CoverAmount_1 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                                <div className="col-8" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_2" name='BenDesc_2' value={ row?.BenDesc_2 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="col-4" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <div className="input-group">
+                                                                                                <span className="input-group-text">R</span>
+                                                                                                <input disabled={ row?.BenDesc_2 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_2" name='BenDesc_CoverAmount_2' value={ row?.BenDesc_CoverAmount_2 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                                <div className="col-8" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_3" name='BenDesc_3' value={ row?.BenDesc_3 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="col-4" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <div className="input-group">
+                                                                                                <span className="input-group-text">R</span>
+                                                                                                <input disabled={ row?.BenDesc_3 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_3" name='BenDesc_CoverAmount_3' value={ row?.BenDesc_CoverAmount_3 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                                <div className="col-8" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_4" name='BenDesc_4' value={ row?.BenDesc_4 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="col-4" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <div className="input-group">
+                                                                                                <span className="input-group-text">R</span>
+                                                                                                <input disabled={ row?.BenDesc_4 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_4" name='BenDesc_CoverAmount_4' value={ row?.BenDesc_CoverAmount_4 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                                <div className="col-8" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_5" name='BenDesc_5' value={ row?.BenDesc_5 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="col-4" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <div className="input-group">
+                                                                                                <span className="input-group-text">R</span>
+                                                                                                <input disabled={ row?.BenDesc_5 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_5" name='BenDesc_CoverAmount_5' value={ row?.BenDesc_CoverAmount_5 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                                <div className="col-8" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_6" name='BenDesc_6' value={ row?.BenDesc_6 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="col-4" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <div className="input-group">
+                                                                                                <span className="input-group-text">R</span>
+                                                                                                <input disabled={ row?.BenDesc_6 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_6" name='BenDesc_CoverAmount_6' value={ row?.BenDesc_CoverAmount_6 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="col-8" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="BenDesc_7" name='BenDesc_7' value={ row?.BenDesc_7 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } className="form-control" placeholder="Click here to enter text." aria-describedby="" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div className="col-4" style={ { paddingBottom: "0.5%" } }>
+                                                                                    <div className="row g-3 align-items-center">
+                                                                                        <div className="col-6">
+                                                                                            <div className="input-group">
+                                                                                                <span className="input-group-text">R</span>
+                                                                                                <input disabled={ row?.BenDesc_7 === "" } type="number" onBlur={ (e) => { onFieldBlur(e) } } onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() } className="form-control" id="BenDesc_CoverAmount_7" name='BenDesc_CoverAmount_7' value={ row?.BenDesc_CoverAmount_7 } onChange={ (e) => { on_ProductTaken_Change(e, i) } } placeholder='0.00' aria-label="" />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                                <hr />
                                                                             </div>
-                                                                        </> :
-                                                                        null
-                                                                }
-                                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                                    <ReactQuill
-                                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                                        value={ row?.ProductReasons }
-                                                                        onChange={ (value) => { on_ProductTaken_Value_Change("ProductReasons", i, value) } }
-                                                                        onFocus={ (e) => { backgroundInfo_onFocus7() } }
-                                                                        onBlur={ (e) => { backgroundInfo_onBlur7() } }
-                                                                        modules={ modules }
-                                                                        formats={ formats }
-                                                                        style={ {
-                                                                            height: '300px', // Set the desired height here
-                                                                        } }
-                                                                        placeholder='Motivate why the chosen product was recommended to best suit your client’s needs.'
-                                                                    />
-                                                                </div>
+                                                                        </div>
 
-                                                                <br />
-                                                                <br />
-                                                                <hr />
-                                                                <p className="roa-font">The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
 
-                                                                {
-                                                                    backgroundInfoVisibility8 ?
-                                                                        <>
-                                                                            <div id="background_info_instructions10" className="hidden_class">
-                                                                                {/* <p>Discuss the outcome of the FNA</p><br /> */ }
-                                                                                <ul>
-                                                                                    <li>
-                                                                                        Explain any deviations from your recommendation and the implications thereof.
-                                                                                    </li>
+                                                                        <p className="roa-font">The following are reasons why the above-mentioned product best suits your needs and objectives</p>
 
-                                                                                </ul>
+                                                                        {
+                                                                            backgroundInfoVisibility7 ?
+                                                                                <>
+                                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                                        {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                                                        <ul>
+                                                                                            <li>
+                                                                                                Motivate why the chosen product was recommended to best suit your client’s needs.
 
-                                                                            </div>
-                                                                        </> :
-                                                                        null
-                                                                }
-                                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                                    <ReactQuill
-                                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                                        value={ row?.ProductMaterialAspects }
-                                                                        onChange={ (value) => { on_ProductTaken_Value_Change("ProductMaterialAspects", i, value) } }
-                                                                        onFocus={ (e) => { backgroundInfo_onFocus8() } }
-                                                                        onBlur={ (e) => { backgroundInfo_onBlur8() } }
-                                                                        modules={ modules }
-                                                                        formats={ formats }
-                                                                        style={ {
-                                                                            height: '300px', // Set the desired height here
-                                                                        } }
-                                                                        placeholder='Explain any deviations from your recommendation and the implications thereof.'
-                                                                    />
-                                                                </div>
-                                                                <br />
-                                                                <br />
-                                                                <br />
-                                                                {
-                                                                    backgroundInfoVisibility9 ?
-                                                                        <>
-                                                                            <div id="background_info_instructions10" className="hidden_class">
-                                                                                {/* <p>Discuss the outcome of the FNA</p><br /> */ }
-                                                                                <ul>
-                                                                                    <li>
-                                                                                        The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
-                                                                                    </li>
+                                                                                            </li>
 
-                                                                                </ul>
+                                                                                        </ul>
 
-                                                                            </div>
-                                                                        </> :
-                                                                        null
-                                                                }
-                                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                                    <ReactQuill
-                                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                                        value={ row?.ProductDetails }
-                                                                        onChange={ (value) => { on_ProductTaken_Value_Change("ProductDetails", i, value) } }
-                                                                        onFocus={ (e) => { backgroundInfo_onFocus9() } }
-                                                                        onBlur={ (e) => { backgroundInfo_onBlur9() } }
-                                                                        modules={ modules }
-                                                                        formats={ formats }
-                                                                        style={ {
-                                                                            height: '300px', // Set the desired height here
-                                                                        } }
-                                                                        placeholder='The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?'
-                                                                    />
-                                                                </div>
-                                                                <br />
-                                                                <br />
-                                                                <br />
-                                                                {
-                                                                    backgroundInfoVisibility10 ?
-                                                                        <>
-                                                                            <div id="background_info_instructions10" className="hidden_class">
-                                                                                {/* <p>Discuss the outcome of the FNA</p><br /> */ }
-                                                                                <ul>
-                                                                                    <li>
-                                                                                        Executor’s fees?<br />
-                                                                                        Does the policy offer any liquidity?<br />
-                                                                                        Provide a summary of the contents of the quote with regard to the following:<br />
-                                                                                        Benefit terms (cease ages, cover periods etc.)<br />
-                                                                                        Details of premium and cover pattern structure, frequency etc.
+                                                                                    </div>
+                                                                                </> :
+                                                                                null
+                                                                        }
+                                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                                            <ReactQuill
+                                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                                value={ row?.ProductReasons }
+                                                                                onChange={ (value) => { on_ProductTaken_Value_Change("ProductReasons", i, value) } }
+                                                                                onFocus={ (e) => { backgroundInfo_onFocus7() } }
+                                                                                onBlur={ (e) => { backgroundInfo_onBlur7() } }
+                                                                                modules={ modules }
+                                                                                formats={ formats }
+                                                                                style={ {
+                                                                                    height: '300px', // Set the desired height here
+                                                                                } }
+                                                                                placeholder='Motivate why the chosen product was recommended to best suit your client’s needs.'
+                                                                            />
+                                                                        </div>
 
-                                                                                    </li>
+                                                                        <br />
+                                                                        <br />
+                                                                        <hr />
+                                                                        <p className="roa-font">The details of the material aspects of the selected product that were discussed with you are outlined below:</p>
 
-                                                                                </ul>
+                                                                        {
+                                                                            backgroundInfoVisibility8 ?
+                                                                                <>
+                                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                                        {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                                                        <ul>
+                                                                                            <li>
+                                                                                                Explain any deviations from your recommendation and the implications thereof.
+                                                                                            </li>
 
-                                                                            </div>
-                                                                        </> :
-                                                                        null
-                                                                }
-                                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                                    <ReactQuill
-                                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                                        value={ row?.ExecutorFee }
-                                                                        onChange={ (value) => { on_ProductTaken_Value_Change("ExecutorFee", i, value) } }
-                                                                        onFocus={ (e) => { backgroundInfo_onFocus10() } }
-                                                                        onBlur={ (e) => { backgroundInfo_onBlur10() } }
-                                                                        modules={ modules }
-                                                                        formats={ formats }
-                                                                        style={ {
-                                                                            height: '300px', // Set the desired height here
-                                                                        } }
-                                                                        placeholder={ `Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n` }
-                                                                    />
-                                                                </div>
-                                                                <br />
-                                                                <br />
-                                                                <br />
-                                                                {
-                                                                    backgroundInfoVisibility11 ?
-                                                                        <>
-                                                                            <div id="background_info_instructions10" className="hidden_class">
-                                                                                {/* <p>Discuss the outcome of the FNA</p><br /> */ }
-                                                                                <ul>
-                                                                                    <li>
-                                                                                        Record discussion with regard to nomination of beneficiaries or cessionaries.
+                                                                                        </ul>
 
-                                                                                    </li>
+                                                                                    </div>
+                                                                                </> :
+                                                                                null
+                                                                        }
+                                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                                            <ReactQuill
+                                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                                value={ row?.ProductMaterialAspects }
+                                                                                onChange={ (value) => { on_ProductTaken_Value_Change("ProductMaterialAspects", i, value) } }
+                                                                                onFocus={ (e) => { backgroundInfo_onFocus8() } }
+                                                                                onBlur={ (e) => { backgroundInfo_onBlur8() } }
+                                                                                modules={ modules }
+                                                                                formats={ formats }
+                                                                                style={ {
+                                                                                    height: '300px', // Set the desired height here
+                                                                                } }
+                                                                                placeholder='Explain any deviations from your recommendation and the implications thereof.'
+                                                                            />
+                                                                        </div>
+                                                                        <br />
+                                                                        <br />
+                                                                        <br />
+                                                                        {
+                                                                            backgroundInfoVisibility9 ?
+                                                                                <>
+                                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                                        {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                                                        <ul>
+                                                                                            <li>
+                                                                                                The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?
+                                                                                            </li>
 
-                                                                                </ul>
+                                                                                        </ul>
 
-                                                                            </div>
-                                                                        </> :
-                                                                        null
-                                                                }
-                                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                                    <ReactQuill
-                                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                                        value={ row?.NominationOfBeneficiaries }
-                                                                        onChange={ (value) => { on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, value) } }
-                                                                        onFocus={ (e) => { backgroundInfo_onFocus11() } }
-                                                                        onBlur={ (e) => { backgroundInfo_onBlur11() } }
-                                                                        modules={ modules }
-                                                                        formats={ formats }
-                                                                        style={ {
-                                                                            height: '300px', // Set the desired height here
-                                                                        } }
-                                                                        placeholder='Record discussion with regard to nomination of beneficiaries or cessionaries'
-                                                                    />
-                                                                </div>
-                                                                <br />
-                                                                <br />
-                                                                <br />
-                                                                {
-                                                                    backgroundInfoVisibility12 ?
-                                                                        <>
-                                                                            <div id="background_info_instructions10" className="hidden_class">
-                                                                                {/* <p>Discuss the outcome of the FNA</p><br /> */ }
-                                                                                <ul>
-                                                                                    <li>
-                                                                                        Discuss the following information which has been explained to client.<br />
-                                                                                        General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)<br />
-                                                                                        Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br />
-                                                                                        Waiting periods<br />
-                                                                                        Cooling off period
+                                                                                    </div>
+                                                                                </> :
+                                                                                null
+                                                                        }
+                                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                                            <ReactQuill
+                                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                                value={ row?.ProductDetails }
+                                                                                onChange={ (value) => { on_ProductTaken_Value_Change("ProductDetails", i, value) } }
+                                                                                onFocus={ (e) => { backgroundInfo_onFocus9() } }
+                                                                                onBlur={ (e) => { backgroundInfo_onBlur9() } }
+                                                                                modules={ modules }
+                                                                                formats={ formats }
+                                                                                style={ {
+                                                                                    height: '300px', // Set the desired height here
+                                                                                } }
+                                                                                placeholder='The tax implications, e.g., estate duty, income tax in the event of an Income Protector etc.?'
+                                                                            />
+                                                                        </div>
+                                                                        <br />
+                                                                        <br />
+                                                                        <br />
+                                                                        {
+                                                                            backgroundInfoVisibility10 ?
+                                                                                <>
+                                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                                        {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                                                        <ul>
+                                                                                            <li>
+                                                                                                Executor’s fees?<br />
+                                                                                                Does the policy offer any liquidity?<br />
+                                                                                                Provide a summary of the contents of the quote with regard to the following:<br />
+                                                                                                Benefit terms (cease ages, cover periods etc.)<br />
+                                                                                                Details of premium and cover pattern structure, frequency etc.
 
-                                                                                    </li>
+                                                                                            </li>
 
-                                                                                </ul>
+                                                                                        </ul>
 
-                                                                            </div>
-                                                                        </> :
-                                                                        null
-                                                                }
-                                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                                    <ReactQuill
-                                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                                        value={ row?.InformationExplained }
-                                                                        onChange={ (value) => { on_ProductTaken_Value_Change("InformationExplained", i, value) } }
-                                                                        onFocus={ (e) => { backgroundInfo_onFocus12() } }
-                                                                        onBlur={ (e) => { backgroundInfo_onBlur12() } }
-                                                                        modules={ modules }
-                                                                        formats={ formats }
-                                                                        style={ {
-                                                                            height: '300px', // Set the desired height here
-                                                                        } }
-                                                                        placeholder={
-                                                                            `Discuss the following information which has been explained to client. \n
+                                                                                    </div>
+                                                                                </> :
+                                                                                null
+                                                                        }
+                                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                                            <ReactQuill
+                                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                                value={ row?.ExecutorFee }
+                                                                                onChange={ (value) => { on_ProductTaken_Value_Change("ExecutorFee", i, value) } }
+                                                                                onFocus={ (e) => { backgroundInfo_onFocus10() } }
+                                                                                onBlur={ (e) => { backgroundInfo_onBlur10() } }
+                                                                                modules={ modules }
+                                                                                formats={ formats }
+                                                                                style={ {
+                                                                                    height: '300px', // Set the desired height here
+                                                                                } }
+                                                                                placeholder={ `Executor’s fees?\nDoes the policy offer any liquidity?\nProvide a summary of the contents of the quote with regard to the following:\nBenefit terms (cease ages, cover periods etc.)\nDetails of premium and cover pattern structure, frequency etc.\n` }
+                                                                            />
+                                                                        </div>
+                                                                        <br />
+                                                                        <br />
+                                                                        <br />
+                                                                        {
+                                                                            backgroundInfoVisibility11 ?
+                                                                                <>
+                                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                                        {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                                                        <ul>
+                                                                                            <li>
+                                                                                                Record discussion with regard to nomination of beneficiaries or cessionaries.
+
+                                                                                            </li>
+
+                                                                                        </ul>
+
+                                                                                    </div>
+                                                                                </> :
+                                                                                null
+                                                                        }
+                                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                                            <ReactQuill
+                                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                                value={ row?.NominationOfBeneficiaries }
+                                                                                onChange={ (value) => { on_ProductTaken_Value_Change("NominationOfBeneficiaries", i, value) } }
+                                                                                onFocus={ (e) => { backgroundInfo_onFocus11() } }
+                                                                                onBlur={ (e) => { backgroundInfo_onBlur11() } }
+                                                                                modules={ modules }
+                                                                                formats={ formats }
+                                                                                style={ {
+                                                                                    height: '300px', // Set the desired height here
+                                                                                } }
+                                                                                placeholder='Record discussion with regard to nomination of beneficiaries or cessionaries'
+                                                                            />
+                                                                        </div>
+                                                                        <br />
+                                                                        <br />
+                                                                        <br />
+                                                                        {
+                                                                            backgroundInfoVisibility12 ?
+                                                                                <>
+                                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                                        {/* <p>Discuss the outcome of the FNA</p><br /> */ }
+                                                                                        <ul>
+                                                                                            <li>
+                                                                                                Discuss the following information which has been explained to client.<br />
+                                                                                                General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.)<br />
+                                                                                                Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings)<br />
+                                                                                                Waiting periods<br />
+                                                                                                Cooling off period
+
+                                                                                            </li>
+
+                                                                                        </ul>
+
+                                                                                    </div>
+                                                                                </> :
+                                                                                null
+                                                                        }
+                                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                                            <ReactQuill
+                                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                                value={ row?.InformationExplained }
+                                                                                onChange={ (value) => { on_ProductTaken_Value_Change("InformationExplained", i, value) } }
+                                                                                onFocus={ (e) => { backgroundInfo_onFocus12() } }
+                                                                                onBlur={ (e) => { backgroundInfo_onBlur12() } }
+                                                                                modules={ modules }
+                                                                                formats={ formats }
+                                                                                style={ {
+                                                                                    height: '300px', // Set the desired height here
+                                                                                } }
+                                                                                placeholder={
+                                                                                    `Discuss the following information which has been explained to client. \n
                                                                                 General exclusions of liability (i.e. benefit exclusions e.g. suicide clause on death, psychological conditions on disability, etc.) \n
                                                                                 Client-specific exclusions of liability (e.g. medical exclusions, pre-existing conditions, loadings) \n
                                                                                 Waiting periods \n
                                                                                 Cooling off period`
-                                                                        }
-                                                                    />
-                                                                </div>
-                                                                <br />
-                                                                <br />
+                                                                                }
+                                                                            />
+                                                                        </div>
+                                                                        <br />
+                                                                        <br />
 
-                                                                <hr />
+                                                                        <hr />
 
-                                                            </div>
-                                                        )
-                                                    })
-                                                    : <></>
-                                            }
+                                                                    </div>
+                                                                )
+                                                            })
+                                                            : <></>
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </form>
+                                    </form>
+                            }
                         </div>
                     </div>
 

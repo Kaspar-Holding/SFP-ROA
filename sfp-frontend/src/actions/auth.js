@@ -294,8 +294,8 @@ export const login = (
         Swal.fire({
             position: "bottom-end",
             type: "error",
-            title: `${error?.response?.statusText}`,
-            html: `${error?.response?.data?.error?.detail}`,
+            title: error?.response?.status === 500 ? "Server is down" : `${error?.response?.statusText}`,
+            html: error?.response?.data?.error?.detail ? `${error?.response?.data?.error?.detail}` : `${error?.response?.data?.error}`,
             showConfirmButton: !1,
             timer: 10000,
             confirmButtonClass: "btn btn-primary",

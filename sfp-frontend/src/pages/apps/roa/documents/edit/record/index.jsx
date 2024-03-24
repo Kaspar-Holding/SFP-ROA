@@ -302,9 +302,9 @@ const EditROA = () => {
 
     const onFieldBlur = (e) => {
         FormStatus == 0 ?
-            setTimeout(() => {
-                updateROAForm(FormData);
-            }, 1000) // Wait for 1 second
+            updateROAForm(FormData)
+            // setTimeout(() => {
+            // }, 1000) // Wait for 1 second
             : <></>
     }
 
@@ -379,119 +379,123 @@ const EditROA = () => {
                                 <></>
                         }
                         <div className=''>
-                            <form onSubmit={ e => onSubmit(e) }>
-                                <div className={ 'inital-card-header mx-5' }>
-                                    <div className='row'>
-                                        <div className='col-lg-1'>
-                                        </div>
-                                        <div className='col-lg-10 col-md-6 col-sm-12'>
+                            {
+                                Loaded ?
+                                    <Loader />
+                                    :
+                                    <form onSubmit={ e => onSubmit(e) }>
+                                        <div className={ 'mx-5' }>
                                             <div className='row'>
-                                                <div className="col-lg-6 mb-3">
-                                                    <label className="form-label compliance-inital-card-text">Client Name</label>
-                                                    <input spellCheck="true" disabled required minLength="3" and maxLength="45" id="clientName" name="clientName" value={ FormData?.clientName } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Name" aria-describedby="" />
+                                                <div className='col-lg-1'>
                                                 </div>
-                                                <div className="col-lg-6 mb-3">
-                                                    <label className="form-label compliance-inital-card-text">Client ID number</label>
-                                                    <input spellCheck="true" disabled id="clientIdNumber" name="clientIdNumber" value={ FormData?.clientIdNumber } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client ID" aria-describedby="" />
-                                                </div>
-                                                <div className="col-lg-12 mb-3">
-                                                    <label className="form-label compliance-inital-card-text">Client Address</label>
-                                                    <input spellCheck="true" required onBlur={ (e) => { onFieldBlur(e) } } id="clientAddress" name="clientAddress" value={ FormData?.clientAddress } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Address" aria-describedby="" />
-                                                </div>
-                                                <div className="col-lg-6 mb-3">
-                                                    <label className="form-label compliance-inital-card-text">Client Email</label>
-                                                    <input spellCheck="true" disabled type='email' required id="clientEmail" name="clientEmail" value={ FormData?.clientEmail } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Email" aria-describedby="" />
-                                                </div>
-                                                <div className="col-lg-6 mb-3">
-                                                    <label className="form-label compliance-inital-card-text">Client Phone</label>
-                                                    <input spellCheck="true" disabled required id="clientPhoneNumber" name="clientPhoneNumber" value={ FormData?.clientPhoneNumber } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Phone Number" aria-describedby="" />
-                                                </div>
-                                                <div className="col-lg-6 mb-3">
-                                                    <label className="form-label compliance-inital-card-text">Financial Advisor:</label>
-                                                    <input spellCheck="true" disabled value={ `${user?.full_name}` } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Name" aria-describedby="" />
-                                                </div>
-                                                <div className="col-lg-6 mb-3">
-                                                    <label className="form-label compliance-inital-card-text">Date:</label>
-                                                    <input required spellCheck="true" type="date" id="clientDateOfBirth" value={ FormData?.clientDateOfBirth } onChange={ e => onChange(e) } name="clientDateOfBirth" className="form-control" placeholder="date_of_birth" aria-describedby="" />
-                                                </div>
-                                                <div className="col-lg-12">
-                                                    <p className='roa-disclaimer'>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP)
-                                                        processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to
-                                                        SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on
-                                                        <a href="https://www.sfpadvice.co.za"> https://www.sfpadvice.co.za</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            {/* <button className='btn btn-primary btn-sfp w-100' onClick={handleNext}>Section A: Compulsory Disclosures <span><FontAwesomeIcon width={"20px"} icon={faArrowRight} /></span></button> */ }
-                                        </div>
-                                    </div>
-                                    <div className='row'>
-                                        <div className='col-lg-1'>
-                                        </div>
-                                        <div className='col-lg-10'>
-                                            {/* Section A */ }
-                                            <div className='text-center'>
-                                                <b>Section A</b>
-                                            </div>
-                                            <br />
-                                            <div className='row'>
-                                                <div className='roa-font'>
-                                                    <b>1. Compulsory Disclosures</b>
-                                                </div>
-                                                <div className="col-6 roa-label">
-                                                    <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client was provided with a copy of the Letter of Introduction.</label>
-                                                </div>
-
-                                                <div className="col-6">
-                                                    <div className="row">
-                                                        <div className="row col-6 align-items-center">
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientLetterOfIntroduction == 1 ? true : false } onChange={ e => onChange(e) } type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroduction" />
-                                                            </div>
-                                                            <div className="col-6">
-                                                                <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
-                                                                    Yes
-                                                                </label>
-                                                            </div>
+                                                <div className='col-lg-10 col-md-6 col-sm-12'>
+                                                    <div className='row'>
+                                                        <div className="col-lg-6 mb-3">
+                                                            <label className="form-label compliance-inital-card-text">Client Name</label>
+                                                            <input spellCheck="true" onBlur={ (e) => { onFieldBlur(e) } } minLength="3" and maxLength="45" id="clientName" name="clientName" value={ FormData?.clientName } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Name" aria-describedby="" />
                                                         </div>
-                                                        <div className="row col-6 align-items-center">
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientLetterOfIntroduction == 0 ? true : false } onChange={ e => onChange(e) } type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction" />
-                                                            </div>
-                                                            <div className="col-6">
-                                                                <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
-                                                                    No
-                                                                </label>
-                                                            </div>
+                                                        <div className="col-lg-6 mb-3">
+                                                            <label className="form-label compliance-inital-card-text">Client ID number</label>
+                                                            <input spellCheck="true" onBlur={ (e) => { onFieldBlur(e) } } id="clientIdNumber" name="clientIdNumber" value={ FormData?.clientIdNumber } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client ID" aria-describedby="" />
+                                                        </div>
+                                                        <div className="col-lg-12 mb-3">
+                                                            <label className="form-label compliance-inital-card-text">Client Address</label>
+                                                            <input spellCheck="true" onBlur={ (e) => { onFieldBlur(e) } } id="clientAddress" name="clientAddress" value={ FormData?.clientAddress } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Address" aria-describedby="" />
+                                                        </div>
+                                                        <div className="col-lg-6 mb-3">
+                                                            <label className="form-label compliance-inital-card-text">Client Email</label>
+                                                            <input spellCheck="true" onBlur={ (e) => { onFieldBlur(e) } } type='email' id="clientEmail" name="clientEmail" value={ FormData?.clientEmail } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Email" aria-describedby="" />
+                                                        </div>
+                                                        <div className="col-lg-6 mb-3">
+                                                            <label className="form-label compliance-inital-card-text">Client Phone</label>
+                                                            <input spellCheck="true" onBlur={ (e) => { onFieldBlur(e) } } id="clientPhoneNumber" name="clientPhoneNumber" value={ FormData?.clientPhoneNumber } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Client Phone Number" aria-describedby="" />
+                                                        </div>
+                                                        <div className="col-lg-6 mb-3">
+                                                            <label className="form-label compliance-inital-card-text">Financial Advisor:</label>
+                                                            <input spellCheck="true" disabled value={ `${user?.full_name}` } className="form-control" onChange={ (e) => { onChange(e) } } placeholder="Name" aria-describedby="" />
+                                                        </div>
+                                                        <div className="col-lg-6 mb-3">
+                                                            <label className="form-label compliance-inital-card-text">Date:</label>
+                                                            <input spellCheck="true" onBlur={ (e) => { onFieldBlur(e) } } type="date" id="clientDateOfBirth" value={ FormData?.clientDateOfBirth } onChange={ e => onChange(e) } name="clientDateOfBirth" className="form-control" placeholder="date_of_birth" aria-describedby="" />
+                                                        </div>
+                                                        <div className="col-lg-12">
+                                                            <p className='roa-disclaimer'>In terms of the Financial Advisory and Intermediary Services Act (FAIS Act), we must provide you (the client) with a record of advice. This document is a summary that intends to confirm the advisory process you recently undertook with your advisor. If you have any questions concerning the content, please contact your advisor. You are entitled to a copy of this document for your records. You consent to Succession Financial Planning (SFP)
+                                                                processing your personal information per the Protection of Personal Information Act (POPIA). You have given consent to
+                                                                SFP retaining your personal information to recommend the best-suited financial solutions for your financial needs and maintenance. You consent to be contacted from time to time for maintenance, news, correspondence, and storage of your personal information relating to your financial matters. Ts&Cs on
+                                                                <a href="https://www.sfpadvice.co.za"> https://www.sfpadvice.co.za</a>
+                                                            </p>
                                                         </div>
                                                     </div>
+                                                    {/* <button className='btn btn-primary btn-sfp w-100' onClick={handleNext}>Section A: Compulsory Disclosures <span><FontAwesomeIcon width={"20px"} icon={faArrowRight} /></span></button> */ }
                                                 </div>
-                                                {
-                                                    letterOfIntroductionVisibility ?
-                                                        <>
-                                                            <div id="letter_of_introduction_instructions" className="hidden_class">
-                                                                <p>If no, motivate</p>
-                                                            </div>
-                                                        </> :
-                                                        null
-                                                }
-                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                    <ReactQuill
-                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                        value={ FormData?.clientLetterOfIntroductionReason }
-                                                        onChange={ (value) => { setFormData({ ...FormData, ['clientLetterOfIntroductionReason']: value }) } }
-                                                        onFocus={ (e) => { letter_of_introduction_onFocus() } }
-                                                        onBlur={ (e) => { letter_of_introduction_onBlur() } }
-                                                        modules={ modules }
-                                                        formats={ formats }
-                                                        style={ {
-                                                            height: '300px', // Set the desired height here
+                                            </div>
+                                            <div className='row'>
+                                                <div className='col-lg-1'>
+                                                </div>
+                                                <div className='col-lg-10'>
+                                                    {/* Section A */ }
+                                                    <div className='text-center'>
+                                                        <b>Section A</b>
+                                                    </div>
+                                                    <br />
+                                                    <div className='row'>
+                                                        <div className='roa-font'>
+                                                            <b>1. Compulsory Disclosures</b>
+                                                        </div>
+                                                        <div className="col-6 roa-label">
+                                                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client was provided with a copy of the Letter of Introduction.</label>
+                                                        </div>
 
-                                                        } }
-                                                        placeholder="If no, motivate"
-                                                    />
-                                                </div>
-                                                {/* <Editor
+                                                        <div className="col-6">
+                                                            <div className="row">
+                                                                <div className="row col-6 align-items-center">
+                                                                    <div className="col-2">
+                                                                        <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientLetterOfIntroduction == 1 ? true : false } onChange={ e => onChange(e) } type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroduction" />
+                                                                    </div>
+                                                                    <div className="col-6">
+                                                                        <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
+                                                                            Yes
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="row col-6 align-items-center">
+                                                                    <div className="col-2">
+                                                                        <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientLetterOfIntroduction == 0 ? true : false } onChange={ e => onChange(e) } type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroduction" />
+                                                                    </div>
+                                                                    <div className="col-6">
+                                                                        <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
+                                                                            No
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {
+                                                            letterOfIntroductionVisibility ?
+                                                                <>
+                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                        <p>If no, motivate</p>
+                                                                    </div>
+                                                                </> :
+                                                                null
+                                                        }
+                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            <ReactQuill
+                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                value={ FormData?.clientLetterOfIntroductionReason }
+                                                                onChange={ (value) => { setFormData({ ...FormData, ['clientLetterOfIntroductionReason']: value }) } }
+                                                                onFocus={ (e) => { letter_of_introduction_onFocus() } }
+                                                                onBlur={ (e) => { letter_of_introduction_onBlur() } }
+                                                                modules={ modules }
+                                                                formats={ formats }
+                                                                style={ {
+                                                                    height: '300px', // Set the desired height here
+
+                                                                } }
+                                                                placeholder="If no, motivate"
+                                                            />
+                                                        </div>
+                                                        {/* <Editor
                                                     apiKey='24mclovnb2gg7pih0ea5b9uqb87alv4p1pmmhsc0c9yprghq'
                                                     onInit={(evt, editor) => compulsoryAEditorRef.current = editor}
                                                     value={FormData?.clientLetterOfIntroductionAccessReason}
@@ -521,272 +525,305 @@ const EditROA = () => {
                                                         }
                                                     }}
                                                 /> */}
-                                                <br />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <div className='row'>
-                                                <div className="col-6 roa-label">
-                                                    <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client has provided authority to access information.</label>
-                                                </div>
-
-                                                <div className="col-6">
-                                                    <div className="row">
-                                                        <div className="row col-6 align-items-center">
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientLetterOfIntroductionAccess == 1 ? true : false } onChange={ e => onChange(e) } type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess" />
-                                                            </div>
-                                                            <div className="col-6">
-                                                                <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
-                                                                    Yes
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div className="row col-6 align-items-center">
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientLetterOfIntroductionAccess == 0 ? true : false } onChange={ e => onChange(e) } type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess" />
-                                                            </div>
-                                                            <div className="col-6">
-                                                                <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
-                                                                    No
-                                                                </label>
-                                                            </div>
-                                                        </div>
+                                                        <br />
                                                     </div>
-                                                </div>
-                                                {
-                                                    letterOfIntroductionAccessVisibility ?
-                                                        <>
-                                                            <div id="authority_access_instructions" className="hidden_class">
-                                                                <p>If no, motivate</p>
-                                                            </div>
-                                                        </> :
-                                                        null
-                                                }
-                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                    <ReactQuill
-                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                        value={ FormData?.clientLetterOfIntroductionAccessReason }
-                                                        onChange={ (value) => { setFormData({ ...FormData, ['clientLetterOfIntroductionAccessReason']: value }) } }
-                                                        onFocus={ (e) => { setletterOfIntroductionAccessVisibility(true) } }
-                                                        onBlur={ (e) => { setletterOfIntroductionAccessVisibility(false) } }
-                                                        modules={ modules }
-                                                        formats={ formats }
-                                                        style={ {
-                                                            height: '300px', // Set the desired height here
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <div className='row'>
+                                                        <div className="col-6 roa-label">
+                                                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client has provided authority to access information.</label>
+                                                        </div>
 
-                                                        } }
-                                                        placeholder="If no, motivate"
-                                                    />
-                                                </div>
-                                                <br />
-                                                <br />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <div className='row'>
-                                                <div className='roa-font'>
-                                                    <b>2. Financial Intelligence Centre Act (FICA)</b>
-                                                </div>
-                                                <div className="col-6 roa-label">
-                                                    <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client has provided a clear copy of his/her identity document.</label>
-                                                </div>
-
-                                                <div className="col-6">
-                                                    <div className="row">
-                                                        <div className="row col-6 align-items-center">
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientFica == 1 ? true : false } onChange={ e => onChange(e) } type="radio" value="1" id="provided_identity_radio_btn" name="clientFica" />
-                                                            </div>
-                                                            <div className="col-6">
-                                                                <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
-                                                                    Yes
-                                                                </label>
+                                                        <div className="col-6">
+                                                            <div className="row">
+                                                                <div className="row col-6 align-items-center">
+                                                                    <div className="col-2">
+                                                                        <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientLetterOfIntroductionAccess == 1 ? true : false } onChange={ e => onChange(e) } type="radio" value="1" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess" />
+                                                                    </div>
+                                                                    <div className="col-6">
+                                                                        <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
+                                                                            Yes
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="row col-6 align-items-center">
+                                                                    <div className="col-2">
+                                                                        <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientLetterOfIntroductionAccess == 0 ? true : false } onChange={ e => onChange(e) } type="radio" value="0" id="provided_identity_radio_btn" name="clientLetterOfIntroductionAccess" />
+                                                                    </div>
+                                                                    <div className="col-6">
+                                                                        <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
+                                                                            No
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div className="row col-6 align-items-center">
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientFica == 0 ? true : false } onChange={ e => onChange(e) } type="radio" value="0" id="provided_identity_radio_btn" name="clientFica" />
-                                                            </div>
-                                                            <div className="col-6">
-                                                                <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
-                                                                    No
-                                                                </label>
-                                                            </div>
+                                                        {
+                                                            letterOfIntroductionAccessVisibility ?
+                                                                <>
+                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                        <p>If no, motivate</p>
+                                                                    </div>
+                                                                </> :
+                                                                null
+                                                        }
+                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            <ReactQuill
+                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                value={ FormData?.clientLetterOfIntroductionAccessReason }
+                                                                onChange={ (value) => { setFormData({ ...FormData, ['clientLetterOfIntroductionAccessReason']: value }) } }
+                                                                onFocus={ (e) => { setletterOfIntroductionAccessVisibility(true) } }
+                                                                onBlur={ (e) => { setletterOfIntroductionAccessVisibility(false) } }
+                                                                modules={ modules }
+                                                                formats={ formats }
+                                                                style={ {
+                                                                    height: '300px', // Set the desired height here
+
+                                                                } }
+                                                                placeholder="If no, motivate"
+                                                            />
                                                         </div>
+                                                        <br />
+                                                        <br />
                                                     </div>
-                                                </div>
-                                                {
-                                                    FicaVisibility ?
-                                                        <>
-                                                            <div id="provided_identity_instructions" className="hidden_class">
-                                                                <p>If no, motivate</p>
-                                                            </div>
-                                                        </> :
-                                                        null
-                                                }
-                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                    <ReactQuill
-                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                        value={ FormData?.clientFicaReason }
-                                                        onChange={ (value) => { setFormData({ ...FormData, ['clientFicaReason']: value }) } }
-                                                        onFocus={ (e) => { fica_onFocus() } }
-                                                        onBlur={ (e) => { fica_onBlur() } }
-                                                        modules={ modules }
-                                                        formats={ formats }
-                                                        style={ {
-                                                            height: '300px', // Set the desired height here
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <div className='row'>
+                                                        <div className='roa-font'>
+                                                            <b>2. Financial Intelligence Centre Act (FICA)</b>
+                                                        </div>
+                                                        <div className="col-6 roa-label">
+                                                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Client has provided a clear copy of his/her identity document.</label>
+                                                        </div>
 
-                                                        } }
-                                                        placeholder="If no, motivate"
-                                                    />
-                                                </div>
-                                                <br />
-                                                <br />
-                                                <br />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <div className='row'>
-                                                <div className='roa-font'>
-                                                    <b>3. Replacements</b>
-                                                </div>
-                                                <div className="col-6 roa-label">
-                                                    <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Does/Do the product(s) taken replace an existing product(s)?</label>
-                                                </div>
-
-                                                <div className="col-6">
-                                                    <div className="row">
-                                                        <div className="row col-6 align-items-center">
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientReplacement == 1 ? true : false } onChange={ e => onChange(e) } type="radio" value="1" id="provided_identity_radio_btn" name="clientReplacement" />
-                                                            </div>
-                                                            <div className="col-6">
-                                                                <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
-                                                                    Yes
-                                                                </label>
+                                                        <div className="col-6">
+                                                            <div className="row">
+                                                                <div className="row col-6 align-items-center">
+                                                                    <div className="col-2">
+                                                                        <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientFica == 1 ? true : false } onChange={ e => onChange(e) } type="radio" value="1" id="provided_identity_radio_btn" name="clientFica" />
+                                                                    </div>
+                                                                    <div className="col-6">
+                                                                        <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
+                                                                            Yes
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="row col-6 align-items-center">
+                                                                    <div className="col-2">
+                                                                        <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientFica == 0 ? true : false } onChange={ e => onChange(e) } type="radio" value="0" id="provided_identity_radio_btn" name="clientFica" />
+                                                                    </div>
+                                                                    <div className="col-6">
+                                                                        <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
+                                                                            No
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div className="row col-6 align-items-center">
-                                                            <div className="col-2">
-                                                                <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientReplacement == 0 ? true : false } onChange={ e => onChange(e) } type="radio" value="0" id="provided_identity_radio_btn" name="clientReplacement" />
-                                                            </div>
-                                                            <div className="col-6">
-                                                                <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
-                                                                    No
-                                                                </label>
-                                                            </div>
+                                                        {
+                                                            FicaVisibility ?
+                                                                <>
+                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                        <p>If no, motivate</p>
+                                                                    </div>
+                                                                </> :
+                                                                null
+                                                        }
+                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            <ReactQuill
+                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                value={ FormData?.clientFicaReason }
+                                                                onChange={ (value) => { setFormData({ ...FormData, ['clientFicaReason']: value }) } }
+                                                                onFocus={ (e) => { fica_onFocus() } }
+                                                                onBlur={ (e) => { fica_onBlur() } }
+                                                                modules={ modules }
+                                                                formats={ formats }
+                                                                style={ {
+                                                                    height: '300px', // Set the desired height here
+
+                                                                } }
+                                                                placeholder="If no, motivate"
+                                                            />
                                                         </div>
+                                                        <br />
+                                                        <br />
+                                                        <br />
                                                     </div>
-                                                </div>
-                                                {
-                                                    ReplacementVisibility ?
-                                                        <>
-                                                            <div id="provided_identity_instructions" className="hidden_class">
-                                                                <p>If no, motivate</p>
-                                                            </div>
-                                                        </> :
-                                                        null
-                                                }
-                                                {/* <textarea  id="provided_identity" required={FormData['clientReplacement'] === 0 ? true : false} value={FormData['clientReplacementReason']}  maxLength={256} name="clientReplacementReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */ }
-                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                    <ReactQuill
-                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                        value={ FormData?.clientReplacementReason }
-                                                        onChange={ (value) => { setFormData({ ...FormData, ['clientReplacementReason']: value }) } }
-                                                        onFocus={ (e) => { setReplacementVisibility(true); onFieldBlur(e) } }
-                                                        onBlur={ (e) => { setReplacementVisibility(false); onFieldBlur(e) } }
-                                                        modules={ modules }
-                                                        formats={ formats }
-                                                        style={ {
-                                                            height: '300px', // Set the desired height here
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <div className='row'>
+                                                        <div className='roa-font'>
+                                                            <b>3. Replacements</b>
+                                                        </div>
+                                                        <div className="col-6 roa-label">
+                                                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Does/Do the product(s) taken replace an existing product(s)?</label>
+                                                        </div>
 
-                                                        } }
-                                                        placeholder="If no, motivate"
-                                                    />
-                                                </div>
-                                                <br />
-                                                <br />
-                                                <br />
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <div className='text-center'>
-                                                <b>SECTION B</b>
-                                            </div>
-                                            <br />
-                                            <div className='row'>
-                                                <div className='roa-font'>
-                                                    <b>Background information</b>
-                                                </div>
-                                                <div className="col-6 roa-label">
-                                                    <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Your personal circumstances that formed the basis for my recommendation</label>
-                                                </div>
-                                                {
-                                                    backgroundInfoVisibility ?
-                                                        <>
-                                                            <div id="background_info_instructions10" className="hidden_class">
-                                                                <p>Provide a detailed description of the client’s:</p><br />
-                                                                <ul>
-                                                                    <li>
-                                                                        current personal circumstances,<br />
-                                                                    </li>
-                                                                    <li>
-                                                                        needs that have been identified,<br />
-                                                                    </li>
-                                                                    <li>
-                                                                        and relevant information<br />
-                                                                    </li>
-                                                                </ul>
-                                                                <p>that formed the basis for the financial solution recommended</p>
+                                                        <div className="col-6">
+                                                            <div className="row">
+                                                                <div className="row col-6 align-items-center">
+                                                                    <div className="col-2">
+                                                                        <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientReplacement == 1 ? true : false } onChange={ e => onChange(e) } type="radio" value="1" id="provided_identity_radio_btn" name="clientReplacement" />
+                                                                    </div>
+                                                                    <div className="col-6">
+                                                                        <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
+                                                                            Yes
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="row col-6 align-items-center">
+                                                                    <div className="col-2">
+                                                                        <input className="form-check-input" onMouseLeave={ (e) => { onFieldBlur(e) } } checked={ FormData?.clientReplacement == 0 ? true : false } onChange={ e => onChange(e) } type="radio" value="0" id="provided_identity_radio_btn" name="clientReplacement" />
+                                                                    </div>
+                                                                    <div className="col-6">
+                                                                        <label className="form-check-label roa-font" htmlFor="provided_identity_radio_btn" >
+                                                                            No
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </> :
-                                                        null
-                                                }
-                                                <br />
-                                                <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
-                                                    <ReactQuill
-                                                        theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                        value={ FormData?.clientBackgroundInfo }
-                                                        onChange={ (value) => { setFormData({ ...FormData, ['clientBackgroundInfo']: value }) } }
-                                                        onFocus={ (e) => { backgroundInfo_onFocus() } }
-                                                        onBlur={ (e) => { backgroundInfo_onBlur() } }
-                                                        modules={ modules }
-                                                        formats={ formats }
-                                                        style={ {
-                                                            height: '300px', // Set the desired height here
-                                                        } }
-                                                        placeholder={
-                                                            `                       Provide a detailed description of the client’s:
+                                                        </div>
+                                                        {
+                                                            ReplacementVisibility ?
+                                                                <>
+                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                        <p>If no, motivate</p>
+                                                                    </div>
+                                                                </> :
+                                                                null
+                                                        }
+                                                        {/* <textarea  id="provided_identity" required={FormData['clientReplacement'] === 0 ? true : false} value={FormData['clientReplacementReason']}  maxLength={256} name="clientReplacementReason" onChange={(e) => {onChange(e)}} onFocus={fica_onFocus} onBlur={fica_onBlur} className="form-control" placeholder="If no, motivate" aria-describedby="" ></textarea> */ }
+                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            <ReactQuill
+                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                value={ FormData?.clientReplacementReason }
+                                                                onChange={ (value) => { setFormData({ ...FormData, ['clientReplacementReason']: value }) } }
+                                                                onFocus={ (e) => { setReplacementVisibility(true); onFieldBlur(e) } }
+                                                                onBlur={ (e) => { setReplacementVisibility(false); onFieldBlur(e) } }
+                                                                modules={ modules }
+                                                                formats={ formats }
+                                                                style={ {
+                                                                    height: '300px', // Set the desired height here
+
+                                                                } }
+                                                                placeholder="If no, motivate"
+                                                            />
+                                                        </div>
+                                                        <br />
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <div className='text-center'>
+                                                        <b>SECTION B</b>
+                                                    </div>
+                                                    <br />
+                                                    <div className='row'>
+                                                        <div className='roa-font'>
+                                                            <b>Background information</b>
+                                                        </div>
+                                                        <div className="col-6 roa-label">
+                                                            <label htmlFor="client_name" className="col-form-label" title="If no, motivate">Your personal circumstances that formed the basis for my recommendation</label>
+                                                        </div>
+                                                        {
+                                                            backgroundInfoVisibility ?
+                                                                <>
+                                                                    <div id="background_info_instructions10" className="hidden_class">
+                                                                        <p>Provide a detailed description of the client’s:</p><br />
+                                                                        <ul>
+                                                                            <li>
+                                                                                current personal circumstances,<br />
+                                                                            </li>
+                                                                            <li>
+                                                                                needs that have been identified,<br />
+                                                                            </li>
+                                                                            <li>
+                                                                                and relevant information<br />
+                                                                            </li>
+                                                                        </ul>
+                                                                        <p>that formed the basis for the financial solution recommended</p>
+                                                                    </div>
+                                                                </> :
+                                                                null
+                                                        }
+                                                        <br />
+                                                        <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
+                                                            <ReactQuill
+                                                                theme="snow" // Specify the theme ('snow' or 'bubble')
+                                                                value={ FormData?.clientBackgroundInfo }
+                                                                onChange={ (value) => { setFormData({ ...FormData, ['clientBackgroundInfo']: value }) } }
+                                                                onFocus={ (e) => { backgroundInfo_onFocus() } }
+                                                                onBlur={ (e) => { backgroundInfo_onBlur() } }
+                                                                modules={ modules }
+                                                                formats={ formats }
+                                                                style={ {
+                                                                    height: '300px', // Set the desired height here
+                                                                } }
+                                                                placeholder={
+                                                                    `                       Provide a detailed description of the client’s:
                                                             •	current personal circumstances,
                                                             •	needs that have been identified, 
                                                             •	and relevant information 
                                                         that formed the basis for the financial solution recommended`}
-                                                    />
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <br />
+
+
+                                                    {/* <SectionACD user={user} FormData={FormData} setFormData={setFormData} onUpdate={()=>{updateROAForm(FormData)}} onChange={onChange} nextStep={nextStep}  prevStep={prevStep} compulsoryAEditorRef={compulsoryAEditorRef} /> */ }
+                                                    {/* <SectionAAInfo user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} nextStep={nextStep}  prevStep={prevStep} compulsoryAEditorRef={compulsoryAEditorRef} /> */ }
+                                                    {/* <SectionAFICA user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} nextStep={nextStep}  prevStep={prevStep} FICAEditorRef={FICAEditorRef} /> */ }
+                                                    {/* <SectionAReplacements user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} nextStep={nextStep}  prevStep={prevStep} FICAEditorRef={FICAEditorRef} /> */ }
+                                                    {/* <SectionB user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} prevStep={prevStep} FICAEditorRef={FICAEditorRef} /> */ }
+                                                    <hr />
+                                                    <button className='btn btn-primary btn-sfp w-100' type="submit">Update Form <span><FontAwesomeIcon width={ "20px" } icon={ faCheck } /></span></button>
+                                                    <div
+                                                        className={
+                                                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? "container-sfp"
+                                                                : user?.email?.includes('fs4p') ? "container-fs4p"
+                                                                    : user?.email?.includes('sanlam') ? "container-sanlam"
+                                                                        : "container-sfp"
+                                                        }
+                                                    >
+                                                        <div
+                                                            className={ "icon1 update" }
+                                                        >
+                                                            <div
+                                                                className={
+                                                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? "tooltip-sfp"
+                                                                        : user?.email?.includes('fs4p') ? "tooltip-fs4p"
+                                                                            : user?.email?.includes('sanlam') ? "tooltip-sanlam"
+                                                                                : "tooltip-sfp"
+                                                                }
+                                                            >
+                                                                Update
+                                                            </div>
+                                                            <span>
+                                                                <button
+                                                                    type="submit"
+                                                                    className="updateRiskFormBTN"
+                                                                    style={ { border: "none", backgroundColor: "transparent" } }
+                                                                >
+                                                                    <i className="fa-solid fa-check" />
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className='col-lg-1'>
                                                 </div>
                                             </div>
-                                            <br />
-                                            <br />
-                                            <br />
-
-
-                                            {/* <SectionACD user={user} FormData={FormData} setFormData={setFormData} onUpdate={()=>{updateROAForm(FormData)}} onChange={onChange} nextStep={nextStep}  prevStep={prevStep} compulsoryAEditorRef={compulsoryAEditorRef} /> */ }
-                                            {/* <SectionAAInfo user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} nextStep={nextStep}  prevStep={prevStep} compulsoryAEditorRef={compulsoryAEditorRef} /> */ }
-                                            {/* <SectionAFICA user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} nextStep={nextStep}  prevStep={prevStep} FICAEditorRef={FICAEditorRef} /> */ }
-                                            {/* <SectionAReplacements user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} nextStep={nextStep}  prevStep={prevStep} FICAEditorRef={FICAEditorRef} /> */ }
-                                            {/* <SectionB user={user} FormData={FormData} setFormData={setFormData} onChange={onChange} prevStep={prevStep} FICAEditorRef={FICAEditorRef} /> */ }
-                                            <hr />
-                                            <button className='btn btn-primary btn-sfp w-100' type="submit">Update Form <span><FontAwesomeIcon width={ "20px" } icon={ faCheck } /></span></button>
-
                                         </div>
-                                        <div className='col-lg-1'>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                                    </form>
+
+                            }
                         </div>
                     </div>
 

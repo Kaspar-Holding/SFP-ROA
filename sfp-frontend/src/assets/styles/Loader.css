@@ -12,6 +12,22 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  color: #00788A;
+}
+
+.lds_ring .sfp {
+  color: #00788A;
+  background-color: transparent;
+}
+
+.lds_ring .fs4p {
+  color: #6AC7D2;
+  background-color: transparent;
+}
+
+.lds_ring .sanlam {
+  color: #0074C9;
+  background-color: transparent;
 }
 
 .lds_ring div {

@@ -171,81 +171,118 @@ const Fiduciary = () => {
                                 :
                                 <></>
                         }
-                        <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
-
-                            <div style={ { fontSize: '14px' } } align="left">
-                                <div className="row">
-                                    <div className="col-12" style={ { paddingBottom: "0.5%" } }>
-                                        <div className="row g-3 align-items-center">
-                                            <div className="col-4">
-                                                <label htmlFor="address" className="col-form-label roa-label">Is there a valid Will in place?  </label>
+                        {
+                            Loaded ?
+                                <Loader />
+                                :
+                                <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
+                                    <div
+                                        className={
+                                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? "container-sfp"
+                                                : user?.email?.includes('fs4p') ? "container-fs4p"
+                                                    : user?.email?.includes('sanlam') ? "container-sanlam"
+                                                        : "container-sfp"
+                                        }
+                                    >
+                                        <div
+                                            className={ "icon1 update" }
+                                        >
+                                            <div
+                                                className={
+                                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? "tooltip-sfp"
+                                                        : user?.email?.includes('fs4p') ? "tooltip-fs4p"
+                                                            : user?.email?.includes('sanlam') ? "tooltip-sanlam"
+                                                                : "tooltip-sfp"
+                                                }
+                                            >
+                                                Update
                                             </div>
-                                            <div className="col-1">
-                                                <label className="radio-inline">
-                                                    <input onMouseLeave={ (e) => { onFieldBlur(e) } } type="radio" className="form-check-input roa-font" name="fiduciaryWillInPlace" checked={ FormData['fiduciaryWillInPlace'] == 1 ? true : false } onChange={ e => onChange(e) } value="1" />Yes
-                                                </label>
-                                            </div>
-                                            <div className="col-1">
-                                                <label className="radio-inline">
-                                                    <input onMouseLeave={ (e) => { onFieldBlur(e) } } type="radio" className="form-check-input roa-font" name="fiduciaryWillInPlace" checked={ FormData['fiduciaryWillInPlace'] == 0 ? true : false } onChange={ e => onChange(e) } value="0" />No
-                                                </label>
-                                            </div>
+                                            <span>
+                                                <button
+                                                    type="submit"
+                                                    className="updateRiskFormBTN"
+                                                    style={ { border: "none", backgroundColor: "transparent" } }
+                                                >
+                                                    <i className="fa-solid fa-check" />
+                                                </button>
+                                            </span>
                                         </div>
-
-                                        <hr />
-                                        <div className="row g-3 align-items-center">
-                                            <div className="col-4">
-                                                <label htmlFor="fiduciaryWillUpdationDate" className="col-form-label roa-label">Date last updated? </label>
-                                            </div>
-                                            <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" type="date" id="fiduciaryWillUpdationDate" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryWillUpdationDate'] } name="fiduciaryWillUpdationDate" className="form-control" placeholder="Click to enter text" aria-describedby="" />
-                                            </div>
-                                        </div>
-
-                                        <hr />
-                                        <div className="row g-3 align-items-center">
-                                            <div className="col-4">
-                                                <label htmlFor="fiduciaryWillKeepingPlace" className="col-form-label roa-label">Where is the will kept? </label>
-                                            </div>
-                                            <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="fiduciaryWillKeepingPlace" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryWillKeepingPlace'] } name="fiduciaryWillKeepingPlace" className="form-control" placeholder="Click to enter text" aria-describedby="" />
-                                            </div>
-                                        </div>
-
-                                        <hr />
-                                        <div className="row g-3 align-items-center">
-                                            <div className="col-4">
-                                                <label htmlFor="fiduciaryExecutorDetails" className="col-form-label roa-label">Details of Executor?</label>
-                                            </div>
-                                            <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="fiduciaryExecutorDetails" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryExecutorDetails'] } name="fiduciaryExecutorDetails" className="form-control" placeholder="Click to enter text" aria-describedby="" />
-                                            </div>
-                                        </div>
-
-                                        <hr />
-                                        <div className="row g-3 align-items-center">
-                                            <div className="col-4">
-                                                <label htmlFor="fiduciaryClientInstructions" className="col-form-label roa-label">Client instruction in terms of drafting a Will? </label>
-                                            </div>
-                                            <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="fiduciaryClientInstructions" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryClientInstructions'] } name="fiduciaryClientInstructions" className="form-control" placeholder="Click to enter text" aria-describedby="" />
-                                            </div>
-                                        </div>
-
-                                        <hr />
-                                        <div className="row g-3 align-items-center">
-                                            <div className="col-4">
-                                                <label htmlFor="fiduciaryConsequencesExplained" className="col-form-label roa-label">Has the consequences of not having a will being explained and discussed? </label>
-                                            </div>
-                                            <div className="col-6">
-                                                <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="fiduciaryConsequencesExplained" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryConsequencesExplained'] } name="fiduciaryConsequencesExplained" className="form-control" placeholder="Click to enter text" aria-describedby="" />
-                                            </div>
-                                        </div>
-
                                     </div>
-                                </div>
-                            </div>
-                        </form>
+
+                                    <div style={ { fontSize: '14px' } } align="left">
+                                        <div className="row">
+                                            <div className="col-12" style={ { paddingBottom: "0.5%" } }>
+                                                <div className="row g-3 align-items-center">
+                                                    <div className="col-4">
+                                                        <label htmlFor="address" className="col-form-label roa-label">Is there a valid Will in place?  </label>
+                                                    </div>
+                                                    <div className="col-1">
+                                                        <label className="radio-inline">
+                                                            <input onMouseLeave={ (e) => { onFieldBlur(e) } } type="radio" className="form-check-input roa-font" name="fiduciaryWillInPlace" checked={ FormData['fiduciaryWillInPlace'] == 1 ? true : false } onChange={ e => onChange(e) } value="1" />Yes
+                                                        </label>
+                                                    </div>
+                                                    <div className="col-1">
+                                                        <label className="radio-inline">
+                                                            <input onMouseLeave={ (e) => { onFieldBlur(e) } } type="radio" className="form-check-input roa-font" name="fiduciaryWillInPlace" checked={ FormData['fiduciaryWillInPlace'] == 0 ? true : false } onChange={ e => onChange(e) } value="0" />No
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <hr />
+                                                <div className="row g-3 align-items-center">
+                                                    <div className="col-4">
+                                                        <label htmlFor="fiduciaryWillUpdationDate" className="col-form-label roa-label">Date last updated? </label>
+                                                    </div>
+                                                    <div className="col-6">
+                                                        <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" type="date" id="fiduciaryWillUpdationDate" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryWillUpdationDate'] } name="fiduciaryWillUpdationDate" className="form-control" placeholder="Click to enter text" aria-describedby="" />
+                                                    </div>
+                                                </div>
+
+                                                <hr />
+                                                <div className="row g-3 align-items-center">
+                                                    <div className="col-4">
+                                                        <label htmlFor="fiduciaryWillKeepingPlace" className="col-form-label roa-label">Where is the will kept? </label>
+                                                    </div>
+                                                    <div className="col-6">
+                                                        <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="fiduciaryWillKeepingPlace" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryWillKeepingPlace'] } name="fiduciaryWillKeepingPlace" className="form-control" placeholder="Click to enter text" aria-describedby="" />
+                                                    </div>
+                                                </div>
+
+                                                <hr />
+                                                <div className="row g-3 align-items-center">
+                                                    <div className="col-4">
+                                                        <label htmlFor="fiduciaryExecutorDetails" className="col-form-label roa-label">Details of Executor?</label>
+                                                    </div>
+                                                    <div className="col-6">
+                                                        <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="fiduciaryExecutorDetails" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryExecutorDetails'] } name="fiduciaryExecutorDetails" className="form-control" placeholder="Click to enter text" aria-describedby="" />
+                                                    </div>
+                                                </div>
+
+                                                <hr />
+                                                <div className="row g-3 align-items-center">
+                                                    <div className="col-4">
+                                                        <label htmlFor="fiduciaryClientInstructions" className="col-form-label roa-label">Client instruction in terms of drafting a Will? </label>
+                                                    </div>
+                                                    <div className="col-6">
+                                                        <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="fiduciaryClientInstructions" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryClientInstructions'] } name="fiduciaryClientInstructions" className="form-control" placeholder="Click to enter text" aria-describedby="" />
+                                                    </div>
+                                                </div>
+
+                                                <hr />
+                                                <div className="row g-3 align-items-center">
+                                                    <div className="col-4">
+                                                        <label htmlFor="fiduciaryConsequencesExplained" className="col-form-label roa-label">Has the consequences of not having a will being explained and discussed? </label>
+                                                    </div>
+                                                    <div className="col-6">
+                                                        <input onBlur={ (e) => { onFieldBlur(e) } } spellCheck="true" id="fiduciaryConsequencesExplained" onChange={ (e) => { onChange(e) } } value={ FormData['fiduciaryConsequencesExplained'] } name="fiduciaryConsequencesExplained" className="form-control" placeholder="Click to enter text" aria-describedby="" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                        }
                     </div>
 
                 </EditROALayout >

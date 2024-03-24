@@ -191,16 +191,23 @@ const Navbar = () => {
             )
             setUnreadNotificationsCount(response?.data?.data?.total)
         } catch (error) {
-            // Swal.fire({
-            //     position: "bottom-end",
-            //     type: "error",
-            //     title: "Error",
-            //     html: `${error?.response?.data?.error}`,
-            //     showConfirmButton: !1,
-            //     timer: 5000,
-            //     confirmButtonClass: "btn btn-primary",
-            //     buttonsStyling: !1,
-            // })
+            if (error?.response?.status === 401) {
+                Swal.fire({
+                    position: "bottom-end",
+                    type: "error",
+                    title: "Error",
+                    html: `You are logged out and hence will be redirected towards login page.`,
+                    showConfirmButton: !1,
+                    timer: 5000,
+                    confirmButtonClass: "btn btn-primary",
+                    buttonsStyling: !1,
+                })
+                if (dispatch && dispatch != null && dispatch != undefined) {
+                    dispatch(
+                        logout()
+                    )
+                }
+            }
 
         }
 
@@ -218,17 +225,23 @@ const Navbar = () => {
             )
             setNotificationsData(response?.data?.data?.results)
         } catch (error) {
-            console.log(error?.response?.status)
-            // Swal.fire({
-            //     position: "bottom-end",
-            //     type: "error",
-            //     title: "Error",
-            //     html: `${error?.response?.data?.error}`,
-            //     showConfirmButton: !1,
-            //     timer: 5000,
-            //     confirmButtonClass: "btn btn-primary",
-            //     buttonsStyling: !1,
-            // })
+            if (error?.response?.status === 401) {
+                Swal.fire({
+                    position: "bottom-end",
+                    type: "error",
+                    title: "Error",
+                    html: `You are logged out and hence will be redirected towards login page.`,
+                    showConfirmButton: !1,
+                    timer: 5000,
+                    confirmButtonClass: "btn btn-primary",
+                    buttonsStyling: !1,
+                })
+                if (dispatch && dispatch != null && dispatch != undefined) {
+                    dispatch(
+                        logout()
+                    )
+                }
+            }
 
         }
 
