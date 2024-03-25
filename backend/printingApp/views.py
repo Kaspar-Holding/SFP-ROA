@@ -2712,14 +2712,14 @@ class disclosuresPDF(APIView):
             # Get the current date and time in the 'Africa/Johannesburg' timezone
             now = datetime.now(pytz.timezone('Africa/Johannesburg'))
             # Get the appointment date from the user_profile_data dictionary
-            data['user']['inservice'] = user_profile_data['Appointment_Date'].strftime("%d %B %Y")
+            data['user']['inservice'] = user_profile_data['Appointment_Date'].strftime("%d %B %Y") if user_profile_data['Appointment_Date'] else ""
             appointment_date = user_profile_data['Appointment_Date']
             dofa = user_profile_data['DOFA']
             appointment_date = (user_profile_data['Appointment_Date'])
-            experience = now.year - appointment_date.year
+            experience = now.year - appointment_date.year if appointment_date else 0
             experience = experience if experience != 0 else 1
             dofa = user_profile_data['DOFA']
-            industry_experience = now.year - dofa.year
+            industry_experience = now.year - dofa.year if dofa else 0
             industry_experience = industry_experience if industry_experience != 0 else 1
 
             # Calculate the difference in years
@@ -2727,9 +2727,11 @@ class disclosuresPDF(APIView):
             data['user']['industry_experience'] = industry_experience
         
         data['company'] = ""
+        footer_html = render_to_string('footer.html', context=data)
         if 'sfp' in data['user']['email'] or 'succession' in data['user']['email']:
             data['company'] = "SFP"
         if 'fs4p' in data['user']['email']:
+            footer_html = render_to_string('fs4p_footer.html', context=data)
             data['company'] = "FS4P"
         if 'sanlam' in data['user']['email']:
             data['company'] = "AFP"
@@ -2737,7 +2739,6 @@ class disclosuresPDF(APIView):
         data['logo'] = 'static/images/logo.png'
         template = get_template('pdfForm.html')
         # Render the footer template to a string
-        footer_html = render_to_string('footer.html', context=data)
 
         # Create a temporary file
         temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.html')

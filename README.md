@@ -14,6 +14,14 @@ Deployed using Nginx and Gunicorn
 
 ## Changelog
 
+### 25 March 2024:
+- ROA
+1. Disclosure Updated for FS4P.
+2. Loading on Update resolved. 
+- Printing App
+1. Disclosure Updated for FS4P.
+- Deployment on Production and Staging
+
 ### 24 March 2024:
 - ROA
 1. Minor bug fixes.

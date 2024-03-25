@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        {% load static %}
+        {% load intlib %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .div {
+                padding-bottom: 1%;
+            }
+            .row {margin: 0;padding: 0;}
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .row2 {margin-left: 5%;}
+            .row3 {margin-left: 2%;}
+
+            .row2:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .row1 {margin: 0;}
+
+            .row1:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+              
+            .column {
+                float: left;
+                width: 22%;
+                padding: 0 10px;
+            }
+              
+            .column2 {
+                float: left;
+                width: 22%;
+                padding: 0 10px;
+            }
+                
+            .column2_1 {
+                float: left;
+                width: 22%;
+                padding: 0 1px;
+            }
+                
+            .column2_2 {
+                float: left;
+                width: 25%;
+                padding: 0 1px;
+            }
+              
+            .column22 {
+                float: left;
+                width: 40%;
+                padding-left: 10px;
+            }
+              
+            .column21 {
+                float: left;
+                width: 22%;
+                padding: 0px;
+            }
+              
+            .white {
+                color: white;
+            }
+              
+            .column12 {
+                float: left;
+                width: 99%;
+                padding: 0 10px;
+                text-align: justify;
+            }
+              
+            .column11 {
+                float: left;
+                padding-left: 10px;
+                width: 79%;
+                text-align: justify;
+            }
+
+            span {
+                word-wrap: break-word;
+                width: 100%;
+                white-space: normal;
+              }
+              
+            .column10 {
+                float: left;
+                padding-left: 10px;
+                width: 89%;
+                text-align: justify;
+            }
+              
+            .col4 {
+                float: left;
+                width: 30%;
+                padding: 0 1px;
+            }
+              
+            .column5 {
+                float: left;
+                width: 10%;
+                padding: 0 10px;
+            }
+
+            .column5_1 {
+                float: left;
+                width: 50%;
+                padding: 0 10px;
+            }
+              
+            .column5_2 {
+                float: left;
+                width: 15%;
+                padding: 0 10px;
+            }
+              
+            .column5_3 {
+                float: left;
+                width: 50%;
+                padding: 0 20px;
+            }
+              
+              
+            .column4 {
+                float: left;
+                width: 6%;
+            }
+              
+            .column42 {
+                float: left;
+                width: 1%;
+            }
+              
+              
+            .column41 {
+                float: left;
+                width: 18%;
+                padding: 0 10px;
+            }
+            
+            .col3 {
+                float: left;
+                width: 31%;
+                padding: 0 10px;
+            }
+            
+            
+            .col33 {
+                float: left;
+                width: 25%;
+                padding: 0 10px;
+            }
+            
+            .col7 {
+                float: left;
+                width: 60%;
+                padding: 0 10px;
+            }
+            
+            .col1 {
+                float: left;
+                width: 10%;
+            }
+            
+            .col99 {
+                float: left;
+                width: 85%;
+            }
+            
+            .col9 {
+                float: left;
+                width: 35%;
+            }
+              
+            .column3 {
+                float: left;
+                width: 12%;
+                padding: 0 10px;
+            }
+              
+            .column31 {
+                float: left;
+                width: 19%;
+                padding: 0 0px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+              
+            .column33 {
+                float: left;
+                width: 19%;
+                padding: 0 0px;
+                font-size: 12px;
+            }
+              
+            .column32 {
+                float: left;
+                width: 19%;
+                padding: 0 0px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-size: 12px;
+            }
+              
+            .column6 {
+                float: left;
+                width: 65%;
+                padding: 0 10px;
+            }
+              
+            .column61 {
+                float: left;
+                width: 40%;
+                padding-left: 3%;
+            }
+            .header-bg{
+                background-color: #00788A;
+                border: 1px solid #00788A;
+                text-align: center;
+                color: "white";
+            }
+            .header {
+                color: white;
+                font-size: 30px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-weight:'bold';
+            }
+            .disclosure-header {
+                color: white;
+                font-size: 30px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-weight:'bold';
+            }
+            .subheading {
+                text-align: center;
+            }
+            .disclosure-sub-header {
+                color: #14848A;
+                font-size: 30px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-weight:'bold';
+            }
+            .disclosure-part-1 {
+                color: #14848A;
+                font-size: 15px;
+                font-family: "Arial Narrow", Arial, sans-serif;
+                font-weight:'bold';
+            }
+            .disclosure-color {
+                color: #14848A;
+            }
+            {% if company == "SFP" %}
+                .header {
+                    color: #14848A;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .header-bg{
+                    background-color: #00788A;
+                    border: 1px solid #00788A;
+                    text-align: center;
+                    color: "white";
+                }
+                .disclosure-header {
+                    color: white;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .disclosure-sub-header {
+                    color: #14848A;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .disclosure-color {
+                    color: #14848A;
+                }
+                ol li {
+                    color: #00788A;
+                }
+                .colorheader {
+                    color: #00788A;
+                }
+            {% endif %}
+            {% if company == "FS4P" %}
+                .header {
+                    color: #6AC7D2;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .header-bg{
+                    background-color: #6AC7D2;
+                    border: 1px solid #6AC7D2;
+                    text-align: center;
+                    color: "white";
+                }
+                .disclosure-sub-header {
+                    color: #6AC7D2;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .disclosure-color {
+                    color: #6AC7D2;
+                }
+                ol li {
+                    color: #6AC7D2;
+                }
+                .colorheader {
+                    color: #6AC7D2;
+                }
+            {% endif %}
+            {% if company == "AFP" %}
+                .header {
+                    color: #0074C9;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .disclosure-color {
+                    color: #0074C9;
+                }
+                .disclosure-sub-header {
+                    color: #0074C9;
+                    font-size: 30px;
+                    font-family: "Arial Narrow", Arial, sans-serif;
+                    font-weight:'bold';
+                }
+                .header-bg{
+                    background-color: #0074C9;
+                    border: 1px solid #0074C9;
+                    text-align: center;
+                    color: "white";
+                }
+                ol li {
+                    color: #0074C9;
+                }
+                .colorheader {
+                    color: #0074C9;
+                }
+            {% endif %}
+            {% if company == "SFP" %}
+                .background {
+                    color: #00788A
+                }
+            {% endif %}
+            {% if company == "FS4P" %}
+                .background {
+                    color: #6AC7D2
+                }
+            {% endif %}
+            {% if company == "AFP" %}
+                .background {
+                    color: #0074C9
+                }
+            {% endif %}
+            ol > li:marker {
+                font-weight: bold;
+            }
+            input[type=radio] { 
+                -webkit-transform: scale(6);
+                transform: scale(6);
+                -webkit-transform-origin: left;
+            }
+            input[type=checkbox] { 
+                -webkit-transform: scale(6);
+                transform: scale(6);
+                -webkit-transform-origin: left;
+            }
+        </style>
+    </head>
+    <body>
+        <hr/>
+        <div class='row div'>
+            <div class="column11">
+                <span style='font-family:  "Arial Narrow", Arial, sans-serif, sans-serif;font-size: 14px;'><b>Financial Solutions 4 Professionals (Pty) Ltd (FS4P) Reg No 2011/009695/07 operating as a Juristic Representative of Succession Finance Planning (SFP) License No 41158.</b><br/>Directors: Mr N J Battersby (Chairman), Mr L du Plessis, Mr I E L McMaster, Mr W J Moutan, Mr M M Mtshali, Mr I J Smit, Mr M Spies<br/>Company Secretary: Mr V E Barnard</span>
+            </div>
+            <div class="column5_2" id="page-number" style="text-align:right">  
+            </div>
+        </div>
+        <hr/>
+        <script>
+            var pdfInfo = {};
+            var x = document.location.search.substring(1).split('&');
+            for (var i in x) { var z = x[i].split('=',2); pdfInfo[z[0]] = unescape(z[1]); }
+            document.getElementById('page-number').innerHTML = "<b style='font-family: Arial, sans-serif, sans-serif;font-size: 12px;'>Page " + pdfInfo.page + " of " + pdfInfo.topage + "</b>";
+        </script>
+    </body>
+</html>

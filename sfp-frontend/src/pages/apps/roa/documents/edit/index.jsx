@@ -415,42 +415,62 @@ const EditROA = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <p className='roa-label'>
-                                                        Thank you for choosing Succession Financial Planning Advisory Services (Pty) Ltd. (herein referred to as “SFP”) as your service provider of choice. Please be advised that as a contracted intermediary of SFP, a licensed Financial Service Provider (FSP No.: 41158); including any authorised user(s) of SFP, consent is required to access your current/existing financial planning portfolio, which includes your risk and investment policies; as well as any employee benefits; medical and/or short term information, that you may have with any Financial Service Provider (that is: any Long-term insurer, short term insurer, retirement fund, medical aid; and/or other financial institution directly). Access to your financial planning portfolio is to assist you in making an informed decision around your financial planning needs. Further, consent is required to authorise the intermediary of SFP to act as your new intermediary on record to fulfil your financial planning objectives; as well as provide suitable communication related to your financial planning needs.
-                                                    </p>
+                                                    {
+                                                        user?.email?.includes('fs4p') ?
+                                                            <p className='roa-label'>
+                                                                Thank you for choosing Financial Solutions 4 Professionals (herein referred to as “FS4P”) a Juristic Representative of Succession Financial Planning Advisory Services (Pty) Ltd. (herein referred to as “SFP”) as your service provider of choice. Please be advised that as a contracted intermediary of FS4P as Juristic Representative of SFP, a licensed Financial Service Provider (FSP No.: 41158); including any authorised user(s) of FS4P and SFP, consent is required to access your current/existing financial planning portfolio, which includes your risk and investment policies; as well as any employee benefits; medical and/or short term information, that you may have with any Financial Service Provider (that is: any Long-term insurer, short term insurer, retirement fund, medical aid; and/or other financial institution directly). Access to your financial planning portfolio is to assist you in making an informed decision around your financial planning needs. Further, consent is required to authorise the intermediary of FS4P as Juristic Representative of SFP to act as your new intermediary on record to fulfil your financial planning objectives; as well as provide suitable communication related to your financial planning needs.
+                                                            </p>
+                                                            :
+                                                            <p className='roa-label'>
+                                                                Thank you for choosing Succession Financial Planning Advisory Services (Pty) Ltd. (herein referred to as “SFP”) as your service provider of choice. Please be advised that as a contracted intermediary of SFP, a licensed Financial Service Provider (FSP No.: 41158); including any authorised user(s) of SFP, consent is required to access your current/existing financial planning portfolio, which includes your risk and investment policies; as well as any employee benefits; medical and/or short term information, that you may have with any Financial Service Provider (that is: any Long-term insurer, short term insurer, retirement fund, medical aid; and/or other financial institution directly). Access to your financial planning portfolio is to assist you in making an informed decision around your financial planning needs. Further, consent is required to authorise the intermediary of SFP to act as your new intermediary on record to fulfil your financial planning objectives; as well as provide suitable communication related to your financial planning needs.
+                                                            </p>
+                                                    }
                                                     <table className="table table-bordered">
                                                         <thead>
                                                             <tr>
-                                                                <td scope="col-3"><p className='text-center roa-table-head'>About SFP</p></td>
-                                                                <td scope="col-3"><p className='text-center roa-table-head'>Professional Indemnity Insurance</p></td>
-                                                                <td scope="col-3"><p className='text-center roa-table-head'>Confidentiality</p></td>
-                                                                <td scope="col-3"><p className='text-center roa-table-head'>Compliance with FAIS</p></td>
+                                                                {
+                                                                    user?.email?.includes('fs4p') ?
+                                                                        <>
+                                                                            <td scope="col-2"><p className='text-center roa-table-head'>About SFP</p></td>
+                                                                            <td scope="col-2"><p className='text-center roa-table-head'>Professional Indemnity Insurance</p></td>
+                                                                            <td scope="col-2"><p className='text-center roa-table-head'>Confidentiality</p></td>
+                                                                            <td scope="col-2"><p className='text-center roa-table-head'>Compliance with FAIS</p></td>
+                                                                            <td scope="col-2"><p className='text-center roa-table-head'>About FS4P</p></td>
+                                                                        </>
+                                                                        :
+                                                                        <>
+                                                                            <td scope="col-3"><p className='text-center roa-table-head'>About SFP</p></td>
+                                                                            <td scope="col-3"><p className='text-center roa-table-head'>Professional Indemnity Insurance</p></td>
+                                                                            <td scope="col-3"><p className='text-center roa-table-head'>Confidentiality</p></td>
+                                                                            <td scope="col-3"><p className='text-center roa-table-head'>Compliance with FAIS</p></td>
+                                                                        </>
+                                                                }
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td className='col-3'>
+                                                                <td className={ user?.email?.includes('fs4p') ? 'col-2' : 'col-3' }>
                                                                     <p className='roa-label'>
                                                                         SFP is a wholly owned subsidiary of Sanlam Life Insurance Limited and has received more than 30% of its income in the last 12 months from Sanlam. Heinrich Punt is the Responsible Key Individual
                                                                     </p>
                                                                 </td>
-                                                                <td className='col-3'>
+                                                                <td className={ user?.email?.includes('fs4p') ? 'col-2' : 'col-3' }>
                                                                     <p className='roa-label'>
                                                                         SFP accepts responsibility for the actions of { userProfile?.first_name } in the rendering of financial services on behalf of SFP and carries the necessary Professional Indemnity Insurance.
                                                                     </p>
                                                                 </td>
-                                                                <td className='col-3'>
+                                                                <td className={ user?.email?.includes('fs4p') ? 'col-2' : 'col-3' }>
                                                                     <p className='roa-label'>
                                                                         All Information obtained from you will be treated as confidential and will only be disclosed upon your prior written consent or if required in terms of applicable law. <br /> Additionally, refer to compliance with the Protection of Personal Information Act below.
                                                                     </p>
                                                                 </td>
-                                                                <td className='col-3'>
+                                                                <td className={ user?.email?.includes('fs4p') ? 'col-2' : 'col-3' }>
                                                                     <p className='roa-label'>
                                                                         SFP is monitored by the Compliance Office of Sanlam Life Insurance Limited
                                                                     </p>
                                                                     {/* Compliance Officer */ }
                                                                     <div className='row'>
-                                                                        <div className='col-2'>
+                                                                        <div className='col-1'>
                                                                             <p className='roa-label'>
                                                                                 <i className='fa fa-user'></i>
                                                                             </p>
@@ -461,7 +481,7 @@ const EditROA = () => {
                                                                     </div>
                                                                     {/* Location */ }
                                                                     <div className='row'>
-                                                                        <div className='col-2'>
+                                                                        <div className='col-1'>
                                                                             <p className='roa-label'>
                                                                                 <i className='fa fa-location-pin'></i>
                                                                             </p>
@@ -472,7 +492,7 @@ const EditROA = () => {
                                                                     </div>
                                                                     {/* Phone */ }
                                                                     <div className='row'>
-                                                                        <div className='col-2'>
+                                                                        <div className='col-1'>
                                                                             <p className='roa-label'>
                                                                                 <i className='fa fa-phone'></i>
                                                                             </p>
@@ -483,7 +503,7 @@ const EditROA = () => {
                                                                     </div>
                                                                     {/* Email */ }
                                                                     <div className='row'>
-                                                                        <div className='col-2'>
+                                                                        <div className='col-1'>
                                                                             <p className='roa-label'>
                                                                                 <i className='fa fa-envelope'></i>
                                                                             </p>
@@ -493,12 +513,25 @@ const EditROA = () => {
                                                                         </div>
                                                                     </div>
                                                                 </td>
+                                                                {
+                                                                    user?.email?.includes('fs4p') ?
+                                                                        <td className={ 'col-2' }>
+                                                                            <p className='roa-label'>
+                                                                                FS4P is a wholly owned subsidiary of the PPS Group of Companies and functions as a Juristic Representative of SFP.
+                                                                                <br />
+                                                                                Ian McMaster is the Responsible Key Individual.
+
+                                                                            </p>
+                                                                        </td>
+                                                                        :
+                                                                        <></>
+                                                                }
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                     {/* Intermediary Detail – a registered representative contracted by SFP */ }
                                                     <p className='text-center'>
-                                                        <strong>Intermediary Detail</strong> – a registered representative contracted by SFP
+                                                        <strong>Intermediary Detail</strong> – a registered representative contracted by { user?.email?.includes('fs4p') ? 'FS4P' : 'SFP' }
                                                     </p>
                                                     {/* Advisor Details */ }
                                                     <table className="table table-bordered">
@@ -594,7 +627,7 @@ const EditROA = () => {
                                                                 </td>
                                                                 <td colSpan={ 6 }>
                                                                     <p className='roa-label'>
-                                                                        In service with SFP as from: { Moment(userProfile?.inservice).format('DD MMMM YYYY') }
+                                                                        In service with { user?.email?.includes('fs4p') ? 'FS4P' : 'SFP' } as from: { Moment(userProfile?.inservice).format('DD MMMM YYYY') }
                                                                     </p>
                                                                 </td>
                                                             </tr>
@@ -1357,9 +1390,16 @@ const EditROA = () => {
                                                     <p className='text-center'>
                                                         Compliance with the Protection of Personal Information Act (The POPI Act)
                                                     </p>
-                                                    <p className='roa-label'>
-                                                        SFP ensures that all personal information (“PI”) is safely processed and protected from unsolicited access as required by applicable legislation. In order to provide you with financial advice and/or intermediary services within the requirements of the Financial Advisory and Intermediary Service (FAIS) Act and any subordinate legislation, SFP may collect, process, collate, store, analyse and disclose PI for the following purpose:
-                                                    </p>
+                                                    {
+                                                        user?.email?.includes('fs4p') ?
+                                                            <p className='roa-label'>
+                                                                FS4P and SFP ensures that all personal information (“PI”) is safely processed and protected from unsolicited access as required by applicable legislation. In order to provide you with financial advice and/or intermediary services within the requirements of the Financial Advisory and Intermediary Service (FAIS) Act and any subordinate legislation, FS4P and SFP may collect, process, collate, store, analyse and disclose PI for the following purpose:
+                                                            </p>
+                                                            :
+                                                            <p className='roa-label'>
+                                                                SFP ensures that all personal information (“PI”) is safely processed and protected from unsolicited access as required by applicable legislation. In order to provide you with financial advice and/or intermediary services within the requirements of the Financial Advisory and Intermediary Service (FAIS) Act and any subordinate legislation, SFP may collect, process, collate, store, analyse and disclose PI for the following purpose:
+                                                            </p>
+                                                    }
                                                     <div className='row'>
                                                         <div className='col-4 border-end'>
                                                             <ul className='roa-label'>
@@ -1383,8 +1423,21 @@ const EditROA = () => {
                                                         </div>
                                                     </div>
                                                     <p className='roa-label'>
-                                                        As a result, the information required to fulfil the relevant advice and/or intermediary services is your PI, which includes but is not limited to your personal, family (including information pertaining to a minor, where necessary), financial, credit and health information. The data collected is also processed and stored to meet other legislative obligations such as FICA (Financial Intelligence Centre Act) and the NCA (National Credit Act) requirements, among other regulatory requirements, as and when applicable. It may become necessary to share your personal information within the group and with other service providers where required for any of the purposes listed above. This may further include, but is not limited to, administrative support staff, other intermediaries, legal consultants, financial planning or product specialists, and product providers.  SFP may send your personal information to service providers outside the borders of the Republic of South Africa (where such a country has similar protection laws or has entered into a binding agreement with SFP that ensures effective adherence to the principles for processing of information under the Protection of Personal Information Act No 4 of 2013) for storage or further processing on SFP’s behalf. You have the right to request access to your personal information so collected and to request for your information to be updated and/or corrected (for which you must inform SFP immediately of any changes, failing which the appropriateness of the financial advice may be compromised). Personal information will be retained for as long as necessary to meet the FAIS and FIC Act requirements and other legislation. We may provide you with information about financial products and other services, including text messages, emails, newsletters and the like. If you do not want to receive such information, please let us know in writing to opt out (see below point 4).  For more information, please go to the SFP website: <a href="www.sfpadvice.co.za">www.sfpadvice.co.za</a>
+                                                        As a result, the information required to fulfil the relevant advice and/or intermediary services is your PI, which includes but is not limited to your personal, family (including information pertaining to a minor, where necessary), financial, credit and health information. The data collected is also processed and stored to meet other legislative obligations such as FICA (Financial Intelligence Centre Act) and the NCA (National Credit Act) requirements, among other regulatory requirements, as and when applicable. It may become necessary to share your personal information within the group and with other service providers where required for any of the purposes listed above. This may further include, but is not limited to, administrative support staff, other intermediaries, legal consultants, financial planning or product specialists, and product providers.
                                                     </p>
+                                                    {
+                                                        user?.email?.includes('fs4p') ?
+                                                            <>
+                                                                <p className='roa-label'>
+                                                                    FS4P and SFP may send your personal information to service providers outside the borders of the Republic of South Africa (where such a country has similar protection laws or has entered into a binding agreement with FS4P and SFP that ensures effective adherence to the principles for processing of information under the Protection of Personal Information Act No 4 of 2013) for storage or further processing on FS4P and SFP’s behalf. You have the right to request access to your personal information so collected and to request for your information to be updated and/or corrected (for which you must inform FS4P and SFP immediately of any changes, failing which the appropriateness of the financial advice may be compromised). Personal information will be retained for as long as necessary to meet the FAIS and FIC Act requirements and other legislation. We may provide you with information about financial products and other services, including text messages, emails, newsletters and the like. If you do not want to receive such information, please let us know in writing to opt out (see below point 4).  For more information, please go to the SFP website: <a href="www.sfpadvice.co.za">www.sfpadvice.co.za</a>
+                                                                </p>
+                                                            </> :
+                                                            <>
+                                                                <p className='roa-label'>
+                                                                    SFP may send your personal information to service providers outside the borders of the Republic of South Africa (where such a country has similar protection laws or has entered into a binding agreement with SFP that ensures effective adherence to the principles for processing of information under the Protection of Personal Information Act No 4 of 2013) for storage or further processing on SFP’s behalf. You have the right to request access to your personal information so collected and to request for your information to be updated and/or corrected (for which you must inform SFP immediately of any changes, failing which the appropriateness of the financial advice may be compromised). Personal information will be retained for as long as necessary to meet the FAIS and FIC Act requirements and other legislation. We may provide you with information about financial products and other services, including text messages, emails, newsletters and the like. If you do not want to receive such information, please let us know in writing to opt out (see below point 4).  For more information, please go to the SFP website: <a href="www.sfpadvice.co.za">www.sfpadvice.co.za</a>
+                                                                </p>
+                                                            </>
+                                                    }
                                                     {/* Client Information */ }
                                                     <p className='text-center'>
                                                         Client Information <i>(the undersigned)</i>
@@ -1486,7 +1539,7 @@ const EditROA = () => {
                                                                     <p className='roa-label'>
                                                                         <ol start="2">
                                                                             <li>
-                                                                                The explanation of SFP Compliance with The POPI Act, and
+                                                                                The explanation of { user?.email?.includes('fs4p') ? 'FS4P' : 'SFP' } Compliance with The POPI Act, and
                                                                             </li>
                                                                         </ol>
                                                                     </p>
@@ -1637,7 +1690,7 @@ const EditROA = () => {
                                                     </p>
                                                     <ul className='roa-label'>
                                                         <li>
-                                                            hereby confirm that the { user?.first_name } { user?.last_name } is acting in my best interest for the purpose of providing me with financial advice and intermediary services, and I give consent and authorisation to them, and accordingly any authorised user of SFP, to obtain my financial planning information held by any Financial Service Provider, as explained above, or by using the services of The Financial Services Exchange (Pty) Ltd (also known as “Astute”), where applicable. This consent and authorisation include access to information pertaining to any Short-Term Insurer that is in possession of my Short-Term Insurance products or any medical, and gap cover applicable to my financial planning portfolio.
+                                                            hereby confirm that the { user?.first_name } { user?.last_name } is acting in my best interest for the purpose of providing me with financial advice and intermediary services, and I give consent and authorisation to them, and accordingly any authorised user of { user?.email?.includes('fs4p') ? 'FS4P and SFP' : 'SFP' }, to obtain my financial planning information held by any Financial Service Provider, as explained above, or by using the services of The Financial Services Exchange (Pty) Ltd (also known as “Astute”), where applicable. This consent and authorisation include access to information pertaining to any Short-Term Insurer that is in possession of my Short-Term Insurance products or any medical, and gap cover applicable to my financial planning portfolio.
                                                             <ul className='roa-table-head'>
                                                                 <li>
                                                                     <div className='row'>
@@ -1733,7 +1786,7 @@ const EditROA = () => {
                                                         </li>
                                                         <li>
                                                             <p>
-                                                                agree to the transfer of any new commission and appropriate service fees which may be due during the period of this appointment to the appointed Financial Service Provider (namely: SFP) nominated above in respect of my policy(ies).
+                                                                agree to the transfer of any new commission and appropriate service fees which may be due during the period of this appointment to the appointed Financial Service Provider (namely: { user?.email?.includes('fs4p') ? 'FS4P as Juristic Representative of' : '' }SFP) nominated above in respect of my policy(ies).
                                                             </p>
                                                         </li>
                                                         <li>
@@ -1855,7 +1908,7 @@ const EditROA = () => {
                                                         Complaints Information:
                                                     </p>
                                                     <p className='roa-label'>
-                                                        Should you feel aggrieved by any advice and/or service provided by SFP and/or the representative on record, you may lodge a complaint at <a href='mailto:complaints@succession.co.za'>complaints@succession.co.za</a> or contact the relevant party below:
+                                                        Should you feel aggrieved by any advice and/or service provided by { user?.email?.includes('fs4p') ? 'FS4P as Juristic Representative of' : '' }SFP and/or the representative on record, you may lodge a complaint at <a href='mailto:complaints@succession.co.za'>complaints@succession.co.za</a> or contact the relevant party below:
                                                     </p>
                                                     <table className='table table-bordered'>
                                                         <thead>
