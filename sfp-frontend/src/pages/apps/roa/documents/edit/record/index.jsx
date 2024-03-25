@@ -117,7 +117,12 @@ const EditROA = () => {
     }
 
     const onChange = e => {
-        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : <></> //Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : setErrorMessage("Form is marked completed, can't edit now unless it is marked incomplete.")
+        setErrorVisibility(true)
+        setTimeout(() => {
+            setErrorVisibility(false)
+        }, 5000)
+        // Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
     // API Config
@@ -255,7 +260,12 @@ const EditROA = () => {
         // } else {
 
         //     if (emailValidation()) {
-        //         FormStatus == 0 ? updateROAForm() : <></> //Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
+        //         FormStatus == 0 ? updateROAForm() : setErrorMessage("Form is marked completed, can't edit now unless it is marked incomplete.")
+        // setErrorVisibility(true)
+        // setTimeout(() => {
+        //     setErrorVisibility(false)
+        // }, 5000)
+        // Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
         //     } else {
         //         if (step != 0) {
@@ -305,7 +315,13 @@ const EditROA = () => {
             updateROAForm(FormData)
             // setTimeout(() => {
             // }, 1000) // Wait for 1 second
-            : <></>
+            :
+            setErrorMessage("Form is marked completed, can't edit now unless it is marked incomplete.")
+        setErrorVisibility(true)
+        setTimeout(() => {
+            setErrorVisibility(false)
+        }, 5000)
+
     }
 
     // Some extra stuff
