@@ -196,7 +196,7 @@ const GapCover = () => {
 
     const updateForm = async () => {
 
-        setLoaded(true)
+        // setLoaded(true)
         const Body = JSON.stringify({
             fId: formId,
             gapcover: FormData,
@@ -233,7 +233,7 @@ const GapCover = () => {
                 setErrorVisibility(false)
             }, 5000)
         }
-        setLoaded(false)
+        // setLoaded(false)
     }
 
 

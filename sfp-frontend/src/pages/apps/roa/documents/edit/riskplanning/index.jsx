@@ -409,7 +409,7 @@ const RiskPlanning = () => {
                 setErrorVisibility(false)
             }, 5000)
         }
-        setLoaded(false)
+        // setLoaded(false)
     }
 
 
@@ -509,37 +509,37 @@ const RiskPlanning = () => {
                                     :
                                     <form onSubmit={ e => onSubmit(e) }>
                                         <div
-                                                        className={
-                                                            user?.email?.includes('sfp') || user?.email?.includes('succession') ? "container-sfp"
-                                                                : user?.email?.includes('fs4p') ? "container-fs4p"
-                                                                    : user?.email?.includes('sanlam') ? "container-sanlam"
-                                                                        : "container-sfp"
-                                                        }
+                                            className={
+                                                user?.email?.includes('sfp') || user?.email?.includes('succession') ? "container-sfp"
+                                                    : user?.email?.includes('fs4p') ? "container-fs4p"
+                                                        : user?.email?.includes('sanlam') ? "container-sanlam"
+                                                            : "container-sfp"
+                                            }
+                                        >
+                                            <div
+                                                className={ "icon1 update" }
+                                            >
+                                                <div
+                                                    className={
+                                                        user?.email?.includes('sfp') || user?.email?.includes('succession') ? "tooltip-sfp"
+                                                            : user?.email?.includes('fs4p') ? "tooltip-fs4p"
+                                                                : user?.email?.includes('sanlam') ? "tooltip-sanlam"
+                                                                    : "tooltip-sfp"
+                                                    }
+                                                >
+                                                    Update
+                                                </div>
+                                                <span>
+                                                    <button
+                                                        type="submit"
+                                                        className="updateRiskFormBTN"
+                                                        style={ { border: "none", backgroundColor: "transparent" } }
                                                     >
-                                                        <div
-                                                            className={ "icon1 update" }
-                                                        >
-                                                            <div
-                                                                className={
-                                                                    user?.email?.includes('sfp') || user?.email?.includes('succession') ? "tooltip-sfp"
-                                                                        : user?.email?.includes('fs4p') ? "tooltip-fs4p"
-                                                                            : user?.email?.includes('sanlam') ? "tooltip-sanlam"
-                                                                                : "tooltip-sfp"
-                                                                }
-                                                            >
-                                                                Update
-                                                            </div>
-                                                            <span>
-                                                                <button
-                                                                    type="submit"
-                                                                    className="updateRiskFormBTN"
-                                                                    style={ { border: "none", backgroundColor: "transparent" } }
-                                                                >
-                                                                    <i className="fa-solid fa-check" />
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                        <i className="fa-solid fa-check" />
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
                                         <div className={ 'inital-card-header mx-5' }>
                                             <div className='row'>
                                                 <b>Financial Needs Analysis Summary</b>

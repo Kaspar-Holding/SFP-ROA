@@ -92,7 +92,7 @@ const Fiduciary = () => {
     }
     const updateFiduciaryForm = async () => {
 
-        setLoaded(true)
+        // setLoaded(true)
         const Body = JSON.stringify({
             fId: formId,
             fiduciary: FormData
@@ -129,7 +129,7 @@ const Fiduciary = () => {
                 setErrorVisibility(false)
             }, 5000)
         }
-        setLoaded(false)
+        // setLoaded(false)
     }
 
 

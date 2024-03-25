@@ -1307,7 +1307,7 @@ const STCommercial = () => {
 
     const updateSTICData = async () => {
 
-        setLoaded(true)
+        // setLoaded(true)
         const Body = JSON.stringify({
             fId: formId,
             st_commerical: FormData,
@@ -1366,7 +1366,7 @@ const STCommercial = () => {
                 setErrorVisibility(false)
             }, 5000)
         }
-        setLoaded(false)
+        // setLoaded(false)
     }
 
 

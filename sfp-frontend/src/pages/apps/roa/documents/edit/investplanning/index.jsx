@@ -248,7 +248,7 @@ const InvestPlanning = () => {
 
     const updateIPForm = async () => {
 
-        setLoaded(true)
+        // setLoaded(true)
         const Body = JSON.stringify({
             fId: formId,
             investmentPlanning: FormData,
@@ -286,7 +286,7 @@ const InvestPlanning = () => {
                 setErrorVisibility(false)
             }, 5000)
         }
-        setLoaded(false)
+        // setLoaded(false)
     }
 
 

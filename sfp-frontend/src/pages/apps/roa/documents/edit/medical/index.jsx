@@ -206,7 +206,7 @@ const Medical = () => {
 
     const updateForm = async () => {
 
-        setLoaded(true)
+        // setLoaded(true)
         const Body = JSON.stringify({
             fId: formId,
             medical: FormData,
@@ -243,7 +243,7 @@ const Medical = () => {
                 setErrorVisibility(false)
             }, 5000)
         }
-        setLoaded(false)
+        // setLoaded(false)
     }
 
 

@@ -1044,7 +1044,7 @@ const STPersonal = () => {
 
     const updateSTIPData = async () => {
 
-        setLoaded(true)
+        // setLoaded(true)
         const Body = JSON.stringify({
             fId: formId,
             st_personal: FormData,
@@ -1091,7 +1091,7 @@ const STPersonal = () => {
                 setErrorVisibility(false)
             }, 5000)
         }
-        setLoaded(false)
+        // setLoaded(false)
     }
 
     const onFieldBlur = (e) => {
