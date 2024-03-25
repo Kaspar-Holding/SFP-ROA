@@ -1668,7 +1668,7 @@ const EditROA = () => {
                                                                         <div className='col-1'>
                                                                             or
                                                                         </div>
-                                                                        <div className='col-1'>{ console.log(FormData?.provider_for) }
+                                                                        <div className='col-1'>
                                                                             <div class="form-check">
                                                                                 <input class="form-check-input" type="radio" value="2" checked={ FormData?.provider_for == 2 ? true : false } onChange={ (e) => { onChange(e) } } name="provider_for" />
                                                                                 <label class="form-check-label" htmlFor="flexCheckDefault">

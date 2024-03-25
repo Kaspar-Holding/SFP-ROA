@@ -313,7 +313,6 @@ const BAInvestment = () => {
             }, 5000)
 
         } catch (error) {
-            console.log(error?.status)
             setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
             setErrorVisibility(true)
             setTimeout(() => {
