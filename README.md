@@ -14,6 +14,16 @@ Deployed using Nginx and Gunicorn
 
 ## Changelog
 
+### 26 March 2024:
+- ROA
+1. Disclosure Categories description updated.
+2. Disclosure products are now unselected on create form. 
+3. Replaced updated error functionality with a function.
+4. Investment bug resolved.
+- Printing App
+1. Disclosure Categories description updated.
+- Deployment on Production and Staging
+
 ### 25 March 2024:
 - ROA
 1. Disclosure Updated for FS4P.

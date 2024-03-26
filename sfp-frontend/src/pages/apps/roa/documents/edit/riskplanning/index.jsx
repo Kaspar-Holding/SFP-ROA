@@ -72,11 +72,7 @@ const RiskPlanning = () => {
 
 
     const onChange = e => {
-        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : setErrorMessage("Form is marked completed, can't edit now unless it is marked incomplete.")
-        setErrorVisibility(true)
-        setTimeout(() => {
-            setErrorVisibility(false)
-        }, 5000)
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : errorFunc("Form is marked completed, can't edit now unless it is marked incomplete.")
         // Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
@@ -408,23 +404,21 @@ const RiskPlanning = () => {
             })
 
         } catch (error) {
-            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
-            setErrorVisibility(true)
-            setTimeout(() => {
-                setErrorVisibility(false)
-            }, 5000)
+            errorFunc("Something went wrong, don't proceed furthur. Contact Admin right away.")
         }
         // setLoaded(false)
     }
 
-
-    const onFieldBlur = (e) => {
-        FormStatus == 0 ? updateRPForm() :
-            setErrorMessage("Form is marked completed, can't edit now unless it is marked incomplete.")
+    const errorFunc = (error) => {
+        setErrorMessage(error)
         setErrorVisibility(true)
         setTimeout(() => {
             setErrorVisibility(false)
         }, 5000)
+    }
+    const onFieldBlur = (e) => {
+        FormStatus == 0 ? updateRPForm() :
+            errorFunc("Form is marked completed, can't edit now unless it is marked incomplete.")
         //Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
@@ -551,7 +545,7 @@ const RiskPlanning = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className={ 'inital-card-header mx-5' }>
+                                        <div className={ ' mx-5' }>
                                             <div className='row'>
                                                 <b>Financial Needs Analysis Summary</b>
                                                 <div className='row'>

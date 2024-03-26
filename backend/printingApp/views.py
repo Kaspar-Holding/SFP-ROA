@@ -2656,6 +2656,9 @@ class disclosuresPDF(APIView):
             data['user']['Shares'] = True if user_profile_data['Category1_8_Registration_Status'] == "Accredited" or user_profile_data['Category1_8_Registration_Status'] == "Under Supervision" else False
             data['user']['Shares_Supervisor'] = True if user_profile_data['Category1_8_Supervisor'] != "nan" else False
             
+            data['user']['Participatory'] = True if user_profile_data['Category1_26_Registration_Status'] == "Accredited" or user_profile_data['Category1_26_Registration_Status'] == "Under Supervision" else False
+            data['user']['Participatory_Supervisor'] = True if user_profile_data['Category1_26_Supervisor'] != "nan" else False
+            
             data['user']['Bonds'] = True if user_profile_data['Category1_12_Registration_Status'] == "Accredited" or user_profile_data['Category1_12_Registration_Status'] == "Under Supervision" else False
             data['user']['Bonds_Supervisor'] = True if user_profile_data['Category1_12_Supervisor'] != "nan" else False
             

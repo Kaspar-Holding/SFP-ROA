@@ -72,11 +72,8 @@ const InvestPlanning = () => {
 
 
     const onChange = e => {
-        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : setErrorMessage("Form is marked completed, can't edit now unless it is marked incomplete.")
-        setErrorVisibility(true)
-        setTimeout(() => {
-            setErrorVisibility(false)
-        }, 5000)
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) :
+            errorFunc("Form is marked completed, can't edit now unless it is marked incomplete.")
         // Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
@@ -285,22 +282,22 @@ const InvestPlanning = () => {
             })
 
         } catch (error) {
-            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
-            setErrorVisibility(true)
-            setTimeout(() => {
-                setErrorVisibility(false)
-            }, 5000)
+            errorFunc("Something went wrong, don't proceed furthur. Contact Admin right away.")
         }
         // setLoaded(false)
     }
 
-
-    const onFieldBlur = (e) => {
-        FormStatus == 0 ? updateIPForm() : setErrorMessage("Form is marked completed, can't edit now unless it is marked incomplete.")
+    const errorFunc = (error) => {
+        setErrorMessage(error)
         setErrorVisibility(true)
         setTimeout(() => {
             setErrorVisibility(false)
         }, 5000)
+    }
+
+    const onFieldBlur = (e) => {
+        FormStatus == 0 ? updateIPForm() :
+            errorFunc("Form is marked completed, can't edit now unless it is marked incomplete.")
         // Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
@@ -447,7 +444,7 @@ const InvestPlanning = () => {
                                 :
                                 <></>
                         }
-                        <div className='inital-card-header mx-5'>
+                        <div className='mx-5'>
                             {
                                 Loaded ?
                                     <Loader />
@@ -2236,7 +2233,7 @@ const InvestPlanning = () => {
                                                                                         <div onMouseLeave={ (e) => { onFieldBlur(e) } }>
                                                                                             <ReactQuill
                                                                                                 theme="snow" // Specify the theme ('snow' or 'bubble')
-                                                                                                value={ FormData?.STIC_Fire_AddComments }
+                                                                                                value={ FormData?.ItP_NominationOfBeneficiaries }
                                                                                                 onChange={ (value) => { on_ProductTaken_Value_Change("ItP_NominationOfBeneficiaries", i, value) } }
                                                                                                 onFocus={ (e) => { backgroundInfo_onFocus11() } }
                                                                                                 onBlur={ (e) => { backgroundInfo_onBlur11() } }

@@ -92,6 +92,9 @@ def getUserProfileInfo(request):
         userData['LTI_SC_B2A'] = True if user_profile_data['Category1_21_Registration_Status'] == "Accredited" or user_profile_data['Category1_21_Registration_Status'] == "Under Supervision" else False
         userData['LTI_SC_B2A_Supervisor'] = True if user_profile_data['Category1_21_Supervisor'] != "nan" else False
         
+        userData['Participatory'] = True if user_profile_data['Category1_26_Registration_Status'] == "Accredited" or user_profile_data['Category1_26_Registration_Status'] == "Under Supervision" else False
+        userData['Participatory_Supervisor'] = True if user_profile_data['Category1_26_Supervisor'] != "nan" else False
+        
         userData['LTI_SC_C'] = True if user_profile_data['Category1_4_Registration_Status'] == "Accredited" or user_profile_data['Category1_4_Registration_Status'] == "Under Supervision" else False
         userData['LTI_SC_C_Supervisor'] = True if user_profile_data['Category1_4_Supervisor'] != "nan" else False
         

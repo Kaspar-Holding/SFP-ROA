@@ -426,7 +426,7 @@ const EmployeeBenefits = () => {
                                 <></>
                         }
                         <br />
-                        <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
+                        <form className='mx-5' onSubmit={ e => onSubmit(e) }>
 
 
                             <div >

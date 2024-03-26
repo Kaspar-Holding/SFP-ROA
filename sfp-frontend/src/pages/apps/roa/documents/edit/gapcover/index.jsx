@@ -72,11 +72,7 @@ const GapCover = () => {
 
 
     const onChange = e => {
-        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : setErrorMessage("Form is marked completed, can't edit now unless it is marked incomplete.")
-        setErrorVisibility(true)
-        setTimeout(() => {
-            setErrorVisibility(false)
-        }, 5000)
+        FormStatus == 0 ? setFormData({ ...FormData, [e.target.name]: e.target.value }) : errorFunc("Form is marked completed, can't edit now unless it is marked incomplete.")
         // Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
@@ -232,22 +228,20 @@ const GapCover = () => {
             })
 
         } catch (error) {
-            setErrorMessage("Something went wrong, don't proceed furthur. Contact Admin right away.")
-            setErrorVisibility(true)
-            setTimeout(() => {
-                setErrorVisibility(false)
-            }, 5000)
+            errorFunc("Something went wrong, don't proceed furthur. Contact Admin right away.")
         }
         // setLoaded(false)
     }
-
-
-    const onFieldBlur = (e) => {
-        FormStatus == 0 ? updateForm() : setErrorMessage("Form is marked completed, can't edit now unless it is marked incomplete.")
+    const errorFunc = (error) => {
+        setErrorMessage(error)
         setErrorVisibility(true)
         setTimeout(() => {
             setErrorVisibility(false)
         }, 5000)
+    }
+
+    const onFieldBlur = (e) => {
+        FormStatus == 0 ? updateForm() : errorFunc("Form is marked completed, can't edit now unless it is marked incomplete.")
         // Swal.fire({ position: "bottom-end", type: "error", title: "Error", html: `Form is marked completed, can't edit now unless it is marked incomplete`, showConfirmButton: !1, timer: 3000, confirmButtonClass: "btn btn-primary", buttonsStyling: !1, })
 
     }
@@ -299,7 +293,7 @@ const GapCover = () => {
                             Loaded ?
                                 <Loader />
                                 :
-                                <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
+                                <form className='mx-5' onSubmit={ e => onSubmit(e) }>
                                     <div
                                         className={
                                             user?.email?.includes('sfp') || user?.email?.includes('succession') ? "container-sfp"

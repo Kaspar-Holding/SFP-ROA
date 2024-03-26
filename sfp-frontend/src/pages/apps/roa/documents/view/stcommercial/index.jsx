@@ -2701,7 +2701,7 @@ const STCommercial = () => {
                                 <></>
                         }
                         <br />
-                        <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
+                        <form className='mx-5' onSubmit={ e => onSubmit(e) }>
                             {/* Pre Section A */ }
                             <div className='row roa-label' id="preSection">
                                 <div>

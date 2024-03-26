@@ -204,7 +204,7 @@
             <tr>
                 <td rowspan="{{total_categories}}" style='width: 10%; border: 1px solid black; text-align:center;'>
                     Category of Business Intermediary is licenced to sell 
-                    (reference: SUB-CATEGORY = SC)
+                    {% comment %} (reference: SUB-CATEGORY = SC) {% endcomment %}
                 </td>
             </tr>
             <tr>
@@ -255,7 +255,7 @@
                 <tr>
                     <td colspan="5" style='border: 1px solid black; text-align:center;'>
                         <span class="disclosure-color">
-                            Pension Fund (excl. Retail)
+                            Pension Fund Benefits
                         </span>
                     </td>
                     <td colspan="1" style='border: 1px solid black; text-align:center;'>
@@ -405,7 +405,7 @@
                 <tr>
                     <td colspan="5" style='border: 1px solid black; text-align:center;'>
                         <span class="disclosure-color">
-                            Debentures & Securitised Debt
+                            Debentures and Securitised Debt
                         </span>
                     </td>
                     <td colspan="1" style='border: 1px solid black; text-align:center;'>
@@ -465,7 +465,7 @@
                 <tr>
                     <td colspan="5" style='border: 1px solid black; text-align:center;'>
                         <span class="disclosure-color">
-                            Warrants, Certificates & other instruments
+                            Warrants, Certificates and other instruments
                         </span>
                     </td>
                     <td colspan="1" style='border: 1px solid black; text-align:center;'>
@@ -585,7 +585,7 @@
                 <tr>
                     <td colspan="5" style='border: 1px solid black; text-align:center;'>
                         <span class="disclosure-color">
-                            Collective Investment Schemes 
+                            Participatory interests in a collective investment schemes 
                         </span>
                     </td>
                     <td colspan="1" style='border: 1px solid black; text-align:center;'>
@@ -701,6 +701,36 @@
                     </td>
                 </tr>
             {% endif %}
+            {% if user.Participatory %}
+                <tr>
+                    <td colspan="5" style='border: 1px solid black; text-align:center;'>
+                        <span class="disclosure-color">
+                            Participatory interest in a hedge fund
+                        </span>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        <div class="column4" style="  margin-left: 50%;text-align:center;">
+                            <input type="checkbox" checked />
+                        </div>
+                    </td>
+                    <td colspan="1" style='border: 1px solid black; text-align:center;'>
+                        {% if user.Participatory_Supervision %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" checked />
+                            </div>
+                        {% else %}
+                            <div class="column4" style="  margin-left: 50%;text-align:center;">
+                                <input type="checkbox" />
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
             {% if user.LTI_Deposits %}
                 <tr>
                     <td colspan="5" style='border: 1px solid black; text-align:center;'>
@@ -735,7 +765,7 @@
                 <tr>
                     <td colspan="5" style='border: 1px solid black; text-align:center;'>
                         <span class="disclosure-color">
-                        Retail Pension Benefits  
+                            Retail Pension Benefits  
                         </span>
                     </td>
                     <td colspan="1" style='border: 1px solid black; text-align:center;'>

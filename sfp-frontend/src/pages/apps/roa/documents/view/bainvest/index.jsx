@@ -707,7 +707,7 @@ const BAInvestment = () => {
                                 <></>
                         }
                         <br />
-                        <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
+                        <form className='mx-5' onSubmit={ e => onSubmit(e) }>
                             <p><b>Section B</b></p>
                             <p className='roa-font'><b>Analysis of Business’s Circumstances</b></p>
                             <p className='roa-label'>The analysis of your personal circumstances as described above</p>

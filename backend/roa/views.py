@@ -1175,7 +1175,7 @@ class advisorDisclosureProducts(APIView):
                 "product_id" : product.pk,
                 "product" : product.product.product,
                 "subcode" : product.subcode,
-                "status" : True
+                "status" : False
             })
         return Response(products_data, 200)
     

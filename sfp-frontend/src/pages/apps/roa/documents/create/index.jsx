@@ -580,7 +580,7 @@ const CreateROA = () => {
                                                     <tr>
                                                         <td colSpan={ 3 }>
                                                             <p className='roa-label text-center'>
-                                                                Category of<br />Business Intermediary<br />is licenced to sell<br />(reference:<br />SUB-CATEGORY = SC)
+                                                                Category of<br />Business Intermediary<br />is licenced to sell<br />
                                                             </p>
                                                         </td>
                                                         <td colSpan={ 9 }>
@@ -616,7 +616,7 @@ const CreateROA = () => {
                                                                                 <tr>
                                                                                     <td>
                                                                                         <span className='roa-table-head'>
-                                                                                            Long-Term insurance SC A
+                                                                                            Long-Term Insurance subcategory A
                                                                                         </span>
                                                                                     </td>
                                                                                     <td>
@@ -651,7 +651,7 @@ const CreateROA = () => {
                                                                             <tr>
                                                                                 <td>
                                                                                     <span className='roa-table-head'>
-                                                                                        Pension Fund (excl. Retail)
+                                                                                        Pension Funds Benefits
                                                                                     </span>
                                                                                 </td>
                                                                                 <td>
@@ -684,7 +684,7 @@ const CreateROA = () => {
                                                                             <tr>
                                                                                 <td>
                                                                                     <span className='roa-table-head'>
-                                                                                        Long-Term insurance SC B1
+                                                                                        Long-Term Insurance subcategory B1
                                                                                     </span>
                                                                                 </td>
                                                                                 <td>
@@ -752,7 +752,7 @@ const CreateROA = () => {
                                                                             <tr>
                                                                                 <td>
                                                                                     <span className='roa-table-head'>
-                                                                                        Long-Term insurance SC B2
+                                                                                        Long-Term Insurance subcategory B2
                                                                                     </span>
                                                                                 </td>
                                                                                 <td>
@@ -818,7 +818,7 @@ const CreateROA = () => {
                                                                             <tr>
                                                                                 <td>
                                                                                     <span className='roa-table-head'>
-                                                                                        Long-Term insurance SC B2-A
+                                                                                        Long-Term Insurance subcategory B2-A
                                                                                     </span>
                                                                                 </td>
                                                                                 <td>
@@ -852,7 +852,7 @@ const CreateROA = () => {
                                                                             <tr>
                                                                                 <td>
                                                                                     <span className='roa-table-head'>
-                                                                                        Debentures & Securitised Debt
+                                                                                        Debentures and Securitised Debt
                                                                                     </span>
                                                                                 </td>
                                                                                 <td>
@@ -886,7 +886,7 @@ const CreateROA = () => {
                                                                             <tr>
                                                                                 <td>
                                                                                     <span className='roa-table-head'>
-                                                                                        Long-Term insurance SC B1-A
+                                                                                        Long-Term Insurance subcategory B1-A
                                                                                     </span>
                                                                                 </td>
                                                                                 <td>
@@ -954,7 +954,7 @@ const CreateROA = () => {
                                                                             <tr>
                                                                                 <td>
                                                                                     <span className='roa-table-head'>
-                                                                                        Long-Term insurance SC C
+                                                                                        Long-Term Insurance subcategory C
                                                                                     </span>
                                                                                 </td>
                                                                                 <td>
@@ -1056,7 +1056,7 @@ const CreateROA = () => {
                                                                             <tr>
                                                                                 <td>
                                                                                     <span className='roa-table-head'>
-                                                                                        Collective Investment Schemes
+                                                                                        Participatory interests in a collective investment schemes
                                                                                     </span>
                                                                                 </td>
                                                                                 <td>
@@ -1213,6 +1213,40 @@ const CreateROA = () => {
                                                                                     <span className='roa-label'>
                                                                                         <div className='form-check'>
                                                                                             <input type='checkbox' className='form-check-input' checked={ userProfile?.LTI_Deposits_Supervisor ? true : false } />
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                            :
+                                                                            <>
+                                                                            </>
+                                                                    }
+                                                                    {
+                                                                        userProfile?.Participatory ?
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <span className='roa-table-head'>
+                                                                                        Participatory interest in a hedge fund
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <span className='roa-label'>
+                                                                                        <div className='form-check'>
+                                                                                            <input type='checkbox' className='form-check-input' checked />
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <span className='roa-label'>
+                                                                                        <div className='form-check'>
+                                                                                            <input type='checkbox' className='form-check-input' checked />
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <span className='roa-label'>
+                                                                                        <div className='form-check'>
+                                                                                            <input type='checkbox' className='form-check-input' checked={ userProfile?.Participatory_Supervisor ? true : false } />
                                                                                         </div>
                                                                                     </span>
                                                                                 </td>
@@ -1732,7 +1766,7 @@ const CreateROA = () => {
                                             <hr />
                                             {
                                                 ProductData.length > 0 ?
-                                                    <table className="table">
+                                                    <table className="table text-center">
                                                         <thead>
                                                             <tr>
                                                                 <th scope="col">
@@ -1777,25 +1811,21 @@ const CreateROA = () => {
                                                                             }
                                                                         </select>
                                                                     </td> */}
-                                                                    <td className='roa-label'>
+                                                                    <td className='roa-label text-center'>
                                                                         <p value={ row?.product_id } key={ id }>{ row?.product }</p>
                                                                     </td>
-                                                                    <td className='roa-label'>
+                                                                    <td className='roa-label text-center'>
                                                                         <p value={ row?.product_id } key={ id }>{ row?.subcode }</p>
                                                                     </td>
-                                                                    <td>
-                                                                        {/* <button
-                                                                            className="btn btn-sm btn-danger"
-                                                                            type='button'
-                                                                            onClick={ () => removeRow(row.id) }
-                                                                        >
-                                                                            Remove
-                                                                        </button> */}
-                                                                        <span className='roa-label'>
-                                                                            <div className='form-check'>
-                                                                                <input type='checkbox' className='form-check-input' name="status" onChange={ (e) => { handleStatusChange(e, id) } } checked={ row?.status } />
-                                                                            </div>
-                                                                        </span>
+                                                                    <td className='roa-label text-center'>
+                                                                        <div className='form-check'>
+                                                                            <label>
+                                                                                {
+                                                                                    row?.status ? "Included" : "Excluded"
+                                                                                }
+                                                                            </label>
+                                                                            <input type='checkbox' className='form-check-input' name="status" onChange={ (e) => { handleStatusChange(e, id) } } checked={ row?.status } />
+                                                                        </div>
                                                                     </td>
                                                                 </tr>
                                                             )) }

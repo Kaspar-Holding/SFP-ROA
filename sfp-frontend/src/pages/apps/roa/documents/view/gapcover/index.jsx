@@ -242,7 +242,7 @@ const GapCover = () => {
                                 <></>
                         }
                         <br />
-                        <form className='inital-card-header mx-5' onSubmit={ e => onSubmit(e) }>
+                        <form className='mx-5' onSubmit={ e => onSubmit(e) }>
                             <div className="row roa-label">
 
                                 <div className="col-6" style={ { paddingBottom: "0.5%" } }>
