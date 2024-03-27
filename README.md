@@ -14,6 +14,13 @@ Deployed using Nginx and Gunicorn
 
 ## Changelog
 
+### 27 March 2024:
+- ROA
+1. Disclosure category fetching API updated.
+- Printing App
+1. Disclosure category fetching API updated.
+- Deployment on Production and Staging
+
 ### 26 March 2024:
 - ROA
 1. Disclosure Categories description updated.

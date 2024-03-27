@@ -2608,67 +2608,67 @@ class disclosuresPDF(APIView):
             else:
                 data['user']['address'] += f"{int(float(user_profile_data['Address_Physical_Postal_Code'])):04}" if user_profile_data['Address_Physical_Postal_Code'] != "" else ""
 
-            data['user']['LTI_SC_A'] = True if user_profile_data['Category1_1_Registration_Status'] == "Accredited" or user_profile_data['Category1_1_Registration_Status'] == "Under Supervision" else False
+            data['user']['LTI_SC_A'] = True if user_profile_data['Category1_1_Accredited'] == "Yes" else False # or user_profile_data['Category1_1_Registration_Status'] == "Under Supervision" else False
             data['user']['LTI_SC_A_Supervisor'] = True if user_profile_data['Category1_1_Supervisor'] != "nan" else False
             
-            data['user']['Pension_funds'] = True if user_profile_data['Category1_7_Registration_Status'] == "Accredited" or user_profile_data['Category1_7_Registration_Status'] == "Under Supervision" else False
+            data['user']['Pension_funds'] = True if user_profile_data['Category1_7_Accredited'] == "Yes" else False # or user_profile_data['Category1_7_Registration_Status'] == "Under Supervision" else False
             data['user']['Pension_funds_Supervisor'] = True if user_profile_data['Category1_7_Supervisor'] != "nan" else False
             
-            data['user']['RPension_funds'] = True if user_profile_data['Category1_5_Registration_Status'] == "Accredited" or user_profile_data['Category1_5_Registration_Status'] == "Under Supervision" else False
+            data['user']['RPension_funds'] = True if user_profile_data['Category1_5_Accredited'] == "Yes" else False # or user_profile_data['Category1_5_Registration_Status'] == "Under Supervision" else False
             data['user']['RPension_funds_Supervisor'] = True if user_profile_data['Category1_5_Supervisor'] != "nan" else False
             
-            data['user']['LTI_SC_B1'] = True if user_profile_data['Category1_3_Registration_Status'] == "Accredited" or user_profile_data['Category1_3_Registration_Status'] == "Under Supervision" else False
+            data['user']['LTI_SC_B1'] = True if user_profile_data['Category1_3_Accredited'] == "Yes" else False # or user_profile_data['Category1_3_Registration_Status'] == "Under Supervision" else False
             data['user']['LTI_SC_B1_Supervisor'] = True if user_profile_data['Category1_3_Supervisor'] != "nan" else False
             
-            data['user']['LTI_SC_B1A'] = True if user_profile_data['Category1_22_Registration_Status'] == "Accredited" or user_profile_data['Category1_22_Registration_Status'] == "Under Supervision" else False
+            data['user']['LTI_SC_B1A'] = True if user_profile_data['Category1_22_Accredited'] == "Yes" else False # or user_profile_data['Category1_22_Registration_Status'] == "Under Supervision" else False
             data['user']['LTI_SC_B1A_Supervisor'] = True if user_profile_data['Category1_22_Supervisor'] != "nan" else False
             
-            data['user']['LTI_SC_B2'] = True if user_profile_data['Category1_20_Registration_Status'] == "Accredited" or user_profile_data['Category1_20_Registration_Status'] == "Under Supervision" else False
+            data['user']['LTI_SC_B2'] = True if user_profile_data['Category1_20_Accredited'] == "Yes" else False # or user_profile_data['Category1_20_Registration_Status'] == "Under Supervision" else False
             data['user']['LTI_SC_B2_Supervisor'] = True if user_profile_data['Category1_20_Supervisor'] != "nan" else False
             
-            data['user']['LTI_SC_B2A'] = True if user_profile_data['Category1_21_Registration_Status'] == "Accredited" or user_profile_data['Category1_21_Registration_Status'] == "Under Supervision" else False
+            data['user']['LTI_SC_B2A'] = True if user_profile_data['Category1_21_Accredited'] == "Yes" else False # or user_profile_data['Category1_21_Registration_Status'] == "Under Supervision" else False
             data['user']['LTI_SC_B2A_Supervisor'] = True if user_profile_data['Category1_21_Supervisor'] != "nan" else False
             
-            data['user']['LTI_SC_C'] = True if user_profile_data['Category1_4_Registration_Status'] == "Accredited" or user_profile_data['Category1_4_Registration_Status'] == "Under Supervision" else False
+            data['user']['LTI_SC_C'] = True if user_profile_data['Category1_4_Accredited'] == "Yes" else False # or user_profile_data['Category1_4_Registration_Status'] == "Under Supervision" else False
             data['user']['LTI_SC_C_Supervisor'] = True if user_profile_data['Category1_4_Supervisor'] != "nan" else False
             
-            data['user']['LTI_Deposits'] = True if user_profile_data['Category1_17_Registration_Status'] == "Accredited" or user_profile_data['Category1_17_Registration_Status'] == "Under Supervision" else False
+            data['user']['LTI_Deposits'] = True if user_profile_data['Category1_17_Accredited'] == "Yes" else False # or user_profile_data['Category1_17_Registration_Status'] == "Under Supervision" else False
             data['user']['LTI_Deposits_Supervisor'] = True if user_profile_data['Category1_17_Supervisor'] != "nan" else False
             
-            data['user']['STI_Deposits'] = True if user_profile_data['Category1_18_Registration_Status'] == "Accredited" or user_profile_data['Category1_18_Registration_Status'] == "Under Supervision" else False
+            data['user']['STI_Deposits'] = True if user_profile_data['Category1_18_Accredited'] == "Yes" else False # or user_profile_data['Category1_18_Registration_Status'] == "Under Supervision" else False
             data['user']['STI_Deposits_Supervisor'] = True if user_profile_data['Category1_18_Supervisor'] != "nan" else False
             
-            data['user']['STI_PL'] = True if user_profile_data['Category1_2_Registration_Status'] == "Accredited" or user_profile_data['Category1_2_Registration_Status'] == "Under Supervision" else False
+            data['user']['STI_PL'] = True if user_profile_data['Category1_2_Accredited'] == "Yes" else False # or user_profile_data['Category1_2_Registration_Status'] == "Under Supervision" else False
             data['user']['STI_PL_Supervisor'] = True if user_profile_data['Category1_2_Supervisor'] != "nan" else False
             
-            data['user']['STI_PL_A'] = True if user_profile_data['Category1_23_Registration_Status'] == "Accredited" or user_profile_data['Category1_23_Registration_Status'] == "Under Supervision" else False
+            data['user']['STI_PL_A'] = True if user_profile_data['Category1_23_Accredited'] == "Yes" else False # or user_profile_data['Category1_23_Registration_Status'] == "Under Supervision" else False
             data['user']['STI_PL_A_Supervisor'] = True if user_profile_data['Category1_23_Supervisor'] != "nan" else False
             
-            data['user']['STI_CL'] = True if user_profile_data['Category1_6_Registration_Status'] == "Accredited" or user_profile_data['Category1_6_Registration_Status'] == "Under Supervision" else False
+            data['user']['STI_CL'] = True if user_profile_data['Category1_6_Accredited'] == "Yes" else False # or user_profile_data['Category1_6_Registration_Status'] == "Under Supervision" else False
             data['user']['STI_CL_Supervisor'] = True if user_profile_data['Category1_6_Supervisor'] != "nan" else False
             
-            data['user']['CIC'] = True if user_profile_data['Category1_14_Registration_Status'] == "Accredited" or user_profile_data['Category1_14_Registration_Status'] == "Under Supervision" else False
+            data['user']['CIC'] = True if user_profile_data['Category1_14_Accredited'] == "Yes" else False # or user_profile_data['Category1_14_Registration_Status'] == "Under Supervision" else False
             data['user']['CIC_Supervisor'] = True if user_profile_data['Category1_14_Supervisor'] != "nan" else False
             
-            data['user']['HSB'] = True if user_profile_data['Category1_16_Registration_Status'] == "Accredited" or user_profile_data['Category1_16_Registration_Status'] == "Under Supervision" else False
+            data['user']['HSB'] = True if user_profile_data['Category1_16_Accredited'] == "Yes" else False # or user_profile_data['Category1_16_Registration_Status'] == "Under Supervision" else False
             data['user']['HSB_Supervisor'] = True if user_profile_data['Category1_16_Supervisor'] != "nan" else False
             
-            data['user']['Shares'] = True if user_profile_data['Category1_8_Registration_Status'] == "Accredited" or user_profile_data['Category1_8_Registration_Status'] == "Under Supervision" else False
+            data['user']['Shares'] = True if user_profile_data['Category1_8_Accredited'] == "Yes" else False # or user_profile_data['Category1_8_Registration_Status'] == "Under Supervision" else False
             data['user']['Shares_Supervisor'] = True if user_profile_data['Category1_8_Supervisor'] != "nan" else False
             
-            data['user']['Participatory'] = True if user_profile_data['Category1_26_Registration_Status'] == "Accredited" or user_profile_data['Category1_26_Registration_Status'] == "Under Supervision" else False
+            data['user']['Participatory'] = True if user_profile_data['Category1_26_Accredited'] == "Yes" else False # or user_profile_data['Category1_26_Registration_Status'] == "Under Supervision" else False
             data['user']['Participatory_Supervisor'] = True if user_profile_data['Category1_26_Supervisor'] != "nan" else False
             
-            data['user']['Bonds'] = True if user_profile_data['Category1_12_Registration_Status'] == "Accredited" or user_profile_data['Category1_12_Registration_Status'] == "Under Supervision" else False
+            data['user']['Bonds'] = True if user_profile_data['Category1_12_Accredited'] == "Yes" else False # or user_profile_data['Category1_12_Registration_Status'] == "Under Supervision" else False
             data['user']['Bonds_Supervisor'] = True if user_profile_data['Category1_12_Supervisor'] != "nan" else False
             
-            data['user']['Money_market'] = True if user_profile_data['Category1_9_Registration_Status'] == "Accredited" or user_profile_data['Category1_9_Registration_Status'] == "Under Supervision" else False
+            data['user']['Money_market'] = True if user_profile_data['Category1_9_Accredited'] == "Yes" else False # or user_profile_data['Category1_9_Registration_Status'] == "Under Supervision" else False
             data['user']['Money_market_Supervisor'] = True if user_profile_data['Category1_9_Supervisor'] != "nan" else False
             
-            data['user']['Debentures'] = True if user_profile_data['Category1_10_Registration_Status'] == "Accredited" or user_profile_data['Category1_10_Registration_Status'] == "Under Supervision" else False
+            data['user']['Debentures'] = True if user_profile_data['Category1_10_Accredited'] == "Yes" else False # or user_profile_data['Category1_10_Registration_Status'] == "Under Supervision" else False
             data['user']['Debentures_Supervisor'] = True if user_profile_data['Category1_10_Supervisor'] != "nan" else False
             
-            data['user']['Warrants'] = True if user_profile_data['Category1_11_Registration_Status'] == "Accredited" or user_profile_data['Category1_11_Registration_Status'] == "Under Supervision" else False
+            data['user']['Warrants'] = True if user_profile_data['Category1_11_Accredited'] == "Yes" else False # or user_profile_data['Category1_11_Registration_Status'] == "Under Supervision" else False
             data['user']['Warrants_Supervisor'] = True if user_profile_data['Category1_11_Supervisor'] != "nan" else False
             
             total_categories = 2
